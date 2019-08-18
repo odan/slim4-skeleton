@@ -1,4 +1,13 @@
 {
+    "name": "odan/slim4-skeleton",
+    "description": "Simple Slim Framework 4 skeleton for Apache.",
+    "license": "MIT",
+    "type": "project",
+    "keywords": [
+        "slim-framework",
+        "skeleton",
+        "apache"
+    ],
     "require": {
         "fig/http-message-util": "^1.1",
         "nyholm/psr7": "^1.1",
