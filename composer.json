@@ -1,11 +1,22 @@
 {
     "require": {
-        "slim/slim": "^4.1",
-        "slim/psr7": "^0.4.0"
+        "fig/http-message-util": "^1.1",
+        "nyholm/psr7": "^1.1",
+        "nyholm/psr7-server": "^0.3.0",
+        "phpunit/phpunit": "^8.3",
+        "slim/slim": "^4.1"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
