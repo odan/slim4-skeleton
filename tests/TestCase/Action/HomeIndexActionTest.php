@@ -13,7 +13,7 @@ class HomeIndexActionTest extends TestCase
     use HttpTestTrait;
 
     /**
-     * Verify a non-authenticated user gets redirected to your login page.
+     * Test.
      *
      * @return void
      */
@@ -27,7 +27,7 @@ class HomeIndexActionTest extends TestCase
     }
 
     /**
-     * Verify a non-authenticated user gets redirected to your login page.
+     * Test.
      *
      * @return void
      */
