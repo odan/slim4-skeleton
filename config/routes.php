@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 
 /** @var App $app */
-
 $app->get('/', static function (Request $request, Response $response) {
     $response->getBody()->write('Hello, World!');
 
