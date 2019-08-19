@@ -1,6 +1,7 @@
 <?php
 
-// Define app routes
+// Define general middleware
+
 use Slim\App;
 
 /* @var App $app */

@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 
-/* @var App $app */
+/** @var App $app */
 
 $app->get('/', static function (Request $request, Response $response) {
     $response->getBody()->write('Hello, World!');
@@ -22,7 +22,7 @@ $app->get('/hello/{name}', static function (Request $request, Response $response
     return $response;
 });
 
-$app->get('/users', static function (Request $request, Response $response) {
+$app->post('/users', static function (Request $request, Response $response) {
     $response = $response->withHeader('Content-Type', 'application/json');
     $response->getBody()->write(json_encode(['result' => ['success' => true]]));
 
