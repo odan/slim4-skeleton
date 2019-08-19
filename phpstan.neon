@@ -1,0 +1,5 @@
+parameters:
+	reportUnmatchedIgnoredErrors: false
+	ignoreErrors:
+		- '#PHPDoc tag @throws with type Interop\\Container\\Exception\\ContainerException is not subtype of Throwable#'
+		- '#PHPDoc tag @throws with type Psr\Container\ContainerExceptionInterface|ReflectionException is not subtype of Throwable#'

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<ruleset name="Coding Standard">
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <file>./src</file>
+    <file>./tests</file>
+    <file>./config</file>
+
+    <rule ref="PSR2"></rule>
+    <rule ref="PSR12"></rule>
+
+    <rule ref="Squiz.Commenting.ClassComment">
+        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
+        <type>warning</type>
+        <exclude-pattern>*/tests/</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Commenting.ClassComment.Missing">
+        <type>warning</type>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.Missing">
+        <type>warning</type>
+        <exclude-pattern>*/config/</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag">
+        <type>warning</type>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.MissingParamComment">
+        <type>warning</type>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.ParamCommentNotCapital">
+        <type>warning</type>
+    </rule>
+
+    <rule ref="Generic.Metrics.CyclomaticComplexity">
+        <properties>
+            <property name="absoluteComplexity" value="50"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel">
+        <properties>
+            <property name="nestingLevel" value="2"/>
+            <property name="absoluteNestingLevel" value="4"/>
+        </properties>
+    </rule>
+</ruleset>

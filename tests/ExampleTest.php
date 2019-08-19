@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ExampleTest extends TestCase
 {
-
     /**
      * Test.
      *
@@ -19,5 +18,4 @@ class ExampleTest extends TestCase
     {
         self::assertTrue(true);
     }
-
 }
