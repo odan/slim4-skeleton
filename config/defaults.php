@@ -24,7 +24,7 @@ $settings['error_handler_middleware'] = [
     // For the console and unit tests we also disable
     'display_error_details' => PHP_SAPI !== 'cli',
     // Parameter is passed to the default ErrorHandler
-    'log_errors' => true,
+    'log_errors' => PHP_SAPI !== 'cli',
     // Display error details in error log
     'log_error_details' => true,
 ];
