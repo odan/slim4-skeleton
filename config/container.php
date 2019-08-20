@@ -18,7 +18,7 @@ $container = new Container();
 
 $container->delegate(new ReflectionContainer());
 
-// Core
+// The container
 $container->share(ContainerInterface::class, static function (Container $container) {
     return $container;
 })->addArgument($container);
@@ -48,9 +48,9 @@ $container->share('middleware', static function (Container $container) {
     // Add global middleware to app
     $app->addRoutingMiddleware();
 
-    $displayErrorDetails = (bool)$settings['error_handler_middeware']['display_error_details'];
-    $logErrors = (bool)$settings['error_handler_middeware']['log_errors'];
-    $logErrorDetails = (bool)$settings['error_handler_middeware']['log_error_details'];
+    $displayErrorDetails = (bool)$settings['error_handler_middleware']['display_error_details'];
+    $logErrors = (bool)$settings['error_handler_middleware']['log_errors'];
+    $logErrorDetails = (bool)$settings['error_handler_middleware']['log_error_details'];
 
     $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
 
