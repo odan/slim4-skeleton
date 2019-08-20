@@ -2,6 +2,7 @@
 
 namespace App\Action;
 
+use App\Responder\JsonResponder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -10,6 +11,21 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  */
 final class CreateUserAction
 {
+    /**
+     * @var JsonResponder
+     */
+    private $responder;
+
+    /**
+     * Constructor.
+     *
+     * @param JsonResponder $responder The responder
+     */
+    public function __construct(JsonResponder $responder)
+    {
+        $this->responder = $responder;
+    }
+
     /**
      * Action.
      *
@@ -21,9 +37,10 @@ final class CreateUserAction
      */
     public function __invoke(Request $request, Response $response, array $args = []): Response
     {
-        $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write(json_encode(['result' => ['success' => true]]));
+        $result = [
+            'result' => ['success' => true],
+        ];
 
-        return $response;
+        return $this->responder->encode($result);
     }
 }

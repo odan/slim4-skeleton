@@ -44,7 +44,8 @@ $settings['logger'] = [
 // View settings
 $settings['twig'] = [
     'path' => $settings['root'] . '/templates',
-    'cache_enabled' => true,
+    // Should be set to true in production
+    'cache_enabled' => false,
     'cache_path' => $settings['temp'] . '/twig-cache',
 ];
 

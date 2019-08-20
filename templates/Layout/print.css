@@ -1,0 +1,21 @@
+@media print {
+
+    .noprint { display: none; }
+
+    .navbar {
+        visibility: hidden;
+        display : none;
+    }
+
+    .container {
+        width: 99%;
+    }
+
+    .table {
+        table-layout: fixed;
+        width: 99%;
+        max-width: 99%;
+    }
+
+}
+

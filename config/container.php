@@ -11,6 +11,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
+use Slim\Interfaces\RouteParserInterface;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
 
@@ -31,13 +32,31 @@ $container->share('settings', static function () {
 // Slim App
 $container->share(App::class, static function (Container $container) {
     AppFactory::setContainer($container);
+    $app = AppFactory::create();
 
-    return AppFactory::create();
+    // Fix apache base path.
+    // Change the request uri to run the app in a subdirectory.
+    if (isset($_SERVER['REQUEST_URI'])) {
+        $basePath = parse_url($_SERVER['REQUEST_URI'])['path'];
+        $scriptName = dirname(dirname($_SERVER['SCRIPT_NAME']));
+        $len = strlen($scriptName);
+        if ($len > 0 && $scriptName !== '/') {
+            $basePath = substr($basePath, 0, $len);
+        }
+        $app->setBasePath($basePath ?: '');
+    }
+
+    return $app;
 })->addArgument($container);
 
 // For the HtmlResponder
 $container->share(ResponseFactoryInterface::class, static function (Container $container) {
     return $container->get(Psr17Factory::class);
+})->addArgument($container);
+
+// The Slim RouterParser
+$container->share(RouteParserInterface::class, static function (Container $container) {
+    return $container->get(App::class)->getRouteCollector()->getRouteParser();
 })->addArgument($container);
 
 // Global middleware
@@ -90,11 +109,13 @@ $container->share(Twig::class, static function (Container $container) {
     //$csrfToken = $container->get(CsrfMiddleware::class)->getToken();
     //$twig->addGlobal('csrf_token', $csrfToken);
 
-    //$twig->addGlobal('base_url', $container->get(RouterUrl::class)->pathFor('root'));
-    //$twig->addGlobal('globalText', $container->get('globalText'));
+    // Add relative base url
+    $routeParser = $container->get(RouteParserInterface::class);
+    $twig->addGlobal('base_url', $routeParser->urlFor('root'));
 
     // Add Twig extensions
     $twig->addExtension(new TwigAssetsExtension($twig, (array)$settings['assets']));
+
     //$twig->addExtension(new TwigTranslationExtension());
 
     return $twig;

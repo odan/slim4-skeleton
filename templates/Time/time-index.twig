@@ -1,0 +1,20 @@
+{% extends "Layout/layout.twig" %}
+
+{% block assets %}
+    {{ assets({files: ['Time/time-index.js'], name: 'time-index.js'}) }}
+    {{ assets({files: ['Time/time-index.css'], name: 'time-index.css'}) }}
+{% endblock %}
+
+{% block content %}
+
+    <div id="content" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Current time</h1>{{ now }}<br>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

@@ -2,8 +2,12 @@
 
 This is a simple web application skeleton project that uses the [Slim 4 Framework](https://www.slimframework.com/):
 
-- [nyholm/psr7](https://github.com/nyholm/psr7) as super lightweight PSR-7 implementation
-- [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit) as Unit Testing framework
+* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
+* [nyholm/psr7](https://github.com/nyholm/psr7) as super lightweight PSR-7 implementation
+* [league/container](https://github.com/thephpleague/container) as dependency injection container (PSR-11)
+* [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
+* [twig/twig](https://github.com/twigphp/Twig) as template engine
+* [odan/twig-assets](https://github.com/odan/twig-assets) as JavaScript / CSS assets manager 
 
 ## Requirements
 
@@ -20,8 +24,10 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 
 ## Routes
 
-* `/` => `Hello, World!`
-* `/hello/john` => `Hello, john!`
+* `GET /` => `Hello, World!`
+* `GET /hello/john` => `Hello, john!`
+* `GET /time` => `Current time: ...`
+* `POST /users` => `json response`
 
 ## Tests
 
@@ -37,3 +43,6 @@ Start API integration tests with full coverage report:
 composer test-coverage
 ```
 
+## License
+
+* MIT
