@@ -22,10 +22,6 @@ class BasePath
         }
 
         // For apache
-        if (!isset($server['REQUEST_URI'])) {
-            return '';
-        }
-
         return static::getBasePathFromApache($server);
     }
 
@@ -57,6 +53,10 @@ class BasePath
      */
     private static function getBasePathFromApache(array $server): string
     {
+        if (!isset($server['REQUEST_URI'])) {
+            return '';
+        }
+
         $scriptName = $server['SCRIPT_NAME'];
 
         $basePath = (string)parse_url($server['REQUEST_URI'], PHP_URL_PATH);
