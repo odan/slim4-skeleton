@@ -16,7 +16,6 @@ cache:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-dist --no-progress
-  - php bin/cli.php install --environment ci
   - cd $TRAVIS_BUILD_DIR
 
 script:
