@@ -41,13 +41,6 @@ trait HttpTestTrait
         // A phpunit fix #3026
         if (!isset($_SERVER['REQUEST_URI'])) {
             $_SERVER = [
-                'REQUEST_METHOD' => 'GET',
-                'REQUEST_SCHEME' => 'http',
-                'HTTP_HOST' => 'localhost',
-                'SERVER_PORT' => '80',
-                'REQUEST_URI' => '/',
-                'SERVER_PROTOCOL' => 'HTTP/1.1',
-                'SCRIPT_NAME' => '',
                 'REQUEST_TIME_FLOAT' => microtime(true),
                 'REQUEST_TIME' => microtime(),
             ];
