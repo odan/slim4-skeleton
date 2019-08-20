@@ -19,8 +19,10 @@ $settings['public'] = $settings['root'] . '/public';
 
 // Error Handling Middleware settings
 $settings['error_handler_middleware'] = [
+    // View in rendered output by enabling the "displayErrorDetails" setting.
     // Should be set to false in production
-    'display_error_details' => true,
+    // For the console and unit tests we also disable
+    'display_error_details' => PHP_SAPI !== 'cli',
     // Parameter is passed to the default ErrorHandler
     'log_errors' => true,
     // Display error details in error log

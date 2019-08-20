@@ -52,7 +52,7 @@ Start unit- and API integration tests + full coverage report with:
 composer test-coverage
 ```
 
-The code coverage report (xml and html) output directory is: `build/coverage`.
+The code coverage report (xml and html) output directory is: `build/coverage`
 
 ## License
 
