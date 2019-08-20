@@ -14,13 +14,13 @@ trait UnitTestTrait
     use ContainerTestTrait;
 
     /** {@inheritdoc} */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bootApp();
     }
 
     /** {@inheritdoc} */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->shutdownApp();
     }
@@ -53,10 +53,7 @@ trait UnitTestTrait
             $methods[] = $method->name;
         }
 
-        return $this->getMockBuilder($class)
-            ->disableOriginalConstructor()
-            ->setMethods($methods)
-            ->getMock();
+        return $this->getMockBuilder($class)->disableOriginalConstructor()->setMethods($methods)->getMock();
     }
 
     /**

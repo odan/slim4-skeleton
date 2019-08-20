@@ -1,6 +1,7 @@
 <?php
 
-use Slim\Factory\AppFactory;
+use Psr\Container\ContainerInterface;
+use Slim\App;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -19,12 +20,18 @@ call_user_func(static function () {
     $_SERVER['REQUEST_URI'] = $path ?: '';
 });
 
-$app = AppFactory::create();
+return (static function () {
+    /** @var ContainerInterface $container */
+    $container = require __DIR__ . '/container.php';
 
-// Add middleware
-require __DIR__ . '/middleware.php';
+    // Create App instance
+    $app = $container->get(App::class);
 
-// Define app routes
-require __DIR__ . '/routes.php';
+    // Register middleware
+    $container->get('middleware');
 
-return $app;
+    // Register routes
+    require __DIR__ . '/routes.php';
+
+    return $container;
+})();

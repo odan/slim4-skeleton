@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase;
 
+use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;
 
@@ -10,6 +11,9 @@ use Slim\App;
  */
 trait ContainerTestTrait
 {
+    /** @var ContainerInterface|null */
+    protected $container;
+
     /** @var App|null */
     protected $app;
 
@@ -20,7 +24,8 @@ trait ContainerTestTrait
      */
     protected function bootApp(): void
     {
-        $this->app = require __DIR__ . '/../../config/bootstrap.php';
+        $this->container = require __DIR__ . '/../../config/bootstrap.php';
+        $this->app = $this->container->get(App::class);
     }
 
     /**
@@ -31,10 +36,27 @@ trait ContainerTestTrait
     protected function shutdownApp(): void
     {
         $this->app = null;
+        $this->container = null;
     }
 
     /**
-     * Get app.
+     * Get container.
+     *
+     * @throws RuntimeException
+     *
+     * @return ContainerInterface The container
+     */
+    protected function getContainer(): ContainerInterface
+    {
+        if ($this->container === null) {
+            throw new RuntimeException('Container must be initialized');
+        }
+
+        return $this->container;
+    }
+
+    /**
+     * Get container.
      *
      * @throws RuntimeException
      *
@@ -43,7 +65,7 @@ trait ContainerTestTrait
     protected function getApp(): App
     {
         if ($this->app === null) {
-            throw new RuntimeException('Container must be initialized');
+            throw new RuntimeException('App must be initialized');
         }
 
         return $this->app;

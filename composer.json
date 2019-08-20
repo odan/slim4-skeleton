@@ -1,6 +1,6 @@
 {
     "name": "odan/slim4-skeleton",
-    "description": "Simple Slim Framework 4 skeleton for Apache.",
+    "description": "A Slim 4 skeleton for Apache.",
     "license": "MIT",
     "type": "project",
     "keywords": [
@@ -11,8 +11,12 @@
     "require": {
         "php": "^7.2",
         "fig/http-message-util": "^1.1",
+        "league/container": "^3.3",
+        "monolog/monolog": "^1.24",
         "nyholm/psr7": "^1.1",
         "nyholm/psr7-server": "^0.3.0",
+        "odan/twig-assets": "^2.1",
+        "psr/log": "^1.1",
         "slim/slim": "^4.1"
     },
     "require-dev": {
