@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Responder;
 
 use Exception;
 use Psr\Http\Message\ResponseFactoryInterface;
