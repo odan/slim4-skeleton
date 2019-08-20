@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\BasePath;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Monolog\Handler\RotatingFileHandler;
@@ -34,17 +35,9 @@ $container->share(App::class, static function (Container $container) {
     AppFactory::setContainer($container);
     $app = AppFactory::create();
 
-    // Fix apache base path.
-    // Change the request uri to run the app in a subdirectory.
-    if (isset($_SERVER['REQUEST_URI'])) {
-        $basePath = parse_url($_SERVER['REQUEST_URI'])['path'];
-        $scriptName = dirname(dirname($_SERVER['SCRIPT_NAME']));
-        $len = strlen($scriptName);
-        if ($len > 0 && $scriptName !== '/') {
-            $basePath = substr($basePath, 0, $len);
-        }
-        $app->setBasePath($basePath ?: '');
-    }
+    // Set the base path to run the app in a subdirectory.
+    // This path is used in urlFor().
+    $app->setBasePath(BasePath::getBasePath($_SERVER));
 
     return $app;
 })->addArgument($container);
