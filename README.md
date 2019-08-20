@@ -25,7 +25,7 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 
 ## Installation
 
-* Download and extract the ZIP file: [master.zip](https://github.com/odan/slim4-hello-world/archive/master.zip)
+* Download and extract the ZIP file: [master.zip](https://github.com/odan/slim4-skeleton/archive/master.zip)
 * Run: `composer update`
 * Upload all files to the webserver
 * Open the website
@@ -40,17 +40,19 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 
 ## Tests
 
-Start API integration tests with:
+Start unit- and API integration tests with:
 
 ```
 composer test
 ```
 
-Start API integration tests with full coverage report:
+Start unit- and API integration tests + full coverage report with:
 
 ```
 composer test-coverage
 ```
+
+The code coverage report (xml and html) output directory is: `build/coverage`.
 
 ## License
 
