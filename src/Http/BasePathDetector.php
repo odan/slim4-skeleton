@@ -31,11 +31,11 @@ class BasePathDetector
     {
         // For built-in server
         if (PHP_SAPI === 'cli-server') {
-            return static::getBasePathFromBuiltIn($this->server);
+            return $this->getBasePathFromBuiltIn($this->server);
         }
 
         // For apache
-        return static::getBasePathFromApache($this->server);
+        return $this->getBasePathFromApache($this->server);
     }
 
     /**
@@ -64,7 +64,7 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    private static function getBasePathFromApache(array $server): string
+    private function getBasePathFromApache(array $server): string
     {
         if (!isset($server['REQUEST_URI'])) {
             return '';
