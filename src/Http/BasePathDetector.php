@@ -3,36 +3,49 @@
 namespace App\Http;
 
 /**
- * BasePath helper.
+ * A URL base path detector.
  */
-class BasePath
+class BasePathDetector
 {
+    /**
+     * @var array The server data
+     */
+    private $server = [];
+
+    /**
+     * The constructor.
+     *
+     * @param array $server The SERVER data to use
+     */
+    public function __construct(array $server)
+    {
+        $this->server = $server;
+    }
+
     /**
      * Calculate the url base path.
      *
-     * @param array $server the SERVER data to use
-     *
      * @return string The base path
      */
-    public static function getBasePath(array $server): string
+    public function getBasePath(): string
     {
         // For built-in server
         if (PHP_SAPI === 'cli-server') {
-            return static::getBasePathFromBuiltIn($server);
+            return static::getBasePathFromBuiltIn($this->server);
         }
 
         // For apache
-        return static::getBasePathFromApache($server);
+        return static::getBasePathFromApache($this->server);
     }
 
     /**
      * Return basePath for built-in server.
      *
-     * @param array $server the SERVER data to use
+     * @param array $server The SERVER data to use
      *
      * @return string The base path
      */
-    private static function getBasePathFromBuiltIn(array $server): string
+    private function getBasePathFromBuiltIn(array $server): string
     {
         $scriptName = $server['SCRIPT_NAME'];
         $basePath = str_replace('\\', '/', dirname($scriptName));
@@ -47,7 +60,7 @@ class BasePath
     /**
      * Return basePath for apache server.
      *
-     * @param array $server the SERVER data to use
+     * @param array $server The SERVER data to use
      *
      * @return string The base path
      */
