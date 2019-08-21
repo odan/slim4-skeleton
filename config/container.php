@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\BasePathDetector;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Monolog\Handler\RotatingFileHandler;
@@ -10,6 +9,7 @@ use Odan\Twig\TwigAssetsExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;
+use Selective\BasePath\BasePathDetector;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
