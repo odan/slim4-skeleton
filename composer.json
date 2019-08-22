@@ -13,7 +13,7 @@
         "fig/http-message-util": "^1.1",
         "league/container": "^3.3",
         "monolog/monolog": "^1.24",
-        "nyholm/psr7": "^1.1",
+        "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.3.0",
         "odan/twig-assets": "^2.1",
         "psr/log": "^1.1",
