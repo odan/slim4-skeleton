@@ -30,12 +30,10 @@ final class CreateUserAction
      * Action.
      *
      * @param Request $request The request
-     * @param Response $response The response
-     * @param array $args The arguments
      *
      * @return Response The new response
      */
-    public function __invoke(Request $request, Response $response, array $args = []): Response
+    public function __invoke(Request $request): Response
     {
         $result = [
             'result' => ['success' => true],
