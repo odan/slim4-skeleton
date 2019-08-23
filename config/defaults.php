@@ -24,7 +24,7 @@ $settings['error_handler_middleware'] = [
     // Parameter is passed to the default ErrorHandler
     // View in rendered output by enabling the "displayErrorDetails" setting.
     // For the console and unit tests we also disable
-    'log_errors' => PHP_SAPI !== 'cli',
+    'log_errors' => true,
     // Display error details in error log
     'log_error_details' => true,
 ];
