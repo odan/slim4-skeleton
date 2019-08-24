@@ -38,8 +38,9 @@ final class JsonResponder
     public function encode($data = null): ResponseInterface
     {
         $json = json_encode($data);
+
         if ($json === false) {
-            throw new RuntimeException('Encoding to JSON failed');
+            throw new RuntimeException('Malformed UTF-8 characters, possibly incorrectly encoded.');
         }
 
         $response = $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');

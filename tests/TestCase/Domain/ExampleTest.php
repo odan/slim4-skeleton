@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase\Domain;
 
+use App\Test\TestCase\UnitTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -9,6 +10,8 @@ use PHPUnit\Framework\TestCase;
  */
 class ExampleTest extends TestCase
 {
+    use UnitTestTrait;
+
     /**
      * Test.
      *
