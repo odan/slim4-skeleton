@@ -1,7 +1,6 @@
 parameters:
 	reportUnmatchedIgnoredErrors: false
 	ignoreErrors:
-		- '/Cannot access offset 0 on callable/'
-		- '/Cannot access offset 1 on callable/'
-		- '#PHPDoc tag @throws with type Interop\\Container\\Exception\\ContainerException is not subtype of Throwable#'
-		- '#PHPDoc tag @throws with type Psr\Container\ContainerExceptionInterface|ReflectionException is not subtype of Throwable#'
+		- '/Cannot access offset [0-1]+ on (.*)callable/'
+		- '/PHPDoc tag @throws with type Interop\\Container\\Exception\\ContainerException is not subtype of Throwable/'
+		- '/PHPDoc tag @throws with type Psr\Container\ContainerExceptionInterface|ReflectionException is not subtype of Throwable/'
