@@ -23,7 +23,7 @@ class JsonResponderTest extends TestCase
      */
     public function testValidEncoding(): void
     {
-        $responder = $this->container->get(JsonResponder::class);
+        $responder = $this->getContainer()->get(JsonResponder::class);
         $actual = $responder->encode('abc123ÿ');
 
         static::assertSame('"abc123\u00ff"', (string)$actual->getBody());
@@ -39,7 +39,7 @@ class JsonResponderTest extends TestCase
         static::expectException(RuntimeException::class);
         static::expectExceptionMessage('Malformed UTF-8 characters, possibly incorrectly encoded.');
 
-        $responder = $this->container->get(JsonResponder::class);
+        $responder = $this->getContainer()->get(JsonResponder::class);
         $responder->encode("\x00\x81");
     }
 }

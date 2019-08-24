@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase;
 
+use League\Container\Container;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
@@ -34,7 +35,12 @@ trait UnitTestTrait
      */
     protected function registerMock(string $class): void
     {
-        $this->getApp()->add($class, $this->createMockObject($class));
+        $container = $this->getContainer();
+
+        if ($container instanceof Container) {
+            $definition = $container->extend($class);
+            $definition->setConcrete($this->createMockObject($class));
+        }
     }
 
     /**
@@ -66,7 +72,7 @@ trait UnitTestTrait
     protected function mockMethod($method): InvocationMocker
     {
         /** @var MockObject $mock */
-        $mock = $this->getApp()->get($method[0] ?? '');
+        $mock = $this->getContainer()->get($method[0] ?? '');
 
         return $mock->method($method[1] ?? '');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase;
 
+use League\Container\Container;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;
@@ -11,7 +12,7 @@ use Slim\App;
  */
 trait ContainerTestTrait
 {
-    /** @var ContainerInterface|null */
+    /** @var ContainerInterface|Container|null */
     protected $container;
 
     /** @var App|null */
@@ -44,7 +45,7 @@ trait ContainerTestTrait
      *
      * @throws RuntimeException
      *
-     * @return ContainerInterface The container
+     * @return ContainerInterface|Container The container
      */
     protected function getContainer(): ContainerInterface
     {
