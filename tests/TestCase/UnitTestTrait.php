@@ -38,8 +38,7 @@ trait UnitTestTrait
         $container = $this->getContainer();
 
         if ($container instanceof Container) {
-            $definition = $container->extend($class);
-            $definition->setConcrete($this->createMockObject($class));
+            $container->add($class, $this->createMockObject($class));
         }
     }
 
@@ -59,7 +58,10 @@ trait UnitTestTrait
             $methods[] = $method->name;
         }
 
-        return $this->getMockBuilder($class)->disableOriginalConstructor()->setMethods($methods)->getMock();
+        return $this->getMockBuilder($class)
+            ->disableOriginalConstructor()
+            ->setMethods($methods)
+            ->getMock();
     }
 
     /**
@@ -67,13 +69,13 @@ trait UnitTestTrait
      *
      * @param array|callable $method The class and method
      *
-     * @return InvocationMocker The mocked method
+     * @return InvocationMocker
      */
     protected function mockMethod($method): InvocationMocker
     {
         /** @var MockObject $mock */
-        $mock = $this->getContainer()->get($method[0] ?? '');
+        $mock = $this->getContainer()->get((string)$method[0]);
 
-        return $mock->method($method[1] ?? '');
+        return $mock->method((string)$method[1]);
     }
 }
