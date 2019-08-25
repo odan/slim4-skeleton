@@ -17,6 +17,7 @@
 // Translate the text and save the file.
 //
 
+use Odan\Twig\TwigCompiler;
 use Slim\App;
 use Twig\Environment as Twig;
 
@@ -29,23 +30,5 @@ $cachePath = (string)$settings['cache_path'];
 
 $twig = $app->getContainer()->get(Twig::class);
 
-$twig->disableDebug();
-
-// Force auto-reload to always have the latest version of the template
-$twig->enableAutoReload();
-
-// The Twig cache must be enabled
-$twig->setCache($cachePath);
-
-// Iterate over all your templates
-$directory = new RecursiveDirectoryIterator($templatePath, FilesystemIterator::SKIP_DOTS);
-
-foreach (new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::SELF_FIRST) as $file) {
-    /** @var SplFileInfo $file */
-    if ($file->isFile() && $file->getExtension() === 'twig') {
-        $templateName = substr($file->getPathname(), strlen($templatePath) + 1);
-        $templateName = str_replace('\\', '/', $templateName);
-        echo sprintf("Parsing: %s\n", $templateName);
-        $twig->loadTemplate($templateName);
-    }
-}
+$compiler = new TwigCompiler($twig, $cachePath);
+$compiler->compile();

@@ -16,7 +16,7 @@
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.3.0",
         "odan/twig-assets": "^2.1",
-        "odan/twig-translation": "^1.2",
+        "odan/twig-translation": "^1.2.1",
         "psr/log": "^1.1",
         "selective/basepath": "^0.1.0",
         "slim/slim": "^4.1",
