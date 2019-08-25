@@ -13,10 +13,10 @@ return (static function () {
     $app = $container->get(App::class);
 
     // Register middleware
-    $container->get('middleware');
+    (require __DIR__ . '/routes.php')($app);
 
     // Register routes
-    require __DIR__ . '/routes.php';
+    (require __DIR__ . '/middleware.php')($app);
 
     return $container;
 })();

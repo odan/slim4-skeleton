@@ -1,11 +1,13 @@
 <?php
 
+use App\Middleware\TranslatorMiddleware;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Odan\Twig\TwigAssetsExtension;
+use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;
@@ -13,6 +15,10 @@ use Selective\BasePath\BasePathDetector;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
+use Symfony\Component\Translation\Formatter\MessageFormatter;
+use Symfony\Component\Translation\IdentityTranslator;
+use Symfony\Component\Translation\Loader\MoFileLoader;
+use Symfony\Component\Translation\Translator;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
 
@@ -27,7 +33,7 @@ $container->share(ContainerInterface::class, static function (Container $contain
 
 // Application settings
 $container->share('settings', static function () {
-    return require __DIR__ . '/settings.php';
+    return (require __DIR__ . '/settings.php')();
 });
 
 // Slim App
@@ -51,23 +57,6 @@ $container->share(ResponseFactoryInterface::class, static function (Container $c
 // The Slim RouterParser
 $container->share(RouteParserInterface::class, static function (Container $container) {
     return $container->get(App::class)->getRouteCollector()->getRouteParser();
-})->addArgument($container);
-
-// Global middleware
-$container->share('middleware', static function (Container $container) {
-    $settings = $container->get('settings');
-    $app = $container->get(App::class);
-
-    // Add global middleware to app
-    $app->addRoutingMiddleware();
-
-    $displayErrorDetails = (bool)$settings['error_handler_middleware']['display_error_details'];
-    $logErrors = (bool)$settings['error_handler_middleware']['log_errors'];
-    $logErrorDetails = (bool)$settings['error_handler_middleware']['log_error_details'];
-
-    $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
-
-    return true;
 })->addArgument($container);
 
 // The logger
@@ -109,10 +98,35 @@ $container->share(Twig::class, static function (Container $container) {
 
     // Add Twig extensions
     $twig->addExtension(new TwigAssetsExtension($twig, (array)$settings['assets']));
-
-    //$twig->addExtension(new TwigTranslationExtension());
+    $twig->addExtension(new TwigTranslationExtension());
 
     return $twig;
+})->addArgument($container);
+
+// Translation
+$container->share(Translator::class, static function (Container $container) {
+    $settings = $container->get('settings')['locale'];
+
+    $translator = new Translator(
+        $settings['locale'],
+        new MessageFormatter(new IdentityTranslator()),
+        $settings['cache']
+    );
+
+    $translator->addLoader('mo', new MoFileLoader());
+
+    // Set translator instance
+    __($translator);
+
+    return $translator;
+})->addArgument($container);
+
+$container->share(TranslatorMiddleware::class, static function (Container $container) {
+    $settings = $container->get('settings')['locale'];
+    $localPath = $settings['path'];
+    $translator = $container->get(Translator::class);
+
+    return new TranslatorMiddleware($translator, $localPath);
 })->addArgument($container);
 
 return $container;

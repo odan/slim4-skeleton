@@ -124,3 +124,5 @@ $settings['smtp'] = [
     'from_name' => 'My name',
     'to' => 'to@example.com',
 ];
+
+return $settings;

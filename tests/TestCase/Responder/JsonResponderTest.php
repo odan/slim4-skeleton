@@ -3,10 +3,8 @@
 namespace App\Test\TestCase\Responder;
 
 use App\Responder\JsonResponder;
-use App\Test\TestCase\ContainerTestTrait;
 use App\Test\TestCase\UnitTestTrait;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
 /**

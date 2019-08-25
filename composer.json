@@ -16,9 +16,12 @@
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.3.0",
         "odan/twig-assets": "^2.1",
+        "odan/twig-translation": "^1.2",
         "psr/log": "^1.1",
         "selective/basepath": "^0.1.0",
-        "slim/slim": "^4.1"
+        "slim/slim": "^4.1",
+        "symfony/config": "^4.3",
+        "symfony/translation": "^4.3"
     },
     "require-dev": {
         "overtrue/phplint": "^1.1",
@@ -46,7 +49,10 @@
     "autoload": {
         "psr-4": {
             "App\\": "src"
-        }
+        },
+        "files": [
+            "src/Utility/translate.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
