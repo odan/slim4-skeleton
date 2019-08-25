@@ -25,8 +25,8 @@ trait ContainerTestTrait
      */
     protected function bootApp(): void
     {
-        $this->container = require __DIR__ . '/../../config/bootstrap.php';
-        $this->app = $this->container->get(App::class);
+        $this->app = require __DIR__ . '/../../config/bootstrap.php';
+        $this->container = $this->app->getContainer();
     }
 
     /**

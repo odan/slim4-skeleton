@@ -18,5 +18,5 @@ return (static function () {
     // Register routes
     (require __DIR__ . '/middleware.php')($app);
 
-    return $container;
+    return $app;
 })();
