@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:36+0200\n"
-"PO-Revision-Date: 2019-08-25 20:36+0200\n"
+"POT-Creation-Date: 2019-08-25 22:16+0200\n"
+"PO-Revision-Date: 2019-08-25 22:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -13,5 +13,175 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-KeywordsList: __\n"
-"X-Poedit-Basepath: ../../src\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: tmp/twig-cache\n"
+
+#: tmp/twig-cache/b0/b08ae06e89f7c1e908c0731b35e84c0b3e3279a56c5d89492838e25dc98c7353.php:72
+msgid "Current time"
+msgstr "Aktuelle Zeit"
+
+#~ msgid "User list"
+#~ msgstr "Benutzerliste"
+
+#~ msgid "Add user"
+#~ msgstr "Benutzer hinzufügen"
+
+#~ msgid "Username"
+#~ msgstr "Benutzername"
+
+#~ msgid "E-Mail"
+#~ msgstr "E-Mail"
+
+#~ msgid "First name"
+#~ msgstr "Vorname"
+
+#~ msgid "Last name"
+#~ msgstr "Nachname"
+
+#~ msgid "Role"
+#~ msgstr "Rolle"
+
+#~ msgid "Enabled"
+#~ msgstr "Aktiviert"
+
+#~ msgid "Created at"
+#~ msgstr "Erstellt am"
+
+#~ msgid "Action"
+#~ msgstr "Aktion"
+
+#~ msgid "Server error"
+#~ msgstr "Server Error"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nein"
+
+#~ msgid "Loaded successfully!"
+#~ msgstr "Erfolgreich gestartet!"
+
+#~ msgid "Loading..."
+#~ msgstr "Laden..."
+
+#~ msgid "Hello World"
+#~ msgstr "Hallo Welt"
+
+#~ msgid "Current user"
+#~ msgstr "Aktueller Benutzer"
+
+#~ msgid "User-ID"
+#~ msgstr "Benutzer-ID"
+
+#~ msgid "User ID"
+#~ msgstr "Benutzer ID"
+
+#~ msgid "Message"
+#~ msgstr "Meldung"
+
+#~ msgid "Selected"
+#~ msgstr "Markiert"
+
+#~ msgid "Edit user: %s"
+#~ msgstr "Benutzer bearbeiten: %s"
+
+#~ msgid "Sign in"
+#~ msgstr "Einloggen"
+
+#~ msgid "Please sign in"
+#~ msgstr "Bitte einloggen"
+
+#~ msgid "Password"
+#~ msgstr "Kennwort"
+
+#~ msgid "js/datatable-english.json"
+#~ msgstr "js/datatable-german.json"
+
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "en"
+#~ msgstr "de"
+
+#~ msgid "Demo"
+#~ msgstr "Demo"
+
+#~ msgid "Project name"
+#~ msgstr "Projektname"
+
+#~ msgid "Toggle navigation"
+#~ msgstr "Navigation umschalten"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Disabled"
+#~ msgstr "Deaktiviert"
+
+#~ msgid "Dropdown"
+#~ msgstr "Dropdown"
+
+#~ msgid "Another action"
+#~ msgstr "Weitere Aktion"
+
+#~ msgid "Something else here"
+#~ msgstr "Etwas anderes"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Page {page} / {pages}"
+#~ msgstr "Seite {page} / {pages}"
+
+#~ msgid "{start} - {end} of {count} items"
+#~ msgstr "{start} - {end} von {count} Einträgen"
+
+#~ msgid "Please enter the page number"
+#~ msgstr "Geben Sie bitte die Seitennummer ein"
+
+#~ msgid "required"
+#~ msgstr "erforderlich"
+
+#~ msgid "invalid"
+#~ msgstr "ungülig"
+
+#~ msgid "Search"
+#~ msgstr "Suchen"
+
+#~ msgid "per Page"
+#~ msgstr "pro Seite"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "The filetype is invalid"
+#~ msgstr "Der Dateityp ist ungültig"
+
+#~ msgid "The file size exceeds the limit allowed"
+#~ msgstr "Die Dateigrösse überschreitet das erlaubte Maximum."
+
+#~ msgid "The file could not be opened."
+#~ msgstr "Die Datei konnte nicht gelesen werden."
+
+#~ msgid "Invalid or empty User-ID"
+#~ msgstr "Ungültige oder leere User-ID"
+
+#~ msgid "User not found: %s"
+#~ msgstr "Benutzer nicht gefunden: %s"
+
+#~ msgid "Columns not found in table: %s"
+#~ msgstr "Keine Felder gefunden in der Tabelle: %s"
+
+#~ msgid "Invalid type ID: %s"
+#~ msgstr "Ungültige Type-ID: %s"
