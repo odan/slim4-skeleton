@@ -32,3 +32,5 @@ $twig = $app->getContainer()->get(Twig::class);
 
 $compiler = new TwigCompiler($twig, $cachePath);
 $compiler->compile();
+
+echo "Done\n";
