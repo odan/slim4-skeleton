@@ -17,6 +17,7 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 * [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
 * [twig/twig](https://github.com/twigphp/Twig) as template engine
 * [odan/twig-assets](https://github.com/odan/twig-assets) as JavaScript / CSS assets manager 
+* [odan/twig-translation](https://github.com/odan/twig-translation) as Translator
 
 ## Requirements
 
