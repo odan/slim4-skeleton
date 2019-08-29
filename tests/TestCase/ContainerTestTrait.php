@@ -57,7 +57,7 @@ trait ContainerTestTrait
     }
 
     /**
-     * Get container.
+     * Get app.
      *
      * @throws RuntimeException
      *
