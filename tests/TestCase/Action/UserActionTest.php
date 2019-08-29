@@ -23,8 +23,8 @@ class UserActionTest extends TestCase
         $request = $this->withJson($request, ['username' => 'user', 'password' => 'secret']);
         $response = $this->request($request);
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
-        $this->assertSame('{"result":{"success":true}}', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
+        static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        static::assertSame('{"result":{"success":true}}', (string)$response->getBody());
     }
 }

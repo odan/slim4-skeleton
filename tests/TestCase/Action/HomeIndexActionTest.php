@@ -22,8 +22,8 @@ class HomeIndexActionTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $this->request($request);
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertStringContainsString('Hello, World', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
+        static::assertStringContainsString('Hello, World', (string)$response->getBody());
     }
 
     /**
@@ -36,8 +36,8 @@ class HomeIndexActionTest extends TestCase
         $request = $this->createRequest('GET', '/hello/john');
         $response = $this->request($request);
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertStringContainsString('Hello, john', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
+        static::assertStringContainsString('Hello, john', (string)$response->getBody());
     }
 
     /**
@@ -51,6 +51,6 @@ class HomeIndexActionTest extends TestCase
         $response = $this->request($request);
 
         // Assert: Not found
-        $this->assertSame(404, $response->getStatusCode());
+        static::assertSame(404, $response->getStatusCode());
     }
 }
