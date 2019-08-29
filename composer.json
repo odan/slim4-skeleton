@@ -9,7 +9,7 @@
         "apache"
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.1",
         "fig/http-message-util": "^1.1",
         "league/container": "^3.3",
         "monolog/monolog": "^1.24",

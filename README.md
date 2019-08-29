@@ -20,7 +20,7 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 
 ## Requirements
 
-* PHP 7.2+
+* PHP 7.1+
 * Composer
 
 ## Installation
