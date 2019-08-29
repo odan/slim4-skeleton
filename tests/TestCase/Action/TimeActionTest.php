@@ -19,10 +19,10 @@ class TimeActionTest extends TestCase
      */
     public function testTimeAction(): void
     {
-        $request = $this->createServerRequest('GET', '/time');
+        $request = $this->createRequest('GET', '/time');
         $response = $this->request($request);
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertStringContainsString('Current time', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
+        static::assertStringContainsString('Current time', (string)$response->getBody());
     }
 }

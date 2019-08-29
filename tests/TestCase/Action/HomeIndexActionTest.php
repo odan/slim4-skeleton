@@ -19,7 +19,7 @@ class HomeIndexActionTest extends TestCase
      */
     public function testIndexAction(): void
     {
-        $request = $this->createServerRequest('GET', '/');
+        $request = $this->createRequest('GET', '/');
         $response = $this->request($request);
 
         $this->assertSame(200, $response->getStatusCode());
@@ -33,7 +33,7 @@ class HomeIndexActionTest extends TestCase
      */
     public function testHelloAction(): void
     {
-        $request = $this->createServerRequest('GET', '/hello/john');
+        $request = $this->createRequest('GET', '/hello/john');
         $response = $this->request($request);
 
         $this->assertSame(200, $response->getStatusCode());
@@ -47,7 +47,7 @@ class HomeIndexActionTest extends TestCase
      */
     public function testPageNotFound(): void
     {
-        $request = $this->createServerRequest('GET', '/not-existing-page');
+        $request = $this->createRequest('GET', '/not-existing-page');
         $response = $this->request($request);
 
         // Assert: Not found

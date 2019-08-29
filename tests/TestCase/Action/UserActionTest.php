@@ -19,7 +19,7 @@ class UserActionTest extends TestCase
      */
     public function testAddUser(): void
     {
-        $request = $this->createServerRequest('POST', '/users');
+        $request = $this->createRequest('POST', '/users');
         $request = $this->withJson($request, ['username' => 'user', 'password' => 'secret']);
         $response = $this->request($request);
 

@@ -36,7 +36,7 @@ trait HttpTestTrait
      *
      * @return ServerRequestInterface
      */
-    protected function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
+    protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
         // A phpunit fix #3026
         if (!isset($_SERVER['REQUEST_URI'])) {
