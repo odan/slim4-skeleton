@@ -3,10 +3,10 @@
 namespace App\Test\TestCase;
 
 use Exception;
-use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
+use Slim\Psr7\Factory\ServerRequestFactory;
 
 /**
  * Acceptance Test.
@@ -46,7 +46,7 @@ trait HttpTestTrait
             ];
         }
 
-        $factory = new Psr17Factory();
+        $factory = new ServerRequestFactory();
 
         return $factory->createServerRequest($method, $uri, $serverParams);
     }

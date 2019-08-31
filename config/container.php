@@ -5,7 +5,6 @@ use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
-use Nyholm\Psr7\Factory\Psr17Factory;
 use Odan\Twig\TwigAssetsExtension;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
@@ -15,6 +14,7 @@ use Selective\BasePath\BasePathDetector;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Psr7\Factory\ResponseFactory;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
@@ -50,9 +50,9 @@ $container->share(App::class, static function (Container $container) {
 })->addArgument($container);
 
 // For the HtmlResponder
-$container->share(ResponseFactoryInterface::class, static function (Container $container) {
-    return $container->get(Psr17Factory::class);
-})->addArgument($container);
+$container->share(ResponseFactoryInterface::class, static function () {
+    return new ResponseFactory();
+});
 
 // The Slim RouterParser
 $container->share(RouteParserInterface::class, static function (Container $container) {
