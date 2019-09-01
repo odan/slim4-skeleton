@@ -15,11 +15,11 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Views\Twig;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
 use Symfony\Component\Translation\Translator;
-use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
 
 $container = new Container();
@@ -78,26 +78,27 @@ $container->share(Twig::class, static function (Container $container) {
     $settings = $container->get('settings');
     $viewPath = $settings['twig']['path'];
 
-    $loader = new FilesystemLoader($viewPath);
-
-    $twig = new Twig($loader, [
+    $twig = new Twig($viewPath, [
         'cache' => $settings['twig']['cache_enabled'] ? $settings['twig']['cache_path'] : false,
     ]);
 
+    $loader = $twig->getLoader();
     if ($loader instanceof FilesystemLoader) {
         $loader->addPath($settings['public'], 'public');
     }
 
+    $environment = $twig->getEnvironment();
+
     // Add CSRF token as global template variable
     //$csrfToken = $container->get(CsrfMiddleware::class)->getToken();
-    //$twig->addGlobal('csrf_token', $csrfToken);
+    //$environment->addGlobal('csrf_token', $csrfToken);
 
     // Add relative base url
     $routeParser = $container->get(RouteParserInterface::class);
-    $twig->addGlobal('base_url', $routeParser->urlFor('root'));
+    $environment->addGlobal('base_path', $routeParser->urlFor('root'));
 
     // Add Twig extensions
-    $twig->addExtension(new TwigAssetsExtension($twig, (array)$settings['assets']));
+    $twig->addExtension(new TwigAssetsExtension($environment, (array)$settings['assets']));
     $twig->addExtension(new TwigTranslationExtension());
 
     return $twig;

@@ -3,6 +3,8 @@
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
 use Slim\App;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
 return static function (App $app) {
     $container = $app->getContainer();
@@ -13,6 +15,9 @@ return static function (App $app) {
     // Translation middleware
     $app->add(TranslatorMiddleware::class);
     $app->add(LocaleSessionMiddleware::class);
+
+    // Twig
+    $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
 
     // Error handler
     $settings = $container->get('settings')['error_handler_middleware'];

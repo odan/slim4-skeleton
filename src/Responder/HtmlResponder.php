@@ -5,7 +5,7 @@ namespace App\Responder;
 use Exception;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use Twig\Environment as Twig;
+use Slim\Views\Twig;
 
 /**
  * A generic HTML Responder.
@@ -56,10 +56,6 @@ final class HtmlResponder
      */
     public function render(string $name, array $viewData = []): ResponseInterface
     {
-        $response = $this->createResponse();
-
-        $response->getBody()->write($this->twig->render($name, $viewData));
-
-        return $response;
+        return $this->twig->render($this->createResponse(), $name, $viewData);
     }
 }
