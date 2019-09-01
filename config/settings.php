@@ -12,7 +12,7 @@ return static function () {
     }
 
     if (defined('APP_ENV')) {
-        //require __DIR__ . '/' . APP_ENV . '.php';
+        require __DIR__ . '/' . basename(APP_ENV) . '.php';
     }
 
     return $settings;

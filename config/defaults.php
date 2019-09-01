@@ -23,7 +23,7 @@ $settings['error_handler_middleware'] = [
     'display_error_details' => true,
     // Parameter is passed to the default ErrorHandler
     // View in rendered output by enabling the "displayErrorDetails" setting.
-    // For the console and unit tests we also disable
+    // For the console and unit tests we also disable it
     'log_errors' => true,
     // Display error details in error log
     'log_error_details' => true,
@@ -47,7 +47,7 @@ $settings['logger'] = [
 $settings['twig'] = [
     'path' => $settings['root'] . '/templates',
     // Should be set to true in production
-    'cache_enabled' => false,
+    'cache_enabled' => true,
     'cache_path' => $settings['temp'] . '/twig-cache',
 ];
 
@@ -76,6 +76,8 @@ $settings['locale'] = [
     'cache' => $settings['temp'] . '/locale-cache',
     'locale' => 'en_US',
     'domain' => 'messages',
+    // Should be set to false in production
+    'debug' => false,
 ];
 
 // Phinx settings

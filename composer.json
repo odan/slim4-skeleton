@@ -44,7 +44,8 @@
             "@check-style",
             "@phpstan",
             "@test-coverage"
-        ]
+        ],
+        "parse-twig": "php bin/parse-twig.php"
     },
     "autoload": {
         "psr-4": {

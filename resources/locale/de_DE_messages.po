@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 22:16+0200\n"
-"PO-Revision-Date: 2019-08-25 22:16+0200\n"
+"POT-Creation-Date: 2019-09-01 16:43+0200\n"
+"PO-Revision-Date: 2019-09-01 16:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -17,9 +17,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: tmp/twig-cache\n"
 
-#: tmp/twig-cache/b0/b08ae06e89f7c1e908c0731b35e84c0b3e3279a56c5d89492838e25dc98c7353.php:72
+#: tmp/twig-cache/00/00a0ad589fa3a20936eccc84a3a70ec46ff1d039513fce17afa698fc0e3bb9f3.php:72
 msgid "Current time"
 msgstr "Aktuelle Zeit"
+
+#: tmp/twig-cache/00/00a0ad589fa3a20936eccc84a3a70ec46ff1d039513fce17afa698fc0e3bb9f3.php:83
+msgid "Home"
+msgstr "Startseite"
 
 #~ msgid "User list"
 #~ msgstr "Benutzerliste"
@@ -113,9 +117,6 @@ msgstr "Aktuelle Zeit"
 
 #~ msgid "Toggle navigation"
 #~ msgstr "Navigation umschalten"
-
-#~ msgid "Home"
-#~ msgstr "Home"
 
 #~ msgid "Link"
 #~ msgstr "Link"
