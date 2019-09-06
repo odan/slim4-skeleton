@@ -9,15 +9,17 @@ use Slim\Views\TwigMiddleware;
 return static function (App $app) {
     $container = $app->getContainer();
 
-    // Add global middleware to app
-    $app->addRoutingMiddleware();
+    $app->addBodyParsingMiddleware();
+
+    // Twig
+    $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
 
     // Translation middleware
     $app->add(TranslatorMiddleware::class);
     $app->add(LocaleSessionMiddleware::class);
 
-    // Twig
-    $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
+    // Add global middleware to app
+    $app->addRoutingMiddleware();
 
     // Error handler
     $settings = $container->get('settings')['error_handler_middleware'];
