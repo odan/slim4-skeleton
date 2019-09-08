@@ -94,8 +94,8 @@ $container->share(Twig::class, static function (Container $container) {
     //$environment->addGlobal('csrf_token', $csrfToken);
 
     // Add relative base url
-    $routeParser = $container->get(RouteParserInterface::class);
-    $environment->addGlobal('base_path', $routeParser->urlFor('root'));
+    $basePath = $container->get(App::class)->getBasePath() . '/';
+    $environment->addGlobal('base_path', $basePath);
 
     // Add Twig extensions
     $twig->addExtension(new TwigAssetsExtension($environment, (array)$settings['assets']));
