@@ -29,15 +29,15 @@ final class CreateUserAction
     /**
      * Action.
      *
+     * > curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost/users
+     *
      * @param Request $request The request
      *
      * @return Response The new response
      */
     public function __invoke(Request $request): Response
     {
-        $result = [
-            'result' => ['success' => true],
-        ];
+        $result = $request->getParsedBody();
 
         return $this->responder->encode($result);
     }

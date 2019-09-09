@@ -9,6 +9,7 @@ use Slim\Views\TwigMiddleware;
 return static function (App $app) {
     $container = $app->getContainer();
 
+    // Parse json, form data and xml
     $app->addBodyParsingMiddleware();
 
     // Twig
