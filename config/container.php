@@ -27,7 +27,7 @@ $container = new Container();
 $container->delegate(new ReflectionContainer());
 
 // The container
-$container->share(ContainerInterface::class, static function (Container $container) {
+$container->share(ContainerInterface::class, static function (ContainerInterface $container) {
     return $container;
 })->addArgument($container);
 
@@ -37,7 +37,7 @@ $container->share('settings', static function () {
 });
 
 // Slim App
-$container->share(App::class, static function (Container $container) {
+$container->share(App::class, static function (ContainerInterface $container) {
     AppFactory::setContainer($container);
     $app = AppFactory::create();
 
@@ -55,12 +55,12 @@ $container->share(ResponseFactoryInterface::class, static function () {
 });
 
 // The Slim RouterParser
-$container->share(RouteParserInterface::class, static function (Container $container) {
+$container->share(RouteParserInterface::class, static function (ContainerInterface $container) {
     return $container->get(App::class)->getRouteCollector()->getRouteParser();
 })->addArgument($container);
 
 // The logger
-$container->share(LoggerInterface::class, static function (Container $container) {
+$container->share(LoggerInterface::class, static function (ContainerInterface $container) {
     $settings = $container->get('settings')['logger'];
     $logger = new Logger($settings['name']);
 
@@ -74,7 +74,7 @@ $container->share(LoggerInterface::class, static function (Container $container)
 })->addArgument($container);
 
 // Twig templates
-$container->share(Twig::class, static function (Container $container) {
+$container->share(Twig::class, static function (ContainerInterface $container) {
     $settings = $container->get('settings');
     $viewPath = $settings['twig']['path'];
 
@@ -105,7 +105,7 @@ $container->share(Twig::class, static function (Container $container) {
 })->addArgument($container);
 
 // Translation
-$container->share(Translator::class, static function (Container $container) {
+$container->share(Translator::class, static function (ContainerInterface $container) {
     $settings = $container->get('settings')['locale'];
 
     $translator = new Translator(
@@ -123,7 +123,7 @@ $container->share(Translator::class, static function (Container $container) {
     return $translator;
 })->addArgument($container);
 
-$container->share(TranslatorMiddleware::class, static function (Container $container) {
+$container->share(TranslatorMiddleware::class, static function (ContainerInterface $container) {
     $settings = $container->get('settings')['locale'];
     $localPath = $settings['path'];
     $translator = $container->get(Translator::class);
