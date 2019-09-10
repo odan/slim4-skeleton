@@ -43,10 +43,16 @@ final class JsonResponder
             throw new RuntimeException('Malformed UTF-8 characters, possibly incorrectly encoded.');
         }
 
-        $response = $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');
+        return $this->createResponse()->getBody()->write($json);
+    }
 
-        $response->getBody()->write($json);
-
-        return $response;
+    /**
+     * Render template and return a html response.
+     *
+     * @return ResponseInterface The response
+     */
+    private function createResponse(): ResponseInterface
+    {
+        $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');
     }
 }

@@ -37,16 +37,6 @@ final class HtmlResponder
     /**
      * Render template and return a html response.
      *
-     * @return ResponseInterface The response
-     */
-    public function createResponse(): ResponseInterface
-    {
-        return $this->responseFactory->createResponse()->withHeader('Content-Type', 'text/html; charset=utf-8');
-    }
-
-    /**
-     * Render template and return a html response.
-     *
      * @param string $name The template file
      * @param array $viewData The view data
      *
@@ -58,4 +48,15 @@ final class HtmlResponder
     {
         return $this->twig->render($this->createResponse(), $name, $viewData);
     }
+
+    /**
+     * Render template and return a html response.
+     *
+     * @return ResponseInterface The response
+     */
+    private function createResponse(): ResponseInterface
+    {
+        return $this->responseFactory->createResponse()->withHeader('Content-Type', 'text/html; charset=utf-8');
+    }
+
 }
