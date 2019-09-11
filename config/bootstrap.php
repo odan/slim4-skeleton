@@ -12,10 +12,10 @@ return (static function () {
     // Create App instance
     $app = $container->get(App::class);
 
-    // Register middleware
+    // Register routes
     (require __DIR__ . '/routes.php')($app);
 
-    // Register routes
+    // Register middleware
     (require __DIR__ . '/middleware.php')($app);
 
     return $app;
