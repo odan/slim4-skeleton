@@ -16,7 +16,7 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 * [league/container](https://github.com/thephpleague/container) as dependency injection container (PSR-11)
 * [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
 * [twig/twig](https://github.com/twigphp/Twig) as template engine
-* [odan/twig-assets](https://github.com/odan/twig-assets) for JavaScript and CSS minification and caching
+* [odan/twig-assets](https://github.com/odan/twig-assets) to minify JavaScript and CSS
 * [odan/twig-translation](https://github.com/odan/twig-translation) as translator
 
 ## Requirements
