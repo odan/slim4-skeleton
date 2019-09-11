@@ -38,21 +38,14 @@ final class JsonResponder
     public function encode($data = null): ResponseInterface
     {
         $json = json_encode($data);
-
         if ($json === false) {
             throw new RuntimeException('Malformed UTF-8 characters, possibly incorrectly encoded.');
         }
 
-        return $this->createResponse()->getBody()->write($json);
-    }
+        $response = $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');
 
-    /**
-     * Render template and return a html response.
-     *
-     * @return ResponseInterface The response
-     */
-    private function createResponse(): ResponseInterface
-    {
-        $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');
+        $response->getBody()->write($json);
+
+        return $response;
     }
 }
