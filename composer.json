@@ -12,7 +12,6 @@
         "php": "^7.1",
         "fig/http-message-util": "^1.1",
         "league/container": "^3.3",
-        "league/plates": "^3.3",
         "monolog/monolog": "^1.24",
         "odan/twig-assets": "^2.1",
         "odan/twig-translation": "^1.3",
