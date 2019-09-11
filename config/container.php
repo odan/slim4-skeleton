@@ -1,15 +1,13 @@
 <?php
 
 use App\Middleware\TranslatorMiddleware;
+use App\Factory\LoggerFactory;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
-use Monolog\Handler\RotatingFileHandler;
-use Monolog\Logger;
 use Odan\Twig\TwigAssetsExtension;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Log\LoggerInterface;
 use Selective\BasePath\BasePathDetector;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -59,18 +57,9 @@ $container->share(RouteParserInterface::class, static function (ContainerInterfa
     return $container->get(App::class)->getRouteCollector()->getRouteParser();
 })->addArgument($container);
 
-// The logger
-$container->share(LoggerInterface::class, static function (ContainerInterface $container) {
-    $settings = $container->get('settings')['logger'];
-    $logger = new Logger($settings['name']);
-
-    $level = isset($settings['level']) ?: Logger::ERROR;
-    $filename = sprintf('%s/%s', $settings['path'], $settings['filename']);
-
-    $handler = new RotatingFileHandler($filename, 0, $level, true, 0775);
-    $logger->pushHandler($handler);
-
-    return $logger;
+// The logger factory
+$container->share(LoggerFactory::class, static function (ContainerInterface $container) {
+    return new LoggerFactory($container->get('settings')['logger']);
 })->addArgument($container);
 
 // Twig templates

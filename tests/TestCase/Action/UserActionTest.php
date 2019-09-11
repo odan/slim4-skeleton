@@ -20,11 +20,11 @@ class UserActionTest extends TestCase
     public function testAddUser(): void
     {
         $request = $this->createRequest('POST', '/users');
-        $request = $this->withJson($request, ['key1' => 'value1', 'key2' => 'value2']);
+        $request = $this->withJson($request, ['username' => 'admin', 'email' => 'mail@example.com']);
         $response = $this->request($request);
 
-        static::assertSame(200, $response->getStatusCode());
+        static::assertSame('{"success":true,"user_id":1}', (string)$response->getBody());
         static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
-        static::assertSame('{"key1":"value1","key2":"value2"}', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
     }
 }
