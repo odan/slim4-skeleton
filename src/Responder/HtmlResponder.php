@@ -58,5 +58,4 @@ final class HtmlResponder
     {
         return $this->responseFactory->createResponse()->withHeader('Content-Type', 'text/html; charset=utf-8');
     }
-
 }
