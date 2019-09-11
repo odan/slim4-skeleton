@@ -43,7 +43,7 @@ trait HttpTestTrait
             $_SERVER = [
                 'SCRIPT_NAME' => '/public/index.php',
                 'REQUEST_TIME_FLOAT' => microtime(true),
-                'REQUEST_TIME' => microtime(),
+                'REQUEST_TIME' => (int)microtime(true),
             ];
         }
 
