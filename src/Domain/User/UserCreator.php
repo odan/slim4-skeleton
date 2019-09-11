@@ -45,11 +45,11 @@ final class UserCreator
         // ...
 
         // Insert user
-        $customerId = $this->repository->insertUser($userData);
+        $userId = $this->repository->insertUser($userData);
 
         // Logging
-        $this->logger->info(sprintf('Customer created: %s', $customerId));
+        $this->logger->info(sprintf('User created successfully: %s', $userId));
 
-        return $customerId;
+        return $userId;
     }
 }
