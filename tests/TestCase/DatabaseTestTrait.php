@@ -80,7 +80,8 @@ trait DatabaseTestTrait
         }
 
         $this->dropTables();
-        $this->migrate();
+        //$this->migrate();
+        $this->migrateQuick();
 
         define('DB_TEST_TRAIT_INIT', 1);
 
@@ -88,7 +89,7 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Prepare the database schema.
+     * Prepare the database schema with phinx (slow).
      *
      * @throws RuntimeException
      *
@@ -105,6 +106,21 @@ trait DatabaseTestTrait
     }
 
     /**
+     * Import table schema.
+     *
+     * @return void
+     */
+    protected function migrateQuick()
+    {
+        $sql = (string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql');
+
+        $pdo = $this->getPdo();
+        $pdo->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
+        $pdo->exec($sql);
+        $pdo->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
+    }
+
+    /**
      * Clean-Up Database. Truncate tables.
      *
      * @throws RuntimeException
@@ -113,29 +129,24 @@ trait DatabaseTestTrait
      */
     protected function dropTables(): void
     {
-        $sql = 'SELECT table_name
-                FROM information_schema.tables
-                WHERE table_schema = database()';
-
         $db = $this->getPdo();
 
-        $db->exec('SET UNIQUE_CHECKS=0;');
-        $db->exec('SET FOREIGN_KEY_CHECKS=0;');
+        $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
 
-        $statement = $db->query($sql);
+        $statement = $db->query('SELECT table_name
+                FROM information_schema.tables
+                WHERE table_schema = database()');
 
-        if (!$statement) {
-            throw new RuntimeException('Invalid sql statement');
-        }
-
-        $statement->execute();
-
+        $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $db->exec(sprintf('DROP TABLE `%s`;', $row['table_name']));
+            $sql[] = sprintf('DROP TABLE `%s`;', $row['table_name']);
         }
 
-        $db->exec('SET UNIQUE_CHECKS=1;');
-        $db->exec('SET FOREIGN_KEY_CHECKS=1;');
+        if ($sql) {
+            $db->exec(implode("\n", $sql));
+        }
+
+        $db->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
@@ -147,30 +158,29 @@ trait DatabaseTestTrait
      */
     protected function truncateTables(): void
     {
-        $sql = 'SELECT table_name
-                FROM information_schema.tables
-                WHERE table_schema = database()
-                AND update_time IS NOT NULL';
-
         $db = $this->getPdo();
 
-        $db->exec('SET UNIQUE_CHECKS=0;');
-        $db->exec('SET FOREIGN_KEY_CHECKS=0;');
+        $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
 
-        $statement = $db->query($sql);
+        $statement = $db->query('SELECT table_name
+                FROM information_schema.tables
+                WHERE table_schema = database()
+                AND update_time IS NOT NULL');
 
         if (!$statement) {
             throw new RuntimeException('Invalid sql statement');
         }
 
-        $statement->execute();
-
+        $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $db->exec(sprintf('TRUNCATE TABLE `%s`;', $row['table_name']));
+            $sql[] = sprintf('TRUNCATE TABLE `%s`;', $row['table_name']);
         }
 
-        $db->exec('SET UNIQUE_CHECKS=1;');
-        $db->exec('SET FOREIGN_KEY_CHECKS=1;');
+        if ($sql) {
+            $db->exec(implode("\n", $sql));
+        }
+
+        $db->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
@@ -183,11 +193,10 @@ trait DatabaseTestTrait
     protected function insertFixtures(array $fixtures): void
     {
         $db = $this->getConnection();
-        $pdo = $this->getPdo();
+
         foreach ($fixtures as $fixture) {
             $object = new $fixture();
             $table = $object->table;
-            $pdo->exec(sprintf('TRUNCATE TABLE `%s`;', $table));
 
             foreach ($object->records as $row) {
                 $db->newQuery()->insert(array_keys($row))->into($table)->values($row)->execute();
