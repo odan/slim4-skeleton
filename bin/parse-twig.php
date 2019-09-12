@@ -17,6 +17,7 @@
 // Translate the text and save the file.
 //
 
+use App\Utility\Configuration;
 use Odan\Twig\TwigCompiler;
 use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
@@ -29,7 +30,7 @@ define('APP_ENV', 'integration');
 /** @var App $app */
 $app = require __DIR__ . '/../config/bootstrap.php';
 
-$settings = $app->getContainer()->get('settings')['twig'];
+$settings = $app->getContainer()->get(Configuration::class)->get('twig');
 $templatePath = (string)$settings['path'];
 $cachePath = (string)$settings['cache_path'];
 

@@ -2,6 +2,7 @@
 
 use App\Middleware\TranslatorMiddleware;
 use App\Factory\LoggerFactory;
+use App\Utility\Configuration;
 use Cake\Database\Connection;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
@@ -31,8 +32,8 @@ $container->share(ContainerInterface::class, static function (ContainerInterface
 })->addArgument($container);
 
 // Application settings
-$container->share('settings', static function () {
-    return (require __DIR__ . '/settings.php')();
+$container->share(Configuration::class, static function () {
+    return new Configuration((require __DIR__ . '/settings.php')());
 });
 
 // Slim App
@@ -60,21 +61,21 @@ $container->share(RouteParserInterface::class, static function (ContainerInterfa
 
 // The logger factory
 $container->share(LoggerFactory::class, static function (ContainerInterface $container) {
-    return new LoggerFactory($container->get('settings')['logger']);
+    return new LoggerFactory($container->get(Configuration::class)->get('logger'));
 })->addArgument($container);
 
 // Twig templates
 $container->share(Twig::class, static function (ContainerInterface $container) {
-    $settings = $container->get('settings');
-    $viewPath = $settings['twig']['path'];
+    $config = $container->get(Configuration::class);
+    $twigSettings = $config->get('twig');
 
-    $twig = new Twig($viewPath, [
-        'cache' => $settings['twig']['cache_enabled'] ? $settings['twig']['cache_path'] : false,
+    $twig = new Twig($twigSettings['path'], [
+        'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
     ]);
 
     $loader = $twig->getLoader();
     if ($loader instanceof FilesystemLoader) {
-        $loader->addPath($settings['public'], 'public');
+        $loader->addPath($config->get('public'), 'public');
     }
 
     $environment = $twig->getEnvironment();
@@ -88,7 +89,7 @@ $container->share(Twig::class, static function (ContainerInterface $container) {
     $environment->addGlobal('base_path', $basePath);
 
     // Add Twig extensions
-    $twig->addExtension(new TwigAssetsExtension($environment, (array)$settings['assets']));
+    $twig->addExtension(new TwigAssetsExtension($environment, (array)$config->get('assets')));
     $twig->addExtension(new TwigTranslationExtension());
 
     return $twig;
@@ -96,7 +97,7 @@ $container->share(Twig::class, static function (ContainerInterface $container) {
 
 // Translation
 $container->share(Translator::class, static function (ContainerInterface $container) {
-    $settings = $container->get('settings')['locale'];
+    $settings = $container->get(Configuration::class)->get('locale');
 
     $translator = new Translator(
         $settings['locale'],
@@ -114,7 +115,7 @@ $container->share(Translator::class, static function (ContainerInterface $contai
 })->addArgument($container);
 
 $container->share(TranslatorMiddleware::class, static function (ContainerInterface $container) {
-    $settings = $container->get('settings')['locale'];
+    $settings = $container->get(Configuration::class)->get('locale');
     $localPath = $settings['path'];
     $translator = $container->get(Translator::class);
 
@@ -122,7 +123,7 @@ $container->share(TranslatorMiddleware::class, static function (ContainerInterfa
 })->addArgument($container);
 
 $container->share(Connection::class, static function (Container $container) {
-    return new Connection($container->get('settings')['db']);
+    return new Connection($container->get(Configuration::class)->get('db'));
 })->addArgument($container);
 
 $container->share(PDO::class, static function (Container $container) {
