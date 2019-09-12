@@ -93,14 +93,6 @@ $settings['phinx'] = [
     ],
 ];
 
-// CSRF middleware settings
-$settings['csrf'] = [
-    'secret' => '{{app_secret}}',
-    'token_name' => '__token',
-    'protect_ajax' => false,
-    'protect_forms' => true,
-];
-
 // Database settings
 $settings['db'] = [
     'driver' => 'mysql',

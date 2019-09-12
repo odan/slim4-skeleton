@@ -80,10 +80,6 @@ $container->share(Twig::class, static function (ContainerInterface $container) {
 
     $environment = $twig->getEnvironment();
 
-    // Add CSRF token as global template variable
-    //$csrfToken = $container->get(CsrfMiddleware::class)->getToken();
-    //$environment->addGlobal('csrf_token', $csrfToken);
-
     // Add relative base url
     $basePath = $container->get(App::class)->getBasePath() . '/';
     $environment->addGlobal('base_path', $basePath);
