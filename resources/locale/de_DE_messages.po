@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-01 16:43+0200\n"
-"PO-Revision-Date: 2019-09-01 16:47+0200\n"
+"POT-Creation-Date: 2019-09-12 16:30+0200\n"
+"PO-Revision-Date: 2019-09-12 16:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -11,19 +11,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: tmp/twig-cache\n"
 
-#: tmp/twig-cache/00/00a0ad589fa3a20936eccc84a3a70ec46ff1d039513fce17afa698fc0e3bb9f3.php:72
-msgid "Current time"
-msgstr "Aktuelle Zeit"
+#: tmp/twig-cache/54/5467d189a4a6533ae23e060261d3eee5d0a1694d46610f3b95eeb3d9ee84c5da.php:72
+#: tmp/twig-cache/c6/c67fa3087b6fe39f24e5b18a3336d9948fde6fb0ce5768f50b051bad40ebea81.php:72
+#, php-format
+msgid "Current time: %s"
+msgstr "Aktuelle Zeit: %s"
 
-#: tmp/twig-cache/00/00a0ad589fa3a20936eccc84a3a70ec46ff1d039513fce17afa698fc0e3bb9f3.php:83
+#: tmp/twig-cache/54/5467d189a4a6533ae23e060261d3eee5d0a1694d46610f3b95eeb3d9ee84c5da.php:81
+#: tmp/twig-cache/c6/c67fa3087b6fe39f24e5b18a3336d9948fde6fb0ce5768f50b051bad40ebea81.php:83
 msgid "Home"
 msgstr "Startseite"
+
+#~ msgid "Current time"
+#~ msgstr "Aktuelle Zeit"
 
 #~ msgid "User list"
 #~ msgstr "Benutzerliste"
