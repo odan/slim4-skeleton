@@ -27,11 +27,22 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 
 ## Installation
 
-* Download and extract the ZIP file: [master.zip](https://github.com/odan/slim4-skeleton/archive/master.zip)
+Run this command from the directory in which you want to install your new Slim Framework application.
+
+```bash
+composer create-project odan/slim4-skeleton {my-app-name}
+```
+
+Replace `{my-app-name}` with the desired directory name for your new application. You'll want to:
+
+* Ensure `logs/` and `tmp/` is web writable.
 * Run: `composer update`
-* Upload all files to the webserver
-* Open the website
+* Open the app url
 * You should see a message: `Hello, World!`
+
+## Download
+
+* You can also download the latest version as ZIP file: [master.zip](https://github.com/odan/slim4-skeleton/archive/master.zip)
 
 ## Routes
 
