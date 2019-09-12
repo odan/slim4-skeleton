@@ -30,6 +30,7 @@
         "squizlabs/php_codesniffer": "^3.4"
     },
     "scripts": {
+        "start": "php -S localhost:8080 -t public",
         "test": "phpunit --configuration phpunit.xml",
         "test-coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
         "check-style": "phpcs --standard=phpcs.xml",
@@ -61,6 +62,7 @@
         }
     },
     "config": {
+        "process-timeout": 0,
         "sort-packages": true
     }
 }
