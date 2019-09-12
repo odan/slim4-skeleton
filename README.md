@@ -1,4 +1,4 @@
-# Slim 4 Skeleton for Apache
+# Slim 4 Skeleton
 
 [![Latest Version on Packagist](https://img.shields.io/github/release/odan/slim4-skeleton.svg?style=flat-square)](https://packagist.org/packages/odan/slim4-skeleton)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
