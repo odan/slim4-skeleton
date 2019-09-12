@@ -2,6 +2,7 @@
 
 use App\Middleware\TranslatorMiddleware;
 use App\Factory\LoggerFactory;
+use Cake\Database\Connection;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Odan\Twig\TwigAssetsExtension;
@@ -118,6 +119,17 @@ $container->share(TranslatorMiddleware::class, static function (ContainerInterfa
     $translator = $container->get(Translator::class);
 
     return new TranslatorMiddleware($translator, $localPath);
+})->addArgument($container);
+
+$container->share(Connection::class, static function (Container $container) {
+    return new Connection($container->get('settings')['db']);
+})->addArgument($container);
+
+$container->share(PDO::class, static function (Container $container) {
+    $db = $container->get(Connection::class);
+    $db->getDriver()->connect();
+
+    return $db->getDriver()->getConnection();
 })->addArgument($container);
 
 return $container;

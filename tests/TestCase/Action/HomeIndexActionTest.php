@@ -27,20 +27,6 @@ class HomeIndexActionTest extends TestCase
     }
 
     /**
-     * Test.
-     *
-     * @return void
-     */
-    public function testHelloAction(): void
-    {
-        $request = $this->createRequest('GET', '/hello/john');
-        $response = $this->request($request);
-
-        static::assertSame(200, $response->getStatusCode());
-        static::assertStringContainsString('Hello, john', (string)$response->getBody());
-    }
-
-    /**
      * Test invalid link.
      *
      * @return void
