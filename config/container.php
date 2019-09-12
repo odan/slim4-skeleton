@@ -33,7 +33,7 @@ $container->share(ContainerInterface::class, static function (ContainerInterface
 
 // Application settings
 $container->share(Configuration::class, static function () {
-    return new Configuration((require __DIR__ . '/settings.php')());
+    return new Configuration(require __DIR__ . '/settings.php');
 });
 
 // Slim App
