@@ -24,3 +24,7 @@ public/cache/*
 !tmp/
 tmp/*
 !tmp/.htaccess
+
+!logs/
+logs/*
+!logs/.htaccess

@@ -37,7 +37,7 @@ $settings['app'] = [
 // Logger settings
 $settings['logger'] = [
     'name' => 'app',
-    'path' => $settings['temp'] . '/logs',
+    'path' => $settings['root'] . '/logs',
     'filename' => 'app.log',
     'level' => \Monolog\Logger::ERROR,
     'file_permission' => 0775,
