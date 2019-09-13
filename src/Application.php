@@ -12,6 +12,11 @@ use Slim\App;
  */
 final class Application
 {
+    /**
+     * Boostrap.
+     *
+     * @return App The Slim app
+     */
     public static function boostrap(): App
     {
         return require __DIR__ . '/../config/bootstrap.php';
