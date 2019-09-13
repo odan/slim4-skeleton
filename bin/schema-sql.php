@@ -17,7 +17,8 @@ $statement = $pdo->query('SELECT table_name
 $sql = [];
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $statement2 = $pdo->query(sprintf('SHOW CREATE TABLE `%s`;', $row['table_name']));
-    $sql[] = $statement2->fetch()['Create Table'] . ';';
+    $createTableSql = $statement2->fetch()['Create Table'];
+    $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';
 }
 
 $sql = implode("\n\n", $sql);
