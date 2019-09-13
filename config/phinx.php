@@ -1,10 +1,9 @@
 <?php
 
+use App\Application;
 use App\Utility\Configuration;
-use Slim\App;
 
-/** @var App $app */
-$app = require __DIR__ . '/bootstrap.php';
+$app = Application::boostrap();
 
 $container = $app->getContainer();
 $pdo = $container->get(PDO::class);

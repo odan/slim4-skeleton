@@ -1,18 +1,16 @@
 <?php
 
-/** @var App $app */
+use App\Application;
 
-use Slim\App;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = require __DIR__ . '/../config/bootstrap.php';
+$app = Application::boostrap();
 
 $pdo = $app->getContainer()->get(PDO::class);
 
 echo sprintf("Use database: %s\n", $pdo->query('select database()')->fetchColumn());
 
-$statement = $pdo->query('SELECT table_name
-                FROM information_schema.tables
-                WHERE table_schema = database()');
+$statement = $pdo->query('SELECT table_name FROM information_schema.tables WHERE table_schema = database()');
 
 $sql = [];
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {

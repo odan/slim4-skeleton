@@ -1,3 +1,7 @@
 <?php
 
-(require __DIR__ . '/../config/bootstrap.php')->run();
+use App\Application;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+Application::boostrap()->run();
