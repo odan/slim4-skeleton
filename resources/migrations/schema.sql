@@ -26,4 +26,4 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   KEY `created_user_id` (`created_user_id`),
   KEY `updated_user_id` (`updated_user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
