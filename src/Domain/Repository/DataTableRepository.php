@@ -48,9 +48,9 @@ class DataTableRepository implements RepositoryInterface
         }
 
         $draw = (int)($params['draw'] ?? 1);
-        $offset = (int)($params['start'] ?? 1);
+        $offset = (int)($params['start'] ?? 0);
         $limit = (int)($params['length'] ?? 10);
-        $offset = $offset < 0 || empty($count) ? 0 : $offset;
+        $offset = max($offset, 0);
 
         $query->offset($offset);
         $query->limit($limit);
@@ -165,19 +165,11 @@ class DataTableRepository implements RepositoryInterface
      *
      * @param string $value The string to escape for a like query
      *
-     * @throws RuntimeException
-     *
      * @return string The escaped string
      */
     private function escapeLike(string $value): string
     {
-        $result = str_replace(['%', '_'], ['\%', '\_'], $value);
-
-        if (!is_string($result)) {
-            throw new RuntimeException('Escaping query failed');
-        }
-
-        return $result;
+        return str_replace(['%', '_'], ['\%', '\_'], $value);
     }
 
     /**
