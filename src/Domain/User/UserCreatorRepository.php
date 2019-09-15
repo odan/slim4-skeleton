@@ -2,10 +2,12 @@
 
 namespace App\Domain\User;
 
+use App\Domain\Repository\RepositoryInterface;
+
 /**
- * Repository
+ * Repository.
  */
-class UserCreatorRepository
+class UserCreatorRepository implements RepositoryInterface
 {
     /**
      * Insert user row.
