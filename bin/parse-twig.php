@@ -17,7 +17,7 @@
 // Translate the text and save the file.
 //
 
-use App\Application;
+use App\Startup;
 use App\Utility\Configuration;
 use Odan\Twig\TwigCompiler;
 use Slim\Psr7\Factory\ServerRequestFactory;
@@ -29,7 +29,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 define('APP_ENV', 'integration');
 
-$app = Application::boostrap();
+$app = Startup::boostrap();
 
 $settings = $app->getContainer()->get(Configuration::class)->get('twig');
 $templatePath = (string)$settings['path'];

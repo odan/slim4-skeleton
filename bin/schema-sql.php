@@ -1,10 +1,10 @@
 <?php
 
-use App\Application;
+use App\Startup;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = Application::boostrap();
+$app = Startup::boostrap();
 
 $pdo = $app->getContainer()->get(PDO::class);
 

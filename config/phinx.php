@@ -1,9 +1,9 @@
 <?php
 
-use App\Application;
+use App\Startup;
 use App\Utility\Configuration;
 
-$app = Application::boostrap();
+$app = Startup::boostrap();
 
 $container = $app->getContainer();
 $pdo = $container->get(PDO::class);

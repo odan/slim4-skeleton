@@ -10,7 +10,7 @@ use Slim\App;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-final class Application
+final class Startup
 {
     /**
      * Boostrap.

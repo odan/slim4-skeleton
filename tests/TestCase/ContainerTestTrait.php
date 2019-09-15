@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase;
 
-use App\Application;
+use App\Startup;
 use League\Container\Container;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
@@ -26,7 +26,7 @@ trait ContainerTestTrait
      */
     protected function bootApp(): void
     {
-        $this->app = Application::boostrap();
+        $this->app = Startup::boostrap();
         $this->container = $this->app->getContainer();
     }
 
