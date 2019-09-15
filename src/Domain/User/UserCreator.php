@@ -2,12 +2,12 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Base\DomainServiceInterface;
+use App\Domain\Service\DomainServiceInterface;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
 /**
- * Domain Service
+ * Domain Service.
  */
 final class UserCreator implements DomainServiceInterface
 {
