@@ -137,6 +137,10 @@ trait DatabaseTestTrait
                 FROM information_schema.tables
                 WHERE table_schema = database()');
 
+        if (!$statement) {
+            throw new RuntimeException('Invalid sql statement');
+        }
+
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $sql[] = sprintf('DROP TABLE `%s`;', $row['table_name']);
