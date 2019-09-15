@@ -22,7 +22,6 @@ final class CreateUserAction
      */
     private $responder;
 
-
     /**
      * Constructor.
      *

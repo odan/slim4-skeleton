@@ -45,7 +45,7 @@ class UserCreatorRepositoryTest extends TestCase
 
         $actual = $repository->insertUser([
             'username' => 'admin',
-            'email' => 'mail@example.com'
+            'email' => 'mail@example.com',
         ]);
 
         static::assertSame(1, $actual);

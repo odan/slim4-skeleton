@@ -3,7 +3,7 @@
 namespace App\Utility;
 
 /**
- * Application Configuration
+ * Application Configuration.
  */
 class Configuration
 {

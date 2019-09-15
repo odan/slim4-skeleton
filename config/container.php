@@ -1,7 +1,7 @@
 <?php
 
-use App\Middleware\TranslatorMiddleware;
 use App\Factory\LoggerFactory;
+use App\Middleware\TranslatorMiddleware;
 use App\Utility\Configuration;
 use Cake\Database\Connection;
 use League\Container\Container;

@@ -40,7 +40,7 @@ class UserCreatorTest extends TestCase
 
         $actual = $service->createUser([
             'username' => 'admin',
-            'email' => 'mail@example.com'
+            'email' => 'mail@example.com',
         ]);
 
         static::assertSame(1, $actual);
