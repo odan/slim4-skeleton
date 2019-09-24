@@ -47,8 +47,8 @@ Replace `{my-app-name}` with the desired directory name for your new application
 
 * `GET /` => `Hello, World!`
 * `GET /hello/john` => `Hello, john!`
-* `GET /time` => `Current time: ...`
-* `POST /users` => `json response`
+* `GET /users` => `List of users`
+* `POST /users` => `A json response`
 
 ## Tests
 

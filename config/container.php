@@ -4,9 +4,9 @@ use App\Factory\LoggerFactory;
 use App\Middleware\TranslatorMiddleware;
 use App\Utility\Configuration;
 use Cake\Database\Connection;
+use Fullpipe\TwigWebpackExtension\WebpackExtension;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
-use Odan\Twig\TwigAssetsExtension;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -81,12 +81,17 @@ $container->share(Twig::class, static function (ContainerInterface $container) {
     $environment = $twig->getEnvironment();
 
     // Add relative base url
-    $basePath = $container->get(App::class)->getBasePath() . '/';
-    $environment->addGlobal('base_path', $basePath);
+    $basePath = $container->get(App::class)->getBasePath();
+    $environment->addGlobal('base_path', $basePath . '/');
 
     // Add Twig extensions
-    $twig->addExtension(new TwigAssetsExtension($environment, (array)$config->get('assets')));
     $twig->addExtension(new TwigTranslationExtension());
+
+    $twig->addExtension(new WebpackExtension(
+        $config->get('public') . '/assets/manifest.json',
+        $basePath . '/assets/',
+        $basePath . '/assets/'
+    ));
 
     return $twig;
 })->addArgument($container);

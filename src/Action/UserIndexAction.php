@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class HomeIndexAction
+final class UserIndexAction
 {
     /**
      * @var HtmlResponder
@@ -30,17 +30,11 @@ final class HomeIndexAction
      * Action.
      *
      * @param Request $request The request
-     * @param Response $response The response
-     * @param array $args The arguments
      *
-     * @return Response The new response
+     * @return Response The response
      */
-    public function __invoke(Request $request, Response $response, array $args = []): Response
+    public function __invoke(Request $request): Response
     {
-        $viewData = [
-            'now' => date('d.m.Y H:i:s'),
-        ];
-
-        return $this->responder->render('home/home-index.twig', $viewData);
+        return $this->responder->render('user/user-index.twig');
     }
 }

@@ -10,7 +10,7 @@ return static function (App $app) {
 
     $app->get('/hello/{name}', \App\Action\HelloAction::class)->setName('hello');
 
-    $app->post('/users', \App\Action\CreateUserAction::class)->setName('users');
+    $app->get('/users', \App\Action\UserIndexAction::class)->setName('users-index');
 
-    $app->get('/time', \App\Action\TimeAction::class)->setName('time');
+    $app->post('/users', \App\Action\UserCreateAction::class)->setName('users');
 };

@@ -1,0 +1,30 @@
+{% extends "layout/layout.twig" %}
+
+{% block css %}
+    {% webpack_entry_css 'home/home-index' %}
+{% endblock %}
+
+{% block js %}
+    {% webpack_entry_js 'home/home-index' %}
+{% endblock %}
+
+{% block content %}
+
+    <div id="content" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1> {{ __('Hello, World') }}</h1>
+
+                <br>
+                {{ __('Current time') }}: {{now}}
+
+                <br><br>
+
+                <a href="users">{{ __('Users') }}</a><br>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

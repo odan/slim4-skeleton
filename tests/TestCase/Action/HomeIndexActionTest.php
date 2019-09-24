@@ -17,7 +17,7 @@ class HomeIndexActionTest extends TestCase
      *
      * @return void
      */
-    public function testIndexAction(): void
+    public function testAction(): void
     {
         $request = $this->createRequest('GET', '/');
         $response = $this->request($request);

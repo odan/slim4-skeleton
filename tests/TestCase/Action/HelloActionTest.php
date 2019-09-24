@@ -17,7 +17,7 @@ class HelloActionTest extends TestCase
      *
      * @return void
      */
-    public function testHelloAction(): void
+    public function testAction(): void
     {
         $request = $this->createRequest('GET', '/hello/john');
         $response = $this->request($request);
