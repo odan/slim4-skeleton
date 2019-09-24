@@ -6,14 +6,14 @@ import 'popper.js';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // Fontawesome
-import '@fortawesome/fontawesome-free/js/all';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // You can import only specific size of icons
-//import '@fortawesome/fontawesome-free/js/fontawesome';
-//import '@fortawesome/fontawesome-free/js/v4-shims';
-//import '@fortawesome/fontawesome-free/js/regular';
-//import '@fortawesome/fontawesome-free/js/solid';
-//import '@fortawesome/fontawesome-free/js/brands';
+//import '@fortawesome/fontawesome-free/css/fontawesome.css';
+//import '@fortawesome/fontawesome-free/css/v4-shims.css';
+//import '@fortawesome/fontawesome-free/css/regular.css';
+//import '@fortawesome/fontawesome-free/css/solid.css';
+//import '@fortawesome/fontawesome-free/css/brands.css';
 
 window.Swal = require('sweetalert2');
 

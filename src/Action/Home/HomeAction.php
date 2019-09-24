@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\Home;
 
 use App\Responder\HtmlResponder;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class HomeIndexAction
+final class HomeAction
 {
     /**
      * @var HtmlResponder
@@ -41,6 +41,6 @@ final class HomeIndexAction
             'now' => date('d.m.Y H:i:s'),
         ];
 
-        return $this->responder->render('home/home-index.twig', $viewData);
+        return $this->responder->render('home/home.twig', $viewData);
     }
 }

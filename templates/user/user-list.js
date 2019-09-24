@@ -1,4 +1,4 @@
-import './user-index.css';
+import './user-list.css';
 
 const UserIndex = function () {
     const $this = this;

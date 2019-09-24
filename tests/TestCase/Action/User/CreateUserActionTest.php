@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase\Action;
+namespace App\Test\TestCase\Action\User;
 
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test.
  */
-class UserCreateActionTest extends TestCase
+class CreateUserActionTest extends TestCase
 {
     use HttpTestTrait;
 

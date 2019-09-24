@@ -6,11 +6,11 @@ use Slim\App;
 
 return static function (App $app) {
     /** @var App $app */
-    $app->get('/', \App\Action\HomeIndexAction::class)->setName('root');
+    $app->get('/', \App\Action\Home\HomeAction::class)->setName('root');
 
-    $app->get('/hello/{name}', \App\Action\HelloAction::class)->setName('hello');
+    $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');
 
-    $app->get('/users', \App\Action\UserIndexAction::class)->setName('users-index');
+    $app->get('/users', \App\Action\User\ListUserAction::class)->setName('list-user');
 
-    $app->post('/users', \App\Action\UserCreateAction::class)->setName('users');
+    $app->post('/users', \App\Action\User\CreateUserAction::class)->setName('create-user');
 };

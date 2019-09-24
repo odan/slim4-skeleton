@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase\Action;
+namespace App\Test\TestCase\Action\Hello;
 
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;

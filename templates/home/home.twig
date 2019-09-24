@@ -1,11 +1,11 @@
 {% extends "layout/layout.twig" %}
 
 {% block css %}
-    {% webpack_entry_css 'home/home-index' %}
+    {% webpack_entry_css 'home/home' %}
 {% endblock %}
 
 {% block js %}
-    {% webpack_entry_js 'home/home-index' %}
+    {% webpack_entry_js 'home/home' %}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
     <div id="content" class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1> {{ __('Hello, World') }}</h1>
+                <h1><i class="fas fa-home"></i> {{ __('Hello, World') }}</h1>
 
                 <br>
                 {{ __('Current time') }}: {{now}}

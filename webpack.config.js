@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -11,8 +10,8 @@ module.exports = {
     entry: {
         'layout/layout': './templates/layout/layout.js',
         'layout/datatables': './templates/layout/datatables.js',
-        'home/home-index': './templates/home/home-index.js',
-        'user/user-index': './templates/user/user-index.js',
+        'home/home': './templates/home/home.js',
+        'user/user-list': './templates/user/user-list.js',
     },
     output: {
         path: path.resolve(__dirname, 'public/assets'),
@@ -29,7 +28,18 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
-            }
+            },
+            {
+                test: /\.(ttf|eot|svg|woff|woff2)(\?[\s\S]+)?$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'webfonts',
+                        publicPath: '../webfonts',
+                    },
+                }
+            },
         ],
     },
     plugins: [
@@ -38,10 +48,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             ignoreOrder: false
         }),
-        new CopyPlugin([
-            // Fontawesome
-            {from: './node_modules/@fortawesome/fontawesome-free/webfonts/', to: 'webfonts/'},
-        ]),
     ],
     watchOptions: {
         ignored: ['./node_modules/']

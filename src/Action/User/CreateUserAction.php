@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\User;
 
 use App\Domain\User\UserCreator;
 use App\Responder\JsonResponder;
@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class UserCreateAction
+final class CreateUserAction
 {
     /**
      * @var UserCreator

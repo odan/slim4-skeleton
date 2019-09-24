@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\User;
 
 use App\Responder\HtmlResponder;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class UserIndexAction
+final class ListUserAction
 {
     /**
      * @var HtmlResponder
@@ -35,6 +35,6 @@ final class UserIndexAction
      */
     public function __invoke(Request $request): Response
     {
-        return $this->responder->render('user/user-index.twig');
+        return $this->responder->render('user/user-list.twig');
     }
 }

@@ -1,4 +1,4 @@
-import './home-index.css';
+import './home.css';
 
 Swal.fire(
     'Good job!',

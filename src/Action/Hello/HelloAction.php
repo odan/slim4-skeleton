@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\Hello;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
