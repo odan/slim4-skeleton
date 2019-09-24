@@ -20,10 +20,7 @@
 use App\Startup;
 use App\Utility\Configuration;
 use Odan\Twig\TwigCompiler;
-use Slim\Psr7\Factory\ServerRequestFactory;
 use Slim\Views\Twig;
-use Slim\Views\TwigExtension;
-use Slim\Views\TwigRuntimeLoader;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -31,20 +28,13 @@ define('APP_ENV', 'integration');
 
 $app = Startup::boostrap();
 
+// Read twig settings
 $settings = $app->getContainer()->get(Configuration::class)->get('twig');
-$templatePath = (string)$settings['path'];
 $cachePath = (string)$settings['cache_path'];
 
 $twig = $app->getContainer()->get(Twig::class)->getEnvironment();
 
-$routeParser = $app->getRouteCollector()->getRouteParser();
-$basePath = $app->getBasePath();
-$factory = new ServerRequestFactory();
-$request = $factory->createServerRequest('GET', '/');
-$runtimeLoader = new TwigRuntimeLoader($routeParser, $request->getUri(), $basePath);
-$twig->addRuntimeLoader($runtimeLoader);
-$twig->addExtension(new TwigExtension());
-
+// Compile twig templates (*.twig) to PHP code
 $compiler = new TwigCompiler($twig, $cachePath, true);
 $compiler->compile();
 
