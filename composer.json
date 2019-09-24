@@ -22,7 +22,6 @@
         "slim/psr7": "^0.5.0",
         "slim/slim": "^4.1",
         "slim/twig-view": "3.0.0-beta",
-        "symfony/config": "^4.3",
         "symfony/translation": "^4.3"
     },
     "require-dev": {
