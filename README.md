@@ -25,6 +25,10 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 * PHP 7.1+
 * Composer
 
+## Recommended
+
+* [NPM](https://nodejs.org/en/download/) for webpack
+
 ## Installation
 
 Run this command from the directory in which you want to install your new Slim Framework application.
