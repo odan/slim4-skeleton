@@ -68,6 +68,8 @@ Start unit- and API integration tests + full coverage report with:
 composer test-coverage
 ```
 
+The code coverage report (xml and html) output directory is: `build/coverage`
+
 ## Assets
 
 To compile all assets, run:
@@ -82,8 +84,6 @@ To compile and minify all assets, run:
 npx webpack --mode=production
 ```
 
-The code coverage report (xml and html) output directory is: `build/coverage`
-
 ## License
 
-* MIT
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
