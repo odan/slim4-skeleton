@@ -17,8 +17,8 @@ This is a simple web application skeleton project that uses the [Slim 4 Framewor
 * [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
 * [symfony/translation](https://github.com/symfony/translation) as translator
 * [twig/twig](https://github.com/twigphp/Twig) as template engine
-* [odan/twig-assets](https://github.com/odan/twig-assets) as JavaScript / CSS minifier
 * [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator
+* [webpack](https://webpack.js.org/) to bundle your scripts
 
 ## Requirements
 
@@ -66,6 +66,20 @@ Start unit- and API integration tests + full coverage report with:
 
 ```
 composer test-coverage
+```
+
+## Assets
+
+To compile all assets, run:
+
+```
+npx webpack
+```
+
+To compile and minify all assets, run:
+
+```
+npx webpack --mode=production
 ```
 
 The code coverage report (xml and html) output directory is: `build/coverage`
