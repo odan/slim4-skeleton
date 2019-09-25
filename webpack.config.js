@@ -31,6 +31,7 @@ module.exports = {
             },
             {
                 test: /\.(ttf|eot|svg|woff|woff2)(\?[\s\S]+)?$/,
+                include: path.resolve(__dirname, './node_modules/@fortawesome/fontawesome-free/webfonts'),
                 use: {
                     loader: 'file-loader',
                     options: {
