@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+//const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

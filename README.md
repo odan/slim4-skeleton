@@ -84,6 +84,18 @@ To compile and minify all assets, run:
 npx webpack --mode=production
 ```
 
+To run frontend tests, run:
+
+```
+npm run test
+```
+
+To run frontend tests with coverage, run:
+
+```
+npm run test:coverage
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
