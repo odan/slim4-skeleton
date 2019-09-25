@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./public/assets/",
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true
+    },
+    "include": [
+        "templates/**/*"
+    ],
+    "exclude": [
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "node_modules",
+        "vendor"
+    ]
+}

@@ -8,10 +8,11 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => ({
     entry: {
-        'layout/layout': './templates/layout/layout.js',
-        'layout/datatables': './templates/layout/datatables.js',
-        'home/home': './templates/home/home.js',
-        'user/user-list': './templates/user/user-list.js',
+        'layout/layout': './templates/layout/layout',
+        'layout/datatables': './templates/layout/datatables',
+        'home/home': './templates/home/home',
+        'user/user-list': './templates/user/user-list',
+        'user/greeter': './templates/user/greeter',
     },
 
     output: {
@@ -31,8 +32,17 @@ module.exports = (env, argv) => ({
         maxAssetSize: 1024000
     },
 
+    resolve: {
+        extensions: ['.js', '.ts', '.tsx']
+    },
+
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']

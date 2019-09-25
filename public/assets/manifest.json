@@ -5,6 +5,7 @@
   "layout/datatables.js": "layout/datatables.js",
   "layout/layout.css": "layout/layout.css",
   "layout/layout.js": "layout/layout.js",
+  "user/greeter.js": "user/greeter.js",
   "user/user-list.css": "user/user-list.css",
   "user/user-list.js": "user/user-list.js",
   "layout/datatables.js.LICENSE": "layout/datatables.js.LICENSE",
