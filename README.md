@@ -105,6 +105,10 @@ To start frontend tests with code coverage, run:
 npm run test:coverage
 ```
 
+## Documentation
+
+The documentation of this demo application can be found here: [Documentation](https://odan.github.io/slim4-skeleton)
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
