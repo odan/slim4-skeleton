@@ -1,0 +1,58 @@
+@startuml
+
+title Web Application Architecture
+header v2019.6.14.0
+footer Page %page% of %lastpage%
+
+autonumber
+
+actor User
+participant FrontController
+participant Router
+participant Action
+participant Service
+participant Repository
+database Database
+participant Responder
+participant Emitter
+
+User -> FrontController: HTTP Request\n/hello
+activate FrontController
+FrontController -> FrontController: Create PSR-7\nRequest
+FrontController -> Router: Dispatch Request
+activate Router
+Router -> Action: Request
+activate Action
+Action -> Service: Parameter
+activate Service
+Service -> Service: Validation
+Service -> Repository: Parameter
+activate Repository
+Repository --> Repository : Create a "use case optimal query"\nusing the QueryBuilder
+Repository -> Database: Query / Execute
+activate Database
+Database --> Repository: Result set / PK
+deactivate Database
+Repository --> Repository : Map row(s) to\nobject or list of data objects.\nOptional use a DataMapper
+Repository -> Service: Query Result
+deactivate Repository
+Service -> Service: Calculation,\nTransactions
+Service -> Action: Service Result
+deactivate Service
+Action -> Action: Create View Data
+Action -> Responder: View Data
+activate Responder
+Responder -> Responder: Render\nCreate response\nwith ResponseFactory
+Responder -[#0000FF]> Action: Response
+deactivate Responder
+Action -[#0000FF]> Router: Response
+deactivate Action
+Router -[#0000FF]> FrontController
+FrontController -[#0000FF]> Emitter: Emit Response
+deactivate Router
+activate Emitter
+Emitter -[#0000FF]> User: HTTP Response (header, body)
+deactivate Emitter
+deactivate FrontController
+
+@enduml

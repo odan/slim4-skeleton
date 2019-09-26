@@ -1,0 +1,10 @@
+theme: jekyll-theme-cayman
+
+# Name of your site (displayed in the header)
+name: Slim 4 skeleton
+
+# Name of website (site.title)
+title: PHP skeleton
+
+# Short description of your site
+description: A PHP example application

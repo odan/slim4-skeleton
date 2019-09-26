@@ -1,0 +1,25 @@
+@startuml
+
+title MVC 2 Architecture
+header v2019.6.16.0
+
+autonumber
+
+actor Browser
+participant Controller
+participant Model
+participant View
+database Database
+
+Browser -> Controller: Request
+Controller -> Controller: Request processing
+Controller -> Model: Invoke service
+Model -> Model: Business logic
+Model <-> Database: Data manipulation
+Model -> Controller: Service result
+Controller -> View: View data
+View -> View: Response generation
+View -> Controller: Response
+Controller -> Browser: Response
+
+@enduml

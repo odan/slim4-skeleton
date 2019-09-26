@@ -7,27 +7,36 @@
 [![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/slim4-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/odan/slim4-skeleton.svg?style=flat-square)](https://packagist.org/packages/odan/slim4-skeleton/stats)
 
-## Features
-
-This is a simple web application skeleton project that uses the [Slim 4 Framework](https://www.slimframework.com/):
-
-* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
-* [slim/psr7](https://github.com/slimphp/Slim-Psr7) as super lightweight PSR-7 implementation
-* [league/container](https://github.com/thephpleague/container) as dependency injection container (PSR-11)
-* [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
-* [symfony/translation](https://github.com/symfony/translation) as translator
-* [twig/twig](https://github.com/twigphp/Twig) as template engine
-* [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator
-* [webpack](https://webpack.js.org/) to bundle your scripts
+Use this skeleton application to quickly setup and start working on a new [Slim 4 Framework](https://www.slimframework.com/) application.
 
 ## Requirements
 
 * PHP 7.1+
 * Composer
 
-## Recommended
+#### Recommended
 
 * [NPM](https://nodejs.org/en/download/) for webpack
+
+### Packages
+
+This project also uses the following packages:
+
+* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
+* [slim/psr7](https://github.com/slimphp/Slim-Psr7) as super lightweight PSR-7 implementation
+* [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
+* [slim/twig-view](https://github.com/slimphp/Twig-View) as template engine
+* [league/container](https://github.com/thephpleague/container) as container implementation (PSR-11)
+* [symfony/translation](https://github.com/symfony/translation) as translator
+* [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
+* [Webpack](https://webpack.js.org/) to bundle your assets
+
+### Continous integration
+
+* Unit- and integrations tests
+* Tested on Travis CI and Scrutinizer CI
+* Code style checker and fixer (PSR-2, PSR-12)
+* PHPStan (level=max)
 
 ## Installation
 
@@ -84,13 +93,13 @@ To compile and minify all assets, run:
 npx webpack --mode=production
 ```
 
-To run frontend tests, run:
+To start frontend tests, run:
 
 ```
 npm run test
 ```
 
-To run frontend tests with coverage, run:
+To start frontend tests with code coverage, run:
 
 ```
 npm run test:coverage
