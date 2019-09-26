@@ -12,7 +12,7 @@ module.exports = {
         "<rootDir>/tests/Frontend"
     ],
     testPathIgnorePatterns: ['/node_modules/'],
-    setupFiles: ["./tests/Jest/setup-jest.js"],
+    setupFiles: ["./tests/setup-jest.js"],
     moduleNameMapper: {
         "\\.(css|less)$": "identity-obj-proxy"
     },
