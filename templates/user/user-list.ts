@@ -1,6 +1,5 @@
 import './user-list.css';
-import {Student} from './greeter';
-import {greeter} from './greeter';
+import {Student, greeter} from './greeter';
 
 export class UserList {
 
