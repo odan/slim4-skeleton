@@ -3,9 +3,6 @@
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
 use App\Utility\Configuration;
-use Selective\SameSiteCookie\SameSiteCookieConfiguration;
-use Selective\SameSiteCookie\SameSiteCookieMiddleware;
-use Selective\SameSiteCookie\SameSiteSessionMiddleware;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
