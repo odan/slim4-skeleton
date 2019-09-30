@@ -3,6 +3,7 @@
 namespace App\Domain\User;
 
 use App\Domain\Service\DomainServiceInterface;
+use App\Domain\User\Repository\UserCreatorRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 

@@ -12,5 +12,7 @@ return static function (App $app) {
 
     $app->get('/users', \App\Action\User\ListUserAction::class)->setName('list-user');
 
+    $app->post('/users/datatable', \App\Action\User\DataTableUserAction::class)->setName('datatable-user');
+
     $app->post('/users', \App\Action\User\CreateUserAction::class)->setName('create-user');
 };

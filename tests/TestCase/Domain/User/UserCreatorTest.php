@@ -2,8 +2,8 @@
 
 namespace App\Test\TestCase\Domain\User;
 
+use App\Domain\User\Repository\UserCreatorRepository;
 use App\Domain\User\UserCreator;
-use App\Domain\User\UserCreatorRepository;
 use App\Test\TestCase\UnitTestTrait;
 use PHPUnit\Framework\TestCase;
 
