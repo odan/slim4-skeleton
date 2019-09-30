@@ -28,9 +28,11 @@
         "overtrue/phplint": "^1.1",
         "phpstan/phpstan-shim": "^0.11",
         "phpunit/phpunit": "^7.0",
+        "selective/artifact": "^0.1.0",
         "squizlabs/php_codesniffer": "^3.4"
     },
     "scripts": {
+        "build": "artifact build --name=my_app",
         "start": "php -S localhost:8080 -t public",
         "test": "phpunit --configuration phpunit.xml",
         "test-coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
