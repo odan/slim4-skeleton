@@ -8,14 +8,14 @@
         "test:coverage": "jest --coverage --ci"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.7.0",
+        "@fortawesome/fontawesome-free": "^5.11.2",
         "bootstrap": "^4.2.1",
         "datatables.net-bs4": "^1.10.19",
         "datatables.net-responsive-bs4": "^2.2.3",
         "datatables.net-select-bs4": "^1.3.0",
         "jquery": "^3.3.1",
         "popper.js": "^1.14.7",
-        "sweetalert2": "^8.13.0"
+        "sweetalert2": "^8.18.0"
     },
     "devDependencies": {
         "@types/jest": "^24.0.18",
@@ -27,13 +27,13 @@
         "jest": "^24.9.0",
         "mini-css-extract-plugin": "^0.8.0",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
-        "terser-webpack-plugin": "latest",
+        "terser-webpack-plugin": "^2.1.2",
         "ts-jest": "^24.1.0",
-        "ts-loader": "^6.1.2",
+        "ts-loader": "^6.2.0",
         "typescript": "^3.6.3",
         "webpack": "^4.41.0",
         "webpack-assets-manifest": "^3.1.1",
         "webpack-cli": "^3.3.9",
-        "webpack-manifest-plugin": "^2.0.4"
+        "webpack-manifest-plugin": "^2.1.2"
     }
 }
