@@ -49,7 +49,11 @@
             "@phpstan",
             "@test-coverage"
         ],
-        "parse-twig": "php bin/parse-twig.php"
+        "parse-twig": "php bin/parse-twig.php",
+        "update-assets": "npm update --dev",
+        "bundle-assets": "npx webpack --mode=development",
+        "bundle-assets-prod": "npx webpack --mode=production",
+        "watch": "npx webpack --watch"
     },
     "autoload": {
         "psr-4": {
