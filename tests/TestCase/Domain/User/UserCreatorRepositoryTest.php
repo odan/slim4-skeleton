@@ -12,8 +12,9 @@ use PHPUnit\Framework\TestCase;
  */
 class UserCreatorRepositoryTest extends TestCase
 {
-    //use DatabaseTestTrait;
     use UnitTestTrait;
+
+    //use DatabaseTestTrait;
 
     /**
      * Fixtures.
