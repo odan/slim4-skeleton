@@ -47,7 +47,7 @@ Updating the database schema with this shorthand command:
 $ composer migrate-database
 ```
 
-If `ant` is not installed on the target server, the following command can be used:
+If `composer` is not installed on the target server, the following command can be used:
 
 ```bash
 $ vendor/bin/phinx migrate -c config/phinx.php
@@ -61,7 +61,7 @@ To populate the database with data for testing and experimenting with the code r
 $ composer seed-database
 ```
 
-If `ant` is not installed, you can run this command:
+To start the seeder directly, run this command:
 
 ```bash
 $ vendor/bin/phinx seed:run -c config/phinx.php
