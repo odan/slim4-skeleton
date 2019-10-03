@@ -17,7 +17,6 @@ CREATE TABLE `users` (
   `role` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `locale` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `aaaa` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_user_id` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
