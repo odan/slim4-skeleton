@@ -5,7 +5,7 @@
 To build a new artifact (ZIP file), for deployment, run:
 
 ``` bash
-$ ant build
+$ composer build
 ```
 
 The new artifact is created in the `build` directory: `build/my_app_*.zip`

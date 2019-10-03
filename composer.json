@@ -50,7 +50,8 @@
             "@phpstan",
             "@test-coverage"
         ],
-        "parse-twig": "php bin/parse-twig.php",
+        "compile-twig": "php bin/console.php compile-twig",
+        "update-schema-sql": "php bin/console.php update-schema-sql",
         "update-assets": "npm update --dev",
         "bundle-assets": "npx webpack --mode=development",
         "bundle-assets-prod": "npx webpack --mode=production",

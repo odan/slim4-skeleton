@@ -3,7 +3,13 @@
 All tests are located in the `tests/` folder. To start the unit test run:
 
 ``` bash
-$ ant phpunit
+$ composer test
+```
+
+or
+
+``` bash
+$ composer test-coverage
 ```
 
 You can write several kinds of tests:
@@ -79,6 +85,21 @@ because it's possible to simulate all requests yourself.
 Please have a look at these sample tests in `tests/TestCase/Action` directory.
 
 > Tip: Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
+
+#### API test with curl
+
+Under linux you have to install curl to make HTTP requests to your api:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1","key2":"value2"}' http://localhost:8080
+```
+
+Windows users have to install [Curl for Windows](https://curl.haxx.se/windows/)
+and should escape `"` with `\"` in the console.
+
+```cmd
+curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost:8080
+```
 
 <hr>
 

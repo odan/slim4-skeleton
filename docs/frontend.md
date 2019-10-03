@@ -47,7 +47,7 @@ $locale = $this->locale->getLocale(); // en_US
 To parse all translation strings run:
 
 ```bash
-$ ant parse-text
+$ composer compile-twig
 ```
 
 This command will scan your twig templates, javascripts and PHP classes for the `__()` 
@@ -102,7 +102,7 @@ Translate a text with a placeholder:
 To update all main assets like jquery and bootstrap run:
 
 ```bash
-$ ant update-assets
+$ composer update-assets
 ```
 
 You can add more assets in `package.json` or directly via `npm`.
