@@ -119,4 +119,10 @@ $settings['smtp'] = [
     'to' => 'to@example.com',
 ];
 
+// Console commands
+$settings['commands'] = [
+    \App\Console\TwigCompilerCommand::class,
+    \App\Console\SchemaSqlCommand::class,
+];
+
 return $settings;
