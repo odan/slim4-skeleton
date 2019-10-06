@@ -8,9 +8,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     exit (1);
 }
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$container = \App\Startup::boostrap()->getContainer();
+$container = (require __DIR__ . '/../config/bootstrap.php')->ge;
 
 $commands = (array)$container->get(Configuration::class)->get('commands');
 $application = new Application();

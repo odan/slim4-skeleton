@@ -1,9 +1,8 @@
 <?php
 
-use App\Startup;
 use App\Utility\Configuration;
 
-$app = Startup::boostrap();
+$app = require __DIR__ . '/../config/bootstrap.php';
 
 $container = $app->getContainer();
 $pdo = $container->get(PDO::class);

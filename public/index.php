@@ -1,7 +1,3 @@
 <?php
 
-use App\Startup;
-
-require_once __DIR__ . '/../vendor/autoload.php';
-
-Startup::boostrap()->run();
+(require __DIR__ . '/../config/bootstrap.php')->run();
