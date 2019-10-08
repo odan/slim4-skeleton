@@ -46,6 +46,12 @@ $container->share(App::class, static function (ContainerInterface $container) {
     $basePath = (new BasePathDetector($_SERVER))->getBasePath();
     $app->setBasePath($basePath);
 
+    $config = $container->get(Configuration::class);
+    $routeCacheFile = $config->get('router')['cache_file'];
+    if ($routeCacheFile) {
+        $app->getRouteCollector()->setCacheFile($routeCacheFile);
+    }
+
     return $app;
 })->addArgument($container);
 

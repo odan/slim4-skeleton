@@ -29,6 +29,11 @@ $settings['error_handler_middleware'] = [
     'log_error_details' => true,
 ];
 
+$settings['router'] = [
+    // Should be set only in production
+    'cache_file' => '',
+];
+
 // Application settings
 $settings['app'] = [
     'secret' => '{{app_secret}}',
