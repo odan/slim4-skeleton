@@ -17,7 +17,8 @@ cache:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-dist --no-progress
-  - mysql -e 'CREATE DATABASE test;'
+  - mysql -u root -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - sudo apt-get install php7.2-mysql
   - cd $TRAVIS_BUILD_DIR
 
 script:
