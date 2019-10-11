@@ -48,7 +48,7 @@ This project comes configured with:
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Logging (PSR-3)
 * Translations
-* Sessions and Cookies
+* Sessions and Cookies (todo)
 * Authentication and Authorization (todo)
 * Database Query Builder
 * Database Migrations (Phinx)
@@ -61,7 +61,7 @@ This project comes configured with:
 
 * Session
 * Translator
-* CORS (todo)
+* Session (todo)
 * Authentication (todo)
 
 ### Continuous integration
