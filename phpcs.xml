@@ -11,7 +11,7 @@
     <file>./config</file>
 
     <rule ref="PSR2"></rule>
-    <rule ref="PSR12"></rule>
+    <!-- <rule ref="PSR12"></rule> -->
 
     <rule ref="Squiz.Commenting.ClassComment">
         <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
