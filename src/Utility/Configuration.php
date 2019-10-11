@@ -10,7 +10,7 @@ class Configuration
     /**
      * @var array
      */
-    private $configuration = [];
+    private $configuration;
 
     /**
      * The constructor.
