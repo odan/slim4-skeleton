@@ -69,7 +69,7 @@ class DataTableRepository implements RepositoryInterface
      * https://datatables.net/manual/server-side
      *
      * @param Query $query The query
-     * @param array $params The search paremeters
+     * @param array $params The search parameters
      *
      * @return Query The query
      */

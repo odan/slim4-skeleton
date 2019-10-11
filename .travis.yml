@@ -17,6 +17,7 @@ cache:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-dist --no-progress
+  - mysql -e 'CREATE DATABASE test;'
   - cd $TRAVIS_BUILD_DIR
 
 script:

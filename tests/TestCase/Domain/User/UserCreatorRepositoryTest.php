@@ -2,9 +2,10 @@
 
 namespace App\Test\TestCase\Domain\User;
 
+use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\UnitTestTrait;
+use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,9 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UserCreatorRepositoryTest extends TestCase
 {
-    use UnitTestTrait;
-
-    //use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
     /**
      * Fixtures.
@@ -44,11 +43,14 @@ class UserCreatorRepositoryTest extends TestCase
     {
         $repository = $this->createRepository();
 
-        $actual = $repository->insertUser([
-            'username' => 'admin',
-            'email' => 'mail@example.com',
-        ]);
+        $user = new UserData();
+        $user->firstName = 'John';
+        $user->lastName = 'Doe';
+        $user->email = 'john.doe@example.com';
+        $user->userName = 'john.doe';
 
-        static::assertSame(1, $actual);
+        $actual = $repository->insertUser($user);
+
+        static::assertSame(3, $actual);
     }
 }

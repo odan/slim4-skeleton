@@ -2,9 +2,8 @@
 
 namespace App\Domain\Type;
 
+use DomainException;
 use ReflectionClass;
-use ReflectionException;
-use RuntimeException;
 
 /**
  * Type inspector.
@@ -14,38 +13,35 @@ final class TypeInspector implements TypeInterface
     /**
      * Check if code is valid.
      *
-     * @param string $class The type class name
+     * @param string $className The class name
      * @param mixed $typeValue The type value to check
-     *
-     * @throws ReflectionException
      *
      * @return bool True if code exists
      */
-    public static function existsValue(string $class, $typeValue): bool
+    public static function existsValue(string $className, $typeValue): bool
     {
-        $class = new ReflectionClass($class);
+        $reflectionClass = new ReflectionClass($className);
 
-        return in_array($typeValue, $class->getConstants(), true);
+        return in_array($typeValue, $reflectionClass->getConstants(), true);
     }
 
     /**
      * Get name of constant by value.
      *
-     * @param string $class The type class name
+     * @param string $className The class name
      * @param int|string $typeValue The value
      *
-     * @throws RuntimeException
-     * @throws ReflectionException
+     * @throws DomainException
      *
      * @return string Name
      */
-    public static function getName(string $class, $typeValue): string
+    public static function getName(string $className, $typeValue): string
     {
-        $class = new ReflectionClass($class);
-        $constants = array_flip($class->getConstants());
+        $reflectionClass = new ReflectionClass($className);
+        $constants = array_flip($reflectionClass->getConstants());
 
         if (!array_key_exists($typeValue, $constants)) {
-            throw new RuntimeException(__('Invalid type ID: %s', $typeValue));
+            throw new DomainException(__('Invalid type ID: %s', $typeValue));
         }
 
         return $constants[$typeValue];

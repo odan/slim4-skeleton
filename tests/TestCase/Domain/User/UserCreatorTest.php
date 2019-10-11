@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User;
 
+use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Domain\User\UserCreator;
 use App\Test\TestCase\UnitTestTrait;
@@ -38,10 +39,13 @@ class UserCreatorTest extends TestCase
 
         $this->mockMethod([UserCreatorRepository::class, 'insertUser'])->willReturn(1);
 
-        $actual = $service->createUser([
-            'username' => 'admin',
-            'email' => 'mail@example.com',
-        ]);
+        $user = new UserData();
+        $user->firstName = 'John';
+        $user->lastName = 'Doe';
+        $user->email = 'john.doe@example.com';
+        $user->userName = 'john.doe';
+
+        $actual = $service->createUser($user);
 
         static::assertSame(1, $actual);
     }

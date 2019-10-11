@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\UserCreator;
+use App\Domain\User\UserForm;
 use App\Responder\JsonResponder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -13,9 +13,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 final class CreateUserAction
 {
     /**
-     * @var UserCreator
+     * @var UserForm
      */
-    private $userCreator;
+    protected $userForm;
 
     /**
      * @var JsonResponder
@@ -25,15 +25,15 @@ final class CreateUserAction
     /**
      * Constructor.
      *
-     * @param UserCreator $userCreator The user service
+     * @param UserForm $userForm The form
      * @param JsonResponder $responder The responder
      */
     public function __construct(
-        UserCreator $userCreator,
+        UserForm $userForm,
         JsonResponder $responder
     ) {
-        $this->userCreator = $userCreator;
         $this->responder = $responder;
+        $this->userForm = $userForm;
     }
 
     /**
@@ -47,15 +47,11 @@ final class CreateUserAction
      */
     public function __invoke(Request $request): Response
     {
-        $userData = (array)$request->getParsedBody();
+        $userId = $this->userForm->createUser((object)(array)$request->getParsedBody());
 
-        $userId = $this->userCreator->createUser($userData);
-
-        $result = [
+        return $this->responder->render([
             'success' => true,
             'user_id' => $userId,
-        ];
-
-        return $this->responder->render($result);
+        ]);
     }
 }
