@@ -31,6 +31,7 @@ build:
             before:
                  - composer self-update
                  - composer update --no-interaction --prefer-dist --no-progress
+                 - sudo service start mysql || true
                  - mysql -u root -e "CREATE DATABASE IF NOT EXISTS test;"
     tests:
         before:

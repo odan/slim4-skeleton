@@ -100,7 +100,7 @@ $settings['phinx'] = [
 
 // Database settings
 $settings['db'] = [
-    'driver' => 'mysql',
+    'driver' => \Cake\Database\Driver\Mysql::class,
     'host' => 'localhost',
     'encoding' => 'utf8',
     'collation' => 'utf8_unicode_ci',
