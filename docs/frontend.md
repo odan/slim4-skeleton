@@ -110,6 +110,31 @@ You can add more assets in `package.json` or directly via `npm`.
 Open the file `build.xml` and navigate to the target `update-assets` 
 and add more items to copy the required files into the `public/` directory.
 
+### Compiling Assets
+
+To compile all assets, run:
+
+```
+npx webpack
+```
+
+To compile and minify all assets, run:
+
+```
+npx webpack --mode=production
+```
+
+To start frontend tests, run:
+
+```
+npm run test
+```
+
+To start frontend tests with code coverage, run:
+
+```
+npm run test:coverage
+```
 
 <hr>
 

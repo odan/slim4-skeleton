@@ -113,32 +113,6 @@ composer test-coverage
 
 The code coverage report (xml and html) output directory is: `build/coverage`
 
-## Assets
-
-To compile all assets, run:
-
-```
-npx webpack
-```
-
-To compile and minify all assets, run:
-
-```
-npx webpack --mode=production
-```
-
-To start frontend tests, run:
-
-```
-npm run test
-```
-
-To start frontend tests with code coverage, run:
-
-```
-npm run test:coverage
-```
-
 ## Documentation
 
 The documentation of this demo application can be found here: [Documentation](https://odan.github.io/slim4-skeleton)
