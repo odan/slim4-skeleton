@@ -12,6 +12,7 @@
         "php": "^7.1",
         "ext-json": "*",
         "ext-pdo": "*",
+        "cakephp/chronos": "^1.2",
         "cakephp/database": "^3.8",
         "fig/http-message-util": "^1.1",
         "fullpipe/twig-webpack-extension": "^2.0",
