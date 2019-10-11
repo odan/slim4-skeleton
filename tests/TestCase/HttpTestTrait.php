@@ -13,19 +13,7 @@ use Slim\Psr7\Factory\ServerRequestFactory;
  */
 trait HttpTestTrait
 {
-    use ContainerTestTrait;
-
-    /** {@inheritdoc} */
-    protected function setUp(): void
-    {
-        $this->bootApp();
-    }
-
-    /** {@inheritdoc} */
-    protected function tearDown(): void
-    {
-        $this->shutdownApp();
-    }
+    use DatabaseTestTrait;
 
     /**
      * Create a server request.

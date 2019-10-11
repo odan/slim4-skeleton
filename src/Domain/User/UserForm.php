@@ -48,9 +48,8 @@ final class UserForm implements DomainServiceInterface
 
         // Map form to DTO
         $user = new UserData();
-        $user->firstName = $form->first_name;
-        $user->lastName = $form->last_name;
-        $user->email = $form->email->a->a->a;
+        $user->userName = $form->username;
+        $user->email = $form->email;
 
         return $this->userCreator->createUser($user);
     }
@@ -68,7 +67,7 @@ final class UserForm implements DomainServiceInterface
 
         if (empty($form->email)) {
             $validation->addError('email', __('Input required'));
-        } elseif (filter_var($form->email, FILTER_VALIDATE_EMAIL) !== false) {
+        } elseif (filter_var($form->email, FILTER_VALIDATE_EMAIL) === false) {
             $validation->addError('email', __('Invalid email address'));
         }
 

@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\NullOutput;
  */
 trait DatabaseTestTrait
 {
-    use ContainerTestTrait;
+    use UnitTestTrait;
 
     /** {@inheritdoc} */
     protected function setUp()

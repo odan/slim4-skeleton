@@ -77,12 +77,8 @@ final class UserCreator implements DomainServiceInterface
     {
         $validation = new ValidationResult();
 
-        if (empty($user->firstName)) {
-            $validation->addError('first_name', __('Input required'));
-        }
-
-        if (empty($user->lastName)) {
-            $validation->addError('last_name', __('Input required'));
+        if (empty($user->userName)) {
+            $validation->addError('username', __('Input required'));
         }
 
         if (empty($user->email)) {
