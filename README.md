@@ -12,10 +12,12 @@ Use this skeleton application to quickly setup and start working on a new [Slim 
 ## Requirements
 
 * PHP 7.1+
-* Composer
+* Apache with mod_rewrite
+* Composer (only for development)
 
 #### Recommended
 
+* MySQL 5.7+
 * [NPM](https://nodejs.org/en/download/) for webpack
 
 ### Packages
@@ -31,12 +33,44 @@ This project also uses the following packages:
 * [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
 * [Webpack](https://webpack.js.org/) to bundle your assets
 
-### Continous integration
+## Features
+
+This project comes configured with:
+
+* Modern coding style (PSR-1, PSR-2, PSR-12)
+* PHPDoc Standard (PSR-5, PSR-19)
+* Class Autoloader (PSR-4)
+* HTTP request and response (PSR-7)
+* HTTP Server Request Handlers, Middleware (PSR-15)
+* HTTP Factories (PSR-17)
+* Dependency injection container (PSR-11)
+* Routing
+* Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
+* Logging (PSR-3)
+* Translations
+* Sessions and Cookies
+* Authentication and Authorization (todo)
+* Database Query Builder
+* Database Migrations (Phinx)
+* Database Migrations Generator
+* Date and time (Chronos)
+* Console Commands (Symfony)
+* Unit testing (PHPUnit)
+
+### Middleware
+
+* Session
+* Translator
+* CORS (todo)
+* Authentication (todo)
+
+### Continuous integration
 
 * Unit- and integrations tests
 * Tested on Travis CI and Scrutinizer CI
 * Code style checker and fixer (PSR-2, PSR-12)
 * PHPStan (level=max)
+* Deployment script
 
 ## Installation
 
