@@ -1,6 +1,7 @@
 <?php
 
 use App\Utility\Configuration;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 
 if (isset($_SERVER['REQUEST_METHOD'])) {
@@ -8,7 +9,8 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     exit (1);
 }
 
-$container = (require __DIR__ . '/../config/bootstrap.php')->ge;
+/** @var ContainerInterface $container */
+$container = (require __DIR__ . '/../config/bootstrap.php')->getContainer();
 
 $commands = (array)$container->get(Configuration::class)->get('commands');
 $application = new Application();
