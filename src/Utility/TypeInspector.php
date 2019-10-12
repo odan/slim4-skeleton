@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Domain\Type;
+namespace App\Utility;
 
+use App\Domain\Type\TypeInterface;
 use DomainException;
 use ReflectionClass;
 

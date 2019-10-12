@@ -19,11 +19,10 @@ export class UserList {
             'columns': [
                 {'data': 'username'},
                 {'data': 'email'},
-                {'data': 'first_name'},
-                {'data': 'last_name'},
+                {'data': 'firstName'},
+                {'data': 'lastName'},
                 {'data': 'role'},
                 {'data': 'enabled'},
-                {'data': 'created_at'},
                 {
                     'orderable': false,
                     'searchable': false,

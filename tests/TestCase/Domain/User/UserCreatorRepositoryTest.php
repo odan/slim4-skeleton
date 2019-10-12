@@ -44,10 +44,10 @@ class UserCreatorRepositoryTest extends TestCase
         $repository = $this->createRepository();
 
         $user = new UserData();
+        $user->username = 'john.doe';
+        $user->email = 'john.doe@example.com';
         $user->firstName = 'John';
         $user->lastName = 'Doe';
-        $user->email = 'john.doe@example.com';
-        $user->userName = 'john.doe';
 
         $actual = $repository->insertUser($user);
 

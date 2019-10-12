@@ -14,16 +14,16 @@ use stdClass;
 final class UserForm implements DomainServiceInterface
 {
     /**
-     * @var UserCreator
+     * @var UserGenerator
      */
     private $userCreator;
 
     /**
      * The constructor.
      *
-     * @param UserCreator $userCreator The user creator
+     * @param UserGenerator $userCreator The user creator
      */
-    public function __construct(UserCreator $userCreator)
+    public function __construct(UserGenerator $userCreator)
     {
         $this->userCreator = $userCreator;
     }
@@ -48,7 +48,7 @@ final class UserForm implements DomainServiceInterface
 
         // Map form to DTO
         $user = new UserData();
-        $user->userName = $form->username;
+        $user->username = $form->username;
         $user->email = $form->email;
 
         return $this->userCreator->createUser($user);

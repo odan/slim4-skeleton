@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Repository;
 
 use Cake\Database\Expression\QueryExpression;
 use Cake\Database\Query;
+use Cake\Database\StatementInterface;
+use DomainException;
 use RuntimeException;
 
 /**
@@ -40,7 +42,7 @@ class DataTableRepository implements RepositoryInterface
 
         $countQuery = clone $query;
         $countQuery->select(['count' => $countQuery->func()->count('*')], true);
-        $countRows = $countQuery->execute()->fetchAll('assoc') ?: [];
+        $countRows = $countQuery->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
 
         $count = 0;
         foreach ($countRows as $countRow) {
@@ -59,7 +61,7 @@ class DataTableRepository implements RepositoryInterface
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'draw' => $draw,
-            'data' => $query->execute()->fetchAll('assoc') ?: [],
+            'data' => $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC),
         ];
     }
 
@@ -208,9 +210,9 @@ class DataTableRepository implements RepositoryInterface
             'table_name' => $table,
         ]);
 
-        $rows = $query->execute()->fetchAll('assoc');
+        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
         if (empty($rows)) {
-            throw new RuntimeException(__('Columns not found in table: %s', $table));
+            throw new DomainException(__('Columns not found in table: %s', $table));
         }
 
         $result = [];

@@ -2,9 +2,9 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\Repository\QueryFactory;
-use App\Domain\Repository\RepositoryInterface;
 use App\Domain\User\Data\UserData;
+use App\Repository\QueryFactory;
+use App\Repository\RepositoryInterface;
 
 /**
  * Repository.
@@ -41,7 +41,6 @@ class UserCreatorRepository implements RepositoryInterface
             'email' => $user->email,
         ];
 
-        // Insert record into table
         return (int)$this->queryFactory->newInsert('users', $row)->execute()->lastInsertId();
     }
 }

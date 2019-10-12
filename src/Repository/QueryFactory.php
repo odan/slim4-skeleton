@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Repository;
 
 use Cake\Database\Connection;
 use Cake\Database\Query;
 use RuntimeException;
+use UnexpectedValueException;
 
 /**
  * Factory.
@@ -60,7 +61,7 @@ final class QueryFactory
         $query = $this->newQuery()->from($table);
 
         if (!$query instanceof Query) {
-            throw new RuntimeException('Failed to create query');
+            throw new UnexpectedValueException('Failed to create query');
         }
 
         return $query;

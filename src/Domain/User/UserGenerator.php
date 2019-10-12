@@ -13,7 +13,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Domain Service.
  */
-final class UserCreator implements DomainServiceInterface
+final class UserGenerator implements DomainServiceInterface
 {
     /**
      * @var UserCreatorRepository
@@ -71,18 +71,20 @@ final class UserCreator implements DomainServiceInterface
     /**
      * @param UserData $user The user
      *
-     * @return ValidationResult
+     * @return ValidationResult The validation result
      */
     private function validateUser(UserData $user): ValidationResult
     {
         $validation = new ValidationResult();
 
-        if (empty($user->userName)) {
+        if (empty($user->username)) {
             $validation->addError('username', __('Input required'));
         }
 
         if (empty($user->email)) {
             $validation->addError('email', __('Input required'));
+        } elseif (filter_var($user->email, FILTER_VALIDATE_EMAIL) === false) {
+            $validation->addError('email', __('Invalid email address'));
         }
 
         return $validation;
