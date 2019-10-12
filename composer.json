@@ -18,6 +18,7 @@
         "fullpipe/twig-webpack-extension": "^2.0",
         "league/container": "^3.3",
         "monolog/monolog": "^1.24",
+        "odan/phinx-migrations-generator": "^4.3",
         "odan/twig-translation": "^1.3",
         "psr/log": "^1.1",
         "robmorgan/phinx": "^0.11.1",
@@ -55,11 +56,14 @@
             "@test-coverage"
         ],
         "compile-twig": "php bin/console.php compile-twig",
-        "update-schema-sql": "php bin/console.php update-schema-sql",
         "update-assets": "npm update --dev",
         "bundle-assets": "npx webpack --mode=development",
         "bundle-assets-prod": "npx webpack --mode=production",
-        "watch": "npx webpack --watch"
+        "watch": "npx webpack --watch",
+        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php",
+        "create-migration": "phinx create -c config/phinx.php",
+        "migrate": "phinx migrate -c config/phinx.php",
+        "update-schema-sql": "php bin/console.php update-schema-sql"
     },
     "autoload": {
         "psr-4": {

@@ -30,10 +30,18 @@ create database migrations.
 $ composer generate-migration
 ```
 
+You an specify a migration name by adding the `--name` parameter.
+
+**Note:** Composer requires double dashes (`--`) to separate arguments. 
+
+```bash
+$ composer generate-migration -- --name AddTableCustomers
+```
+
 #### Creating a blank database migration
 
 ```bash
-$ composer create-migration
+$ composer create-migration UpdateArticleFixtures
 ```
 
 For more details how to create and manage migrations read the 
@@ -44,7 +52,7 @@ For more details how to create and manage migrations read the
 Updating the database schema with this shorthand command:
 
 ```bash
-$ composer migrate-database
+$ composer migrate
 ```
 
 If `composer` is not installed on the target server, the following command can be used:

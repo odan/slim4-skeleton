@@ -91,6 +91,8 @@ $settings['phinx'] = [
         'migrations' => $settings['root'] . '/resources/migrations',
         'seeds' => $settings['root'] . '/resources/seeds',
     ],
+    'default_migration_prefix' => 'db_change_',
+    'generate_migration_name' => true,
     'environments' => [
         'default_migration_table' => 'phinxlog',
         'default_database' => 'local',
@@ -102,8 +104,8 @@ $settings['phinx'] = [
 $settings['db'] = [
     'driver' => \Cake\Database\Driver\Mysql::class,
     'host' => 'localhost',
-    'encoding' => 'utf8',
-    'collation' => 'utf8_unicode_ci',
+    'encoding' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
     'flags' => [
         PDO::ATTR_PERSISTENT => false,
         // Enable exceptions
