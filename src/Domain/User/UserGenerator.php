@@ -4,7 +4,7 @@ namespace App\Domain\User;
 
 use App\Domain\Service\DomainServiceInterface;
 use App\Domain\User\Data\UserData;
-use App\Domain\User\Repository\UserCreatorRepository;
+use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Factory\LoggerFactory;
 use Odan\Validation\ValidationException;
 use Odan\Validation\ValidationResult;
@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 final class UserGenerator implements DomainServiceInterface
 {
     /**
-     * @var UserCreatorRepository
+     * @var UserGeneratorRepository
      */
     private $repository;
 
@@ -28,10 +28,10 @@ final class UserGenerator implements DomainServiceInterface
     /**
      * The constructor.
      *
-     * @param UserCreatorRepository $repository The repository
+     * @param UserGeneratorRepository $repository The repository
      * @param LoggerFactory $loggerFactory The logger factory
      */
-    public function __construct(UserCreatorRepository $repository, LoggerFactory $loggerFactory)
+    public function __construct(UserGeneratorRepository $repository, LoggerFactory $loggerFactory)
     {
         $this->repository = $repository;
         $this->logger = $loggerFactory

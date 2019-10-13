@@ -5,11 +5,12 @@ namespace App\Domain\User\Repository;
 use App\Domain\User\Data\UserData;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
+use App\Repository\TableName;
 
 /**
  * Repository.
  */
-class UserCreatorRepository implements RepositoryInterface
+class UserGeneratorRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory The query factory
@@ -41,6 +42,6 @@ class UserCreatorRepository implements RepositoryInterface
             'email' => $user->email,
         ];
 
-        return (int)$this->queryFactory->newInsert('users', $row)->execute()->lastInsertId();
+        return (int)$this->queryFactory->newInsert(TableName::USERS, $row)->execute()->lastInsertId();
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Domain\User\Repository;
 
 use App\Domain\User\Data\UserData;
+use App\Domain\User\Mapper\UserMapper;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
+use App\Repository\TableName;
 use Cake\Database\StatementInterface;
 
 /**
@@ -34,13 +36,13 @@ final class UserRepository implements RepositoryInterface
      */
     public function findAllUsers(): array
     {
-        $query = $this->queryFactory->newSelect('users')->select('*');
+        $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
 
         $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
 
         $result = [];
         foreach ($rows as $row) {
-            $result[] = UserData::fromArray($row);
+            $result[] = UserMapper::fromArray($row);
         }
 
         return $result;

@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Domain\User;
 
 use App\Domain\User\Data\UserData;
-use App\Domain\User\Repository\UserCreatorRepository;
+use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Domain\User\UserGenerator;
 use App\Test\TestCase\UnitTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +23,7 @@ class UserCreatorTest extends TestCase
     protected function createService(): UserGenerator
     {
         // Mock the required repositories
-        $this->registerMock(UserCreatorRepository::class);
+        $this->registerMock(UserGeneratorRepository::class);
 
         return $this->getContainer()->get(UserGenerator::class);
     }
@@ -37,7 +37,7 @@ class UserCreatorTest extends TestCase
     {
         $service = $this->createService();
 
-        $this->mockMethod([UserCreatorRepository::class, 'insertUser'])->willReturn(1);
+        $this->mockMethod([UserGeneratorRepository::class, 'insertUser'])->willReturn(1);
 
         $user = new UserData();
         $user->username = 'john.doe';

@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Domain\User;
 
 use App\Domain\User\Data\UserData;
-use App\Domain\User\Repository\UserCreatorRepository;
+use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -27,11 +27,11 @@ class UserCreatorRepositoryTest extends TestCase
     /**
      * Create instance.
      *
-     * @return UserCreatorRepository The instance
+     * @return UserGeneratorRepository The instance
      */
-    protected function createRepository(): UserCreatorRepository
+    protected function createRepository(): UserGeneratorRepository
     {
-        return $this->getContainer()->get(UserCreatorRepository::class);
+        return $this->getContainer()->get(UserGeneratorRepository::class);
     }
 
     /**
