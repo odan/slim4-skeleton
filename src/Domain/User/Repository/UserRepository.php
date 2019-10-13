@@ -42,7 +42,7 @@ final class UserRepository implements RepositoryInterface
 
         $result = [];
         foreach ($rows as $row) {
-            $result[] = UserMapper::fromArray($row);
+            $result[] = UserMapper::createFromArray($row);
         }
 
         return $result;

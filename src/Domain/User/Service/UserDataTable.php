@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\User;
+namespace App\Domain\User\Service;
 
 use App\Domain\Service\DomainServiceInterface;
 use App\Domain\User\Repository\UserRepository;

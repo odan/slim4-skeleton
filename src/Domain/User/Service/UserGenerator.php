@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\User;
+namespace App\Domain\User\Service;
 
 use App\Domain\Service\DomainServiceInterface;
 use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserGeneratorRepository;
+use App\Domain\User\Validator\UserValidator;
 use App\Factory\LoggerFactory;
 use Odan\Validation\ValidationException;
-use Odan\Validation\ValidationResult;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -21,6 +21,11 @@ final class UserGenerator implements DomainServiceInterface
     private $repository;
 
     /**
+     * @var UserValidator
+     */
+    protected $userValidator;
+
+    /**
      * @var LoggerInterface
      */
     private $logger;
@@ -29,11 +34,16 @@ final class UserGenerator implements DomainServiceInterface
      * The constructor.
      *
      * @param UserGeneratorRepository $repository The repository
+     * @param UserValidator $userValidator The user validator
      * @param LoggerFactory $loggerFactory The logger factory
      */
-    public function __construct(UserGeneratorRepository $repository, LoggerFactory $loggerFactory)
-    {
+    public function __construct(
+        UserGeneratorRepository $repository,
+        UserValidator $userValidator,
+        LoggerFactory $loggerFactory
+    ) {
         $this->repository = $repository;
+        $this->userValidator = $userValidator;
         $this->logger = $loggerFactory
             ->addFileHandler('user_creator.log')
             ->createInstance('user_creator');
@@ -51,7 +61,7 @@ final class UserGenerator implements DomainServiceInterface
     public function createUser(UserData $user): int
     {
         // Validation
-        $validation = $this->validateUser($user);
+        $validation = $this->userValidator->validateUser($user);
 
         if ($validation->isFailed()) {
             $validation->setMessage(__('Please check your input'));
@@ -66,27 +76,5 @@ final class UserGenerator implements DomainServiceInterface
         $this->logger->info(__('User created successfully: %s', $userId));
 
         return $userId;
-    }
-
-    /**
-     * @param UserData $user The user
-     *
-     * @return ValidationResult The validation result
-     */
-    private function validateUser(UserData $user): ValidationResult
-    {
-        $validation = new ValidationResult();
-
-        if (empty($user->username)) {
-            $validation->addError('username', __('Input required'));
-        }
-
-        if (empty($user->email)) {
-            $validation->addError('email', __('Input required'));
-        } elseif (filter_var($user->email, FILTER_VALIDATE_EMAIL) === false) {
-            $validation->addError('email', __('Invalid email address'));
-        }
-
-        return $validation;
     }
 }

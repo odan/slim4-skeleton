@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\UserForm;
+use App\Domain\User\Service\UserForm;
 use App\Responder\JsonResponder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

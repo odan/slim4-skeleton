@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\UserDataTable;
+use App\Domain\User\Service\UserDataTable;
 use App\Responder\JsonResponder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

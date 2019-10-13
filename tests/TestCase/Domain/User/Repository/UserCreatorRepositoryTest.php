@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase\Domain\User;
+namespace App\Test\TestCase\Domain\User\Repository;
 
 use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserGeneratorRepository;
@@ -29,7 +29,7 @@ class UserCreatorRepositoryTest extends TestCase
      *
      * @return UserGeneratorRepository The instance
      */
-    protected function createRepository(): UserGeneratorRepository
+    protected function createInstance(): UserGeneratorRepository
     {
         return $this->getContainer()->get(UserGeneratorRepository::class);
     }
@@ -41,7 +41,7 @@ class UserCreatorRepositoryTest extends TestCase
      */
     public function testInsertUser(): void
     {
-        $repository = $this->createRepository();
+        $repository = $this->createInstance();
 
         $user = new UserData();
         $user->username = 'john.doe';

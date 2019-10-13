@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\User;
+namespace App\Domain\User\Service;
 
 use App\Domain\Service\DomainServiceInterface;
 use App\Domain\User\Data\UserData;
@@ -67,8 +67,6 @@ final class UserForm implements DomainServiceInterface
 
         if (empty($form->email)) {
             $validation->addError('email', __('Input required'));
-        } elseif (filter_var($form->email, FILTER_VALIDATE_EMAIL) === false) {
-            $validation->addError('email', __('Invalid email address'));
         }
 
         return $validation;

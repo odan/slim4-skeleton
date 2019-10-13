@@ -10,24 +10,23 @@ use App\Domain\User\Data\UserData;
 final class UserMapper
 {
     /**
-     * Create data object from array.
+     * Maps array to new.
      *
      * @param array $data The array with data
      *
      * @return UserData The object
      */
-    public static function fromArray(array $data): UserData
+    public static function createFromArray(array $data): UserData
     {
         $user = new UserData();
-
-        $user->id = $data['id'] ?? null;
-        $user->username = $data['username'] ?? null;
-        $user->firstName = $data['first_name'] ?? null;
-        $user->lastName = $data['last_name'] ?? null;
-        $user->email = $data['email'] ?? null;
-        $user->locale = $data['locale'] ?? null;
-        $user->role = $data['role'] ?? null;
-        $user->enabled = (bool)$data['enabled'];
+        $user->id = isset($data['id']) ? (int)$data['id'] : null;
+        $user->username = isset($data['username']) ? (string)$data['username'] : null;
+        $user->firstName = isset($data['first_name']) ? (string)$data['first_name'] : null;
+        $user->lastName = isset($data['last_name']) ? (string)$data['last_name'] : null;
+        $user->email = isset($data['email']) ? (string)$data['email'] : null;
+        $user->locale = isset($data['locale']) ? (string)$data['locale'] : null;
+        $user->role = isset($data['role']) ? (string)$data['role'] : null;
+        $user->enabled = isset($data['enabled']) ? (bool)$data['enabled'] : false;
 
         return $user;
     }
