@@ -2,8 +2,8 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Model\User;
 use App\Domain\User\Mapper\UserMapper;
+use App\Domain\User\Model\User;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
@@ -38,11 +38,11 @@ final class UserRepository implements RepositoryInterface
     {
         $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
 
-        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
+        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_OBJ);
 
         $result = [];
         foreach ($rows as $row) {
-            $result[] = UserMapper::createFromArray($row);
+            $result[] = UserMapper::createFromObject($row);
         }
 
         return $result;
