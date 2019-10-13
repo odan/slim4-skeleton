@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Model\User;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
@@ -30,11 +30,11 @@ class UserGeneratorRepository implements RepositoryInterface
     /**
      * Insert user row.
      *
-     * @param UserData $user The user
+     * @param User $user The user
      *
      * @return int The new ID
      */
-    public function insertUser(UserData $user): int
+    public function insertUser(User $user): int
     {
         $row = [
             'first_name' => $user->firstName,

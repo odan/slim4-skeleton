@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Mapper;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Model\User;
 
 /**
  * Mapper.
@@ -14,11 +14,11 @@ final class UserMapper
      *
      * @param array $data The array with data
      *
-     * @return UserData The object
+     * @return User The object
      */
-    public static function createFromArray(array $data): UserData
+    public static function createFromArray(array $data): User
     {
-        $user = new UserData();
+        $user = new User();
         $user->id = isset($data['id']) ? (int)$data['id'] : null;
         $user->username = isset($data['username']) ? (string)$data['username'] : null;
         $user->firstName = isset($data['first_name']) ? (string)$data['first_name'] : null;

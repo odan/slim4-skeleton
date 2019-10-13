@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User\Service;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Model\User;
 use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Domain\User\Service\UserGenerator;
 use App\Test\TestCase\UnitTestTrait;
@@ -39,7 +39,7 @@ class UserGeneratorTest extends TestCase
 
         $this->mockMethod([UserGeneratorRepository::class, 'insertUser'])->willReturn(1);
 
-        $user = new UserData();
+        $user = new User();
         $user->username = 'john.doe';
         $user->email = 'john.doe@example.com';
         $user->firstName = 'John';

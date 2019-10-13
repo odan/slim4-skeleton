@@ -3,7 +3,7 @@
 namespace App\Domain\User\Service;
 
 use App\Domain\Service\DomainServiceInterface;
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Model\User;
 use Odan\Validation\ValidationException;
 use Odan\Validation\ValidationResult;
 use stdClass;
@@ -47,7 +47,7 @@ final class UserForm implements DomainServiceInterface
         }
 
         // Map form to DTO
-        $user = new UserData();
+        $user = new User();
         $user->username = $form->username;
         $user->email = $form->email;
 

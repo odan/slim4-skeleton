@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\User\Data;
+namespace App\Domain\User\Model;
 
 /**
  * Data.
  */
-final class UserData
+final class User
 {
     /** @var int|null */
     public $id;

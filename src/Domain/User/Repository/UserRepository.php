@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Model\User;
 use App\Domain\User\Mapper\UserMapper;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
@@ -32,7 +32,7 @@ final class UserRepository implements RepositoryInterface
     /**
      * Find all users.
      *
-     * @return UserData[] A list of users
+     * @return User[] A list of users
      */
     public function findAllUsers(): array
     {
