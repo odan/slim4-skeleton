@@ -29,13 +29,9 @@ final class HomeAction
     /**
      * Action.
      *
-     * @param Request $request The request
-     * @param Response $response The response
-     * @param array $args The arguments
-     *
      * @return Response The new response
      */
-    public function __invoke(Request $request, Response $response, array $args = []): Response
+    public function __invoke(): Response
     {
         $viewData = [
             'now' => date('d.m.Y H:i:s'),

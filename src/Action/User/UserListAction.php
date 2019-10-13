@@ -29,11 +29,9 @@ final class UserListAction
     /**
      * Action.
      *
-     * @param Request $request The request
-     *
      * @return Response The response
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(): Response
     {
         return $this->responder->render('user/user-list.twig');
     }

@@ -4,7 +4,6 @@ const {defaults} = require('jest-config');
 module.exports = {
     verbose: true,
     testMatch: ['**/(*.)test.js'],
-    moduleFileExtensions: ['js', 'json'],
     moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
     coverageDirectory: './build/tests/unit/coverage',
     coverageReporters: ['json', 'html'],

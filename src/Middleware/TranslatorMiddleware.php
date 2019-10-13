@@ -51,7 +51,6 @@ final class TranslatorMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        //$locale = 'de_DE';
         $domain = 'messages';
 
         // Set language

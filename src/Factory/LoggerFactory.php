@@ -69,12 +69,12 @@ class LoggerFactory
     public function addFileHandler(string $filename, int $level = null): self
     {
         $filename = sprintf('%s/%s', $this->path, $filename);
-        $handler = new RotatingFileHandler($filename, 0, $level ?? $this->level, true, 0777);
+        $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level ?? $this->level, true, 0777);
 
         // The last "true" here tells monolog to remove empty []'s
-        $handler->setFormatter(new LineFormatter(null, null, false, true));
+        $rotatingFileHandler->setFormatter(new LineFormatter(null, null, false, true));
 
-        $this->handler[] = $handler;
+        $this->handler[] = $rotatingFileHandler;
 
         return $this;
     }
@@ -90,10 +90,10 @@ class LoggerFactory
      */
     public function addConsoleHandler(int $level = null): self
     {
-        $handler = new StreamHandler('php://stdout', $level ?? $this->level);
-        $handler->setFormatter(new LineFormatter(null, null, false, true));
+        $streamHandler = new StreamHandler('php://stdout', $level ?? $this->level);
+        $streamHandler->setFormatter(new LineFormatter(null, null, false, true));
 
-        $this->handler[] = $handler;
+        $this->handler[] = $streamHandler;
 
         return $this;
     }

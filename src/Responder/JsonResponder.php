@@ -4,7 +4,7 @@ namespace App\Responder;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use RuntimeException;
+use UnexpectedValueException;
 
 /**
  * A generic JSON responder.
@@ -31,7 +31,7 @@ final class JsonResponder
      *
      * @param array|null $data The data
      *
-     * @throws RuntimeException
+     * @throws UnexpectedValueException
      *
      * @return ResponseInterface
      */
@@ -39,7 +39,7 @@ final class JsonResponder
     {
         $json = json_encode($data);
         if ($json === false) {
-            throw new RuntimeException('Malformed UTF-8 characters, possibly incorrectly encoded.');
+            throw new UnexpectedValueException('Malformed UTF-8 characters, possibly incorrectly encoded.');
         }
 
         $response = $this->responseFactory->createResponse()->withHeader('Content-Type', 'application/json');
