@@ -19,8 +19,8 @@ export class UserList {
             'columns': [
                 {'data': 'username'},
                 {'data': 'email'},
-                {'data': 'firstName'},
-                {'data': 'lastName'},
+                {'data': 'first_name'},
+                {'data': 'last_name'},
                 {'data': 'role'},
                 {'data': 'enabled'},
                 {

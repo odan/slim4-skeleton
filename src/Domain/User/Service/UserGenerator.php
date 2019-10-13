@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\Service\DomainServiceInterface;
+use App\Domain\Service\ServiceInterface;
 use App\Domain\User\Model\User;
 use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Domain\User\Validator\UserValidator;
@@ -13,7 +13,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Domain Service.
  */
-final class UserGenerator implements DomainServiceInterface
+final class UserGenerator implements ServiceInterface
 {
     /**
      * @var UserGeneratorRepository

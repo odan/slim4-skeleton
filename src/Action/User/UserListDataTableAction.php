@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\Service\UserDataTable;
+use App\Domain\User\Service\UserListDataTable;
 use App\Responder\JsonResponder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,12 +10,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class DataTableUserAction
+final class UserListDataTableAction
 {
     /**
-     * @var UserDataTable
+     * @var UserList
      */
-    private $userDataTable;
+    private $userListDataTable;
 
     /**
      * @var JsonResponder
@@ -25,14 +25,14 @@ final class DataTableUserAction
     /**
      * Constructor.
      *
-     * @param UserDataTable $userDataTable The service
+     * @param UserListDataTable $userListDataTable The service
      * @param JsonResponder $responder The responder
      */
     public function __construct(
-        UserDataTable $userDataTable,
+        UserListDataTable $userListDataTable,
         JsonResponder $responder
     ) {
-        $this->userDataTable = $userDataTable;
+        $this->userListDataTable = $userListDataTable;
         $this->responder = $responder;
     }
 
@@ -47,6 +47,6 @@ final class DataTableUserAction
     {
         $params = (array)$request->getParsedBody();
 
-        return $this->responder->render($this->userDataTable->getDataTable($params));
+        return $this->responder->render($this->userListDataTable->listAllUsers($params));
     }
 }

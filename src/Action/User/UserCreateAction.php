@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class CreateUserAction
+final class UserCreateAction
 {
     /**
      * @var UserForm
@@ -47,7 +47,7 @@ final class CreateUserAction
      */
     public function __invoke(Request $request): Response
     {
-        $userId = $this->userForm->createUser((object)(array)$request->getParsedBody());
+        $userId = $this->userForm->createUser((object)$request->getParsedBody());
 
         return $this->responder->render([
             'success' => true,

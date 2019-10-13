@@ -10,9 +10,9 @@ return static function (App $app) {
 
     $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');
 
-    $app->get('/users', \App\Action\User\ListUserAction::class)->setName('list-user');
+    $app->get('/users', \App\Action\User\UserListAction::class)->setName('user-list');
 
-    $app->post('/users/datatable', \App\Action\User\DataTableUserAction::class)->setName('datatable-user');
+    $app->post('/users/datatable', \App\Action\User\UserListDataTableAction::class)->setName('user-datatable');
 
-    $app->post('/users', \App\Action\User\CreateUserAction::class)->setName('create-user');
+    $app->post('/users', \App\Action\User\UserCreateAction::class)->setName('user-create');
 };

@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Action.
  */
-final class ListUserAction
+final class UserListAction
 {
     /**
      * @var HtmlResponder

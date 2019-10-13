@@ -2,7 +2,8 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\Service\DomainServiceInterface;
+use App\Domain\Service\ServiceInterface;
+use App\Domain\User\Mapper\UserMapper;
 use App\Domain\User\Model\User;
 use Odan\Validation\ValidationException;
 use Odan\Validation\ValidationResult;
@@ -11,7 +12,7 @@ use stdClass;
 /**
  * Service.
  */
-final class UserForm implements DomainServiceInterface
+final class UserForm implements ServiceInterface
 {
     /**
      * @var UserGenerator
@@ -46,10 +47,7 @@ final class UserForm implements DomainServiceInterface
             throw new ValidationException($validation);
         }
 
-        // Map form to DTO
-        $user = new User();
-        $user->username = $form->username;
-        $user->email = $form->email;
+        $user = UserMapper::createFromObject($form);
 
         return $this->userCreator->createUser($user);
     }
