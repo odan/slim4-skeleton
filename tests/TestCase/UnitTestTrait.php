@@ -42,6 +42,8 @@ trait UnitTestTrait
 
         if ($container instanceof Container) {
             $container->set($class, $this->createMockObject($class));
+
+            return;
         }
 
         throw new UnexpectedValueException(sprintf('The class could not be mocked: %s', $class));
