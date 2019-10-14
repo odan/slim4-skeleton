@@ -5,8 +5,6 @@ use App\Middleware\TranslatorMiddleware;
 use App\Utility\Configuration;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
-use League\Container\Container;
-use League\Container\ReflectionContainer;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -22,122 +20,112 @@ use Symfony\Component\Translation\Loader\MoFileLoader;
 use Symfony\Component\Translation\Translator;
 use Twig\Loader\FilesystemLoader;
 
-$container = new Container();
+return [
+    // Application settings
+    Configuration::class => static function () {
+        return new Configuration(require __DIR__ . '/settings.php');
+    },
 
-$container->delegate(new ReflectionContainer());
+    App::class => static function (ContainerInterface $container) {
+        AppFactory::setContainer($container);
+        $app = AppFactory::create();
 
-// The container
-$container->share(ContainerInterface::class, static function (ContainerInterface $container) {
-    return $container;
-})->addArgument($container);
+        // Set the base path to run the app in a subdirectory.
+        // This path is used in urlFor().
+        $basePath = (new BasePathDetector($_SERVER))->getBasePath();
+        $app->setBasePath($basePath);
 
-// Application settings
-$container->share(Configuration::class, static function () {
-    return new Configuration(require __DIR__ . '/settings.php');
-});
+        $config = $container->get(Configuration::class);
+        $routeCacheFile = $config->get('router')['cache_file'];
+        if ($routeCacheFile) {
+            $app->getRouteCollector()->setCacheFile($routeCacheFile);
+        }
 
-// Slim App
-$container->share(App::class, static function (ContainerInterface $container) {
-    AppFactory::setContainer($container);
-    $app = AppFactory::create();
+        return $app;
+    },
 
-    // Set the base path to run the app in a subdirectory.
-    // This path is used in urlFor().
-    $basePath = (new BasePathDetector($_SERVER))->getBasePath();
-    $app->setBasePath($basePath);
+    // For the HtmlResponder
+    ResponseFactoryInterface::class => static function () {
+        return new ResponseFactory();
+    },
 
-    $config = $container->get(Configuration::class);
-    $routeCacheFile = $config->get('router')['cache_file'];
-    if ($routeCacheFile) {
-        $app->getRouteCollector()->setCacheFile($routeCacheFile);
-    }
+    // The Slim RouterParser
+    RouteParserInterface::class => static function (ContainerInterface $container) {
+        return $container->get(App::class)->getRouteCollector()->getRouteParser();
+    },
 
-    return $app;
-})->addArgument($container);
+    // The logger factory
+    LoggerFactory::class => static function (ContainerInterface $container) {
+        return new LoggerFactory($container->get(Configuration::class)->get('logger'));
+    },
 
-// For the HtmlResponder
-$container->share(ResponseFactoryInterface::class, static function () {
-    return new ResponseFactory();
-});
+    // Twig templates
+    Twig::class => static function (ContainerInterface $container) {
+        $config = $container->get(Configuration::class);
+        $twigSettings = $config->get('twig');
 
-// The Slim RouterParser
-$container->share(RouteParserInterface::class, static function (ContainerInterface $container) {
-    return $container->get(App::class)->getRouteCollector()->getRouteParser();
-})->addArgument($container);
+        $twig = new Twig($twigSettings['path'], [
+            'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
+        ]);
 
-// The logger factory
-$container->share(LoggerFactory::class, static function (ContainerInterface $container) {
-    return new LoggerFactory($container->get(Configuration::class)->get('logger'));
-})->addArgument($container);
+        $loader = $twig->getLoader();
+        if ($loader instanceof FilesystemLoader) {
+            $loader->addPath($config->get('public'), 'public');
+        }
 
-// Twig templates
-$container->share(Twig::class, static function (ContainerInterface $container) {
-    $config = $container->get(Configuration::class);
-    $twigSettings = $config->get('twig');
+        $environment = $twig->getEnvironment();
 
-    $twig = new Twig($twigSettings['path'], [
-        'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
-    ]);
+        // Add relative base url
+        $basePath = $container->get(App::class)->getBasePath();
+        $environment->addGlobal('base_path', $basePath . '/');
 
-    $loader = $twig->getLoader();
-    if ($loader instanceof FilesystemLoader) {
-        $loader->addPath($config->get('public'), 'public');
-    }
+        // Add Twig extensions
+        $twig->addExtension(new TwigTranslationExtension());
 
-    $environment = $twig->getEnvironment();
+        $twig->addExtension(new WebpackExtension(
+            $config->get('public') . '/assets/manifest.json',
+            $basePath . '/assets/',
+            $basePath . '/assets/'
+        ));
 
-    // Add relative base url
-    $basePath = $container->get(App::class)->getBasePath();
-    $environment->addGlobal('base_path', $basePath . '/');
+        return $twig;
+    },
 
-    // Add Twig extensions
-    $twig->addExtension(new TwigTranslationExtension());
+    // Translation
+    Translator::class => static function (ContainerInterface $container) {
+        $settings = $container->get(Configuration::class)->get('locale');
 
-    $twig->addExtension(new WebpackExtension(
-        $config->get('public') . '/assets/manifest.json',
-        $basePath . '/assets/',
-        $basePath . '/assets/'
-    ));
+        $translator = new Translator(
+            $settings['locale'],
+            new MessageFormatter(new IdentityTranslator()),
+            $settings['cache'],
+            $settings['debug']
+        );
 
-    return $twig;
-})->addArgument($container);
+        $translator->addLoader('mo', new MoFileLoader());
 
-// Translation
-$container->share(Translator::class, static function (ContainerInterface $container) {
-    $settings = $container->get(Configuration::class)->get('locale');
+        // Set translator instance
+        __($translator);
 
-    $translator = new Translator(
-        $settings['locale'],
-        new MessageFormatter(new IdentityTranslator()),
-        $settings['cache'],
-        $settings['debug']
-    );
+        return $translator;
+    },
 
-    $translator->addLoader('mo', new MoFileLoader());
+    TranslatorMiddleware::class => static function (ContainerInterface $container) {
+        $settings = $container->get(Configuration::class)->get('locale');
+        $localPath = $settings['path'];
+        $translator = $container->get(Translator::class);
 
-    // Set translator instance
-    __($translator);
+        return new TranslatorMiddleware($translator, $localPath);
+    },
 
-    return $translator;
-})->addArgument($container);
+    Connection::class => static function (ContainerInterface $container) {
+        return new Connection($container->get(Configuration::class)->get('db'));
+    },
 
-$container->share(TranslatorMiddleware::class, static function (ContainerInterface $container) {
-    $settings = $container->get(Configuration::class)->get('locale');
-    $localPath = $settings['path'];
-    $translator = $container->get(Translator::class);
+    PDO::class => static function (ContainerInterface $container) {
+        $db = $container->get(Connection::class);
+        $db->getDriver()->connect();
 
-    return new TranslatorMiddleware($translator, $localPath);
-})->addArgument($container);
-
-$container->share(Connection::class, static function (Container $container) {
-    return new Connection($container->get(Configuration::class)->get('db'));
-})->addArgument($container);
-
-$container->share(PDO::class, static function (Container $container) {
-    $db = $container->get(Connection::class);
-    $db->getDriver()->connect();
-
-    return $db->getDriver()->getConnection();
-})->addArgument($container);
-
-return $container;
+        return $db->getDriver()->getConnection();
+    },
+];

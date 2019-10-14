@@ -2,10 +2,11 @@
 
 namespace App\Test\TestCase;
 
-use League\Container\Container;
+use DI\Container;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
+use UnexpectedValueException;
 
 /**
  * Unit test.
@@ -31,6 +32,8 @@ trait UnitTestTrait
      *
      * @param string $class The class or interface
      *
+     * @throws UnexpectedValueException
+     *
      * @return void
      */
     protected function registerMock(string $class): void
@@ -38,8 +41,10 @@ trait UnitTestTrait
         $container = $this->getContainer();
 
         if ($container instanceof Container) {
-            $container->add($class, $this->createMockObject($class));
+            $container->set($class, $this->createMockObject($class));
         }
+
+        throw new UnexpectedValueException(sprintf('The class could not be mocked: %s', $class));
     }
 
     /**

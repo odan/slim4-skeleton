@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase;
 
-use League\Container\Container;
+use DI\Container;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;

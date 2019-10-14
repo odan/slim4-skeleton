@@ -28,7 +28,7 @@ This project also uses the following packages:
 * [slim/psr7](https://github.com/slimphp/Slim-Psr7) as super lightweight PSR-7 implementation
 * [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
 * [slim/twig-view](https://github.com/slimphp/Twig-View) as template engine
-* [league/container](https://github.com/thephpleague/container) as container implementation (PSR-11)
+* [php-di/php-di](https://github.com/PHP-DI/PHP-DI) as container implementation (PSR-11)
 * [symfony/translation](https://github.com/symfony/translation) as translator
 * [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
 * [Webpack](https://webpack.js.org/) to bundle your assets
