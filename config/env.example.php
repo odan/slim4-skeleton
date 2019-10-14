@@ -16,7 +16,6 @@
  * a security breach, and production values will never have to be
  * shared with all project collaborators.
  */
-
 require __DIR__ . '/development.php';
 
 error_reporting(E_ALL);

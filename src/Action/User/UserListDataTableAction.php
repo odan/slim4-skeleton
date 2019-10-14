@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 final class UserListDataTableAction
 {
     /**
-     * @var UserList
+     * @var UserListDataTable
      */
     private $userListDataTable;
 
