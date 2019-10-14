@@ -7,23 +7,31 @@ cache.properties
 .php_cs.cache
 .vscode
 
+vendor/
+build/
+node_modules/
+
 .env
 public/.env
 
 env.php
 config/env.php
 
-vendor/
-build/
-node_modules/
-
-!public/cache/
-public/cache/*
-!public/cache/.htaccess
+#!public/assets/
+#public/assets/*
+#!public/assets/.htaccess
 
 !tmp/
 tmp/*
 !tmp/.htaccess
+
+!tmp/locale-cache/
+tmp/locale-cache/*
+!tmp/locale-cache/empty
+
+!tmp/twig-cache/
+tmp/twig-cache/*
+!tmp/twig-cache/empty
 
 !logs/
 logs/*
