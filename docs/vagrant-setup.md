@@ -79,7 +79,7 @@ chmod -R 760 tmp/
 chmod -R 760 public/cache/
 
 #chmod +x bin/cli.php
-php bin/cli.php install --environment ci
+#php bin/cli.php install --environment ci
 
 vendor/bin/phpunit
 ```
