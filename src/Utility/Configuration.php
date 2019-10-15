@@ -5,7 +5,7 @@ namespace App\Utility;
 /**
  * Application Configuration.
  */
-class Configuration
+final class Configuration
 {
     /**
      * @var array
