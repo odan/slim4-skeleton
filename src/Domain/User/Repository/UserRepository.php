@@ -38,11 +38,11 @@ final class UserRepository implements RepositoryInterface
     {
         $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
 
-        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_OBJ);
+        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
 
         $result = [];
         foreach ($rows as $row) {
-            $result[] = UserMapper::createFromObject($row);
+            $result[] = UserMapper::createFromArray($row);
         }
 
         return $result;

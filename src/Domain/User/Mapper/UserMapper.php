@@ -3,7 +3,7 @@
 namespace App\Domain\User\Mapper;
 
 use App\Domain\User\Model\User;
-use stdClass;
+use App\Utility\TypedArray;
 
 /**
  * Mapper.
@@ -11,23 +11,25 @@ use stdClass;
 final class UserMapper
 {
     /**
-     * Maps object to model.
+     * Map array to model.
      *
-     * @param stdClass $data The array with data
+     * @param array $array The array with data
      *
      * @return User The object
      */
-    public static function createFromObject(stdClass $data): User
+    public static function createFromArray(array $array): User
     {
+        $data = new TypedArray($array);
+
         $user = new User();
-        $user->id = isset($data->id) ? (int)$data->id : null;
-        $user->username = isset($data->username) ? (string)$data->username : null;
-        $user->firstName = isset($data->first_name) ? (string)$data->first_name : null;
-        $user->lastName = isset($data->last_name) ? (string)$data->last_name : null;
-        $user->email = isset($data->email) ? (string)$data->email : null;
-        $user->locale = isset($data->locale) ? (string)$data->locale : null;
-        $user->role = isset($data->role) ? (string)$data->role : null;
-        $user->enabled = isset($data->enabled) ? (bool)$data->enabled : false;
+        $user->id = $data->findInt('id');
+        $user->username = $data->findString('username');
+        $user->firstName = $data->findString('first_name');
+        $user->lastName = $data->findString('last_name');
+        $user->email = $data->findString('email');
+        $user->locale = $data->findString('locale');
+        $user->role = $data->findString('role');
+        $user->enabled = $data->getBool('enabled', false);
 
         return $user;
     }

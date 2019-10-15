@@ -47,7 +47,7 @@ final class UserCreateAction
      */
     public function __invoke(Request $request): Response
     {
-        $userId = $this->userForm->createUser((object)$request->getParsedBody());
+        $userId = $this->userForm->createUser((array)$request->getParsedBody());
 
         return $this->responder->render([
             'success' => true,

@@ -4,10 +4,9 @@ namespace App\Domain\User\Service;
 
 use App\Domain\Service\ServiceInterface;
 use App\Domain\User\Mapper\UserMapper;
-use App\Domain\User\Model\User;
+use App\Utility\TypedArray;
 use Odan\Validation\ValidationException;
 use Odan\Validation\ValidationResult;
-use stdClass;
 
 /**
  * Service.
@@ -32,11 +31,11 @@ final class UserForm implements ServiceInterface
     /**
      * Create user.
      *
-     * @param stdClass $form The form data
+     * @param array $form The form data
      *
      * @return int The new user ID
      */
-    public function createUser(stdClass $form): int
+    public function createUser(array $form): int
     {
         // Validation
         $validation = $this->validateForm($form);
@@ -47,7 +46,7 @@ final class UserForm implements ServiceInterface
             throw new ValidationException($validation);
         }
 
-        $user = UserMapper::createFromObject($form);
+        $user = UserMapper::createFromArray($form);
 
         return $this->userCreator->createUser($user);
     }
@@ -55,15 +54,16 @@ final class UserForm implements ServiceInterface
     /**
      * Validate form.
      *
-     * @param stdClass $form The form data
+     * @param array $form The form data
      *
      * @return ValidationResult The validation result
      */
-    private function validateForm(stdClass $form): ValidationResult
+    private function validateForm(array $form): ValidationResult
     {
         $validation = new ValidationResult();
+        $data = new TypedArray($form);
 
-        if (empty($form->email)) {
+        if ($data->isEmpty('email')) {
             $validation->addError('email', __('Input required'));
         }
 
