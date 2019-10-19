@@ -12,7 +12,6 @@ use Selective\BasePath\BasePathDetector;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
-use Slim\Psr7\Factory\ResponseFactory;
 use Slim\Views\Twig;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
@@ -45,8 +44,10 @@ return [
     },
 
     // For the HtmlResponder
-    ResponseFactoryInterface::class => static function () {
-        return new ResponseFactory();
+    ResponseFactoryInterface::class => static function (ContainerInterface $container) {
+        $app = $container->get(App::class);
+
+        return $app->getResponseFactory();
     },
 
     // The Slim RouterParser
