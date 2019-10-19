@@ -3,7 +3,7 @@
 namespace App\Domain\User\Mapper;
 
 use App\Domain\User\Model\User;
-use App\Utility\TypedArray;
+use Selective\ArrayReader\ArrayReader;
 
 /**
  * Mapper.
@@ -19,7 +19,7 @@ final class UserMapper
      */
     public static function createFromArray(array $array): User
     {
-        $data = new TypedArray($array);
+        $data = new ArrayReader($array);
 
         $user = new User();
         $user->id = $data->findInt('id');

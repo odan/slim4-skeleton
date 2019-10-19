@@ -4,7 +4,7 @@ namespace App\Domain\User\Service;
 
 use App\Domain\Service\ServiceInterface;
 use App\Domain\User\Mapper\UserMapper;
-use App\Utility\TypedArray;
+use Selective\ArrayReader\ArrayReader;
 use Selective\Validation\Exception\ValidationException;
 use Selective\Validation\ValidationResult;
 
@@ -61,7 +61,7 @@ final class UserForm implements ServiceInterface
     private function validateForm(array $form): ValidationResult
     {
         $validation = new ValidationResult();
-        $data = new TypedArray($form);
+        $data = new ArrayReader($form);
 
         if ($data->isEmpty('email')) {
             $validation->addError('email', __('Input required'));
