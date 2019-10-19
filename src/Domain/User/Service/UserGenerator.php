@@ -7,7 +7,7 @@ use App\Domain\User\Model\User;
 use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Domain\User\Validator\UserValidator;
 use App\Factory\LoggerFactory;
-use Odan\Validation\ValidationException;
+use Selective\Validation\Exception\ValidationException;
 use Psr\Log\LoggerInterface;
 
 /**

@@ -5,8 +5,8 @@ namespace App\Domain\User\Service;
 use App\Domain\Service\ServiceInterface;
 use App\Domain\User\Mapper\UserMapper;
 use App\Utility\TypedArray;
-use Odan\Validation\ValidationException;
-use Odan\Validation\ValidationResult;
+use Selective\Validation\Exception\ValidationException;
+use Selective\Validation\ValidationResult;
 
 /**
  * Service.

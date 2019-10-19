@@ -22,6 +22,7 @@
         "php-di/php-di": "^6.0",
         "psr/log": "^1.1",
         "selective/basepath": "^0.1.0",
+        "selective/validation": "^0.7.1",
         "slim/psr7": "^0.5.0",
         "slim/slim": "^4.3",
         "slim/twig-view": "3.0.0-beta",

@@ -3,7 +3,7 @@
 namespace App\Domain\User\Validator;
 
 use App\Domain\User\Model\User;
-use Odan\Validation\ValidationResult;
+use Selective\Validation\ValidationResult;
 
 /**
  * Validator.
