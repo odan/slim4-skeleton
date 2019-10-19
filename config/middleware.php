@@ -3,6 +3,7 @@
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
 use App\Utility\Configuration;
+use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
@@ -12,6 +13,8 @@ return static function (App $app) {
 
     // Parse json, form data and xml
     $app->addBodyParsingMiddleware();
+
+    $app->add(ValidationExceptionMiddleware::class);
 
     // Twig
     $app->add(TwigMiddleware::createFromContainer($app, Twig::class));

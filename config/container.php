@@ -9,6 +9,8 @@ use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathDetector;
+use Selective\Validation\Encoder\JsonEncoder;
+use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
@@ -128,5 +130,11 @@ return [
         $db->getDriver()->connect();
 
         return $db->getDriver()->getConnection();
+    },
+
+    ValidationExceptionMiddleware::class => static function (ContainerInterface $container) {
+        $factory = $container->get(ResponseFactoryInterface::class);
+
+        return new ValidationExceptionMiddleware($factory, new JsonEncoder());
     },
 ];
