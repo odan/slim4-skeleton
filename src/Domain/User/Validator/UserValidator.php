@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Validator;
 
-use App\Domain\User\Model\User;
+use App\Domain\User\Data\UserData;
 use Selective\Validation\ValidationResult;
 
 /**
@@ -13,11 +13,11 @@ final class UserValidator
     /**
      * Validate.
      *
-     * @param User $user The user
+     * @param UserData $user The user
      *
      * @return ValidationResult The validation result
      */
-    public function validateUser(User $user): ValidationResult
+    public function validateUser(UserData $user): ValidationResult
     {
         $validation = new ValidationResult();
 

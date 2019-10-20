@@ -2,8 +2,8 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\Service\ServiceInterface;
-use App\Domain\User\Mapper\UserMapper;
+use App\Domain\User\Data\UserData;
+use App\Interfaces\ServiceInterface;
 use Selective\ArrayReader\ArrayReader;
 use Selective\Validation\Exception\ValidationException;
 use Selective\Validation\ValidationResult;
@@ -46,9 +46,7 @@ final class UserForm implements ServiceInterface
             throw new ValidationException($validation);
         }
 
-        $user = UserMapper::createFromArray($form);
-
-        return $this->userCreator->createUser($user);
+        return $this->userCreator->createUser(new UserData($form));
     }
 
     /**

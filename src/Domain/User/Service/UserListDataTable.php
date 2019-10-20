@@ -2,8 +2,8 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\Service\ServiceInterface;
 use App\Domain\User\Repository\UserListDataTableRepository;
+use App\Interfaces\ServiceInterface;
 
 /**
  * Service.
