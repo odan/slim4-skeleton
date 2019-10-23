@@ -1,4 +1,9 @@
-theme: jekyll-theme-cayman
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: benbalter/retlab
+# minimal-mistakes-jekyll
+#theme: jekyll-theme-cayman
 
 # Name of your site (displayed in the header)
 name: Slim 4 skeleton

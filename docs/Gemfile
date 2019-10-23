@@ -1,0 +1,1 @@
+gem "jekyll-remote-theme"
