@@ -44,9 +44,10 @@ $service->transfer(100, $sourceAccount, $destinationAccount);
 
 By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
 This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
+
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
-### A HTTP Request and response
+### A HTTP request and response
 
 A typical HTTP request data flow and back to the response:
 
