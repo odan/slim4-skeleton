@@ -3,7 +3,8 @@
 
 * Create a file `vagrantfile`:
 
-```vagrantfile
+{% raw %}
+```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
@@ -16,9 +17,11 @@ Vagrant.configure("2") do |config|
   end  
 end
 ```
+{% endraw %}
 
 * Create a file: `bootstrap.sh`
 
+{% raw %}
 ```sh
 #!/usr/bin/env bash
 
@@ -83,6 +86,7 @@ chmod -R 760 public/cache/
 
 vendor/bin/phpunit
 ```
+{% endraw %}
 
 * Run `vagrant up` 
 * Open http://localhost:8765
