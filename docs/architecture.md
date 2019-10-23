@@ -4,7 +4,7 @@ title: Architecture
 nav_order: 3
 ---
 
-## Architecture
+# Architecture
 
 This is a **service oriented**, MVC 2 architecture for enterprise applications. 
 
@@ -21,7 +21,7 @@ The **model layer** (M) is divided into multiple sub-categories:
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
 
-### Service-Oriented Architecture (SOA)
+## Service-Oriented Architecture (SOA)
 
 **SOA** uses **services** to build systems. **OOP** uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
 
@@ -47,7 +47,7 @@ This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d
 
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
-### A HTTP request and response
+## A HTTP request and response
 
 A typical HTTP request data flow and back to the response:
 

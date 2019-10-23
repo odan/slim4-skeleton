@@ -4,14 +4,14 @@ title: Configuration
 nav_order: 4
 ---
 
-## Configuration
+# Configuration
 
-### Application configuration 
+## Application configuration 
 
 * see `config/*`
 * todo: Add more description
 
-### Environment configuration
+## Environment configuration
 
 You may be familiar with the concept of `.env` files. 
 But we are considering `.env` as harmful because: 

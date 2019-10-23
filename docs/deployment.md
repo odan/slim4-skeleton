@@ -4,9 +4,9 @@ title: Deployment
 nav_order: 15
 ---
 
-## Deployment
+# Deployment
 
-### Building an artifact
+## Building an artifact
 
 To build a new artifact (ZIP file), for deployment, run:
 
@@ -21,7 +21,7 @@ the zip file with a SFTP client onto your server (`/var/www/example.com`).
 Then extract the artifact into a `htdocs/` sub-directory and run the migrations. 
 It's recommended to use `deploy.php` script for this task.
 
-#### Server setup
+### Server setup
 
 * Create a directory: `/var/www/example.com`
 * Create a directory: `/var/www/example.com/htdocs`
@@ -29,7 +29,7 @@ It's recommended to use `deploy.php` script for this task.
 * Upload `config/deploy.php` to `/var/www/example.com/deploy.php`
 * Make sure the apache [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot) points to the `public` path: `/var/www/example.com/htdocs/public`
 
-#### Deploying a new artifact
+### Deploying a new artifact
 
 * Upload the new artifact file `my_app_*.zip` to `/var/www/example.com/`
 * Then run `sudo php deploy.php my_app_*.zip`

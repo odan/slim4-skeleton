@@ -4,7 +4,7 @@ title: Database
 nav_order: 11
 ---
 
-## Database
+# Database
 
 ### Database configuration
 

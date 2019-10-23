@@ -4,7 +4,7 @@ title: Controllers
 nav_order: 8
 ---
 
-## Single Action Controllers
+# Single Action Controllers
 
 After passing through all assigned middleware, the request will be processed by a (controller) action.
 

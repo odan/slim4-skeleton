@@ -4,7 +4,7 @@ title: Testing
 nav_order: 14
 ---
 
-## Testing
+# Testing
 
 All tests are located in the `tests/` folder. To start the unit test run:
 
@@ -26,12 +26,12 @@ You can write several kinds of tests:
 * **Integration tests**: Database tests (e.g. Repositories), quite slow.
 * **Acceptance tests**: HTTP and API tests, quite fast.
 
-### Unit Tests
+## Unit Tests
 
 Unit tests should test the behavior and not the implementation details of your (service) classes.
 Make sure that unit tests are running in-memory only, because they have to be very fast. 
 
-#### Mocking the database
+### Mocking the database
 
 For the sake of real unit-tests and performance, we recommend mocking all Repository interfaces 
 (no problem with phpunit) or create an memory based Repository that implements the
@@ -50,7 +50,7 @@ Please take a look at this example to see how to mock out the complete database:
 
 * `tests/TestCase/Domain/User/UserListTest.php`
 
-### Debugging Unit Tests
+## Debugging Unit Tests
 
 To debug tests with PhpStorm you must have to mark the directory `tests/` 
 as the test root source.
@@ -63,7 +63,7 @@ as the test root source.
 * Right click `test`
 * Click `Debug (tests) PHPUnit`
 
-### Integration Tests
+## Integration Tests
 
 Everything is ready to run real database tests.
 
@@ -71,19 +71,19 @@ Please take a look at this example test:
 
 * `tests/TestCase/Domain/User/UserRepositoryTest.php`
 
-#### Fixtures
+### Fixtures
 
 See: `tests/Fixture/`
 
 todo: Add more description
 
-#### Seeds
+### Seeds
 
 See: `resources/seeds/`
 
 todo: Add more description
 
-### Acceptance Tests
+## Acceptance Tests
 
 Everything is prepared to run mocked HTTP tests. 
 
@@ -94,7 +94,7 @@ Please have a look at these sample tests in `tests/TestCase/Action` directory.
 
 > Tip: Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
 
-#### API test with curl
+### API test with curl
 
 Under linux you have to install curl to make HTTP requests to your api:
 

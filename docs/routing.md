@@ -4,11 +4,11 @@ title: Routing
 nav_order: 6
 ---
 
-## Routing
+# Routing
 
 All requests go through the same cycle:  `routing > middleware > conroller/action > response`
 
-### Routes
+## Routes
 
 All the app routes are defined in the [routes.php](https://github.com/odan/slim4-skeleton/blob/master/config/routes.php) file.
 
@@ -21,7 +21,7 @@ Every route is defined by a method corresponds to the HTTP verb. For example, a 
 $group->get('/users', \App\Action\User\UserListAction::class);
 ```
 
-### Predefined routes
+## Predefined routes
 
 * `GET /` => `Hello, World!`
 * `GET /hello/john` => `Hello, john!`

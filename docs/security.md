@@ -4,20 +4,20 @@ title: Security
 nav_order: 13
 ---
 
-## Security
+# Security
 
-### Session
+## Session
 
 This application uses `sessions` to store the logged-in user information. If you 
 have to add api routes you may use `JWT` or a `OAuth2 Bearer-Token` instead.
 
-### Authentication
+## Authentication
 
 The authentication depends on the defined routes and the attached middleware.
 You can add routing groups with Sessions and/or OAuth2 authentication. 
 It's up to you how you configure the routes and their individual authentication.
 
-### Authorization
+## Authorization
 
 To check user permissions, the Actions controller contains an `Auth` object.
 

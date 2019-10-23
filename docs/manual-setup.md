@@ -5,7 +5,7 @@ nav_order: 2
 has_children: true
 ---
 
-## Manual Setup
+# Manual Setup
 
 **Step 1:** Create a new project:
 
