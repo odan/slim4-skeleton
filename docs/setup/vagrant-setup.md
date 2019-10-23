@@ -1,7 +1,13 @@
+---
+layout: default
+title: Vagrant Setup
+parent: Installation
+nav_order: 1
+---
+
 ## Vagrant Setup
 
-
-* Create a file `vagrantfile`:
+Create a file `vagrantfile`:
 
 {% raw %}
 ```
@@ -19,7 +25,7 @@ end
 ```
 {% endraw %}
 
-* Create a file: `bootstrap.sh`
+Create a file: `bootstrap.sh`
 
 {% raw %}
 ```sh
