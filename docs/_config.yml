@@ -1,14 +1,13 @@
 plugins:
   - jekyll-include-cache
 
-#remote_theme: benbalter/retlab
 remote_theme: "pmarsceill/just-the-docs"
 
 # Name of your site (displayed in the header)
-name: Slim 4 skeleton
+name: Slim 4 Skeleton
 
 # Name of website (site.title)
-title: Slim 4 skeleton
+title: Slim 4 Skeleton
 
 # Short description of your site
-description: A PHP example application
+description: A Slim 4 example application
