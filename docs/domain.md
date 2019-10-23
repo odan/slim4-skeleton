@@ -6,7 +6,7 @@ nav_order: 12
 
 ## Domain
 
-### Domain Services
+### Services
 
 Here is the right place for complex business logic e.g. calulation, validation, file creation etc.
 
@@ -35,21 +35,85 @@ Quick summary:
 
 * Communication with the database.
 * Place for the data access logic (query logic).
-* This is no place for the business logic! Use [domain services](#domain-services) for the complex business and domain logic.
+* This is no place for the business logic! Use [services](#services) for the complex business and domain logic.
 
-
-### Value Objects
-
-Use it only for "small things" like Date, Money, CustomerId and as replacement for primitive data type like string, int, float, bool, array. A value object must be immutable and is responsible for keeping their state consistent [Read more](https://kacper.gunia.me/validating-value-objects/). A value object should only be filled using the constructor, classic `setter` methods are not allowed. Wither methods are allowed. Example: `public function withEmail(string $email): self { ... }`. A getter method name does not contain a `get` prefix. Example: `public function email(): string { return $this->email; }`. All properties must be `protected` or `private` accessed by the getter methods.
 
 ### Data Transfer Object (DTO) 
   
 A DTO contains only pure **data**. There is no business or domain specific logic, only simple validation logic. There is also no database access within a DTO. A service fetches data from a repository and  the repository (or the service) fills the DTO with data. A DTO can be used to transfer data inside or outside the domain.
 
+Example:
+
+```php
+<?php
+
+namespace App\Domain\Customer\Data;
+
+final class CustomerData
+{
+    /** @var string */
+    public $name;
+    
+    /** @var string */
+    public $email;
+    
+    /** @var \DateTimeImmutable */
+    public $dateOfBirth;
+}
+```
+
+### Value Objects
+
+Use it only for "small things" like Date, Money, CustomerId and as replacement for primitive data type like string, int, float, bool, array. 
+
+A value object must be **immutable** and is responsible for keeping their state consistent [Read more](https://kacper.gunia.me/validating-value-objects/). 
+
+A value object should only be filled using the constructor, classic `setter` methods are not allowed. Wither methods are allowed. Example: `public function withEmail(string $email): self { ... }`. A getter method name does not contain a `get` prefix. Example: `public function email(): string { return $this->email; }`. All properties must be `protected` or `private` accessed by the getter methods.
+
+Example
+
+```php
+<?php
+
+class CustomerId
+{
+    private $id;
+    
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
+    
+    public function equals(CustomerId $customerId): bool
+    {
+        return $this->id == $customerId->id;
+    }
+    
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
+}
+```
+
 ### Parameter object
 
-If you have a lot of parameters that fit together, you can replace them with a parameter object. [Read more](https://refactoring.com/catalog/introduceParameterObject.html)
+If you have a lot of parameters that fit together, 
+you can replace them with a parameter object. See [DTO](#data-transfer-object-dto)
 
 ### Types and enums
 
 Don't use strings or fix integer codes as values. Instead use public class constants.
+
+Example:
+
+```php
+<?php
+
+final class LevelType
+{
+    public const LOW = 1;
+    public const MEDIUM = 2;
+    public const HIGH = 3;
+}
+```

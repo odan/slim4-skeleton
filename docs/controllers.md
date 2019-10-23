@@ -4,7 +4,7 @@ title: Controllers
 nav_order: 8
 ---
 
-## Controllers
+## Single Action Controllers
 
 After passing through all assigned middleware, the request will be processed by a (controller) action.
 
@@ -39,7 +39,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ExampleAction implements ActionInterface
+final class ExampleAction
 {
     private $responseFactory;
     
@@ -59,4 +59,5 @@ class ExampleAction implements ActionInterface
 ```
 
 This concept will produce more classes, but these action classes have only one responsibility (SRP).
-Refactoring action classes is very easy now, because the routes in `routes.php` make use of the `::class` constant. 
+
+Refactoring action classes is very easy, because the routes in `routes.php` make use of the `::class` constant. 

@@ -9,7 +9,7 @@ nav_order: 11
 ### Database configuration
 
 * You may configure the database settings per server environment.
-* The global default settings are stored in `config/defaults.php` > `$settings['db']` 
+* The global default settings are stored in `config/defaults.php` under `$settings['db']` 
 
 ### Query Builder
 

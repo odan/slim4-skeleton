@@ -6,7 +6,7 @@ nav_order: 3
 
 ## Architecture
 
-This is a multi-layered MVC 2 architecture for enterprise applications. 
+This is a **service oriented** MVC 2 architecture for enterprise applications. 
 
 * **Model:** The core application, business logic, data manipulation
 * **View:** Presentation layer, display of information
@@ -20,9 +20,37 @@ The **model layer** (M) is divided into multiple sub-categories:
 * **Repository:** Data access logic, communication with databases
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
-In a **Service-Oriented Architecture (SOA)** we are seperating the **behavior** and the **data**. Please do not confuse it with classic **OOP**, where behavior and data belongs togehter. By seperating behavior from data, it's possible to build and maintain non-trivial applications over many years.
 
-This architecture also respects the SOLID principles to be TDD-friendly as much as possible.
+### Service-Oriented Architecture
+
+#### SOA (services) vs OOP (objects)
+
+SOA uses **services** to build systems. OOP uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
+
+**OOP**
+
+```php 
+$sourceAccount = new Account(100);
+$destinationAccount = new Account(0);
+$sourceAccount->transfer(100, $destinationAccount);
+```
+
+**SOA**
+
+```php
+$sourceAccount = new Account(100);
+$destinationAccount = new Account(0);
+$service = new AccountService();
+$service->transfer(100, $sourceAccount, $destinationAccount);
+```
+
+By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
+
+This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be TDD-friendly as much as possible.
+
+Read more:
+
+* <https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects/>
 
 ### Overview
 
