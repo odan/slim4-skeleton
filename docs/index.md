@@ -13,8 +13,7 @@ A Slim 4 Framework skeleton project.
 
 This is a skeleton project that includes Routing, Middleware, Twig templates, 
 Translations, Assets, Sessions, Database Queries, Migrations, 
-Console Commands, Authentication, Authorization, CSRF protection, 
-Logging and Unit testing.
+Console Commands, Authentication, Authorization, Logging and Unit testing.
 
 ## Installation
 

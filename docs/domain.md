@@ -6,7 +6,7 @@ nav_order: 12
 
 # Domain
 
-## Service
+## Services
 
 Here is the right place for complex business logic e.g. calculation, validation, file creation etc.
 
@@ -38,7 +38,7 @@ Quick summary:
 * This is no place for the business logic! Use [services](#services) for the complex business and domain logic.
 
 
-## Data Transfer Object (DTO) 
+## Data Transfer Objects (DTO) 
   
 A DTO contains only pure **data**. There is no business or domain specific logic, only simple validation logic. There is also no database access within a DTO. A service fetches data from a repository and  the repository (or the service) fills the DTO with data. A DTO can be used to transfer data inside or outside the domain.
 
@@ -96,7 +96,7 @@ class CustomerId
 }
 ```
 
-## Parameter object
+## Parameter objects
 
 If you have a lot of parameters that fit together, 
 you can replace them with a parameter object. See [DTO](#data-transfer-object-dto)
