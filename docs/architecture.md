@@ -21,9 +21,9 @@ The **model layer** (M) is divided into multiple sub-categories:
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
 
-### Service-Oriented Architecture
+### Service-Oriented Architecture (SOA)
 
-SOA uses **services** to build systems. OOP uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
+**SOA** uses **services** to build systems. **OOP** uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
 
 **OOP**
 
@@ -44,12 +44,11 @@ $service->transfer(100, $sourceAccount, $destinationAccount);
 
 By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
 This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
-
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
-### Overview
+### A HTTP Request and response
 
-A typical HTTP reqest data flow and back to the response:
+A typical HTTP request data flow and back to the response:
 
 ![image](https://user-images.githubusercontent.com/781074/59540964-b2dad000-8eff-11e9-89da-aa98e400bd88.png)
 
@@ -62,7 +61,7 @@ A typical HTTP reqest data flow and back to the response:
 3. Dispatch the request to the router.
 4. The router uses the HTTP method and the HTTP path to determine the appropriate action method.
 5. The invoked controller action is responsible for:
-   * Retrieving informations from the request
+   * Retrieving information from the request
    * Invoking the service and passing the parameters
    * Building the view data
    * Returning the response using a responder
@@ -75,7 +74,7 @@ A typical HTTP reqest data flow and back to the response:
 10. Fetch the rows (result set) or the new primary key (ID) from the database
 11. Map the row(s) to an object or a list of data objects. Optional use a data mapper to create the objects.
 12. The repository returns the result
-13. Do more calulations with the fetched data. Do more complex operations. Optional, commit or rollback the transaction.
+13. Do more calculations with the fetched data. Do more complex operations. Optional, commit or rollback the transaction.
 14. Return the result
 15. Create the view data for the responder (optional)
 16. Pass the view data to the responder
