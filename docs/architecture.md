@@ -6,7 +6,7 @@ nav_order: 3
 
 ## Architecture
 
-This is a **service oriented** MVC 2 architecture for enterprise applications. 
+This is a **service oriented**, MVC 2 architecture for enterprise applications. 
 
 * **Model:** The core application, business logic, data manipulation
 * **View:** Presentation layer, display of information
@@ -22,8 +22,6 @@ The **model layer** (M) is divided into multiple sub-categories:
 
 
 ### Service-Oriented Architecture
-
-#### SOA (services) vs OOP (objects)
 
 SOA uses **services** to build systems. OOP uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
 
@@ -45,12 +43,9 @@ $service->transfer(100, $sourceAccount, $destinationAccount);
 ```
 
 By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
+This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
 
-This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be TDD-friendly as much as possible.
-
-Read more:
-
-* <https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects/>
+Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
 ### Overview
 
