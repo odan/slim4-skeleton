@@ -1,3 +1,9 @@
+---
+layout: default
+title: Security
+nav_order: 13
+---
+
 ## Security
 
 ### Session
@@ -26,7 +32,3 @@ Checking the user role (permission group):
 ```php
 $isAdmin = $this->auth->hasRole(UserRole::ROLE_ADMIN);
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)

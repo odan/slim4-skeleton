@@ -1,3 +1,9 @@
+---
+layout: default
+title: Testing
+nav_order: 14
+---
+
 ## Testing
 
 All tests are located in the `tests/` folder. To start the unit test run:
@@ -11,6 +17,8 @@ or
 ``` bash
 $ composer test-coverage
 ```
+
+The code coverage report (xml and html) output directory is: `build/coverage`
 
 You can write several kinds of tests:
 
@@ -100,7 +108,3 @@ and should escape `"` with `\"` in the console.
 ```cmd
 curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost:8080
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)

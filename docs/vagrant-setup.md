@@ -93,6 +93,3 @@ vendor/bin/phpunit
 * Login: username= `user`, password = `user`
 * Login as admin: username = `admin`, password = `admin`
 
-<hr>
-
-Navigation: [Index](readme.md)

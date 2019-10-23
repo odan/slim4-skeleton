@@ -21,6 +21,9 @@ Every route is defined by a method corresponds to the HTTP verb. For example, a 
 $group->get('/users', \App\Action\User\UserListAction::class);
 ```
 
-<hr>
+### Predefined routes
 
-Navigation: [Index](readme.md)
+* `GET /` => `Hello, World!`
+* `GET /hello/john` => `Hello, john!`
+* `GET /users` => `List of users`
+* `POST /users` => `A json response`

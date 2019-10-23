@@ -1,3 +1,9 @@
+---
+layout: default
+title: Frontend
+nav_order: 10
+---
+
 ## Frontend
 
 ### Twig Templates
@@ -135,7 +141,3 @@ To start frontend tests with code coverage, run:
 ```
 npm run test:coverage
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)

@@ -25,6 +25,9 @@ it easier to differentiate between public and protected areas, as well as api re
 
 More details: [config/routes.php](https://github.com/odan/slim4-skeleton/blob/master/config/routes.php)
 
-<hr>
+### Preinstalled Middleware
 
-Navigation: [Index](readme.md)
+* Session
+* Translator
+* Session (todo)
+* Authentication (todo)

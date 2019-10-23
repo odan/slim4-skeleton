@@ -34,7 +34,3 @@ are better stored in a file called: `env.php`.
 You can and should use a `env.php` on your testing / staging / production server too.
 In this case just store the server specific `env.php` file 
 one directory above the project root directory.
-
-<hr>
-
-Navigation: [Index](readme.md)

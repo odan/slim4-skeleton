@@ -62,7 +62,3 @@ A typical HTTP reqest data flow and back to the response:
 20. Return the response to the front controller
 21. The front controller emits the response using the SAPI Emitter
 22. The emitter sends the HTTP headers and echos the HTTP body back to the client
-
-<hr>
-
-Navigation: [Index](readme.md)

@@ -1,3 +1,9 @@
+---
+layout: default
+title: Deployment
+nav_order: 15
+---
+
 ## Deployment
 
 ### Building an artifact
@@ -34,7 +40,3 @@ Example:
 $ cd /var/www/example.com
 $ sudo php deploy.php my_app_2019-01-29_235044.zip
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)

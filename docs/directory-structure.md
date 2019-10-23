@@ -39,7 +39,3 @@ nav_order: 5
 ├── LICENSE                 # The license
 └── README.md               # This file
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)

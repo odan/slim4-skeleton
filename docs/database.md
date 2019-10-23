@@ -1,3 +1,9 @@
+---
+layout: default
+title: Database
+nav_order: 11
+---
+
 ## Database
 
 ### Database configuration
@@ -87,8 +93,3 @@ migrate the database and seed the data.
 ```
 $ composer refresh-database
 ```
-
-<hr>
-
-Navigation: [Index](readme.md)
-

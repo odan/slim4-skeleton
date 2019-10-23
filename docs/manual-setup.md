@@ -49,7 +49,3 @@ sudo php bin/cli.php install
 
 * Open `http://localhost/my-app`
 * Login with username / password: `admin / admin` or `user / user`
-
-<hr>
-
-Navigation: [Index](readme.md)

@@ -1,3 +1,9 @@
+---
+layout: default
+title: Domain
+nav_order: 12
+---
+
 ## Domain
 
 ### Domain Services
@@ -47,7 +53,3 @@ If you have a lot of parameters that fit together, you can replace them with a p
 ### Types and enums
 
 Don't use strings or fix integer codes as values. Instead use public class constants.
-
-<hr>
-
-Navigation: [Index](readme.md)
