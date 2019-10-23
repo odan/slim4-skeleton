@@ -2,7 +2,7 @@ plugins:
   - jekyll-remote-theme
 
 #remote_theme: benbalter/retlab
-theme: minimal-mistakes-jekyll
+remote_theme: mmistakes/minimal-mistakes
 
 # Name of your site (displayed in the header)
 name: Slim 4 skeleton
