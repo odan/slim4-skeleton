@@ -1,8 +1,8 @@
 plugins:
-  - jekyll-remote-theme
+  - jekyll-include-cache
 
 #remote_theme: benbalter/retlab
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: "mmistakes/minimal-mistakes@4.17.1"
 
 # Name of your site (displayed in the header)
 name: Slim 4 skeleton
