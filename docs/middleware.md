@@ -1,3 +1,9 @@
+---
+layout: default
+title: Middleware
+nav_order: 7
+---
+
 ## Middleware
 
 In a PSR-7/PSR-15 application, you can add middleware handler to all incoming routes, 

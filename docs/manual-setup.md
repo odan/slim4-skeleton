@@ -1,3 +1,9 @@
+---
+layout: default
+title: Installation
+nav_order: 2
+---
+
 ## Manual Setup
 
 **Step 1:** Create a new project:

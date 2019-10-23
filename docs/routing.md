@@ -1,3 +1,9 @@
+---
+layout: default
+title: Routing
+nav_order: 6
+---
+
 ## Routing
 
 All requests go through the same cycle:  `routing > middleware > conroller/action > response`

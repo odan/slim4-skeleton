@@ -1,3 +1,9 @@
+---
+layout: default
+title: Errors and logging
+nav_order: 9
+---
+
 ## Errors and logging
  
 Depending on the settings all warnings and errors will be logged in the `tmp/logs` direcory.

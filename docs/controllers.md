@@ -1,3 +1,9 @@
+---
+layout: default
+title: Controllers
+nav_order: 8
+---
+
 ## Controllers
 
 After passing through all assigned middleware, the request will be processed by a (controller) action.

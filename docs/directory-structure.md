@@ -1,3 +1,9 @@
+---
+layout: default
+title: Directory structure
+nav_order: 5
+---
+
 # Directory structure
 
 ```

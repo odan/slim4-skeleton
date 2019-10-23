@@ -1,3 +1,9 @@
+---
+layout: default
+title: Architecture
+nav_order: 3
+---
+
 ## Architecture
 
 This is a multi-layered MVC 2 architecture for enterprise applications. 
