@@ -1,8 +1,3 @@
----
-layout: default
-nav_exclude: true
----
-
 # Documentation
 
 ## Introduction
