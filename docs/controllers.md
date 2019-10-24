@@ -62,4 +62,4 @@ This concept will produce more classes, but these action classes have only one r
 
 Refactoring action classes is very easy, because the routes in `routes.php` make use of the `::class` constant. 
 
-Read more: [Single action controllers](https://github.com/pmjones/adr/blob/master/ADR.md) (ADR)
+Read more: [ADR](architecture.md#action-domain-responder-adr)

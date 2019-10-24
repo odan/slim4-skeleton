@@ -8,8 +8,7 @@ nav_order: 4
 
 ## Application configuration 
 
-* see `config/*`
-* todo: Add more description
+All configuration files are stored in the `config/` directory.
 
 ## Environment configuration
 

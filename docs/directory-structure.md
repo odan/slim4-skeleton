@@ -6,6 +6,9 @@ nav_order: 5
 
 # Directory structure
 
+The directory structure is based on the [Standard PHP package skeleton](https://github.com/php-pds/skeleton).
+
+{% raw %}
 ```
 .
 ├── bin                     # Excecutable files
@@ -39,3 +42,4 @@ nav_order: 5
 ├── LICENSE                 # The license
 └── README.md               # This file
 ```
+{% endraw %}
