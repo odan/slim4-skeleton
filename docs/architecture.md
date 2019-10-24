@@ -113,3 +113,10 @@ A fully detailed HTTP request flow and back to the response:
 20. Return the response to the front controller
 21. The front controller emits the response using the SAPI Emitter
 22. The emitter sends the HTTP headers and echos the HTTP body back to the client
+
+## Read more
+
+* [Hexagonal Architecture demystified](https://madewithlove.be/hexagonal-architecture-demystified/)
+* [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019)
+* [Object Design Style Guide](https://www.manning.com/books/object-design-style-guide?a_aid=object-design&a_bid=4e089b42)
+
