@@ -1,0 +1,27 @@
+@startuml
+
+title Action Domain Responder (ADR)
+header v2019.10.24.0
+
+autonumber
+
+actor Browser
+participant Action
+participant Domain
+participant Responder
+participant Template
+database Database
+
+Browser -> Action: Request
+Action -> Action: Request processing
+Action -> Domain: Invoke service
+Domain -> Domain: Business logic
+Domain <-> Database: Data manipulation
+Domain -> Action: Service result
+Action -> Responder: View data
+Responder -> Template: Response generation
+Template -> Responder: Content
+Responder -> Action: Response
+Action -> Browser: Response
+
+@enduml

@@ -1,18 +1,24 @@
 ---
 layout: default
 title: Domain
-nav_order: 12
+nav_order: 1
+parent: Architecture
+nav_order: 1
 ---
 
 # Domain
 
 ## Services
 
-Here is the right place for complex business logic e.g. calculation, validation, file creation etc.
+Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.
+Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
 
 This layer provides cohesive, high-level logic for related parts of an application. This layer is invoked directly by the Controllers.
 
 The business logic should be placed in the service classes, and we should aim for a fat model layer and thin controller layer.
+
+
+### Best practices
 
 Please don't prefix all service classes with `*Service`. 
 A service class is not a "Manager" or "Utility" class. 

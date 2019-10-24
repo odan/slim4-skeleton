@@ -2,24 +2,48 @@
 layout: default
 title: Architecture
 nav_order: 3
+has_children: true
 ---
 
 # Architecture
 
-This is a **service oriented**, MVC 2 architecture for enterprise applications. 
+This application uses the [ADR](#action-domain-responder-adr) architecture and a [service-oriented](#service-oriented-architecture-soa) domain layer.  
 
-* **Model:** The core application, business logic, data manipulation
-* **View:** Presentation layer, display of information
-* **Controller:** Mediates between View and Model
+## Action Domain Responder (ADR)
 
-![image](https://user-images.githubusercontent.com/781074/59565895-13315500-9059-11e9-9815-34ce85ed498a.png)
+ADR is a user interface pattern specifically intended for server-side applications operating in an over-the-network, request/response environment.
 
-The **model layer** (M) is divided into multiple sub-categories:
+The modern derivations of "MVC Model 2"  toward Action Domain Responder is not difficult. 
+
+* **Action:** Mediates between Domain and Responder
+* **Domain:** The core application with the business logic. The place for domain-driven design patterns such as Application Service.
+* **Responder:** Presentation logic. The Responder builds the HTTP response.
+
+Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
+
+### Action
+
+In an ADR system, a single Action is the main purpose of a class or closure. Each Action would be represented by a individual class or closure.
+
+The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
+
+### Domain
+
+The **Domain** is divided into multiple sub-categories:
 
 * **Service:** Business logic (calculation, validation, transaction handling)
 * **Repository:** Data access logic, communication with databases
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
+Read more: [Domain](architecture/domain.md)
+
+### Responder
+
+To fully **separate the presentation logic**, each Action in ADR invokes a Responder to build the HTTP response. The Responder is entirely in charge of setting headers, setting the body content, picking content types, rendering templates, and so on.
+
+Note that a Responder may incorporate a Template View or any other kind of body content building system.
+
+A particular Responder may be used by more than one Action. The point here is the Action leaves all header and content work to the Responder, not that there must be a different Responder for each different Action.
 
 ## Service-Oriented Architecture (SOA)
 
@@ -47,9 +71,13 @@ This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d
 
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
-## A HTTP request and response
+## Request and response
 
-A typical HTTP request data flow and back to the response:
+A quick overview of the request/response cycle in ADR:
+
+![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
+
+A fully detailed HTTP request flow and back to the response:
 
 ![image](https://user-images.githubusercontent.com/781074/59540964-b2dad000-8eff-11e9-89da-aa98e400bd88.png)
 
