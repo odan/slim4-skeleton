@@ -6,7 +6,7 @@ nav_order: 14
 
 # Validation
 
-This page is under construction.
+Depending on the use case, different strategies are appropriate for the input validation.
 
 ## OpenAPI validation
 
