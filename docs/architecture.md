@@ -7,7 +7,7 @@ has_children: true
 
 # Architecture
 
-This application uses the [ADR](#action-domain-responder-adr) architecture and a [service-oriented](#service-oriented-architecture-soa) domain layer.  
+This application uses the [ADR](#action-domain-responder-adr) pattern and a [service-oriented](#service-oriented-architecture-soa) domain layer.  
 
 ## Action Domain Responder (ADR)
 
@@ -76,6 +76,8 @@ Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/
 A quick overview of the request/response cycle in ADR:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
+
+All requests go through the same cycle:  `Request > front controller > routing > middleware > action > response`
 
 A fully detailed HTTP request flow and back to the response:
 

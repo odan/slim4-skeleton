@@ -37,15 +37,23 @@ you might have a `UserRegistration` class with a few methods focusing on registr
 
 ## Repositories
 
-A distinction is actually made between collection-oriented and persistence-oriented repositories. In this case, we are talking about **persistence-oriented repositories**, since these are better suited for processing large amounts of data.
+There are two types of repositories: collection-oriented and persistence-oriented repositories. 
+In this case, we are talking about **persistence-oriented repositories**, since these are better 
+suited for processing large amounts of data.
 
-A repository is the source of all the data your application needs. It serves as an interface between the domain layer (Domain services) and the data access layer (DAO). According to Martin Fowler, "A repository is another layer above the data mapping layer. It mediates between domain and data mapping layers (data mappers)". A repository improves code maintainability, testing and readability by separating `business logic` from `data access logic` and provides centrally managed and consistent access rules for a data source. Each public repository method represents a query. The return values represent the result set of a query and can be primitive/object or list (array) of them. Database transactions must be handled on a higher level (domain service) and not within a repository.
+A repository is the source of all the data your application needs 
+and mediates between the service and the database. A repository improves code maintainability, testing and readability by separating `business logic` 
+from `data access logic` and provides centrally managed and consistent access rules for a data source. 
+Each public repository method represents a query. The return values represent the result set 
+of a query and can be primitive/object or list (array) of them. Database transactions must 
+be handled on a higher level (service) and not within a repository.
 
 Quick summary:
 
 * Communication with the database.
-* Place for the data access logic (query logic).
-* This is no place for the business logic! Use [services](#services) for the complex business and domain logic.
+* Place for the data access (query) logic.
+* Uses data mapper to create domain objects
+* This is no place for the business logic! Use [services](#services) for the business logic.
 
 
 ## Data Transfer Objects (DTO) 
@@ -76,11 +84,29 @@ final class CustomerData
 
 Use it only for "small things" like Date, Money, CustomerId and as replacement for primitive data type like string, int, float, bool, array. 
 
-A value object must be **immutable** and is responsible for keeping their state consistent [Read more](https://kacper.gunia.me/validating-value-objects/). 
+A value object must be **immutable** and is responsible for keeping their state consistent. 
 
-A value object should only be filled using the constructor, classic `setter` methods are not allowed. Wither methods are allowed. Example: `public function withEmail(string $email): self { ... }`. A getter method name does not contain a `get` prefix. Example: `public function email(): string { return $this->email; }`. All properties must be `protected` or `private` accessed by the getter methods.
+A value object should only be filled using the constructor.
 
-Example
+Wither methods are allowed, but `setter` methods are not allowed. 
+
+Example: 
+
+```php
+public function withEmail(string $email): self { ... }
+```
+
+A getter method name does not contain a `get` prefix. 
+
+Example: 
+
+```php
+public function email(): string { return $this->email; }`. 
+```
+
+All properties must be `protected` or `private` accessed by the getter methods.
+
+Example:
 
 ```php
 <?php
@@ -105,6 +131,8 @@ class CustomerId
     }
 }
 ```
+
+[Read more](https://kacper.gunia.me/validating-value-objects/)
 
 ## Parameter objects
 
