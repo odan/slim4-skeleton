@@ -8,7 +8,7 @@ nav_order: 13
 
 ## Session
 
-This skeleton uses `sessions` to store the logged-in user.
+This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to store the logged-in user.
 If you have to add API routes, you may use a [OAuth2 Bearer-Token](https://oauth.net/2/bearer-tokens/) or [JSON Web Token](https://oauth.net/2/jwt/) instead.
 
 ## Authentication

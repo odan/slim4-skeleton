@@ -6,21 +6,27 @@ nav_order: 15
 
 # Testing
 
+## Usage
+
 The test directory is: `tests/` 
 
-To start the unit test, run:
+The fixture directory is: `tests/Fixture/`
+
+To start all tests, run:
 
 ``` bash
 $ composer test
 ```
 
-or
+To start all tests with code coverage, run:
 
 ``` bash
 $ composer test-coverage
 ```
 
-The code coverage report (xml and html) output directory is: `build/coverage/`
+The code coverage output directory is: `build/coverage/`
+
+## Overview
 
 You can write several kinds of tests:
 
@@ -50,33 +56,13 @@ Please take a look at this example to see how to mock out the complete database:
 
 * `tests/TestCase/Domain/User/Service/UserGeneratorTest.php`
 
-## Debugging Unit Tests
-
-To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
-
-* Open the project in PhpStorm
-* Right click the directory `tests` 
-* Select: `Mark directory as`
-* Click `Test Sources Root`
-* Set a breakpoint within a test method
-* Right click `test`
-* Click `Debug (tests) PHPUnit`
-
 ## Integration Tests
 
 Everything is ready to run real database tests.
 
-Please take a look at this example test:
+Take a look at these examples:
 
 * `tests/TestCase/Domain/User/Repository/UserCreatorRepositoryTest.php`
-
-### Fixtures
-
-The fixture directory is: `tests/Fixture/`
-
-### Seeds
-
-The seeds directory is: `resources/seeds/`
 
 ## Acceptance Tests
 
@@ -100,3 +86,15 @@ and should escape `"` with `\"` in the console.
 ```cmd
 curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost:8080
 ```
+
+## Debugging Unit Tests
+
+To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
+
+* Open the project in PhpStorm
+* Right click the directory `tests` 
+* Select: `Mark directory as`
+* Click `Test Sources Root`
+* Set a breakpoint within a test method
+* Right click `test`
+* Click `Debug (tests) PHPUnit`
