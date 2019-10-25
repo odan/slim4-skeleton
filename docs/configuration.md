@@ -8,29 +8,35 @@ nav_order: 4
 
 ## Application configuration 
 
-All configuration files are stored in the `config/` directory.
+The directory for all configuration files is: `config/`
 
-The `config/defaults.php` loads and combines multiple configuration files in this order:
+The file `config/settings.php` is the main configuration file and combines 
+the default settings with environment specific settings. 
+
+The configuration files are loaded in this order:
 
 1. Load `config/defaults.php` with all default settings.
-2. Load `config/env.php` or `/../../env.php` with all environment specific settings.
-3. If `APP_ENV` is defined, load the environment specific file.
+
+2. Load `config/env.php` or `config/../../env.php` and include the environment specific configuration file, e.g. `config/development.php`
+
+3. If the constant `APP_ENV` is defined, load the environment specific file. 
+This is only used to apply the phpunit test settings.
 
 ## Environment configuration
 
 You may be familiar with the concept of `.env` files. 
-But `.env` files should be considering as harmful because: 
+However, `.env` files should be considered as harmful because:
 
-* People could put the file `.env` into a public available directory.
-* A public available `.env` file will be indexed by search engines.
+* People could put the file `.env` file into a public accessible directory.
+* A public accessible `.env` file can be indexed by search engines.
 * `.env` files are not native and much slower then PHP files.
 * `.env` files are not intended to run on a production server. Many developers do it anyway.
 * `vlucas/phpdotenv` is a unnecessary dependency. PHP can do it better.
 * `vlucas/phpdotenv` is buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
-Even `environment variables` should be considering as dangerous because:
+Even `environment variables` should be considering as harmful because:
 
-* A third-party tool or any system-service could send a crash-report with all environment variables to foreign servers.
+* A third-party server tool or any system-service could send a crash-report with all environment variables to foreign servers.
 * Any other tool on your server could read the environment variables.
 * Incorrectly configured servers could log the environment variables or even send them as error message to the browser. 
 
@@ -46,6 +52,6 @@ The `env.php` file is generally kept out of version control since it can contain
 
 Add the file `env.php` to your `.gitignore`, so that you don't accidentally commit it.
 
-You also can (and should) use the `env.php` file on your testing / staging / production server.
+You also can (and should) use the `env.php` file on your testing, staging and production server.
 In this case store the server specific `env.php` file one directory above the project root directory.
 Storing the `env.php` file above the project directory simplifies deployment and ensures that the configuration is always in the right place and can be loaded at any time.

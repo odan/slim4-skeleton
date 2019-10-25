@@ -19,13 +19,19 @@ The modern derivations of "MVC Model 2"  toward Action Domain Responder is not d
 * **Domain:** The core application with the business logic. The place for domain-driven design patterns such as Application Service.
 * **Responder:** Presentation logic. The Responder builds the HTTP response.
 
-Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
+Read more:
+
+* [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
 
 ## Action
 
 In an ADR system, a single Action is the main purpose of a class or closure. Each Action would be represented by a individual class or closure.
 
 The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
+
+Read more:
+
+* [Single Controllers Controllers](controllers.md)
 
 ## Domain
 

@@ -6,29 +6,24 @@ nav_order: 8
 
 # Single Action Controllers
 
-After passing through all assigned middleware, the request will be processed by a (controller) action.
+The *Action* mediates between the *Domain* and the *Responder*. 
 
-The Controller's job is to translate incoming requests into outgoing responses. 
+"Single Action Controllers" means: One action per class.
 
-In order to do this, the controller must take request data, checks for authorization,
-and pass it into the domain service layer.
+The *Action* does only these things:
 
-The domain service layer then returns data that the Controller injects into a View for rendering. 
+1. collects input from the HTTP request (if needed);
+2. invokes the Domain with those inputs (if required) and retains the result;
+3. invokes the Responder with any data the Responder needs to build an HTTP response (typically the HTTP Request and/or the Domain invocation results).
 
-A view might be HTML for a standard web request; or, 
-it might be something like JSON for a RESTful API request.
+All other logic, including all forms of input validation, error handling, and so on, are therefore pushed out of the Action and into the Domain (for domain logic concerns) or the Responder (for presentation logic concerns). 
 
-This application uses `Single Action Controllers` which means: **One action per class**.
+The Responder creates the response, not the action.
 
-A action method signature (with all parameters) should look like this:
+A Responder might be HTML-responder for a standard web request; or, 
+it might be something like JSON-responder for a RESTful API requests.
 
-```php
-public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = []): ResponseInterface
-```
-
-The container autowire-feature will automatically inject all dependencies for you via constructor injection.
-
-**Action example class:**
+### Example
 
 ```php
 <?php
@@ -58,8 +53,7 @@ final class ExampleAction
 }
 ```
 
-This concept will produce more classes, but these action classes have only one responsibility (SRP).
-
-Refactoring action classes is very easy, because the routes in `routes.php` make use of the `::class` constant. 
+**Pros and cons:** On the one hand we are producing more classes, on the other hand these action classes have only one responsibility (SRP).
+Refactoring becomes easy and safe, because the routes in `routes.php` make use of the `::class` constant. 
 
 Read more: [ADR](architecture.md#action-domain-responder-adr)
