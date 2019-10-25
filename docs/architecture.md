@@ -39,32 +39,6 @@ Note that a Responder may incorporate a Template View or any other kind of body 
 
 A particular Responder may be used by more than one Action. The point here is the Action leaves all header and content work to the Responder, not that there must be a different Responder for each different Action.
 
-## Service-Oriented Architecture (SOA)
-
-**SOA** uses **services** to build systems. **OOP** uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
-
-**OOP**
-
-```php 
-$sourceAccount = new Account(100);
-$destinationAccount = new Account(0);
-$sourceAccount->transfer(100, $destinationAccount);
-```
-
-**SOA**
-
-```php
-$sourceAccount = new Account(100);
-$destinationAccount = new Account(0);
-$service = new AccountService();
-$service->transfer(100, $sourceAccount, $destinationAccount);
-```
-
-By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
-This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
-
-Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
-
 ## Request and response
 
 A quick overview of the request/response cycle in ADR:
