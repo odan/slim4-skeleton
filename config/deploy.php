@@ -52,7 +52,7 @@ if (file_exists($releaseDir)) {
 
 echo "Set permissions...\n";
 system('sudo chmod -R 775 htdocs/tmp/');
-system('sudo chmod -R 775 htdocs/public/cache/');
+system('sudo chmod -R 775 htdocs/logs/');
 
 //system('chown -R www-data:www-data htdocs/ .');
 

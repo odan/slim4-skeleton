@@ -27,15 +27,30 @@ The artifact output directory is: `build/`
 
 ### Deployment
 
-To deploy the artifact on test, staging and production server, just upload
-the zip file with a SFTP client onto your server directory, e.g. `/var/www/example.com`.
+To deploy the artifact on a server you can upload the ZIP file with a [SFTP client](https://winscp.net) 
+from `build/my_app_*.zip` to `/var/www/example.com/`
 
-Then extract the artifact into the `htdocs/` sub-directory and run the migrations. 
+Then extract the artifact to the `htdocs/` sub-directory and perform the migrations.
 
-It's recommended to use `deploy.php` script for this task:
+```bash
+# extract artifact to release directory
+sudo unzip my_artifact.zip -d release/
 
-* Upload the artifact from `build/my_app_*.zip` to `/var/www/example.com/`
-* Then run `sudo php deploy.php my_app_*.zip`
+# backup old version
+mv htdocs/ htdocs-old/
+
+# copy new version
+mv release/ htdocs/
+
+# set permissions
+sudo chmod -R 775 htdocs/tmp/
+sudo chmod -R 775 htdocs/logs/
+
+# run migrations
+sudo vendor/bin/phinx migrate -c config/phinx.php
+```
+
+It's recommended to use the `deploy.php` script for this task.
 
 **Example:**
 
