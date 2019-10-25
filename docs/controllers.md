@@ -20,10 +20,10 @@ it might be something like JSON for a RESTful API request.
 
 This application uses `Single Action Controllers` which means: One action per class.
 
-A typical action method signature should look like this:
+A action method signature (with all parameters) should look like this:
 
 ```php
-public function __invoke(ServerRequestInterface $request): ResponseInterface
+public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = []): ResponseInterface
 ```
 
 The container autowire-feature will automatically inject all dependencies for you via constructor injection.
@@ -48,7 +48,7 @@ final class ExampleAction
         $this->responseFactory = $responseFactory;
     }
     
-    public function __invoke(ServerRequestInterface $request): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('Hello, World!');
