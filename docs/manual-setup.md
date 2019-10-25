@@ -29,8 +29,19 @@ chmod +x bin/cli.php
 
 **Step 3:** Database setup
 
-1. Copy the file: `config/env.example.php` to `config/env.php`.
-2. Change the database connection configuration in `config/env.php`:
+3.1 Create a new database
+
+```bash
+mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+```
+
+3.2 Copy the file: `config/env.example.php` to `config/env.php`.
+
+```bash
+cp config/env.example.php config/env.php
+```
+
+3.3 Change the connection configuration in `config/env.php`:
 
 ```php
 // Database
@@ -39,7 +50,7 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = '';
 ```
 
-3. Run all of the available migrations:
+3.4. Run all of the available migrations:
 
 ```shell
 composer migrate
@@ -47,4 +58,4 @@ composer migrate
 
 **Step 4:** Run it
 
-* Open `http://localhost/{my-app}`
+* Open `http://localhost/{my-app}` in your browser
