@@ -7,7 +7,7 @@ nav_order: 1
 
 ## Vagrant Setup
 
-Create a file `vagrantfile`:
+Create a file `vagrantfile` and copy/paste this content:
 
 {% raw %}
 ```
@@ -25,7 +25,7 @@ end
 ```
 {% endraw %}
 
-Create a file: `bootstrap.sh`
+Create a file: `bootstrap.sh` and copy/paste this content:
 
 {% raw %}
 ```sh
@@ -82,21 +82,22 @@ composer create-project --prefer-dist --no-interaction --no-progress odan/slim4-
 
 # Set permissions
 chown -R www-data tmp/
-chown -R www-data public/cache/
+chown -R www-data logs/
 
 chmod -R 760 tmp/
 chmod -R 760 logs/
 
 # chmod +x bin/cli.php
 # php bin/cli.php install --environment ci
-# composer migrate
 
+cp config/env.example.php config/env.php
+composer migrate
+
+# Run tests
 vendor/bin/phpunit
 ```
 {% endraw %}
 
-* Run `vagrant up` 
-* Open http://localhost:8765
-* Login: username= `user`, password = `user`
-* Login as admin: username = `admin`, password = `admin`
+* Start the guest machine with: `vagrant up` 
+* Open in your browser: http://localhost:8765
 

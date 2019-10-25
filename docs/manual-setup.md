@@ -58,4 +58,4 @@ composer migrate
 
 **Step 4:** Run it
 
-* Open `http://localhost/{my-app}` in your browser
+Open `http://localhost/{my-app}` in your browser
