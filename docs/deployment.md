@@ -8,7 +8,8 @@ nav_order: 16
 
 ## Server Setup
 
-Make sure the apache [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot) points to the `public` path, e.g. `/var/www/example.com/htdocs/public`
+Ensure that the apache [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot) 
+points to the `public/` path, e.g. `/var/www/example.com/htdocs/public`
 
 * Create a directory: `/var/www/example.com`
 * Create a directory: `/var/www/example.com/htdocs`
@@ -34,7 +35,7 @@ Then extract the artifact to the `htdocs/` sub-directory and perform the migrati
 
 ```bash
 # extract artifact to release directory
-sudo unzip my_artifact.zip -d release/
+sudo unzip my_app.zip -d release/
 
 # backup old version
 mv htdocs/ htdocs-old/
