@@ -6,22 +6,23 @@ nav_order: 12
 
 # Database
 
-### Database configuration
+## Database configuration
 
-* You can configure the database settings for each server environment.
-* The global default settings are stored in `config/defaults.php`, `$settings['db']` 
+You can configure the database settings for each server environment.
 
-### Query Builder
+The default settings are stored in `config/defaults.php`, `$settings['db']` 
+
+## Query Builder
 
 This skeleton contains [cakephp/database](https://github.com/cakephp/database) as SQL query builder.
 
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
-Read more: [Query Builder Documentation](https://book.cakephp.org/3.0/en/orm/query-builder.html)
+Read more: **[Query Builder Documentation](https://book.cakephp.org/3.0/en/orm/query-builder.html)**
 
-### Migrations
+## Migrations
 
-This skeleton provides a **[Phinx](https://phinx.org/)** console access to create database migrations.
+This skeleton provides a [Phinx](https://phinx.org/) console access to create database migrations.
 
 **Some basics:**
 
@@ -29,7 +30,7 @@ This skeleton provides a **[Phinx](https://phinx.org/)** console access to creat
 * **Seeding** is the initial data setup. If you aren't at an initial (seed) state, you need a migration to change the data.
 * **Fixtures** are data for testing purposes.
 
-#### Generating a migration from a diff automatically
+### Generating a migration from a diff automatically
 
 ```bash
 $ composer generate-migration
@@ -37,37 +38,39 @@ $ composer generate-migration
 
 You an specify a migration name by adding the `--name` parameter.
 
-**Note:** Composer requires double dashes (`--`) to separate arguments. 
+**Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
 
 ```bash
 $ composer generate-migration -- --name AddTableCustomers
 ```
 
-#### Creating a blank database migration
+### Creating a blank database migration
 
 ```bash
 $ composer create-migration UpdateArticleFixtures
 ```
 
-Read more: [Phinx Documentation](http://docs.phinx.org/en/latest/)
+Read more: **[Phinx Documentation](http://docs.phinx.org/en/latest/)**
 
-### Update schema
+## Update schema
 
-Updating the database schema with this shorthand command:
+Update the database schema with this shorthand command:
 
 ```bash
 $ composer migrate
 ```
 
-If `composer` is not installed on the target server, the following command can be used:
+If [Composer](https://getcomposer.org/) is not installed on the target server, the following command can be used:
 
 ```bash
 $ vendor/bin/phinx migrate -c config/phinx.php
 ```
 
-### Data Seeding
+## Data Seeding
 
-To populate the database with data for testing and experimenting with the code, run:
+All seeds are stored in the directory: `resources/seeds/`.
+
+To populate the database with data for testing and experimenting, run:
 
 ```bash
 $ composer seed-database
@@ -79,9 +82,7 @@ To start the seeder directly, run this command:
 $ vendor/bin/phinx seed:run -c config/phinx.php
 ```
 
-You may add more seeds under the directory: `resources\seeds\DataSeed`.
-
-### Resetting the database
+## Resetting the database
 
 The command `refresh-database` will rollback all migrations, 
 migrate the database and seed the data. 

@@ -8,8 +8,8 @@ nav_order: 13
 
 ## Session
 
-This application uses `sessions` to store the logged-in user information. If you 
-have to add api routes you may use `JWT` or a `OAuth2 Bearer-Token` instead.
+This skeleton uses `sessions` to store the logged-in user.
+If you have to add API routes, you may use a [OAuth2 Bearer-Token](https://oauth.net/2/bearer-tokens/) or [JSON Web Token](https://oauth.net/2/jwt/) instead.
 
 ## Authentication
 
@@ -18,6 +18,8 @@ You can add routing groups with Sessions and/or OAuth2 authentication.
 It's up to you how you configure the routes and their individual authentication.
 
 ## Authorization
+
+*This section is under construction!*
 
 To check user permissions, the Actions controller contains an `Auth` object.
 

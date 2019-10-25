@@ -6,7 +6,9 @@ nav_order: 15
 
 # Testing
 
-All tests are located in the `tests/` folder. To start the unit test run:
+The test directory is: `tests/` 
+
+To start the unit test, run:
 
 ``` bash
 $ composer test
@@ -18,13 +20,13 @@ or
 $ composer test-coverage
 ```
 
-The code coverage report (xml and html) output directory is: `build/coverage`
+The code coverage report (xml and html) output directory is: `build/coverage/`
 
 You can write several kinds of tests:
 
 * **Unit tests**: Testing units in isolation of its dependencies. Everything should run in-memory, very fast.
 * **Integration tests**: Database tests (e.g. Repositories), quite slow.
-* **Acceptance tests**: HTTP and API tests, quite fast.
+* **Acceptance tests**: HTTP and API tests.
 
 ## Unit Tests
 
@@ -33,27 +35,24 @@ Make sure that unit tests are running in-memory only, because they have to be ve
 
 ### Mocking the database
 
-For the sake of real unit-tests and performance, we recommend mocking all Repository interfaces 
-(no problem with phpunit) or create an memory based Repository that implements the
-required Repository interface.
+For the sake of real unit-tests (and performance), it's recommend to mock the Repository interface or methods.
 
 This will allow you to write real unit tests without any database interactions. 
 
 Of course you still can (and should) implement [Integration Tests](#integration-tests) 
 with a real testing database.
 
-We are using the [PHPUnit mocking functionality](https://phpunit.de/manual/current/en/test-doubles.html)
-to create mocks for the repository interface. This will allow you to create custom result sets per test,
+You can use the [PHPUnit mocking functionality](https://phpunit.de/manual/current/en/test-doubles.html)
+to create mocks for the repository interface or methods. This will allow you to create custom result sets per test,
 without touching the database and without extra mock classes.
 
 Please take a look at this example to see how to mock out the complete database:
 
-* `tests/TestCase/Domain/User/UserListTest.php`
+* `tests/TestCase/Domain/User/Service/UserGeneratorTest.php`
 
 ## Debugging Unit Tests
 
-To debug tests with PhpStorm you must have to mark the directory `tests/` 
-as the test root source.
+To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
 
 * Open the project in PhpStorm
 * Right click the directory `tests` 
@@ -69,34 +68,27 @@ Everything is ready to run real database tests.
 
 Please take a look at this example test:
 
-* `tests/TestCase/Domain/User/UserRepositoryTest.php`
+* `tests/TestCase/Domain/User/Repository/UserCreatorRepositoryTest.php`
 
 ### Fixtures
 
-See: `tests/Fixture/`
-
-todo: Add more description
+The fixture directory is: `tests/Fixture/`
 
 ### Seeds
 
-See: `resources/seeds/`
-
-todo: Add more description
+The seeds directory is: `resources/seeds/`
 
 ## Acceptance Tests
 
 Everything is prepared to run mocked HTTP tests. 
 
-You don't need external services like [Postman](https://www.getpostman.com/), 
-because it's possible to simulate all requests yourself.
+Have a look at these examples: `tests/TestCase/Action/`
 
-Please have a look at these sample tests in `tests/TestCase/Action` directory.
-
-**Tip:** Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
+**Tip:** Try out [Codeception](https://codeception.com/) for even more advanced acceptance tests.
 
 ### API test with curl
 
-Under linux you have to install curl to make HTTP requests to your api:
+Under linux you may have to install curl to make HTTP requests to your API:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1","key2":"value2"}' http://localhost:8080
