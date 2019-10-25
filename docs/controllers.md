@@ -4,7 +4,13 @@ title: Action
 nav_order: 8
 ---
 
-# Single Action Controllers
+# Action
+
+In an [ADR](https://github.com/pmjones/adr/blob/master/ADR.md) system, a single Action is the main purpose of a class or closure. Each Action would be represented by a individual class or closure.
+
+The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
+
+## Single Action Controllers
 
 The *Action* mediates between the *Domain* and the *Responder*. 
 
@@ -58,7 +64,16 @@ Refactoring becomes easy and safe, because the routes in `routes.php` make use o
 
 Read more: [ADR](architecture.md#action-domain-responder-adr)
 
-## Request and response
+## Responder
+
+To fully **separate the presentation logic**, each Action in ADR invokes a Responder to build the HTTP response. The Responder is entirely in charge of setting headers, setting the body content, picking content types, rendering templates, and so on.
+
+Note that a Responder may incorporate a Template View or any other kind of body content building system.
+
+A particular Responder may be used by more than one Action. The point here is the Action leaves all header and content work to the Responder, not that there must be a different Responder for each different Action.
+
+
+## Request and Response
 
 A quick overview of the request/response cycle in ADR:
 
