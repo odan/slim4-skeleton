@@ -18,7 +18,7 @@ The domain service layer then returns data that the Controller injects into a Vi
 A view might be HTML for a standard web request; or, 
 it might be something like JSON for a RESTful API request.
 
-This application uses `Single Action Controllers` which means: One action per class.
+This application uses `Single Action Controllers` which means: **One action per class**.
 
 A action method signature (with all parameters) should look like this:
 
@@ -48,7 +48,7 @@ final class ExampleAction
         $this->responseFactory = $responseFactory;
     }
     
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('Hello, World!');
