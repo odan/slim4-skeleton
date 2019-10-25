@@ -18,15 +18,15 @@ The *Action* mediates between the *Domain* and the *Responder*.
 
 The *Action* does only these things:
 
-1. collects input from the HTTP request (if needed);
-2. invokes the Domain with those inputs (if required) and retains the result;
-3. invokes the Responder with any data the Responder needs to build an HTTP response (typically the HTTP Request and/or the Domain invocation results).
+* collects input from the HTTP request (if needed);
+* invokes the Domain with those inputs (if required) and retains the result;
+* invokes the Responder with any data the Responder needs to build an HTTP response (typically the HTTP Request and/or the Domain invocation results).
 
 All other logic, including all forms of input validation, error handling, and so on, are therefore pushed out of the Action and into the Domain (for domain logic concerns) or the Responder (for presentation logic concerns). 
 
-The Responder creates the response, not the Action.
+The [Responder](#responder) creates the response, not the Action.
 
-A Responder might be HTML-responder for a standard web request; or, 
+A Responder might be HTML-responder for a standard web request; or 
 it might be something like a JSON-responder for RESTful API requests.
 
 ### Example
@@ -60,9 +60,7 @@ final class ExampleAction
 ```
 
 **Pros and cons:** On the one hand we are producing more classes, on the other hand these action classes have only one responsibility (SRP).
-Refactoring becomes easy and safe, because the routes in `routes.php` make use of the `::class` constant. 
-
-Read more: [ADR](architecture.md#action-domain-responder-adr)
+Refactoring in your IDE becomes easy and safe, because the [routes](routing.md) make use of the `::class` constant. 
 
 ## Responder
 

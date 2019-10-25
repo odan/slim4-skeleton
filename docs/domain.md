@@ -12,6 +12,15 @@ The **Domain** is divided into multiple sub-categories:
 * **Repository:** Data access logic, communication with databases
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
+## Services
+
+Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.
+Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
+
+This layer provides cohesive, high-level logic for related parts of an application. This layer is invoked directly by the Controllers.
+
+The business logic should be placed in the service classes, and we should aim for a fat model layer and thin controller layer.
+
 ### Service-Oriented Architecture (SOA)
 
 **SOA** uses **services** to build systems. **OOP** uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
@@ -37,15 +46,6 @@ By separating behavior from data, it's possible to build and maintain non-trivia
 This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
 
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
-
-## Services
-
-Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.
-Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
-
-This layer provides cohesive, high-level logic for related parts of an application. This layer is invoked directly by the Controllers.
-
-The business logic should be placed in the service classes, and we should aim for a fat model layer and thin controller layer.
 
 ### Best practices
 

@@ -10,19 +10,18 @@ nav_order: 11
 
 Twig is the simple, yet powerful templating engine provided by Symfony. 
 
-In fact, all Twig views are compiled into plain PHP code and 
-cached until they are modified, meaning Twig adds essentially 
-zero overhead to your application. 
+All Twig templates with the extension `*.twig` are stored in the directory: `templates/`
 
-Twig view files use the `.twig` file extension and are typically stored in the `templates/` directory.
+Twig templates will be converted to native PHP code and cached until the template changes. 
+This means that Twig does not add much overhead to your application.
 
 ## Translation
 
-The integrated localization features provide a convenient way to retrieve strings 
+The integrated localization features provides a convenient way to retrieve strings 
 in various languages, allowing you to easily support multiple languages within 
 your application. 
 
-Language strings are stored in files within the `resources/locale` directory. 
+Translation files are stored in the directory: `resources/locale` 
 
 Within this directory there should be a `mo` and `po` file for each language supported by the application.
 
@@ -37,6 +36,8 @@ Example:
 
 ### Configure Translation
 
+*This section is under construction!*
+
 * todo: Add description how to add more languages
 
 ### Determining The Current Locale
@@ -49,6 +50,8 @@ $locale = $this->locale->getLocale(); // en_US
 ```
 
 ### Defining Translation Strings
+
+*This section is under construction!*
 
 To parse all translation strings run:
 
@@ -99,7 +102,7 @@ Translate a text with a placeholder:
 ```
 {% endraw %}
 
-[Read more](https://github.com/odan/twig-translation#usage)
+Read more: [Twig translation usage](https://github.com/odan/twig-translation#usage)
 
 ## Assets
 
@@ -112,9 +115,6 @@ $ composer update-assets
 ```
 
 You can add more assets in `package.json` or directly via `npm`.
-
-Open the file `build.xml` and navigate to the target `update-assets` 
-and add more items to copy the required files into the `public/` directory.
 
 ## Compiling Assets
 

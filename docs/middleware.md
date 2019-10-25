@@ -6,8 +6,8 @@ nav_order: 7
 
 # Middleware
 
-In a PSR-7/PSR-15 application you can add a middleware handler to all routes, 
-to a specific route, or to a group of routes. 
+In a Slim (PSR-7 / PSR-15) application you can add a middleware handlers to all routes, 
+to a specific route or to a group of routes. 
 
 More details: [Slim 4 Routing](https://www.slimframework.com/docs/v4/objects/routing.html) 
 

@@ -8,27 +8,26 @@ nav_order: 12
 
 ### Database configuration
 
-* You may configure the database settings per server environment.
-* The global default settings are stored in `config/defaults.php` under `$settings['db']` 
+* You can configure the database settings for each server environment.
+* The global default settings are stored in `config/defaults.php`, `$settings['db']` 
 
 ### Query Builder
 
-This application comes with [cakephp/database](https://github.com/cakephp/database) as SQL query builder.
+This skeleton contains [cakephp/database](https://github.com/cakephp/database) as SQL query builder.
 
-The database query builder provides a convenient, fluent interface to creating and running database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
+The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
-For more details how to build queries read the **[documentation](https://book.cakephp.org/3.0/en/orm/query-builder.html)**.
+Read more: [Query Builder Documentation](https://book.cakephp.org/3.0/en/orm/query-builder.html)
 
 ### Migrations
 
-This skeleton project provides console access for **[Phinx](https://phinx.org/)** to 
-create database migrations. 
+This skeleton provides a **[Phinx](https://phinx.org/)** console access to create database migrations.
 
 **Some basics:**
 
-`Migrations` are for moving from schema to schema (and back, if possible).
-`Seeding` is the initial data setup. If you aren't at an initial (seed) state, you need a migration to change data.
-`Fixtures` are data for testing purposes.
+* **Migrations** are for moving from schema to schema (and back, if possible).
+* **Seeding** is the initial data setup. If you aren't at an initial (seed) state, you need a migration to change the data.
+* **Fixtures** are data for testing purposes.
 
 #### Generating a migration from a diff automatically
 
@@ -50,8 +49,7 @@ $ composer generate-migration -- --name AddTableCustomers
 $ composer create-migration UpdateArticleFixtures
 ```
 
-For more details how to create and manage migrations read the 
-[Phinx](http://docs.phinx.org/en/latest/) documentation.
+Read more: [Phinx Documentation](http://docs.phinx.org/en/latest/)
 
 ### Update schema
 
@@ -69,7 +67,7 @@ $ vendor/bin/phinx migrate -c config/phinx.php
 
 ### Data Seeding
 
-To populate the database with data for testing and experimenting with the code run:
+To populate the database with data for testing and experimenting with the code, run:
 
 ```bash
 $ composer seed-database

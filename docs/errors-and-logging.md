@@ -10,5 +10,5 @@ Depending on the settings, all warnings and errors will be logged within the `lo
 
 The default logging settings are defined in `config/defaults.php`, see `logger`. 
 
-Of course, you can adjust these values to suit the needs of your application.
+You can adjust these values to suit the needs of your application.
 

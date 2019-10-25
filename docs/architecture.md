@@ -15,7 +15,7 @@ This application uses the [ADR](#action-domain-responder-adr) pattern and a [hex
 
 The modern derivations of "MVC Model 2"  toward Action Domain Responder is not difficult. 
 
-* **[Action](controllers.md#action):** Mediates between Domain and Responder
+* **[Action](controllers.md):** Mediates between Domain and Responder
 * **[Domain](domain.md):** The core application with the business logic. The place for domain-driven design patterns such as Application Service.
 * **[Responder](controllers.md#responder):** Presentation logic. The Responder builds the HTTP response.
 
