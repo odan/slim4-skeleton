@@ -27,7 +27,7 @@ Think of the [SRP](http://pragmaticcraftsman.com/2006/07/single-responsibility-p
 
 > What changes for the same reason should be grouped together.
  
-A service classes can, and should, have several methods as long as they serve a narrow purpose. 
+A service class can have several methods as long as they serve a narrow purpose. 
 This also encourages you to name your classes more specifically. Instead of a "User" god-class, 
 you might have a `UserRegistration` class with a few methods focusing on registration.
 
