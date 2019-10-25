@@ -42,13 +42,13 @@ In this case, we are talking about **persistence-oriented repositories**, since 
 suited for processing large amounts of data.
 
 A repository is the source of all the data your application needs 
-and mediates between the service and the database. A repository improves code maintainability, testing and readability by separating `business logic` 
-from `data access logic` and provides centrally managed and consistent access rules for a data source. 
+and mediates between the service and the database. A repository improves code maintainability, testing and readability by separating **business logic** 
+from **data access logic** and provides centrally managed and consistent access rules for a data source. 
 Each public repository method represents a query. The return values represent the result set 
 of a query and can be primitive/object or list (array) of them. Database transactions must 
 be handled on a higher level (service) and not within a repository.
 
-Quick summary:
+**Quick summary:**
 
 * Communication with the database.
 * Place for the data access (query) logic.
@@ -60,7 +60,7 @@ Quick summary:
   
 A DTO contains only pure **data**. There is no business or domain specific logic, only simple validation logic. There is also no database access within a DTO. A service fetches data from a repository and  the repository (or the service) fills the DTO with data. A DTO can be used to transfer data inside or outside the domain.
 
-Example:
+**Example:**
 
 ```php
 <?php
@@ -90,7 +90,7 @@ A value object should only be filled using the constructor.
 
 Wither methods are allowed, but `setter` methods are not allowed. 
 
-Example: 
+**Example:**
 
 ```php
 public function withEmail(string $email): self { ... }
@@ -98,7 +98,7 @@ public function withEmail(string $email): self { ... }
 
 A getter method name does not contain a `get` prefix. 
 
-Example: 
+**Example:**
 
 ```php
 public function email(): string { return $this->email; }`. 
@@ -106,7 +106,7 @@ public function email(): string { return $this->email; }`.
 
 All properties must be `protected` or `private` accessed by the getter methods.
 
-Example:
+**Example:**
 
 ```php
 <?php
@@ -143,7 +143,7 @@ you can replace them with a parameter object. See [DTO](#data-transfer-object-dt
 
 Don't use strings or fix integer codes as values. Instead use public class constants.
 
-Example:
+**Example:**
 
 ```php
 <?php

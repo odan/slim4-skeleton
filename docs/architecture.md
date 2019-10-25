@@ -21,13 +21,13 @@ The modern derivations of "MVC Model 2"  toward Action Domain Responder is not d
 
 Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
 
-### Action
+## Action
 
 In an ADR system, a single Action is the main purpose of a class or closure. Each Action would be represented by a individual class or closure.
 
 The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
 
-### Domain
+## Domain
 
 The **Domain** is divided into multiple sub-categories:
 
@@ -37,7 +37,7 @@ The **Domain** is divided into multiple sub-categories:
 
 Read more: [Domain](architecture/domain.md)
 
-### Responder
+## Responder
 
 To fully **separate the presentation logic**, each Action in ADR invokes a Responder to build the HTTP response. The Responder is entirely in charge of setting headers, setting the body content, picking content types, rendering templates, and so on.
 
