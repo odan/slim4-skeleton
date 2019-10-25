@@ -85,10 +85,11 @@ chown -R www-data tmp/
 chown -R www-data public/cache/
 
 chmod -R 760 tmp/
-chmod -R 760 public/cache/
+chmod -R 760 logs/
 
-#chmod +x bin/cli.php
-#php bin/cli.php install --environment ci
+# chmod +x bin/cli.php
+# php bin/cli.php install --environment ci
+# composer migrate
 
 vendor/bin/phpunit
 ```
