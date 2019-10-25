@@ -50,8 +50,10 @@ This project comes configured with:
 * Database Migrations Generator
 * Date and time (Chronos)
 * Console Commands (Symfony)
-* Unit testing (PHPUnit)
-* Continuous integration
+* Unit- and integrations tests (PHPUnit)
+* Tested on Travis CI and Scrutinizer CI
+* PHPStan, max level
+* Build and deployment scripts
 
 ### Packages
 
@@ -64,15 +66,7 @@ This project also uses the following packages:
 * [php-di/php-di](https://github.com/PHP-DI/PHP-DI) as container implementation (PSR-11)
 * [symfony/translation](https://github.com/symfony/translation) as translator
 * [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
-* [Webpack](https://webpack.js.org/) to bundle your assets
-
-### Continuous integration
-
-* Unit- and integrations tests
-* Tested on Travis CI and Scrutinizer CI
-* Code style checker and fixer (PSR-2, PSR-12)
-* PHPStan (level=max)
-* Deployment script
+* [webpack](https://webpack.js.org/) as assets bundler 
 
 ## Documentation
 
