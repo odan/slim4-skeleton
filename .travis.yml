@@ -18,9 +18,9 @@ before_script:
   - composer self-update
   - composer install --no-interaction --prefer-dist --no-progress
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - cp config/env.example.php config/env.php
   - cd $TRAVIS_BUILD_DIR
 
 script:
   - composer migrate
   - composer check-all
-
