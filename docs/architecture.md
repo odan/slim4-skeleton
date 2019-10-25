@@ -77,9 +77,11 @@ A quick overview of the request/response cycle in ADR:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
 
-All requests go through the same cycle:  `Request > front controller > routing > middleware > action > response`
+All requests go through the same cycle:  
 
-A fully detailed HTTP request flow and back to the response:
+> `Request > Front controller > Routing > Middleware > Action > Middleware > Response`
+
+Here is a fully detailed HTTP request flow and back to the response:
 
 ![image](https://user-images.githubusercontent.com/781074/59540964-b2dad000-8eff-11e9-89da-aa98e400bd88.png)
 

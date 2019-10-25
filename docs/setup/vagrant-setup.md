@@ -99,5 +99,5 @@ vendor/bin/phpunit
 {% endraw %}
 
 * Start the guest machine with: `vagrant up` 
-* Open in your browser: http://localhost:8765
+* Open in your browser: <http://localhost:8765>
 

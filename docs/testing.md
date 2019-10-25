@@ -92,7 +92,7 @@ because it's possible to simulate all requests yourself.
 
 Please have a look at these sample tests in `tests/TestCase/Action` directory.
 
-> Tip: Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
+**Tip:** Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
 
 ### API test with curl
 
