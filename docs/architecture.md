@@ -7,7 +7,7 @@ has_children: true
 
 # Architecture
 
-This application uses the [ADR](#action-domain-responder-adr) pattern and a [service-oriented](#service-oriented-architecture-soa) domain layer.  
+This application uses the [ADR](#action-domain-responder-adr) pattern and a hexagonal architecture with a [service-oriented](#service-oriented-architecture-soa) domain layer.  
 
 ## Action Domain Responder (ADR)
 
