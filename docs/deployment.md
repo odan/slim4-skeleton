@@ -16,6 +16,10 @@ points to the `public/` path, e.g. `/var/www/example.com/htdocs/public`
 * Upload a custom `env.php` file to `/var/www/example.com/env.php`
 * Upload `config/deploy.php` to `/var/www/example.com/deploy.php`
 
+Read more:
+
+* [Setting up permissions for apache var/www/html](https://odan.github.io/2019/02/17/correct-owner-and-permissions-of-var-www-html.html)
+
 ## Building
 
 To build a new artifact (ZIP file), run:

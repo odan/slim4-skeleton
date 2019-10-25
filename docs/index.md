@@ -20,7 +20,7 @@ Run this command from the directory in which you want to install your new Slim F
 composer create-project odan/slim4-skeleton {my-app-name}
 ```
 
-Replace `{my-app-name}` with the desired directory name for your new application. You'll want to:
+Replace `{my-app-name}` with the desired directory name for your new application.
 
 * Ensure that `logs/` and `tmp/` is web writable.
 * Open the app url
