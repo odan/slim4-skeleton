@@ -34,21 +34,21 @@ However, `.env` files should be considered as harmful because:
 * `vlucas/phpdotenv` is a unnecessary dependency. PHP can do it better.
 * `vlucas/phpdotenv` is buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
-Even `environment variables` should be considering as harmful because:
+Even **environment variables** should be considering as harmful because:
 
 * A third-party server tool or any system-service could send a crash-report with all environment variables to foreign servers.
 * Any other tool on your server could read the environment variables.
 * Incorrectly configured servers could log the environment variables or even send them as error message to the browser. 
 
-For security (and performance) reasons, all secret environments variables 
-are better stored in a file called: `env.php`.
+For security (and performance) reasons, all secret environment variables 
+are better stored in a file called: **`env.php`**.
 
 Create a copy of the file `config/env.example.php` and rename it to
 `config/env.php`
 
 The `env.php` file is generally kept out of version control since it can contain sensitive API keys and passwords.
  
-> Never commit the file `env.php` to the version control system!
+> **Never commit the env.php file to the version control system!**
 
 Add the file `env.php` to your `.gitignore`, so that you don't accidentally commit it.
 
