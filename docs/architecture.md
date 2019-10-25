@@ -7,7 +7,7 @@ has_children: true
 
 # Architecture
 
-This application uses the [ADR](#action-domain-responder-adr) pattern and a [hexagonal architecture](#hexagonal-architecture) with a [service-oriented](#service-oriented-architecture-soa) domain layer.  
+This application uses the [ADR](#action-domain-responder-adr) pattern and a [hexagonal architecture](#hexagonal-architecture) with a [service-oriented](domain.md#service-oriented-architecture-soa) domain layer.  
 
 ## Action Domain Responder (ADR)
 
@@ -27,7 +27,7 @@ In an ADR system, a single Action is the main purpose of a class or closure. Eac
 
 The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
 
-Read more: [Single Controllers Controllers](controllers.md)
+Read more: [Single Controllers Controllers](action.md)
 
 ## Domain
 
@@ -42,6 +42,8 @@ Note that a Responder may incorporate a Template View or any other kind of body 
 A particular Responder may be used by more than one Action. The point here is the Action leaves all header and content work to the Responder, not that there must be a different Responder for each different Action.
 
 ## Hexagonal Architecture
+
+Read more:
 
 * [Hexagonal Architecture demystified](https://madewithlove.be/hexagonal-architecture-demystified/)
 * [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019)

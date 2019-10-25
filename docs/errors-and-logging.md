@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Errors and logging
-nav_order: 9
+nav_order: 10
 ---
 
 ## Errors and logging
