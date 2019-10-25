@@ -8,6 +8,12 @@ nav_order: 1
 
 # Domain
 
+The **Domain** is divided into multiple sub-categories:
+
+* **Service:** Business logic (calculation, validation, transaction handling)
+* **Repository:** Data access logic, communication with databases
+* **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
+
 ## Services
 
 Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.

@@ -29,12 +29,6 @@ The Action interacts with the Domain in the same way a Controller interacts with
 
 ## Domain
 
-The **Domain** is divided into multiple sub-categories:
-
-* **Service:** Business logic (calculation, validation, transaction handling)
-* **Repository:** Data access logic, communication with databases
-* **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
-
 Read more: [Domain](architecture/domain.md)
 
 ## Responder
