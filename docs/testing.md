@@ -83,7 +83,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1","key2":"va
 Windows users have to install [Curl for Windows](https://curl.haxx.se/windows/)
 and should escape `"` with `\"` in the console.
 
-```cmd
+```bash
 curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost:8080
 ```
 
