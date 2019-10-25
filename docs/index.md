@@ -5,7 +5,8 @@ nav_order: 1
 description: "Slim 4 Skeleton"
 ---
 
-# Slim 4 Skeleton
+![image](https://user-images.githubusercontent.com/781074/67564463-4a102980-f723-11e9-9202-5e1d1641d06c.png)
+
 
 ## Introduction
 
@@ -31,3 +32,7 @@ Read more: [Manual Setup](manual-setup.md)
 
 * You can also download the latest version as ZIP file: [master.zip](https://github.com/odan/slim4-skeleton/archive/master.zip)
 
+## Links
+
+* [Slim 4 Skeleton on Github](https://github.com/odan/slim4-skeleton)
+* [Slim 4 Documentation](http://www.slimframework.com/docs/v4/)
