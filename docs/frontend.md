@@ -32,24 +32,9 @@ Example:
 * fr_FR_messages.mo
 * fr_FR_messages.po
 
-### Configure Translation
+## Updating Translation Strings
 
-*This section is under construction!*
-
-* todo: Add description how to add more languages
-
-### Determining The Current Locale
-
-You may use the getLocale and isLocale methods on the App facade to determine 
-the current locale or check if the locale is a given value:
-
-```php
-$locale = $this->locale->getLocale(); // en_US
-```
-
-### Updating Translation Strings
-
-#### Requirements
+### Requirements
 
 * [Poedit](https://poedit.net/) (A translations editor)
 
@@ -102,6 +87,17 @@ Translate a text with a placeholder:
 {% endraw %}
 
 Read more: [Twig translation usage](https://github.com/odan/twig-translation#usage)
+
+### Determining The Current Locale
+
+*This section is under construction!*
+
+You may use the getLocale and isLocale methods on the App facade to determine 
+the current locale or check if the locale is a given value:
+
+```php
+$locale = $this->locale->getLocale(); // en_US
+```
 
 ## Assets
 
