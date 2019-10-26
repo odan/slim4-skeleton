@@ -51,7 +51,7 @@ Example:
 * Click `Update from source`
 * Translate the text and save the file
 
-### Retrieving Translation Strings
+## Retrieving Translation Strings
 
 You may retrieve lines from language files using the `__` php helper function. 
 
@@ -88,7 +88,7 @@ Translate a text with a placeholder:
 
 Read more: [Twig translation usage](https://github.com/odan/twig-translation#usage)
 
-### Determining The Current Locale
+## Determining The Current Locale
 
 *This section is under construction!*
 
