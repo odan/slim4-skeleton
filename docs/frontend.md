@@ -21,9 +21,7 @@ The integrated localization features provides a convenient way to retrieve strin
 in various languages, allowing you to easily support multiple languages within 
 your application. 
 
-Translation files are stored in the directory: `resources/locale` 
-
-Within this directory there should be a `mo` and `po` file for each language supported by the application.
+The directory for all `*.mo` and `*.po` translation files is: `resources/locale/`
 
 The source language is always english. You don't need a translation file for english.
 
@@ -49,23 +47,18 @@ the current locale or check if the locale is a given value:
 $locale = $this->locale->getLocale(); // en_US
 ```
 
-### Defining Translation Strings
+### Updating Translation Strings
 
-*This section is under construction!*
+#### Requirements
 
-To parse all translation strings run:
+* [Poedit](https://poedit.net/) (A translations editor)
 
-```bash
-$ composer compile-twig
-```
+### Usage
 
-This command will scan your twig templates, javascripts and PHP classes for the `__()` 
-function call and stores all text entries into po-files. 
-
-You can find all-po files in the: `resources/locale` directory. 
-
-[PoEdit](https://poedit.net/) is the recommended PO-file editor for the generated po-files.
- 
+* Start Poedit and open the po-file from `resources/locale/`
+* Add `__` as additional keyword: Catalogue > Properties... > Sources keywords
+* Click `Update from source`
+* Translate the text and save the file
 
 ### Retrieving Translation Strings
 

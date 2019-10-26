@@ -6,9 +6,6 @@ nav_order: 10
 
 ## Errors and logging
  
-Depending on the settings, all warnings and errors will be logged within the `logs/` directory.
+The directory for all log files is: `logs/`
 
-The default logging settings are defined in `config/defaults.php`, see `logger`. 
-
-You can adjust these values to suit the needs of your application.
-
+The default settings are stored in `config/defaults.php`, `$settings['logger']`

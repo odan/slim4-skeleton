@@ -31,8 +31,7 @@ However, `.env` files should be considered as harmful because:
 * A public accessible `.env` file can be indexed by search engines.
 * `.env` files are not native and much slower then PHP files.
 * `.env` files are not intended to run on a production server. Many developers do it anyway.
-* `vlucas/phpdotenv` is a unnecessary dependency. PHP can do it better.
-* `vlucas/phpdotenv` is buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
+* `vlucas/phpdotenv` is a unnecessary dependency and buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
 Even **environment variables** should be considering as harmful because:
 
