@@ -53,10 +53,16 @@ $locale = $this->locale->getLocale(); // en_US
 
 * [Poedit](https://poedit.net/) (A translations editor)
 
+### Setting up a PO file
+
+* Copy an existing po file from `resources/locale/` and rename it, e.g. `it_IT_messages.po`
+* Start Poedit and open the po-file from `resources/locale/`
+* Open the menu: `Catalogue > Properties...` and change the language.
+* Save the file
+
 ### Usage
 
 * Start Poedit and open the po-file from `resources/locale/`
-* Add `__` as additional keyword: Catalogue > Properties... > Sources keywords
 * Click `Update from source`
 * Translate the text and save the file
 
