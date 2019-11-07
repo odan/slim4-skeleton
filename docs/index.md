@@ -10,7 +10,7 @@ description: "Slim 4 Skeleton"
 
 ## Introduction
 
-A Slim 4 Framework skeleton project for applications and APIs.
+A Slim 4 Framework skeleton for web applications and APIs.
 
 ## Installation
 

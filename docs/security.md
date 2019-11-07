@@ -6,24 +6,22 @@ nav_order: 13
 
 # Security
 
-## Session
-
-This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to store the logged-in user.
-If you have to add API routes, you may use a [OAuth2 Bearer-Token](https://oauth.net/2/bearer-tokens/) or [JSON Web Token](https://oauth.net/2/jwt/) instead.
-
 ## Authentication
 
-The authentication depends on the defined routes and the attached middleware.
-You can add routing groups with Sessions and/or OAuth2 authentication. 
+This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to store the logged-in user.
+
+You could also use the [OAuth 2.0](https://oauth.net/2/) authentication standard in combination with a 
+[Bearer-Token](https://oauth.net/2/bearer-tokens/) (default) or a [JSON Web Token](https://oauth.net/2/jwt/) instead.
+
 It's up to you how you configure the routes and their individual authentication.
+
+Read more: [Branca](https://branca.io/)
 
 ## Authorization
 
 *This section is under construction!*
 
-To check user permissions, the Actions controller contains an `Auth` object.
-
-Determine the logged-in user ID::
+Determine the logged-in user ID:
 
 ```php
 $userId = $this->auth->getUserId();

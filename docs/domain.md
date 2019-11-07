@@ -17,13 +17,14 @@ The **Domain** is divided into multiple sub-categories:
 Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.
 Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
 
-This layer provides cohesive, high-level logic for related parts of an application. This layer is invoked directly by the Controllers.
-
-The business logic should be placed in the service classes, and we should aim for a fat model layer and thin controller layer.
+A service can be called directly from the action, a service, the CLI and the unit tests.
 
 ### Service-Oriented Architecture (SOA)
 
-**SOA** uses **services** to build systems. **OOP** uses **objects** to build systems, and it tends marry data and behavior. Services tend to **separate data from behavior**. In an SOA, the separation between data and behavior is often obvious.
+**SOA** uses **services** to build systems. 
+**OOP** uses **objects** to build systems, and it tends marry data and behavior. 
+Services tend to **separate data from behavior**. 
+In an SOA, the separation between data and behavior is often obvious.
 
 **OOP**
 
