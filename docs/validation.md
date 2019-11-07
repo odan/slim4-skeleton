@@ -24,10 +24,10 @@ using [json schema](https://json-schema.org/).
 ## Form data validation
 
 If you need to validate complex form data (arrays) against a specific set of rules, try 
-**[cakephp/validation](https://github.com/cakephp/validation)** and 
+[cakephp/validation](https://github.com/cakephp/validation) and 
 [vlucas/valitron](https://github.com/vlucas/valitron).
 
-To collect validation errors and convert a validation exception into a JSON response (422), 
+To collect validation errors and convert a validation exception into a JSON response, 
 try [selective/validation](https://github.com/selective-php/validation)
 
 ## XML validation

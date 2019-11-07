@@ -54,7 +54,7 @@ Read more: **[Phinx Documentation](http://docs.phinx.org/en/latest/)**
 
 ## Update schema
 
-Update the database schema with this shorthand command:
+Update the database schema with this command:
 
 ```bash
 $ composer migrate
@@ -68,7 +68,7 @@ $ vendor/bin/phinx migrate -c config/phinx.php
 
 ## Data Seeding
 
-All seeds are stored in the directory: `resources/seeds/`.
+All seeds are stored in the directory: `resources/seeds/`
 
 To populate the database with data for testing and experimenting, run:
 
