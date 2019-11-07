@@ -8,14 +8,17 @@ nav_order: 13
 
 ## Authentication
 
-This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to store the logged-in user.
+This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to handle the logged-in user.
 
 You could also use the [OAuth 2.0](https://oauth.net/2/) authentication standard in combination with a 
 [Bearer-Token](https://oauth.net/2/bearer-tokens/) (default) or a [JSON Web Token](https://oauth.net/2/jwt/) instead.
 
 It's up to you how you configure the routes and their individual authentication.
 
-Read more: [Branca](https://branca.io/)
+Read more: 
+
+* [OAuth Libraries for PHP](https://oauth.net/code/php/)
+* [Branca](https://branca.io/)
 
 ## Authorization
 
