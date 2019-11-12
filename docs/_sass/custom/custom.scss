@@ -1,1 +1,13 @@
 $link-color: #719e40;
+
+/* The inter font family: https://rsms.me/inter/ */
+@import url('https://rsms.me/inter/inter.css');
+html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
