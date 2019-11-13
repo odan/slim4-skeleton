@@ -2,13 +2,13 @@
 
 use App\Factory\LoggerFactory;
 use App\Middleware\TranslatorMiddleware;
-use App\Utility\Configuration;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathDetector;
+use Selective\Config\Configuration;
 use Selective\Validation\Encoder\JsonEncoder;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
@@ -37,7 +37,7 @@ return [
         $app->setBasePath($basePath);
 
         $config = $container->get(Configuration::class);
-        $routeCacheFile = $config->get('router')['cache_file'];
+        $routeCacheFile = $config->findString('router.cache_file');
         if ($routeCacheFile) {
             $app->getRouteCollector()->setCacheFile($routeCacheFile);
         }
@@ -59,13 +59,13 @@ return [
 
     // The logger factory
     LoggerFactory::class => static function (ContainerInterface $container) {
-        return new LoggerFactory($container->get(Configuration::class)->get('logger'));
+        return new LoggerFactory($container->get(Configuration::class)->getArray('logger'));
     },
 
     // Twig templates
     Twig::class => static function (ContainerInterface $container) {
         $config = $container->get(Configuration::class);
-        $twigSettings = $config->get('twig');
+        $twigSettings = $config->getArray('twig');
 
         $twig = new Twig($twigSettings['path'], [
             'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
@@ -73,7 +73,7 @@ return [
 
         $loader = $twig->getLoader();
         if ($loader instanceof FilesystemLoader) {
-            $loader->addPath($config->get('public'), 'public');
+            $loader->addPath($config->getString('public'), 'public');
         }
 
         $environment = $twig->getEnvironment();
@@ -86,7 +86,7 @@ return [
         $twig->addExtension(new TwigTranslationExtension());
 
         $twig->addExtension(new WebpackExtension(
-            $config->get('public') . '/assets/manifest.json',
+            $config->getString('public') . '/assets/manifest.json',
             $basePath . '/assets/',
             $basePath . '/assets/'
         ));
@@ -96,7 +96,7 @@ return [
 
     // Translation
     Translator::class => static function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->get('locale');
+        $settings = $container->get(Configuration::class)->getArray('locale');
 
         $translator = new Translator(
             $settings['locale'],
@@ -114,7 +114,7 @@ return [
     },
 
     TranslatorMiddleware::class => static function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->get('locale');
+        $settings = $container->get(Configuration::class)->getArray('locale');
         $localPath = $settings['path'];
         $translator = $container->get(Translator::class);
 
@@ -122,7 +122,7 @@ return [
     },
 
     Connection::class => static function (ContainerInterface $container) {
-        return new Connection($container->get(Configuration::class)->get('db'));
+        return new Connection($container->get(Configuration::class)->getArray('db'));
     },
 
     PDO::class => static function (ContainerInterface $container) {

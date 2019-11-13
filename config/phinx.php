@@ -1,15 +1,16 @@
 <?php
 
-use App\Utility\Configuration;
+use Selective\Config\Configuration;
+use Slim\App;
 
-/** @var \Slim\App $app */
+/** @var App $app */
 $app = require __DIR__ . '/../config/bootstrap.php';
 
 $container = $app->getContainer();
 $pdo = $container->get(PDO::class);
 $config = $container->get(Configuration::class);
-$database = $config->get('db')['database'];
-$phinx = $config->get('phinx');
+$database = $config->getString('db.database');
+$phinx = $config->getArray('phinx');
 
 $phinx['environments']['local'] = [
     // Set database name

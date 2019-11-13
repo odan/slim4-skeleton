@@ -2,7 +2,7 @@
 
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
-use App\Utility\Configuration;
+use Selective\Config\Configuration;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Views\Twig;
@@ -27,7 +27,7 @@ return static function (App $app) {
     $app->addRoutingMiddleware();
 
     // Error handler
-    $settings = $container->get(Configuration::class)->get('error_handler_middleware');
+    $settings = $container->get(Configuration::class)->getArray('error_handler_middleware');
     $displayErrorDetails = (bool)$settings['display_error_details'];
     $logErrors = (bool)$settings['log_errors'];
     $logErrorDetails = (bool)$settings['log_error_details'];

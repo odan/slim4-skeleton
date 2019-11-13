@@ -24,6 +24,7 @@
         "psr/log": "^1.1",
         "selective/array-reader": "^0.1.0",
         "selective/basepath": "^0.1.0",
+        "selective/config": "^0.1.0",
         "selective/validation": "^0.7.1",
         "slim/psr7": "^0.6.0",
         "slim/slim": "^4.3",

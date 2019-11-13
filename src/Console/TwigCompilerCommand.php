@@ -2,10 +2,10 @@
 
 namespace App\Console;
 
-use App\Utility\Configuration;
 use Exception;
 use Odan\Twig\TwigCompiler;
 use Psr\Container\ContainerInterface;
+use Selective\Config\Configuration;
 use Slim\Views\Twig;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -80,7 +80,7 @@ final class TwigCompilerCommand extends Command
         $this->output->write('Compiling Twig templates... ', true);
 
         $twig = $this->container->get(Twig::class);
-        $settings = $this->container->get(Configuration::class)->get('twig');
+        $settings = $this->container->get(Configuration::class)->getArray('twig');
         $cachePath = $settings['cache_path'];
         $this->output->write(sprintf('Cache path: <info>%s</info>', $cachePath), true);
 
