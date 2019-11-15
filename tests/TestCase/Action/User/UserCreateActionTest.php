@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test.
  */
-class CreateUserActionTest extends TestCase
+class UserCreateActionTest extends TestCase
 {
     use HttpTestTrait;
 
@@ -23,8 +23,8 @@ class CreateUserActionTest extends TestCase
         $request = $this->withJson($request, ['username' => 'admin', 'email' => 'mail@example.com']);
         $response = $this->request($request);
 
-        static::assertSame('{"success":true,"user_id":1}', (string)$response->getBody());
-        static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        static::assertSame('{"user_id":1}', (string)$response->getBody());
+        static::assertSame('application/json;charset=utf-8', $response->getHeaderLine('Content-Type'));
         static::assertSame(200, $response->getStatusCode());
     }
 }

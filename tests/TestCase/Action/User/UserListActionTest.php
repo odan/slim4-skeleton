@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test.
  */
-class ListUserActionTest extends TestCase
+class UserListActionTest extends TestCase
 {
     use HttpTestTrait;
 

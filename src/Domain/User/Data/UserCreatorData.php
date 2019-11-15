@@ -8,7 +8,7 @@ use Selective\ArrayReader\ArrayReader;
 /**
  * Data object.
  */
-final class UserData implements DataInterface
+final class UserCreatorData implements DataInterface
 {
     /** @var int|null */
     public $id;

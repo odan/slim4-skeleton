@@ -2,8 +2,9 @@
 
 namespace App\Action\User;
 
-use App\Responder\HtmlResponder;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\ServerRequest;
+use Slim\Views\Twig;
 
 /**
  * Action.
@@ -11,27 +12,30 @@ use Psr\Http\Message\ResponseInterface as Response;
 final class UserListAction
 {
     /**
-     * @var HtmlResponder
+     * @var Twig
      */
-    private $responder;
+    private $twig;
 
     /**
-     * Constructor.
+     * The constructor.
      *
-     * @param HtmlResponder $responder The responder
+     * @param Twig $twig The twig engine
      */
-    public function __construct(HtmlResponder $responder)
+    public function __construct(Twig $twig)
     {
-        $this->responder = $responder;
+        $this->twig = $twig;
     }
 
     /**
      * Action.
      *
+     * @param ServerRequest $request The request
+     * @param Response $response The response
+     *
      * @return Response The response
      */
-    public function __invoke(): Response
+    public function __invoke(ServerRequest $request, Response $response): Response
     {
-        return $this->responder->render('user/user-list.twig');
+        return $this->twig->render($response, 'user/user-list.twig');
     }
 }

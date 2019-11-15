@@ -2,8 +2,8 @@
 
 namespace App\Action\Hello;
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 /**
  * Action.
@@ -13,13 +13,13 @@ final class HelloAction
     /**
      * Action.
      *
-     * @param Request $request The request
+     * @param ServerRequest $request The request
      * @param Response $response The response
      * @param array $args The arguments
      *
-     * @return Response The new response
+     * @return Response The response
      */
-    public function __invoke(Request $request, Response $response, array $args = []): Response
+    public function __invoke(ServerRequest $request, Response $response, array $args = []): Response
     {
         $name = $args['name'];
 

@@ -6,6 +6,8 @@ use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
+use Slim\Factory\ServerRequestCreatorFactory;
+use Slim\Http\Factory\DecoratedServerRequestFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
 /**
@@ -35,7 +37,8 @@ trait HttpTestTrait
             ];
         }
 
-        $factory = new ServerRequestFactory();
+        ServerRequestCreatorFactory::setSlimHttpDecoratorsAutomaticDetection(false);
+        $factory = new DecoratedServerRequestFactory(new ServerRequestFactory());
 
         return $factory->createServerRequest($method, $uri, $serverParams);
     }

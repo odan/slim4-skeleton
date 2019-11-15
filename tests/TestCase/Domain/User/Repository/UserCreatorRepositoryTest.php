@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User\Repository;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserCreatorData;
 use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\DatabaseTestTrait;
@@ -43,7 +43,7 @@ class UserCreatorRepositoryTest extends TestCase
     {
         $repository = $this->createInstance();
 
-        $user = new UserData();
+        $user = new UserCreatorData();
         $user->username = 'john.doe';
         $user->email = 'john.doe@example.com';
         $user->firstName = 'John';

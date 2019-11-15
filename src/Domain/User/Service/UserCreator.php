@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserCreatorData;
 use App\Domain\User\Repository\UserGeneratorRepository;
 use App\Domain\User\Validator\UserValidator;
 use App\Factory\LoggerFactory;
@@ -13,7 +13,7 @@ use Selective\Validation\Exception\ValidationException;
 /**
  * Domain Service.
  */
-final class UserGenerator implements ServiceInterface
+final class UserCreator implements ServiceInterface
 {
     /**
      * @var UserGeneratorRepository
@@ -52,13 +52,13 @@ final class UserGenerator implements ServiceInterface
     /**
      * Create a new user.
      *
-     * @param UserData $user The user data
+     * @param UserCreatorData $user The user data
      *
      * @throws ValidationException
      *
      * @return int The new user ID
      */
-    public function createUser(UserData $user): int
+    public function createUser(UserCreatorData $user): int
     {
         // Validation
         $validation = $this->userValidator->validateUser($user);

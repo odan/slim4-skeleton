@@ -2,38 +2,21 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\Service\UserForm;
-use App\Responder\JsonResponder;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Domain\User\Data\UserCreatorData;
+use App\Domain\User\Service\UserCreator;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 /**
  * Action.
  */
 final class UserCreateAction
 {
-    /**
-     * @var UserForm
-     */
-    protected $userForm;
+    private $userCreator;
 
-    /**
-     * @var JsonResponder
-     */
-    private $responder;
-
-    /**
-     * Constructor.
-     *
-     * @param UserForm $userForm The form
-     * @param JsonResponder $responder The responder
-     */
-    public function __construct(
-        UserForm $userForm,
-        JsonResponder $responder
-    ) {
-        $this->responder = $responder;
-        $this->userForm = $userForm;
+    public function __construct(UserCreator $userCreator)
+    {
+        $this->userCreator = $userCreator;
     }
 
     /**
@@ -41,16 +24,21 @@ final class UserCreateAction
      *
      * > curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost/users
      *
-     * @param Request $request The request
+     * @param ServerRequest $request The request
+     * @param Response $response The response
      *
-     * @return Response The new response
+     * @return Response The response
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(ServerRequest $request, Response $response): Response
     {
-        $userId = $this->userForm->createUser((array)$request->getParsedBody());
+        // Collect input from the HTTP request
+        $userData = new UserCreatorData((array)$request->getParsedBody());
 
-        return $this->responder->render([
-            'success' => true,
+        // Invoke the Domain with inputs and retain the result
+        $userId = $this->userCreator->createUser($userData);
+
+        // Build the HTTP response
+        return $response->withJson([
             'user_id' => $userId,
         ]);
     }

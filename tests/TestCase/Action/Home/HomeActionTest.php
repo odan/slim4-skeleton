@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test.
  */
-class HomeIndexActionTest extends TestCase
+class HomeActionTest extends TestCase
 {
     use HttpTestTrait;
 

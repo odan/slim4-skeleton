@@ -2,8 +2,9 @@
 
 namespace App\Action\Home;
 
-use App\Responder\HtmlResponder;
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
+use Slim\Views\Twig;
 
 /**
  * Action.
@@ -11,31 +12,34 @@ use Psr\Http\Message\ResponseInterface as Response;
 final class HomeAction
 {
     /**
-     * @var HtmlResponder
+     * @var Twig
      */
-    private $responder;
+    private $twig;
 
     /**
-     * Constructor.
+     * The constructor.
      *
-     * @param HtmlResponder $responder The responder
+     * @param Twig $twig The twig engine
      */
-    public function __construct(HtmlResponder $responder)
+    public function __construct(Twig $twig)
     {
-        $this->responder = $responder;
+        $this->twig = $twig;
     }
 
     /**
      * Action.
      *
-     * @return Response The new response
+     * @param ServerRequest $request The request
+     * @param Response $response The response
+     *
+     * @return Response The response
      */
-    public function __invoke(): Response
+    public function __invoke(ServerRequest $request, Response $response): Response
     {
         $viewData = [
             'now' => date('d.m.Y H:i:s'),
         ];
 
-        return $this->responder->render('home/home.twig', $viewData);
+        return $this->twig->render($response, 'home/home.twig', $viewData);
     }
 }

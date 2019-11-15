@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserCreatorData;
 use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
@@ -31,7 +31,7 @@ final class UserRepository implements RepositoryInterface
     /**
      * Find all users.
      *
-     * @return UserData[] A list of users
+     * @return UserCreatorData[] A list of users
      */
     public function findAllUsers(): array
     {
@@ -41,7 +41,7 @@ final class UserRepository implements RepositoryInterface
 
         $result = [];
         foreach ($rows as $row) {
-            $result[] = new UserData($row);
+            $result[] = new UserCreatorData($row);
         }
 
         return $result;

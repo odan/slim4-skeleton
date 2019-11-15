@@ -55,6 +55,8 @@ class LoggerFactory
             $logger->pushHandler($handler);
         }
 
+        $this->handler = [];
+
         return $logger;
     }
 
