@@ -78,7 +78,7 @@ final class HomeAction
 ## Responder
 
 According to [ADR](#action-domain-responder-adr) there should be a **responder** for each action. In most cases this is not necessary 
-and would blow up the code too much. Of course, you can add special responder classes in your application and move the 
+and would blow up the code too much. Of course, you can add special responder classes and move the 
 complete presentation logic there. [Examples](https://github.com/pmjones/adr-example/tree/master/src/Web/Blog)
 
 ## Request and Response
