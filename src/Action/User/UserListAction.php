@@ -2,6 +2,7 @@
 
 namespace App\Action\User;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 use Slim\Views\Twig;
@@ -32,9 +33,9 @@ final class UserListAction
      * @param ServerRequest $request The request
      * @param Response $response The response
      *
-     * @return Response The response
+     * @return ResponseInterface The response
      */
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
         return $this->twig->render($response, 'user/user-list.twig');
     }
