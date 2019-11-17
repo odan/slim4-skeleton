@@ -11,7 +11,10 @@ nav_order: 13
 This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to handle the logged-in user.
 
 You could also use the [OAuth 2.0](https://oauth.net/2/) authentication standard in combination with a 
-[Bearer-Token](https://oauth.net/2/bearer-tokens/) (default) or a [JSON Web Token](https://oauth.net/2/jwt/) instead.
+[Bearer-Token](https://oauth.net/2/bearer-tokens/) or a [JSON Web Token](https://oauth.net/2/jwt/).
+
+[lcobucci/jwt](https://github.com/lcobucci/jwt) is a good library to work with JSON Web Token (JWT) 
+and JSON Web Signature based on the RFC 7519.
 
 It's up to you how you configure the routes and their individual authentication.
 
