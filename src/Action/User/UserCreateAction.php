@@ -12,8 +12,16 @@ use Slim\Http\ServerRequest;
  */
 final class UserCreateAction
 {
+    /**
+     * @var UserCreator
+     */
     private $userCreator;
 
+    /**
+     * The constructor.
+     *
+     * @param UserCreator $userCreator The service
+     */
     public function __construct(UserCreator $userCreator)
     {
         $this->userCreator = $userCreator;
