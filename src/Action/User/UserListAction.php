@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 use Slim\Views\Twig;
 
