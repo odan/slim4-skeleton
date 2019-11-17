@@ -32,6 +32,7 @@ The use of class names is more lightweight, faster and scales better for larger 
 
 namespace App\Action;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 use Slim\Views\Twig;
@@ -45,7 +46,7 @@ final class HomeAction
         $this->twig = $twig;
     }
 
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
         return $this->twig->render($response, 'home/home-index.twig');
     }
@@ -61,12 +62,13 @@ Instead of calling `json_encode` everytime, you can use the `withJson()` method 
 
 namespace App\Action;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
 final class HomeAction
 {
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
         return $response->withJson(['success' => true]);
     }
