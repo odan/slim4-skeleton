@@ -6,52 +6,39 @@ nav_order: 8
 
 # Action
 
-In an [ADR](https://github.com/pmjones/adr/blob/master/ADR.md) system, a single Action is the main purpose of a class or closure. Each Action would be represented by a individual class or closure.
-
-The Action interacts with the Domain in the same way a Controller interacts with a Model but does not interact with a View or template system. It sends data to the Responder and invokes it so it can build the HTTP response.
-
-## Single Action Controllers
-
-The *Action* mediates between the *Domain* and the *Responder*. 
-
-"Single Action Controllers" means: One action per class.
+Each **Single Action Controller** is represented by a individual class or closure.
 
 The *Action* does only these things:
 
-* collects input from the HTTP request (if needed);
-* invokes the Domain with those inputs (if required) and retains the result;
-* invokes the Responder with any data the Responder needs to build an HTTP response (typically the HTTP Request and/or the Domain invocation results).
+* collects input from the HTTP request (if needed)
+* invokes the **Domain** with those inputs (if required) and retains the result
+* builds an HTTP response (typically with the Domain invocation results).
 
-All other logic, including all forms of input validation, error handling, and so on, are therefore pushed out of the Action and into the Domain (for domain logic concerns) or the Responder (for presentation logic concerns). 
+All other logic, including all forms of input validation, error handling, and so on, 
+are therefore pushed out of the Action and into the **Domain** 
+(for domain logic concerns) or the response renderer (for presentation logic concerns). 
 
-The [Responder](#responder) creates the response, not the Action.
+A response could be rendered to HTML (e.g with Twig) for a standard web request; or 
+it might be something like JSON for RESTful API requests.
 
-A Responder might be HTML-responder for a standard web request; or 
-it might be something like a JSON-responder for RESTful API requests.
+**Note:** [Closures](https://www.php.net/manual/en/class.closure.php) (functions) as routing 
+handlers are quite "expensive", because PHP has to create all closures for each request. 
+The use of class names is more lightweight, faster and scales better for larger applications.
 
-### Example
+### Rendering a Twig template
 
 ```php
 <?php
 
 namespace App\Action;
 
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
-final class ExampleAction
+final class HomeAction
 {
-    private $responseFactory;
-    
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __invoke(ServerRequest $request, Response $response): Response
     {
-        $this->responseFactory = $responseFactory;
-    }
-    
-    public function __invoke(ServerRequestInterface $request): ResponseInterface
-    {
-        $response = $this->responseFactory->createResponse();
         $response->getBody()->write('Hello, World!');
 
         return $response;
@@ -59,21 +46,30 @@ final class ExampleAction
 }
 ```
 
-**Pros and cons:** On the one hand we are producing more classes, on the other hand these action classes have only one responsibility (SRP).
-Refactoring in your IDE becomes easy and safe, because the [routes](routing.md) make use of the `::class` constant. 
+### Writing JSON to the response
 
-## Responder
+Instead of calling `json_encode` everytime we are using a specific JSON method `withJson()` for this task.
 
-To fully **separate the presentation logic**, each Action in ADR invokes a Responder to build the HTTP response. The Responder is entirely in charge of setting headers, setting the body content, picking content types, rendering templates, and so on.
+```php
+<?php
 
-Note that a Responder may incorporate a Template View or any other kind of body content building system.
+namespace App\Action;
 
-A particular Responder may be used by more than one Action. The point here is the Action leaves all header and content work to the Responder, not that there must be a different Responder for each different Action.
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
+final class HomeAction
+{
+    public function __invoke(ServerRequest $request, Response $response): Response
+    {
+        return $response->withJson(['success' => true]);
+    }
+}
+```
 
 ## Request and Response
 
-A quick overview of the request/response cycle in ADR:
+A quick overview of the request/response cycle:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
 
