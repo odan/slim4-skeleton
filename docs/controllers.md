@@ -34,14 +34,20 @@ namespace App\Action;
 
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
+use Slim\Views\Twig;
 
 final class HomeAction
 {
+    private $twig;
+
+    public function __construct(Twig $twig)
+    {
+        $this->twig = $twig;
+    }
+
     public function __invoke(ServerRequest $request, Response $response): Response
     {
-        $response->getBody()->write('Hello, World!');
-
-        return $response;
+        return $this->twig->render($response, 'home/home-index.twig');
     }
 }
 ```
