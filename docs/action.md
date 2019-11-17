@@ -73,7 +73,9 @@ final class HomeAction
 }
 ```
 
-**Note**: According to **ADR** there should be a **responder** for each action. In most cases this is not necessary 
+## Responder
+
+According to [ADR](#action-domain-responder-adr) there should be a **responder** for each action. In most cases this is not necessary 
 and would blow up the code too much. Of course, you can add special responder classes in your application and move the 
 complete presentation logic there. 
 
