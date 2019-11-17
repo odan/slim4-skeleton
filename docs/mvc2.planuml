@@ -1,0 +1,23 @@
+@startuml
+
+title MVC Model 2
+header v2019.11.16.0
+
+autonumber
+
+actor Browser
+participant Controller
+participant Model
+participant View
+database Database
+
+Browser -> Controller: Request
+Controller -> Model: Invoke service
+Model -> Model: Business logic
+Model <-> Database: Data manipulation
+Model -> Controller: Service result
+Controller -> View: View data
+View -> Controller: Response
+Controller -> Browser: Response
+
+@enduml

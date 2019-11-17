@@ -48,7 +48,7 @@ final class HomeAction
 
 ### Writing JSON to the response
 
-Instead of calling `json_encode` everytime we are using a specific JSON method `withJson()` for this task.
+Instead of calling `json_encode` everytime, you can use the `withJson()` method to render the respponse.
 
 ```php
 <?php
@@ -66,6 +66,10 @@ final class HomeAction
     }
 }
 ```
+
+**Note**: According to **ADR** there should be a **responder** for each action. In most cases this is not necessary 
+and would blow up the code too much. Of course, you can add special responder classes in your application and move the 
+complete presentation logic there. 
 
 ## Request and Response
 
