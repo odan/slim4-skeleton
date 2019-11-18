@@ -6,7 +6,6 @@ use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
-use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\Http\Factory\DecoratedServerRequestFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
@@ -28,16 +27,6 @@ trait HttpTestTrait
      */
     protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
-        // A phpunit fix #3026
-        if (!isset($_SERVER['REQUEST_URI'])) {
-            $_SERVER = [
-                'SCRIPT_NAME' => '/public/index.php',
-                'REQUEST_TIME_FLOAT' => microtime(true),
-                'REQUEST_TIME' => (int)microtime(true),
-            ];
-        }
-
-        ServerRequestCreatorFactory::setSlimHttpDecoratorsAutomaticDetection(false);
         $factory = new DecoratedServerRequestFactory(new ServerRequestFactory());
 
         return $factory->createServerRequest($method, $uri, $serverParams);
