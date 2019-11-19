@@ -133,7 +133,7 @@ trait DatabaseTestTrait
 
         $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
 
-        $statement = $db->query('SELECT table_name
+        $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
                 WHERE table_schema = database()');
 
@@ -166,7 +166,7 @@ trait DatabaseTestTrait
 
         $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
 
-        $statement = $db->query('SELECT table_name
+        $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
                 WHERE table_schema = database()');
 
