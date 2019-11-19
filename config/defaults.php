@@ -102,6 +102,8 @@ $settings['db'] = [
         PDO::ATTR_EMULATE_PREPARES => true,
         // Set default fetch mode to array
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // Force column names to lower case
+        PDO::ATTR_CASE => PDO::CASE_LOWER,
     ],
 ];
 
