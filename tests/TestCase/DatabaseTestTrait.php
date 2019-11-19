@@ -131,11 +131,12 @@ trait DatabaseTestTrait
     {
         $db = $this->getPdo();
 
-        $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
+        $db->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
 
         $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
-                WHERE table_schema = database()');
+                WHERE table_schema = database() 
+                AND update_time IS NOT NULL');
 
         if (!$statement) {
             throw new RuntimeException('Invalid sql statement');
@@ -150,7 +151,7 @@ trait DatabaseTestTrait
             $db->exec(implode("\n", $sql));
         }
 
-        $db->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
+        $db->exec('SET unique_checks=1; SET foreign_key_checks=1;');
     }
 
     /**
