@@ -4,8 +4,8 @@ namespace App\Test\TestCase;
 
 use DI\Container;
 use Psr\Container\ContainerInterface;
-use RuntimeException;
 use Slim\App;
+use UnexpectedValueException;
 
 /**
  * Container Trait.
@@ -43,14 +43,14 @@ trait ContainerTestTrait
     /**
      * Get container.
      *
-     * @throws RuntimeException
+     * @throws UnexpectedValueException
      *
      * @return ContainerInterface|Container The container
      */
     protected function getContainer(): ContainerInterface
     {
         if ($this->container === null) {
-            throw new RuntimeException('Container must be initialized');
+            throw new UnexpectedValueException('Container must be initialized');
         }
 
         return $this->container;
@@ -59,14 +59,14 @@ trait ContainerTestTrait
     /**
      * Get app.
      *
-     * @throws RuntimeException
+     * @throws UnexpectedValueException
      *
      * @return App The app
      */
     protected function getApp(): App
     {
         if ($this->app === null) {
-            throw new RuntimeException('App must be initialized');
+            throw new UnexpectedValueException('App must be initialized');
         }
 
         return $this->app;

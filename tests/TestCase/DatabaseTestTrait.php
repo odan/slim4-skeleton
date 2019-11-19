@@ -6,9 +6,9 @@ use Cake\Database\Connection;
 use PDO;
 use Phinx\Config\Config;
 use Phinx\Migration\Manager;
-use RuntimeException;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
+use UnexpectedValueException;
 
 /**
  * Integration test.
@@ -91,8 +91,6 @@ trait DatabaseTestTrait
     /**
      * Prepare the database schema with phinx (slow).
      *
-     * @throws RuntimeException
-     *
      * @return bool Success
      */
     protected function migrate(): bool
@@ -115,15 +113,15 @@ trait DatabaseTestTrait
         $sql = (string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql');
 
         $pdo = $this->getPdo();
-        $pdo->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
+        $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
         $pdo->exec($sql);
-        $pdo->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
+        $pdo->exec('SET unique_checks=1; SET foreign_key_checks=1;');
     }
 
     /**
      * Clean-Up Database. Truncate tables.
      *
-     * @throws RuntimeException
+     * @throws UnexpectedValueException
      *
      * @return void
      */
@@ -131,15 +129,14 @@ trait DatabaseTestTrait
     {
         $db = $this->getPdo();
 
-        $db->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
+        $db->exec('SET unique_checks=0; SET foreign_key_checks=0;');
 
         $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
-                WHERE table_schema = database() 
-                AND update_time IS NOT NULL');
+                WHERE table_schema = database()');
 
         if (!$statement) {
-            throw new RuntimeException('Invalid sql statement');
+            throw new UnexpectedValueException('Invalid sql statement');
         }
 
         $sql = [];
@@ -157,7 +154,7 @@ trait DatabaseTestTrait
     /**
      * Clean-Up Database. Truncate tables.
      *
-     * @throws RuntimeException
+     * @throws UnexpectedValueException
      *
      * @return void
      */
@@ -165,14 +162,16 @@ trait DatabaseTestTrait
     {
         $db = $this->getPdo();
 
-        $db->exec('SET UNIQUE_CHECKS=0; SET FOREIGN_KEY_CHECKS=0;');
+        $db->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
 
+        // Truncate only changed tables
         $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
-                WHERE table_schema = database()');
+                WHERE table_schema = database() 
+                AND update_time IS NOT NULL');
 
         if (!$statement) {
-            throw new RuntimeException('Invalid sql statement');
+            throw new UnexpectedValueException('Invalid sql statement');
         }
 
         $sql = [];
@@ -184,7 +183,7 @@ trait DatabaseTestTrait
             $db->exec(implode("\n", $sql));
         }
 
-        $db->exec('SET UNIQUE_CHECKS=1; SET FOREIGN_KEY_CHECKS=1;');
+        $db->exec('SET unique_checks=1; SET foreign_key_checks=1;');
     }
 
     /**
