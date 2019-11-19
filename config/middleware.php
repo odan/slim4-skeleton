@@ -1,6 +1,7 @@
 <?php
 
 use App\Middleware\LocaleSessionMiddleware;
+use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
 use Selective\Config\Configuration;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
@@ -22,6 +23,7 @@ return static function (App $app) {
     // Translation middleware
     $app->add(TranslatorMiddleware::class);
     $app->add(LocaleSessionMiddleware::class);
+    $app->add(SessionMiddleware::class);
 
     // Add global middleware to app
     $app->addRoutingMiddleware();
