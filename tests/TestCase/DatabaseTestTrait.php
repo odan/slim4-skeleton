@@ -81,7 +81,7 @@ trait DatabaseTestTrait
 
         $this->dropTables();
         //$this->migrate();
-        $this->migrateQuick();
+        $this->importSchema();
 
         define('DB_TEST_TRAIT_INIT', 1);
 
@@ -110,7 +110,7 @@ trait DatabaseTestTrait
      *
      * @return void
      */
-    protected function migrateQuick()
+    protected function importSchema()
     {
         $sql = (string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql');
 
@@ -143,7 +143,7 @@ trait DatabaseTestTrait
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $sql[] = sprintf('DROP TABLE `%s`;', $row['table_name']);
+            $sql[] = sprintf('DROP TABLE `%s`;', $row['TABLE_NAME']);
         }
 
         if ($sql) {
@@ -168,8 +168,7 @@ trait DatabaseTestTrait
 
         $statement = $db->query('SELECT table_name
                 FROM information_schema.tables
-                WHERE table_schema = database()
-                AND update_time IS NOT NULL');
+                WHERE table_schema = database()');
 
         if (!$statement) {
             throw new RuntimeException('Invalid sql statement');
@@ -177,7 +176,7 @@ trait DatabaseTestTrait
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $sql[] = sprintf('TRUNCATE TABLE `%s`;', $row['table_name']);
+            $sql[] = sprintf('TRUNCATE TABLE `%s`;', $row['TABLE_NAME']);
         }
 
         if ($sql) {
