@@ -15,7 +15,7 @@
 
 </div>
 
-Use this skeleton application to quickly setup and start working on a new [Slim 4 Framework](https://www.slimframework.com/) application.
+This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.com/) application.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ Use this skeleton application to quickly setup and start working on a new [Slim 
 
 #### Recommended
 
-* MySQL 5.7+
+* MySQL 5.7+, 8.x
 * [NPM](https://nodejs.org/en/download/) for webpack
 
 ## Features
@@ -58,14 +58,14 @@ This project comes configured with:
 
 This project also uses the following packages:
 
-* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
-* [slim/psr7](https://github.com/slimphp/Slim-Psr7) as super lightweight PSR-7 implementation
+* [phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
+* [slim/psr7](https://github.com/slimphp/Slim-Psr7) as PSR-7 implementation
 * [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
 * [slim/twig-view](https://github.com/slimphp/Twig-View) as template engine
 * [php-di/php-di](https://github.com/PHP-DI/PHP-DI) as container implementation (PSR-11)
 * [symfony/translation](https://github.com/symfony/translation) as translator
 * [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
-* [webpack](https://webpack.js.org/) as assets bundler 
+* [webpack](https://webpack.js.org/) as bundler 
 
 ## Documentation
 
