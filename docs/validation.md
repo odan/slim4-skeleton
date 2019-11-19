@@ -39,4 +39,4 @@ against XSD schemas.
 
 The [webmozart/assert](https://github.com/webmozart/assert) and 
 [beberlei/assert](https://github.com/beberlei/assert) 
-packages provide Assertions to validate method input/output with nice error messages.
+packages provides assertions to validate method input/output with nice error messages.

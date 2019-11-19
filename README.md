@@ -70,7 +70,7 @@ This project also uses the following packages:
 
 ## Documentation
 
-* Read the **[Documentation](https://odan.github.io/slim4-skeleton)**
+Read the **[Documentation](https://odan.github.io/slim4-skeleton)**
 
 ## License
 
