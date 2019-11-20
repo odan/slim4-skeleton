@@ -149,7 +149,7 @@ $jobby->run();
 
 ```
 
-Starting cron job manager manually:
+To start the cron job manager manually, run:
 
 ```
 php bin/jobby.php
