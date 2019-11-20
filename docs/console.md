@@ -17,10 +17,11 @@ To start the cli, run:
 ``` bash
 php bin/console.php
 ```
+
 ## Available commands
 
 * `compile-twig` - To compile Twig templates
-* `update-schema-sql` - Generate a schema.sql from the schema data source.
+* `update-schema-sql` - Generates a schema.sql from the schema data source.
 
 ## Creating a console command
 
@@ -99,7 +100,7 @@ $settings['commands'] = [
 ];
 ```
 
-To start all tests with code coverage, run:
+To start to example command, run:
 
 ``` bash
 php bin/console.php example
@@ -146,4 +147,10 @@ $jobby->add('ExampleCommand', [
 
 $jobby->run();
 
+```
+
+Starting cron job manager manually:
+
+```
+php bin/jobby.php
 ```
