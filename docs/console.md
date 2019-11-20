@@ -118,9 +118,9 @@ Read more: [Symfony Console Commands](https://symfony.com/doc/current/console.ht
 
 The [Jobby](https://github.com/jobbyphp/jobby) cron job manager allows you to define your 
 command schedule within PHP itself. When using the scheduler, 
-only a single crontab entry is needed on your server. 
+only a single [crontab](https://help.ubuntu.com/community/CronHowto) entry is needed on your server. 
 
-To install Jobby, please follows the [installation](https://github.com/jobbyphp/jobby#getting-started) instructions.
+To install Jobby, please follow the [installation](https://github.com/jobbyphp/jobby#getting-started) instructions.
 
 Create a new file: `bin/jobby.php`
 
