@@ -32,8 +32,8 @@
         "slim/psr7": "^0.6.0",
         "slim/slim": "^4.3",
         "slim/twig-view": "3.0.0-beta",
-        "symfony/console": "^4.3",
-        "symfony/translation": "^4.3"
+        "symfony/console": "^4.3|^5.0",
+        "symfony/translation": "^4.3|^5.0"
     },
     "require-dev": {
         "overtrue/phplint": "^1.1",
