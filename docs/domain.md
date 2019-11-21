@@ -6,18 +6,39 @@ nav_order: 9
 
 # Domain
 
-The **Domain** is divided into multiple sub-categories:
+## Domain vs. Infrastructure
 
-* **Service:** Business logic (calculation, validation, transaction handling)
-* **Repository:** Data access logic, communication with databases
-* **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
+**Domain**
+
+* **Use cases:** The application services with the business logic
+* **Model:** e.g. Value Objects, DTOs, Entities
+* **Interfaces for boundary objects:** e.g the repository interfaces
+
+**Infrastructure**
+
+* Framework-specific code
+* Implementations for boundary objects, e.g. the repository classes (communication with databases)
+* Web controllers (actions), CLI, etc.
+
+## Advantages
+
+* By separating domain from infrastructure code you automatically *increase testability*
+* You can replace an **adapter** without affecting the **ports**
+* You can **postpone** the choice for database vendor, framework, query builder, ORM, etc.
+* You can more easily **keep up** with the change rate of the framework-specific code...
+* or replace the framework altogether
+
+**Read more**
+
+* [Alistair in the Hexagone](https://www.youtube.com/watch?v=th4AgBcrEHA)
+* [Advanced Web Application Architecture](https://leanpub.com/web-application-architecture/)
 
 ## Services
 
-Here is the right place for complex **business logic** e.g. calculation, validation, file creation etc.
+Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
 Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
 
-A service can be called directly from the action, a service, the CLI and the unit tests.
+An (application) service can be called directly from the action, a service, the CLI and the unit tests.
 
 ### Service-Oriented Architecture (SOA)
 
