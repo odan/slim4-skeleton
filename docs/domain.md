@@ -54,16 +54,15 @@ Please don't prefix all service classes with `*Service`.
 A service class is not a "Manager" or "Utility" class. 
 
 Think of the [SRP](http://pragmaticcraftsman.com/2006/07/single-responsibility-principle/) and give a service a "single responsibility".
-
-> What changes for the same reason should be grouped together.
+What changes for the same reason should be grouped together.
  
 A service class can have several methods as long as they serve a narrow purpose. 
 This also encourages you to name your classes more specifically. Instead of a "User" god-class, 
-you might have a `UserRegistration` class with a few methods focusing on registration.
+you might have a `UserCreator` class with a few methods focusing on creating a user.
 
-> Q: Why would I change my UserRegistration class?<br>
-> A: Because I'm changing how I register a user<br>
-> A: And not because I'm changing how I assign a user to a task. Because that's being handled by the UserTaskAssignment class.<br>
+> Q: Why would I change my UserCreator class?<br>
+> A: Because I'm changing how I create a user<br>
+> A: And not because I'm changing how I assign a user to a task. Because that's being handled by the UserTaskAssignor class.<br>
 
 ## Repositories
 
@@ -88,7 +87,10 @@ be handled on a higher level (service) and not within a repository.
 
 ## Data Transfer Objects (DTO) 
   
-A DTO contains only pure **data**. There is no business or domain specific logic, only simple validation logic. There is also no database access within a DTO. A service fetches data from a repository and  the repository (or the service) fills the DTO with data. A DTO can be used to transfer data inside or outside the domain.
+A DTO contains only pure **data**. There is no business or domain specific logic. 
+There is also no database access within a DTO. 
+A service fetches data from a repository and  the repository (or the service) 
+fills the DTO with data. A DTO can be used to transfer data inside or outside the domain.
 
 **Example:**
 
@@ -96,6 +98,8 @@ A DTO contains only pure **data**. There is no business or domain specific logic
 <?php
 
 namespace App\Domain\Customer\Data;
+
+use DateTimeImmutable
 
 final class CustomerData
 {
@@ -105,14 +109,17 @@ final class CustomerData
     /** @var string */
     public $email;
     
-    /** @var \DateTimeImmutable */
+    /** @var DateTimeImmutable */
     public $dateOfBirth;
 }
 ```
 
+**Note:** Typed class properties have been added in PHP 7.4. [Read more](https://stitcher.io/blog/typed-properties-in-php-74)
+
 ## Value Objects
 
-Use it only for "small things" like Date, Money, CustomerId and as replacement for primitive data type like string, int, float, bool, array. 
+Use value objects only for "small things" like Date, Money, CustomerId and as replacement for 
+primitive data type like string, int, float, bool, array. 
 
 A value object must be **immutable** and is responsible for keeping their state consistent. 
 
@@ -152,7 +159,7 @@ class CustomerId
     
     public function equals(CustomerId $customerId): bool
     {
-        return $this->id == $customerId->id;
+        return $this->id === $customerId->id;
     }
     
     public function __toString()
@@ -171,7 +178,7 @@ you can replace them with a parameter object. See [DTO](#data-transfer-object-dt
 
 ## Types and enums
 
-Don't use strings or fix integer codes as values. Instead use public class constants.
+You should not use fixed strings and integer codes as values. Use class constants instead. 
 
 **Example:**
 
