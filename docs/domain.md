@@ -66,13 +66,15 @@ you might have a `UserCreator` class with a few methods focusing on creating a u
 
 ## Repositories
 
+A [repository](https://designpatternsphp.readthedocs.io/en/latest/More/Repository/README.html) 
+is the source of all the data your application needs and mediates between the domain and data mapping layers. 
+A repository improves code maintainability, testing and readability by separating **business logic** 
+from **data access logic** and provides centrally managed and consistent access rules for a data source.
+
 There are two types of repositories: collection-oriented and persistence-oriented repositories. 
 In this case, we are talking about **persistence-oriented repositories**, since these are better 
 suited for processing large amounts of data.
-
-A repository is the source of all the data your application needs 
-and mediates between the service and the database. A repository improves code maintainability, testing and readability by separating **business logic** 
-from **data access logic** and provides centrally managed and consistent access rules for a data source. 
+ 
 Each public repository method represents a query. The return values represent the result set 
 of a query and can be primitive/object or list (array) of them. Database transactions must 
 be handled on a higher level (service) and not within a repository.
@@ -99,7 +101,7 @@ fills the DTO with data. A DTO can be used to transfer data inside or outside th
 
 namespace App\Domain\Customer\Data;
 
-use DateTimeImmutable
+use DateTimeImmutable;
 
 final class CustomerData
 {
@@ -169,7 +171,7 @@ class CustomerId
 }
 ```
 
-[Read more](https://kacper.gunia.me/validating-value-objects/)
+**Read more:** [Validating Value Objects](https://kacper.gunia.me/validating-value-objects/)
 
 ## Parameter objects
 
