@@ -6,7 +6,7 @@ nav_order: 8
 
 # Action
 
-Each **Single Action Controller** is represented by a individual class or closure.
+Each **Single Action Controller** is represented by a dedicated class or closure.
 
 The *Action* does only these things:
 
@@ -22,7 +22,7 @@ A response could be rendered to HTML (e.g with Twig) for a standard web request;
 it might be something like JSON for RESTful API requests.
 
 **Note:** [Closures](https://www.php.net/manual/en/class.closure.php) (functions) as routing 
-handlers are quite "expensive", because PHP has to create all closures for each request. 
+handlers are quite "expensive", because PHP has to create all closures on each request. 
 The use of class names is more lightweight, faster and scales better for larger applications.
 
 ### Rendering a Twig template
@@ -55,7 +55,7 @@ final class HomeAction
 
 ### Writing JSON to the response
 
-Instead of calling `json_encode` everytime, you can use the `withJson()` method to render the respponse.
+Instead of calling `json_encode` everytime, you can use the `withJson()` method to render the response.
 
 ```php
 <?php
@@ -79,7 +79,13 @@ final class HomeAction
 
 According to [ADR](#action-domain-responder-adr) there should be a **responder** for each action. In most cases this is not necessary 
 and would blow up the code too much. Of course, you can add special responder classes and move the 
-complete presentation logic there. [Examples](https://github.com/pmjones/adr-example/tree/master/src/Web/Blog)
+complete presentation logic there. 
+
+**Examples**
+
+* [JSON responder](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Responder/JsonResponder.php), [Usage](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Action/CreateUserAction.php)
+* [HTML responder](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Responder/HtmlResponder.php), [Usage](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Action/TimeAction.php)
+* [More examples](https://github.com/pmjones/adr-example/tree/master/src/Web/Blog)
 
 ## Request and Response
 
@@ -87,7 +93,7 @@ A quick overview of the request/response cycle:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
 
-All requests go through the same cycle:  
+The requests are going through the [middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html) stack (in and out):
 
 > `Request > Front controller > Routing > Middleware > Action > Middleware > Response`
 
