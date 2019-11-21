@@ -10,19 +10,19 @@ nav_order: 9
 
 **Domain**
 
-* **Use cases:** The application services with the business logic
-* **Model:** e.g. Value Objects, DTOs, Entities
-* **Interfaces for boundary objects:** e.g the repository interfaces
+* **Use cases:** Application services with the business logic
+* **Model:** Value Objects, DTOs, Entities
+* **Interfaces for boundary objects:** The repository interfaces
 
 **Infrastructure**
 
 * Framework-specific code
-* Implementations for boundary objects, e.g. the repository classes (communication with databases)
+* Implementations for boundary objects, e.g. the repository classes (communication with database)
 * Web controllers (actions), CLI, etc.
 
 ## Advantages
 
-* By separating domain from infrastructure code you automatically *increase testability*
+* By separating domain from infrastructure code you automatically **increase testability**
 * You can replace an **adapter** without affecting the **ports**
 * You can **postpone** the choice for database vendor, framework, query builder, ORM, etc.
 * You can more easily **keep up** with the change rate of the framework-specific code...
@@ -47,14 +47,6 @@ An (application) service can be called directly from the action, a service, the 
 Services tend to **separate data from behavior**. 
 In an SOA, the separation between data and behavior is often obvious.
 
-**OOP**
-
-```php 
-$sourceAccount = new Account(100);
-$destinationAccount = new Account(0);
-$sourceAccount->transfer(100, $destinationAccount);
-```
-
 **SOA**
 
 ```php
@@ -64,6 +56,14 @@ $service = new AccountService();
 $service->transfer(100, $sourceAccount, $destinationAccount);
 ```
 
+**OOP**
+
+```php 
+$sourceAccount = new Account(100);
+$destinationAccount = new Account(0);
+$sourceAccount->transfer(100, $destinationAccount);
+```
+
 By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
 This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
 
@@ -71,11 +71,11 @@ Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/
 
 ### Best practices
 
-Please don't prefix all service classes with `*Service`. 
-A service class is not a "Manager" or "Utility" class. 
-
 Think of the [SRP](http://pragmaticcraftsman.com/2006/07/single-responsibility-principle/) and give a service a "single responsibility".
 What changes for the same reason should be grouped together.
+
+Please don't prefix all service classes with `*Service`. 
+A service class is not a "Manager" or "Utility" class. 
  
 A service class can have several methods as long as they serve a narrow purpose. 
 This also encourages you to name your classes more specifically. Instead of a "User" god-class, 
@@ -88,7 +88,7 @@ you might have a `UserCreator` class with a few methods focusing on creating a u
 ## Repositories
 
 A [repository](https://designpatternsphp.readthedocs.io/en/latest/More/Repository/README.html) 
-is the source of all the data your application needs and mediates between the domain and data mapping layers. 
+is the source of all the (database) data your application needs and mediates between the domain and data mapping layers. 
 A repository improves code maintainability, testing and readability by separating **business logic** 
 from **data access logic** and provides centrally managed and consistent access rules for a data source.
 
@@ -105,7 +105,7 @@ be handled on a higher level (service) and not within a repository.
 * Communication with the database.
 * Place for the data access (query) logic.
 * Uses data mapper to create domain objects
-* This is no place for the business logic! Use [services](#services) for the business logic.
+* This is no place for the business logic. Use [services](#services) for the business logic.
 
 
 ## Data Transfer Objects (DTO) 
