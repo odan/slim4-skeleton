@@ -217,6 +217,7 @@ class DataTableRepository implements RepositoryInterface
 
         $result = [];
         foreach ($rows as $row) {
+            $row = array_change_key_case($row);
             $result[$row['column_name']] = $row;
         }
 
