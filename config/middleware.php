@@ -1,5 +1,6 @@
 <?php
 
+use App\Handler\DefaultErrorHandler;
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
@@ -34,5 +35,6 @@ return static function (App $app) {
     $logErrors = (bool)$settings['log_errors'];
     $logErrorDetails = (bool)$settings['log_error_details'];
 
-    $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
+    $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
+    $errorMiddleware->setDefaultErrorHandler(DefaultErrorHandler::class);
 };
