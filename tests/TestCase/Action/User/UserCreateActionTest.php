@@ -19,7 +19,7 @@ class UserCreateActionTest extends TestCase
      */
     public function testAction(): void
     {
-        $request = $this->createRequest('POST', '/users');
+        $request = $this->createRequest('POST', '/api/users');
         $request = $this->withJson($request, ['username' => 'admin', 'email' => 'mail@example.com']);
         $response = $this->request($request);
 

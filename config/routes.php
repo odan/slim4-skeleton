@@ -5,7 +5,6 @@
 use Slim\App;
 
 return static function (App $app) {
-    /** @var App $app */
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('root');
 
     $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');
@@ -14,5 +13,5 @@ return static function (App $app) {
 
     $app->post('/users/datatable', \App\Action\User\UserListDataTableAction::class)->setName('user-datatable');
 
-    $app->post('/users', \App\Action\User\UserCreateAction::class)->setName('user-create');
+    $app->post('/api/users', \App\Action\User\UserCreateAction::class)->setName('api-user-create');
 };
