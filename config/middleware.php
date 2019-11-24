@@ -17,18 +17,11 @@ return static function (App $app) {
     $app->addBodyParsingMiddleware();
 
     $app->add(ValidationExceptionMiddleware::class);
-
-    // Twig
     $app->add(TwigMiddleware::class);
-
-    // Translation middleware
     $app->add(TranslatorMiddleware::class);
     $app->add(LocaleSessionMiddleware::class);
     $app->add(SessionMiddleware::class);
-
-    // Add global middleware to app
     $app->addRoutingMiddleware();
-
     $app->add(BasePathMiddleware::class);
 
     // Error handler
