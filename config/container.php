@@ -41,11 +41,9 @@ return [
         return $app;
     },
 
-    // For the HtmlResponder
+    // For the responder
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
-        $app = $container->get(App::class);
-
-        return $app->getResponseFactory();
+        return $container->get(App::class)->getResponseFactory();
     },
 
     // The Slim RouterParser
@@ -121,6 +119,7 @@ return [
         return new BasePathMiddleware($app);
     },
 
+    // Database connection
     Connection::class => function (ContainerInterface $container) {
         return new Connection($container->get(Configuration::class)->getArray('db'));
     },
