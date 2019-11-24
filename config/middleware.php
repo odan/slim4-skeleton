@@ -10,7 +10,7 @@ use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Views\TwigMiddleware;
 
-return static function (App $app) {
+return function (App $app) {
     $container = $app->getContainer();
 
     // Parse json, form data and xml
