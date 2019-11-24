@@ -4,10 +4,10 @@ use App\Handler\DefaultErrorHandler;
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
+use Selective\BasePath\BasePathMiddleware;
 use Selective\Config\Configuration;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
-use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
 return static function (App $app) {
@@ -19,7 +19,7 @@ return static function (App $app) {
     $app->add(ValidationExceptionMiddleware::class);
 
     // Twig
-    $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
+    $app->add(TwigMiddleware::class);
 
     // Translation middleware
     $app->add(TranslatorMiddleware::class);
@@ -28,6 +28,8 @@ return static function (App $app) {
 
     // Add global middleware to app
     $app->addRoutingMiddleware();
+
+    $app->add(BasePathMiddleware::class);
 
     // Error handler
     $settings = $container->get(Configuration::class)->getArray('error_handler_middleware');
