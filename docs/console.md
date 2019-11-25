@@ -126,7 +126,7 @@ Create a new file: `bin/jobby.php`
 
 To invoke the `example` command in `src/Console/ExampleCommand.php` add this job into `bin/jobby.php`:
 
-```
+```php
 <?php
 
 use Jobby\Jobby;
