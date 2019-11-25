@@ -1,6 +1,7 @@
 <?php
 
-use App\Handler\DefaultErrorHandler;
+use App\Handler\HtmlErrorRenderer;
+use App\Handler\JsonErrorRenderer;
 use App\Middleware\LocaleSessionMiddleware;
 use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
@@ -31,5 +32,8 @@ return function (App $app) {
     $logErrorDetails = (bool)$settings['log_error_details'];
 
     $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
-    $errorMiddleware->setDefaultErrorHandler(DefaultErrorHandler::class);
+
+    $errorHandler = $errorMiddleware->getDefaultErrorHandler();
+    $errorHandler->registerErrorRenderer('text/html', HtmlErrorRenderer::class);
+    $errorHandler->registerErrorRenderer('application/json', JsonErrorRenderer::class);
 };
