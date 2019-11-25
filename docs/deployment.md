@@ -41,7 +41,7 @@ Then extract the artifact to the `htdocs/` sub-directory using the `deploy.php` 
 
 ```bash
 cd /var/www/example.com
-sudo php bin/deploy.php my_app_2019-01-29_235044.zip
+sudo php deploy.php my_app_2019-01-29_235044.zip
 ```
 
 If you still need more features, then you may try [Deployer](https://deployer.org/) - a deployment tool for PHP.
