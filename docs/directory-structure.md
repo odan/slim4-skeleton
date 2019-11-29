@@ -15,8 +15,8 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 │   └── cli.php             # The command line tool
 ├── build                   # Compiled files (artifacts)
 ├── config                  # Configuration files
-├── docs                    # Log files
-├── logs                    # Documentation files
+├── docs                    # Documentation files
+├── logs                    # Log files
 ├── public                  # Web server files
 ├── resources               # Other resource files
 │   ├── assets              # Raw, un-compiled assets such as LESS, SASS and JavaScript
