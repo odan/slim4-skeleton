@@ -4,7 +4,7 @@
 
 use Slim\App;
 
-return static function (App $app) {
+return function (App $app) {
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('root');
 
     $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');

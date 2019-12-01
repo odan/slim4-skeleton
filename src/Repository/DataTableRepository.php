@@ -125,7 +125,7 @@ class DataTableRepository implements RepositoryInterface
             $orConditions[$searchField . ' LIKE'] = '%' . $searchValue . '%';
         }
 
-        $query->andWhere(static function (QueryExpression $exp) use ($orConditions) {
+        $query->andWhere(function (QueryExpression $exp) use ($orConditions) {
             return $exp->or_($orConditions);
         });
     }
