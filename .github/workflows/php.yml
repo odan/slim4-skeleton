@@ -23,17 +23,17 @@ jobs:
     - name: Creat test table
       run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
+    - name: Copy settings
+      run: cp config/env.example.php config/env.php
+
+    - name: Update mysql password
+      run: sed -i s/\'\';/\'root\';/g config/env.php
+
     - name: Validate composer.json and composer.lock
       run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: Copy settings
-      run: cp config/env.example.php config/env.php
-
-    - name: Update mysql password
-      run: sed -i s/'';/'root';/g config/env.php
 
     - name: Install tables
       run: composer migrate
