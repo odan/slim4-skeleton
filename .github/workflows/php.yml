@@ -11,7 +11,8 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_USER: root
+          MYSQL_ROOT_USER: root
+          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
         ports:
@@ -30,7 +31,7 @@ jobs:
       run: cp config/env.example.php config/env.php
 
     - name: Creat test table
-      run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS test;'
+      run: mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'CREATE DATABASE IF NOT EXISTS test;'
 
     - name: Install tables
       run: composer migrate
