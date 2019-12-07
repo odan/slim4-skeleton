@@ -7,6 +7,16 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: test
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - uses: actions/checkout@v1
 
@@ -15,9 +25,15 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+    
+    - name: Create test database
+      run: mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+      
+    - name: Copy settings
+      run: cp config/env.example.php config/env.php
+      
+    - name: Install tables
+      run: composer migrate
 
     - name: Run test suite
       run: composer check-all
