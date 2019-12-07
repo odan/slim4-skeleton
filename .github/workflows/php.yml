@@ -12,10 +12,11 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test
         ports:
           - 33306:3306
-          
+
     steps:
     - uses: actions/checkout@v1
 
@@ -24,10 +25,10 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-          
+
     - name: Copy settings
       run: cp config/env.example.php config/env.php
-      
+
     - name: Install tables
       run: composer migrate
 

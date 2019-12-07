@@ -32,4 +32,4 @@ $settings['twig']['cache_enabled'] = false;
 // Database
 $settings['db']['database'] = 'test';
 $settings['db']['username'] = 'root';
-$settings['db']['password'] = '';
+$settings['db']['password'] = 'root';
