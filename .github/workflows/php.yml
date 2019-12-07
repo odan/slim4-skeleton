@@ -33,7 +33,7 @@ jobs:
       run: cp config/env.example.php config/env.php
 
     - name: Creat test table
-      run: mysql -u root -p root -e 'CREATE DATABASE IF NOT EXISTS test;'
+      run: mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
     - name: Install tables
       run: composer migrate
