@@ -27,7 +27,7 @@ jobs:
       run: cp config/env.example.php config/env.php
 
     - name: Update mysql password
-      run: sed -i s/\'\';/\'root\';/g config/env.php
+      run: sed -i "s/'';/'root';/g" config/env.php
 
     - name: Validate composer.json and composer.lock
       run: composer validate
