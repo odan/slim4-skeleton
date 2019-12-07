@@ -24,10 +24,7 @@ jobs:
       run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
     - name: Copy settings
-      run: cp config/env.example.php config/env.php
-
-    - name: Update mysql password
-      run: sed -i "s/'';/'root';/g" config/env.php
+      run: cp config/env.github.php config/env.php
 
     - name: Validate composer.json and composer.lock
       run: composer validate
