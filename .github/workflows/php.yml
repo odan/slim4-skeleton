@@ -20,6 +20,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Creat test table
+      run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+
     - name: Validate composer.json and composer.lock
       run: composer validate
 
@@ -27,12 +30,10 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Copy settings
-      run:
-        - cp config/env.example.php config/env.php
-        - sed -i s/''/'root'/g config/env.php
+      run: cp config/env.example.php config/env.php
 
-    - name: Creat test table
-      run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+    - name: Update mysql password
+      run: sed -i s/'';/'root';/g config/env.php
 
     - name: Install tables
       run: composer migrate
