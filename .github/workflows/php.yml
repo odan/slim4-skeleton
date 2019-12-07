@@ -29,7 +29,7 @@ jobs:
     - name: Copy settings
       run:
         - cp config/env.example.php config/env.php
-        - sed -i s/''/'root'/g' config/env.php
+        - sed -i s/''/'root'/g config/env.php
 
     - name: Creat test table
       run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
