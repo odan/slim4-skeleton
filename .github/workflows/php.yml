@@ -25,10 +25,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-    
-    - name: Create test database
-      run: mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-      
+          
     - name: Copy settings
       run: cp config/env.example.php config/env.php
       
