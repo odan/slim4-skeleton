@@ -22,10 +22,24 @@ jobs:
           - 33306:3306
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
 
-      - name: Show PHP version
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+          pecl: false
+
+      - name: Check PHP Version
         run: php -v
+
+      - name: Check Composer Version
+        run: composer -V
+
+      - name: Check PHP Extensions
+        run: php -m
 
       - name: Create test table
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
