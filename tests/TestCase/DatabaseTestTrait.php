@@ -18,7 +18,7 @@ trait DatabaseTestTrait
     use UnitTestTrait;
 
     /** {@inheritdoc} */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bootApp();
 
@@ -26,7 +26,7 @@ trait DatabaseTestTrait
     }
 
     /** {@inheritdoc} */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->shutdownApp();
     }
@@ -167,7 +167,7 @@ trait DatabaseTestTrait
         // Truncate only changed tables
         $statement = $db->query('SELECT TABLE_NAME
                 FROM information_schema.tables
-                WHERE table_schema = database() 
+                WHERE table_schema = database()
                 AND update_time IS NOT NULL');
 
         if (!$statement) {
