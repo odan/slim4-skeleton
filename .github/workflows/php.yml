@@ -24,7 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Creat test table
+      - name: Show PHP version
+        run: php -v
+
+      - name: Create test table
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
       - name: Copy settings
