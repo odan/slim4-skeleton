@@ -3,9 +3,13 @@ name: PHP Composer
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        php-versions: ['7.0', '7.1', '7.2', '7.3', '7.4']
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     services:
       mysql:
@@ -18,22 +22,22 @@ jobs:
           - 33306:3306
 
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
 
-    - name: Creat test table
-      run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+      - name: Creat test table
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
-    - name: Copy settings
-      run: cp config/env.github.php config/env.php
+      - name: Copy settings
+        run: cp config/env.github.php config/env.php
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Install tables
-      run: composer migrate
+      - name: Install tables
+        run: composer migrate
 
-    - name: Run test suite
-      run: composer check-all
+      - name: Run test suite
+        run: composer check-all
