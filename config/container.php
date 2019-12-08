@@ -126,9 +126,10 @@ return [
 
     PDO::class => function (ContainerInterface $container) {
         $db = $container->get(Connection::class);
-        $db->getDriver()->connect();
+        $driver = $db->getDriver();
+        $driver->connect();
 
-        return $db->getDriver()->getConnection();
+        return $driver->getConnection();
     },
 
     ValidationExceptionMiddleware::class => function (ContainerInterface $container) {
