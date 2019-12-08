@@ -103,7 +103,7 @@ $locale = $this->locale->getLocale(); // en_US
 
 ### Updating Assets
 
-To update all main assets like jquery and bootstrap run:
+To update all assets like jquery and bootstrap run:
 
 ```bash
 $ composer update-assets
