@@ -93,6 +93,15 @@ $settings['db'] = [
     'host' => 'localhost',
     'encoding' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci',
+    // Enable identifier quoting
+    'quoteIdentifiers' => true,
+    // Set to null to use MySQL servers timezone
+    'timezone' => null,
+    // Disable meta data cache
+    'cacheMetadata' => false,
+    // Disable query logging
+    'log' => false,
+    // PDO options
     'flags' => [
         // Turn off persistent connections
         PDO::ATTR_PERSISTENT => false,
