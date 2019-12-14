@@ -24,7 +24,7 @@ It's up to you how you configure the routes and their individual authentication.
 Read more: 
 
 * [OAuth Libraries for PHP](https://oauth.net/code/php/)
-* [Branca](https://branca.io/)
+* [Slim 4 - OAuth 2.0 and JSON Web Token (JWT) Setup](https://odan.github.io/2019/12/02/slim4-oauth2-jwt.html)
 
 ## Authorization
 
