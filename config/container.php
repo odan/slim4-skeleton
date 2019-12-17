@@ -14,8 +14,11 @@ use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Psr7\Factory\UriFactory;
 use Slim\Views\Twig;
+use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
+use Slim\Views\TwigRuntimeLoader;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
@@ -74,14 +77,24 @@ return [
             $loader->addPath($config->getString('public'), 'public');
         }
 
-        // Add Twig extensions
+        // Add extensions
         $twig->addExtension(new TwigTranslationExtension());
-
         $twig->addExtension(new WebpackExtension(
             $config->getString('public') . '/assets/manifest.json',
             'assets/',
             'assets/'
         ));
+
+        // Add the Twig extension in case we don't have a request
+        if (PHP_SAPI === 'cli') {
+            $app = $container->get(App::class);
+            $routeParser = $app->getRouteCollector()->getRouteParser();
+            $uri = (new UriFactory())->createUri('http://localhost');
+
+            $runtimeLoader = new TwigRuntimeLoader($routeParser, $uri);
+            $twig->addRuntimeLoader($runtimeLoader);
+            $twig->addExtension(new TwigExtension());
+        }
 
         return $twig;
     },
@@ -110,6 +123,7 @@ return [
         $localPath = $settings['path'];
         $translator = $container->get(Translator::class);
 
+        return new TranslatorMiddleware($translator, $localPath);
         return new TranslatorMiddleware($translator, $localPath);
     },
 
