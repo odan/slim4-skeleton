@@ -25,5 +25,6 @@
     </filter>
     <php>
         <const name="APP_ENV" value="integration"/>
+		<const name="PHPUNIT_TEST_SUITE" value="1"/>
     </php>
 </phpunit>
