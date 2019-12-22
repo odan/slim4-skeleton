@@ -7,13 +7,38 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => ({
-    entry: {
-        'layout/layout': './templates/layout/layout',
-        'layout/datatables': './templates/layout/datatables',
-        'home/home': './templates/home/home',
-        'user/user-list': './templates/user/user-list',
-        'user/greeter': './templates/user/greeter',
-    },
+    entry: function loadEntries(pattern) {
+        const glob = require('glob');
+        const path = require('path');
+        const object = {};
+
+        glob.sync(pattern).forEach(function (match) {
+            const ext = path.extname(match);
+
+            const extensions = ['.js', '.ts', '.css'];
+            if (!extensions.includes(ext)) {
+                return;
+            }
+
+            const basename = path.basename(match, ext);
+            const onlyPath = path.dirname(match);
+            const key = onlyPath.replace('\.\/templates\/', '');
+
+            object[key + '/' + basename] = match;
+        });
+
+        //console.log(object);
+
+        return object;
+    }('./templates/**'),
+
+    /* entry: {
+          'layout/layout': './templates/layout/layout',
+          'layout/datatables': './templates/layout/datatables',
+          'home/home': './templates/home/home',
+          'user/user-list': './templates/user/user-list',
+          'user/greeter': './templates/user/greeter',
+      },*/
 
     output: {
         path: path.resolve(__dirname, 'public/assets'),
