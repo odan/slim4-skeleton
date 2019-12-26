@@ -40,18 +40,19 @@ This project is based on best practice and industry standards:
 * Modern coding style (PSR-1, PSR-12)
 * PHPDoc standard (PSR-5, PSR-19)
 * Autoloading (PSR-4)
-* Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Logging (PSR-3)
+* [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
+* Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Translations (Symfony)
 * Sessions middleware
 * Database Query Builder
-* Database Migrations (Phinx)
+* Database Migrations ([Phinx](https://phinx.org/))
 * Database Migrations Generator
-* Date and time (Chronos)
+* Date and time ([Chronos](https://github.com/cakephp/chronos))
 * Console Commands (Symfony)
 * Unit- and integrations tests (PHPUnit)
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
-* Tested with PHPStan (level=max)
+* [PHPStan](https://github.com/phpstan/phpstan)
 * Build and deployment scripts
 * Module bundler ([webpack](https://webpack.js.org/))
 
