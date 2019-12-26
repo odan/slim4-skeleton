@@ -44,8 +44,8 @@
     "scripts": {
         "build": "artifact build --name=my_app",
         "start": "php -S localhost:8080 -t public",
-        "test": "phpunit --configuration phpunit.xml",
-        "test-coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "test": "phpunit --configuration phpunit.xml --colors=always",
+        "test-coverage": "phpunit --colors=always --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
         "check-style": "phpcs --standard=phpcs.xml",
         "fix-style": "phpcbf --standard=phpcs.xml",
         "install-phpstan": "php -r \"@mkdir('build'); if(!file_exists('build/phpstan.phar')) copy('https://github.com/phpstan/phpstan/releases/download/0.11.19/phpstan.phar', 'build/phpstan.phar');\"",
@@ -61,15 +61,16 @@
             "@phpstan",
             "@test-coverage"
         ],
-        "compile-twig": "php bin/console.php compile-twig",
+        "cli": "php bin/cli.php --ansi",
+        "compile-twig": "php bin/cli.php compile-twig --ansi",
         "update-assets": "npm update --dev",
         "bundle-assets": "npx webpack --mode=development",
         "bundle-assets-prod": "npx webpack --mode=production",
         "watch": "npx webpack --watch",
-        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php",
-        "create-migration": "phinx create -c config/phinx.php",
-        "migrate": "phinx migrate -c config/phinx.php",
-        "update-schema-sql": "php bin/console.php update-schema-sql"
+        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
+        "create-migration": "phinx create -c config/phinx.php --ansi",
+        "migrate": "phinx migrate -c config/phinx.php --ansi",
+        "update-schema-sql": "php bin/cli.php update-schema-sql"
     },
     "autoload": {
         "psr-4": {

@@ -8,14 +8,20 @@ nav_order: 17
 
 ## Commands
 
-The default console executable is: `bin/console.php`
+The default console executable is: `bin/cli.php`
 
 The console command directory is: `src/Console` 
 
 To start the cli, run:
 
 ``` bash
-php bin/console.php
+composer cli
+```
+
+or directly:
+
+``` bash
+php bin/cli.php
 ```
 
 ## Available commands
@@ -103,7 +109,7 @@ $settings['commands'] = [
 To start to example command, run:
 
 ``` bash
-php bin/console.php example
+composer cli example
 ```
 
 The output:
@@ -138,7 +144,7 @@ $jobby = new Jobby();
 // Every job has a name
 $jobby->add('ExampleCommand', [
     // Run a shell command
-    'command' => 'php ' . __DIR__ . '/console.php example',
+    'command' => 'php ' . __DIR__ . '/cli.php example',
     // This schedule runs every minute.
     'schedule' => '* * * * *',
     'enabled'  => true,
