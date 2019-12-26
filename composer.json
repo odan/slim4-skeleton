@@ -18,7 +18,7 @@
         "cakephp/chronos": "^1.2",
         "cakephp/database": "^3.8",
         "fig/http-message-util": "^1.1",
-        "fullpipe/twig-webpack-extension": "^2.0",
+        "fullpipe/twig-webpack-extension": "^3.0",
         "monolog/monolog": "^1.24",
         "odan/phinx-migrations-generator": "^4.3",
         "odan/twig-translation": "^1.3",
