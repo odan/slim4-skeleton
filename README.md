@@ -30,19 +30,19 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Features
 
-This project comes configured with:
+This project is based on best practice and industry standards:
 
-* Modern coding style (PSR-1, PSR-2, PSR-12)
-* PHPDoc Standard (PSR-5, PSR-19)
-* Class Autoloader (PSR-4)
-* HTTP request and response (PSR-7)
+* HTTP message interfaces (PSR-7)
 * HTTP Server Request Handlers, Middleware (PSR-15)
-* HTTP Factories (PSR-17)
+* HTTP factories (PSR-17)
+* HTTP router and dispatcher (Slim)
 * Dependency injection container (PSR-11)
-* Routing
+* Modern coding style (PSR-1, PSR-12)
+* PHPDoc standard (PSR-5, PSR-19)
+* Autoloading (PSR-4)
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Logging (PSR-3)
-* Translations
+* Translations (Symfony)
 * Sessions middleware
 * Database Query Builder
 * Database Migrations (Phinx)
@@ -50,22 +50,10 @@ This project comes configured with:
 * Date and time (Chronos)
 * Console Commands (Symfony)
 * Unit- and integrations tests (PHPUnit)
-* Tested on Travis CI and Scrutinizer CI
-* PHPStan, max level
+* Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
+* Tested with PHPStan (level=max)
 * Build and deployment scripts
-
-### Packages
-
-This project also uses the following packages:
-
-* [phpunit](https://github.com/sebastianbergmann/phpunit) as unit testing framework
-* [slim/psr7](https://github.com/slimphp/Slim-Psr7) as PSR-7 implementation
-* [monolog/monolog](https://github.com/monolog/monolog) as logger (PSR-3)
-* [slim/twig-view](https://github.com/slimphp/Twig-View) as template engine
-* [php-di/php-di](https://github.com/PHP-DI/PHP-DI) as container implementation (PSR-11)
-* [symfony/translation](https://github.com/symfony/translation) as translator
-* [odan/twig-translation](https://github.com/odan/twig-translation) as Twig translator extension
-* [webpack](https://webpack.js.org/) as bundler 
+* Module bundler ([webpack](https://webpack.js.org/))
 
 ## Documentation
 
