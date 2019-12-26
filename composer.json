@@ -44,8 +44,8 @@
     "scripts": {
         "build": "artifact build --name=my_app",
         "start": "php -S localhost:8080 -t public",
-        "test": "phpunit --configuration phpunit.xml --colors=always",
-        "test-coverage": "phpunit --colors=always --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
+        "test-coverage": "phpunit --colors=always --do-not-cache-result --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
         "check-style": "phpcs --standard=phpcs.xml",
         "fix-style": "phpcbf --standard=phpcs.xml",
         "install-phpstan": "php -r \"@mkdir('build'); if(!file_exists('build/phpstan.phar')) copy('https://github.com/phpstan/phpstan/releases/download/0.11.19/phpstan.phar', 'build/phpstan.phar');\"",
