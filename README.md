@@ -19,7 +19,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 7.1+
+* PHP 7.2+
 * Apache with mod_rewrite
 * Composer (only for development)
 
