@@ -6,6 +6,7 @@ composer.lock
 cache.properties
 .php_cs.cache
 .vscode
+.phpunit.result.cache
 
 vendor/
 build/
