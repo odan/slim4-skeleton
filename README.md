@@ -54,7 +54,17 @@ This project is based on best practice and industry standards:
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan)
 * Build and deployment scripts
-* Module bundler ([webpack](https://webpack.js.org/))
+
+## Frontend
+
+* [Webpack](https://webpack.js.org/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Jest](https://jestjs.io/) (testing)
+* [Bootstrap](https://getbootstrap.com/)
+* [jQuery](https://jquery.com/)
+* [DataTables.net](https://datatables.net/)
+* [SweetAlert2](https://sweetalert2.github.io/)
+* CSS and JS minifier
 
 ## Documentation
 
