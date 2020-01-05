@@ -24,7 +24,7 @@ class UserCreateActionTest extends TestCase
         $response = $this->request($request);
 
         static::assertSame('{"user_id":1}', (string)$response->getBody());
-        static::assertSame('application/json;charset=utf-8', $response->getHeaderLine('Content-Type'));
+        static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         static::assertSame(200, $response->getStatusCode());
     }
 }
