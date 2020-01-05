@@ -27,9 +27,9 @@
         "selective/basepath": "^0.2.0",
         "selective/config": "^0.1.1",
         "selective/validation": "^0.7.1",
-        "slim/http": "^0.8.0",
-        "slim/psr7": "^0.6.0",
-        "slim/slim": "^4.3",
+        "slim/http": "^1",
+        "slim/psr7": "^1",
+        "slim/slim": "^4.4",
         "slim/twig-view": "^3",
         "symfony/console": "^4.3|^5.0",
         "symfony/translation": "^4.3|^5.0"
