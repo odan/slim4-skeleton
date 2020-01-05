@@ -36,7 +36,8 @@
     },
     "require-dev": {
         "overtrue/phplint": "^1.1",
-        "phpunit/phpunit": "^7.0|^8.0",
+        "phpstan/phpstan": "^0.12.3",
+        "phpunit/phpunit": "^7|^8",
         "selective/artifact": "^0.2.1",
         "squizlabs/php_codesniffer": "^3.4"
     },
@@ -47,8 +48,7 @@
         "test-coverage": "phpunit --colors=always --do-not-cache-result --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
         "check-style": "phpcs --standard=phpcs.xml",
         "fix-style": "phpcbf --standard=phpcs.xml",
-        "install-phpstan": "php -r \"@mkdir('build'); if(!file_exists('build/phpstan.phar')) copy('https://github.com/phpstan/phpstan/releases/download/0.11.19/phpstan.phar', 'build/phpstan.phar');\"",
-        "phpstan": "php build/phpstan.phar analyse src tests --level=max -c phpstan.neon --no-progress",
+        "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress --ansi",
         "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
         "install-cs": "php -r \"@mkdir('build'); copy('https://cs.symfony.com/download/php-cs-fixer-v2.phar', 'build/php-cs-fixer-v2.phar');\"",
         "fix-cs": "php build/php-cs-fixer-v2.phar fix --config=.cs.php",
@@ -56,7 +56,6 @@
         "check-all": [
             "@lint",
             "@check-style",
-            "@install-phpstan",
             "@phpstan",
             "@test-coverage"
         ],

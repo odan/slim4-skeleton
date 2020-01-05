@@ -15,7 +15,7 @@ final class HelloAction
      *
      * @param ServerRequest $request The request
      * @param Response $response The response
-     * @param array $args The arguments
+     * @param array<string> $args The arguments
      *
      * @return Response The response
      */

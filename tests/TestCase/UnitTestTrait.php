@@ -3,6 +3,7 @@
 namespace App\Test\TestCase;
 
 use DI\Container;
+use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
@@ -54,10 +55,16 @@ trait UnitTestTrait
      *
      * @param string $class The interface / class name
      *
+     * @throws InvalidArgumentException
+     *
      * @return MockObject The mock
      */
     protected function createMockObject(string $class): MockObject
     {
+        if (!class_exists($class)) {
+            throw new InvalidArgumentException(sprintf('Class not found: %s', $class));
+        }
+
         $reflection = new ReflectionClass($class);
         $methods = [];
 
