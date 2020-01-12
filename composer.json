@@ -1,8 +1,7 @@
 {
     "name": "odan/slim4-skeleton",
-    "description": "A Slim 4 skeleton",
-    "license": "MIT",
     "type": "project",
+    "description": "A Slim 4 skeleton",
     "keywords": [
         "slim-framework",
         "skeleton",
@@ -10,6 +9,7 @@
         "slim4",
         "apache"
     ],
+    "license": "MIT",
     "require": {
         "php": "^7.2",
         "ext-json": "*",
@@ -31,44 +31,20 @@
         "slim/psr7": "^1",
         "slim/slim": "^4.4",
         "slim/twig-view": "^3",
-        "symfony/console": "^4.3|^5.0",
-        "symfony/translation": "^4.3|^5.0"
+        "symfony/console": "^4.3 || ^5.0",
+        "symfony/translation": "^4.3 || ^5.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
         "overtrue/phplint": "^1.1",
         "phpstan/phpstan": "^0.12.3",
-        "phpunit/phpunit": "^7|^8",
+        "phpunit/phpunit": "^7 || ^8",
         "selective/artifact": "^0.2.1",
         "squizlabs/php_codesniffer": "^3.4"
     },
-    "scripts": {
-        "build": "artifact build --name=my_app",
-        "start": "php -S localhost:8080 -t public",
-        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
-        "test-coverage": "phpunit --colors=always --do-not-cache-result --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "check-style": "phpcs --standard=phpcs.xml",
-        "fix-style": "phpcbf --standard=phpcs.xml",
-        "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress --ansi",
-        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
-        "fix-cs": "php-cs-fixer fix --config=.cs.php",
-        "check-cs": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
-        "check-all": [
-            "@lint",
-            "@check-style",
-            "@phpstan",
-            "@test-coverage"
-        ],
-        "cli": "php bin/cli.php --ansi",
-        "compile-twig": "php bin/cli.php compile-twig --ansi",
-        "update-assets": "npm update --dev",
-        "bundle-assets": "npx webpack --mode=development",
-        "bundle-assets-prod": "npx webpack --mode=production",
-        "watch": "npx webpack --watch",
-        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
-        "create-migration": "phinx create -c config/phinx.php --ansi",
-        "migrate": "phinx migrate -c config/phinx.php --ansi",
-        "update-schema-sql": "php bin/cli.php update-schema-sql"
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -83,8 +59,32 @@
             "App\\Test\\": "tests"
         }
     },
-    "config": {
-        "process-timeout": 0,
-        "sort-packages": true
+    "scripts": {
+        "build": "artifact build --name=my_app",
+        "bundle-assets": "npx webpack --mode=development",
+        "bundle-assets-prod": "npx webpack --mode=production",
+        "check-all": [
+            "@lint",
+            "@check-style",
+            "@phpstan",
+            "@test-coverage"
+        ],
+        "check-cs": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
+        "check-style": "phpcs --standard=phpcs.xml",
+        "cli": "php bin/cli.php --ansi",
+        "compile-twig": "php bin/cli.php compile-twig --ansi",
+        "create-migration": "phinx create -c config/phinx.php --ansi",
+        "fix-cs": "php-cs-fixer fix --config=.cs.php",
+        "fix-style": "phpcbf --standard=phpcs.xml",
+        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
+        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
+        "migrate": "phinx migrate -c config/phinx.php --ansi",
+        "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress --ansi",
+        "start": "php -S localhost:8080 -t public",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
+        "test-coverage": "phpunit --colors=always --do-not-cache-result --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "update-assets": "npm update --dev",
+        "update-schema-sql": "php bin/cli.php update-schema-sql",
+        "watch": "npx webpack --watch"
     }
 }
