@@ -34,6 +34,7 @@ return PhpCsFixer\Config::create()
             'sort_algorithm' => 'alpha',
             'imports_order' => ['class', 'const', 'function']
         ],
+        'single_line_throw' => false,
     ])
     ->setFinder(PhpCsFixer\Finder::create()
         ->in(__DIR__ . '/src')

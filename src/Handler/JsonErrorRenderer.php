@@ -11,7 +11,7 @@ use Slim\Interfaces\ErrorRendererInterface;
 use Throwable;
 
 /**
- * JSON Error Renderer
+ * JSON Error Renderer.
  */
 class JsonErrorRenderer implements ErrorRendererInterface
 {

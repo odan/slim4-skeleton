@@ -125,7 +125,6 @@ return [
         $translator = $container->get(Translator::class);
 
         return new TranslatorMiddleware($translator, $localPath);
-        return new TranslatorMiddleware($translator, $localPath);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {

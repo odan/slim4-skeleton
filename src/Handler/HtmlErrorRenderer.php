@@ -11,7 +11,7 @@ use Slim\Interfaces\ErrorRendererInterface;
 use Throwable;
 
 /**
- * Html Error Renderer
+ * Html Error Renderer.
  */
 class HtmlErrorRenderer implements ErrorRendererInterface
 {
