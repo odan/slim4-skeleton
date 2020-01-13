@@ -108,6 +108,7 @@ vendor/bin/phpunit
 ```
 {% endraw %}
 
-* Start the guest machine with: `vagrant up` 
+* For the first time, start the guest machine with: `vagrant up --provider virtualbox` 
+* Later, start the guest machine with: `vagrant up` 
 * Open in your browser: <http://localhost:8765>
 
