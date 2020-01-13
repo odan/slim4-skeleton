@@ -14,6 +14,7 @@ nav_order: 1
 * The latest **PowerShell** version (minimum v3). Update in admin mode: `choco upgrade powershell`
 * **Hyper-V cmdlets for PowerShell** to control Hyper-V. Please enable them in the
 "Windows Features" control panel.
+* [VirtualBox](https://www.virtualbox.org/). Install only one of the supported versions: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0
 
 ## Vagrant Setup
 
