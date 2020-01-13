@@ -5,6 +5,16 @@ parent: Installation
 nav_order: 1
 ---
 
+# Vagrant – Installing Vagrant on Windows
+
+## Requirements
+
+* Admin rights
+* Optional: [Chocolatey](https://chocolatey.org/)
+* The latest **PowerShell** version (minimum v3). Update in admin mode: `choco upgrade powershell`
+* **Hyper-V cmdlets for PowerShell** to control Hyper-V. Please enable them in the
+"Windows Features" control panel.
+
 ## Vagrant Setup
 
 Create a file `vagrantfile` and copy/paste this content:
