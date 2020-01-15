@@ -2,7 +2,6 @@
 
 namespace App\Factory;
 
-use Exception;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
@@ -85,8 +84,6 @@ class LoggerFactory
      * Add a console logger.
      *
      * @param int $level The level (optional)
-     *
-     * @throws Exception
      *
      * @return self The instance
      */
