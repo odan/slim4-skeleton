@@ -20,7 +20,7 @@
         "fullpipe/twig-webpack-extension": "^3.0",
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^4.3",
-        "odan/twig-translation": "^1.3",
+        "odan/twig-translation": "^2.0",
         "php-di/php-di": "^6.0",
         "psr/log": "^1.1",
         "selective/array-reader": "^0.3",
@@ -78,13 +78,11 @@
         "fix-style": "phpcbf --standard=phpcs.xml",
         "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
         "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
-        "migrate": "phinx migrate -c config/phinx.php --ansi",
+        "migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
         "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress --ansi",
         "start": "php -S localhost:8080 -t public",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
         "test-coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "update-assets": "npm update --dev",
-        "update-schema-sql": "php bin/cli.php update-schema-sql",
-        "watch": "npx webpack --watch"
+        "update-schema-sql": "php bin/cli.php update-schema-sql"
     }
 }
