@@ -70,8 +70,6 @@ trait HttpTestTrait
      *
      * @param ServerRequestInterface $request The request
      *
-     * @throws Exception
-     *
      * @return ResponseInterface
      */
     protected function request(ServerRequestInterface $request): ResponseInterface

@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use Exception;
 use Odan\Twig\TwigCompiler;
 use Psr\Container\ContainerInterface;
 use Selective\Config\Configuration;
@@ -12,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command.
+ * Twig compiler command.
  */
 final class TwigCompilerCommand extends Command
 {
@@ -57,8 +56,6 @@ final class TwigCompilerCommand extends Command
      * @param InputInterface $input The input
      * @param OutputInterface $output The output
      *
-     * @throws Exception
-     *
      * @return int integer 0 on success, or an error code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -70,8 +67,6 @@ final class TwigCompilerCommand extends Command
 
     /**
      * Execute command.
-     *
-     * @throws Exception
      *
      * @return int integer 0 on success, or an error code
      */
