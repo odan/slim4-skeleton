@@ -29,19 +29,25 @@ chmod +x bin/cli.php
 
 **Step 3:** Database setup
 
-3.1 Create a new database
+3.1 Create a new database for development
 
 ```bash
-mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+mysql -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_dev CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 ```
 
-3.2 Copy the file: `config/env.example.php` to `config/env.php`.
+3.2 Create a new database for integration tests
+
+```bash
+mysql -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+```
+
+3.3 Copy the file: `config/env.example.php` to `config/env.php`.
 
 ```bash
 cp config/env.example.php config/env.php
 ```
 
-3.3 Change the connection configuration in `config/env.php`:
+3.4 Change the connection configuration in `config/env.php`:
 
 ```php
 // Database
@@ -50,7 +56,7 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = '';
 ```
 
-3.4. Run all of the available migrations:
+3.5. Run all of the available migrations:
 
 ```shell
 composer migrate
