@@ -69,6 +69,7 @@ final class SchemaSqlCommand extends Command
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            $row = array_change_key_case($row);
             $statement2 = $this->pdo->query(sprintf('SHOW CREATE TABLE `%s`;', $row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
             $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';
