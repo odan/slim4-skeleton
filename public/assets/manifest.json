@@ -7,10 +7,12 @@
   "layout/layout.js": "layout/layout.js",
   "layout/print.css": "layout/print.css",
   "layout/print.js": "layout/print.js",
+  "login/login.css": "login/login.css",
+  "login/login.js": "login/login.js",
   "user/greeter.js": "user/greeter.js",
   "user/user-list.css": "user/user-list.css",
   "user/user-list.js": "user/user-list.js",
-  "layout/datatables.js.LICENSE": "layout/datatables.js.LICENSE",
-  "layout/layout.js.LICENSE": "layout/layout.js.LICENSE",
+  "layout/datatables.js.LICENSE.txt": "layout/datatables.js.LICENSE.txt",
+  "layout/layout.js.LICENSE.txt": "layout/layout.js.LICENSE.txt",
   "webfonts/all.min.css": "webfonts/fa-solid-900.woff2"
 }
