@@ -3,8 +3,8 @@
 use App\Handler\HtmlErrorRenderer;
 use App\Handler\JsonErrorRenderer;
 use App\Middleware\LocaleSessionMiddleware;
-use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
+use Odan\Session\SessionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Config\Configuration;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;

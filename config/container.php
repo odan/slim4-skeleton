@@ -4,6 +4,9 @@ use App\Factory\LoggerFactory;
 use App\Middleware\TranslatorMiddleware;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
+use Odan\Session\MemorySession;
+use Odan\Session\PhpSession;
+use Odan\Session\SessionInterface;
 use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -100,6 +103,19 @@ return [
         return $twig;
     },
 
+    SessionInterface::class => function (ContainerInterface $container) {
+        $settings = $container->get(Configuration::class)->getArray('session');
+
+        if (PHP_SAPI === 'cli') {
+            $session = new MemorySession();
+        } else {
+            $session = new PhpSession();
+        }
+        $session->setOptions($settings);
+
+        return $session;
+    },
+
     // Translation
     Translator::class => function (ContainerInterface $container) {
         $settings = $container->get(Configuration::class)->getArray('locale');
@@ -123,8 +139,9 @@ return [
         $settings = $container->get(Configuration::class)->getArray('locale');
         $localPath = $settings['path'];
         $translator = $container->get(Translator::class);
+        $session = $container->get(SessionInterface::class);
 
-        return new TranslatorMiddleware($translator, $localPath);
+        return new TranslatorMiddleware($translator, $session, $localPath);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {

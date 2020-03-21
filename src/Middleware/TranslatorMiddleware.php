@@ -2,6 +2,8 @@
 
 namespace App\Middleware;
 
+use App\Domain\User\Data\UserAuthData;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -19,6 +21,11 @@ final class TranslatorMiddleware implements MiddlewareInterface
     private $translator;
 
     /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    /**
      * @var string Locale path
      */
     public $localePath;
@@ -27,11 +34,13 @@ final class TranslatorMiddleware implements MiddlewareInterface
      * Constructor.
      *
      * @param Translator $translator The translator
+     * @param SessionInterface $session The session handler
      * @param string $localePath The directory with the locals
      */
-    public function __construct(Translator $translator, string $localePath)
+    public function __construct(Translator $translator, SessionInterface $session, string $localePath)
     {
         $this->translator = $translator;
+        $this->session = $session;
         $this->localePath = $localePath;
     }
 
@@ -50,7 +59,6 @@ final class TranslatorMiddleware implements MiddlewareInterface
         if (!$locale) {
             return $handler->handle($request);
         }
-
         $domain = 'messages';
 
         // Set language

@@ -14,4 +14,4 @@ $settings['locale']['cache'] = null;
 $settings['twig']['cache_enabled'] = false;
 
 // Database
-$settings['db']['database'] = 'test';
+$settings['db']['database'] = 'slim_skeleton_dev';

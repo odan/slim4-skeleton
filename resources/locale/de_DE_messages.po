@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 10:56+0200\n"
-"PO-Revision-Date: 2019-10-26 11:05+0200\n"
+"POT-Creation-Date: 2020-03-21 18:45+0100\n"
+"PO-Revision-Date: 2020-03-21 18:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -17,35 +17,97 @@ msgstr ""
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: tmp/twig-cache\n"
 
-#: src/Domain/User/Service/UserForm.php:44
-#: src/Domain/User/Service/UserGenerator.php:67
+#: src/Domain/User/Service/UserCreator.php:67
 msgid "Please check your input"
-msgstr ""
+msgstr "Bitte überprüfen Sie Ihre Eingabe"
 
-#: src/Domain/User/Service/UserForm.php:65
+#: src/Domain/User/Service/UserCreator.php:76
+#, php-format
+msgid "User created successfully: %s"
+msgstr "Benutzer erfolgreich erstellt: %s"
+
 #: src/Domain/User/Validator/UserValidator.php:25
 #: src/Domain/User/Validator/UserValidator.php:29
 msgid "Input required"
-msgstr ""
-
-#: src/Domain/User/Service/UserGenerator.php:76
-#, php-format
-msgid "User created successfully: %s"
-msgstr ""
+msgstr "Eingabe erforderlich"
 
 #: src/Domain/User/Validator/UserValidator.php:31
 msgid "Invalid email address"
-msgstr ""
+msgstr "Ungültige E-Mail-Adresse"
 
 #: src/Repository/DataTableRepository.php:215
 #, php-format
 msgid "Columns not found in table: %s"
 msgstr "Keine Felder gefunden in der Tabelle: %s"
 
-#: src/Utility/TypeInspector.php:45
-#, php-format
-msgid "Invalid type ID: %s"
-msgstr "Ungültige Type-ID: %s"
+#: tmp/twig-cache/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:51
+#: tmp/twig-cache/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:82
+msgid "Sign in"
+msgstr "Einloggen"
+
+#: tmp/twig-cache/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:70
+msgid "Please log in"
+msgstr "Bitte loggen Sie sich ein"
+
+#: tmp/twig-cache/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:74
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:96
+msgid "Username"
+msgstr "Benutzername"
+
+#: tmp/twig-cache/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:78
+msgid "Password"
+msgstr "Kennwort"
+
+#: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:76
+msgid "Hello, World"
+msgstr "Hallo, Welt"
+
+#: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:82
+msgid "Current time"
+msgstr "Aktuelle Zeit"
+
+#: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:91
+msgid "Login"
+msgstr "Login"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:82
+msgid "User list"
+msgstr "Benutzerliste"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:86
+msgid "Add user"
+msgstr "Benutzer hinzufügen"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:100
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:104
+msgid "First name"
+msgstr "Vorname"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:108
+msgid "Last name"
+msgstr "Nachname"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:112
+msgid "Role"
+msgstr "Rolle"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:116
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:120
+msgid "Action"
+msgstr "Aktion"
+
+#: tmp/twig-cache/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:152
+msgid "Logout"
+msgstr "Logout"
+
+#~ msgid "Invalid type ID: %s"
+#~ msgstr "Ungültige Type-ID: %s"
 
 #~ msgid "Current time: %s"
 #~ msgstr "Aktuelle Zeit: %s"
@@ -53,38 +115,8 @@ msgstr "Ungültige Type-ID: %s"
 #~ msgid "Home"
 #~ msgstr "Startseite"
 
-#~ msgid "Current time"
-#~ msgstr "Aktuelle Zeit"
-
-#~ msgid "User list"
-#~ msgstr "Benutzerliste"
-
-#~ msgid "Add user"
-#~ msgstr "Benutzer hinzufügen"
-
-#~ msgid "Username"
-#~ msgstr "Benutzername"
-
-#~ msgid "E-Mail"
-#~ msgstr "E-Mail"
-
-#~ msgid "First name"
-#~ msgstr "Vorname"
-
-#~ msgid "Last name"
-#~ msgstr "Nachname"
-
-#~ msgid "Role"
-#~ msgstr "Rolle"
-
-#~ msgid "Enabled"
-#~ msgstr "Aktiviert"
-
 #~ msgid "Created at"
 #~ msgstr "Erstellt am"
-
-#~ msgid "Action"
-#~ msgstr "Aktion"
 
 #~ msgid "Server error"
 #~ msgstr "Server Error"
@@ -122,14 +154,8 @@ msgstr "Ungültige Type-ID: %s"
 #~ msgid "Edit user: %s"
 #~ msgstr "Benutzer bearbeiten: %s"
 
-#~ msgid "Sign in"
-#~ msgstr "Einloggen"
-
 #~ msgid "Please sign in"
 #~ msgstr "Bitte einloggen"
-
-#~ msgid "Password"
-#~ msgstr "Kennwort"
 
 #~ msgid "js/datatable-english.json"
 #~ msgstr "js/datatable-german.json"
@@ -166,9 +192,6 @@ msgstr "Ungültige Type-ID: %s"
 
 #~ msgid "Settings"
 #~ msgstr "Einstellungen"
-
-#~ msgid "Logout"
-#~ msgstr "Logout"
 
 #~ msgid "Page {page} / {pages}"
 #~ msgstr "Seite {page} / {pages}"

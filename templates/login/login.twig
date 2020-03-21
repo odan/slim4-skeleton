@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="{{ base_path() }}/"/>
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <title>{{ __('Sign in') }}</title>
+    {% webpack_entry_css 'layout/layout' %}
+    {% webpack_entry_css 'login/login' %}
+    {% webpack_entry_js 'layout/layout' %}
+</head>
+<body class="text-center">
+
+<div class="container">
+    <form class="form-signin" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal">{{ __('Please log in') }}</h1>
+        <input type="text" name="username" class="form-control" placeholder="{{ __('Username') }}" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="{{ __('Password') }}" required>
+        <button id="btn_login" class="btn btn-lg btn-primary btn-block" type="submit">{{ __('Sign in') }}</button>
+        <p class="mt-5 mb-3 text-muted">&copy; {{ 'now'|date('Y') }}</p>
+    </form>
+</div>
+
+{% webpack_entry_js 'login/login' %}
+
+</body>
+</html>

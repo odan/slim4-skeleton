@@ -45,7 +45,7 @@ jobs:
         run: sudo systemctl start mysql
 
       - name: Create test database
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int;'
 
       - name: Copy settings
         run: cp config/env.github.php config/env.php
