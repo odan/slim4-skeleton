@@ -31,7 +31,7 @@ build:
             before:
                  - composer self-update
                  - composer update --no-interaction --prefer-dist --no-progress
-                 - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_int;"
+                 - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_int CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
     tests:
         before:
             -

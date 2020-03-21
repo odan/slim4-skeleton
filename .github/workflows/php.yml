@@ -44,8 +44,8 @@ jobs:
       - name: Start MySQL
         run: sudo systemctl start mysql
 
-      - name: Create test database
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int;'
+      - name: Create database
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
       - name: Copy settings
         run: cp config/env.github.php config/env.php
