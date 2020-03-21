@@ -41,6 +41,9 @@ jobs:
       - name: Check PHP Extensions
         run: php -m
 
+      - name: Start MySQL
+        run: sudo systemctl start mysql
+
       - name: Create test database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
 
