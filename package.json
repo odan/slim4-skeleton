@@ -4,37 +4,42 @@
     "license": "MIT",
     "private": true,
     "scripts": {
+        "build": "npx webpack --mode=production",
         "test": "jest",
         "test:coverage": "jest --coverage --ci",
-        "cli": "php bin/cli.php --ansi"
+        "watch": "npx webpack --watch"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.12.0",
+        "@fortawesome/fontawesome-free": "^5.12.1",
         "bootstrap": "^4.4.1",
         "datatables.net-bs4": "^1.10.20",
         "datatables.net-responsive-bs4": "^2.2.3",
         "datatables.net-select-bs4": "^1.3.1",
         "jquery": "^3.3.1",
-        "popper.js": "^1.16.0",
+        "popper.js": "^1.16.1",
         "sweetalert2": "^8.19.0"
     },
     "devDependencies": {
-        "@types/jest": "^24.0.25",
-        "@types/jquery": "^3.3.31",
+        "@types/jest": "^24.9.1",
+        "@types/jquery": "^3.3.33",
+        "autoprefixer": "^9.7.4",
         "clean-webpack-plugin": "^3.0.0",
-        "css-loader": "^3.4.1",
+        "css-loader": "^3.4.2",
         "file-loader": "^4.3.0",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^24.9.0",
         "mini-css-extract-plugin": "^0.8.2",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
-        "terser-webpack-plugin": "^2.3.1",
-        "ts-jest": "^24.2.0",
+        "postcss-loader": "^3.0.0",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.1.3",
+        "terser-webpack-plugin": "^2.3.5",
+        "ts-jest": "^24.3.0",
         "ts-loader": "^6.2.1",
-        "typescript": "^3.7.4",
-        "webpack": "^4.41.5",
+        "typescript": "^3.8.3",
+        "webpack": "^4.42.0",
         "webpack-assets-manifest": "^3.1.1",
-        "webpack-cli": "^3.3.10",
+        "webpack-cli": "^3.3.11",
         "webpack-manifest-plugin": "^2.2.0"
     }
 }
