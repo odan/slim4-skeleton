@@ -8,13 +8,13 @@ nav_order: 14
 
 Depending on the use case, different strategies are appropriate for the input validation.
 
-## Form data validation
+## Form validation
 
 If you need to validate complex form data (arrays) against a specific set of rules, try 
 [cakephp/validation](https://github.com/cakephp/validation) or 
 [rakit/validation](https://github.com/rakit/validation).
 
-To collect validation errors and convert a validation exception into a JSON response, 
+If you want to manually validate form data and collect validation errors, 
 try [selective/validation](https://github.com/selective-php/validation)
 
 ## OpenAPI validation
