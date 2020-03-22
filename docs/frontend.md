@@ -90,40 +90,62 @@ Read more: [Twig translation usage](https://github.com/odan/twig-translation#usa
 
 ## Determining The Current Locale
 
-*This section is under construction!*
-
-You may use the getLocale and isLocale methods on the App facade to determine 
-the current locale or check if the locale is a given value:
+You can use the UserAuth instance to get the users locale.
 
 ```php
-$locale = $this->locale->getLocale(); // en_US
+
+use App\Domain\User\Service\UserAuth;
+// ...
+
+public function __construct(UserAuth $auth)
+{
+    $this->auth = $auth;
+}
+
+//...
+
+$locale = $this->auth->getUser()->locale; // en_US
 ```
 
 ## Assets
 
-### Updating Assets
+### Updating packages
 
-To update all assets like jquery and bootstrap run:
+To update all packages like jQuery and Bootstrap run:
 
 ```bash
-$ composer update-assets
+npm update
 ```
 
-You can add more assets in `package.json` or directly via `npm`.
+### Installing packages
 
-## Compiling Assets
+To install a public package, on the command line, run:
 
-To compile all assets, run:
-
-```
-npx webpack
+```bash
+npm install <package_name>
 ```
 
-To compile and minify all assets, run:
+### Compiling Assets
+
+To compile all assets for development, run:
 
 ```
-npx webpack --mode=production
+npm run build:dev
 ```
+
+To compile and minify all assets for production, run:
+
+```
+npm run build:dev
+```
+
+To watch files and recompile whenever they change, run:
+
+```
+npm run watch
+```
+
+### Testing
 
 To start frontend tests, run:
 

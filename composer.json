@@ -62,8 +62,6 @@
     },
     "scripts": {
         "build": "artifact build --name=my_app",
-        "bundle-assets": "npx webpack --mode=development",
-        "bundle-assets-prod": "npx webpack --mode=production",
         "check-all": [
             "@lint",
             "@check-style",

@@ -5,6 +5,7 @@
     "private": true,
     "scripts": {
         "build": "npx webpack --mode=production",
+        "build:dev": "npx webpack --mode=development",
         "test": "jest",
         "test:coverage": "jest --coverage --ci",
         "watch": "npx webpack --watch"
