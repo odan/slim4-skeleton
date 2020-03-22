@@ -136,7 +136,7 @@ npm run build:dev
 To compile and minify all assets for production, run:
 
 ```
-npm run build:dev
+npm run build
 ```
 
 To watch files and recompile whenever they change, run:
