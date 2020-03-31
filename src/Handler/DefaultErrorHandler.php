@@ -7,6 +7,7 @@ use App\Utility\ExceptionDetail;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpException;
 use Slim\Views\Twig;
 use Throwable;
@@ -27,15 +28,15 @@ class DefaultErrorHandler
     private $responseFactory;
 
     /**
-     * @var LoggerFactory
+     * @var LoggerInterface
      */
     private $logger;
 
     /**
      * The constructor.
      *
-     * @param Twig $twig
-     * @param ResponseFactoryInterface $responseFactory
+     * @param Twig $twig Twig template engine
+     * @param ResponseFactoryInterface $responseFactory The response factory
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
@@ -95,7 +96,7 @@ class DefaultErrorHandler
     /**
      * Get http status code.
      *
-     * @param Throwable $exception
+     * @param Throwable $exception The exception
      *
      * @return int The http code
      */
