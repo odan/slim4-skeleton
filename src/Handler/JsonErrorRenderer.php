@@ -5,8 +5,7 @@ namespace App\Handler;
 use App\Factory\LoggerFactory;
 use App\Utility\ExceptionDetail;
 use Psr\Log\LoggerInterface;
-use Slim\Exception\HttpMethodNotAllowedException;
-use Slim\Exception\HttpNotFoundException;
+use Slim\Exception\HttpException;
 use Slim\Interfaces\ErrorRendererInterface;
 use Throwable;
 
@@ -28,7 +27,7 @@ class JsonErrorRenderer implements ErrorRendererInterface
     public function __construct(LoggerFactory $loggerFactory)
     {
         $this->logger = $loggerFactory
-            ->addFileHandler('json_error.log')
+            ->addFileHandler('json_error_renderer.log')
             ->createInstance('json_error_renderer');
     }
 
@@ -47,13 +46,10 @@ class JsonErrorRenderer implements ErrorRendererInterface
         // Add error log entry
         $this->logger->error($detailedErrorMessage);
 
-        // Detect error type
-        if ($exception instanceof HttpNotFoundException) {
-            $errorMessage = '404 Not Found';
-        } elseif ($exception instanceof HttpMethodNotAllowedException) {
-            $errorMessage = '405 Method Not Allowed';
-        } else {
-            $errorMessage = '500 Internal Server Error';
+        $errorMessage = '500 Internal Server Error';
+
+        if ($exception instanceof HttpException) {
+            $errorMessage = sprintf('%s %s', $exception->getCode(), $exception->getMessage());
         }
 
         $result = [

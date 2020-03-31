@@ -1,6 +1,7 @@
 <?php
 
 use App\Factory\LoggerFactory;
+use App\Handler\DefaultErrorHandler;
 use App\Middleware\TranslatorMiddleware;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
@@ -17,6 +18,7 @@ use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Middleware\ErrorMiddleware;
 use Slim\Psr7\Factory\UriFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
@@ -167,5 +169,22 @@ return [
         $factory = $container->get(ResponseFactoryInterface::class);
 
         return new ValidationExceptionMiddleware($factory, new JsonEncoder());
+    },
+
+    ErrorMiddleware::class => function (ContainerInterface $container) {
+        $config = $container->get(Configuration::class)->getArray('error_handler_middleware');
+        $app = $container->get(App::class);
+
+        $errorMiddleware = new ErrorMiddleware(
+            $app->getCallableResolver(),
+            $app->getResponseFactory(),
+            (bool)$config['display_error_details'],
+            (bool)$config['log_errors'],
+            (bool)$config['log_error_details']
+        );
+
+        $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
+
+        return $errorMiddleware;
     },
 ];
