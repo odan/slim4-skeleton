@@ -50,10 +50,15 @@ $settings['logger'] = [
 
 // View settings
 $settings['twig'] = [
-    'path' => $settings['root'] . '/templates',
-    // Should be set to true in production
-    'cache_enabled' => true,
-    'cache_path' => $settings['temp'] . '/twig-cache',
+    // Template paths
+    'path' => [
+        $settings['root'] . '/templates',
+    ],
+    // Twig environment settings
+    'settings' => [
+        // The cache path or false (no cache)
+        'cache' => $settings['temp'] . '/twig-cache',
+    ],
 ];
 
 // Session
