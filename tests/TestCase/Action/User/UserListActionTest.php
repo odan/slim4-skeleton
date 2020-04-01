@@ -4,8 +4,8 @@ namespace App\Test\TestCase\Action\User;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Test\TestCase\HttpTestTrait;
-use Odan\Session\SessionInterface;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Session\Session;
 use UnexpectedValueException;
 
 /**
@@ -38,7 +38,7 @@ class UserListActionTest extends TestCase
         $user = new UserAuthData();
         $user->id = 1;
         $user->locale = 'en_US';
-        $session = $this->getContainer()->get(SessionInterface::class);
+        $session = $this->getContainer()->get(Session::class);
 
         if ($session === null) {
             throw new UnexpectedValueException('Session not defined');

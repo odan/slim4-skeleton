@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-21 18:45+0100\n"
-"PO-Revision-Date: 2020-03-21 18:46+0100\n"
+"POT-Creation-Date: 2020-04-01 22:50+0200\n"
+"PO-Revision-Date: 2020-04-01 22:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -16,6 +16,14 @@ msgstr ""
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: tmp/twig-cache\n"
+
+#: src/Action/Login/LoginSubmitAction.php:63
+msgid "Login successfully"
+msgstr "Anmeldung erfolgreich"
+
+#: src/Action/Login/LoginSubmitAction.php:66
+msgid "Login failed!"
+msgstr "Anmeldung fehlgeschlagen!"
 
 #: src/Domain/User/Service/UserCreator.php:67
 msgid "Please check your input"
@@ -59,14 +67,17 @@ msgid "Password"
 msgstr "Kennwort"
 
 #: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:76
+#: tmp/twig-cache/68/684ca8dc4e048c56f10b8e978d29dd9b522e114684b86b03f56d50f7f4032a67.php:76
 msgid "Hello, World"
 msgstr "Hallo, Welt"
 
 #: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:82
+#: tmp/twig-cache/68/684ca8dc4e048c56f10b8e978d29dd9b522e114684b86b03f56d50f7f4032a67.php:82
 msgid "Current time"
 msgstr "Aktuelle Zeit"
 
 #: tmp/twig-cache/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:91
+#: tmp/twig-cache/68/684ca8dc4e048c56f10b8e978d29dd9b522e114684b86b03f56d50f7f4032a67.php:91
 msgid "Login"
 msgstr "Login"
 

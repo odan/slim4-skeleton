@@ -20,6 +20,8 @@
         <input type="text" name="username" class="form-control" placeholder="{{ __('Username') }}" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="{{ __('Password') }}" required>
         <button id="btn_login" class="btn btn-lg btn-primary btn-block" type="submit">{{ __('Sign in') }}</button>
+        <p></p>
+        {% include 'layout/flash.twig' %}
         <p class="mt-5 mb-3 text-muted">&copy; {{ 'now'|date('Y') }}</p>
     </form>
 </div>

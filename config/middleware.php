@@ -1,8 +1,7 @@
 <?php
 
-use App\Middleware\LocaleSessionMiddleware;
+use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
-use Odan\Session\SessionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
@@ -16,7 +15,6 @@ return function (App $app) {
     $app->add(ValidationExceptionMiddleware::class);
     $app->add(TwigMiddleware::class);
     $app->add(TranslatorMiddleware::class);
-    $app->add(LocaleSessionMiddleware::class);
     $app->add(SessionMiddleware::class);
     $app->addRoutingMiddleware();
     $app->add(BasePathMiddleware::class);

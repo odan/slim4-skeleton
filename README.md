@@ -44,7 +44,7 @@ This project is based on best practice and industry standards:
 * [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Translations (Symfony)
-* Sessions middleware
+* Sessions
 * Database Query Builder
 * Database Migrations ([Phinx](https://phinx.org/))
 * Database Migrations Generator

@@ -3,28 +3,28 @@
 namespace App\Middleware;
 
 use App\Domain\User\Data\UserAuthData;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Middleware.
  */
-final class LocaleSessionMiddleware implements MiddlewareInterface
+final class SessionMiddleware implements MiddlewareInterface
 {
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
     /**
-     * Constructor.
+     * The constructor.
      *
-     * @param SessionInterface $session The session handler
+     * @param Session $session The session handler
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(Session $session)
     {
         $this->session = $session;
     }
@@ -39,12 +39,14 @@ final class LocaleSessionMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Here you should read the user language from the session or other parameters
+        $this->session->start();
 
         /** @var UserAuthData|null $user */
         $user = $this->session->get('user');
-        $locale = $user ? $user->locale : 'en_US';
 
+        // Set locale from the session or use a default value
+        // The TranslatorMiddleware changes the translation file
+        $locale = $user ? $user->locale : 'en_US';
         $request = $request->withAttribute('locale', $locale);
 
         return $handler->handle($request);

@@ -87,7 +87,7 @@ class DefaultErrorHandler
         // Render twig template
         $response = $this->responseFactory->createResponse();
         $response = $this->twig->render($response, 'error/error.twig', [
-            'errorMessage' => $errorMessage
+            'errorMessage' => $errorMessage,
         ]);
 
         return $response->withStatus($statusCode);

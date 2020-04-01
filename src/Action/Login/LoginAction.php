@@ -2,11 +2,11 @@
 
 namespace App\Action\Login;
 
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 use Slim\Views\Twig;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Action.
@@ -19,7 +19,7 @@ final class LoginAction
     private $twig;
 
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
@@ -27,9 +27,9 @@ final class LoginAction
      * The constructor.
      *
      * @param Twig $twig The twig engine
-     * @param SessionInterface $session The session handler
+     * @param Session $session The session handler
      */
-    public function __construct(Twig $twig, SessionInterface $session)
+    public function __construct(Twig $twig, Session $session)
     {
         $this->twig = $twig;
         $this->session = $session;
@@ -45,12 +45,8 @@ final class LoginAction
      */
     public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
-        // Clears all session data and regenerates session ID
+        // Logout user
         $this->session->remove('user');
-
-        if ($this->session->isStarted()) {
-            $this->session->destroy();
-        }
 
         return $this->twig->render($response, 'login/login.twig');
     }

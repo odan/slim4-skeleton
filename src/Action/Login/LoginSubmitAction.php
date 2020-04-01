@@ -4,11 +4,11 @@ namespace App\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 use Slim\Routing\RouteContext;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Action.
@@ -16,7 +16,7 @@ use Slim\Routing\RouteContext;
 final class LoginSubmitAction
 {
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
@@ -28,10 +28,10 @@ final class LoginSubmitAction
     /**
      * The constructor.
      *
-     * @param SessionInterface $session The session handler
+     * @param Session $session The session handler
      * @param UserAuth $auth The user auth
      */
-    public function __construct(SessionInterface $session, UserAuth $auth)
+    public function __construct(Session $session, UserAuth $auth)
     {
         $this->session = $session;
         $this->auth = $auth;
@@ -54,10 +54,15 @@ final class LoginSubmitAction
         $user = $this->auth->authenticate($username, $password);
         $router = RouteContext::fromRequest($request)->getRouteParser();
 
+        $flash = $this->session->getFlashBag();
+        $flash->clear();
+
         if ($user) {
             $this->startUserSession($user);
+            $flash->set('success', __('Login successfully'));
             $url = $router->urlFor('user-list');
         } else {
+            $flash->set('error', __('Login failed!'));
             $url = $router->urlFor('login');
         }
 
@@ -73,12 +78,9 @@ final class LoginSubmitAction
      */
     private function startUserSession(UserAuthData $user): void
     {
-        // Clear session data
-        $this->session->destroy();
+        // Clears all session data and regenerates session ID
+        $this->session->invalidate();
         $this->session->start();
-
-        // Create new session id
-        $this->session->regenerateId();
 
         $this->session->set('user', $user);
 

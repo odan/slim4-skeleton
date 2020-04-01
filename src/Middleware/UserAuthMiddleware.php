@@ -4,13 +4,13 @@ namespace App\Middleware;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Routing\RouteContext;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Middleware.
@@ -18,7 +18,7 @@ use Slim\Routing\RouteContext;
 final class UserAuthMiddleware implements MiddlewareInterface
 {
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
@@ -35,12 +35,12 @@ final class UserAuthMiddleware implements MiddlewareInterface
     /**
      * The constructor.
      *
-     * @param SessionInterface $session The session
+     * @param Session $session The session
      * @param UserAuth $auth The user auth
      * @param ResponseFactoryInterface $responseFactory The response factory
      */
     public function __construct(
-        SessionInterface $session,
+        Session $session,
         UserAuth $auth,
         ResponseFactoryInterface $responseFactory
     ) {

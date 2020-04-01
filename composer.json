@@ -20,7 +20,6 @@
         "fullpipe/twig-webpack-extension": "^3.0",
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^4.3",
-        "odan/session": "^4.0",
         "odan/twig-translation": "^2.0",
         "php-di/php-di": "^6.0",
         "psr/log": "^1.1",
@@ -33,6 +32,7 @@
         "slim/slim": "^4.4",
         "slim/twig-view": "^3",
         "symfony/console": "^4.3 || ^5.0",
+        "symfony/http-foundation": "^5.0",
         "symfony/translation": "^4.3 || ^5.0"
     },
     "require-dev": {
