@@ -27,7 +27,6 @@
         "selective/basepath": "^0.2",
         "selective/config": "^0.1.1",
         "selective/validation": "^0.7.1",
-        "slim/http": "^1",
         "slim/psr7": "^1",
         "slim/slim": "^4.4",
         "slim/twig-view": "^3",

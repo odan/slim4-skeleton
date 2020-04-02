@@ -4,8 +4,9 @@ namespace App\Action\User;
 
 use App\Domain\User\Data\UserCreatorData;
 use App\Domain\User\Service\UserCreator;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use App\Utility\JsonRenderer;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Action.
@@ -32,12 +33,12 @@ final class UserCreateAction
      *
      * > curl -X POST -H "Content-Type: application/json" -d {\"key1\":\"value1\"} http://localhost/users
      *
-     * @param ServerRequest $request The request
-     * @param Response $response The response
+     * @param ServerRequestInterface $request The request
+     * @param ResponseInterface $response The response
      *
-     * @return Response The response
+     * @return ResponseInterface The response
      */
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Collect input from the HTTP request
         $userData = new UserCreatorData((array)$request->getParsedBody());
@@ -46,7 +47,7 @@ final class UserCreateAction
         $userId = $this->userCreator->createUser($userData);
 
         // Build the HTTP response
-        return $response->withJson([
+        return JsonRenderer::encodeJson($response, [
             'user_id' => $userId,
         ]);
     }

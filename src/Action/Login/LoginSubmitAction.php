@@ -4,10 +4,10 @@ namespace App\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
+use App\Utility\Redirector;
 use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
-use Slim\Routing\RouteContext;
+use Psr\Http\Message\ServerRequestInterface;
+use Selective\SlimHelper\ResponseHelper;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -40,19 +40,18 @@ final class LoginSubmitAction
     /**
      * Action.
      *
-     * @param ServerRequest $request The request
-     * @param Response $response The response
+     * @param ServerRequestInterface $request The request
+     * @param ResponseInterface $response The response
      *
      * @return ResponseInterface The response
      */
-    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $data = (array)$request->getParsedBody();
         $username = (string)($data['username'] ?? '');
         $password = (string)($data['password'] ?? '');
 
         $user = $this->auth->authenticate($username, $password);
-        $router = RouteContext::fromRequest($request)->getRouteParser();
 
         $flash = $this->session->getFlashBag();
         $flash->clear();
@@ -60,13 +59,13 @@ final class LoginSubmitAction
         if ($user) {
             $this->startUserSession($user);
             $flash->set('success', __('Login successfully'));
-            $url = $router->urlFor('user-list');
+            $url = 'user-list';
         } else {
             $flash->set('error', __('Login failed!'));
-            $url = $router->urlFor('login');
+            $url = 'login';
         }
 
-        return $response->withRedirect($url);
+        return Redirector::redirect($request, $response, $url);
     }
 
     /**

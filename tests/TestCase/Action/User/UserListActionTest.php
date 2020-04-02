@@ -29,25 +29,6 @@ class UserListActionTest extends TestCase
     }
 
     /**
-     * Login user.
-     *
-     * @return void
-     */
-    private function loginUser(): void
-    {
-        $user = new UserAuthData();
-        $user->id = 1;
-        $user->locale = 'en_US';
-        $session = $this->getContainer()->get(Session::class);
-
-        if ($session === null) {
-            throw new UnexpectedValueException('Session not defined');
-        }
-
-        $session->set('user', $user);
-    }
-
-    /**
      * Test.
      *
      * @return void

@@ -108,7 +108,7 @@ trait DatabaseTestTrait
      *
      * @return void
      */
-    protected function importSchema()
+    protected function importSchema(): void
     {
         $sql = (string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql');
 

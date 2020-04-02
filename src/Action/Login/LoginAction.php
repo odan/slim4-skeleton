@@ -3,8 +3,7 @@
 namespace App\Action\Login;
 
 use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -38,12 +37,12 @@ final class LoginAction
     /**
      * Action.
      *
-     * @param ServerRequest $request The request
-     * @param Response $response The response
+     * @param ServerRequestInterface $request The request
+     * @param ResponseInterface $response The response
      *
      * @return ResponseInterface The response
      */
-    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Logout user
         $this->session->remove('user');

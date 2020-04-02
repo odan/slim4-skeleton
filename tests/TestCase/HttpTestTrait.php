@@ -2,11 +2,13 @@
 
 namespace App\Test\TestCase;
 
+use App\Domain\User\Data\UserAuthData;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
-use Slim\Http\Factory\DecoratedServerRequestFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
+use Symfony\Component\HttpFoundation\Session\Session;
+use UnexpectedValueException;
 
 /**
  * Acceptance Test.
@@ -26,7 +28,16 @@ trait HttpTestTrait
      */
     protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
-        $factory = new DecoratedServerRequestFactory(new ServerRequestFactory());
+        // A phpunit fix #3026
+        if (!isset($_SERVER['REQUEST_URI'])) {
+            $_SERVER = [
+                'SCRIPT_NAME' => '/public/index.php',
+                'REQUEST_TIME_FLOAT' => microtime(true),
+                'REQUEST_TIME' => (int)microtime(true),
+            ];
+        }
+
+        $factory = new ServerRequestFactory();
 
         return $factory->createServerRequest($method, $uri, $serverParams);
     }
@@ -59,9 +70,8 @@ trait HttpTestTrait
     protected function withJson(ServerRequestInterface $request, array $data): ServerRequestInterface
     {
         $request = $request->withParsedBody($data);
-        $request = $request->withHeader('Content-Type', 'application/json');
 
-        return $request;
+        return $request->withHeader('Content-Type', 'application/json');
     }
 
     /**
@@ -74,5 +84,24 @@ trait HttpTestTrait
     protected function request(ServerRequestInterface $request): ResponseInterface
     {
         return $this->getApp()->handle($request);
+    }
+
+    /**
+     * Login user.
+     *
+     * @return void
+     */
+    private function loginUser(): void
+    {
+        $user = new UserAuthData();
+        $user->id = 1;
+        $user->locale = 'en_US';
+        $session = $this->getContainer()->get(Session::class);
+
+        if ($session === null) {
+            throw new UnexpectedValueException('Session not defined');
+        }
+
+        $session->set('user', $user);
     }
 }
