@@ -11,9 +11,6 @@ class UserAuthData
     public $id;
 
     /** @var string */
-    public $password;
-
-    /** @var string */
     public $email;
 
     /** @var string */

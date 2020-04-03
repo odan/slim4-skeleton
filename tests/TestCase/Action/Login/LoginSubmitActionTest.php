@@ -43,7 +43,6 @@ class LoginSubmitActionTest extends TestCase
         static::assertSame(1, $user->id);
         static::assertSame('en_US', $user->locale);
         static::assertSame('admin@example.com', $user->email);
-        static::assertEmpty($user->password);
     }
 
     /**
@@ -74,6 +73,5 @@ class LoginSubmitActionTest extends TestCase
         static::assertSame(2, $user->id);
         static::assertSame('de_DE', $user->locale);
         static::assertSame('user@example.com', $user->email);
-        static::assertEmpty($user->password);
     }
 }

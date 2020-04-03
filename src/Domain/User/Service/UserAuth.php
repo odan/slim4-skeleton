@@ -47,18 +47,15 @@ final class UserAuth
             return null;
         }
 
-        // Map array to DTO
-        $user = new UserAuthData();
-        $user->id = (int)$userRow['id'];
-        $user->password = (string)$userRow['password'];
-        $user->email = (string)$userRow['email'];
-        $user->locale = (string)$userRow['locale'];
-
-        if (!password_verify($password, $user->password)) {
+        if (!password_verify($password, (string)$userRow['password'])) {
             return null;
         }
 
-        $user->password = '';
+        // Map array to DTO
+        $user = new UserAuthData();
+        $user->id = (int)$userRow['id'];
+        $user->email = (string)$userRow['email'];
+        $user->locale = (string)$userRow['locale'];
 
         return $user;
     }
