@@ -90,7 +90,7 @@ return [
             'assets/'
         ));
 
-        // Add the Twig extension only we run the app from the command line / cron job,
+        // Add the Twig extension only if we run the application from the command line / cron job,
         // but not when phpunit tests are running.
         if ((PHP_SAPI === 'cli' || PHP_SAPI === 'cgi-fcgi') && !defined('PHPUNIT_TEST_SUITE')) {
             $app = $container->get(App::class);
