@@ -2,10 +2,12 @@
 
 namespace App\Middleware;
 
+use App\Domain\User\Data\UserAuthData;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -19,19 +21,29 @@ final class TranslatorMiddleware implements MiddlewareInterface
     private $translator;
 
     /**
-     * @var string Locale path
+     * @var Session
      */
-    public $localePath;
+    private $session;
 
     /**
-     * Constructor.
+     * @var string Locale path
+     */
+    private $localePath;
+
+    /**
+     * The constructor.
      *
      * @param Translator $translator The translator
+     * @param Session $session The session handler
      * @param string $localePath The directory with the locals
      */
-    public function __construct(Translator $translator, string $localePath)
-    {
+    public function __construct(
+        Translator $translator,
+        Session $session,
+        string $localePath
+    ) {
         $this->translator = $translator;
+        $this->session = $session;
         $this->localePath = $localePath;
     }
 
@@ -45,15 +57,14 @@ final class TranslatorMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $locale = $request->getAttribute('locale');
+        /** @var UserAuthData|null $user */
+        $user = $this->session->get('user');
 
-        if (!$locale) {
-            return $handler->handle($request);
-        }
-
-        $domain = 'messages';
+        // User locale or default locale
+        $locale = $user ? $user->locale : 'en_US';
 
         // Set language
+        $domain = 'messages';
         $moFile = sprintf('%s/%s_%s.mo', $this->localePath, $locale, $domain);
         $this->translator->addResource('mo', $moFile, $locale, $domain);
         $this->translator->setLocale($locale);

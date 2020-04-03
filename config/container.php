@@ -149,10 +149,10 @@ return [
 
     TranslatorMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get(Configuration::class)->getArray('locale');
-        $localPath = $settings['path'];
         $translator = $container->get(Translator::class);
+        $session = $container->get(Session::class);
 
-        return new TranslatorMiddleware($translator, $localPath);
+        return new TranslatorMiddleware($translator, $session, (string)$settings['path']);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {
