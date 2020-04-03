@@ -98,9 +98,7 @@ final class QueryFactory
             $data = (array)call_user_func($this->beforeInsertCallback, $data, $table);
         }
 
-        $columns = array_keys($data);
-
-        return $this->newQuery()->insert($columns)
+        return $this->newQuery()->insert(array_keys($data))
             ->into($table)
             ->values($data);
     }
