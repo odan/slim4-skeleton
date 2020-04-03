@@ -4,12 +4,12 @@ namespace App\Middleware;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
+use App\Utility\Redirector;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Slim\Routing\RouteContext;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -68,11 +68,7 @@ final class UserAuthMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        // User is not logged in
-        // Redirect to login page
-        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
-        $url = $routeParser->fullUrlFor($request->getUri(), 'login');
-
-        return $this->responseFactory->createResponse()->withHeader('Location', $url)->withStatus(302);
+        // User is not logged in. Redirect to login page.
+        return Redirector::redirect($request, $this->responseFactory->createResponse(), 'login');
     }
 }
