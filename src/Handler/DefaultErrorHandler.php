@@ -106,7 +106,7 @@ class DefaultErrorHandler
         $statusCode = 500;
 
         if ($exception instanceof HttpException) {
-            $statusCode = $exception->getCode();
+            $statusCode = (int)$exception->getCode();
         }
 
         $file = basename($exception->getFile());

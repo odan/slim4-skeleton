@@ -61,7 +61,7 @@ final class SchemaSqlCommand extends Command
         // Lazy loading, because the database may not exists
         $this->pdo = $this->container->get(PDO::class);
 
-        $output->writeln(sprintf('Use database: %s', $this->pdo->query('select database()')->fetchColumn()));
+        $output->writeln(sprintf('Use database: %s', (string)$this->pdo->query('select database()')->fetchColumn()));
 
         $statement = $this->pdo->query('SELECT table_name
                 FROM information_schema.tables
@@ -70,7 +70,7 @@ final class SchemaSqlCommand extends Command
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $row = array_change_key_case($row);
-            $statement2 = $this->pdo->query(sprintf('SHOW CREATE TABLE `%s`;', $row['table_name']));
+            $statement2 = $this->pdo->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
             $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';
         }
