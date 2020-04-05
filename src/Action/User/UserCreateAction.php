@@ -4,7 +4,7 @@ namespace App\Action\User;
 
 use App\Domain\User\Data\UserCreatorData;
 use App\Domain\User\Service\UserCreator;
-use App\Utility\JsonRenderer;
+use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -14,6 +14,11 @@ use Psr\Http\Message\ServerRequestInterface;
 final class UserCreateAction
 {
     /**
+     * @var Responder
+     */
+    private $responder;
+
+    /**
      * @var UserCreator
      */
     private $userCreator;
@@ -21,10 +26,12 @@ final class UserCreateAction
     /**
      * The constructor.
      *
+     * @param Responder $responder The responder
      * @param UserCreator $userCreator The service
      */
-    public function __construct(UserCreator $userCreator)
+    public function __construct(Responder $responder, UserCreator $userCreator)
     {
+        $this->responder = $responder;
         $this->userCreator = $userCreator;
     }
 
@@ -47,7 +54,7 @@ final class UserCreateAction
         $userId = $this->userCreator->createUser($userData);
 
         // Build the HTTP response
-        return JsonRenderer::encodeJson($response, [
+        return $this->responder->encodeJson($response, [
             'user_id' => $userId,
         ]);
     }

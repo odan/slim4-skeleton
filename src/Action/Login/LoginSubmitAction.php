@@ -4,6 +4,7 @@ namespace App\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
+use App\Responder\Responder;
 use App\Utility\Redirector;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,6 +16,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 final class LoginSubmitAction
 {
+    /**
+     * @var Responder
+     */
+    private $responder;
+
     /**
      * @var Session
      */
@@ -28,11 +34,13 @@ final class LoginSubmitAction
     /**
      * The constructor.
      *
+     * @param Responder $responder The responder
      * @param Session $session The session handler
      * @param UserAuth $auth The user auth
      */
-    public function __construct(Session $session, UserAuth $auth)
+    public function __construct(Responder $responder, Session $session, UserAuth $auth)
     {
+        $this->responder = $responder;
         $this->session = $session;
         $this->auth = $auth;
     }
@@ -65,7 +73,7 @@ final class LoginSubmitAction
             $url = 'login';
         }
 
-        return Redirector::redirect($request, $response, $url);
+        return $this->responder->redirect($request, $response, $url);
     }
 
     /**

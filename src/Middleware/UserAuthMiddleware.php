@@ -4,6 +4,7 @@ namespace App\Middleware;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
+use App\Responder\Responder;
 use App\Utility\Redirector;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -18,6 +19,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 final class UserAuthMiddleware implements MiddlewareInterface
 {
     /**
+     * @var Responder
+     */
+    private $responder;
+
+    /**
      * @var Session
      */
     private $session;
@@ -28,25 +34,20 @@ final class UserAuthMiddleware implements MiddlewareInterface
     private $auth;
 
     /**
-     * @var ResponseFactoryInterface
-     */
-    private $responseFactory;
-
-    /**
      * The constructor.
      *
+     * @param Responder $responder The responder
      * @param Session $session The session
      * @param UserAuth $auth The user auth
-     * @param ResponseFactoryInterface $responseFactory The response factory
      */
     public function __construct(
+        Responder $responder,
         Session $session,
-        UserAuth $auth,
-        ResponseFactoryInterface $responseFactory
+        UserAuth $auth
     ) {
+        $this->responder = $responder;
         $this->session = $session;
         $this->auth = $auth;
-        $this->responseFactory = $responseFactory;
     }
 
     /**
@@ -69,6 +70,6 @@ final class UserAuthMiddleware implements MiddlewareInterface
         }
 
         // User is not logged in. Redirect to login page.
-        return Redirector::redirect($request, $this->responseFactory->createResponse(), 'login');
+        return $this->responder->redirect($request, $this->responder->createResponse(), 'login');
     }
 }
