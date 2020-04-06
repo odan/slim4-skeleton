@@ -120,12 +120,10 @@ return [
         $settings = $container->get(Configuration::class)->getArray('session');
 
         if (PHP_SAPI === 'cli') {
-            $session = new Session(new MockArraySessionStorage());
+            return new Session(new MockArraySessionStorage());
         } else {
-            $session = new Session(new NativeSessionStorage($settings));
+            return new Session(new NativeSessionStorage($settings));
         }
-
-        return $session;
     },
 
     // Translation
