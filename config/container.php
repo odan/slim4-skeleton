@@ -83,7 +83,7 @@ return [
         }
 
         // Add extensions
-        $twig->addExtension(new TwigTranslationExtension());
+        $twig->addExtension(new TwigTranslationExtension($container->get(Translator::class)));
         $twig->addExtension(new WebpackExtension(
             $config->getString('public') . '/assets/manifest.json',
             'assets/',

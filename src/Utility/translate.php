@@ -1,31 +1,26 @@
 <?php
 
-use Symfony\Component\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Text translation.
+ * Translate text.
  *
- * @param string|Translator $message The message or the translator instance
+ * @param string|TranslatorInterface $message The message being translated or the translator
+ * @param string|int|float|bool ...$context The context arguments
  *
  * @return string The translated message
- *
- * <code>
- * echo __('Hello');
- * echo __('There are %s users logged in.', 7);
- * </code>
  */
-function __($message): string
+function __($message, ...$context): string
 {
-    /** @var Translator $translator */
+    /** @var TranslatorInterface $translator */
     static $translator = null;
-    if ($message instanceof Translator) {
+    if ($message instanceof TranslatorInterface) {
         $translator = $message;
 
         return '';
     }
 
     $translated = $translator->trans($message);
-    $context = array_slice(func_get_args(), 1);
     if (!empty($context)) {
         $translated = vsprintf($translated, $context);
     }
