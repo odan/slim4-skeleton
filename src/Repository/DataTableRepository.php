@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Factory\QueryFactory;
 use Cake\Database\Expression\QueryExpression;
 use Cake\Database\Query;
 use Cake\Database\StatementInterface;

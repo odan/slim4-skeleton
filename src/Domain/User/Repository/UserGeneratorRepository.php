@@ -3,7 +3,7 @@
 namespace App\Domain\User\Repository;
 
 use App\Domain\User\Data\UserCreatorData;
-use App\Repository\QueryFactory;
+use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
 

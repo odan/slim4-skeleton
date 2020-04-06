@@ -2,8 +2,8 @@
 
 namespace App\Domain\User\Repository;
 
+use App\Factory\QueryFactory;
 use App\Repository\DataTableRepository;
-use App\Repository\QueryFactory;
 use App\Repository\RepositoryInterface;
 
 /**

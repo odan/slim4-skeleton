@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Repository\QueryFactory;
+use App\Factory\QueryFactory;
 
 /**
  * Repository.
@@ -31,7 +31,7 @@ final class UserAuthRepository
      *
      * @return array The user
      */
-    public function findByUsername(string $username): array
+    public function findUserByUsername(string $username): array
     {
         $query = $this->queryFactory->newSelect('users');
 
