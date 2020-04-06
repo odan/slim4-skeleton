@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\Login;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Domain\User\Data\UserSessionData;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +23,7 @@ class LoginSubmitActionTest extends TestCase
     public function testLoginAdminAction(): void
     {
         $this->insertFixtures([
-            UserFixture::class
+            UserFixture::class,
         ]);
 
         $request = $this->createRequest('POST', '/login');
@@ -37,9 +37,9 @@ class LoginSubmitActionTest extends TestCase
         // User session
         $session = $this->getContainer()->get(Session::class);
 
-        /** @var UserAuthData $user */
+        /** @var UserSessionData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserAuthData::class, $user);
+        static::assertInstanceOf(UserSessionData::class, $user);
         static::assertSame(1, $user->id);
         static::assertSame('en_US', $user->locale);
         static::assertSame('admin@example.com', $user->email);
@@ -53,7 +53,7 @@ class LoginSubmitActionTest extends TestCase
     public function testLoginUserAction(): void
     {
         $this->insertFixtures([
-            UserFixture::class
+            UserFixture::class,
         ]);
 
         $request = $this->createRequest('POST', '/login');
@@ -67,9 +67,9 @@ class LoginSubmitActionTest extends TestCase
         // User session
         $session = $this->getContainer()->get(Session::class);
 
-        /** @var UserAuthData $user */
+        /** @var UserSessionData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserAuthData::class, $user);
+        static::assertInstanceOf(UserSessionData::class, $user);
         static::assertSame(2, $user->id);
         static::assertSame('de_DE', $user->locale);
         static::assertSame('user@example.com', $user->email);

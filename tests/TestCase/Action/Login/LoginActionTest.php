@@ -2,7 +2,6 @@
 
 namespace App\Test\TestCase\Action\Login;
 
-use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
 

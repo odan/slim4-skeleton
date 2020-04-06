@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Domain\User\Data\UserSessionData;
 use App\Domain\User\Repository\UserAuthRepository;
 use UnexpectedValueException;
 
@@ -17,7 +17,7 @@ final class UserAuth
     private $repository;
 
     /**
-     * @var UserAuthData|null
+     * @var UserSessionData|null
      */
     private $user;
 
@@ -37,11 +37,11 @@ final class UserAuth
      * @param string $username The username
      * @param string $password The password
      *
-     * @return UserAuthData|null
+     * @return UserSessionData|null
      */
-    public function authenticate(string $username, string $password): ?UserAuthData
+    public function authenticate(string $username, string $password): ?UserSessionData
     {
-        $userRow = $this->repository->findByUsername($username);
+        $userRow = $this->repository->findUserByUsername($username);
 
         if (!$userRow) {
             return null;
@@ -52,7 +52,7 @@ final class UserAuth
         }
 
         // Map array to DTO
-        $user = new UserAuthData();
+        $user = new UserSessionData();
         $user->id = (int)$userRow['id'];
         $user->email = (string)$userRow['email'];
         $user->locale = (string)$userRow['locale'];
@@ -63,11 +63,11 @@ final class UserAuth
     /**
      * Set the identity into storage or null if no identity is available.
      *
-     * @param UserAuthData $user The user
+     * @param UserSessionData|null $user The user
      *
      * @return void
      */
-    public function setUser(UserAuthData $user): void
+    public function setUser(?UserSessionData $user): void
     {
         $this->user = $user;
     }
@@ -77,9 +77,9 @@ final class UserAuth
      *
      * @throws UnexpectedValueException
      *
-     * @return UserAuthData The user
+     * @return UserSessionData The user
      */
-    public function getUser(): UserAuthData
+    public function getUser(): UserSessionData
     {
         if (!$this->user) {
             throw new UnexpectedValueException('No user available');

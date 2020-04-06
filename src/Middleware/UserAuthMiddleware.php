@@ -2,11 +2,9 @@
 
 namespace App\Middleware;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Domain\User\Data\UserSessionData;
 use App\Domain\User\Service\UserAuth;
 use App\Responder\Responder;
-use App\Utility\Redirector;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -62,7 +60,7 @@ final class UserAuthMiddleware implements MiddlewareInterface
     {
         $user = $this->session->get('user');
 
-        if ($user instanceof UserAuthData) {
+        if ($user instanceof UserSessionData) {
             // User is logged in
             $this->auth->setUser($user);
 

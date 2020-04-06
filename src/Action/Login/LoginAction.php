@@ -45,7 +45,7 @@ final class LoginAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Logout user
-        $this->session->remove('user');
+        $this->session->invalidate();
 
         return $this->twig->render($response, 'login/login.twig');
     }

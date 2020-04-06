@@ -2,11 +2,8 @@
 
 namespace App\Test\TestCase\Action\User;
 
-use App\Domain\User\Data\UserAuthData;
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\Session\Session;
-use UnexpectedValueException;
 
 /**
  * Test.

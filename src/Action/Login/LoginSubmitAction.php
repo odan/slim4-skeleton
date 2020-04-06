@@ -2,13 +2,11 @@
 
 namespace App\Action\Login;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Domain\User\Data\UserSessionData;
 use App\Domain\User\Service\UserAuth;
 use App\Responder\Responder;
-use App\Utility\Redirector;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Selective\SlimHelper\ResponseHelper;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -79,11 +77,11 @@ final class LoginSubmitAction
     /**
      * Init user session.
      *
-     * @param UserAuthData $user The user
+     * @param UserSessionData $user The user
      *
      * @return void
      */
-    private function startUserSession(UserAuthData $user): void
+    private function startUserSession(UserSessionData $user): void
     {
         // Clears all session data and regenerates session ID
         $this->session->invalidate();

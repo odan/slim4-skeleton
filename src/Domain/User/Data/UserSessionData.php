@@ -5,7 +5,7 @@ namespace App\Domain\User\Data;
 /**
  * User session data.
  */
-class UserAuthData
+class UserSessionData
 {
     /** @var int */
     public $id;
