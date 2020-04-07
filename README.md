@@ -17,7 +17,7 @@
 
 This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.com/) application.
 
-**[Donate](https://beerpay.io/odan/slim4-skeleton)**
+**[Donate](https://odan.github.io/donate.html)**
 
 ## Requirements
 
