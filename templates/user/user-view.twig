@@ -14,16 +14,16 @@
             <hr>
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">{{ __('User-ID') }}:</label>
+                    <label>{{ __('User-ID') }}:</label>
                     <label>{{ user.id }}</label>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">{{ __('Username') }}</label>
-                    <input type="text" value="{{ user.username }}" class="form-control" readonly>
+                    <label for="username">{{ __('Username') }}</label>
+                    <input type="text" id="username" value="{{ user.username }}" class="form-control" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">{{ __('E-Mail') }}</label>
-                    <input type="text" value="{{ user.email }}" class="form-control" readonly>
+                    <label for="email">{{ __('E-Mail') }}</label>
+                    <input type="text" id="email" value="{{ user.email }}" class="form-control" readonly>
                 </div>
                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
             </form>

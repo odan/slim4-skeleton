@@ -10,9 +10,7 @@ class UserViewData
     /** @var int */
     public $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $username;
 
     /** @var string */
