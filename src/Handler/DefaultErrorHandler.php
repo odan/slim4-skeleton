@@ -4,10 +4,13 @@ namespace App\Handler;
 
 use App\Factory\LoggerFactory;
 use App\Utility\ExceptionDetail;
+use DomainException;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
+use Selective\Validation\Exception\ValidationException;
 use Slim\Exception\HttpException;
 use Slim\Views\Twig;
 use Throwable;
@@ -108,6 +111,17 @@ class DefaultErrorHandler
         if ($exception instanceof HttpException) {
             $statusCode = (int)$exception->getCode();
         }
+
+        if ($exception instanceof DomainException || $exception instanceof InvalidArgumentException) {
+            // Bad request
+            $statusCode = 400;
+        }
+
+        if ($exception instanceof ValidationException) {
+            // Unprocessable Entity
+            $statusCode = 422;
+        }
+
 
         $file = basename($exception->getFile());
         if ($file === 'CallableResolver.php') {
