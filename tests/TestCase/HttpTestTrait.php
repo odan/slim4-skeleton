@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Domain\User\Data\UserSessionData;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
@@ -93,7 +93,7 @@ trait HttpTestTrait
      */
     private function loginUser(): void
     {
-        $user = new UserAuthData();
+        $user = new UserSessionData();
         $user->id = 1;
         $user->locale = 'en_US';
         $session = $this->getContainer()->get(Session::class);
