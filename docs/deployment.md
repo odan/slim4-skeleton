@@ -6,6 +6,22 @@ nav_order: 16
 
 # Deployment
 
+A deployment artifact (or a build ) is the application code as it runs on production: 
+compiled, built, bundled, minified, optimized and so on.
+ 
+## Requirements
+
+* [Apache ant](https://ant.apache.org) to create deployment artifacts (build)
+* [Java 8 runtime](https://www.java.com/en/download/manual.jsp)
+
+## Installation
+
+* Download the latest binary of [Apache ant](https://ant.apache.org/bindownload.cgi)
+* Extract the zip file to `c:\ant`
+* Add the `c:\ant\bin` directory to your `%PATH%` environment variable
+* Make sure JDK is installed, and `JAVA_HOME` is configured as environment variable.
+* Read more: [How to install Apache Ant on Windows](https://mkyong.com/ant/how-to-install-apache-ant-on-windows/)
+
 ## Building
 
 To build a new artifact (ZIP file), run:

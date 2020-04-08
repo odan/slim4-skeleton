@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="webapp" default="noop">
+
+	<target name="noop"/>
+	<property environment="env"/>
+
+	<tstamp>
+		<format property="now" pattern="yyyy-MM-dd HH:mm:ss" locale="en,UK"/>
+		<format property="now_num" pattern="yyyyMMddHHmmss" locale="en,UK"/>
+		<format property="now_file" pattern="yyyy-MM-dd_HHmmss" locale="en,UK"/>
+	</tstamp>
+
+	<condition property="ext" value=".bat" else="">
+		<os family="windows"/>
+	</condition>
+
+	<target name="cc" description="Clear application cache">
+		<echo>Clear cache</echo>
+
+		<delete dir="${basedir}/tmp/assets-cache/"/>
+		<mkdir dir="${basedir}/tmp/assets-cache"/>
+		<chmod file="${basedir}/tmp/assets-cache" perm="775"/>
+
+		<delete dir="${basedir}/tmp/twig-cache/"/>
+		<mkdir dir="${basedir}/tmp/twig-cache"/>
+		<chmod file="${basedir}/tmp/twig-cache" perm="775"/>
+
+		<delete includeemptydirs="true">
+			<fileset dir="${basedir}/logs" includes="**/*" excludes=".htaccess"/>
+		</delete>
+
+	</target>
+
+	<target name="build">
+		<mkdir dir="${basedir}/build"/>
+
+		<!-- Load properties -->
+		<property file="${basedir}/config/ant.properties"/>
+
+		<!-- Get composer.phar if not existing -->
+		<get src="https://getcomposer.org/composer.phar" dest="${basedir}/build/composer.phar" skipexisting="true"/>
+
+		<!-- Delete build/master -->
+		<delete dir="${basedir}/build/master"/>
+
+		<!-- Get master branch from GitHub -->
+		<exec executable="git" failonerror="true">
+			<arg line="archive --format zip --output ${basedir}/build/master.zip master"/>
+		</exec>
+
+		<!-- Unzip master branch -->
+		<unzip src="${basedir}/build/master.zip" dest="${basedir}/build/master/"/>
+
+		<!-- Delete zipped master branch -->
+		<delete file="${basedir}/build/master.zip"/>
+
+		<!-- Install composer packages -->
+		<exec executable="php" failonerror="true">
+			<arg
+				line="${basedir}/build/composer.phar install --no-dev --optimize-autoloader -d ${basedir}/build/master"/>
+		</exec>
+
+		<!-- Remove files which aren't needed on the server -->
+		<delete>
+			<fileset dir="${basedir}/build/master/config/" casesensitive="no">
+				<include name="env.php"/>
+				<include name="*.properties"/>
+			</fileset>
+		</delete>
+
+		<delete>
+			<fileset dir="${basedir}/build/master/" casesensitive="no">
+				<include name="composer.json"/>
+				<include name="**/composer.lock"/>
+				<include name="**/phpunit.xml*"/>
+				<include name="**/*.gitignore"/>
+				<include name="**/*.codeclimate.yml"/>
+				<include name="**/*.editorconfig*"/>
+				<include name="**/*.styleci.yml"/>
+				<include name="**/*.scrutinizer.yml"/>
+				<include name="**/*.travis.yml"/>
+				<include name="**/*.appveyor.yml"/>
+				<include name="**/*.coveralls.yml"/>
+				<include name="**/mkdocs.yml"/>
+				<include name="**/phpstan.neon"/>
+				<include name="**/appveyor.yml"/>
+				<include name="**/build.xml"/>
+				<include name="**/.eslintrc.json"/>
+				<include name="**/.gitignore"/>
+				<include name="**/.gitattributes"/>
+				<include name="**/.cs.php"/>
+				<include name="**/.phpstorm.meta.php"/>
+				<include name="**/CHANGELOG.md"/>
+				<include name="**/CONDUCT.md"/>
+				<include name="**/LICENSE*"/>
+				<include name="**/README*"/>
+				<include name="**/CHANGES*"/>
+				<include name="**/CONTRIBUTING*"/>
+				<include name="**/UPGRADE*.md"/>
+			</fileset>
+		</delete>
+
+		<!-- Remove folders which aren't needed on the server -->
+		<delete includeemptydirs="true">
+			<fileset dir="${basedir}/build/master/" casesensitive="no">
+				<include name="**/tests/"/>
+				<include name="**/test/"/>
+				<include name="**/tester/"/>
+				<include name="**/docs/"/>
+				<include name="**/doc/"/>
+				<include name="**/examples/"/>
+				<include name="**/example/"/>
+			</fileset>
+		</delete>
+
+		<!-- Zip master brunch -->
+		<zip destfile="${basedir}/build/my_app_${now_file}.zip">
+			<zipfileset dir="${basedir}/build/master"/>
+		</zip>
+	</target>
+
+</project>
