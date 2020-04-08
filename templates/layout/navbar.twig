@@ -4,7 +4,9 @@
         <div class="collapse navbar-collapse" id="navbars">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ base_path() }}"><i class="fa fa-home fa-fw"></i> {{ __('Home') }}</a>
+                    <a class="nav-link" href="{{ url_for('user-list') }}">
+                        <i class="fa fa-home fa-fw"></i> {{ __('Home') }}
+                    </a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -12,21 +14,23 @@
                         <i class="fa fa-cat"></i> {{ __('Menu') }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ url_for('user-list') }}">
                             <i class="fa fa-anchor fa-fw"></i> {{ __('Menu item 1') }}
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ url_for('user-list') }}">
                             <i class="fas fa-anchor fa-fw"></i> {{ __('Menu item 2') }}
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ url_for('user-list') }}">
                             <i class="fa fa-anchor fa-fw"></i> {{ __('Menu item 3') }}
                         </a>
                     </div>
                 </li>
             </ul>
-
             <ul class="navbar-nav navbar-right">
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
                 </li>
             </ul>
         </div>
