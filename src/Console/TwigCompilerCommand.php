@@ -76,7 +76,7 @@ final class TwigCompilerCommand extends Command
 
         $twig = $this->container->get(Twig::class);
         $settings = $this->container->get(Configuration::class)->getArray('twig');
-        $cachePath = $settings['cache_path'];
+        $cachePath = (string)$settings['settings']['cache'];
         $this->output->write(sprintf('Cache path: <info>%s</info>', $cachePath), true);
 
         // Compile all Twig templates into cache directory
