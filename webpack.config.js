@@ -84,19 +84,6 @@ module.exports = (env, argv) => ({
                     },
                 }
             },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                exclude: path.resolve(__dirname, './node_modules/@fortawesome/fontawesome-free/webfonts'),
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'images/'
-                        }
-                    }
-                ]
-            },
         ],
     },
 
