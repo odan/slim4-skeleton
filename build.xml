@@ -34,9 +34,6 @@
 	<target name="build">
 		<mkdir dir="${basedir}/build"/>
 
-		<!-- Load properties -->
-		<property file="${basedir}/config/ant.properties"/>
-
 		<!-- Get composer.phar if not existing -->
 		<get src="https://getcomposer.org/composer.phar" dest="${basedir}/build/composer.phar" skipexisting="true"/>
 
