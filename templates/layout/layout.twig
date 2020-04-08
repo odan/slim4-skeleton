@@ -8,13 +8,15 @@
         <meta name="author" content="">
         <base href="{{ base_path() }}/"/>
         <link rel="shortcut icon" href="icons/favicon.ico">
-        <title>Slim 4 Skeleton App</title>
+        <title>{% if title is defined %} {{ title }} | xxx {% endif %}</title>
         {% webpack_entry_css 'layout/layout' %}
         {% block css %}{% endblock %}
         {% webpack_entry_js 'layout/layout' %}
     </head>
     <body>
         <!-- Navbar -->
+        {% include 'layout/navbar.twig' %}
+        <!-- Content -->
         {% block content %}{% endblock %}
         {% block js %}{% endblock %}
     </body>

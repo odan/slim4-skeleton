@@ -23,6 +23,7 @@ use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
@@ -124,6 +125,10 @@ return [
         } else {
             return new Session(new NativeSessionStorage($settings));
         }
+    },
+
+    SessionInterface::class => function (ContainerInterface $container) {
+        return $container->get(Session::class);
     },
 
     // Translation

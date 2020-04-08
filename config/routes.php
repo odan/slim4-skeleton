@@ -19,6 +19,7 @@ return function (App $app) {
 
     $app->get('/login', \App\Action\Login\LoginAction::class)->setName('login');
     $app->post('/login', \App\Action\Login\LoginSubmitAction::class);
+    $app->get('/logout', \App\Action\Login\LogoutAction::class)->setName('logout');
 
     // Password protected area
     $app->group('/users', function (RouteCollectorProxy $group) {

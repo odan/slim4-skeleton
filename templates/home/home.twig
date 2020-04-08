@@ -1,4 +1,4 @@
-{% extends "layout/layout.twig" %}
+{% extends "layout/layout-empty.twig" %}
 
 {% block css %}
     {% webpack_entry_css 'home/home' %}
@@ -20,7 +20,7 @@
 
                 <br><br>
 
-                <a href="login">{{ __('Login') }}</a> (admin:admin)<br>
+                <a href="{{ url_for('login') }}">{{ __('Login') }}</a> (admin:admin or user:user)<br>
             </div>
         </div>
     </div>
