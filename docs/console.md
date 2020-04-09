@@ -27,7 +27,7 @@ php bin/cli.php
 ## Available commands
 
 * `compile-twig` - To compile Twig templates
-* `update-schema-sql` - Generates a schema.sql from the schema data source.
+* `dump-schema` - Generates a schema.sql from the schema data source.
 
 ## Creating a console command
 

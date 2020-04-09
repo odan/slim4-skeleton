@@ -80,6 +80,6 @@
         "start": "php -S localhost:8080 -t public",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
         "test-coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "update-schema-sql": "php bin/cli.php update-schema-sql"
+        "dump-schema": "php bin/cli.php schema-dump"
     }
 }

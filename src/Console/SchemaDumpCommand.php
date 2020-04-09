@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Command.
  */
-final class SchemaSqlCommand extends Command
+final class SchemaDumpCommand extends Command
 {
     /**
      * @var ContainerInterface
@@ -44,7 +44,7 @@ final class SchemaSqlCommand extends Command
     {
         parent::configure();
 
-        $this->setName('update-schema-sql');
+        $this->setName('schema-dump');
         $this->setDescription('Generate a schema.sql from the schema data source.');
     }
 

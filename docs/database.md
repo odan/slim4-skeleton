@@ -60,7 +60,8 @@ Update the database schema with this command:
 $ composer migrate
 ```
 
-If [Composer](https://getcomposer.org/) is not installed on the target server, the following command can be used:
+If [Composer](https://getcomposer.org/) is not installed on the target server, 
+the following command can be used:
 
 ```bash
 $ vendor/bin/phinx migrate -c config/phinx.php
@@ -72,35 +73,33 @@ All seeds are stored in the directory: `resources/seeds/`
 
 To populate the database with data for testing and experimenting, run:
 
-```bash
-$ composer seed-database
-```
-
-To start the seeder directly, run this command:
+Linux:
 
 ```bash
 $ vendor/bin/phinx seed:run -c config/phinx.php
 ```
 
-## Resetting the database
+Windows:
 
-The command `refresh-database` will rollback all migrations, 
-migrate the database and seed the data. 
-
-**Attention: All data will be lost from the database.**
-
-```
-$ composer refresh-database
+```bash
+call vendor/bin/phinx seed:run -c config/phinx.php
 ```
 
 ## Schema Dump
 
-The `dump-schema` command dumps the current state of your schema to a `resources/migrations/schema/schema.sql` file.
+The `composer dump-schema` command dumps the current state of your schema to 
+a `resources/migrations/schema/schema.sql` file.
 
 ```
-$ composer dump-schema
+$ composer schema-dump
 ```
 
-When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. This means that effectively this schema file would typically only ever be used during local development or during CI testing. In production, you would typically already have migrations that have run in the past.
+When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. 
+This means that effectively this schema file would typically only ever be used during local 
+development or during CI testing. In production, you would typically already have migrations 
+that have run in the past.
 
-This feature solves two problems. First, it relieves developers from having a huge migrations directory full of files they no longer need. Second, loading a single schema file is quicker than running hundreds of migrations for each test class in your applications, so your tests can run much faster when using a schema.
+This feature solves two problems. First, it relieves developers from having a huge migrations 
+directory full of files they no longer need. Second, loading a single schema file is quicker 
+than running hundreds of migrations for each test class in your applications, 
+so your tests can run much faster when using a schema.
