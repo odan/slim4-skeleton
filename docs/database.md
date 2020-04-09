@@ -92,3 +92,15 @@ migrate the database and seed the data.
 ```
 $ composer refresh-database
 ```
+
+## Schema Dump
+
+The `dump-schema` command dumps the current state of your schema to a `resources/migrations/schema/schema.sql` file.
+
+```
+$ composer dump-schema
+```
+
+When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. This means that effectively this schema file would typically only ever be used during local development or during CI testing. In production, you would typically already have migrations that have run in the past.
+
+This feature solves two problems. First, it relieves developers from having a huge migrations directory full of files they no longer need. Second, loading a single schema file is quicker than running hundreds of migrations for each test class in your applications, so your tests can run much faster when using a schema.
