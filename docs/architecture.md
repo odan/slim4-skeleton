@@ -26,7 +26,7 @@ I try to be more "pragmatic". I think most of the time for example
 your template engine (e.g. Twig) acts  an "HTML Responder". 
 So you don't need a special responder class for each action.
                     
-A responder is useful if you have repetitive actions tasks, 
+A responder is useful if you have repetitive action tasks, 
 such as creating an HTTP redirect or creating a JSON response. 
 For such a use case a special responder would make sense for me.
 
