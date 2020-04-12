@@ -21,6 +21,15 @@ The modern derivations of "MVC Model 2"  toward Action Domain Responder is not d
 
 Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
 
+**Opinion:** I think leaving out the responder part is not bad practice. 
+I try to be more "pragmatic". I think most of the time for example
+your template engine (e.g. Twig) acts  an "HTML Responder". 
+So you don't need a special responder class for each action.
+                    
+A responder is useful if you have repetitive actions tasks, 
+such as creating an HTTP redirect or creating a JSON response. 
+For such a use case a special responder would make sense for me.
+
 ## Hexagonal Architecture
 
 Read more:
