@@ -19,7 +19,7 @@
         "fig/http-message-util": "^1.1",
         "fullpipe/twig-webpack-extension": "^3.0",
         "monolog/monolog": "^2",
-        "odan/phinx-migrations-generator": "^4.3",
+        "odan/phinx-migrations-generator": "^5",
         "odan/twig-translation": "^3.0.1",
         "php-di/php-di": "^6.0",
         "psr/log": "^1.1",

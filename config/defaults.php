@@ -87,7 +87,7 @@ $settings['phinx'] = [
     'generate_migration_name' => true,
     'environments' => [
         'default_migration_table' => 'phinxlog',
-        'default_database' => 'local',
+        'default_environment' => 'local',
         'local' => [],
     ],
 ];
