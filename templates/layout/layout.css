@@ -15,15 +15,3 @@ body {
     border-radius: 0 !important;
     -moz-border-radius: 0 !important;
 }
-
-/* SweetAlert2 start */
-
-.swal2-content {
-    text-align: left;
-}
-
-#swal2-content {
-    text-align: left;
-}
-
-/* SweetAlert2 end */
