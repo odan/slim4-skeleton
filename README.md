@@ -60,13 +60,14 @@ This project is based on best practice and industry standards:
 
 ## Frontend
 
-* [Webpack](https://webpack.js.org/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [Jest](https://jestjs.io/) (testing)
-* [Bootstrap](https://getbootstrap.com/)
-* [jQuery](https://jquery.com/)
-* [DataTables.net](https://datatables.net/)
-* [SweetAlert2](https://sweetalert2.github.io/)
+* [Webpack](https://webpack.js.org/) (Assets bundler)
+* [TypeScript](https://www.typescriptlang.org/) (Static type-checking)
+* [Bootstrap](https://getbootstrap.com/) (Frontend component library)
+* [jQuery](https://jquery.com/) (DOM manipulation, events, etc.)
+* [DataTables.net](https://datatables.net/) (Advanced tables)
+* [SweetAlert2](https://sweetalert2.github.io/) (Flexible modal window)
+* [notifit 2](https://www.npmjs.com/package/notifit-js) (Notifications)
+* Spinner (Loading indicator)
 * CSS and JS minifier
 
 ## Documentation
