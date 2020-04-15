@@ -13,7 +13,6 @@
   "layout/spinner.js": "layout/spinner.js",
   "login/login.css": "login/login.css",
   "login/login.js": "login/login.js",
-  "user/user-list.css": "user/user-list.css",
   "user/user-list.js": "user/user-list.js",
   "layout/datatables.js.LICENSE.txt": "layout/datatables.js.LICENSE.txt",
   "layout/layout.js.LICENSE.txt": "layout/layout.js.LICENSE.txt",
