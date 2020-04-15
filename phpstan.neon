@@ -1,6 +1,7 @@
 parameters:
 	reportUnmatchedIgnoredErrors: false
 	checkMissingIterableValueType: false
+	checkGenericClassInNonGenericObjectType: false
 	ignoreErrors:
 		- '/expects stdClass, object given/'
 		- '/Cannot access offset [0-1]+ on (.*)callable/'
