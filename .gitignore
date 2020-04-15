@@ -37,3 +37,5 @@ tmp/twig-cache/*
 !logs/
 logs/*
 !logs/.htaccess
+
+public/assets/
