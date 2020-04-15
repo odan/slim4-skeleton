@@ -13,6 +13,11 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 // SweetAlert2
 window.Swal = require('sweetalert2');
 
+// notifIt!
+require('notifit-js/notifIt/css/notifIt.min.css');
+window.notif = require('notifit-js/notifIt/js/notifIt.min').notif;
+require('./notifit.css');
+
 // Loading indicator
 global.spinner = require('./spinner');
 

@@ -5,6 +5,8 @@
   "layout/datatables.js": "layout/datatables.js",
   "layout/layout.css": "layout/layout.css",
   "layout/layout.js": "layout/layout.js",
+  "layout/notifit.css": "layout/notifit.css",
+  "layout/notifit.js": "layout/notifit.js",
   "layout/print.css": "layout/print.css",
   "layout/print.js": "layout/print.js",
   "layout/spinner.css": "layout/spinner.css",

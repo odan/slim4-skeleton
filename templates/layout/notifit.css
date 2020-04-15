@@ -1,0 +1,19 @@
+#ui_notifIt {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+#ui_notifIt.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+#ui_notifIt.success {
+    background-color: #28a745;
+}
+#ui_notifIt.info{
+    background-color: #007bff;
+}
+#ui_notifIt.default{
+    background-color: #e9ecef;
+}

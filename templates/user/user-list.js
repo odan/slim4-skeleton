@@ -1,10 +1,10 @@
 import './user-list.css';
 
-const UserList = function () {
+class UserList {
 
-    this.init = function () {
+    constructor() {
         $('#data-table').DataTable({
-            'processing': false,
+            'processing': true,
             'serverSide': true,
             'language': {
                 //  'url': __('js/datatable-english.json')
@@ -28,17 +28,9 @@ const UserList = function () {
                         return '<button type="button" class="btn btn-info">Edit</button>';
                     }
                 }
-            ],
-            "preDrawCallback": function () {
-                spinner.showLoading();
-            },
-            "drawCallback": function () {
-                spinner.hideLoading();
-            }
+            ]
         });
     };
-
-    this.init();
 };
 
 $(function () {
