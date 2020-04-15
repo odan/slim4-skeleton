@@ -1,8 +1,6 @@
-import './user-list.css';
+const UserList = function () {
 
-class UserList {
-
-    constructor() {
+    this.init = function () {
         $('#data-table').DataTable({
             'processing': true,
             'serverSide': true,
@@ -31,6 +29,8 @@ class UserList {
             ]
         });
     };
+
+    this.init();
 };
 
 $(function () {
