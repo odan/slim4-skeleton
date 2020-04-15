@@ -1,13 +1,10 @@
 import './user-list.css';
-import {Student, greeter} from './greeter';
 
-export class UserList {
+const UserList = function () {
 
-    public constructor() {
-        //($('#data-table') as any).DataTable();
-
-        ($('#data-table') as any).DataTable({
-            'processing': true,
+    this.init = function () {
+        $('#data-table').DataTable({
+            'processing': false,
             'serverSide': true,
             'language': {
                 //  'url': __('js/datatable-english.json')
@@ -27,24 +24,23 @@ export class UserList {
                     'orderable': false,
                     'searchable': false,
                     'data': null,
-                    'render': function (data: any, type: any, row: any, meta: any) {
+                    'render': function (data, type, row, meta) {
                         return '<button type="button" class="btn btn-info">Edit</button>';
                     }
                 }
             ],
+            "preDrawCallback": function () {
+                spinner.showLoading();
+            },
+            "drawCallback": function () {
+                spinner.hideLoading();
+            }
         });
     };
 
-    public demo() {
-        return $('#myButton').html();
-    }
+    this.init();
 };
 
 $(function () {
-
-    let user = new Student("Jane", "M.", "User");
-
-    greeter(user);
-
     new UserList();
 });
