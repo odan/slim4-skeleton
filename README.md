@@ -22,13 +22,13 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 ## Requirements
 
 * PHP 7.2+
-* Apache with mod_rewrite
+* Apache (with mod_rewrite)
 * Composer (only for development)
+* [NPM](https://nodejs.org/en/download/) (for webpack)
 
 #### Recommended
 
 * MySQL 5.7+, 8.x
-* [NPM](https://nodejs.org/en/download/) for webpack
 * [Apache ant](https://ant.apache.org/bindownload.cgi) to create deployment artifacts (build)
 
 ## Features
