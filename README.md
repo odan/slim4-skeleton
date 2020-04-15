@@ -77,8 +77,3 @@ Read the **[Documentation](https://odan.github.io/slim4-skeleton)**
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
-
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/odan/slim4-skeleton/badge.svg?style=beer-square)](https://beerpay.io/odan/slim4-skeleton)  [![Beerpay](https://beerpay.io/odan/slim4-skeleton/make-wish.svg?style=flat-square)](https://beerpay.io/odan/slim4-skeleton?focus=wish)
