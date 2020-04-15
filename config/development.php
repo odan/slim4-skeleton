@@ -11,9 +11,7 @@ $settings['error_handler_middleware']['log_errors'] = true;
 $settings['logger']['level'] = \Monolog\Logger::DEBUG;
 $settings['assets']['minify'] = 0;
 $settings['locale']['cache'] = null;
-
-// Keep cache for the console (e.g. twig compiler)
-$settings['twig']['settings']['cache'] = PHP_SAPI === 'cli' ? $settings['twig']['settings']['cache'] : false;
+$settings['twig']['cache_enabled'] = false;
 
 // Database
 $settings['db']['database'] = 'slim_skeleton_dev';

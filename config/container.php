@@ -76,7 +76,9 @@ return [
         $config = $container->get(Configuration::class);
         $twigSettings = $config->getArray('twig');
 
-        $twig = Twig::create($twigSettings['path'], $twigSettings['settings']);
+        $twig = Twig::create($twigSettings['path'], [
+            'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
+        ]);
 
         $loader = $twig->getLoader();
         if ($loader instanceof FilesystemLoader) {
