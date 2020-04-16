@@ -17,13 +17,25 @@
 	<target name="cc" description="Clear application cache">
 		<echo>Clear cache</echo>
 
-		<delete dir="${basedir}/tmp/assets-cache/"/>
-		<mkdir dir="${basedir}/tmp/assets-cache"/>
-		<chmod file="${basedir}/tmp/assets-cache" perm="775"/>
+		<delete dir="${basedir}/tmp/assets/"/>
+		<mkdir dir="${basedir}/tmp/assets"/>
+		<chmod file="${basedir}/tmp/assets" perm="775"/>
+		<touch file="${basedir}/tmp/assets/empty" />
 
-		<delete dir="${basedir}/tmp/twig-cache/"/>
-		<mkdir dir="${basedir}/tmp/twig-cache"/>
-		<chmod file="${basedir}/tmp/twig-cache" perm="775"/>
+		<delete dir="${basedir}/tmp/routes/"/>
+		<mkdir dir="${basedir}/tmp/routes"/>
+		<chmod file="${basedir}/tmp/routes" perm="775"/>
+		<touch file="${basedir}/tmp/routes/empty" />
+
+		<delete dir="${basedir}/tmp/translations/"/>
+		<mkdir dir="${basedir}/tmp/translations"/>
+		<chmod file="${basedir}/tmp/translations" perm="775"/>
+		<touch file="${basedir}/tmp/translations/empty" />
+
+		<delete dir="${basedir}/tmp/twig/"/>
+		<mkdir dir="${basedir}/tmp/twig"/>
+		<chmod file="${basedir}/tmp/twig" perm="775"/>
+		<touch file="${basedir}/tmp/twig/empty" />
 
 		<delete includeemptydirs="true">
 			<fileset dir="${basedir}/logs" includes="**/*" excludes=".htaccess"/>

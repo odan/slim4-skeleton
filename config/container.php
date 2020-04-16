@@ -135,7 +135,7 @@ return [
 
     // Translation
     Translator::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('locale');
+        $settings = $container->get(Configuration::class)->getArray('translation');
 
         $translator = new Translator(
             $settings['locale'],
@@ -153,7 +153,7 @@ return [
     },
 
     TranslatorMiddleware::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('locale');
+        $settings = $container->get(Configuration::class)->getArray('translation');
         $translator = $container->get(Translator::class);
         $session = $container->get(Session::class);
 

@@ -12,7 +12,7 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 ```
 .
 ├── bin                     # Excecutable files
-│   └── cli.php             # The command line tool
+│   └── console.php         # The command line tool
 ├── build                   # Compiled files (artifacts)
 ├── config                  # Configuration files
 ├── docs                    # Documentation files
@@ -25,7 +25,7 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 │   └── seeds               # Data seeds
 ├── src                     # PHP source code (The App namespace)
 │   ├── Action              # Controller actions (application layer)
-│   ├── Console             # Console commands for cli.php
+│   ├── Console             # Console commands for console.php
 │   ├── Domain              # The business logic
 │   ├── Factory             # Application service factories
 │   ├── Responder           # Responder and Url helper (application layer)
@@ -34,8 +34,8 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 ├── templates               # Twig and Vue templates + JS and CSS
 ├── tests                   # Automated tests
 ├── tmp                     # Temporary files
-│   ├── locale-cache        # Locale cache
-│   └── twig-cache          # Internal twig cache
+│   ├── translations        # Locale cache
+│   └── twig                # Internal twig cache
 ├── vendor                  # Reserved for composer
 ├── build.xml               # Ant build tasks
 ├── composer.json           # Project dependencies

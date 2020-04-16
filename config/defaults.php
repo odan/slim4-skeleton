@@ -56,7 +56,7 @@ $settings['twig'] = [
     ],
     // Should be set to true in production
     'cache_enabled' => true,
-    'cache_path' => $settings['temp'] . '/twig-cache',
+    'cache_path' => $settings['temp'] . '/twig',
 ];
 
 // Session
@@ -65,10 +65,10 @@ $settings['session'] = [
     'cache_expire' => 0,
 ];
 
-// Locale settings
-$settings['locale'] = [
-    'path' => $settings['root'] . '/resources/locale',
-    'cache' => $settings['temp'] . '/locale-cache',
+// Translation settings
+$settings['translation'] = [
+    'path' => $settings['root'] . '/resources/translations',
+    'cache' => $settings['temp'] . '/translations',
     'locale' => 'en_US',
     'domain' => 'messages',
     // Should be set to false in production

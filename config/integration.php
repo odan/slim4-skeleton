@@ -11,7 +11,7 @@ $settings['error_handler_middleware']['log_errors'] = false;
 
 $settings['logger']['level'] = \Monolog\Logger::DEBUG;
 $settings['assets']['minify'] = 0;
-$settings['locale']['cache'] = null;
+$settings['translation']['cache'] = null;
 $settings['twig']['cache_enabled'] = false;
 
 // Database

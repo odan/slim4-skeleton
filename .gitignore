@@ -26,13 +26,21 @@ config/env.php
 tmp/*
 !tmp/.htaccess
 
-!tmp/locale-cache/
-tmp/locale-cache/*
-!tmp/locale-cache/empty
+!tmp/translations/
+tmp/translations/*
+!tmp/translations/empty
 
-!tmp/twig-cache/
-tmp/twig-cache/*
-!tmp/twig-cache/empty
+!tmp/assets/
+tmp/assets/*
+!tmp/assets/empty
+
+!tmp/twig/
+tmp/twig/*
+!tmp/twig/empty
+
+!tmp/routes/
+tmp/routes/*
+!tmp/routes/empty
 
 !logs/
 logs/*

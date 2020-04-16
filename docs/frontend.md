@@ -21,7 +21,7 @@ The integrated localization features provides a convenient way to retrieve strin
 in various languages, allowing you to easily support multiple languages within 
 your application. 
 
-The directory for all `*.mo` and `*.po` translation files is: `resources/locale/`
+The directory for all `*.mo` and `*.po` translation files is: `resources/translations/`
 
 The source language is always english. You don't need a translation file for english.
 
@@ -40,14 +40,14 @@ Example:
 
 ### Setting up a PO file
 
-* Copy an existing po file from `resources/locale/` and rename it, e.g. `it_IT_messages.po`
-* Start Poedit and open the po-file from `resources/locale/`
+* Copy an existing po file from `resources/translations/` and rename it, e.g. `it_IT_messages.po`
+* Start Poedit and open the po-file from `resources/translations/`
 * Open the menu: `Catalogue > Properties...` and change the language.
 * Save the file
 
 ### Usage
 
-* Start Poedit and open the po-file from `resources/locale/`
+* Start Poedit and open the po-file from `resources/translations/`
 * Click `Update from source`
 * Translate the text and save the file
 

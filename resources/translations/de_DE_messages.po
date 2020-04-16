@@ -1,0 +1,279 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-16 22:04+0200\n"
+"PO-Revision-Date: 2020-04-16 22:37+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-KeywordsList: __;trans\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: config\n"
+"X-Poedit-SearchPath-2: tmp/twig\n"
+
+#: src/Action/Login/LoginSubmitAction.php:67
+msgid "Login successfully"
+msgstr "Anmeldung erfolgreich"
+
+#: src/Action/Login/LoginSubmitAction.php:70
+msgid "Login failed!"
+msgstr "Anmeldung fehlgeschlagen!"
+
+#: src/Domain/User/Repository/UserViewerRepository.php:55
+#, php-format
+msgid "User not found: %s"
+msgstr "Benutzer nicht gefunden: %s"
+
+#: src/Domain/User/Service/UserCreator.php:67
+msgid "Please check your input"
+msgstr "Bitte überprüfen Sie Ihre Eingabe"
+
+#: src/Domain/User/Service/UserCreator.php:76
+#, php-format
+msgid "User created successfully: %s"
+msgstr "Benutzer erfolgreich erstellt: %s"
+
+#: src/Domain/User/Validator/UserValidator.php:25
+#: src/Domain/User/Validator/UserValidator.php:29
+msgid "Input required"
+msgstr "Eingabe erforderlich"
+
+#: src/Domain/User/Validator/UserValidator.php:31
+msgid "Invalid email address"
+msgstr "Ungültige E-Mail-Adresse"
+
+#: src/Repository/DataTableRepository.php:216
+#, php-format
+msgid "Columns not found in table: %s"
+msgstr "Keine Felder gefunden in der Tabelle: %s"
+
+#: tmp/twig-cache/01/0127a73040d032e58691198e2e5208f517f8abd4a80b021a0ee9315a2ec9a44a.php:44
+#: tmp/twig-cache/01/0127a73040d032e58691198e2e5208f517f8abd4a80b021a0ee9315a2ec9a44a.php:90
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:104
+msgid "Login"
+msgstr "Login"
+
+#: tmp/twig-cache/01/0127a73040d032e58691198e2e5208f517f8abd4a80b021a0ee9315a2ec9a44a.php:78
+msgid "Please log in"
+msgstr "Bitte loggen Sie sich ein"
+
+#: tmp/twig-cache/01/0127a73040d032e58691198e2e5208f517f8abd4a80b021a0ee9315a2ec9a44a.php:82
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:103
+#: tmp/twig-cache/ce/ce30198c08afbd5abb758fe5c82ad888a0fc4f37deb17594efe0617691cef264.php:81
+msgid "Username"
+msgstr "Benutzername"
+
+#: tmp/twig-cache/01/0127a73040d032e58691198e2e5208f517f8abd4a80b021a0ee9315a2ec9a44a.php:86
+msgid "Password"
+msgstr "Kennwort"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:87
+msgid "User list"
+msgstr "Benutzerliste"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:92
+msgid "Add user"
+msgstr "Benutzer hinzufügen"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:107
+#: tmp/twig-cache/ce/ce30198c08afbd5abb758fe5c82ad888a0fc4f37deb17594efe0617691cef264.php:91
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:111
+msgid "First name"
+msgstr "Vorname"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:115
+msgid "Last name"
+msgstr "Nachname"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:119
+msgid "Role"
+msgstr "Rolle"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:123
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: tmp/twig-cache/01/01a15afd6aaeee56b9a41afc5625ea06ab807fdeec1c0126a4cf5c82d9a8a019.php:127
+msgid "Action"
+msgstr "Aktion"
+
+#: tmp/twig-cache/10/10cf83deb41fc6b184c629258794c1be8f9d048d0354ef66937189e4762c0d03.php:49
+msgid "Home"
+msgstr "Startseite"
+
+#: tmp/twig-cache/10/10cf83deb41fc6b184c629258794c1be8f9d048d0354ef66937189e4762c0d03.php:58
+msgid "Menu"
+msgstr ""
+
+#: tmp/twig-cache/10/10cf83deb41fc6b184c629258794c1be8f9d048d0354ef66937189e4762c0d03.php:68
+msgid "Menu item 1"
+msgstr ""
+
+#: tmp/twig-cache/10/10cf83deb41fc6b184c629258794c1be8f9d048d0354ef66937189e4762c0d03.php:77
+msgid "Menu item 2"
+msgstr ""
+
+#: tmp/twig-cache/10/10cf83deb41fc6b184c629258794c1be8f9d048d0354ef66937189e4762c0d03.php:86
+msgid "Menu item 3"
+msgstr ""
+
+#: tmp/twig-cache/ce/ce30198c08afbd5abb758fe5c82ad888a0fc4f37deb17594efe0617691cef264.php:64
+msgid "User"
+msgstr ""
+
+#: tmp/twig-cache/ce/ce30198c08afbd5abb758fe5c82ad888a0fc4f37deb17594efe0617691cef264.php:71
+msgid "User-ID"
+msgstr "Benutzer-ID"
+
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:76
+msgid "Hello, World"
+msgstr "Hallo, Welt"
+
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:82
+msgid "Yes"
+msgstr "Ja"
+
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:86
+msgid "User created successfully: %a%"
+msgstr "Benutzer erfolgreich erstellt: %a%"
+
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:90
+msgid "Escaped:"
+msgstr "Eskapiert:"
+
+#: tmp/twig-cache/d3/d3c3999cce4873d583514373170818e812e46f97b60cbc61bc829943c72d5f48.php:93
+msgid "Current time"
+msgstr "Aktuelle Zeit"
+
+#~ msgid "Sign in"
+#~ msgstr "Einloggen"
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Invalid type ID: %s"
+#~ msgstr "Ungültige Type-ID: %s"
+
+#~ msgid "Current time: %s"
+#~ msgstr "Aktuelle Zeit: %s"
+
+#~ msgid "Created at"
+#~ msgstr "Erstellt am"
+
+#~ msgid "Server error"
+#~ msgstr "Server Error"
+
+#~ msgid "No"
+#~ msgstr "Nein"
+
+#~ msgid "Loaded successfully!"
+#~ msgstr "Erfolgreich gestartet!"
+
+#~ msgid "Loading..."
+#~ msgstr "Laden..."
+
+#~ msgid "Hello World"
+#~ msgstr "Hallo Welt"
+
+#~ msgid "Current user"
+#~ msgstr "Aktueller Benutzer"
+
+#~ msgid "User ID"
+#~ msgstr "Benutzer ID"
+
+#~ msgid "Message"
+#~ msgstr "Meldung"
+
+#~ msgid "Selected"
+#~ msgstr "Markiert"
+
+#~ msgid "Edit user: %s"
+#~ msgstr "Benutzer bearbeiten: %s"
+
+#~ msgid "Please sign in"
+#~ msgstr "Bitte einloggen"
+
+#~ msgid "js/datatable-english.json"
+#~ msgstr "js/datatable-german.json"
+
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "en"
+#~ msgstr "de"
+
+#~ msgid "Demo"
+#~ msgstr "Demo"
+
+#~ msgid "Project name"
+#~ msgstr "Projektname"
+
+#~ msgid "Toggle navigation"
+#~ msgstr "Navigation umschalten"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Disabled"
+#~ msgstr "Deaktiviert"
+
+#~ msgid "Dropdown"
+#~ msgstr "Dropdown"
+
+#~ msgid "Another action"
+#~ msgstr "Weitere Aktion"
+
+#~ msgid "Something else here"
+#~ msgstr "Etwas anderes"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Page {page} / {pages}"
+#~ msgstr "Seite {page} / {pages}"
+
+#~ msgid "{start} - {end} of {count} items"
+#~ msgstr "{start} - {end} von {count} Einträgen"
+
+#~ msgid "Please enter the page number"
+#~ msgstr "Geben Sie bitte die Seitennummer ein"
+
+#~ msgid "required"
+#~ msgstr "erforderlich"
+
+#~ msgid "invalid"
+#~ msgstr "ungülig"
+
+#~ msgid "Search"
+#~ msgstr "Suchen"
+
+#~ msgid "per Page"
+#~ msgstr "pro Seite"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "The filetype is invalid"
+#~ msgstr "Der Dateityp ist ungültig"
+
+#~ msgid "The file size exceeds the limit allowed"
+#~ msgstr "Die Dateigrösse überschreitet das erlaubte Maximum."
+
+#~ msgid "The file could not be opened."
+#~ msgstr "Die Datei konnte nicht gelesen werden."
+
+#~ msgid "Invalid or empty User-ID"
+#~ msgstr "Ungültige oder leere User-ID"

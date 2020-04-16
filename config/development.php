@@ -10,7 +10,7 @@ $settings['error_handler_middleware']['log_errors'] = true;
 
 $settings['logger']['level'] = \Monolog\Logger::DEBUG;
 $settings['assets']['minify'] = 0;
-$settings['locale']['cache'] = null;
+$settings['translation']['cache'] = null;
 $settings['twig']['cache_enabled'] = false;
 
 // Database
