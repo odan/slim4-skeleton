@@ -140,7 +140,7 @@ return [
         $translator = new Translator(
             $settings['locale'],
             new MessageFormatter(new IdentityTranslator()),
-            $settings['cache'],
+            $settings['cache_enabled'] ? $settings['cache'] : null,
             $settings['debug']
         );
 
@@ -186,7 +186,7 @@ return [
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
-        $config = $container->get(Configuration::class)->getArray('error_handler_middleware');
+        $config = $container->get(Configuration::class)->getArray('error');
         $app = $container->get(App::class);
 
         $errorMiddleware = new ErrorMiddleware(

@@ -17,18 +17,17 @@ $settings['root'] = dirname(__DIR__);
 $settings['temp'] = $settings['root'] . '/tmp';
 $settings['public'] = $settings['root'] . '/public';
 
-// Error Handling Middleware settings
-$settings['error_handler_middleware'] = [
+// Error handler
+$settings['error'] = [
     // Should be set to false in production
-    'display_error_details' => false,
-    // Parameter is passed to the default ErrorHandler
-    // View in rendered output by enabling the "displayErrorDetails" setting.
-    // For the console and unit tests it should be disable too
-    'log_errors' => false,
+    'display_error_details' => true,
+    // Should be set to false for unit tests
+    'log_errors' => true,
     // Display error details in error log
     'log_error_details' => true,
 ];
 
+// Slim router cache
 $settings['router'] = [
     // Should be set only in production
     'cache_file' => '',
@@ -44,7 +43,7 @@ $settings['logger'] = [
     'name' => 'app',
     'path' => $settings['root'] . '/logs',
     'filename' => 'app.log',
-    'level' => \Monolog\Logger::ERROR,
+    'level' => \Monolog\Logger::DEBUG,
     'file_permission' => 0775,
 ];
 
@@ -68,7 +67,9 @@ $settings['session'] = [
 // Translation settings
 $settings['translation'] = [
     'path' => $settings['root'] . '/resources/translations',
-    'cache' => $settings['temp'] . '/translations',
+    'cache_enabled' => true,
+    'cache_path' => $settings['temp'] . '/translations',
+    // Default language
     'locale' => 'en_US',
     'domain' => 'messages',
     // Should be set to false in production
