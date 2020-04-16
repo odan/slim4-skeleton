@@ -25,6 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v1
         with:
@@ -58,6 +63,15 @@ jobs:
 
       - name: Install tables
         run: composer migrate
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
+
+      # - name: Run tests
+      #  run: npm test
 
       - name: Run test suite
         run: composer check-all
