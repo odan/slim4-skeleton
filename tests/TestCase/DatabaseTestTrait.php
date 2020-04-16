@@ -61,11 +61,19 @@ trait DatabaseTestTrait
     /**
      * Get PDO.
      *
-     * @return PDO
+     * @throws UnexpectedValueException
+     *
+     * @return PDO The PDO instance
      */
     public function getPdo(): PDO
     {
-        return $this->getConnection()->getDriver()->getConnection();
+        $pdo = $this->getConnection()->getDriver()->getConnection();
+
+        if ($pdo instanceof PDO) {
+            return $pdo;
+        }
+
+        throw new UnexpectedValueException('Expected value is not PDO');
     }
 
     /**

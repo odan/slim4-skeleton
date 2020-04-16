@@ -67,7 +67,7 @@ final class UserViewerRepository implements RepositoryInterface
     {
         $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
 
-        $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
+        $rows = $query->execute()->fetchAll('assoc') ?: [];
 
         $result = [];
         foreach ($rows as $row) {

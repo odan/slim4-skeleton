@@ -43,7 +43,7 @@ class DataTableRepository implements RepositoryInterface
 
         $countQuery = clone $query;
         $countQuery->select(['count' => $countQuery->func()->count('*')], true);
-        $countRows = $countQuery->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
+        $countRows = $countQuery->execute()->fetchAll('assoc') ?: [];
 
         $count = 0;
         foreach ($countRows as $countRow) {
