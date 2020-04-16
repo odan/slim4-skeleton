@@ -100,8 +100,8 @@ chown -R www-data logs/
 chmod -R 760 tmp/
 chmod -R 760 logs/
 
-# chmod +x bin/cli.php
-# php bin/cli.php install --environment ci
+# chmod +x bin/console.php
+# php bin/console.php install --environment ci
 
 cp config/env.example.php config/env.php
 composer migrate

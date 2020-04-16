@@ -72,8 +72,8 @@
         ],
         "check-cs": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
         "check-style": "phpcs --standard=phpcs.xml",
-        "cli": "php bin/cli.php --ansi",
-        "compile-twig": "php bin/cli.php compile-twig --ansi",
+        "cli": "php bin/console.php --ansi",
+        "compile-twig": "php bin/console.php compile-twig --ansi",
         "create-migration": "phinx create -c config/phinx.php --ansi",
         "fix-cs": "php-cs-fixer fix --config=.cs.php",
         "fix-style": "phpcbf --standard=phpcs.xml",
@@ -84,6 +84,6 @@
         "start": "php -S localhost:8080 -t public",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
         "test-coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "dump-schema": "php bin/cli.php schema-dump"
+        "dump-schema": "php bin/console.php schema-dump"
     }
 }

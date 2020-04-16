@@ -24,7 +24,7 @@ sudo chown -R www-data logs/
 sudo chmod -R 760 tmp/
 sudo chmod -R 760 logs/
 
-chmod +x bin/cli.php
+chmod +x bin/console.php
 ```
 
 **Step 3:** Database setup
