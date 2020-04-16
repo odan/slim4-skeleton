@@ -22,8 +22,8 @@ class HomeActionTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $this->request($request);
 
-        static::assertSame(200, $response->getStatusCode());
         static::assertStringContainsString('Hello, World', (string)$response->getBody());
+        static::assertSame(200, $response->getStatusCode());
     }
 
     /**
