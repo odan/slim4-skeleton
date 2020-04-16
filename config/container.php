@@ -76,7 +76,7 @@ return [
         $config = $container->get(Configuration::class);
         $twigSettings = $config->getArray('twig');
 
-        $twig = Twig::create($twigSettings['path'], [
+        $twig = Twig::create($twigSettings['paths'], [
             'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
         ]);
 

@@ -51,7 +51,7 @@ $settings['logger'] = [
 // View settings
 $settings['twig'] = [
     // Template paths
-    'path' => [
+    'paths' => [
         $settings['root'] . '/templates',
     ],
     // Should be set to true in production
