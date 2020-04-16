@@ -1,0 +1,13 @@
+.swal2-popup.swal2-modal {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.swal2-content > form {
+    text-align: left;
+}
+
+#swal2-content > form {
+    text-align: left;
+}

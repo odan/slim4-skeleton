@@ -12,6 +12,7 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 
 // SweetAlert2
 window.Swal = require('sweetalert2');
+require('./swal2.css');
 
 // notifIt!
 require('notifit-js/notifIt/css/notifIt.min.css');
