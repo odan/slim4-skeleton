@@ -37,6 +37,10 @@
 		<chmod file="${basedir}/tmp/twig" perm="775"/>
 		<touch file="${basedir}/tmp/twig/empty" />
 
+		<delete dir="${basedir}/public/assets/"/>
+		<mkdir dir="${basedir}/public/assets"/>
+		<touch file="${basedir}/public/assets/.htaccess" />
+
 		<delete includeemptydirs="true">
 			<fileset dir="${basedir}/logs" includes="**/*" excludes=".htaccess"/>
 		</delete>
