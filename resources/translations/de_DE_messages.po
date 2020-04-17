@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-16 23:50+0200\n"
-"PO-Revision-Date: 2020-04-16 23:50+0200\n"
+"POT-Creation-Date: 2020-04-18 01:03+0200\n"
+"PO-Revision-Date: 2020-04-18 01:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -54,94 +54,94 @@ msgstr "Ungültige E-Mail-Adresse"
 msgid "Columns not found in table: %s"
 msgstr "Keine Felder gefunden in der Tabelle: %s"
 
-#: tmp/twig/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:44
-#: tmp/twig/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:90
-#: tmp/twig/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:93
-msgid "Login"
-msgstr "Login"
-
-#: tmp/twig/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:78
-msgid "Please log in"
-msgstr "Bitte loggen Sie sich ein"
-
-#: tmp/twig/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:82
-#: tmp/twig/5a/5a09d9220dfe6846db8b3eee4680a42e83ac282bc42b5a5ef9bef732af0d5ef0.php:81
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:103
-msgid "Username"
-msgstr "Benutzername"
-
-#: tmp/twig/19/19e5665927eee373d637b0f0581da9b42fff40331901a13d4d25687a268501c8.php:86
-msgid "Password"
-msgstr "Kennwort"
-
-#: tmp/twig/2c/2c36fcbc777958e9fe0103ec12c69ba2d75233de230d37ab71b7b39398410d6e.php:49
+#: tmp/twig/05/05d69df079767cddf0aa935cc241007e651dd025ff7356463c6cf228149bd7e0.php:49
 msgid "Home"
 msgstr "Startseite"
 
-#: tmp/twig/2c/2c36fcbc777958e9fe0103ec12c69ba2d75233de230d37ab71b7b39398410d6e.php:58
+#: tmp/twig/05/05d69df079767cddf0aa935cc241007e651dd025ff7356463c6cf228149bd7e0.php:58
 msgid "Menu"
 msgstr "Menü"
 
-#: tmp/twig/2c/2c36fcbc777958e9fe0103ec12c69ba2d75233de230d37ab71b7b39398410d6e.php:68
+#: tmp/twig/05/05d69df079767cddf0aa935cc241007e651dd025ff7356463c6cf228149bd7e0.php:68
 msgid "Menu item 1"
 msgstr "Menüpunkt 1"
 
-#: tmp/twig/2c/2c36fcbc777958e9fe0103ec12c69ba2d75233de230d37ab71b7b39398410d6e.php:77
+#: tmp/twig/05/05d69df079767cddf0aa935cc241007e651dd025ff7356463c6cf228149bd7e0.php:77
 msgid "Menu item 2"
 msgstr "Menüpunkt 2"
 
-#: tmp/twig/2c/2c36fcbc777958e9fe0103ec12c69ba2d75233de230d37ab71b7b39398410d6e.php:86
+#: tmp/twig/05/05d69df079767cddf0aa935cc241007e651dd025ff7356463c6cf228149bd7e0.php:86
 msgid "Menu item 3"
 msgstr "Menüpunkt 3"
 
-#: tmp/twig/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:76
-msgid "Hello, World"
-msgstr "Hallo, Welt"
+#: tmp/twig/12/125555be2de0bbeb771c86f1aa8c697723f6621980f09b92b993538bfb6307c9.php:44
+#: tmp/twig/12/125555be2de0bbeb771c86f1aa8c697723f6621980f09b92b993538bfb6307c9.php:90
+#: tmp/twig/e5/e501b56189da645ba034fa9e2e67f49613c715ffbe0f87054ee5b8b0fd4cbf7b.php:93
+msgid "Login"
+msgstr "Login"
 
-#: tmp/twig/55/55d95d0e8ae4d8a57df3ad7428ad3e94f8e93d0d0b1be2d8066f7553153b77b4.php:82
-msgid "Current time"
-msgstr "Aktuelle Zeit"
+#: tmp/twig/12/125555be2de0bbeb771c86f1aa8c697723f6621980f09b92b993538bfb6307c9.php:78
+msgid "Please log in"
+msgstr "Bitte loggen Sie sich ein"
 
-#: tmp/twig/5a/5a09d9220dfe6846db8b3eee4680a42e83ac282bc42b5a5ef9bef732af0d5ef0.php:64
-msgid "User"
-msgstr "Benutzer"
+#: tmp/twig/12/125555be2de0bbeb771c86f1aa8c697723f6621980f09b92b993538bfb6307c9.php:82
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:103
+#: tmp/twig/b7/b76db13ed585193f9d4ccc20258393bc234ac8d540fab2e64342ba2de123fa2b.php:81
+msgid "Username"
+msgstr "Benutzername"
 
-#: tmp/twig/5a/5a09d9220dfe6846db8b3eee4680a42e83ac282bc42b5a5ef9bef732af0d5ef0.php:71
-msgid "User-ID"
-msgstr "Benutzer-ID"
+#: tmp/twig/12/125555be2de0bbeb771c86f1aa8c697723f6621980f09b92b993538bfb6307c9.php:86
+msgid "Password"
+msgstr "Kennwort"
 
-#: tmp/twig/5a/5a09d9220dfe6846db8b3eee4680a42e83ac282bc42b5a5ef9bef732af0d5ef0.php:91
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:107
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:87
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:87
 msgid "User list"
 msgstr "Benutzerliste"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:92
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:92
 msgid "Add user"
 msgstr "Benutzer hinzufügen"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:111
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:107
+#: tmp/twig/b7/b76db13ed585193f9d4ccc20258393bc234ac8d540fab2e64342ba2de123fa2b.php:91
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:111
 msgid "First name"
 msgstr "Vorname"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:115
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:115
 msgid "Last name"
 msgstr "Nachname"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:119
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:119
 msgid "Role"
 msgstr "Rolle"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:123
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:123
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: tmp/twig/c3/c3b31f262f18b94c27a2868e51d2721aab0d5f9becf5968824b422bb7bbcab9f.php:127
+#: tmp/twig/4f/4f948571dcb90131a0e18f928ae2316bfdf25f29cfaf862c80c29048a78efca1.php:127
 msgid "Action"
 msgstr "Aktion"
+
+#: tmp/twig/b7/b76db13ed585193f9d4ccc20258393bc234ac8d540fab2e64342ba2de123fa2b.php:64
+msgid "User"
+msgstr "Benutzer"
+
+#: tmp/twig/b7/b76db13ed585193f9d4ccc20258393bc234ac8d540fab2e64342ba2de123fa2b.php:71
+msgid "User-ID"
+msgstr "Benutzer-ID"
+
+#: tmp/twig/e5/e501b56189da645ba034fa9e2e67f49613c715ffbe0f87054ee5b8b0fd4cbf7b.php:76
+msgid "Hello, World"
+msgstr "Hallo, Welt"
+
+#: tmp/twig/e5/e501b56189da645ba034fa9e2e67f49613c715ffbe0f87054ee5b8b0fd4cbf7b.php:82
+msgid "Current time"
+msgstr "Aktuelle Zeit"
 
 #~ msgid "Yes"
 #~ msgstr "Ja"
