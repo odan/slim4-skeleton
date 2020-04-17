@@ -56,7 +56,7 @@ final class UserViewAction
 
         // Prepare the view data
         $viewData = [
-            'user' => $user
+            'user' => $user,
         ];
 
         // Render the twig template with the given view data

@@ -122,7 +122,6 @@ class DefaultErrorHandler
             $statusCode = 422;
         }
 
-
         $file = basename($exception->getFile());
         if ($file === 'CallableResolver.php') {
             $statusCode = 404;

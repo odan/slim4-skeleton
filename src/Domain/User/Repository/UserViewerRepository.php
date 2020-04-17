@@ -6,7 +6,6 @@ use App\Domain\User\Data\UserCreatorData;
 use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
-use Cake\Database\StatementInterface;
 use DomainException;
 
 /**
