@@ -149,8 +149,7 @@ final class TwigCompilerCommand extends Command
             $templateName = str_replace('\\', '/', $templateName);
             $this->output->write(sprintf('Compiling: %s', $templateName), true);
 
-            $className = $twig->getTemplateClass($templateName);
-            $twig->loadTemplate($className, $templateName);
+            $twig->loadTemplate($twig->getTemplateClass($templateName), $templateName);
         }
     }
 }
