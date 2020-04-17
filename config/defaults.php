@@ -27,12 +27,6 @@ $settings['error'] = [
     'log_error_details' => true,
 ];
 
-// Slim router cache
-$settings['router'] = [
-    // Should be set only in production
-    'cache_file' => '',
-];
-
 // Application settings
 $settings['app'] = [
     'secret' => '{{app_secret}}',

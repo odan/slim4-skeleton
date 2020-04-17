@@ -41,15 +41,8 @@ return [
 
     App::class => function (ContainerInterface $container) {
         AppFactory::setContainer($container);
-        $app = AppFactory::create();
 
-        $config = $container->get(Configuration::class);
-        $routeCacheFile = $config->findString('router.cache_file');
-        if ($routeCacheFile) {
-            $app->getRouteCollector()->setCacheFile($routeCacheFile);
-        }
-
-        return $app;
+        return AppFactory::create();
     },
 
     // For the responder
