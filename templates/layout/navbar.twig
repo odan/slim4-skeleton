@@ -5,23 +5,23 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('user-list') }}">
-                        <i class="fa fa-home fa-fw"></i> {{ __('Home') }}
+                        <i class="fa fa-home fa-fw"></i> {{ 'Home'|trans }}
                     </a>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-cat"></i> {{ __('Menu') }} <span class="caret"></span>
+                        <i class="fa fa-cat"></i> {{ 'Menu'|trans }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ url_for('user-list') }}">
-                            <i class="fa fa-anchor fa-fw"></i> {{ __('Menu item 1') }}
+                            <i class="fa fa-anchor fa-fw"></i> {{ 'Menu item 1'|trans }}
                         </a>
                         <a class="dropdown-item" href="{{ url_for('user-list') }}">
-                            <i class="fas fa-anchor fa-fw"></i> {{ __('Menu item 2') }}
+                            <i class="fas fa-anchor fa-fw"></i> {{ 'Menu item 2'|trans }}
                         </a>
                         <a class="dropdown-item" href="{{ url_for('user-list') }}">
-                            <i class="fa fa-anchor fa-fw"></i> {{ __('Menu item 3') }}
+                            <i class="fa fa-anchor fa-fw"></i> {{ 'Menu item 3'|trans }}
                         </a>
                     </div>
                 </li>

@@ -19,9 +19,9 @@
             </div>
 
             <div class="col-md-12">
-                <h1><i class="fas fa-user"></i> {{ __('User list') }}</h1>
+                <h1><i class="fas fa-user"></i> {{ 'User list'|trans }}</h1>
                 <button id="add-user" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#exampleModal">{{ __('Add user') }}
+                        data-target="#exampleModal">{{ 'Add user'|trans }}
                 </button>
 
                 <hr>
@@ -29,13 +29,13 @@
                        class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
                     <thead>
                     <tr>
-                        <th>{{ __('Username') }}</th>
-                        <th>{{ __('E-Mail') }}</th>
-                        <th>{{ __('First name') }}</th>
-                        <th>{{ __('Last name') }}</th>
-                        <th>{{ __('Role') }}</th>
-                        <th>{{ __('Enabled') }}</th>
-                        <th>{{ __('Action') }}</th>
+                        <th>{{ 'Username'|trans }}</th>
+                        <th>{{ 'E-Mail'|trans }}</th>
+                        <th>{{ 'First name'|trans }}</th>
+                        <th>{{ 'Last name'|trans }}</th>
+                        <th>{{ 'Role'|trans }}</th>
+                        <th>{{ 'Enabled'|trans }}</th>
+                        <th>{{ 'Action'|trans }}</th>
                     </tr>
                     <tfoot></tfoot>
                 </table>

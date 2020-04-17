@@ -2,13 +2,13 @@
     <div class="col-sm">
         {% for message in flashbag.get('error') %}
             <div class="alert alert-danger" role="alert">
-                {{ __(message) }}
+                {{ message|trans }}
             </div>
         {% endfor %}
 
         {% for message in flashbag.get('success') %}
             <div class="alert alert-success" role="alert">
-                {{ __(message) }}
+                {{ message|trans }}
             </div>
         {% endfor %}
     </div>

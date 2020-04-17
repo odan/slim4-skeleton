@@ -5,7 +5,6 @@ use App\Handler\DefaultErrorHandler;
 use App\Middleware\TranslatorMiddleware;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
-use Odan\Twig\TwigTranslationExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
@@ -21,6 +20,7 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
+use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -74,11 +74,12 @@ return [
     // Twig templates
     Twig::class => function (ContainerInterface $container) {
         $config = $container->get(Configuration::class);
-        $twigSettings = $config->getArray('twig');
+        $settings = $config->getArray('twig');
 
-        $twig = Twig::create($twigSettings['paths'], [
-            'cache' => $twigSettings['cache_enabled'] ? $twigSettings['cache_path'] : false,
-        ]);
+        $options = $settings['options'];
+        $options['cache'] = $options['cache_enabled'] ? $options['cache_path'] : false;
+
+        $twig = Twig::create($settings['paths'], $options);
 
         $loader = $twig->getLoader();
         if ($loader instanceof FilesystemLoader) {
@@ -86,7 +87,7 @@ return [
         }
 
         // Add extensions
-        $twig->addExtension(new TwigTranslationExtension($container->get(Translator::class)));
+        $twig->addExtension(new TranslationExtension($container->get(Translator::class)));
         $twig->addExtension(new WebpackExtension(
             $config->getString('public') . '/assets/manifest.json',
             'assets/',

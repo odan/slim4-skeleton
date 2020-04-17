@@ -13,14 +13,14 @@
     <div id="content" class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1><i class="fas fa-home"></i> {{ __('Hello, World') }}</h1>
+                <h1><i class="fas fa-home"></i> {{ 'Hello, World'|trans }}</h1>
 
                 <br>
-                {{ __('Current time') }}: {{now}}
+                {{ 'Current time'|trans }}: {{now}}
 
                 <br><br>
 
-                <a href="{{ url_for('login') }}">{{ __('Login') }}</a> (admin:admin or user:user)<br>
+                <a href="{{ url_for('login') }}">{{ 'Login'|trans }}</a> (admin:admin or user:user)<br>
             </div>
         </div>
     </div>

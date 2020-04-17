@@ -2,13 +2,16 @@
 
 namespace App\Console;
 
-use Odan\Twig\TwigCompiler;
 use Psr\Container\ContainerInterface;
 use Selective\Config\Configuration;
 use Slim\Views\Twig;
+use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+use Twig\Environment;
 
 /**
  * Twig compiler command.
@@ -26,7 +29,7 @@ final class TwigCompilerCommand extends Command
     private $output;
 
     /**
-     * Constructor.
+     * The constructor.
      *
      * @param ContainerInterface $container The container
      * @param string|null $name The name
@@ -62,29 +65,84 @@ final class TwigCompilerCommand extends Command
     {
         $this->output = $output;
 
-        return $this->compileTwig();
+        $this->output->write('Compiling Twig templates... ', true);
+
+        $settings = $this->container->get(Configuration::class)->getArray('twig');
+        $twig = $this->container->get(Twig::class)->getEnvironment();
+
+        $cachePath = (string)realpath($settings['options']['cache_path']);
+        if (!$cachePath) {
+            $this->output->write('<error>The twig cache path is not defined</error>', true);
+
+            return 1;
+        }
+
+        // Compile all Twig templates into cache directory
+        return $this->compileTwig($twig, (array)$settings['paths'], $cachePath);
     }
 
     /**
-     * Execute command.
+     * Iterate over all twig templates and force compilation.
+     *
+     * @param Environment $twig The twig environment
+     * @param array $paths The template paths
+     * @param string $cachePath The output cache path
      *
      * @return int integer 0 on success, or an error code
      */
-    private function compileTwig(): int
+    private function compileTwig(Environment $twig, array $paths, string $cachePath): int
     {
-        $this->output->write('Compiling Twig templates... ', true);
+        $filesystem = new Filesystem();
+        $this->output->write(sprintf('Twig cache path: <info>%s</info>', $cachePath), true);
 
-        $twig = $this->container->get(Twig::class);
-        $settings = $this->container->get(Configuration::class)->getArray('twig');
-        $cachePath = (string)$settings['cache_path'];
-        $this->output->write(sprintf('Cache path: <info>%s</info>', $cachePath), true);
+        // Delete old twig cache files
+        if ($filesystem->exists($cachePath)) {
+            $filesystem->remove($cachePath);
+        }
 
-        // Compile all Twig templates into cache directory
-        $compiler = new TwigCompiler($twig->getEnvironment(), $cachePath, true);
-        $compiler->compile();
+        if (!$filesystem->exists($cachePath)) {
+            $filesystem->mkdir($cachePath);
+        }
+
+        $filesystem->touch($cachePath . '/empty');
+
+        $twig->disableDebug();
+        $twig->enableAutoReload();
+
+        // The Twig cache must be enabled
+        if (!$twig->getCache()) {
+            $twig->setCache($cachePath);
+        }
+
+        foreach ($paths as $path) {
+            $this->compileTemplatePath($twig, $path);
+        }
 
         $this->output->write('<info>Done</info>', true);
 
         return 0;
+    }
+
+    private function compileTemplatePath(Environment $twig, string $path)
+    {
+        $finder = new Finder();
+
+        $finder->files()->in($path)->filter(function (SplFileInfo $file) {
+            if (!$file->isFile() || $file->getExtension() !== 'twig') {
+                return false;
+            }
+        });
+
+        $this->output->write(sprintf('Twig template path: <info>%s</info>', realpath($path)), true);
+
+        /** @var SplFileInfo $file */
+        foreach ($finder as $file) {
+            $templateName = substr($file->getPathname(), strlen($path) + 1);
+            $templateName = str_replace('\\', '/', $templateName);
+            $this->output->write(sprintf('Compiling: %s', $templateName), true);
+
+            $className = $twig->getTemplateClass($templateName);
+            $twig->loadTemplate($className, $templateName);
+        }
     }
 }

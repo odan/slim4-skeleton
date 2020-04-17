@@ -10,19 +10,19 @@
         </div>
 
         <div class="col-md-12">
-            <h1><i class="fas fa-user"></i> {{ __('User') }}</h1>
+            <h1><i class="fas fa-user"></i> {{ 'User'|trans }}</h1>
             <hr>
             <form>
                 <div class="form-group">
-                    <label>{{ __('User-ID') }}:</label>
+                    <label>{{ 'User-ID'|trans }}:</label>
                     <label>{{ user.id }}</label>
                 </div>
                 <div class="form-group">
-                    <label for="username">{{ __('Username') }}</label>
+                    <label for="username">{{ 'Username'|trans }}</label>
                     <input type="text" id="username" value="{{ user.username }}" class="form-control" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="email">{{ __('E-Mail') }}</label>
+                    <label for="email">{{ 'E-Mail'|trans }}</label>
                     <input type="text" id="email" value="{{ user.email }}" class="form-control" readonly>
                 </div>
                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->

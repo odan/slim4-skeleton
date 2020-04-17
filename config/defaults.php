@@ -47,15 +47,19 @@ $settings['logger'] = [
     'file_permission' => 0775,
 ];
 
-// View settings
+// Twig settings
+// Configuration reference: https://symfony.com/doc/current/reference/configuration/twig.html
 $settings['twig'] = [
     // Template paths
     'paths' => [
-        $settings['root'] . '/templates',
+        __DIR__ . '/../templates',
     ],
-    // Should be set to true in production
-    'cache_enabled' => true,
-    'cache_path' => $settings['temp'] . '/twig',
+    // Twig environment options
+    'options' => [
+        // Should be set to true in production
+        'cache_enabled' => false,
+        'cache_path' => $settings['temp'] . '/twig',
+    ],
 ];
 
 // Session
