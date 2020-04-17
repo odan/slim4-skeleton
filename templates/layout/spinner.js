@@ -16,4 +16,3 @@ const hideLoading = function () {
 
 module.exports.showLoading = showLoading;
 module.exports.hideLoading = hideLoading;
-
