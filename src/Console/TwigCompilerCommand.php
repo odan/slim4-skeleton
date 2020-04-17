@@ -59,7 +59,7 @@ final class TwigCompilerCommand extends Command
      * @param InputInterface $input The input
      * @param OutputInterface $output The output
      *
-     * @return int integer 0 on success, or an error code
+     * @return int The error code, 0 on success, or an error code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -78,7 +78,9 @@ final class TwigCompilerCommand extends Command
         }
 
         // Compile all Twig templates into cache directory
-        return $this->compileTwig($twig, (array)$settings['paths'], $cachePath);
+        $this->compileTwig($twig, (array)$settings['paths'], $cachePath);
+
+        return 0;
     }
 
     /**
@@ -88,9 +90,9 @@ final class TwigCompilerCommand extends Command
      * @param array $paths The template paths
      * @param string $cachePath The output cache path
      *
-     * @return int integer 0 on success, or an error code
+     * @return void
      */
-    private function compileTwig(Environment $twig, array $paths, string $cachePath): int
+    private function compileTwig(Environment $twig, array $paths, string $cachePath): void
     {
         $filesystem = new Filesystem();
         $this->output->write(sprintf('Twig cache path: <info>%s</info>', $cachePath), true);
@@ -119,11 +121,17 @@ final class TwigCompilerCommand extends Command
         }
 
         $this->output->write('<info>Done</info>', true);
-
-        return 0;
     }
 
-    private function compileTemplatePath(Environment $twig, string $path)
+    /**
+     * Compile all templates in the given path.
+     *
+     * @param Environment $twig The environment
+     * @param string $path The template path
+     *
+     * @return void
+     */
+    private function compileTemplatePath(Environment $twig, string $path): void
     {
         $finder = new Finder();
 
