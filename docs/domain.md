@@ -75,7 +75,7 @@ Think of the [SRP](http://pragmaticcraftsman.com/2006/07/single-responsibility-p
 What changes for the same reason should be grouped together.
 
 Please don't prefix all service classes with `*Service`. 
-A service class is not a "Manager" or "Utility" class. 
+A service class is not a "Manager" or "Utility" class. A service is a "Do-er".
  
 A service class can have several methods as long as they serve a narrow purpose. 
 This also encourages you to name your classes more specifically. Instead of a "User" god-class, 

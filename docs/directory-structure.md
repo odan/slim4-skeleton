@@ -19,10 +19,9 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 ├── logs                    # Log files
 ├── public                  # Web server files
 ├── resources               # Other resource files
-│   ├── assets              # Raw, un-compiled assets such as LESS, SASS and JavaScript
-│   ├── locale              # Language files (translations)
 │   ├── migrations          # Database migration files (Phinx)
-│   └── seeds               # Data seeds
+│   ├── seeds               # Data seeds
+│   └── translations        # The .po message files for PoEdit
 ├── src                     # PHP source code (The App namespace)
 │   ├── Action              # Controller actions (application layer)
 │   ├── Console             # Console commands for console.php
