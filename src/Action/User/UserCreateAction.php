@@ -54,7 +54,7 @@ final class UserCreateAction
         $userId = $this->userCreator->createUser($userData);
 
         // Build the HTTP response
-        return $this->responder->encodeJson($response, [
+        return $this->responder->json($response, [
             'user_id' => $userId,
         ]);
     }

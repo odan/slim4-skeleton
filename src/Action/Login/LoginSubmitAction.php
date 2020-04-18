@@ -71,7 +71,7 @@ final class LoginSubmitAction
             $url = 'login';
         }
 
-        return $this->responder->redirect($request, $response, $url);
+        return $this->responder->redirect($response, $url);
     }
 
     /**

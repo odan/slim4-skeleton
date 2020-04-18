@@ -2,9 +2,9 @@
 
 namespace App\Action\User;
 
+use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Views\Twig;
 
 /**
  * Action.
@@ -12,18 +12,18 @@ use Slim\Views\Twig;
 final class UserListAction
 {
     /**
-     * @var Twig
+     * @var Responder
      */
-    private $twig;
+    private $responder;
 
     /**
      * The constructor.
      *
-     * @param Twig $twig The twig engine
+     * @param Responder $responder The responder
      */
-    public function __construct(Twig $twig)
+    public function __construct(Responder $responder)
     {
-        $this->twig = $twig;
+        $this->responder = $responder;
     }
 
     /**
@@ -36,6 +36,6 @@ final class UserListAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->twig->render($response, 'user/user-list.twig');
+        return $this->responder->render($response, 'user/user-list.twig');
     }
 }

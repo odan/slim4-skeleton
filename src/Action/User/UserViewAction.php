@@ -3,9 +3,9 @@
 namespace App\Action\User;
 
 use App\Domain\User\Service\UserViewer;
+use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Views\Twig;
 
 /**
  * Action.
@@ -18,20 +18,20 @@ final class UserViewAction
     private $userReader;
 
     /**
-     * @var Twig
+     * @var Responder
      */
-    private $twig;
+    private $responder;
 
     /**
      * The constructor.
      *
      * @param UserViewer $userViewer The service
-     * @param Twig $twig The twig engine
+     * @param Responder $responder The responder
      */
-    public function __construct(UserViewer $userViewer, Twig $twig)
+    public function __construct(UserViewer $userViewer, Responder $responder)
     {
         $this->userReader = $userViewer;
-        $this->twig = $twig;
+        $this->responder = $responder;
     }
 
     /**
@@ -60,6 +60,6 @@ final class UserViewAction
         ];
 
         // Render the twig template with the given view data
-        return $this->twig->render($response, 'user/user-view.twig', $viewData);
+        return $this->responder->render($response, 'user/user-view.twig', $viewData);
     }
 }

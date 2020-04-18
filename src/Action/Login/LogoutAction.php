@@ -47,6 +47,6 @@ final class LogoutAction
         // Logout user
         $this->session->invalidate();
 
-        return $this->responder->redirect($request, $response, 'login');
+        return $this->responder->redirect($response, 'login');
     }
 }

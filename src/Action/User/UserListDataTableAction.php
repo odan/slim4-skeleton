@@ -46,6 +46,6 @@ final class UserListDataTableAction
     {
         $params = (array)$request->getParsedBody();
 
-        return $this->responder->encodeJson($response, $this->userListDataTable->listAllUsers($params));
+        return $this->responder->json($response, $this->userListDataTable->listAllUsers($params));
     }
 }

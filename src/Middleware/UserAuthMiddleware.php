@@ -68,6 +68,6 @@ final class UserAuthMiddleware implements MiddlewareInterface
         }
 
         // User is not logged in. Redirect to login page.
-        return $this->responder->redirect($request, $this->responder->createResponse(), 'login');
+        return $this->responder->redirect($this->responder->createResponse(), 'login');
     }
 }
