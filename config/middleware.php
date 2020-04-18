@@ -2,6 +2,7 @@
 
 use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
+use App\Middleware\UrlGeneratorMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
@@ -16,6 +17,7 @@ return function (App $app) {
     $app->add(TwigMiddleware::class);
     $app->add(TranslatorMiddleware::class);
     $app->add(SessionMiddleware::class);
+    $app->add(UrlGeneratorMiddleware::class);
     $app->addRoutingMiddleware();
     $app->add(BasePathMiddleware::class);
     $app->add(ErrorMiddleware::class);
