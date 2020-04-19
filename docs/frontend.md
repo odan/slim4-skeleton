@@ -26,13 +26,13 @@ npm install <package_name>
 
 ### Compiling Assets
 
-To compile all assets for development, run:
+To compile all assets for **development**, run:
 
 ```
 npm run build:dev
 ```
 
-To compile and minify all assets for production, run:
+To compile and minify all assets for **production**, run:
 
 ```
 npm run build
@@ -56,4 +56,40 @@ To start frontend tests with code coverage, run:
 
 ```
 npm run test:coverage
+```
+
+## Notifications
+
+Showing a success message:
+
+```js
+notif({
+    msg: "Good!",
+    type: "success",
+    position: "center"
+});
+```
+
+Showing an error message:
+
+```js
+notif({
+    msg: "Ooops!",
+    type: "error",
+    position: "center"
+});
+```
+
+## Loading indicator
+
+Show loading indicator:
+
+```js
+spinner.showLoading();
+```
+
+Hide loading indicator:
+
+```js
+spinner.hideLoading();
 ```
