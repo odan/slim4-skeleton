@@ -58,6 +58,20 @@ To start frontend tests with code coverage, run:
 npm run test:coverage
 ```
 
+## Modal windows
+
+Show modal window:
+
+```js
+Swal.fire(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+);
+```
+
+Read more: [SweetAlert2](https://sweetalert2.github.io/)
+
 ## Notifications
 
 Showing a success message:
@@ -79,6 +93,8 @@ notif({
     position: "center"
 });
 ```
+
+Read more: [notifIt!](https://github.com/naoxink/notifit-2)
 
 ## Loading indicator
 
