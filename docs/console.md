@@ -12,13 +12,7 @@ The default console executable is: `bin/console.php`
 
 The console command directory is: `src/Console` 
 
-To start the cli, run:
-
-``` bash
-composer cli
-```
-
-or directly:
+To start the console, run:
 
 ``` bash
 php bin/console.php
@@ -27,7 +21,7 @@ php bin/console.php
 ## Available commands
 
 * `compile-twig` - To compile Twig templates
-* `dump-schema` - Generates a schema.sql from the schema data source.
+* `schema-dump` - Generates a schema.sql from the schema data source.
 
 ## Creating a console command
 
@@ -38,7 +32,6 @@ Create a new command class, e.g. `src/Console/ExampleCommand.php` and copy/paste
 
 namespace App\Console;
 
-use PDO;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -109,7 +102,7 @@ $settings['commands'] = [
 To start to example command, run:
 
 ``` bash
-composer cli example
+php bin/console.php example
 ```
 
 The output:
