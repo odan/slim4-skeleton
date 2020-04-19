@@ -64,4 +64,5 @@ If you still need more features, then you may try [Deployer](https://deployer.or
 
 **Read more** 
 
-* [Continuous Delivery](https://www.amazon.de/dp/B003YMNVC0)
+* [Continuous Delivery](https://www.amazon.com/dp/B003YMNVC0?tag=28031982-21) (Amazon.com)
+* [Continuous Delivery](https://www.amazon.de/dp/B003YMNVC0?tag=28031982-21) (Amazon.de)
