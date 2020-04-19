@@ -42,9 +42,11 @@
 		<touch file="${basedir}/public/assets/.htaccess" />
 
 		<delete includeemptydirs="true">
-			<fileset dir="${basedir}/logs" includes="**/*" excludes=".htaccess"/>
+			<fileset dir="${basedir}/logs" includes="**/*"/>
 		</delete>
 
+		<echo message="deny from all" file="${basedir}/logs/.htaccess" />
+		<echo message="deny from all" file="${basedir}/tmp/.htaccess" />
 	</target>
 
 	<target name="build">
