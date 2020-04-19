@@ -6,15 +6,6 @@ nav_order: 11
 
 # Frontend
 
-## Twig Templates
-
-Twig is the simple, yet powerful templating engine provided by Symfony. 
-
-All Twig templates with the extension `*.twig` are stored in the directory: `templates/`
-
-Twig templates will be converted to native PHP code and cached until the template changes. 
-This means that Twig does not add much overhead to your application.
-
 ## Translation
 
 The integrated localization features provides a convenient way to retrieve strings 
@@ -32,7 +23,7 @@ Example:
 * fr_FR_messages.mo
 * fr_FR_messages.po
 
-## Updating Translation Strings
+### Translating messages
 
 ### Requirements
 
@@ -51,7 +42,7 @@ Example:
 * Click `Update from source`
 * Translate the text and save the file
 
-## Retrieving Translation Strings
+## Translations in PHP
 
 You may retrieve lines from language files using the `__` php helper function. 
 
@@ -67,14 +58,32 @@ Translate a text with a placeholder in PHP:
 echo __('There are %s users logged in.', 7);
 ```
 
-Of course if you are using the **Twig** templating engine, you may use 
-the `__` helper function to echo the translation string.
+## Twig Templates
+
+Twig is the simple, yet powerful templating engine provided by Symfony. 
+
+All Twig templates with the extension `*.twig` are stored in the directory: `templates/`
+
+Twig templates will be converted to native PHP code and cached until the template changes. 
+This means that Twig does not add much overhead to your application.
+
+### Updating Translation Strings
+
+To parse all Twig files for new translation message, run:
+
+```
+composer compile-twig
+```
+
+### Translations in Templates
+
+You can use the `trans` filter to translate messages in Twig templates.
 
 Translate a text:
 
 {% raw %}
 ```twig
-{{ __('Yes') }}
+{{ 'Yes'|trans }}
 ```
 {% endraw %}
 
@@ -82,11 +91,15 @@ Translate a text with a placeholder:
 
 {% raw %}
 ```twig
-{{ __('Hello: %s', username) }}
+{{ 'Hello, %s%'|trans({'%s%': username}) }}
 ```
 {% endraw %}
 
-Read more: [Twig translation usage](https://github.com/odan/twig-translation#usage)
+Read more: 
+
+* <https://twig-extensions.readthedocs.io/en/latest/i18n.html#usage>
+* <https://symfony.com/doc/current/reference/twig_reference.html#trans>
+
 
 ## Determining The Current Locale
 
