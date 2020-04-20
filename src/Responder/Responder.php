@@ -6,7 +6,8 @@ use App\Routing\UrlGenerator;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
-use UnexpectedValueException;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 /**
  * A generic responder.
@@ -104,43 +105,19 @@ final class Responder
      * @param ResponseInterface $response The response
      * @param mixed $data The data
      * @param int $options Json encoding options
-     * @param int $depth Json encoding max depth
      *
-     * @throws UnexpectedValueException
+     * @throws NotEncodableValueException
      *
      * @return ResponseInterface The response
      */
     public function json(
         ResponseInterface $response,
         $data,
-        int $options = 0,
-        int $depth = 512
+        int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write($this->encodeJson($data, $options, $depth));
+        $response->getBody()->write((new JsonEncode([JsonEncode::OPTIONS => $options]))->encode($data, 'json'));
 
         return $response;
-    }
-
-    /**
-     * Encode data to json string.
-     *
-     * @param mixed $data The data
-     * @param int $options Json encoding options
-     * @param int $depth Json encoding max depth
-     *
-     * @throws UnexpectedValueException
-     *
-     * @return string The json string
-     */
-    private function encodeJson($data, int $options = 0, int $depth = 512): string
-    {
-        $json = (string)json_encode($data, $options, $depth);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new UnexpectedValueException(json_last_error_msg(), json_last_error());
-        }
-
-        return $json;
     }
 }
