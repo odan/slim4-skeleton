@@ -146,7 +146,7 @@ primitive data type like string, int, float, bool, array.
 
 A value object must be **immutable** and is responsible for keeping their state consistent. 
 
-A value object should only be filled using the constructor.
+A value object should only be filled using the constructor or even better with "named constructors".
 
 Wither methods are allowed, but `setter` methods are not allowed. 
 
@@ -171,13 +171,25 @@ All properties must be `protected` or `private` accessed by the getter methods.
 ```php
 <?php
 
-class CustomerId
+final class CustomerId
 {
     private $id;
     
-    public function __construct(int $id)
+    // only for internal usage
+    private function __construct(int $id)
     {
         $this->id = $id;
+    }
+
+    // named constructor
+    public static function from(int $id): self
+    {
+        return new self($id);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
     
     public function equals(CustomerId $customerId): bool
