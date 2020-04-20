@@ -49,9 +49,9 @@ This project is based on best practice and industry standards:
 * Translations (Symfony)
 * Sessions (Symfony)
 * Console Commands (Symfony)
-* Database Migrations ([Phinx](https://phinx.org/)) (CakePHP)
+* Migrations ([Phinx](https://phinx.org/)) (CakePHP)
 * SQL Query Builder (CakePHP)
-* Database Migrations Generator
+* Phinx Migrations Generator
 * Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
 * Unit- and integrations tests (PHPUnit)
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
