@@ -14,11 +14,11 @@ return function (App $app) {
     $app->addBodyParsingMiddleware();
 
     $app->add(ValidationExceptionMiddleware::class);
-    $app->add(TwigMiddleware::class);
     $app->add(TranslatorMiddleware::class);
     $app->add(SessionMiddleware::class);
     $app->add(UrlGeneratorMiddleware::class);
     $app->addRoutingMiddleware();
+    $app->add(TwigMiddleware::class);
     $app->add(BasePathMiddleware::class);
     $app->add(ErrorMiddleware::class);
 };
