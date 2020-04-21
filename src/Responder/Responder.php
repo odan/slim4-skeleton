@@ -116,7 +116,7 @@ final class Responder
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((new JsonEncode([JsonEncode::OPTIONS => $options]))->encode($data, 'json'));
+        $response->getBody()->write((string)(new JsonEncode([JsonEncode::OPTIONS => $options]))->encode($data, 'json'));
 
         return $response;
     }
