@@ -50,7 +50,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src"
+            "App\\": "src/"
         },
         "files": [
             "src/Utility/translate.php"
@@ -58,7 +58,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Test\\": "tests"
+            "App\\Test\\": "tests/"
         }
     },
     "scripts": {
