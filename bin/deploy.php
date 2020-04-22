@@ -2,7 +2,7 @@
 
 // Start with: sudo php deploy.php file_to_deploy.zip
 
-$version = substr(sha1_file(__FILE__), 0, 7);
+$version = substr((string)sha1_file(__FILE__), 0, 7);
 echo 'Deployment script version: ' . $version . "\n";
 
 if (posix_getuid() === 0) {

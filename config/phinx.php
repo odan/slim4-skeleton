@@ -7,7 +7,9 @@ use Slim\App;
 $app = require __DIR__ . '/../config/bootstrap.php';
 
 $container = $app->getContainer();
+// @phpstan-ignore-next-line
 $pdo = $container->get(PDO::class);
+// @phpstan-ignore-next-line
 $config = $container->get(Configuration::class);
 $database = $config->getString('db.database');
 $phinx = $config->getArray('phinx');
