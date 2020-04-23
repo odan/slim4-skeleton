@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="webapp" default="noop">
+<project name="webapp" default="help">
 
-	<target name="noop"/>
 	<property environment="env"/>
 
 	<tstamp>
@@ -14,42 +13,50 @@
 		<os family="windows"/>
 	</condition>
 
+	<target name="help">
+		<java classname="org.apache.tools.ant.Main">
+			<arg value="-projecthelp"/>
+			<arg value="-buildfile"/>
+			<arg value="${ant.file}"/>
+		</java>
+	</target>
+
 	<target name="cc" description="Clear application cache">
 		<echo>Clear cache</echo>
 
 		<delete dir="${basedir}/tmp/assets/"/>
 		<mkdir dir="${basedir}/tmp/assets"/>
 		<chmod file="${basedir}/tmp/assets" perm="775"/>
-		<touch file="${basedir}/tmp/assets/empty" />
+		<touch file="${basedir}/tmp/assets/empty"/>
 
 		<delete dir="${basedir}/tmp/routes/"/>
 		<mkdir dir="${basedir}/tmp/routes"/>
 		<chmod file="${basedir}/tmp/routes" perm="775"/>
-		<touch file="${basedir}/tmp/routes/empty" />
+		<touch file="${basedir}/tmp/routes/empty"/>
 
 		<delete dir="${basedir}/tmp/translations/"/>
 		<mkdir dir="${basedir}/tmp/translations"/>
 		<chmod file="${basedir}/tmp/translations" perm="775"/>
-		<touch file="${basedir}/tmp/translations/empty" />
+		<touch file="${basedir}/tmp/translations/empty"/>
 
 		<delete dir="${basedir}/tmp/twig/"/>
 		<mkdir dir="${basedir}/tmp/twig"/>
 		<chmod file="${basedir}/tmp/twig" perm="775"/>
-		<touch file="${basedir}/tmp/twig/empty" />
+		<touch file="${basedir}/tmp/twig/empty"/>
 
 		<delete dir="${basedir}/public/assets/"/>
 		<mkdir dir="${basedir}/public/assets"/>
-		<touch file="${basedir}/public/assets/.htaccess" />
+		<touch file="${basedir}/public/assets/.htaccess"/>
 
 		<delete includeemptydirs="true">
 			<fileset dir="${basedir}/logs" includes="**/*"/>
 		</delete>
 
-		<echo message="deny from all" file="${basedir}/logs/.htaccess" />
-		<echo message="deny from all" file="${basedir}/tmp/.htaccess" />
+		<echo message="deny from all" file="${basedir}/logs/.htaccess"/>
+		<echo message="deny from all" file="${basedir}/tmp/.htaccess"/>
 	</target>
 
-	<target name="build">
+	<target name="build" description="Build artifact">
 		<mkdir dir="${basedir}/build"/>
 
 		<!-- Get composer.phar if not existing -->
