@@ -6,22 +6,25 @@ nav_order: 17
 
 # Console
 
+## Composer scripts
+
+To list all composer scripts, run:
+
+```
+composer list
+```
+
 ## Commands
 
 The default console executable is: `bin/console.php`
 
 The console command directory is: `src/Console` 
 
-To start the console, run:
+To start the console and list all available commands, run:
 
 ``` bash
 php bin/console.php
 ```
-
-## Available commands
-
-* `compile-twig` - To compile Twig templates
-* `schema-dump` - Generates a schema.sql from the schema data source.
 
 ## Creating a console command
 
