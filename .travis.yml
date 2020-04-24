@@ -23,4 +23,4 @@ before_script:
 
 script:
   - composer phinx:migrate
-  - composer check-all
+  - composer build:check-all
