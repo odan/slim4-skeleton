@@ -21,7 +21,7 @@ $ composer test
 To start all tests with code coverage, run:
 
 ``` bash
-$ composer test-coverage
+$ composer test:coverage
 ```
 
 The code coverage output directory is: `build/coverage/`

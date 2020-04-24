@@ -22,5 +22,5 @@ before_script:
   - cd $TRAVIS_BUILD_DIR
 
 script:
-  - composer migrate
+  - composer phinx:migrate
   - composer check-all

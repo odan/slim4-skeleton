@@ -33,7 +33,7 @@ This skeleton provides a [Phinx](https://phinx.org/) console access to create da
 ### Generating a migration from a diff automatically
 
 ```bash
-$ composer generate-migration
+$ composer phinx:generate
 ```
 
 You an specify a migration name by adding the `--name` parameter.
@@ -41,13 +41,13 @@ You an specify a migration name by adding the `--name` parameter.
 **Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
 
 ```bash
-$ composer generate-migration -- --name AddTableCustomers
+$ composer phinx:generate -- --name AddTableCustomers
 ```
 
 ### Creating a blank database migration
 
 ```bash
-$ composer create-migration UpdateArticleFixtures
+$ composer phinx:create UpdateArticleFixtures
 ```
 
 Read more: **[Phinx Documentation](http://docs.phinx.org/en/latest/)**
@@ -57,7 +57,7 @@ Read more: **[Phinx Documentation](http://docs.phinx.org/en/latest/)**
 Update the database schema with this command:
 
 ```bash
-$ composer migrate
+$ composer phinx:migrate
 ```
 
 If [Composer](https://getcomposer.org/) is not installed on the target server, 
@@ -91,7 +91,7 @@ The `composer dump-schema` command dumps the current state of your schema to
 a `resources/migrations/schema/schema.sql` file.
 
 ```
-$ composer schema-dump
+$ composer schema:dump
 ```
 
 When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. 

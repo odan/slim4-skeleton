@@ -62,7 +62,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Install tables
-        run: composer migrate
+        run: composer phinx:migrate
 
       - name: Install npm packages
         run: npm install
