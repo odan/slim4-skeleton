@@ -65,3 +65,12 @@ composer migrate
 **Step 4:** Run it
 
 Open `http://localhost/{my-app}` in your browser
+
+If you use the PHP internal web server, you can use this command:
+
+```
+cd {project-path/}
+php -S localhost:8080 -t public
+```
+
+Then navigate to: `http://localhost:8080/`
