@@ -21,7 +21,6 @@
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^5",
         "php-di/php-di": "^6.0",
-        "psr/log": "^1.1",
         "selective/array-reader": "^0.3",
         "selective/basepath": "^0.2",
         "selective/config": "^0.1.1",
@@ -67,26 +66,26 @@
             "npm run build"
         ],
         "build": "ant build",
-        "check-all": [
+        "build:check": [
             "@lint",
-            "@check-style",
+            "@cs:check",
+            "@sniffer:check",
             "@phpstan",
-            "@test-coverage"
+            "@test:coverage"
         ],
-        "check-cs": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
-        "check-style": "phpcs --standard=phpcs.xml",
-        "cli": "php bin/console.php --ansi",
-        "compile-twig": "php bin/console.php compile-twig --ansi",
-        "create-migration": "phinx create -c config/phinx.php --ansi",
-        "fix-cs": "php-cs-fixer fix --config=.cs.php",
-        "fix-style": "phpcbf --standard=phpcs.xml",
-        "generate-migration": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
+        "build:cc": "ant cc",
+        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
+        "cs:fix": "php-cs-fixer fix --config=.cs.php",
         "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
-        "migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
+        "phinx:create": "phinx create -c config/phinx.php --ansi",
+        "phinx:generate": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
+        "phinx:migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
         "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress --ansi",
-        "start": "php -S localhost:8080 -t public",
+        "schema:dump": "php bin/console.php schema-dump",
+        "sniffer:check": "phpcs --standard=phpcs.xml",
+        "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
-        "test-coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "dump-schema": "php bin/console.php schema-dump"
+        "test:coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "twig:compile": "php bin/console.php compile-twig --ansi"
     }
 }
