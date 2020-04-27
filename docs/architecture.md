@@ -33,5 +33,5 @@ This architecture was inspired by the following resources and books:
 * [Object Design Style Guide](https://www.manning.com/books/object-design-style-guide?a_aid=object-design&a_bid=4e089b42)
 * [Advanced Web Application Architecture](https://leanpub.com/web-application-architecture/) (Book)
 * [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019) (Slides)
-
+* [https://amzn.to/2Y9SBUs](Continuous Delivery)
 
