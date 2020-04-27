@@ -25,7 +25,7 @@ Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
 
 This architecture was inspired by the following resources and books:
 
-* [https://pmjones.io/adr/](Action Domain Responder)
+* [Action Domain Responder](https://pmjones.io/adr/)
 * [Hexagonal Architecture](https://fideloper.com/hexagonal-architecture)
 * [Hexagonal Architecture demystified](https://madewithlove.be/hexagonal-architecture-demystified/)
 * [Domain-Driven Design](https://amzn.to/3cNq2jV) (The blue book)
