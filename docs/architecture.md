@@ -21,12 +21,17 @@ The modern derivations of "MVC Model 2"  toward Action Domain Responder is not d
 
 Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
 
-## Hexagonal Architecture
+## Read more
 
-Read more:
+This architecture was inspired by the following resources and books:
 
+* [Action Domain Responder](https://pmjones.io/adr/)
 * [Hexagonal Architecture](https://fideloper.com/hexagonal-architecture)
 * [Hexagonal Architecture demystified](https://madewithlove.be/hexagonal-architecture-demystified/)
-* [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019)
+* [Domain-Driven Design](https://amzn.to/3cNq2jV) (The blue book)
+* [Implementing Domain-Driven Design](https://amzn.to/2zrGrMm) (The red book)
 * [Object Design Style Guide](https://www.manning.com/books/object-design-style-guide?a_aid=object-design&a_bid=4e089b42)
+* [Advanced Web Application Architecture](https://leanpub.com/web-application-architecture/) (Book)
+* [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019) (Slides)
+* [Continuous Delivery](https://amzn.to/2Y9SBUs)
 
