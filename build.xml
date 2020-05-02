@@ -9,7 +9,11 @@
 		<format property="now_file" pattern="yyyy-MM-dd_HHmmss" locale="en,UK"/>
 	</tstamp>
 
-	<condition property="ext" value=".bat" else="">
+	<condition property="bat" value=".bat" else="">
+		<os family="windows"/>
+	</condition>
+
+	<condition property="cmd" value=".cmd" else="">
 		<os family="windows"/>
 	</condition>
 
@@ -82,6 +86,15 @@
 				line="${basedir}/build/composer.phar install --no-dev --optimize-autoloader -d ${basedir}/build/master"/>
 		</exec>
 
+		<!-- Install npm packages -->
+		<exec executable="npm${cmd}" dir="${basedir}/build/master" failonerror="true">
+			<arg line="install"/>
+		</exec>
+
+		<exec executable="npm${cmd}" dir="${basedir}/build/master" failonerror="true">
+			<arg line="run build"/>
+		</exec>
+
 		<!-- Remove files which aren't needed on the server -->
 		<delete>
 			<fileset dir="${basedir}/build/master/config/" casesensitive="no">
@@ -119,6 +132,12 @@
 				<include name="**/CHANGES*"/>
 				<include name="**/CONTRIBUTING*"/>
 				<include name="**/UPGRADE*.md"/>
+				<include name="**/.DS_Store"/>
+				<include name="**/package.json"/>
+				<include name="**/package-lock.json"/>
+				<include name="**/phpcs.xml"/>
+				<include name="**/tsconfig.json"/>
+				<include name="**/webpack.config.js"/>
 			</fileset>
 		</delete>
 
@@ -132,12 +151,14 @@
 				<include name="**/doc/"/>
 				<include name="**/examples/"/>
 				<include name="**/example/"/>
+				<include name="**/node_modules/"/>
+				<include name="**/.github/"/>
 			</fileset>
 		</delete>
 
 		<!-- Zip master brunch -->
 		<zip destfile="${basedir}/build/my_app_${now_file}.zip">
-			<zipfileset dir="${basedir}/build/master"/>
+			<zipfileset dir="${basedir}/build/master" excludes="node_modules/"/>
 		</zip>
 	</target>
 
