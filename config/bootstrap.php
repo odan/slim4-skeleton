@@ -8,7 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $containerBuilder = new ContainerBuilder();
 
-// Set up settings
+// Add container definitions
 $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 
 // Build PHP-DI Container instance
