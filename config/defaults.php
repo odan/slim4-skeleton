@@ -50,6 +50,7 @@ $settings['twig'] = [
     ],
     // Twig environment options
     'options' => [
+        'debug' => false,
         // Should be set to true in production
         'cache_enabled' => true,
         'cache_path' => $settings['temp'] . '/twig',
