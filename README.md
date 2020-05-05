@@ -22,13 +22,13 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 ## Requirements
 
 * PHP 7.2+
-* Apache (with mod_rewrite)
+* MySQL 5.7+ or MariaDB
 * Composer (only for development)
-* [NPM](https://nodejs.org/en/download/) (for webpack)
+* [NPM](https://nodejs.org/en/download/) (only for development and building)
 
 #### Recommended
 
-* MySQL 5.7+, 8.x
+* Apache (with mod_rewrite)
 * [Apache ant](https://ant.apache.org/bindownload.cgi) to create deployment artifacts (build)
 
 ## Features
@@ -63,8 +63,8 @@ This project is based on best practice and industry standards:
 * [Webpack](https://webpack.js.org/) (Assets bundler)
 * [TypeScript](https://www.typescriptlang.org/) (Static type-checking)
 * [Bootstrap](https://getbootstrap.com/) (Frontend component library)
-* [jQuery](https://jquery.com/) (DOM manipulation, events, etc.)
 * [DataTables.net](https://datatables.net/) (Advanced tables)
+* [jQuery](https://jquery.com/) (for Bootstrap, DataTables.net and other)
 * [SweetAlert2](https://sweetalert2.github.io/) (Flexible modal window)
 * [notifit 2](https://www.npmjs.com/package/notifit-js) (Notifications)
 * Spinner (Loading indicator)
