@@ -2,15 +2,15 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserCreatorData;
 use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
+use Cake\Chronos\Chronos;
 
 /**
  * Repository.
  */
-class UserGeneratorRepository implements RepositoryInterface
+class UserCreatorRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory The query factory
@@ -18,7 +18,7 @@ class UserGeneratorRepository implements RepositoryInterface
     private $queryFactory;
 
     /**
-     * Constructor.
+     * The constructor.
      *
      * @param QueryFactory $queryFactory The query factory
      */
@@ -30,17 +30,13 @@ class UserGeneratorRepository implements RepositoryInterface
     /**
      * Insert user row.
      *
-     * @param UserCreatorData $user The user
+     * @param array $row The user data
      *
      * @return int The new ID
      */
-    public function insertUser(UserCreatorData $user): int
+    public function insertUser(array $row): int
     {
-        $row = [
-            'first_name' => $user->firstName,
-            'last_name' => $user->lastName,
-            'email' => $user->email,
-        ];
+        $row['created_at'] = Chronos::now()->toDateTimeString();
 
         return (int)$this->queryFactory->newInsert(TableName::USERS, $row)->execute()->lastInsertId();
     }

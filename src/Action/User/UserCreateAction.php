@@ -2,9 +2,9 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\Data\UserCreatorData;
 use App\Domain\User\Service\UserCreator;
 use App\Responder\Responder;
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -48,14 +48,14 @@ final class UserCreateAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Collect input from the HTTP request
-        $userData = new UserCreatorData((array)$request->getParsedBody());
+        $formData = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $userId = $this->userCreator->createUser($userData);
+        $userId = $this->userCreator->createUserFromArray($formData);
 
         // Build the HTTP response
-        return $this->responder->json($response, [
-            'user_id' => $userId,
-        ]);
+        return $this->responder
+            ->json($response, ['user_id' => $userId])
+            ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }

@@ -2,8 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User\Service;
 
-use App\Domain\User\Data\UserCreatorData;
-use App\Domain\User\Repository\UserGeneratorRepository;
+use App\Domain\User\Repository\UserCreatorRepository;
 use App\Domain\User\Service\UserCreator;
 use App\Test\TestCase\UnitTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +22,7 @@ class UserGeneratorTest extends TestCase
     protected function createInstance(): UserCreator
     {
         // Mock the required repositories
-        $this->registerMock(UserGeneratorRepository::class);
+        $this->registerMock(UserCreatorRepository::class);
 
         return $this->getContainer()->get(UserCreator::class);
     }
@@ -37,15 +36,16 @@ class UserGeneratorTest extends TestCase
     {
         $service = $this->createInstance();
 
-        $this->mockMethod([UserGeneratorRepository::class, 'insertUser'])->willReturn(1);
+        $this->mockMethod([UserCreatorRepository::class, 'insertUser'])->willReturn(1);
 
-        $user = new UserCreatorData();
-        $user->username = 'john.doe';
-        $user->email = 'john.doe@example.com';
-        $user->firstName = 'John';
-        $user->lastName = 'Doe';
+        $user = [
+            'username' => 'john.doe',
+            'email' => 'john.doe@example.com',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
 
-        $actual = $service->createUser($user);
+        $actual = $service->createUserFromArray($user);
 
         static::assertSame(1, $actual);
     }

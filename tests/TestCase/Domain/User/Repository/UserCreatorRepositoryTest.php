@@ -2,8 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User\Repository;
 
-use App\Domain\User\Data\UserCreatorData;
-use App\Domain\User\Repository\UserGeneratorRepository;
+use App\Domain\User\Repository\UserCreatorRepository;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -27,11 +26,11 @@ class UserCreatorRepositoryTest extends TestCase
     /**
      * Create instance.
      *
-     * @return UserGeneratorRepository The instance
+     * @return UserCreatorRepository The instance
      */
-    protected function createInstance(): UserGeneratorRepository
+    protected function createInstance(): UserCreatorRepository
     {
-        return $this->getContainer()->get(UserGeneratorRepository::class);
+        return $this->getContainer()->get(UserCreatorRepository::class);
     }
 
     /**
@@ -43,11 +42,12 @@ class UserCreatorRepositoryTest extends TestCase
     {
         $repository = $this->createInstance();
 
-        $user = new UserCreatorData();
-        $user->username = 'john.doe';
-        $user->email = 'john.doe@example.com';
-        $user->firstName = 'John';
-        $user->lastName = 'Doe';
+        $user = [
+            'username' => 'john.doe',
+            'email' => 'john.doe@example.com',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
 
         $actual = $repository->insertUser($user);
 

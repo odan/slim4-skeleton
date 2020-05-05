@@ -2,28 +2,22 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserCreatorData;
-use App\Domain\User\Repository\UserGeneratorRepository;
-use App\Domain\User\Validator\UserValidator;
+use App\Domain\User\Repository\UserCreatorRepository;
 use App\Factory\LoggerFactory;
 use App\Interfaces\ServiceInterface;
 use Psr\Log\LoggerInterface;
 use Selective\Validation\Exception\ValidationException;
+use Selective\Validation\ValidationResult;
 
 /**
- * Domain Service.
+ * Service.
  */
 final class UserCreator implements ServiceInterface
 {
     /**
-     * @var UserGeneratorRepository
+     * @var UserCreatorRepository
      */
     private $repository;
-
-    /**
-     * @var UserValidator
-     */
-    protected $userValidator;
 
     /**
      * @var LoggerInterface
@@ -33,17 +27,14 @@ final class UserCreator implements ServiceInterface
     /**
      * The constructor.
      *
-     * @param UserGeneratorRepository $repository The repository
-     * @param UserValidator $userValidator The user validator
+     * @param UserCreatorRepository $repository The repository
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
-        UserGeneratorRepository $repository,
-        UserValidator $userValidator,
+        UserCreatorRepository $repository,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
-        $this->userValidator = $userValidator;
         $this->logger = $loggerFactory
             ->addFileHandler('user_creator.log')
             ->createInstance('user_creator');
@@ -52,29 +43,73 @@ final class UserCreator implements ServiceInterface
     /**
      * Create a new user.
      *
-     * @param UserCreatorData $user The user data
+     * @param array $form The form data
      *
      * @throws ValidationException
      *
      * @return int The new user ID
      */
-    public function createUser(UserCreatorData $user): int
+    public function createUserFromArray(array $form): int
     {
-        // Validation
-        $validation = $this->userValidator->validateUser($user);
+        // Input validation
+        $this->validateFormData($form);
+
+        // Map form data to row
+        $userRow = $this->createUserRow($form);
+
+        // Insert user
+        $userId = $this->repository->insertUser($userRow);
+
+        // Logging
+        $this->logger->info(__('User created successfully: %s', $userId));
+
+        return $userId;
+    }
+
+    /**
+     * Validate.
+     *
+     * @param array $form The data
+     *
+     * @throws ValidationException
+     *
+     * @return void
+     */
+    private function validateFormData(array $form): void
+    {
+        $validation = new ValidationResult();
+
+        if (empty($form['username'])) {
+            $validation->addError('username', __('Input required'));
+        }
+
+        if (empty($form['email'])) {
+            $validation->addError('email', __('Input required'));
+        } elseif (filter_var($form['email'], FILTER_VALIDATE_EMAIL) === false) {
+            $validation->addError('email', __('Invalid email address'));
+        }
 
         if ($validation->isFailed()) {
             $validation->setMessage(__('Please check your input'));
 
             throw new ValidationException($validation);
         }
+    }
 
-        // Insert user
-        $userId = $this->repository->insertUser($user);
-
-        // Logging
-        $this->logger->info(__('User created successfully: %s', $userId));
-
-        return $userId;
+    /**
+     * Create row from form data.
+     *
+     * @param array $form The form data
+     *
+     * @return array The row
+     */
+    private function createUserRow(array $form): array
+    {
+        return [
+            'username' => $form['username'],
+            'email' => $form['email'],
+            'first_name' => $form['first_name'] ?? null,
+            'last_name' => $form['last_name'] ?? null,
+        ];
     }
 }

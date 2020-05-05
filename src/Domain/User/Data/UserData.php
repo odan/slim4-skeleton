@@ -2,13 +2,12 @@
 
 namespace App\Domain\User\Data;
 
-use App\Interfaces\DataInterface;
 use Selective\ArrayReader\ArrayReader;
 
 /**
  * Data object.
  */
-final class UserCreatorData implements DataInterface
+final class UserData
 {
     /** @var int|null */
     public $id;
@@ -38,21 +37,26 @@ final class UserCreatorData implements DataInterface
     public $enabled = false;
 
     /**
-     * The constructor.
+     * Named constructor.
      *
      * @param array $array The array with data
+     *
+     * @return self
      */
-    public function __construct(array $array = [])
+    public static function fromArray(array $array = []): self
     {
         $data = new ArrayReader($array);
 
-        $this->id = $data->findInt('id');
-        $this->username = $data->findString('username');
-        $this->firstName = $data->findString('first_name');
-        $this->lastName = $data->findString('last_name');
-        $this->email = $data->findString('email');
-        $this->locale = $data->findString('locale');
-        $this->role = $data->findString('role');
-        $this->enabled = $data->getBool('enabled', false);
+        $user = new self();
+        $user->id = $data->findInt('id');
+        $user->username = $data->findString('username');
+        $user->firstName = $data->findString('first_name');
+        $user->lastName = $data->findString('last_name');
+        $user->email = $data->findString('email');
+        $user->locale = $data->findString('locale');
+        $user->role = $data->findString('role');
+        $user->enabled = $data->getBool('enabled', false);
+
+        return $user;
     }
 }

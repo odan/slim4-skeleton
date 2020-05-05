@@ -2,7 +2,6 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserCreatorData;
 use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
 use App\Repository\TableName;
@@ -60,19 +59,12 @@ final class UserViewerRepository implements RepositoryInterface
     /**
      * Find all users.
      *
-     * @return UserCreatorData[] A list of users
+     * @return array A list of users
      */
     public function findAllUsers(): array
     {
         $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
 
-        $rows = $query->execute()->fetchAll('assoc') ?: [];
-
-        $result = [];
-        foreach ($rows as $row) {
-            $result[] = new UserCreatorData($row);
-        }
-
-        return $result;
+        return $query->execute()->fetchAll('assoc') ?: [];
     }
 }
