@@ -12,6 +12,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use Selective\Validation\Exception\ValidationException;
 use Slim\Exception\HttpException;
+use Slim\Psr7\Response;
 use Slim\Views\Twig;
 use Throwable;
 
@@ -141,21 +142,15 @@ class DefaultErrorHandler
      */
     private function getErrorMessage(Throwable $exception, int $statusCode, bool $displayErrorDetails): string
     {
-        // Default error message
-        $errorMessage = '500 Internal Server Error';
-
-        if ($statusCode === 403) {
-            $errorMessage = '403 Access denied. The user does not have access to this section.';
-        } elseif ($statusCode === 404) {
-            $errorMessage = '404 Not Found';
-        } elseif ($statusCode === 405) {
-            $errorMessage = '405 Method Not Allowed';
-        } elseif ($statusCode >= 400 && $statusCode <= 499) {
-            $errorMessage = sprintf('%s Error', $statusCode);
-        }
+        $reasonPhrase = (new Response())->withStatus($statusCode)->getReasonPhrase();
+        $errorMessage = sprintf('%s %s', $statusCode, $reasonPhrase);
 
         if ($displayErrorDetails === true) {
-            $errorMessage .= ' - Error details: ' . ExceptionDetail::getExceptionText($exception);
+            $errorMessage = sprintf(
+                '%s - Error details: %s',
+                $errorMessage,
+                ExceptionDetail::getExceptionText($exception)
+            );
         }
 
         return $errorMessage;
