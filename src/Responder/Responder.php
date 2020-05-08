@@ -112,7 +112,7 @@ final class Responder
      */
     public function json(
         ResponseInterface $response,
-        $data,
+        $data = null,
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
