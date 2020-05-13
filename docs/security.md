@@ -33,7 +33,12 @@ Authorization: Bearer RsT5OjbzRn430zqMLgV3Ia
 and JSON Web Signature based on RFC 7519.
 
 Note that a **logout** functionality with tokens is not feasible without giving up the **stateless** principle.
-Please don't use JWT for session management or to avoid server-side storage for sessions. 
+
+Do not include sensitive information in JWT tokens.
+
+If you store JWT as a cookie, make it "HttpOnly" and "Secure".
+
+Try to avoid JWT for session management or server-side storage for sessions. 
 
 It's up to you how you configure the routes and their individual authentication.
 
