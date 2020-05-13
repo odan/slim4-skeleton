@@ -11,10 +11,9 @@ Depending on the use case, different strategies are appropriate for the input va
 ## Form validation
 
 If you need to validate complex form data (arrays) against a specific set of rules, try 
-[cakephp/validation](https://github.com/cakephp/validation) or 
-[rakit/validation](https://github.com/rakit/validation).
+[cakephp/validation](https://github.com/cakephp/validation).
 
-If you want to manually validate form data and collect validation errors, 
+If you want to collect validation errors and throw validation exceptions, 
 try [selective/validation](https://github.com/selective-php/validation)
 
 ## OpenAPI validation
