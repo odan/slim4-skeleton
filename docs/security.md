@@ -19,9 +19,10 @@ As long as the client transmits its data over **HTTPS**, it's a secure authentic
 Authorization: Basic ZGVtbzpwQDU1dzByZA==
 ```
 
-You could also consider to use the [OAuth 2.0](https://oauth.net/2/) authentication standard in combination with a 
+You could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a 
 [Bearer-Token](https://oauth.net/2/bearer-tokens/) or a [JSON Web Token](https://oauth.net/2/jwt/).
-OAuth 2.0 is an authorization protocol to protect server resources without sharing their credentials.
+OAuth 2.0 is an **authorization** protocol to protect server resources without sharing their credentials.
+[OAuth 2.0 is not an authentication protocol](https://oauth.net/articles/authentication/).
 For that purpose, an OAuth 2.0 server [issues access tokens](https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/)
 that the client applications can use to access protected resources on behalf of the resource owner.
 
