@@ -65,16 +65,8 @@ trait UnitTestTrait
             throw new InvalidArgumentException(sprintf('Class not found: %s', $class));
         }
 
-        $reflection = new ReflectionClass($class);
-        $methods = [];
-
-        foreach ($reflection->getMethods() as $method) {
-            $methods[] = $method->name;
-        }
-
         return $this->getMockBuilder($class)
             ->disableOriginalConstructor()
-            ->setMethods($methods)
             ->getMock();
     }
 
