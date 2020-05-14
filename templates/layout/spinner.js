@@ -10,7 +10,7 @@ const showLoading = function () {
 const hideLoading = function () {
     const spinner = document.getElementById("spinner");
     if (spinner) {
-        document.body.removeChild(spinner);
+        spinner.parentNode.removeChild(spinner);
     }
 };
 
