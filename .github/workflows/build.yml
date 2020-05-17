@@ -1,4 +1,4 @@
-name: PHP
+name: build
 
 on: [push]
 
