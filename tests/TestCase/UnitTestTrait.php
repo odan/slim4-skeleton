@@ -6,7 +6,6 @@ use DI\Container;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
-use ReflectionClass;
 use UnexpectedValueException;
 
 /**
