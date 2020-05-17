@@ -19,13 +19,13 @@ As long as the client transmits its data over **HTTPS**, it's a secure authentic
 Authorization: Basic ZGVtbzpwQDU1dzByZA==
 ```
 
-You could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a  signed [JSON Web Token](https://oauth.net/2/jwt/).
+You could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
 
 The JWTs can be used as OAuth 2.0 [Bearer-Tokens](https://oauth.net/2/bearer-tokens/) to encode all relevant parts of an access token into the access token itself instead of having to store them in a database.
 
 Please note: [OAuth 2.0 is not an authentication protocol](https://oauth.net/articles/authentication/).
 
-Clients may use the HTTP Basic authentication scheme, as defined in [RFC2617](https://tools.ietf.org/html/rfc6749#section-2.3.1),
+Clients may use the HTTP Basic authentication scheme, as defined in [RFC2617](https://tools.ietf.org/html/rfc2617),
 to authenticate with the server.
 
 After successful authentication, the client sends its token within the `Authorization` request header:
@@ -36,16 +36,6 @@ Authorization: Bearer RsT5OjbzRn430zqMLgV3Ia
 
 [lcobucci/jwt](https://github.com/lcobucci/jwt) is a good library to work with JSON Web Token (JWT) 
 and JSON Web Signature based on RFC 7519.
-
-Note that a **logout** functionality with tokens is not feasible without giving up the **stateless** principle.
-
-Do not include sensitive information in JWT tokens.
-
-If you store JWT as a cookie, make it "HttpOnly" and "Secure".
-
-Try to avoid JWT for session management or server-side storage for sessions. 
-
-It's up to you how you configure the routes and their individual authentication.
 
 **Read more:** 
 
