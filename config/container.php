@@ -11,6 +11,7 @@ use Selective\BasePath\BasePathMiddleware;
 use Selective\Config\Configuration;
 use Selective\Validation\Encoder\JsonEncoder;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
+use Selective\Validation\Transformer\ErrorDetailsResultTransformer;
 use Selective\Validation\Transformer\ErrorDetailsTransformer;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -177,7 +178,11 @@ return [
     ValidationExceptionMiddleware::class => function (ContainerInterface $container) {
         $factory = $container->get(ResponseFactoryInterface::class);
 
-        return new ValidationExceptionMiddleware($factory, new ErrorDetailsTransformer(), new JsonEncoder());
+        return new ValidationExceptionMiddleware(
+            $factory,
+            new ErrorDetailsResultTransformer(),
+            new JsonEncoder()
+        );
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
