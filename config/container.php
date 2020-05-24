@@ -188,12 +188,17 @@ return [
         $config = $container->get(Configuration::class)->getArray('error');
         $app = $container->get(App::class);
 
+        $logger = $container->get(LoggerFactory::class)
+            ->addFileHandler('error.log')
+            ->createInstance('default_error_handler');
+
         $errorMiddleware = new ErrorMiddleware(
             $app->getCallableResolver(),
             $app->getResponseFactory(),
             (bool)$config['display_error_details'],
             (bool)$config['log_errors'],
-            (bool)$config['log_error_details']
+            (bool)$config['log_error_details'],
+            $logger
         );
 
         $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
