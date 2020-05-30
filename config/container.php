@@ -185,7 +185,7 @@ return [
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
-        $config = $container->get('settings')->getArray('error');
+        $config = $container->get('settings')['error'];
         $app = $container->get(App::class);
 
         $logger = $container->get(LoggerFactory::class)
