@@ -90,9 +90,7 @@ final class UserCreator implements ServiceInterface
         }
 
         if ($validation->isFailed()) {
-            $validation->setMessage(__('Please check your input'));
-
-            throw new ValidationException($validation);
+            throw new ValidationException(__('Please check your input'), $validation);
         }
     }
 
