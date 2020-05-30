@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Login;
+namespace App\Action\Auth;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;

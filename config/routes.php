@@ -17,9 +17,9 @@ return function (App $app) {
     // API endpint
     $app->post('/api/users', \App\Action\User\UserCreateAction::class)->setName('api-user-create');
 
-    $app->get('/login', \App\Action\Login\LoginAction::class)->setName('login');
-    $app->post('/login', \App\Action\Login\LoginSubmitAction::class);
-    $app->get('/logout', \App\Action\Login\LogoutAction::class)->setName('logout');
+    $app->get('/login', \App\Action\Auth\LoginAction::class)->setName('login');
+    $app->post('/login', \App\Action\Auth\LoginSubmitAction::class);
+    $app->get('/logout', \App\Action\Auth\LogoutAction::class)->setName('logout');
 
     // Password protected area
     $app->group('/users', function (RouteCollectorProxy $group) {

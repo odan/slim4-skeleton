@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Login;
+namespace App\Action\Auth;
 
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
