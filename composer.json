@@ -66,14 +66,14 @@
             "npm run build"
         ],
         "build": "ant build",
-        "build:check": [
+        "build:cc": "ant cc",
+        "check": [
             "@lint",
             "@cs:check",
             "@sniffer:check",
             "@phpstan",
             "@test:coverage"
         ],
-        "build:cc": "ant cc",
         "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
         "cs:fix": "php-cs-fixer fix --config=.cs.php",
         "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
