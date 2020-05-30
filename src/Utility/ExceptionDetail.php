@@ -5,7 +5,7 @@ namespace App\Utility;
 use Throwable;
 
 /**
- * Class ExceptionDetail.
+ * Exception detail formatter.
  */
 final class ExceptionDetail
 {
