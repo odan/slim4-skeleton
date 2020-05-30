@@ -1,6 +1,5 @@
 <?php
 
-use Selective\Config\Configuration;
 use Slim\App;
 
 /** @var App $app */
@@ -10,9 +9,9 @@ $container = $app->getContainer();
 // @phpstan-ignore-next-line
 $pdo = $container->get(PDO::class);
 // @phpstan-ignore-next-line
-$config = $container->get(Configuration::class);
-$database = $config->getString('db.database');
-$phinx = $config->getArray('phinx');
+$config = $container->get('settings');
+$database = $config['db']['database'];
+$phinx = $config['phinx'];
 
 $phinx['environments']['local'] = [
     // Set database name

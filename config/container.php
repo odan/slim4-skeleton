@@ -8,7 +8,6 @@ use Fullpipe\TwigWebpackExtension\WebpackExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
-use Selective\Config\Configuration;
 use Selective\Validation\Encoder\JsonEncoder;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Selective\Validation\Transformer\ErrorDetailsResultTransformer;
@@ -36,8 +35,8 @@ use Twig\TwigFunction;
 
 return [
     // Application settings
-    Configuration::class => function () {
-        return new Configuration(require __DIR__ . '/settings.php');
+    'settings' => function () {
+        return require __DIR__ . '/settings.php';
     },
 
     App::class => function (ContainerInterface $container) {
@@ -58,7 +57,7 @@ return [
 
     // The logger factory
     LoggerFactory::class => function (ContainerInterface $container) {
-        return new LoggerFactory($container->get(Configuration::class)->getArray('logger'));
+        return new LoggerFactory($container->get('settings')['logger']);
     },
 
     TwigMiddleware::class => function (ContainerInterface $container) {
@@ -67,8 +66,8 @@ return [
 
     // Twig templates
     Twig::class => function (ContainerInterface $container) {
-        $config = $container->get(Configuration::class);
-        $settings = $config->getArray('twig');
+        $config = (array)$container->get('settings');
+        $settings = $config['twig'];
 
         $options = $settings['options'];
         $options['cache'] = $options['cache_enabled'] ? $options['cache_path'] : false;
@@ -76,14 +75,15 @@ return [
         $twig = Twig::create($settings['paths'], $options);
 
         $loader = $twig->getLoader();
+        $publicPath = (string)$config['public'];
         if ($loader instanceof FilesystemLoader) {
-            $loader->addPath($config->getString('public'), 'public');
+            $loader->addPath($publicPath, 'public');
         }
 
         // Add extensions
         $twig->addExtension(new TranslationExtension($container->get(Translator::class)));
         $twig->addExtension(new WebpackExtension(
-            $config->getString('public') . '/assets/manifest.json',
+            $publicPath . '/assets/manifest.json',
             'assets/',
             'assets/'
         ));
@@ -115,7 +115,7 @@ return [
     },
 
     Session::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('session');
+        $settings = $container->get('settings')['session'];
 
         if (PHP_SAPI === 'cli') {
             return new Session(new MockArraySessionStorage());
@@ -130,7 +130,7 @@ return [
 
     // Translation
     Translator::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('translation');
+        $settings = $container->get('settings')['translation'];
 
         $translator = new Translator(
             $settings['locale'],
@@ -148,7 +148,7 @@ return [
     },
 
     TranslatorMiddleware::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('translation');
+        $settings = $container->get('settings')['translation'];
         $translator = $container->get(Translator::class);
         $session = $container->get(Session::class);
 
@@ -163,7 +163,7 @@ return [
 
     // Database connection
     Connection::class => function (ContainerInterface $container) {
-        return new Connection($container->get(Configuration::class)->getArray('db'));
+        return new Connection($container->get('settings')['db']);
     },
 
     PDO::class => function (ContainerInterface $container) {
@@ -185,7 +185,7 @@ return [
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
-        $config = $container->get(Configuration::class)->getArray('error');
+        $config = $container->get('settings')->getArray('error');
         $app = $container->get(App::class);
 
         $logger = $container->get(LoggerFactory::class)

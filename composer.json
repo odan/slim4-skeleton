@@ -23,7 +23,6 @@
         "php-di/php-di": "^6.0",
         "selective/array-reader": "^0.3",
         "selective/basepath": "^0.2",
-        "selective/config": "^0.1.1",
         "selective/validation": "^0.9.0",
         "slim/psr7": "^1",
         "slim/slim": "^4.5",

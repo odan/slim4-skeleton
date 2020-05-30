@@ -1,7 +1,6 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Selective\Config\Configuration;
 use Symfony\Component\Console\Application;
 
 if (isset($_SERVER['REQUEST_METHOD'])) {
@@ -12,7 +11,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 /** @var ContainerInterface $container */
 $container = (require __DIR__ . '/../config/bootstrap.php')->getContainer();
 
-$commands = $container->get(Configuration::class)->getArray('commands');
+$commands = $container->get('settings')['commands'];
 $application = new Application();
 
 foreach ($commands as $class) {

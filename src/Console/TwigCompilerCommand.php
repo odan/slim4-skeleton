@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use Psr\Container\ContainerInterface;
-use Selective\Config\Configuration;
 use Slim\Views\Twig;
 use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
@@ -67,7 +66,7 @@ final class TwigCompilerCommand extends Command
 
         $this->output->write('Compiling Twig templates... ', true);
 
-        $settings = $this->container->get(Configuration::class)->getArray('twig');
+        $settings = $this->container->get('settings')['twig'];
         $twig = $this->container->get(Twig::class)->getEnvironment();
 
         $cachePath = (string)realpath($settings['options']['cache_path']);
