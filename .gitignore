@@ -8,6 +8,16 @@ cache.properties
 .vscode
 .phpunit.result.cache
 
+# keys
+*.pem
+*.key
+*.ppk
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+
 vendor/
 build/
 node_modules/
