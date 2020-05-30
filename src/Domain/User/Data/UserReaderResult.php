@@ -3,16 +3,16 @@
 namespace App\Domain\User\Data;
 
 /**
- * User session data.
+ * User data.
  */
-class UserSessionData
+final class UserReaderResult
 {
     /** @var int */
     public $id;
 
     /** @var string */
-    public $email;
+    public $username;
 
     /** @var string */
-    public $locale;
+    public $email;
 }

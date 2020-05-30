@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\Service\UserViewer;
+use App\Domain\User\Service\UserReader;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class UserViewAction
 {
     /**
-     * @var UserViewer
+     * @var UserReader
      */
     private $userReader;
 
@@ -25,10 +25,10 @@ final class UserViewAction
     /**
      * The constructor.
      *
-     * @param UserViewer $userViewer The service
+     * @param UserReader $userViewer The service
      * @param Responder $responder The responder
      */
-    public function __construct(UserViewer $userViewer, Responder $responder)
+    public function __construct(UserReader $userViewer, Responder $responder)
     {
         $this->userReader = $userViewer;
         $this->responder = $responder;

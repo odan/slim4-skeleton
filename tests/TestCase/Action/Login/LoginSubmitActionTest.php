@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\Login;
 
-use App\Domain\User\Data\UserSessionData;
+use App\Domain\User\Data\UserAuthData;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -37,9 +37,9 @@ class LoginSubmitActionTest extends TestCase
         // User session
         $session = $this->getContainer()->get(Session::class);
 
-        /** @var UserSessionData $user */
+        /** @var UserAuthData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserSessionData::class, $user);
+        static::assertInstanceOf(UserAuthData::class, $user);
         static::assertSame(1, $user->id);
         static::assertSame('en_US', $user->locale);
         static::assertSame('admin@example.com', $user->email);
@@ -67,9 +67,9 @@ class LoginSubmitActionTest extends TestCase
         // User session
         $session = $this->getContainer()->get(Session::class);
 
-        /** @var UserSessionData $user */
+        /** @var UserAuthData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserSessionData::class, $user);
+        static::assertInstanceOf(UserAuthData::class, $user);
         static::assertSame(2, $user->id);
         static::assertSame('de_DE', $user->locale);
         static::assertSame('user@example.com', $user->email);

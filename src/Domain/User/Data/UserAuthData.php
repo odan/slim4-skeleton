@@ -3,16 +3,16 @@
 namespace App\Domain\User\Data;
 
 /**
- * User data.
+ * User session data.
  */
-class UserViewData
+class UserAuthData
 {
     /** @var int */
     public $id;
 
     /** @var string */
-    public $username;
+    public $email;
 
     /** @var string */
-    public $email;
+    public $locale;
 }

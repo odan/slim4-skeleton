@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserSessionData;
+use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Repository\UserAuthRepository;
 use UnexpectedValueException;
 
@@ -17,7 +17,7 @@ final class UserAuth
     private $repository;
 
     /**
-     * @var UserSessionData|null
+     * @var UserAuthData|null
      */
     private $user;
 
@@ -37,9 +37,9 @@ final class UserAuth
      * @param string $username The username
      * @param string $password The password
      *
-     * @return UserSessionData|null
+     * @return UserAuthData|null
      */
-    public function authenticate(string $username, string $password): ?UserSessionData
+    public function authenticate(string $username, string $password): ?UserAuthData
     {
         $userRow = $this->repository->findUserByUsername($username);
 
@@ -52,7 +52,7 @@ final class UserAuth
         }
 
         // Map array to DTO
-        $user = new UserSessionData();
+        $user = new UserAuthData();
         $user->id = (int)$userRow['id'];
         $user->email = (string)$userRow['email'];
         $user->locale = (string)$userRow['locale'];
@@ -63,11 +63,11 @@ final class UserAuth
     /**
      * Set the identity into storage or null if no identity is available.
      *
-     * @param UserSessionData|null $user The user
+     * @param UserAuthData|null $user The user
      *
      * @return void
      */
-    public function setUser(?UserSessionData $user): void
+    public function setUser(?UserAuthData $user): void
     {
         $this->user = $user;
     }
@@ -77,9 +77,9 @@ final class UserAuth
      *
      * @throws UnexpectedValueException
      *
-     * @return UserSessionData The user
+     * @return UserAuthData The user
      */
-    public function getUser(): UserSessionData
+    public function getUser(): UserAuthData
     {
         if (!$this->user) {
             throw new UnexpectedValueException('No user available');

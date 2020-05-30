@@ -2,7 +2,7 @@
 
 namespace App\Action\Login;
 
-use App\Domain\User\Data\UserSessionData;
+use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
@@ -77,11 +77,11 @@ final class LoginSubmitAction
     /**
      * Init user session.
      *
-     * @param UserSessionData $user The user
+     * @param UserAuthData $user The user
      *
      * @return void
      */
-    private function startUserSession(UserSessionData $user): void
+    private function startUserSession(UserAuthData $user): void
     {
         // Clears all session data and regenerates session ID
         $this->session->invalidate();

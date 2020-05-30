@@ -2,7 +2,7 @@
 
 namespace App\Middleware;
 
-use App\Domain\User\Data\UserSessionData;
+use App\Domain\User\Data\UserAuthData;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -57,7 +57,7 @@ final class TranslatorMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        /** @var UserSessionData|null $user */
+        /** @var UserAuthData|null $user */
         $user = $this->session->get('user');
 
         // User locale or default locale
