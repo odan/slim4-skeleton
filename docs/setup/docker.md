@@ -5,7 +5,7 @@ parent: Installation
 nav_order: 2
 ---
 
-# Docker Development Envionment
+# Docker Development Environment
 
 ## Requirements
 
