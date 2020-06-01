@@ -11,6 +11,24 @@ nav_order: 2
 
 * The latest [Docker](https://www.docker.com/) version
 
+## Installation
+
+Install the application using [Composer](composer.md).
+
+To build the webserver, run:
+
+```
+docker-compose build
+```
+
+To start the webserver, run:
+
+```
+docker-compose up
+```
+
+Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the web application.
+
 ## Configuration
 
 Use the `docker-compose.yml` and `Dockerfile` to configure and run the application.
@@ -51,22 +69,6 @@ if (env('DOCKER') === '1') {
     // Running in a docker container
 }
 ```
-
-## Usage
-
-To build the server, run:
-
-```
-docker-compose build
-```
-
-To start the webserver, run:
-
-```
-docker-compose up
-```
-
-Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the web application.
 
 ## Debugging in PhpStorm
 

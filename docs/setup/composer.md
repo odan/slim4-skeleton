@@ -7,7 +7,8 @@ nav_order: 1
 
 # Installation using Composer
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+Run this command from the directory in which you want to install your new 
+Slim Framework application.
 
 **Step 1:** Create a new project:
 
@@ -43,6 +44,8 @@ Create a new database for integration tests
 mysql -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 ```
 
+**Step 4:** Configuration
+
 Copy the file: `config/env.example.php` to `config/env.php`.
 
 ```bash
@@ -64,7 +67,7 @@ Run all of the available migrations:
 composer phinx:migrate
 ```
 
-**Step 4:** Run it
+**Step 5:** Run it
 
 Open `http://localhost/{my-app}` in your browser
 
