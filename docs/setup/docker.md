@@ -68,13 +68,13 @@ docker-compose up
 
 Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the web application.
 
-## Debugging with PhpStorm
+## Debugging in PhpStorm
 
 * Start the docker container with `docker-compose up`
 * Open PhpStorm
 * Enable the Xdebug option: "Can accept external connections". See [screenshot](https://user-images.githubusercontent.com/781074/83182499-ba9e7f00-a126-11ea-88c0-f28d0cbff260.png)
-* Start the Xdebug Listener
-* Set a breakpoint
+* Start the Xdebug listener
+* Set a debugger breakpoint
 * Navigate to `http://localhost:8080`
 * Use the [PhpStorm bookmarklets generator](https://www.jetbrains.com/phpstorm/marklets/) to set the Xdebug cookie.
 * Navigate to the url you want to debug
