@@ -17,8 +17,6 @@
 
 This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.com/) application.
 
-**[Donate](https://odan.github.io/donate.html)**
-
 ## Requirements
 
 * PHP 7.2+
@@ -57,6 +55,7 @@ This project is based on best practice and industry standards:
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
+* Docker support
 
 ## Frontend
 
@@ -70,9 +69,11 @@ This project is based on best practice and industry standards:
 * Spinner (Loading indicator)
 * CSS and JS minifier
 
-## Documentation
+## Support
 
-Read the **[Documentation](https://odan.github.io/slim4-skeleton)**
+* Create issues at <https://github.com/odan/slim4-skeleton/issues>
+* Documentation is at <https://odan.github.io/slim4-skeleton/>
+* Here you can can [donate](https://odan.github.io/donate.html) for this project.
 
 ## License
 
