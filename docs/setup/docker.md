@@ -13,7 +13,7 @@ nav_order: 1
 
 ## Configuration
 
-Use the `docker-compose.yml` and `Dockerfile` to run the application.
+Use the `docker-compose.yml` and `Dockerfile` to configure and run the application.
 
 For development and for production you can use the `env.php` for the secret passwords, 
 private keys etc...
@@ -76,5 +76,5 @@ Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the 
 * Start the Xdebug Listener
 * Set a breakpoint
 * Navigate to `http://localhost:8080`
-* Use the [PhpStorm bookmarklets generator](https://www.jetbrains.com/phpstorm/marklets/) to set Xdebug cookie.
+* Use the [PhpStorm bookmarklets generator](https://www.jetbrains.com/phpstorm/marklets/) to set the Xdebug cookie.
 * Navigate to the url you want to debug
