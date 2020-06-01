@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DOCKER=1
+      - XDEBUG_CONFIG=remote_host=host.docker.internal
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
