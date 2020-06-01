@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Composer
+parent: Installation
 nav_order: 1
-has_children: true
 ---
 
 # Installation using Composer

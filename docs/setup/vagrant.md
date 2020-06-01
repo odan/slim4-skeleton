@@ -18,7 +18,7 @@ nav_order: 3
 
 ## Vagrant Setup
 
-Create a file `vagrantfile` and copy/paste this content:
+Create a file `Vagrantfile` and copy/paste this content:
 
 {% raw %}
 ```
