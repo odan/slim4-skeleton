@@ -5,18 +5,22 @@ parent: Installation
 nav_order: 3
 ---
 
-# Vagrant – Installing Vagrant on Windows
+# Using Vagrant 
 
 ## Requirements
+
+* The latest version of Vagrant
+* [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0). Install only one of the supported versions: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0
+
+**Additional requirements for Windows User**
 
 * Admin rights
 * Optional: [Chocolatey](https://chocolatey.org/)
 * The latest **PowerShell** version (minimum v3). Update in admin mode: `choco upgrade powershell`
 * **Hyper-V cmdlets for PowerShell** to control Hyper-V. Please enable them in the
 "Windows Features" control panel.
-* [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0). Install only one of the supported versions: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0
 
-## Vagrant Setup
+## Vagrant Box Setup
 
 Create a file `Vagrantfile` and copy/paste this content:
 
