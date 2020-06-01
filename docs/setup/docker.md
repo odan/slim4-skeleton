@@ -13,7 +13,11 @@ nav_order: 2
 
 ## Installation
 
-Install the application using [Composer](composer.md).
+Create a new project:
+
+```
+composer create-project odan/slim4-skeleton my-app
+```
 
 To build the webserver, run:
 
@@ -27,14 +31,27 @@ To start the webserver, run:
 docker-compose up
 ```
 
-Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the web application.
-
 ## Configuration
 
-Use the `docker-compose.yml` and `Dockerfile` to configure and run the application.
-
 For development and for production you can use the `env.php` for the secret passwords, 
-private keys etc...
+private keys and so on.
+
+Copy the file: `config/env.example.php` to `config/env.php`.
+
+```bash
+cp config/env.example.php config/env.php
+```
+
+To connect to the internal MySQL database change the configuration in `config/env.php` to this:
+
+**Example**
+
+```php
+$settings['db']['host'] = env('MYSQL_HOST');
+$settings['db']['database'] = env('MYSQL_DATABASE');
+$settings['db']['username'] = env('MYSQL_USER');
+$settings['db']['password'] = env('MYSQL_PASSWORD');
+```
 
 If you want to connect from a container to a (MySQL) service on the host you can 
 use `host.docker.internal` to reference the host. 
@@ -49,26 +66,18 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = 'secret';
 ```
 
-If you want to connect from a container to the service in the same container, 
-you can read the environment variables using `env(...)`:
-
-**Example**
-
-```php
-$settings['db']['host'] = env('MYSQL_HOST');
-$settings['db']['database'] = env('MYSQL_DATABASE');
-$settings['db']['username'] = env('MYSQL_USER');
-$settings['db']['password'] = env('MYSQL_PASSWORD');
-```
-
 To determine wheter the process in running in a docker container,
 you can check the `DOCKER` environment variable, e.g.:
 
 ```php
 if (env('DOCKER') === '1') {
     // Running in a docker container
+} else {
+    // Load other settings
 }
 ```
+
+Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the web application.
 
 ## Debugging in PhpStorm
 
