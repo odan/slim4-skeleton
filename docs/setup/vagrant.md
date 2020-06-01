@@ -2,7 +2,7 @@
 layout: default
 title: Vagrant
 parent: Installation
-nav_order: 2
+nav_order: 3
 ---
 
 # Vagrant – Installing Vagrant on Windows
