@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Vagrant Setup
+title: Vagrant
 parent: Installation
-nav_order: 1
+nav_order: 2
 ---
 
 # Vagrant – Installing Vagrant on Windows
