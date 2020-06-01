@@ -14,25 +14,15 @@ A Slim 4 Framework skeleton for web applications and APIs.
 
 ## Installation
 
-Run this command from the directory in which you want to install your new Slim Framework application.
-
-```bash
-composer create-project odan/slim4-skeleton {my-app-name}
-```
-
-Replace `{my-app-name}` with the desired directory name for your new application.
-
-* Ensure that `logs/` and `tmp/` is web writable.
-* Open the app url
-* You should see a message: `Hello, World!`
-
-Read more: [Manual Setup](manual-setup.md)
-
-## Download
-
-* You can also download the latest version as ZIP file: [master.zip](https://github.com/odan/slim4-skeleton/archive/master.zip)
+* [Installation using Composer](setup/composer.md)
+* [Installation using Docker](setup/docker.md)
+* [Installation using Vagrant](setup/vagrant.md)
 
 ## Links
 
-* [Slim 4 Skeleton on Github](https://github.com/odan/slim4-skeleton)
-* [Slim 4 Documentation](http://www.slimframework.com/docs/v4/)
+* [Slim Framework Website](http://www.slimframework.com/)
+* [Slim Framework Documentation](http://www.slimframework.com/docs/v4/)
+* [Slim Framework Support Forum](https://discourse.slimframework.com/)
+* [Slim Framework Newsletter](https://tinyletter.com/slimphp)
+* [Slim Framework Articles](https://odan.github.io/)
+* [Donate](https://odan.github.io/donate.html)

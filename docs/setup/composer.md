@@ -7,6 +7,8 @@ nav_order: 1
 
 # Installation using Composer
 
+Run this command from the directory in which you want to install your new Slim Framework application.
+
 **Step 1:** Create a new project:
 
 ```shell
