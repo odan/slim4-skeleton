@@ -73,7 +73,7 @@ This project is based on best practice and industry standards:
 
 * Create issues at <https://github.com/odan/slim4-skeleton/issues>
 * Documentation is at <https://odan.github.io/slim4-skeleton/>
-* Here you can can [donate](https://odan.github.io/donate.html) for this project.
+* Here you can [donate](https://odan.github.io/donate.html) for this project.
 
 ## License
 
