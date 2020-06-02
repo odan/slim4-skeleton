@@ -10,7 +10,7 @@ nav_order: 9
 
 **Domain**
 
-* **Use cases:** Application services with the business logic
+* **Use cases:** Services with the business logic
 * **Model:** Value Objects, DTOs, Entities
 * **Interfaces for boundary objects:** The repository interfaces
 

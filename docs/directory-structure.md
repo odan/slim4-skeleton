@@ -26,7 +26,7 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 │   ├── Action              # Controller actions (application layer)
 │   ├── Console             # Console commands for console.php
 │   ├── Domain              # The business logic
-│   ├── Factory             # Application service factories
+│   ├── Factory             # Factories
 │   ├── Responder           # Responder and Url helper (application layer)
 │   ├── Middleware          # Middleware (application layer)
 │   └── Utility             # Helper classes and functions
