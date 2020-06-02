@@ -4,7 +4,6 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Factory\LoggerFactory;
-use App\Interfaces\ServiceInterface;
 use Psr\Log\LoggerInterface;
 use Selective\Validation\Exception\ValidationException;
 use Selective\Validation\ValidationResult;
@@ -12,7 +11,7 @@ use Selective\Validation\ValidationResult;
 /**
  * Service.
  */
-final class UserCreator implements ServiceInterface
+final class UserCreator
 {
     /**
      * @var UserCreatorRepository

@@ -3,12 +3,11 @@
 namespace App\Domain\User\Service;
 
 use App\Domain\User\Repository\UserListDataTableRepository;
-use App\Interfaces\ServiceInterface;
 
 /**
  * Service.
  */
-final class UserListDataTable implements ServiceInterface
+final class UserListDataTable
 {
     /**
      * @var UserListDataTableRepository

@@ -4,12 +4,11 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Data\UserReaderResult;
 use App\Domain\User\Repository\UserViewerRepository;
-use App\Interfaces\ServiceInterface;
 
 /**
  * Service.
  */
-final class UserReader implements ServiceInterface
+final class UserReader
 {
     /**
      * @var UserViewerRepository
