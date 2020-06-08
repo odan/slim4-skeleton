@@ -15,28 +15,18 @@ class UserGeneratorTest extends TestCase
     use UnitTestTrait;
 
     /**
-     * Create instance.
-     *
-     * @return UserCreator The instance
-     */
-    protected function createInstance(): UserCreator
-    {
-        // Mock the required repositories
-        $this->registerMock(UserCreatorRepository::class);
-
-        return $this->getContainer()->get(UserCreator::class);
-    }
-
-    /**
      * Test.
      *
      * @return void
      */
     public function testCreateUser(): void
     {
-        $service = $this->createInstance();
+        // Mock the required repositories
+        $this->mock(UserCreatorRepository::class)
+            ->method('insertUser')
+            ->willReturn(1);
 
-        $this->mockMethod([UserCreatorRepository::class, 'insertUser'])->willReturn(1);
+        $service = $this->getContainer()->get(UserCreator::class);
 
         $user = [
             'username' => 'john.doe',

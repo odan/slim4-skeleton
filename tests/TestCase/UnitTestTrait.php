@@ -4,9 +4,7 @@ namespace App\Test\TestCase;
 
 use DI\Container;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
-use UnexpectedValueException;
 
 /**
  * Unit test.
@@ -32,55 +30,23 @@ trait UnitTestTrait
      *
      * @param string $class The class or interface
      *
-     * @throws UnexpectedValueException
-     *
-     * @return void
-     */
-    protected function registerMock(string $class): void
-    {
-        $container = $this->getContainer();
-
-        if ($container instanceof Container) {
-            $container->set($class, $this->createMockObject($class));
-
-            return;
-        }
-
-        throw new UnexpectedValueException(sprintf('The class could not be mocked: %s', $class));
-    }
-
-    /**
-     * Mocking an interface.
-     *
-     * @param string $class The interface / class name
-     *
-     * @throws InvalidArgumentException
-     *
      * @return MockObject The mock
      */
-    protected function createMockObject(string $class): MockObject
+    protected function mock(string $class): MockObject
     {
         if (!class_exists($class)) {
             throw new InvalidArgumentException(sprintf('Class not found: %s', $class));
         }
 
-        return $this->getMockBuilder($class)
+        $mock = $this->getMockBuilder($class)
             ->disableOriginalConstructor()
             ->getMock();
-    }
 
-    /**
-     * Create a mocked class method.
-     *
-     * @param array|callable $method The class and method
-     *
-     * @return InvocationMocker
-     */
-    protected function mockMethod($method): InvocationMocker
-    {
-        /** @var MockObject $mock */
-        $mock = $this->getContainer()->get((string)$method[0]);
+        $container = $this->getContainer();
+        if ($container instanceof Container) {
+            $container->set($class, $mock);
+        }
 
-        return $mock->method((string)$method[1]);
+        return $mock;
     }
 }
