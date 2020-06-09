@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\User;
 
-use App\Test\TestCase\HttpTestTrait;
+use App\Test\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UserCreateActionTest extends TestCase
 {
-    use HttpTestTrait;
+    use DatabaseTestTrait;
 
     /**
      * Test.

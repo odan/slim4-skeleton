@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\Hello;
 
-use App\Test\TestCase\HttpTestTrait;
+use App\Test\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class HelloActionTest extends TestCase
 {
-    use HttpTestTrait;
+    use AppTestTrait;
 
     /**
      * Test.

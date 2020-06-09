@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Responder;
 
 use App\Responder\Responder;
-use App\Test\TestCase\HttpTestTrait;
+use App\Test\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 use Slim\Psr7\Response;
 
@@ -12,7 +12,7 @@ use Slim\Psr7\Response;
  */
 class ResponderTest extends TestCase
 {
-    use HttpTestTrait;
+    use AppTestTrait;
 
     /**
      * Test.
@@ -21,7 +21,7 @@ class ResponderTest extends TestCase
      */
     public function testEncodeJson(): void
     {
-        $responder = $this->getContainer()->get(Responder::class);
+        $responder = $this->container->get(Responder::class);
 
         $response = $responder->json(new Response(), ['success' => true]);
 
@@ -37,7 +37,7 @@ class ResponderTest extends TestCase
      */
     public function testRedirectUrl(): void
     {
-        $responder = $this->getContainer()->get(Responder::class);
+        $responder = $this->container->get(Responder::class);
 
         $request = $this->createRequest('GET', '/');
         $response = $responder->redirect(new Response(), 'https://www.example.com/');
@@ -54,15 +54,14 @@ class ResponderTest extends TestCase
      */
     public function testRedirectRouteName(): void
     {
-        $app = $this->getApp();
-        $responder = $this->getContainer()->get(Responder::class);
+        $responder = $this->container->get(Responder::class);
 
-        $app->get('/foo', function ($request, $response) use ($responder) {
+        $this->app->get('/foo', function ($request, $response) use ($responder) {
             return $responder->redirect($response, 'foo');
         })->setName('foo');
 
         $request = $this->createRequest('GET', '/foo');
-        $response = $app->handle($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(302, $response->getStatusCode());
         static::assertSame('/foo', $response->getHeaderLine('Location'));

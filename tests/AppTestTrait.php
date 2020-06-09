@@ -1,21 +1,84 @@
 <?php
 
-namespace App\Test\TestCase;
+namespace App\Test;
 
-use App\Domain\User\Data\UserAuthData;
+use App\Test\Traits\InvalidArgumentException;
+use DI\Container;
+use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
+use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
+use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
-use Symfony\Component\HttpFoundation\Session\Session;
 use UnexpectedValueException;
 
 /**
- * Acceptance Test.
+ * Container Trait.
  */
-trait HttpTestTrait
+trait AppTestTrait
 {
-    use DatabaseTestTrait;
+    /** @var ContainerInterface|Container */
+    protected $container;
+
+    /** @var App */
+    protected $app;
+
+    /**
+     * Bootstrap app.
+     *
+     * @throws UnexpectedValueException
+     *
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        $this->app = require __DIR__ . '/../config/bootstrap.php';
+
+        $container = $this->app->getContainer();
+        if ($container === null) {
+            throw new UnexpectedValueException('Container must be initialized');
+        }
+
+        $this->container = $container;
+    }
+
+    /**
+     * Add mock to container.
+     *
+     * @param string $class The class or interface
+     *
+     * @return MockObject The mock
+     */
+    protected function mock(string $class): MockObject
+    {
+        if (!class_exists($class)) {
+            throw new InvalidArgumentException(sprintf('Class not found: %s', $class));
+        }
+
+        $mock = $this->getMockBuilder($class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        if ($this->container instanceof Container) {
+            $this->container->set($class, $mock);
+        }
+
+        return $mock;
+    }
+
+    /**
+     * Create a mocked class method.
+     *
+     * @param array|callable $method The class and method
+     *
+     * @return InvocationMocker The mocker
+     */
+    protected function mockMethod($method): InvocationMocker
+    {
+        return $this->mock((string)$method[0])->method((string)$method[1]);
+    }
 
     /**
      * Create a server request.
@@ -83,25 +146,6 @@ trait HttpTestTrait
      */
     protected function request(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->getApp()->handle($request);
-    }
-
-    /**
-     * Login user.
-     *
-     * @return void
-     */
-    private function loginUser(): void
-    {
-        $user = new UserAuthData();
-        $user->id = 1;
-        $user->locale = 'en_US';
-        $session = $this->getContainer()->get(Session::class);
-
-        if ($session === null) {
-            throw new UnexpectedValueException('Session not defined');
-        }
-
-        $session->set('user', $user);
+        return $this->app->handle($request);
     }
 }

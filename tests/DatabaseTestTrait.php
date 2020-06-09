@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase;
+namespace App\Test;
 
 use Cake\Database\Connection;
 use PDO;
@@ -15,20 +15,16 @@ use UnexpectedValueException;
  */
 trait DatabaseTestTrait
 {
-    use UnitTestTrait;
+    use AppTestTrait {
+        setUp as protected setUpApp;
+    }
 
     /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->bootApp();
+        $this->setUpApp();
 
         $this->setUpDatabase();
-    }
-
-    /** {@inheritdoc} */
-    protected function tearDown(): void
-    {
-        $this->shutdownApp();
     }
 
     /**
@@ -55,7 +51,7 @@ trait DatabaseTestTrait
      */
     public function getConnection(): Connection
     {
-        return $this->getContainer()->get(Connection::class);
+        return $this->container->get(Connection::class);
     }
 
     /**
@@ -103,7 +99,7 @@ trait DatabaseTestTrait
      */
     protected function migrate(): bool
     {
-        $config = new Config(require __DIR__ . '/../../config/phinx.php');
+        $config = new Config(require __DIR__ . '/../config/phinx.php');
         $manager = new Manager($config, new StringInput(' '), new NullOutput());
         $manager->migrate('local');
         $manager->seed('local');
@@ -118,7 +114,7 @@ trait DatabaseTestTrait
      */
     protected function importSchema(): void
     {
-        $sql = (string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql');
+        $sql = (string)file_get_contents(__DIR__ . '/../resources/migrations/schema.sql');
 
         $pdo = $this->getPdo();
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');

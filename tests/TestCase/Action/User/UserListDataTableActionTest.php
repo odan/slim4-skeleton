@@ -2,7 +2,8 @@
 
 namespace App\Test\TestCase\Action\User;
 
-use App\Test\TestCase\HttpTestTrait;
+use App\Test\DatabaseTestTrait;
+use App\Test\LoginTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,7 +11,8 @@ use PHPUnit\Framework\TestCase;
  */
 class UserListDataTableActionTest extends TestCase
 {
-    use HttpTestTrait;
+    use DatabaseTestTrait;
+    use LoginTestTrait;
 
     /**
      * Test.

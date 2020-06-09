@@ -3,8 +3,8 @@
 namespace App\Test\TestCase\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
+use App\Test\DatabaseTestTrait;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class LoginSubmitActionTest extends TestCase
 {
-    use HttpTestTrait;
+    use DatabaseTestTrait;
 
     /**
      * Test.
@@ -35,7 +35,7 @@ class LoginSubmitActionTest extends TestCase
         static::assertEquals('', (string)$response->getBody());
 
         // User session
-        $session = $this->getContainer()->get(Session::class);
+        $session = $this->container->get(Session::class);
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
@@ -65,7 +65,7 @@ class LoginSubmitActionTest extends TestCase
         static::assertEquals('', (string)$response->getBody());
 
         // User session
-        $session = $this->getContainer()->get(Session::class);
+        $session = $this->container->get(Session::class);
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
