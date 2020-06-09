@@ -2,8 +2,8 @@
 
 namespace App\Test;
 
-use App\Test\Traits\InvalidArgumentException;
 use DI\Container;
+use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Container\ContainerInterface;
