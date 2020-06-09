@@ -3,7 +3,6 @@
 namespace App\Test;
 
 use App\Domain\User\Data\UserAuthData;
-use App\Test\Traits\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Session\Session;
 use UnexpectedValueException;
 
@@ -12,7 +11,6 @@ use UnexpectedValueException;
  */
 trait LoginTestTrait
 {
-
     /**
      * Login user.
      *
