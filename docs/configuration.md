@@ -24,6 +24,15 @@ This is only used to apply the phpunit test settings.
 
 ## Environment configuration
 
+To get a value of an environment variable you can use the `getenv` function.
+
+```php
+$settings['db']['host'] = getenv('MYSQL_HOST');
+$settings['db']['database'] = getenv('MYSQL_DATABASE');
+$settings['db']['username'] = getenv('MYSQL_USER');
+$settings['db']['password'] = getenv('MYSQL_PASSWORD');
+```
+
 You may be familiar with the concept of `.env` files. 
 However, `.env` files should be considered as harmful because:
 

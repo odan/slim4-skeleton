@@ -47,10 +47,10 @@ To connect to the internal MySQL database change the configuration in `config/en
 **Example**
 
 ```php
-$settings['db']['host'] = env('MYSQL_HOST');
-$settings['db']['database'] = env('MYSQL_DATABASE');
-$settings['db']['username'] = env('MYSQL_USER');
-$settings['db']['password'] = env('MYSQL_PASSWORD');
+$settings['db']['host'] = getenv('MYSQL_HOST');
+$settings['db']['database'] = getenv('MYSQL_DATABASE');
+$settings['db']['username'] = getenv('MYSQL_USER');
+$settings['db']['password'] = getenv('MYSQL_PASSWORD');
 ```
 
 If you want to connect from a container to a (MySQL) service on the host you can 
