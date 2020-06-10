@@ -24,7 +24,7 @@ class UserListActionTest extends TestCase
         $request = $this->createRequest('GET', '/users');
         $response = $this->app->handle($request);
 
-        static::assertSame(302, $response->getStatusCode());
+        $this->assertSame(302, $response->getStatusCode());
     }
 
     /**
@@ -38,7 +38,7 @@ class UserListActionTest extends TestCase
         $request = $this->createRequest('GET', '/users');
         $response = $this->app->handle($request);
 
-        static::assertSame(200, $response->getStatusCode());
-        static::assertStringContainsString('User list', (string)$response->getBody());
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertStringContainsString('User list', (string)$response->getBody());
     }
 }

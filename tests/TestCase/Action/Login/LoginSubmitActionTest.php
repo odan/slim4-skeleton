@@ -29,19 +29,19 @@ class LoginSubmitActionTest extends TestCase
         $request = $this->createJsonRequest('POST', '/login', ['username' => 'admin', 'password' => 'admin']);
         $response = $this->app->handle($request);
 
-        static::assertSame(302, $response->getStatusCode());
-        static::assertSame('/users', $response->getHeaderLine('Location'));
-        static::assertEquals('', (string)$response->getBody());
+        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame('/users', $response->getHeaderLine('Location'));
+        $this->assertEquals('', (string)$response->getBody());
 
         // User session
         $session = $this->container->get(Session::class);
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserAuthData::class, $user);
-        static::assertSame(1, $user->id);
-        static::assertSame('en_US', $user->locale);
-        static::assertSame('admin@example.com', $user->email);
+        $this->assertInstanceOf(UserAuthData::class, $user);
+        $this->assertSame(1, $user->id);
+        $this->assertSame('en_US', $user->locale);
+        $this->assertSame('admin@example.com', $user->email);
     }
 
     /**
@@ -58,18 +58,18 @@ class LoginSubmitActionTest extends TestCase
         $request = $this->createJsonRequest('POST', '/login', ['username' => 'user', 'password' => 'user']);
         $response = $this->app->handle($request);
 
-        static::assertSame(302, $response->getStatusCode());
-        static::assertSame('/users', $response->getHeaderLine('Location'));
-        static::assertEquals('', (string)$response->getBody());
+        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame('/users', $response->getHeaderLine('Location'));
+        $this->assertEquals('', (string)$response->getBody());
 
         // User session
         $session = $this->container->get(Session::class);
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
-        static::assertInstanceOf(UserAuthData::class, $user);
-        static::assertSame(2, $user->id);
-        static::assertSame('de_DE', $user->locale);
-        static::assertSame('user@example.com', $user->email);
+        $this->assertInstanceOf(UserAuthData::class, $user);
+        $this->assertSame(2, $user->id);
+        $this->assertSame('de_DE', $user->locale);
+        $this->assertSame('user@example.com', $user->email);
     }
 }

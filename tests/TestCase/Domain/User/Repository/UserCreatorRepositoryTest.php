@@ -51,6 +51,6 @@ class UserCreatorRepositoryTest extends TestCase
 
         $actual = $repository->insertUser($user);
 
-        static::assertSame(3, $actual);
+        $this->assertSame(3, $actual);
     }
 }

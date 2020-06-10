@@ -22,8 +22,8 @@ class HomeActionTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $this->app->handle($request);
 
-        static::assertStringContainsString('Hello, World', (string)$response->getBody());
-        static::assertSame(200, $response->getStatusCode());
+        $this->assertStringContainsString('Hello, World', (string)$response->getBody());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -37,6 +37,6 @@ class HomeActionTest extends TestCase
         $response = $this->app->handle($request);
 
         // Assert: Not found
-        static::assertSame(404, $response->getStatusCode());
+        $this->assertSame(404, $response->getStatusCode());
     }
 }

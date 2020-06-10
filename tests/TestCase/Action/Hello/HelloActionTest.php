@@ -22,7 +22,7 @@ class HelloActionTest extends TestCase
         $request = $this->createRequest('GET', '/hello/john');
         $response = $this->app->handle($request);
 
-        static::assertSame(200, $response->getStatusCode());
-        static::assertStringContainsString('Hello, john', (string)$response->getBody());
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertStringContainsString('Hello, john', (string)$response->getBody());
     }
 }

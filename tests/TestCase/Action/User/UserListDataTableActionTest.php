@@ -25,8 +25,8 @@ class UserListDataTableActionTest extends TestCase
         $request = $this->createRequest('POST', '/users/datatable');
         $response = $this->app->handle($request);
 
-        static::assertSame(200, $response->getStatusCode());
-        static::assertStringContainsString(
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertStringContainsString(
             '{"recordsTotal":0,"recordsFiltered":0,"draw":1,"data":[]}',
             (string)$response->getBody()
         );

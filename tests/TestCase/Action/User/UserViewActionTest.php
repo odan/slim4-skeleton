@@ -25,9 +25,9 @@ class UserViewActionTest extends TestCase
         $request = $this->createRequest('GET', '/users/1');
         $response = $this->app->handle($request);
 
-        static::assertSame(200, $response->getStatusCode());
-        static::assertStringContainsString('User-ID:', (string)$response->getBody());
-        static::assertStringContainsString('<label>1</label>', (string)$response->getBody());
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertStringContainsString('User-ID:', (string)$response->getBody());
+        $this->assertStringContainsString('<label>1</label>', (string)$response->getBody());
     }
 
     /**
@@ -40,6 +40,6 @@ class UserViewActionTest extends TestCase
         $request = $this->createRequest('GET', '/users/99');
         $response = $this->app->handle($request);
 
-        static::assertSame(400, $response->getStatusCode());
+        $this->assertSame(400, $response->getStatusCode());
     }
 }

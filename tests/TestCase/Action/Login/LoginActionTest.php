@@ -22,11 +22,11 @@ class LoginActionTest extends TestCase
         $request = $this->createRequest('GET', '/login');
         $response = $this->app->handle($request);
 
-        static::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
 
         $body = (string)$response->getBody();
-        static::assertStringContainsString('<input type="text" name="username"', $body);
-        static::assertStringContainsString('<input type="password" name="password"', $body);
-        static::assertStringContainsString('<button id="btn_login"', $body);
+        $this->assertStringContainsString('<input type="text" name="username"', $body);
+        $this->assertStringContainsString('<input type="password" name="password"', $body);
+        $this->assertStringContainsString('<button id="btn_login"', $body);
     }
 }

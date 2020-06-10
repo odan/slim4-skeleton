@@ -25,9 +25,9 @@ class ResponderTest extends TestCase
 
         $response = $responder->json(new Response(), ['success' => true]);
 
-        static::assertSame('{"success":true}', (string)$response->getBody());
-        static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
-        static::assertSame(200, $response->getStatusCode());
+        $this->assertSame('{"success":true}', (string)$response->getBody());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -42,9 +42,9 @@ class ResponderTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $responder->redirect(new Response(), 'https://www.example.com/');
 
-        static::assertSame(302, $response->getStatusCode());
-        static::assertSame('https://www.example.com/', $response->getHeaderLine('Location'));
-        static::assertSame('', (string)$response->getBody());
+        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame('https://www.example.com/', $response->getHeaderLine('Location'));
+        $this->assertSame('', (string)$response->getBody());
     }
 
     /**
@@ -63,8 +63,8 @@ class ResponderTest extends TestCase
         $request = $this->createRequest('GET', '/foo');
         $response = $this->app->handle($request);
 
-        static::assertSame(302, $response->getStatusCode());
-        static::assertSame('/foo', $response->getHeaderLine('Location'));
-        static::assertSame('', (string)$response->getBody());
+        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame('/foo', $response->getHeaderLine('Location'));
+        $this->assertSame('', (string)$response->getBody());
     }
 }

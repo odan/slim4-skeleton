@@ -142,7 +142,7 @@ trait AppTestTrait
     protected function assertJsonData(ResponseInterface $response, array $expected): void
     {
         $actual = (string)$response->getBody();
-        self::assertJson($actual);
-        self::assertSame($expected, (array)json_decode($actual, true));
+        $this->assertJson($actual);
+        $this->assertSame($expected, (array)json_decode($actual, true));
     }
 }
