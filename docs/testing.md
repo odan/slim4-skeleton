@@ -33,7 +33,7 @@ Testing units in isolation of its dependencies.
 Unit tests should test the behavior and not the implementation details of your classes.
 Make sure that unit tests are running in-memory only, because they have to be very fast. 
 
-### Mocking
+## Mocking
 
 When testing Slim applications, you may wish to "mock" certain aspects of your 
 application so they are not actually executed during a test. 
