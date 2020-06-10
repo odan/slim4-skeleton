@@ -115,16 +115,19 @@ trait AppTestTrait
     }
 
     /**
-     * Add post data.
+     * Create a form request.
      *
-     * @param ServerRequestInterface $request The request
-     * @param mixed[] $data The data
+     * @param string $method The HTTP method
+     * @param string|UriInterface $uri The URI
+     * @param array|null $data The form data
      *
      * @return ServerRequestInterface
      */
-    protected function withFormData(ServerRequestInterface $request, array $data): ServerRequestInterface
+    protected function createFormRequest(string $method, $uri, array $data = null): ServerRequestInterface
     {
-        if (!empty($data)) {
+        $request = $this->createRequest($method, $uri);
+
+        if ($data !== null) {
             $request = $request->withParsedBody($data);
         }
 
