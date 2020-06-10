@@ -37,7 +37,7 @@ You may be familiar with the concept of `.env` files.
 However, `.env` files should be considered as harmful because:
 
 * People could put the file `.env` file into a public accessible directory.
-* A public accessible `.env` file can be indexed by search engines.
+* A public accessible `.env` file can be [indexed by search engines](https://www.google.com/search?q=DB_USERNAME+filetype%3Aenv).
 * `.env` files are not native and much slower then PHP files.
 * `.env` files are not intended to run on a production server. Many developers do it anyway.
 * `vlucas/phpdotenv` is a unnecessary dependency and buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
