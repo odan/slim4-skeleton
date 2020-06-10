@@ -91,18 +91,7 @@ trait AppTestTrait
      */
     protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
-        // A phpunit fix #3026
-        if (!isset($_SERVER['REQUEST_URI'])) {
-            $_SERVER = [
-                'SCRIPT_NAME' => '/public/index.php',
-                'REQUEST_TIME_FLOAT' => microtime(true),
-                'REQUEST_TIME' => (int)microtime(true),
-            ];
-        }
-
-        $factory = new ServerRequestFactory();
-
-        return $factory->createServerRequest($method, $uri, $serverParams);
+        return (new ServerRequestFactory())->createServerRequest($method, $uri, $serverParams);
     }
 
     /**
