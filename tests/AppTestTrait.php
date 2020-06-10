@@ -7,6 +7,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\App;
@@ -128,5 +129,20 @@ trait AppTestTrait
         }
 
         return $request->withHeader('Content-Type', 'application/x-www-form-urlencoded');
+    }
+
+    /**
+     * Verify that the given array is an exact match for the JSON returned.
+     *
+     * @param ResponseInterface $response The response
+     * @param array $expected The expected array
+     *
+     * @return void
+     */
+    protected function assertJsonData(ResponseInterface $response, array $expected): void
+    {
+        $actual = (string)$response->getBody();
+        self::assertJson($actual);
+        self::assertSame($expected, (array)json_decode($actual, true));
     }
 }
