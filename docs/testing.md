@@ -127,7 +127,7 @@ Take a look at these examples:
 
 * `tests/TestCase/Domain/User/Repository/UserCreatorRepositoryTest.php`
 
-## Debugging Unit Tests
+## Debugging
 
 To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
 
