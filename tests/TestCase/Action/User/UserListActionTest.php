@@ -22,7 +22,7 @@ class UserListActionTest extends TestCase
     public function testUsersWithoutLoginAction(): void
     {
         $request = $this->createRequest('GET', '/users');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(302, $response->getStatusCode());
     }
@@ -36,7 +36,7 @@ class UserListActionTest extends TestCase
     {
         $this->loginUser();
         $request = $this->createRequest('GET', '/users');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(200, $response->getStatusCode());
         static::assertStringContainsString('User list', (string)$response->getBody());

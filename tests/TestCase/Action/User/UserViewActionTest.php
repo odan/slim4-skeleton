@@ -23,7 +23,7 @@ class UserViewActionTest extends TestCase
         $this->insertFixtures([UserFixture::class]);
 
         $request = $this->createRequest('GET', '/users/1');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(200, $response->getStatusCode());
         static::assertStringContainsString('User-ID:', (string)$response->getBody());
@@ -38,7 +38,7 @@ class UserViewActionTest extends TestCase
     public function testWithValidId(): void
     {
         $request = $this->createRequest('GET', '/users/99');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(400, $response->getStatusCode());
     }

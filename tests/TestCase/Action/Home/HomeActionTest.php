@@ -20,7 +20,7 @@ class HomeActionTest extends TestCase
     public function testAction(): void
     {
         $request = $this->createRequest('GET', '/');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertStringContainsString('Hello, World', (string)$response->getBody());
         static::assertSame(200, $response->getStatusCode());
@@ -34,7 +34,7 @@ class HomeActionTest extends TestCase
     public function testPageNotFound(): void
     {
         $request = $this->createRequest('GET', '/not-existing-page');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         // Assert: Not found
         static::assertSame(404, $response->getStatusCode());

@@ -23,7 +23,7 @@ class UserListDataTableActionTest extends TestCase
     {
         $this->loginUser();
         $request = $this->createRequest('POST', '/users/datatable');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(200, $response->getStatusCode());
         static::assertStringContainsString(

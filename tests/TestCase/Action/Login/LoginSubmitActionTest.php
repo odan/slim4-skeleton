@@ -26,9 +26,8 @@ class LoginSubmitActionTest extends TestCase
             UserFixture::class,
         ]);
 
-        $request = $this->createRequest('POST', '/login');
-        $request = $this->withJson($request, ['username' => 'admin', 'password' => 'admin']);
-        $response = $this->request($request);
+        $request = $this->createJsonRequest('POST', '/login', ['username' => 'admin', 'password' => 'admin']);
+        $response = $this->app->handle($request);
 
         static::assertSame(302, $response->getStatusCode());
         static::assertSame('/users', $response->getHeaderLine('Location'));
@@ -56,9 +55,8 @@ class LoginSubmitActionTest extends TestCase
             UserFixture::class,
         ]);
 
-        $request = $this->createRequest('POST', '/login');
-        $request = $this->withJson($request, ['username' => 'user', 'password' => 'user']);
-        $response = $this->request($request);
+        $request = $this->createJsonRequest('POST', '/login', ['username' => 'user', 'password' => 'user']);
+        $response = $this->app->handle($request);
 
         static::assertSame(302, $response->getStatusCode());
         static::assertSame('/users', $response->getHeaderLine('Location'));

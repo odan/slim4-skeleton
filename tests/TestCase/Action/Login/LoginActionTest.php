@@ -20,7 +20,7 @@ class LoginActionTest extends TestCase
     public function testLoginAction(): void
     {
         $request = $this->createRequest('GET', '/login');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         static::assertSame(200, $response->getStatusCode());
 
