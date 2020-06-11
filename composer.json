@@ -20,7 +20,7 @@
         "fullpipe/twig-webpack-extension": "^3.0",
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^5",
-        "php-di/php-di": "^6.0",
+        "php-di/php-di": "^6.2",
         "selective/array-reader": "^1",
         "selective/basepath": "^1",
         "selective/validation": "^0.10.0",
