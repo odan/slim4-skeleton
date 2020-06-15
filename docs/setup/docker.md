@@ -53,6 +53,9 @@ $settings['db']['username'] = getenv('MYSQL_USER');
 $settings['db']['password'] = getenv('MYSQL_PASSWORD');
 ```
 
+**Warning**: The `getenv` functon is not thread safe. You may 
+look for environment variables in the `$_SERVER` super global instead.
+
 If you want to connect from a container to a (MySQL) service on the host you can 
 use `host.docker.internal` to reference the host. 
 [Read more](https://docs.docker.com/docker-for-windows/networking/#use-cases-and-workarounds).

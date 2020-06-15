@@ -47,6 +47,7 @@ Even **environment variables** should be considering as harmful because:
 * A third-party server tool or any system-service could send a crash-report with all environment variables to foreign servers.
 * Any other tool on your server could read the environment variables.
 * Incorrectly configured servers could log the environment variables or even send them as error message to the browser. 
+* The `getenv` functon is not thread safe.
 
 For security (and performance) reasons, all secret environment variables 
 are better stored in a file called: **`env.php`**.
