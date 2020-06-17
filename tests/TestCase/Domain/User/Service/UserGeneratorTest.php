@@ -22,7 +22,7 @@ class UserGeneratorTest extends TestCase
     public function testCreateUser(): void
     {
         // Mock the required repository method
-        $this->mockMethod([UserCreatorRepository::class, 'insertUser'])->willReturn(1);
+        $this->mock(UserCreatorRepository::class)->method('insertUser')->willReturn(1);
 
         $service = $this->container->get(UserCreator::class);
 

@@ -4,9 +4,7 @@ namespace App\Test;
 
 use DI\Container;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
@@ -19,7 +17,7 @@ use UnexpectedValueException;
  */
 trait AppTestTrait
 {
-    /** @var ContainerInterface|Container */
+    /** @var Container */
     protected $container;
 
     /** @var App */
@@ -61,23 +59,9 @@ trait AppTestTrait
             ->disableOriginalConstructor()
             ->getMock();
 
-        if ($this->container instanceof Container) {
-            $this->container->set($class, $mock);
-        }
+        $this->container->set($class, $mock);
 
         return $mock;
-    }
-
-    /**
-     * Create a mocked class method.
-     *
-     * @param array|callable $method The class and method
-     *
-     * @return InvocationMocker The mocker
-     */
-    protected function mockMethod($method): InvocationMocker
-    {
-        return $this->mock((string)$method[0])->method((string)$method[1]);
     }
 
     /**
