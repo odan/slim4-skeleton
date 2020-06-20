@@ -88,7 +88,7 @@ final class UserCreator
             $validation->addError('email', __('Invalid email address'));
         }
 
-        if ($validation->isFailed()) {
+        if ($validation->fails()) {
             throw new ValidationException(__('Please check your input'), $validation);
         }
     }
