@@ -23,7 +23,7 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Call this template method before each test method is run.
+     * Create tables and insert fixtures.
      *
      * @return void
      */
@@ -40,11 +40,11 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Get Connection.
+     * Get database connection.
      *
      * @return Connection The test database connection
      */
-    public function getConnection(): Connection
+    protected function getConnection(): Connection
     {
         return $this->container->get(Connection::class);
     }
@@ -56,7 +56,7 @@ trait DatabaseTestTrait
      *
      * @return PDO The PDO instance
      */
-    public function getPdo(): PDO
+    protected function getPdo(): PDO
     {
         $pdo = $this->getConnection()->getDriver()->getConnection();
 
@@ -64,26 +64,24 @@ trait DatabaseTestTrait
             return $pdo;
         }
 
-        throw new UnexpectedValueException('Expected value is not PDO');
+        throw new UnexpectedValueException('Database connection failed');
     }
 
     /**
      * Create tables.
      *
-     * @return bool Success
+     * @return void
      */
-    public function createTables(): bool
+    protected function createTables(): void
     {
         if (defined('DB_TEST_TRAIT_INIT')) {
-            return true;
+            return;
         }
 
         $this->dropTables();
         $this->importSchema();
 
         define('DB_TEST_TRAIT_INIT', 1);
-
-        return true;
     }
 
     /**
@@ -93,11 +91,9 @@ trait DatabaseTestTrait
      */
     protected function importSchema(): void
     {
-        $sql = (string)file_get_contents(__DIR__ . '/../resources/migrations/schema.sql');
-
         $pdo = $this->getPdo();
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
-        $pdo->exec($sql);
+        $pdo->exec((string)file_get_contents(__DIR__ . '/../resources/migrations/schema.sql'));
         $pdo->exec('SET unique_checks=1; SET foreign_key_checks=1;');
     }
 
@@ -119,7 +115,7 @@ trait DatabaseTestTrait
                 WHERE table_schema = database()');
 
         if (!$statement) {
-            throw new UnexpectedValueException('Invalid sql statement');
+            throw new UnexpectedValueException('Invalid SQL statement');
         }
 
         $sql = [];
@@ -135,7 +131,7 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Clean-Up Database. Truncate tables.
+     * Clean up database.
      *
      * @throws UnexpectedValueException
      *
@@ -154,7 +150,7 @@ trait DatabaseTestTrait
                 AND update_time IS NOT NULL');
 
         if (!$statement) {
-            throw new UnexpectedValueException('Invalid sql statement');
+            throw new UnexpectedValueException('Invalid SQL statement');
         }
 
         $sql = [];
@@ -170,9 +166,9 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Iterate over all the fixture rows specified and insert them into their respective tables.
+     * Iterate over all fixtures and insert them into their tables.
      *
-     * @param array $fixtures Fixtures
+     * @param array $fixtures The fixtures
      *
      * @return void
      */
