@@ -4,14 +4,10 @@ namespace App\Test;
 
 use Cake\Database\Connection;
 use PDO;
-use Phinx\Config\Config;
-use Phinx\Migration\Manager;
-use Symfony\Component\Console\Input\StringInput;
-use Symfony\Component\Console\Output\NullOutput;
 use UnexpectedValueException;
 
 /**
- * Integration test.
+ * Database test.
  */
 trait DatabaseTestTrait
 {
@@ -23,7 +19,6 @@ trait DatabaseTestTrait
     protected function setUp(): void
     {
         $this->setUpApp();
-
         $this->setUpDatabase();
     }
 
@@ -84,25 +79,9 @@ trait DatabaseTestTrait
         }
 
         $this->dropTables();
-        //$this->migrate();
         $this->importSchema();
 
         define('DB_TEST_TRAIT_INIT', 1);
-
-        return true;
-    }
-
-    /**
-     * Prepare the database schema with phinx (slow).
-     *
-     * @return bool Success
-     */
-    protected function migrate(): bool
-    {
-        $config = new Config(require __DIR__ . '/../config/phinx.php');
-        $manager = new Manager($config, new StringInput(' '), new NullOutput());
-        $manager->migrate('local');
-        $manager->seed('local');
 
         return true;
     }
