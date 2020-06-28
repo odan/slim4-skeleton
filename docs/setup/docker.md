@@ -72,7 +72,7 @@ To determine wheter the process in running in a docker container,
 you can check the `DOCKER` environment variable, e.g.:
 
 ```php
-if (getenv('DOCKER') === '1') {
+if (isset($_ENV['DOCKER'])) {
     // Running in a docker container
 } else {
     // Load other settings
