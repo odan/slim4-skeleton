@@ -90,7 +90,7 @@ return [
 
         // Add the Twig extension only if we run the application from the command line / cron job,
         // but not when phpunit tests are running.
-        if ((PHP_SAPI === 'cli') && !defined('PHPUNIT_TEST_SUITE')) {
+        if ((PHP_SAPI === 'cli') && !isset($_ENV['PHPUNIT_TEST_SUITE'])) {
             $app = $container->get(App::class);
             $routeParser = $app->getRouteCollector()->getRouteParser();
             $uri = (new UriFactory())->createUri('http://localhost');
