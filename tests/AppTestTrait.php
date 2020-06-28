@@ -26,11 +26,13 @@ trait AppTestTrait
     /**
      * Bootstrap app.
      *
+     * @before
+     *
      * @throws UnexpectedValueException
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function setupContainer(): void
     {
         $this->app = require __DIR__ . '/../config/bootstrap.php';
 

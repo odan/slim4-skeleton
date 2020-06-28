@@ -10,25 +10,18 @@ use UnexpectedValueException;
  */
 trait DatabaseTestTrait
 {
-    use AppTestTrait {
-        setUp as protected setUpApp;
-    }
-
-    /** {@inheritdoc} */
-    protected function setUp(): void
-    {
-        $this->setUpApp();
-        $this->setUpDatabase();
-    }
+    use AppTestTrait;
 
     /**
      * Create tables and insert fixtures.
      *
+     * @before
+     *
      * @return void
      */
-    protected function setUpDatabase(): void
+    protected function setupDatabase(): void
     {
-        $this->getPdo();
+        $this->getConnection();
 
         $this->createTables();
         $this->truncateTables();
@@ -39,11 +32,11 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Get PDO.
+     * Get database connection.
      *
      * @return PDO The PDO instance
      */
-    protected function getPdo(): PDO
+    protected function getConnection(): PDO
     {
         return $this->container->get(PDO::class);
     }
@@ -72,7 +65,7 @@ trait DatabaseTestTrait
      */
     protected function importSchema(): void
     {
-        $pdo = $this->getPdo();
+        $pdo = $this->getConnection();
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
         $pdo->exec((string)file_get_contents(__DIR__ . '/../resources/migrations/schema.sql'));
         $pdo->exec('SET unique_checks=1; SET foreign_key_checks=1;');
@@ -87,7 +80,7 @@ trait DatabaseTestTrait
      */
     protected function dropTables(): void
     {
-        $pdo = $this->getPdo();
+        $pdo = $this->getConnection();
 
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
 
@@ -120,7 +113,7 @@ trait DatabaseTestTrait
      */
     protected function truncateTables(): void
     {
-        $pdo = $this->getPdo();
+        $pdo = $this->getConnection();
 
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
 
@@ -155,7 +148,7 @@ trait DatabaseTestTrait
      */
     protected function insertFixtures(array $fixtures): void
     {
-        $pdo = $this->getPdo();
+        $pdo = $this->getConnection();
 
         foreach ($fixtures as $fixture) {
             $object = new $fixture();
