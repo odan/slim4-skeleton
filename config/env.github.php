@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/integration.php';
+require __DIR__ . '/env.integration.php';
 
 // Database
 $settings['db']['username'] = 'root';
