@@ -26,9 +26,11 @@ class UserListDataTableActionTest extends TestCase
         $response = $this->app->handle($request);
 
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertStringContainsString(
-            '{"recordsTotal":0,"recordsFiltered":0,"draw":1,"data":[]}',
-            (string)$response->getBody()
-        );
+        $this->assertJsonData($response, [
+            'recordsTotal' => 0,
+            'recordsFiltered' => 0,
+            'draw' => 1,
+            'data' => [],
+        ]);
     }
 }

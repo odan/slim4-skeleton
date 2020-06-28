@@ -119,7 +119,7 @@ trait AppTestTrait
     }
 
     /**
-     * Verify that the given array is an exact match for the JSON returned.
+     * Verify that the specified array is an exact match for the returned JSON.
      *
      * @param ResponseInterface $response The response
      * @param array $expected The expected array
