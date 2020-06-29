@@ -1,7 +1,6 @@
 <?php
 
-// Testing environment
-$settings['env'] = 'testing';
+// Phpunit testing environment
 
 // Error reporting
 error_reporting(E_ALL);

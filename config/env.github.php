@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/env.testing.php';
+require __DIR__ . '/local.testing.php';
 
 // Database
 $settings['db']['username'] = 'root';

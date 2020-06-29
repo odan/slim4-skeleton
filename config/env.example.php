@@ -3,7 +3,7 @@
 /**
  * Environment specific application configuration.
  *
- * You should store all secret information (username, password, token) here.
+ * You should store all secret information (username, password, tokens, private keys) here.
  *
  * Make sure the env.php file is added to your .gitignore
  * so it is not checked-in the code
@@ -16,7 +16,7 @@
  * a security breach, and production values will never have to be
  * shared with all project collaborators.
  */
-require __DIR__ . '/env.development.php';
+require __DIR__ . '/local.development.php';
 
 // Database
 $settings['db']['username'] = 'root';
