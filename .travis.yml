@@ -17,7 +17,7 @@ cache:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-dist --no-progress
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_int CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
   - cp config/env.example.php config/env.php
   - cd $TRAVIS_BUILD_DIR
 
