@@ -1,9 +1,9 @@
 <?php
 
-// Defaults
+// Load default settings
 $settings = require __DIR__ . '/defaults.php';
 
-// Load environment configuration
+// Overwrite default settings with environment specific local settings
 if (file_exists(__DIR__ . '/../../env.php')) {
     require __DIR__ . '/../../env.php';
 } elseif (file_exists(__DIR__ . '/env.php')) {
