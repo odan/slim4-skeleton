@@ -84,9 +84,11 @@ trait DatabaseTestTrait
 
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
 
-        $statement = $pdo->query('SELECT TABLE_NAME
+        $statement = $pdo->query(
+            'SELECT TABLE_NAME
                 FROM information_schema.tables
-                WHERE table_schema = database()');
+                WHERE table_schema = database()'
+        );
 
         if (!$statement) {
             throw new UnexpectedValueException('Invalid SQL statement');
@@ -118,10 +120,12 @@ trait DatabaseTestTrait
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
 
         // Truncate only changed tables
-        $statement = $pdo->query('SELECT TABLE_NAME
+        $statement = $pdo->query(
+            'SELECT TABLE_NAME
                 FROM information_schema.tables
                 WHERE table_schema = database()
-                AND update_time IS NOT NULL');
+                AND update_time IS NOT NULL'
+        );
 
         if (!$statement) {
             throw new UnexpectedValueException('Invalid SQL statement');
@@ -154,13 +158,15 @@ trait DatabaseTestTrait
             $object = new $fixture();
             $table = $object->table;
 
-            $fields = array_keys($object->records[0]);
-            array_walk($fields, function (&$value) {
-                $value = sprintf('`%s`=:%s', $value, $value);
-            });
-            $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
-
             foreach ($object->records as $row) {
+                $fields = array_keys($row);
+                array_walk(
+                    $fields,
+                    function (&$value) {
+                        $value = sprintf('`%s`=:%s', $value, $value);
+                    }
+                );
+                $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
                 $statement->execute($row);
             }
         }
