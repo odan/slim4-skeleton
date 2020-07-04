@@ -152,7 +152,7 @@ return [
         $translator = $container->get(Translator::class);
         $session = $container->get(Session::class);
 
-        return new TranslatorMiddleware($translator, $session, (string)$settings['path']);
+        return new TranslatorMiddleware($translator, $session, (string)$settings['path'], (string)$settings['locale']);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {

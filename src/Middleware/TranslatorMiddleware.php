@@ -31,20 +31,28 @@ final class TranslatorMiddleware implements MiddlewareInterface
     private $localePath;
 
     /**
+     * @var string
+     */
+    private $defaultLocale;
+
+    /**
      * The constructor.
      *
      * @param Translator $translator The translator
      * @param Session $session The session handler
      * @param string $localePath The directory with the locals
+     * @param string $defaultLocale The defalt language
      */
     public function __construct(
         Translator $translator,
         Session $session,
-        string $localePath
+        string $localePath,
+        string $defaultLocale = 'en_US'
     ) {
         $this->translator = $translator;
         $this->session = $session;
         $this->localePath = $localePath;
+        $this->defaultLocale = $defaultLocale;
     }
 
     /**
@@ -61,7 +69,7 @@ final class TranslatorMiddleware implements MiddlewareInterface
         $user = $this->session->get('user');
 
         // User locale or default locale
-        $locale = $user ? $user->locale : 'en_US';
+        $locale = $user ? $user->locale : $this->defaultLocale;
 
         // Set language
         $domain = 'messages';
