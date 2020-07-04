@@ -47,7 +47,9 @@ This project is based on best practice and industry standards:
 * Translations (Symfony)
 * Sessions (Symfony)
 * Console Commands (Symfony)
-* Migrations ([Phinx](https://phinx.org/)) (CakePHP)
+* Twig templates with translations (Symfony)
+* Input validation
+* Migrations ([Phinx](https://phinx.org/))
 * SQL Query Builder (CakePHP)
 * Phinx Migrations Generator
 * Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
@@ -55,7 +57,7 @@ This project is based on best practice and industry standards:
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
-* Docker support
+* Docker container with Xdebug support for PhpStorm
 
 ## Frontend
 
