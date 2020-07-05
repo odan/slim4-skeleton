@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\Hello;
 
-use App\Test\AppTestTrait;
+use App\Test\TestCase\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

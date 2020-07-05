@@ -2,8 +2,8 @@
 
 namespace App\Test\TestCase\Action\User;
 
-use App\Test\AppTestTrait;
-use App\Test\LoginTestTrait;
+use App\Test\TestCase\AppTestTrait;
+use App\Test\TestCase\LoginTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

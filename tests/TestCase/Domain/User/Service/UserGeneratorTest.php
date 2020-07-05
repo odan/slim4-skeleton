@@ -4,7 +4,7 @@ namespace App\Test\TestCase\Domain\User\Service;
 
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Domain\User\Service\UserCreator;
-use App\Test\AppTestTrait;
+use App\Test\TestCase\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

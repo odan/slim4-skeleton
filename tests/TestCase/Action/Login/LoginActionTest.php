@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\Login;
 
-use App\Test\AppTestTrait;
+use App\Test\TestCase\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

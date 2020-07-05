@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test;
+namespace App\Test\TestCase;
 
 use App\Domain\User\Data\UserAuthData;
 use Symfony\Component\HttpFoundation\Session\Session;

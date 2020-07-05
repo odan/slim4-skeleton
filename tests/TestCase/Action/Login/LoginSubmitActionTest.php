@@ -3,8 +3,8 @@
 namespace App\Test\TestCase\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
-use App\Test\DatabaseTestTrait;
 use App\Test\Fixture\UserFixture;
+use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 

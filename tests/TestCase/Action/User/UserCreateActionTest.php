@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action\User;
 
-use App\Test\DatabaseTestTrait;
+use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

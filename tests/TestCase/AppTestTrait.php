@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test;
+namespace App\Test\TestCase;
 
 use DI\Container;
 use InvalidArgumentException;
@@ -34,7 +34,7 @@ trait AppTestTrait
      */
     protected function setupContainer(): void
     {
-        $this->app = require __DIR__ . '/../config/bootstrap.php';
+        $this->app = require __DIR__ . '/../../config/bootstrap.php';
 
         $container = $this->app->getContainer();
         if ($container === null) {
