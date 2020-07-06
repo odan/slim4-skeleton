@@ -12,7 +12,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use Selective\Validation\Exception\ValidationException;
 use Slim\Exception\HttpException;
-use Slim\Psr7\Response;
 use Slim\Views\Twig;
 use Throwable;
 
@@ -142,7 +141,7 @@ class DefaultErrorHandler
      */
     private function getErrorMessage(Throwable $exception, int $statusCode, bool $displayErrorDetails): string
     {
-        $reasonPhrase = (new Response())->withStatus($statusCode)->getReasonPhrase();
+        $reasonPhrase = $this->responseFactory->createResponse()->withStatus($statusCode)->getReasonPhrase();
         $errorMessage = sprintf('%s %s', $statusCode, $reasonPhrase);
 
         if ($displayErrorDetails === true) {
