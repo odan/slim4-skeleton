@@ -45,7 +45,7 @@ This project is based on best practice and industry standards:
 * [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Translations (Symfony)
-* Sessions (Symfony)
+* Sessions
 * Console Commands (Symfony)
 * Twig templates with translations (Symfony)
 * Input validation
