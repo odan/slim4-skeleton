@@ -3,11 +3,11 @@
 namespace App\Middleware;
 
 use App\Domain\User\Data\UserAuthData;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -21,7 +21,7 @@ final class TranslatorMiddleware implements MiddlewareInterface
     private $translator;
 
     /**
-     * @var Session
+     * @var SessionInterface
      */
     private $session;
 
@@ -39,13 +39,13 @@ final class TranslatorMiddleware implements MiddlewareInterface
      * The constructor.
      *
      * @param Translator $translator The translator
-     * @param Session $session The session handler
+     * @param SessionInterface $session The session handler
      * @param string $localePath The directory with the locals
      * @param string $defaultLocale The defalt language
      */
     public function __construct(
         Translator $translator,
-        Session $session,
+        SessionInterface $session,
         string $localePath,
         string $defaultLocale = 'en_US'
     ) {

@@ -5,6 +5,9 @@ use App\Handler\DefaultErrorHandler;
 use App\Middleware\TranslatorMiddleware;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
+use Odan\Session\Middleware\SessionMiddleware;
+use Odan\Session\PhpSession;
+use Odan\Session\SessionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
@@ -21,17 +24,11 @@ use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
-use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
 use Symfony\Component\Translation\Translator;
 use Twig\Loader\FilesystemLoader;
-use Twig\TwigFunction;
 
 return [
     // Application settings
@@ -100,32 +97,21 @@ return [
             $twig->addExtension(new TwigExtension());
         }
 
-        /** @var FlashBagInterface $flashbag */
-        $flashbag = $container->get(Session::class)->getFlashBag();
-        $environment = $twig->getEnvironment();
-        $environment->addGlobal('flashbag', $flashbag);
-        $environment->addFunction(new TwigFunction(
-            'flash',
-            function (string $key, $default = null) use ($flashbag) {
-                return $flashbag->get($key, $default ?? [])[0] ?? null;
-            }
-        ));
+        $flash = $container->get(SessionInterface::class)->getFlash();
+        $twig->getEnvironment()->addGlobal('flash', $flash);
 
         return $twig;
     },
 
-    Session::class => function (ContainerInterface $container) {
-        $settings = $container->get('settings')['session'];
+    SessionInterface::class => function (ContainerInterface $container) {
+        $session = new PhpSession();
+        $session->setOptions($container->get('settings')['session']);
 
-        if (PHP_SAPI === 'cli') {
-            return new Session(new MockArraySessionStorage());
-        } else {
-            return new Session(new NativeSessionStorage($settings));
-        }
+        return $session;
     },
 
-    SessionInterface::class => function (ContainerInterface $container) {
-        return $container->get(Session::class);
+    SessionMiddleware::class => function (ContainerInterface $container) {
+        return new SessionMiddleware($container->get(SessionInterface::class));
     },
 
     // Translation
@@ -150,7 +136,7 @@ return [
     TranslatorMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['translation'];
         $translator = $container->get(Translator::class);
-        $session = $container->get(Session::class);
+        $session = $container->get(SessionInterface::class);
 
         return new TranslatorMiddleware($translator, $session, (string)$settings['path'], (string)$settings['locale']);
     },

@@ -4,6 +4,7 @@ namespace App\Test\TestCase;
 
 use DI\Container;
 use InvalidArgumentException;
+use Odan\Session\SessionInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,6 +23,22 @@ trait AppTestTrait
 
     /** @var App */
     protected $app;
+
+    /**
+     * Clear session.
+     *
+     * @after
+     *
+     * @return void
+     */
+    protected function destroySession(): void
+    {
+        $session = $this->container->get(SessionInterface::class);
+        if (!$session->isStarted()) {
+            $session->start();
+        }
+        $session->destroy();
+    }
 
     /**
      * Bootstrap app.
