@@ -6,8 +6,6 @@ use App\Routing\UrlGenerator;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 /**
  * A generic responder.
@@ -116,7 +114,7 @@ final class Responder
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((string)(new JsonEncode([JsonEncode::OPTIONS => $options]))->encode($data, 'json'));
+        $response->getBody()->write((string)json_encode($data, $options));
 
         return $response;
     }
