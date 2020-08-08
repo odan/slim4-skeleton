@@ -3,6 +3,7 @@
 namespace App\Responder;
 
 use App\Routing\UrlGenerator;
+use JsonException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
@@ -104,7 +105,7 @@ final class Responder
      * @param mixed $data The data
      * @param int $options Json encoding options
      *
-     * @throws NotEncodableValueException
+     * @throws JsonException
      *
      * @return ResponseInterface The response
      */
@@ -114,7 +115,7 @@ final class Responder
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((string)json_encode($data, $options));
+        $response->getBody()->write((string)json_encode($data, JSON_THROW_ON_ERROR | $options));
 
         return $response;
     }
