@@ -19,15 +19,15 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 7.2+
+* PHP 7.3+
 * MySQL 5.7+ or MariaDB
 * Composer (only for development)
-* [NPM](https://nodejs.org/en/download/) (only for development and building)
+* [NPM](https://nodejs.org/en/download/) (only for development)
 
 #### Recommended
 
-* Apache (with mod_rewrite)
-* [Apache ant](https://ant.apache.org/bindownload.cgi) to create deployment artifacts (build)
+* Apache with mod_rewrite
+* [Apache Ant](https://ant.apache.org/bindownload.cgi) to build deployment artifacts
 
 ## Features
 
@@ -73,8 +73,8 @@ This project is based on best practice and industry standards:
 
 ## Support
 
-* Create issues at <https://github.com/odan/slim4-skeleton/issues>
-* Documentation is at <https://odan.github.io/slim4-skeleton/>
+* Issues: <https://github.com/odan/slim4-skeleton/issues>
+* Documentation: <https://odan.github.io/slim4-skeleton/>
 * Here you can [donate](https://odan.github.io/donate.html) for this project.
 
 ## License
