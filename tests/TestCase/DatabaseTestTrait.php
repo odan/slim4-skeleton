@@ -156,19 +156,35 @@ trait DatabaseTestTrait
 
         foreach ($fixtures as $fixture) {
             $object = new $fixture();
-            $table = $object->table;
 
             foreach ($object->records as $row) {
-                $fields = array_keys($row);
-                array_walk(
-                    $fields,
-                    function (&$value) {
-                        $value = sprintf('`%s`=:%s', $value, $value);
-                    }
-                );
-                $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
-                $statement->execute($row);
+                $this->insertFixture($object->table, $row);
             }
         }
+    }
+
+    /**
+     * Insert row into table.
+     *
+     * @param string $table The table name
+     * @param array $row The row data
+     *
+     * @return void
+     */
+    protected function insertFixture(string $table, array $row): void
+    {
+        $pdo = $this->getConnection();
+
+        $fields = array_keys($row);
+
+        array_walk(
+            $fields,
+            function (&$value) {
+                $value = sprintf('`%s`=:%s', $value, $value);
+            }
+        );
+
+        $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
+        $statement->execute($row);
     }
 }
