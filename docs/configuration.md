@@ -40,6 +40,8 @@ Even **environment variables** should be considering as harmful because:
 * Incorrectly configured servers could log the environment variables or even send them as error message to the browser. 
 * Using `getenv()` and `putenv()` is strongly discurraged due to the fact that these functions are not thread safe.
 
+The method of getting these values is using the `$_ENV` and `$_SERVER` super-global not the `getenv()` function.
+
 For security (and performance) reasons, all secret environment variables 
 are better stored in a file called: **`env.php`**.
 
