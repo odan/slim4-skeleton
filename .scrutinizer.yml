@@ -12,7 +12,7 @@ tools:
 
 build:
     environment:
-        php: 7.2
+        php: 7.3
         mysql: 5.7
         node: v10.14.2
         postgresql: false
