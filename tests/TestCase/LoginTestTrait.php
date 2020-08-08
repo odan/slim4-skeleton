@@ -3,7 +3,7 @@
 namespace App\Test\TestCase;
 
 use App\Domain\User\Data\UserAuthData;
-use Odan\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UnexpectedValueException;
 
 /**

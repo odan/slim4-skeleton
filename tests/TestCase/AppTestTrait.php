@@ -4,13 +4,13 @@ namespace App\Test\TestCase;
 
 use DI\Container;
 use InvalidArgumentException;
-use Odan\Session\SessionInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UnexpectedValueException;
 
 /**
@@ -37,7 +37,7 @@ trait AppTestTrait
         if (!$session->isStarted()) {
             $session->start();
         }
-        $session->destroy();
+        $session->invalidate();
     }
 
     /**

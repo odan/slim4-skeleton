@@ -2,12 +2,10 @@
 
 use App\Factory\LoggerFactory;
 use App\Handler\DefaultErrorHandler;
+use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
 use Cake\Database\Connection;
 use Fullpipe\TwigWebpackExtension\WebpackExtension;
-use Odan\Session\Middleware\SessionMiddleware;
-use Odan\Session\PhpSession;
-use Odan\Session\SessionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
@@ -24,11 +22,16 @@ use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
 use Symfony\Component\Translation\Translator;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFunction;
 
 return [
     // Application settings
@@ -97,17 +100,32 @@ return [
             $twig->addExtension(new TwigExtension());
         }
 
-        $flash = $container->get(SessionInterface::class)->getFlash();
-        $twig->getEnvironment()->addGlobal('flash', $flash);
+        $environment = $twig->getEnvironment();
+        $environment->addFunction(new TwigFunction(
+            'flashes',
+            function (string $key, $default = null) use ($container) {
+                // Lazy loading the flashbag to prevent session from starting
+                static $flashbag = null;
+                $flashbag = $flashbag ?? $container->get(Session::class)->getFlashBag();
+
+                return $flashbag->get($key, $default ?? []);
+            }
+        ));
 
         return $twig;
     },
 
-    SessionInterface::class => function (ContainerInterface $container) {
-        $session = new PhpSession();
-        $session->setOptions($container->get('settings')['session']);
+    Session::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['session'];
+        if (PHP_SAPI === 'cli') {
+            return new Session(new MockArraySessionStorage());
+        } else {
+            return new Session(new NativeSessionStorage($settings));
+        }
+    },
 
-        return $session;
+    SessionInterface::class => function (ContainerInterface $container) {
+        return $container->get(Session::class);
     },
 
     SessionMiddleware::class => function (ContainerInterface $container) {

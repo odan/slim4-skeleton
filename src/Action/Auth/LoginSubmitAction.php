@@ -5,9 +5,9 @@ namespace App\Action\Auth;
 use App\Domain\User\Data\UserAuthData;
 use App\Domain\User\Service\UserAuth;
 use App\Responder\Responder;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Action.
@@ -20,7 +20,7 @@ final class LoginSubmitAction
     private $responder;
 
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
@@ -33,10 +33,10 @@ final class LoginSubmitAction
      * The constructor.
      *
      * @param Responder $responder The responder
-     * @param SessionInterface $session The session handler
+     * @param Session $session The session handler
      * @param UserAuth $auth The user auth
      */
-    public function __construct(Responder $responder, SessionInterface $session, UserAuth $auth)
+    public function __construct(Responder $responder, Session $session, UserAuth $auth)
     {
         $this->responder = $responder;
         $this->session = $session;
@@ -59,15 +59,15 @@ final class LoginSubmitAction
 
         $user = $this->auth->authenticate($username, $password);
 
-        $flash = $this->session->getFlash();
+        $flash = $this->session->getFlashBag();
         $flash->clear();
 
         if ($user) {
             $this->startUserSession($user);
-            $flash->add('success', __('Login successfully'));
+            $flash->set('success', __('Login successfully'));
             $url = 'user-list';
         } else {
-            $flash->add('error', __('Login failed!'));
+            $flash->set('error', __('Login failed!'));
             $url = 'login';
         }
 
@@ -84,9 +84,8 @@ final class LoginSubmitAction
     private function startUserSession(UserAuthData $user): void
     {
         // Clears all session data and regenerates session ID
-        $this->session->destroy();
+        $this->session->invalidate();
         $this->session->start();
-        $this->session->regenerateId();
 
         $this->session->set('user', $user);
 

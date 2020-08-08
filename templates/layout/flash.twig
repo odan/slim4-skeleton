@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-sm">
-        {% for message in flash.get('error') %}
+        {% for message in flashes('error') %}
             <div class="alert alert-danger" role="alert">
                 {{ message|trans }}
             </div>
         {% endfor %}
 
-        {% for message in flash.get('success') %}
+        {% for message in flashes('success') %}
             <div class="alert alert-success" role="alert">
                 {{ message|trans }}
             </div>

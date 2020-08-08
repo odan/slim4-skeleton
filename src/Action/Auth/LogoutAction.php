@@ -3,9 +3,9 @@
 namespace App\Action\Auth;
 
 use App\Responder\Responder;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Action.
@@ -45,7 +45,7 @@ final class LogoutAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Logout user
-        $this->session->destroy();
+        $this->session->invalidate();
 
         return $this->responder->redirect($response, 'login');
     }

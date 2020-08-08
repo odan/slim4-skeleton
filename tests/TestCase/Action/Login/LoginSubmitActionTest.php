@@ -5,8 +5,8 @@ namespace App\Test\TestCase\Action\Login;
 use App\Domain\User\Data\UserAuthData;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\DatabaseTestTrait;
-use Odan\Session\SessionInterface;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Test.
