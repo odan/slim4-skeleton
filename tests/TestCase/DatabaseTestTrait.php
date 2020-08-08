@@ -152,8 +152,6 @@ trait DatabaseTestTrait
      */
     protected function insertFixtures(array $fixtures): void
     {
-        $pdo = $this->getConnection();
-
         foreach ($fixtures as $fixture) {
             $object = new $fixture();
 
