@@ -16,7 +16,7 @@ compiled, built, bundled, minified, optimized and so on.
 
 ## Installation
 
-* Download the latest binary of [Apache ant](https://ant.apache.org/bindownload.cgi)
+* Download the latest binary of [Apache Ant](https://ant.apache.org/bindownload.cgi)
 * Extract the zip file to `c:\ant`
 * Add the `c:\ant\bin` directory to your `%PATH%` environment variable
 * Make sure JDK is installed, and `JAVA_HOME` is configured as environment variable.
@@ -41,10 +41,6 @@ points to the `public/` path, e.g. `/var/www/example.com/htdocs/public`
 * Create a sub-directory: `/var/www/example.com/htdocs`
 * Upload a custom `env.php` file to `/var/www/example.com/env.php`
 * Upload the file `bin/deploy.php` to `/var/www/example.com/deploy.php`
-
-Read more:
-
-* [Setting up permissions for apache var/www/html](https://odan.github.io/2019/02/17/correct-owner-and-permissions-of-var-www-html.html)
 
 ## Deployment
 
