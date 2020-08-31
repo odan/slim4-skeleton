@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
   #config.vm.network "private_network", ip: "192.168.56.99"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
-    vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
+    vb.customize ['modifyvm', :id, '--uartmode1', 'disconnected']
   end  
 end
 ```
