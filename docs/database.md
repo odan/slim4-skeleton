@@ -36,7 +36,7 @@ This skeleton provides a [Phinx](https://phinx.org/) console access to create da
 $ composer phinx:generate
 ```
 
-You an specify a migration name by adding the `--name` parameter.
+You can specify a migration name by adding the `--name` parameter.
 
 **Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
 
@@ -50,7 +50,7 @@ $ composer phinx:generate -- --name AddTableCustomers
 $ composer phinx:create UpdateArticleFixtures
 ```
 
-Read more: **[Phinx Documentation](http://docs.phinx.org/en/latest/)**
+Read more: **[Phinx Documentation](http://docs.phinx.org/)**
 
 ## Update schema
 
