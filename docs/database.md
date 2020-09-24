@@ -18,7 +18,7 @@ This skeleton contains [cakephp/database](https://github.com/cakephp/database) a
 
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
-Read more: **[Query Builder Documentation](https://book.cakephp.org/3.0/en/orm/query-builder.html)**
+Read more: **[Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)**
 
 ## Migrations
 
