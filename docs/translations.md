@@ -103,7 +103,7 @@ Read more:
 To compile all Twig files to PHP, run:
 
 ```
-composer compile-twig
+composer twig:compile
 ```
 
 Then open PoEdit and update the PO file from source to fetch
