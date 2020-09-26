@@ -24,7 +24,7 @@
         "selective/array-reader": "^1",
         "selective/basepath": "^1",
         "selective/validation": "^0.11",
-        "slim/psr7": "^1",
+        "slim/psr7": "^1.2",
         "slim/slim": "^4.5",
         "slim/twig-view": "^3",
         "symfony/console": "^5.0",
