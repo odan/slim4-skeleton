@@ -5,7 +5,7 @@ namespace App\Domain\User\Data;
 /**
  * User data.
  */
-final class UserReaderResult
+final class UserReaderData
 {
     /** @var int */
     public $id;

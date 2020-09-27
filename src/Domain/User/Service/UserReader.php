@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserReaderResult;
+use App\Domain\User\Data\UserReaderData;
 use App\Domain\User\Repository\UserViewerRepository;
 
 /**
@@ -30,9 +30,9 @@ final class UserReader
      *
      * @param int $userId The user id
      *
-     * @return UserReaderResult The user
+     * @return UserReaderData The user data
      */
-    public function getUserViewData(int $userId): UserReaderResult
+    public function getUserViewData(int $userId): UserReaderData
     {
         // Input validation
         // ...
@@ -41,7 +41,7 @@ final class UserReader
         $userRow = $this->repository->getUserById($userId);
 
         // Add or invoke your complex business logic here
-        $user = new UserReaderResult();
+        $user = new UserReaderData();
         $user->id = (int)$userRow['id'];
         $user->username = (string)$userRow['username'];
         $user->email = (string)$userRow['email'];
