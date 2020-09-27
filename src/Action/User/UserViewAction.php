@@ -52,7 +52,7 @@ final class UserViewAction
         $userId = (int)$args['id'];
 
         // Invoke the domain (service class)
-        $user = $this->userReader->getUserViewData($userId);
+        $user = $this->userReader->getUserData($userId);
 
         // Prepare the view data
         $viewData = [

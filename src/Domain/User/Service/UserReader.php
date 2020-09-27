@@ -32,7 +32,7 @@ final class UserReader
      *
      * @return UserReaderData The user data
      */
-    public function getUserViewData(int $userId): UserReaderData
+    public function getUserData(int $userId): UserReaderData
     {
         // Input validation
         // ...
@@ -40,7 +40,11 @@ final class UserReader
         // Fetch data from the database
         $userRow = $this->repository->getUserById($userId);
 
-        // Add or invoke your complex business logic here
+        // Optional: Add or invoke your complex business logic here
+        // ...
+
+        // Optional: Transform the result into a DTO.
+        // You can also simply return a primitive type.
         $user = new UserReaderData();
         $user->id = (int)$userRow['id'];
         $user->username = (string)$userRow['username'];

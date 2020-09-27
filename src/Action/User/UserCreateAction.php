@@ -47,7 +47,7 @@ final class UserCreateAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // Collect input from the HTTP request
+        // Extract the form data from the request body
         $formData = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
