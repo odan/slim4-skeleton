@@ -90,9 +90,8 @@ final class HomeAction
 
 ## Responder
 
-According to [ADR](#action-domain-responder-adr) there should be a **responder** for each action. In most cases this is not necessary 
-and would blow up the code too much. Of course, you can add special responder classes and move the 
-complete presentation logic there. 
+According to [ADR](#action-domain-responder-adr) there should be a **responder** for each action. In most cases a generic reponder (see Responder/Responder.php) is good enough. Of course, you can add special responder classes and move the complete presentation logic there. An extra responder class would make sense when building an 
+transformation layer for complex (json or xml) data output. This helps to seperate the presentation logic from the domain logic.
 
 **Examples**
 
