@@ -39,23 +39,26 @@ use Slim\Views\Twig;
 
 final class HomeAction
 {
-    private $twig;
-
-    public function __construct(Twig $twig)
+    /**
+     * @var Responder
+     */
+    private $responder;
+    
+    public function __construct(Responder $responder)
     {
-        $this->twig = $twig;
+        $this->responder = $responder;
     }
 
     public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
-        return $this->twig->render($response, 'home/home-index.twig');
+        return $this->responder->render($response, 'home/home-index.twig');
     }
 }
 ```
 
 ### Writing JSON to the response
 
-Instead of calling `json_encode` everytime, you can use the `withJson()` method to render the response.
+Instead of calling `json_encode` everytime, you can use the responder `json()` method to render the response.
 
 ```php
 <?php
@@ -68,9 +71,19 @@ use Slim\Http\ServerRequest;
 
 final class HomeAction
 {
+    /**
+     * @var Responder
+     */
+    private $responder;
+    
+    public function __construct(Responder $responder)
+    {
+        $this->responder = $responder;
+    }
+    
     public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
-        return $response->withJson(['success' => true]);
+        return $this->responder->json(['success' => true]);
     }
 }
 ```
