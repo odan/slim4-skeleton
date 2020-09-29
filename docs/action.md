@@ -32,6 +32,7 @@ The use of class names is more lightweight, faster and scales better for larger 
 
 namespace App\Action;
 
+use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
@@ -65,6 +66,7 @@ Instead of calling `json_encode` everytime, you can use the responder `json()` m
 
 namespace App\Action;
 
+use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
