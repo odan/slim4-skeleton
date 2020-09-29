@@ -92,14 +92,8 @@ final class HomeAction
 
 ## Responder
 
-According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action. In most cases a generic reponder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php)) is good enough. Of course, you can add special responder classes and move the complete presentation logic there. An extra responder class would make sense when building an 
-transformation layer for complex (json or xml) data output. This helps to seperate the presentation logic from the domain logic.
-
-**Examples**
-
-* [JSON responder](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Responder/JsonResponder.php), [Usage](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Action/CreateUserAction.php)
-* [HTML responder](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Responder/HtmlResponder.php), [Usage](https://github.com/odan/slim4-skeleton/blob/bbc3c8b7ccacfbd0a7f32758b2aeab5a888042f0/src/Action/TimeAction.php)
-* [More examples](https://github.com/pmjones/adr-example/tree/master/src/Web/Blog)
+According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action. In most cases a generic reponder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php)) is good enough. Of course, you can add special responder classes and move the complete presentation logic there. An extra responder class would make sense when [building an 
+transformation layer](https://fractal.thephpleague.com/) for complex (json or xml) data output. This helps to seperate the presentation logic from the domain logic.
 
 ## Request and Response
 
