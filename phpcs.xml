@@ -3,6 +3,7 @@
     <arg name="basepath" value="."/>
     <arg name="colors"/>
     <arg value="sp"/>
+    <arg name="extensions" value="php"/>
 
     <config name="ignore_warnings_on_exit" value="1"/>
 
