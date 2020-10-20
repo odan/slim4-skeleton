@@ -4,7 +4,6 @@ namespace App\Routing;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Interfaces\RouteParserInterface;
-use Slim\Routing\RouteContext;
 use UnexpectedValueException;
 
 /**
@@ -13,6 +12,11 @@ use UnexpectedValueException;
 final class UrlGenerator
 {
     /**
+     * @var RouteParserInterface
+     */
+    private $routeParser;
+
+    /**
      * @var ServerRequestInterface|null
      */
     private $request;
@@ -20,10 +24,12 @@ final class UrlGenerator
     /**
      * The constructor.
      *
+     * @param RouteParserInterface $routeParser The route parser
      * @param ServerRequestInterface|null $request The request
      */
-    public function __construct(ServerRequestInterface $request = null)
+    public function __construct(RouteParserInterface $routeParser, ServerRequestInterface $request = null)
     {
+        $this->routeParser = $routeParser;
         $this->request = $request;
     }
 
@@ -70,7 +76,7 @@ final class UrlGenerator
         array $data = [],
         array $queryParams = []
     ): string {
-        return $this->getRouteParser()->urlFor($routeName, $data, $queryParams);
+        return $this->routeParser->urlFor($routeName, $data, $queryParams);
     }
 
     /**
@@ -90,27 +96,11 @@ final class UrlGenerator
         array $data = [],
         array $queryParams = []
     ): string {
-        return $this->getRouteParser()->fullUrlFor(
+        return $this->routeParser->fullUrlFor(
             $this->getRequest()->getUri(),
             $routeName,
             $data,
             $queryParams
         );
-    }
-
-    /**
-     * Get route parser.
-     *
-     * @throws UnexpectedValueException
-     *
-     * @return RouteParserInterface The route parser
-     */
-    private function getRouteParser(): RouteParserInterface
-    {
-        if (!$this->request) {
-            throw new UnexpectedValueException('The request is not defined');
-        }
-
-        return RouteContext::fromRequest($this->request)->getRouteParser();
     }
 }
