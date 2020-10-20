@@ -37,6 +37,7 @@ return PhpCsFixer\Config::create()
         'single_line_throw' => false,
     ])
     ->setFinder(PhpCsFixer\Finder::create()
+        ->in(__DIR__ . '/bin')
         ->in(__DIR__ . '/src')
         ->in(__DIR__ . '/tests')
         ->in(__DIR__ . '/config')
