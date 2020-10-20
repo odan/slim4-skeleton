@@ -6,9 +6,11 @@
 
     <config name="ignore_warnings_on_exit" value="1"/>
 
+    <file>./bin</file>
     <file>./src</file>
     <file>./tests</file>
     <file>./config</file>
+    <file>./public/index.php</file>
 
     <rule ref="PSR2"></rule>
     <!-- <rule ref="PSR12"></rule> -->
