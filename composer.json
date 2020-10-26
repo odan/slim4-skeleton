@@ -78,7 +78,7 @@
         "phinx:create": "phinx create -c config/phinx.php --ansi",
         "phinx:generate": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
         "phinx:migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
-        "phpstan": "phpstan analyse src tests config --level=max -c phpstan.neon --no-progress --ansi",
+        "phpstan": "phpstan analyse bin src tests config --level=max -c phpstan.neon --no-progress --ansi",
         "schema:dump": "php bin/console.php schema-dump",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
