@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase;
+namespace App\Test\Traits;
 
 use Slim\App;
 

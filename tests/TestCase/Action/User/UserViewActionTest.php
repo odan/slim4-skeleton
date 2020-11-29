@@ -3,8 +3,8 @@
 namespace App\Test\TestCase\Action\User;
 
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\AppTestTrait;
-use App\Test\TestCase\DatabaseTestTrait;
+use App\Test\Traits\AppTestTrait;
+use App\Test\Traits\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

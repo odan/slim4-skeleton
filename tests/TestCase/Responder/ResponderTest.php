@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Responder;
 
 use App\Responder\Responder;
-use App\Test\TestCase\AppTestTrait;
+use App\Test\Traits\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 use Slim\Psr7\Response;
 

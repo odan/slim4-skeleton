@@ -4,8 +4,8 @@ namespace App\Test\TestCase\Domain\User\Repository;
 
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\AppTestTrait;
-use App\Test\TestCase\DatabaseTestTrait;
+use App\Test\Traits\AppTestTrait;
+use App\Test\Traits\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

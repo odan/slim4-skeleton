@@ -4,8 +4,8 @@ namespace App\Test\TestCase\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\AppTestTrait;
-use App\Test\TestCase\DatabaseTestTrait;
+use App\Test\Traits\AppTestTrait;
+use App\Test\Traits\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
