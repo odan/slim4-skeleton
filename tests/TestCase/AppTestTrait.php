@@ -4,6 +4,7 @@ namespace App\Test\TestCase;
 
 use DI\Container;
 use InvalidArgumentException;
+use JsonException;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,14 +15,18 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UnexpectedValueException;
 
 /**
- * Container Trait.
+ * Slim App Test Trait.
  */
 trait AppTestTrait
 {
-    /** @var Container */
+    /**
+     * @var Container
+     */
     protected $container;
 
-    /** @var App */
+    /**
+     * @var App
+     */
     protected $app;
 
     /**
@@ -66,6 +71,8 @@ trait AppTestTrait
      *
      * @param string $class The class or interface
      *
+     * @throws InvalidArgumentException
+     *
      * @return MockObject The mock
      */
     protected function mock(string $class): MockObject
@@ -90,7 +97,7 @@ trait AppTestTrait
      * @param string|UriInterface $uri The URI
      * @param array $serverParams The server parameters
      *
-     * @return ServerRequestInterface
+     * @return ServerRequestInterface The request
      */
     protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
@@ -143,12 +150,14 @@ trait AppTestTrait
      * @param ResponseInterface $response The response
      * @param array $expected The expected array
      *
+     * @throws JsonException
+     *
      * @return void
      */
     protected function assertJsonData(ResponseInterface $response, array $expected): void
     {
         $actual = (string)$response->getBody();
         $this->assertJson($actual);
-        $this->assertSame($expected, (array)json_decode($actual, true));
+        $this->assertSame($expected, (array)json_decode($actual, true, 512, JSON_THROW_ON_ERROR));
     }
 }
