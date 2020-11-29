@@ -3,6 +3,7 @@
 namespace App\Test\TestCase\Action\User;
 
 use App\Test\Fixture\UserFixture;
+use App\Test\TestCase\AppTestTrait;
 use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -11,6 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UserViewActionTest extends TestCase
 {
+    use AppTestTrait;
     use DatabaseTestTrait;
 
     /**

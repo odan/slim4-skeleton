@@ -10,16 +10,12 @@ use UnexpectedValueException;
  */
 trait DatabaseTestTrait
 {
-    use AppTestTrait;
-
     /**
      * Create tables and insert fixtures.
      *
-     * @before
-     *
      * @return void
      */
-    protected function setupDatabase(): void
+    protected function setUpDatabase(): void
     {
         $this->getConnection();
 

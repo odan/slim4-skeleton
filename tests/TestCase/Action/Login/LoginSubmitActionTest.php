@@ -4,6 +4,7 @@ namespace App\Test\TestCase\Action\Login;
 
 use App\Domain\User\Data\UserAuthData;
 use App\Test\Fixture\UserFixture;
+use App\Test\TestCase\AppTestTrait;
 use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  */
 class LoginSubmitActionTest extends TestCase
 {
+    use AppTestTrait;
     use DatabaseTestTrait;
 
     /**
