@@ -7,7 +7,6 @@ use App\Test\Fixture\UserFixture;
 use App\Test\Traits\AppTestTrait;
 use App\Test\Traits\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Test.
@@ -36,7 +35,7 @@ class LoginSubmitActionTest extends TestCase
         $this->assertEquals('', (string)$response->getBody());
 
         // User session
-        $session = $this->container->get(SessionInterface::class);
+        $session = $this->getSession();
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
@@ -65,7 +64,7 @@ class LoginSubmitActionTest extends TestCase
         $this->assertEquals('', (string)$response->getBody());
 
         // User session
-        $session = $this->container->get(SessionInterface::class);
+        $session = $this->getSession();
 
         /** @var UserAuthData $user */
         $user = $session->get('user');
