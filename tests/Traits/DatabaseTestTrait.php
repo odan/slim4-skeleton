@@ -2,7 +2,9 @@
 
 namespace App\Test\Traits;
 
+use DomainException;
 use PDO;
+use PDOStatement;
 use UnexpectedValueException;
 
 /**
@@ -82,15 +84,11 @@ trait DatabaseTestTrait
 
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
 
-        $statement = $pdo->query(
+        $statement = $this->createQueryStatement(
             'SELECT TABLE_NAME
                 FROM information_schema.tables
                 WHERE table_schema = database()'
         );
-
-        if (!$statement) {
-            throw new UnexpectedValueException('Invalid SQL statement');
-        }
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -118,16 +116,12 @@ trait DatabaseTestTrait
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0; SET information_schema_stats_expiry=0');
 
         // Truncate only changed tables
-        $statement = $pdo->query(
+        $statement = $this->createQueryStatement(
             'SELECT TABLE_NAME
                 FROM information_schema.tables
                 WHERE table_schema = database()
                 AND update_time IS NOT NULL'
         );
-
-        if (!$statement) {
-            throw new UnexpectedValueException('Invalid SQL statement');
-        }
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -182,5 +176,148 @@ trait DatabaseTestTrait
 
         $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
         $statement->execute($row);
+    }
+
+    /**
+     * Asserts that a given table contains a given row.
+     *
+     * @param array $expectedRow Row expected to find
+     * @param string $table Table to look into
+     * @param int $id The primary key
+     * @param array|null $fields The columns
+     * @param string $message Optional message
+     *
+     * @return void
+     */
+    protected function assertTableRow(
+        array $expectedRow,
+        string $table,
+        int $id,
+        array $fields = null,
+        string $message = ''
+    ): void {
+        $this->assertSame($expectedRow, $this->getRowById($table, $id, $fields ?: array_keys($expectedRow)), $message);
+    }
+
+    /**
+     * Asserts that a given table contains a given row value.
+     *
+     * @param mixed $expected The expected value
+     * @param string $table Table to look into
+     * @param int $id The primary key
+     * @param string $field The column name
+     * @param string $message Optional message
+     *
+     * @return void
+     */
+    protected function assertTableRowValue(
+        $expected,
+        string $table,
+        int $id,
+        string $field,
+        string $message = ''
+    ): void {
+        $actual = $this->getRowById($table, $id, [$field])[$field];
+        $this->assertSame($expected, $actual, $message);
+    }
+
+    /**
+     * Asserts that a given table contains a given number of rows.
+     *
+     * @param int $expected The number of expected rows
+     * @param string $table Table to look into
+     * @param string $message Optional message
+     *
+     * @return void
+     */
+    protected function assertTableRowCount(int $expected, string $table, string $message = ''): void
+    {
+        $this->assertSame($expected, $this->getTableRowCount($table), $message);
+    }
+
+    /**
+     * Fetch row by ID.
+     *
+     * @param string $table Table name
+     * @param int $id The primary key value
+     * @param array|null $fields The array of fields
+     *
+     * @throws DomainException
+     *
+     * @return array Row
+     */
+    protected function getRowById(string $table, int $id, array $fields = null): array
+    {
+        $sql = sprintf('SELECT * FROM `%s` WHERE `id` = :id', $table);
+        $statement = $this->createPreparedStatement($sql);
+        $statement->execute(['id' => $id]);
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($row)) {
+            throw new DomainException(__('Row not found: %s', $id));
+        }
+
+        if ($fields) {
+            $row = array_intersect_key($row, array_flip($fields));
+        }
+
+        return $row;
+    }
+
+    /**
+     * Get table row count.
+     *
+     * @param string $table The table name
+     *
+     * @return int The number of rows
+     */
+    protected function getTableRowCount(string $table): int
+    {
+        $sql = sprintf('SELECT COUNT(*) AS counter FROM `%s`;', $table);
+        $statement = $this->createQueryStatement($sql);
+        $row = $statement->fetch(PDO::FETCH_ASSOC) ?: [];
+
+        return (int)($row['counter'] ?? 0);
+    }
+
+    /**
+     * Create PDO statement.
+     *
+     * @param string $sql The sql
+     *
+     * @throws UnexpectedValueException
+     *
+     * @return PDOStatement The statement
+     */
+    private function createPreparedStatement(string $sql): PDOStatement
+    {
+        $statement = $this->getConnection()->prepare($sql);
+
+        if (!$statement instanceof PDOStatement) {
+            throw new UnexpectedValueException('Invalid SQL statement');
+        }
+
+        return $statement;
+    }
+
+    /**
+     * Create PDO statement.
+     *
+     * @param string $sql The sql
+     *
+     * @throws UnexpectedValueException
+     *
+     * @return PDOStatement The statement
+     */
+    private function createQueryStatement(string $sql): PDOStatement
+    {
+        $statement = $this->getConnection()->query($sql, PDO::FETCH_ASSOC);
+
+        if (!$statement instanceof PDOStatement) {
+            throw new UnexpectedValueException('Invalid SQL statement');
+        }
+
+        return $statement;
     }
 }

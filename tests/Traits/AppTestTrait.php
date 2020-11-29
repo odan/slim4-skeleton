@@ -2,6 +2,7 @@
 
 namespace App\Test\Traits;
 
+use Cake\Chronos\Chronos;
 use Slim\App;
 
 /**
@@ -26,6 +27,8 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
+        Chronos::setTestNow('2020-01-01 00:00:00');
+
         $this->app = require __DIR__ . '/../../config/bootstrap.php';
         $this->setUpContainer();
 
