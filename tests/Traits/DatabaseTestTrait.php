@@ -13,6 +13,8 @@ trait DatabaseTestTrait
     /**
      * Create tables and insert fixtures.
      *
+     * TestCases must call this method inside setUp().
+     *
      * @return void
      */
     protected function setUpDatabase(): void

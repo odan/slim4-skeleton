@@ -17,15 +17,6 @@ class UserCreatorRepositoryTest extends TestCase
     use DatabaseTestTrait;
 
     /**
-     * Fixtures.
-     *
-     * @var array
-     */
-    public $fixtures = [
-        UserFixture::class,
-    ];
-
-    /**
      * Create instance.
      *
      * @return UserCreatorRepository The instance
@@ -42,6 +33,8 @@ class UserCreatorRepositoryTest extends TestCase
      */
     public function testInsertUser(): void
     {
+        $this->insertFixtures([UserFixture::class]);
+
         $repository = $this->createInstance();
 
         $user = [

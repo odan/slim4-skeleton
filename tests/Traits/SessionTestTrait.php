@@ -31,6 +31,8 @@ trait SessionTestTrait
     /**
      * Clear session.
      *
+     * TestCases must call this method inside tearDown().
+     *
      * @return void
      */
     protected function tearDownSession(): void

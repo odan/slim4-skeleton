@@ -18,6 +18,8 @@ trait ContainerTestTrait
     /**
      * Bootstrap app.
      *
+     * TestCases must call this method inside setUp().
+     *
      * @throws UnexpectedValueException
      *
      * @return void
