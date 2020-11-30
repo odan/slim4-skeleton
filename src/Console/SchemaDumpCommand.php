@@ -3,9 +3,11 @@
 namespace App\Console;
 
 use PDO;
+use PDOStatement;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use UnexpectedValueException;
 
 /**
  * Command.
@@ -53,16 +55,16 @@ final class SchemaDumpCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // Lazy loading, because the database may not exists
-        $output->writeln(sprintf('Use database: %s', (string)$this->pdo->query('select database()')->fetchColumn()));
+        $output->writeln(sprintf('Use database: %s', (string)$this->query('select database()')->fetchColumn()));
 
-        $statement = $this->pdo->query('SELECT table_name
+        $statement = $this->query('SELECT table_name
                 FROM information_schema.tables
                 WHERE table_schema = database()');
 
         $sql = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $row = array_change_key_case($row);
-            $statement2 = $this->pdo->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
+            $statement2 = $this->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
             $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';
         }
@@ -76,5 +78,25 @@ final class SchemaDumpCommand extends Command
         $output->writeln(sprintf('<info>Done</info>'));
 
         return 0;
+    }
+
+    /**
+     * Create query statement.
+     *
+     * @param string $sql The sql
+     *
+     * @throws UnexpectedValueException
+     *
+     * @return PDOStatement The statement
+     */
+    private function query(string $sql): PDOStatement
+    {
+        $statement = $this->pdo->query($sql);
+
+        if (!$statement) {
+            throw new UnexpectedValueException('Query failed');
+        }
+
+        return $statement;
     }
 }
