@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use PDO;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,25 +13,20 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SchemaDumpCommand extends Command
 {
     /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
      * @var PDO
      */
     private $pdo;
 
     /**
-     * Constructor.
+     * The constructor.
      *
-     * @param ContainerInterface $container The container
+     * @param PDO $pdo The database connection
      * @param string|null $name The name
      */
-    public function __construct(ContainerInterface $container, ?string $name = null)
+    public function __construct(PDO $pdo, ?string $name = null)
     {
         parent::__construct($name);
-        $this->container = $container;
+        $this->pdo = $pdo;
     }
 
     /**
@@ -59,8 +53,6 @@ final class SchemaDumpCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // Lazy loading, because the database may not exists
-        $this->pdo = $this->container->get(PDO::class);
-
         $output->writeln(sprintf('Use database: %s', (string)$this->pdo->query('select database()')->fetchColumn()));
 
         $statement = $this->pdo->query('SELECT table_name

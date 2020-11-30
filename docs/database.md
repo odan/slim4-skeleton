@@ -91,7 +91,7 @@ The `composer dump-schema` command dumps the current state of your schema to
 a `resources/migrations/schema/schema.sql` file.
 
 ```
-$ composer schema:dump
+$ composer migration:dump
 ```
 
 When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. 
