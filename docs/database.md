@@ -33,7 +33,7 @@ This skeleton provides a [Phinx](https://phinx.org/) console access to create da
 ### Generating a migration from a diff automatically
 
 ```bash
-$ composer phinx:generate
+$ composer migration:generate
 ```
 
 You can specify a migration name by adding the `--name` parameter.
@@ -41,13 +41,13 @@ You can specify a migration name by adding the `--name` parameter.
 **Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
 
 ```bash
-$ composer phinx:generate -- --name AddTableCustomers
+$ composer migration:generate -- --name AddTableCustomers
 ```
 
 ### Creating a blank database migration
 
 ```bash
-$ composer phinx:create UpdateArticleFixtures
+$ composer migration:create UpdateArticleFixtures
 ```
 
 Read more: **[Phinx Documentation](http://docs.phinx.org/)**
@@ -57,7 +57,7 @@ Read more: **[Phinx Documentation](http://docs.phinx.org/)**
 Update the database schema with this command:
 
 ```bash
-$ composer phinx:migrate
+$ composer migration:migrate
 ```
 
 If [Composer](https://getcomposer.org/) is not installed on the target server, 
