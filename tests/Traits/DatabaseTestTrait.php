@@ -179,7 +179,7 @@ trait DatabaseTestTrait
     }
 
     /**
-     * Asserts that a given table contains a given row.
+     * Asserts that a given table is the same as the given row.
      *
      * @param array $expectedRow Row expected to find
      * @param string $table Table to look into
@@ -197,6 +197,31 @@ trait DatabaseTestTrait
         string $message = ''
     ): void {
         $this->assertSame($expectedRow, $this->getRowById($table, $id, $fields ?: array_keys($expectedRow)), $message);
+    }
+
+    /**
+     * Asserts that a given table equals the given row.
+     *
+     * @param array $expectedRow Row expected to find
+     * @param string $table Table to look into
+     * @param int $id The primary key
+     * @param array|null $fields The columns
+     * @param string $message Optional message
+     *
+     * @return void
+     */
+    protected function assertTableRowEquals(
+        array $expectedRow,
+        string $table,
+        int $id,
+        array $fields = null,
+        string $message = ''
+    ): void {
+        $this->assertEquals(
+            $expectedRow,
+            $this->getRowById($table, $id, $fields ?: array_keys($expectedRow)),
+            $message
+        );
     }
 
     /**
