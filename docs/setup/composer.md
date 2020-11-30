@@ -64,7 +64,7 @@ $settings['db']['password'] = '';
 Run all of the available migrations:
 
 ```shell
-composer phinx:migrate
+composer migration:migrate
 ```
 
 **Step 5:** Run it

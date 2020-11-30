@@ -105,7 +105,7 @@ chmod -R 760 tmp/
 chmod -R 760 logs/
 
 cp config/env.example.php config/env.php
-composer phinx:migrate
+composer migration:migrate
 
 # Run tests
 vendor/bin/phpunit
