@@ -33,7 +33,7 @@ This skeleton provides a [Phinx](https://phinx.org/) console access to create da
 ### Generating a migration from a diff automatically
 
 ```bash
-$ composer migration:generate
+$ composer migration:diff
 ```
 
 You can specify a migration name by adding the `--name` parameter.
@@ -41,7 +41,7 @@ You can specify a migration name by adding the `--name` parameter.
 **Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
 
 ```bash
-$ composer migration:generate -- --name AddTableCustomers
+$ composer migration:diff -- --name AddTableCustomers
 ```
 
 ### Creating a blank database migration
