@@ -17,20 +17,20 @@
         "cakephp/chronos": "^2",
         "cakephp/database": "^4",
         "fig/http-message-util": "^1.1",
-        "fullpipe/twig-webpack-extension": "^3.0",
+        "fullpipe/twig-webpack-extension": "^4.0",
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^5.1",
-        "php-di/php-di": "^6.2",
+        "php-di/php-di": "^6.3",
         "selective/array-reader": "^1",
         "selective/basepath": "^1",
         "selective/validation": "^0.11",
         "slim/psr7": "^1.2",
-        "slim/slim": "^4.5",
+        "slim/slim": "^4.7",
         "slim/twig-view": "^3",
-        "symfony/console": "^5.0",
-        "symfony/http-foundation": "^5.1",
-        "symfony/translation": "^5.0",
-        "symfony/twig-bridge": "^5.0"
+        "symfony/console": "^5.2",
+        "symfony/http-foundation": "^5.2",
+        "symfony/translation": "^5.2",
+        "symfony/twig-bridge": "^5.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -38,8 +38,8 @@
         "phpstan/phpstan": "0.*",
         "phpunit/phpunit": "^9.4.4",
         "squizlabs/php_codesniffer": "^3.4",
-        "symfony/filesystem": "^5.0",
-        "symfony/finder": "^5.0"
+        "symfony/filesystem": "^5.2",
+        "symfony/finder": "^5.2"
     },
     "config": {
         "process-timeout": 0,
@@ -76,7 +76,7 @@
         "cs:fix": "php-cs-fixer fix --config=.cs.php",
         "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
         "migration:create": "phinx create -c config/phinx.php --ansi",
-        "migration:generate": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
+        "migration:diff": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
         "migration:migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
         "migration:dump": "php bin/console.php schema-dump",
         "phpstan": "phpstan analyse bin src tests config --level=max -c phpstan.neon --no-progress --ansi",

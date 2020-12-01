@@ -82,11 +82,7 @@ return [
 
         // Add extensions
         $twig->addExtension(new TranslationExtension($container->get(Translator::class)));
-        $twig->addExtension(new WebpackExtension(
-            $publicPath . '/assets/manifest.json',
-            'assets/',
-            'assets/'
-        ));
+        $twig->addExtension(new WebpackExtension($publicPath . '/assets/manifest.json', 'assets/'));
 
         // Add the Twig extension only if we run the application from the command line / cron job,
         // but not when phpunit tests are running.
