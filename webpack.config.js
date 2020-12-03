@@ -42,6 +42,7 @@ module.exports = (env, argv) => ({
 
     output: {
         path: path.resolve(__dirname, 'public/assets'),
+        publicPath: 'assets/',
     },
 
     mode: 'development',
