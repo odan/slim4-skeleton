@@ -163,8 +163,6 @@ trait DatabaseTestTrait
      */
     protected function insertFixture(string $table, array $row): void
     {
-        $pdo = $this->getConnection();
-
         $fields = array_keys($row);
 
         array_walk(
@@ -174,7 +172,7 @@ trait DatabaseTestTrait
             }
         );
 
-        $statement = $pdo->prepare(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
+        $statement = $this->createPreparedStatement(sprintf('INSERT INTO `%s` SET %s', $table, implode(',', $fields)));
         $statement->execute($row);
     }
 
