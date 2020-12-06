@@ -1,9 +1,12 @@
 <?php
 
+use Cake\Core\Configure;
 use Slim\App;
 
 /** @var App $app */
 $app = require __DIR__ . '/../config/bootstrap.php';
+
+Configure::write('App.namespace', 'App');
 
 $container = $app->getContainer();
 // @phpstan-ignore-next-line
