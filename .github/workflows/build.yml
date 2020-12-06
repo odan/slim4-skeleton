@@ -1,14 +1,14 @@
 name: build
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   run:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.3', '7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.3', '7.4', '8.0' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     services:
@@ -58,8 +58,13 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies for PHP 7
+        if: matrix.php-versions < '8.0'
+        run: composer update --prefer-dist --no-progress
+
+      - name: Install dependencies for PHP 8
+        if: matrix.php-versions >= '8.0'
+        run: composer update --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Install tables
         run: composer migration:migrate
@@ -75,3 +80,5 @@ jobs:
 
       - name: Run test suite
         run: composer check
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
