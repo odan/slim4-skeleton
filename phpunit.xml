@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="tests/bootstrap.php"
          colors="true"
          backupGlobals="false"
-         backupStaticAttributes="false">
+         backupStaticAttributes="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory>bin</directory>
+            <directory>build</directory>
+            <directory>docs</directory>
+            <directory>public</directory>
+            <directory>resources</directory>
+            <directory>templates</directory>
+            <directory>tmp</directory>
+            <directory>vendor</directory>
+        </exclude>
+    </coverage>
     <testsuites>
         <testsuite name="Tests">
             <directory suffix="Test.php">tests/TestCase</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
-            <exclude>
-                <directory>bin</directory>
-                <directory>build</directory>
-                <directory>docs</directory>
-                <directory>public</directory>
-                <directory>resources</directory>
-                <directory>templates</directory>
-                <directory>tmp</directory>
-                <directory>vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="PHPUNIT_TEST_SUITE" value="1"/>
         <!-- Don't cache result -->
-        <const name="PHPUNIT_TESTSUITE_RESULTCACHE" value="0"></const>
+        <const name="PHPUNIT_TESTSUITE_RESULTCACHE" value="0"/>
     </php>
 </phpunit>
