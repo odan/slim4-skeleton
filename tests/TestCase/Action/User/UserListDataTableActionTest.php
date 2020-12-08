@@ -28,11 +28,11 @@ class UserListDataTableActionTest extends TestCase
         $response = $this->app->handle($request);
 
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertJsonData($response, [
+        $this->assertJsonData([
             'recordsTotal' => 0,
             'recordsFiltered' => 0,
             'draw' => 1,
             'data' => [],
-        ]);
+        ], $response);
     }
 }

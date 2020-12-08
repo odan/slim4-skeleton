@@ -70,14 +70,14 @@ trait HttpTestTrait
     /**
      * Verify that the specified array is an exact match for the returned JSON.
      *
-     * @param ResponseInterface $response The response
      * @param array $expected The expected array
+     * @param ResponseInterface $response The response
      *
      * @throws JsonException
      *
      * @return void
      */
-    protected function assertJsonData(ResponseInterface $response, array $expected): void
+    protected function assertJsonData(array $expected, ResponseInterface $response): void
     {
         $actual = (string)$response->getBody();
         $this->assertJson($actual);

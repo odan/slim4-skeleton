@@ -29,7 +29,7 @@ class UserCreateActionTest extends TestCase
 
         $response = $this->app->handle($request);
 
-        $this->assertJsonData($response, ['user_id' => 1]);
+        $this->assertJsonData(['user_id' => 1], $response);
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertSame(201, $response->getStatusCode());
     }
