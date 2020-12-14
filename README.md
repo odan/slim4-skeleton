@@ -31,7 +31,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Features
 
-This project is based on best practice and industry standards:
+This project is based on best practices and industry standards:
 
 * HTTP message interfaces (PSR-7)
 * HTTP Server Request Handlers, Middleware (PSR-15)
