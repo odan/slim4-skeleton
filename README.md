@@ -62,7 +62,6 @@ This project is based on best practices and industry standards:
 ## Frontend
 
 * [Webpack](https://webpack.js.org/) (Assets bundler)
-* [TypeScript](https://www.typescriptlang.org/)
 * [Bootstrap](https://getbootstrap.com/) (Frontend component library)
 * [DataTables.net](https://datatables.net/) (Advanced tables)
 * [jQuery](https://jquery.com/) (for Bootstrap)
