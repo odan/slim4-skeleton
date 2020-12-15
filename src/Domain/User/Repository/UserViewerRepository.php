@@ -4,7 +4,6 @@ namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
-use App\Repository\TableName;
 use DomainException;
 
 /**
@@ -38,7 +37,7 @@ final class UserViewerRepository implements RepositoryInterface
      */
     public function getUserById(int $userId): array
     {
-        $query = $this->queryFactory->newSelect(TableName::USERS);
+        $query = $this->queryFactory->newSelect('users');
         $query->select([
             'id',
             'username',
@@ -63,7 +62,7 @@ final class UserViewerRepository implements RepositoryInterface
      */
     public function findAllUsers(): array
     {
-        $query = $this->queryFactory->newSelect(TableName::USERS)->select('*');
+        $query = $this->queryFactory->newSelect('users')->select('*');
 
         return $query->execute()->fetchAll('assoc') ?: [];
     }

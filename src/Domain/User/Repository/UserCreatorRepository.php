@@ -4,7 +4,6 @@ namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
 use App\Repository\RepositoryInterface;
-use App\Repository\TableName;
 use Cake\Chronos\Chronos;
 
 /**
@@ -38,6 +37,6 @@ class UserCreatorRepository implements RepositoryInterface
     {
         $row['created_at'] = Chronos::now()->toDateTimeString();
 
-        return (int)$this->queryFactory->newInsert(TableName::USERS, $row)->execute()->lastInsertId();
+        return (int)$this->queryFactory->newInsert('users', $row)->execute()->lastInsertId();
     }
 }
