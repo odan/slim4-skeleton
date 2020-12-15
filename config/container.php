@@ -22,6 +22,7 @@ use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
@@ -97,18 +98,21 @@ return [
         }
 
         $environment = $twig->getEnvironment();
-        $environment->addFunction(new TwigFunction(
-            'flashes',
-            function (string $key, $default = null) use ($container) {
-                // Lazy loading the flashbag to prevent session from starting
-                static $flashbag = null;
-                $flashbag = $flashbag ?? $container->get(Session::class)->getFlashBag();
-
-                return $flashbag->get($key, $default ?? []);
-            }
-        ));
+        $environment->addFunction(
+            new TwigFunction(
+                'flashes',
+                function (string $key, $default = null) use ($container) {
+                    // Lazy loading the flashbag to prevent session from starting
+                    return $container->get(FlashBagInterface::class)->get($key, $default ?? []);
+                }
+            )
+        );
 
         return $twig;
+    },
+
+    FlashBagInterface::class => function (ContainerInterface $container) {
+        return $container->get(Session::class)->getFlashBag();
     },
 
     Session::class => function (ContainerInterface $container) {
