@@ -17,7 +17,7 @@ use Throwable;
 /**
  * Default Error Renderer.
  */
-class DefaultErrorHandler
+final class DefaultErrorHandler
 {
     /**
      * @var Twig

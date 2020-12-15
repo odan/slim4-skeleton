@@ -8,7 +8,7 @@ use Cake\Chronos\Chronos;
 /**
  * Repository.
  */
-class UserCreatorRepository
+final class UserCreatorRepository
 {
     /**
      * @var QueryFactory The query factory

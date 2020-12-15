@@ -11,7 +11,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Factory.
  */
-class LoggerFactory
+final class LoggerFactory
 {
     /**
      * @var string
