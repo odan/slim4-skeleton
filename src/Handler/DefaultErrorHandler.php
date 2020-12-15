@@ -3,7 +3,6 @@
 namespace App\Handler;
 
 use App\Factory\LoggerFactory;
-use App\Utility\ExceptionDetail;
 use DomainException;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -72,13 +71,15 @@ class DefaultErrorHandler
     ): ResponseInterface {
         // Log error
         if ($logErrors) {
-            $this->logger->error(sprintf(
-                'Error: [%s] %s, Method: %s, Path: %s',
-                $exception->getCode(),
-                ExceptionDetail::getExceptionText($exception),
-                $request->getMethod(),
-                $request->getUri()->getPath()
-            ));
+            $this->logger->error(
+                sprintf(
+                    'Error: [%s] %s, Method: %s, Path: %s',
+                    $exception->getCode(),
+                    $this->getExceptionText($exception),
+                    $request->getMethod(),
+                    $request->getUri()->getPath()
+                )
+            );
         }
 
         // Detect status code
@@ -89,9 +90,13 @@ class DefaultErrorHandler
 
         // Render twig template
         $response = $this->responseFactory->createResponse();
-        $response = $this->twig->render($response, 'error/error.twig', [
-            'errorMessage' => $errorMessage,
-        ]);
+        $response = $this->twig->render(
+            $response,
+            'error/error.twig',
+            [
+                'errorMessage' => $errorMessage,
+            ]
+        );
 
         return $response->withStatus($statusCode);
     }
@@ -148,10 +153,35 @@ class DefaultErrorHandler
             $errorMessage = sprintf(
                 '%s - Error details: %s',
                 $errorMessage,
-                ExceptionDetail::getExceptionText($exception)
+                $this->getExceptionText($exception)
             );
         }
 
         return $errorMessage;
+    }
+
+    /**
+     * Get exception text.
+     *
+     * @param Throwable $exception Error
+     * @param int $maxLength The max length of the error message
+     *
+     * @return string The full error message
+     */
+    private function getExceptionText(Throwable $exception, int $maxLength = 0): string
+    {
+        $code = $exception->getCode();
+        $file = $exception->getFile();
+        $line = $exception->getLine();
+        $message = $exception->getMessage();
+        $trace = $exception->getTraceAsString();
+        $error = sprintf('[%s] %s in %s on line %s.', $code, $message, $file, $line);
+        $error .= sprintf("\nBacktrace:\n%s", $trace);
+
+        if ($maxLength > 0) {
+            $error = substr($error, 0, $maxLength);
+        }
+
+        return $error;
     }
 }
