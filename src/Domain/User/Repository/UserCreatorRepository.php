@@ -3,13 +3,12 @@
 namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
-use App\Repository\RepositoryInterface;
 use Cake\Chronos\Chronos;
 
 /**
  * Repository.
  */
-class UserCreatorRepository implements RepositoryInterface
+class UserCreatorRepository
 {
     /**
      * @var QueryFactory The query factory

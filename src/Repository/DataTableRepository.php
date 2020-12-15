@@ -12,7 +12,7 @@ use RuntimeException;
 /**
  * Repository.
  */
-class DataTableRepository implements RepositoryInterface
+class DataTableRepository
 {
     /**
      * @var QueryFactory

@@ -4,12 +4,11 @@ namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
 use App\Repository\DataTableRepository;
-use App\Repository\RepositoryInterface;
 
 /**
  * Repository.
  */
-class UserListDataTableRepository implements RepositoryInterface
+class UserListDataTableRepository
 {
     /**
      * @var QueryFactory

@@ -3,13 +3,12 @@
 namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
-use App\Repository\RepositoryInterface;
 use DomainException;
 
 /**
  * Repository.
  */
-final class UserViewerRepository implements RepositoryInterface
+final class UserViewerRepository
 {
     /**
      * @var QueryFactory The query factory
