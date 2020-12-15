@@ -7,7 +7,6 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Views\Twig;
-
 use function http_build_query;
 
 /**
