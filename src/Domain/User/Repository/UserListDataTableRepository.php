@@ -2,13 +2,13 @@
 
 namespace App\Domain\User\Repository;
 
+use App\Domain\DataTable\Repository\DataTableRepository;
 use App\Factory\QueryFactory;
-use App\Repository\DataTableRepository;
 
 /**
  * Repository.
  */
-class UserListDataTableRepository
+final class UserListDataTableRepository
 {
     /**
      * @var QueryFactory

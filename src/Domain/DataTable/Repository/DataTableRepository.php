@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Domain\DataTable\Repository;
 
 use App\Factory\QueryFactory;
 use Cake\Database\Expression\QueryExpression;
@@ -12,7 +12,7 @@ use RuntimeException;
 /**
  * Repository.
  */
-class DataTableRepository
+final class DataTableRepository
 {
     /**
      * @var QueryFactory
