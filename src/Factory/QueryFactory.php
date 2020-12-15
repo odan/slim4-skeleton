@@ -28,7 +28,7 @@ final class QueryFactory
     private $beforeInsertCallback;
 
     /**
-     * Constructor.
+     * The constructor.
      *
      * @param Connection $connection The database connection
      */

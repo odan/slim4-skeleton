@@ -63,7 +63,7 @@ final class LoggerFactory
      * Add rotating file logger handler.
      *
      * @param string $filename The filename
-     * @param int $level The level (optional)
+     * @param int|null $level The level (optional)
      *
      * @return LoggerFactory The logger factory
      */
@@ -83,7 +83,7 @@ final class LoggerFactory
     /**
      * Add a console logger.
      *
-     * @param int $level The level (optional)
+     * @param int|null $level The level (optional)
      *
      * @return self The instance
      */
