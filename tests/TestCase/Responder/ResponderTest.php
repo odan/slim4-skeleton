@@ -38,8 +38,6 @@ class ResponderTest extends TestCase
     public function testRedirectUrl(): void
     {
         $responder = $this->container->get(Responder::class);
-
-        $request = $this->createRequest('GET', '/');
         $response = $responder->redirect(new Response(), 'https://www.example.com/');
 
         $this->assertSame(302, $response->getStatusCode());
@@ -52,13 +50,32 @@ class ResponderTest extends TestCase
      *
      * @return void
      */
+    public function testRedirectUrlwithQueryString(): void
+    {
+        $responder = $this->container->get(Responder::class);
+        $queryParams = ['foo' => 'bar'];
+        $response = $responder->redirect(new Response(), 'https://www.example.com/', $queryParams);
+
+        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame('https://www.example.com/?foo=bar', $response->getHeaderLine('Location'));
+        $this->assertSame('', (string)$response->getBody());
+    }
+
+    /**
+     * Test.
+     *
+     * @return void
+     */
     public function testRedirectRouteName(): void
     {
         $responder = $this->container->get(Responder::class);
 
-        $this->app->get('/foo', function ($request, $response) use ($responder) {
-            return $responder->redirect($response, 'foo');
-        })->setName('foo');
+        $this->app->get(
+            '/foo',
+            function ($request, $response) use ($responder) {
+                return $responder->redirectFor($response, 'foo');
+            }
+        )->setName('foo');
 
         $request = $this->createRequest('GET', '/foo');
         $response = $this->app->handle($request);

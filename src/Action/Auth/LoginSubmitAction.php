@@ -65,13 +65,13 @@ final class LoginSubmitAction
         if ($user) {
             $this->startUserSession($user);
             $flash->set('success', __('Login successfully'));
-            $url = 'user-list';
+            $routeName = 'user-list';
         } else {
             $flash->set('error', __('Login failed!'));
-            $url = 'login';
+            $routeName = 'login';
         }
 
-        return $this->responder->redirect($response, $url);
+        return $this->responder->redirectFor($response, $routeName);
     }
 
     /**

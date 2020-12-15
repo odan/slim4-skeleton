@@ -2,11 +2,13 @@
 
 namespace App\Responder;
 
-use App\Routing\UrlGenerator;
 use JsonException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
+use Slim\Interfaces\RouteParserInterface;
 use Slim\Views\Twig;
+
+use function http_build_query;
 
 /**
  * A generic responder.
@@ -19,9 +21,9 @@ final class Responder
     private $twig;
 
     /**
-     * @var UrlGenerator
+     * @var RouteParserInterface
      */
-    private $urlGenerator;
+    private $routeParser;
 
     /**
      * @var ResponseFactoryInterface
@@ -32,17 +34,17 @@ final class Responder
      * The constructor.
      *
      * @param Twig $twig The twig engine
-     * @param UrlGenerator $urlGenerator The url generator
+     * @param RouteParserInterface $routeParser The route parser
      * @param ResponseFactoryInterface $responseFactory The response factory
      */
     public function __construct(
         Twig $twig,
-        UrlGenerator $urlGenerator,
+        RouteParserInterface $routeParser,
         ResponseFactoryInterface $responseFactory
     ) {
         $this->twig = $twig;
-        $this->urlGenerator = $urlGenerator;
         $this->responseFactory = $responseFactory;
+        $this->routeParser = $routeParser;
     }
 
     /**
@@ -77,7 +79,6 @@ final class Responder
      *
      * @param ResponseInterface $response The response
      * @param string $destination The redirect destination (url or route name)
-     * @param array<mixed> $data Named argument replacement data
      * @param array<mixed> $queryParams Optional query string parameters
      *
      * @return ResponseInterface The response
@@ -85,14 +86,35 @@ final class Responder
     public function redirect(
         ResponseInterface $response,
         string $destination,
-        array $data = [],
         array $queryParams = []
     ): ResponseInterface {
-        if (!filter_var($destination, FILTER_VALIDATE_URL)) {
-            $destination = $this->urlGenerator->fullUrlFor($destination, $data, $queryParams);
+        if ($queryParams) {
+            $destination = sprintf('%s?%s', $destination, http_build_query($queryParams));
         }
 
         return $response->withStatus(302)->withHeader('Location', $destination);
+    }
+
+    /**
+     * Creates a redirect for the given url / route name.
+     *
+     * This method prepares the response object to return an HTTP Redirect
+     * response to the client.
+     *
+     * @param ResponseInterface $response The response
+     * @param string $routeName The redirect route name
+     * @param array<mixed> $data Named argument replacement data
+     * @param array<mixed> $queryParams Optional query string parameters
+     *
+     * @return ResponseInterface The response
+     */
+    public function redirectFor(
+        ResponseInterface $response,
+        string $routeName,
+        array $data = [],
+        array $queryParams = []
+    ): ResponseInterface {
+        return $this->redirect($response, $this->routeParser->urlFor($routeName, $data, $queryParams));
     }
 
     /**
