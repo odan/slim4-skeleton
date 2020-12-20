@@ -12,9 +12,9 @@ $container = $app->getContainer();
 // @phpstan-ignore-next-line
 $pdo = $container->get(PDO::class);
 // @phpstan-ignore-next-line
-$config = $container->get('settings');
-$database = $config['db']['database'];
-$phinx = $config['phinx'];
+$settings = $container->get('settings');
+$database = $settings['db']['database'];
+$phinx = $settings['phinx'];
 
 $phinx['environments']['local'] = [
     // Set database name

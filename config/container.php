@@ -67,16 +67,16 @@ return [
 
     // Twig templates
     Twig::class => function (ContainerInterface $container) {
-        $config = (array)$container->get('settings');
-        $settings = $config['twig'];
+        $settings = (array)$container->get('settings');
+        $twigSettings = $settings['twig'];
 
-        $options = $settings['options'];
+        $options = $twigSettings['options'];
         $options['cache'] = $options['cache_enabled'] ? $options['cache_path'] : false;
 
-        $twig = Twig::create($settings['paths'], $options);
+        $twig = Twig::create($twigSettings['paths'], $options);
 
         $loader = $twig->getLoader();
-        $publicPath = (string)$config['public'];
+        $publicPath = (string)$settings['public'];
         if ($loader instanceof FilesystemLoader) {
             $loader->addPath($publicPath, 'public');
         }
@@ -189,7 +189,7 @@ return [
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
-        $config = $container->get('settings')['error'];
+        $settings = $container->get('settings')['error'];
         $app = $container->get(App::class);
 
         $logger = $container->get(LoggerFactory::class)
@@ -199,9 +199,9 @@ return [
         $errorMiddleware = new ErrorMiddleware(
             $app->getCallableResolver(),
             $app->getResponseFactory(),
-            (bool)$config['display_error_details'],
-            (bool)$config['log_errors'],
-            (bool)$config['log_error_details'],
+            (bool)$settings['display_error_details'],
+            (bool)$settings['log_errors'],
+            (bool)$settings['log_error_details'],
             $logger
         );
 
