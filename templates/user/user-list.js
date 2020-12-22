@@ -1,4 +1,5 @@
 const UserList = function () {
+    const $this = this;
 
     this.init = function () {
         $('#data-table').DataTable({
@@ -28,11 +29,18 @@ const UserList = function () {
                 }
             ]
         });
+
+        document.getElementById('refresh-button').addEventListener('click', $this.refresh);
+    };
+
+    this.refresh = function () {
+        const table = $('#data-table').DataTable();
+        table.ajax.reload();
     };
 
     this.init();
 };
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     new UserList();
 });

@@ -1,11 +1,6 @@
 {% extends "layout/layout.twig" %}
 
-{% block css %}
-    {% webpack_entry_css 'layout/datatables' %}
-{% endblock %}
-
 {% block js %}
-    {% webpack_entry_js 'layout/datatables' %}
     {% webpack_entry_js 'user/user-list' %}
 {% endblock %}
 
@@ -23,7 +18,7 @@
                 <button id="add-user" type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#exampleModal">{{ 'Add user'|trans }}
                 </button>
-
+                <button id="refresh-button" type="button" class="btn btn-primary">{{ 'Refresh'|trans }}</button>
                 <hr>
                 <table id="data-table"
                        class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">

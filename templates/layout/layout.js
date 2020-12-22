@@ -1,6 +1,6 @@
 // jQuery
-window.jQuery = require('jquery');
-window.$ = window.jQuery;
+global.jQuery = require('jquery');
+global.$ = global.jQuery;
 
 // Bootstrap
 require('bootstrap');
@@ -11,16 +11,19 @@ require('bootstrap/dist/css/bootstrap.css');
 require('@fortawesome/fontawesome-free/css/all.min.css');
 
 // SweetAlert2
-window.Swal = require('sweetalert2');
+global.Swal = require('sweetalert2');
 require('./swal2.css');
 
 // notifIt!
 require('notifit-js/notifIt/css/notifIt.min.css');
-window.notif = require('notifit-js/notifIt/js/notifIt.min').notif;
+global.notif = require('notifit-js/notifIt/js/notifIt.min').notif;
 require('./notifit.css');
 
 // Loading indicator
 global.spinner = require('./spinner');
+
+// Datatables Bootstrap 4
+require('./datatables');
 
 // Custom styles
 require('./layout.css');
