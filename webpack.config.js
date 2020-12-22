@@ -50,7 +50,14 @@ module.exports = (env, argv) => ({
     //devtool: argv.mode === 'production' ? 'source-map' : '',
 
     optimization: {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimizer: [new TerserJSPlugin({
+            terserOptions: {
+                compress: {
+                    drop_console: argv.mode === 'production' ? true : false,
+                    drop_debugger: argv.mode === 'production' ? true : false
+                },
+            },
+        }), new OptimizeCSSAssetsPlugin({})],
     },
 
     performance: {
