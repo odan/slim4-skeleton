@@ -127,7 +127,7 @@ final class DataTableRepository
         }
 
         $query->andWhere(function (QueryExpression $exp) use ($orConditions) {
-            return $exp->or_($orConditions);
+            return $exp->or($orConditions);
         });
     }
 
