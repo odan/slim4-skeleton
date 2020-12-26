@@ -1,9 +1,8 @@
 <?php
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setUsingCache(false)
     ->setRiskyAllowed(true)
-    //->setCacheFile(__DIR__ . '/.php_cs.cache')
     ->setRules(
         [
             '@PSR1' => true,
