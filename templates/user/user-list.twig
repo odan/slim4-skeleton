@@ -44,7 +44,9 @@
                         <td>{{ user.role }}</td>
                         <td>{{ user.enabled }}</td>
                         <td>
-                            <a class="btn btn-primary" href="users/{{ user.id }}/view" role="button">
+                            <a class="btn btn-primary"
+                               href="{{ url_for('user-view', { 'id': user.id }) }}"
+                               role="button">
                                 {{ 'Edit'|trans }}
                             </a>
                         </td>
