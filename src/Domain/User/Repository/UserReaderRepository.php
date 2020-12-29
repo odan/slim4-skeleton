@@ -8,7 +8,7 @@ use DomainException;
 /**
  * Repository.
  */
-final class UserViewerRepository
+final class UserReaderRepository
 {
     /**
      * @var QueryFactory The query factory

@@ -2,7 +2,7 @@
 
 namespace App\Action\User;
 
-use App\Domain\User\Service\UserListDataTable;
+use App\Domain\User\Service\UserIndex;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,28 +10,28 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Action.
  */
-final class UserListDataTableAction
+final class UserIndexAction
 {
+    /**
+     * @var UserIndex
+     */
+    private $userIndex;
+
     /**
      * @var Responder
      */
     private $responder;
 
     /**
-     * @var UserListDataTable
-     */
-    private $userListDataTable;
-
-    /**
      * The constructor.
      *
+     * @param UserIndex $userIndex The user index list viewer
      * @param Responder $responder The responder
-     * @param UserListDataTable $userListDataTable The service
      */
-    public function __construct(Responder $responder, UserListDataTable $userListDataTable)
+    public function __construct(UserIndex $userIndex, Responder $responder)
     {
+        $this->userIndex = $userIndex;
         $this->responder = $responder;
-        $this->userListDataTable = $userListDataTable;
     }
 
     /**
@@ -44,8 +44,12 @@ final class UserListDataTableAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $params = (array)$request->getParsedBody();
+        $params = (array)$request->getQueryParams();
 
-        return $this->responder->json($response, $this->userListDataTable->listAllUsers($params));
+        $viewData = [
+            'users' => $this->userIndex->listUsers($params),
+        ];
+
+        return $this->responder->render($response, 'user/user-list.twig', $viewData);
     }
 }

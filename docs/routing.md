@@ -19,7 +19,7 @@ Each route will be defined by a method that corresponds to the HTTP verb.
 For example, a `GET` request is defined as follows:
 
 ```php
-$app->get('/users', \App\Action\User\UserListAction::class);
+$app->get('/users', \App\Action\User\UserIndexAction::class);
 ```
 
 ## Route groups

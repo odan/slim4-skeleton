@@ -22,9 +22,6 @@ require('./notifit.css');
 // Loading indicator
 global.spinner = require('./spinner');
 
-// Datatables Bootstrap 4
-require('./datatables');
-
 // Custom styles
 require('./layout.css');
 require('./print.css');

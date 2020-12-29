@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 17:31+0100\n"
-"PO-Revision-Date: 2020-12-22 17:31+0100\n"
+"POT-Creation-Date: 2020-12-29 13:32+0100\n"
+"PO-Revision-Date: 2020-12-29 13:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -26,12 +26,7 @@ msgstr "Anmeldung erfolgreich"
 msgid "Login failed!"
 msgstr "Anmeldung fehlgeschlagen!"
 
-#: src/Domain/DataTable/Repository/DataTableRepository.php:216
-#, php-format
-msgid "Columns not found in table: %s"
-msgstr "Keine Felder gefunden in der Tabelle: %s"
-
-#: src/Domain/User/Repository/UserViewerRepository.php:51
+#: src/Domain/User/Repository/UserReaderRepository.php:51
 #, php-format
 msgid "User not found: %s"
 msgstr "Benutzer nicht gefunden: %s"
@@ -64,12 +59,12 @@ msgstr "Benutzer-ID"
 
 #: tmp/twig/30/307d06f0723dc44790df3f90fd9e3367487adb1c38e4bf6987c0eca235225c9b.php:81
 #: tmp/twig/9d/9d37b79adeb5176389ae4ca5bffca8212da692b57ddeb94bbc40c8f35cbf2dfd.php:82
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:93
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:94
 msgid "Username"
 msgstr "Benutzername"
 
 #: tmp/twig/30/307d06f0723dc44790df3f90fd9e3367487adb1c38e4bf6987c0eca235225c9b.php:91
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:97
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:98
 msgid "E-Mail"
 msgstr "E-Mail"
 
@@ -115,29 +110,33 @@ msgstr "Benutzerliste"
 msgid "Add user"
 msgstr "Benutzer hinzufügen"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:84
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:83
 msgid "Refresh"
 msgstr "Aktualisieren"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:101
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:102
 msgid "First name"
 msgstr "Vorname"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:105
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:106
 msgid "Last name"
 msgstr "Nachname"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:109
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:110
 msgid "Role"
 msgstr "Rolle"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:113
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:114
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:117
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:118
 msgid "Action"
 msgstr "Aktion"
+
+#: tmp/twig/b8/b8a935147021884a735d8f1da301b2c960b3ecfd3e6dfca2824c645c16fc963f.php:161
+msgid "Edit"
+msgstr "Bearbeiten"
 
 #: tmp/twig/bf/bf04dbde321529be9c437a3d84f38079a84209be1f5b2f3fc37277bd27c04589.php:76
 msgid "Hello, World"
@@ -146,6 +145,9 @@ msgstr "Hallo, Welt"
 #: tmp/twig/bf/bf04dbde321529be9c437a3d84f38079a84209be1f5b2f3fc37277bd27c04589.php:82
 msgid "Current time"
 msgstr "Aktuelle Zeit"
+
+#~ msgid "Columns not found in table: %s"
+#~ msgstr "Keine Felder gefunden in der Tabelle: %s"
 
 #~ msgid "Yes"
 #~ msgstr "Ja"
@@ -206,9 +208,6 @@ msgstr "Aktuelle Zeit"
 
 #~ msgid "js/datatable-english.json"
 #~ msgstr "js/datatable-german.json"
-
-#~ msgid "Edit"
-#~ msgstr "Bearbeiten"
 
 #~ msgid "en"
 #~ msgstr "de"

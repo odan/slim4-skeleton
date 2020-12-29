@@ -23,7 +23,6 @@ return function (App $app) {
 
     // Password protected area
     $app->group('/users', function (RouteCollectorProxy $group) {
-        $group->get('', \App\Action\User\UserListAction::class)->setName('user-list');
-        $group->post('/datatable', \App\Action\User\UserListDataTableAction::class)->setName('user-datatable');
+        $group->get('', \App\Action\User\UserIndexAction::class)->setName('user-list');
     })->add(UserAuthMiddleware::class);
 };
