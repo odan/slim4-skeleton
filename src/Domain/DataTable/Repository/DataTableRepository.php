@@ -126,9 +126,11 @@ final class DataTableRepository
             $orConditions[$searchField . ' LIKE'] = '%' . $searchValue . '%';
         }
 
-        $query->andWhere(function (QueryExpression $exp) use ($orConditions) {
-            return $exp->or($orConditions);
-        });
+        $query->andWhere(
+            function (QueryExpression $exp) use ($orConditions) {
+                return $exp->or($orConditions);
+            }
+        );
     }
 
     /**
@@ -206,10 +208,12 @@ final class DataTableRepository
     {
         $query = $this->queryFactory->newSelect('information_schema.columns');
         $query->select(['column_name', 'data_type', 'character_maximum_length']);
-        $query->andWhere([
-            'table_schema' => $query->newExpr('DATABASE()'),
-            'table_name' => $table,
-        ]);
+        $query->andWhere(
+            [
+                'table_schema' => $query->newExpr('DATABASE()'),
+                'table_name' => $table,
+            ]
+        );
 
         $rows = $query->execute()->fetchAll(StatementInterface::FETCH_TYPE_ASSOC);
         if (empty($rows)) {
