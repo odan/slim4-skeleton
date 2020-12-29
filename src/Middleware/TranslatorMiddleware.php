@@ -41,7 +41,7 @@ final class TranslatorMiddleware implements MiddlewareInterface
      * @param Translator $translator The translator
      * @param SessionInterface $session The session handler
      * @param string $localePath The directory with the locals
-     * @param string $defaultLocale The defalt language
+     * @param string $defaultLocale The default language
      */
     public function __construct(
         Translator $translator,
@@ -69,7 +69,7 @@ final class TranslatorMiddleware implements MiddlewareInterface
         $user = $this->session->get('user');
 
         // User locale or default locale
-        $locale = $user ? $user->locale : $this->defaultLocale;
+        $locale = $user instanceof UserAuthData ? $user->locale : $this->defaultLocale;
 
         // Set language
         $domain = 'messages';
