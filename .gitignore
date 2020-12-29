@@ -7,6 +7,7 @@ cache.properties
 .php_cs.cache
 .vscode
 .phpunit.result.cache
+package-lock.json
 
 # keys
 *.pem
