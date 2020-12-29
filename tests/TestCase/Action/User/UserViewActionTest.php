@@ -24,7 +24,7 @@ class UserViewActionTest extends TestCase
     {
         $this->insertFixtures([UserFixture::class]);
 
-        $request = $this->createRequest('GET', '/users/1');
+        $request = $this->createRequest('GET', '/users/1/view');
         $response = $this->app->handle($request);
 
         $this->assertSame(200, $response->getStatusCode());
@@ -39,7 +39,7 @@ class UserViewActionTest extends TestCase
      */
     public function testWithValidId(): void
     {
-        $request = $this->createRequest('GET', '/users/99');
+        $request = $this->createRequest('GET', '/users/99/view');
         $response = $this->app->handle($request);
 
         $this->assertSame(400, $response->getStatusCode());

@@ -12,7 +12,7 @@ return function (App $app) {
     $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');
 
     // HTML view
-    $app->get('/users/{id}', \App\Action\User\UserViewAction::class)->setName('user-view');
+    $app->get('/users/{id}/view', \App\Action\User\UserViewAction::class)->setName('user-view');
 
     // API endpoint
     $app->post('/api/users', \App\Action\User\UserCreateAction::class)->setName('api-user-create');
