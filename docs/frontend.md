@@ -44,20 +44,6 @@ To watch files and recompile whenever they change, run:
 npm run watch
 ```
 
-### Testing
-
-To start frontend tests, run:
-
-```
-npm run test
-```
-
-To start frontend tests with code coverage, run:
-
-```
-npm run test:coverage
-```
-
 ## Modal windows
 
 Show modal window:

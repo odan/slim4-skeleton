@@ -6,8 +6,6 @@
     "scripts": {
         "build": "npx webpack --mode=production",
         "build:dev": "npx webpack --mode=development",
-        "test": "jest",
-        "test:coverage": "jest --coverage --ci",
         "watch": "npx webpack --watch"
     },
     "dependencies": {
@@ -24,7 +22,6 @@
         "css-loader": "^3.6.0",
         "file-loader": "^4.3.0",
         "identity-obj-proxy": "^3.0.0",
-        "jest": "^24.9.0",
         "mini-css-extract-plugin": "^0.8.2",
         "optimize-css-assets-webpack-plugin": "^5.0.4",
         "postcss-loader": "^3.0.0",
