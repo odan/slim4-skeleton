@@ -79,7 +79,7 @@
         "migration:diff": "phinx-migrations generate --overwrite -c config/phinx.php --ansi",
         "migration:migrate": "phinx migrate -c config/phinx.php --ansi -vvv",
         "migration:dump": "php bin/console.php schema-dump",
-        "phpstan": "phpstan analyse bin src tests config --level=max -c phpstan.neon --no-progress --ansi",
+        "phpstan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "test": "phpunit --configuration phpunit.xml",
