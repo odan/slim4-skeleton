@@ -20,9 +20,9 @@ A Slim 4 Framework skeleton for web applications and APIs.
 
 ## Links
 
-* [Slim Framework Website](http://www.slimframework.com/)
-* [Slim Framework Documentation](http://www.slimframework.com/docs/v4/)
+* [Slim Framework Website](https://www.slimframework.com/)
+* [Slim Framework Documentation](https://www.slimframework.com/docs/v4/)
 * [Slim Framework Support Forum](https://discourse.slimframework.com/)
-* [Slim Framework Newsletter](https://tinyletter.com/slimphp)
+* [Slim Framework 4 Tutorial](https://odan.github.io/2019/11/05/slim4-tutorial.html)
 * [Slim Framework Articles](https://odan.github.io/)
 * [Donate](https://odan.github.io/donate.html)
