@@ -61,7 +61,7 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = '';
 ```
 
-Run all of the available migrations:
+Run all the available migrations:
 
 ```shell
 composer migration:migrate

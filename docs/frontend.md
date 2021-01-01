@@ -46,7 +46,7 @@ npm run watch
 
 ## Modal windows
 
-Show modal window:
+Show a modal window:
 
 ```js
 Swal.fire(

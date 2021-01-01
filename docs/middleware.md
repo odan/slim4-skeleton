@@ -14,7 +14,7 @@ More details: [Slim 4 Routing](https://www.slimframework.com/docs/v4/objects/rou
 ## Global middleware
 
 Some middleware handlers are already registered to ensure that the 
-exception handling and some security checks are enabled by default.
+exception handling, and some security checks are enabled by default.
 
 More details: [config/middleware.php](https://github.com/odan/slim4-skeleton/blob/master/config/middleware.php)
 

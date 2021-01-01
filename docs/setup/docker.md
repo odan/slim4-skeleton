@@ -68,7 +68,7 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = 'secret';
 ```
 
-To determine wheter the process in running in a docker container,
+To determine whether the process in running in a docker container,
 you can check the `DOCKER` environment variable, e.g.:
 
 ```php

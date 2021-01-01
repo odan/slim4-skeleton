@@ -16,9 +16,9 @@ The *Action* does only these things:
 
 All other logic, including all forms of input validation, error handling, and so on, 
 are therefore pushed out of the Action and into the **Domain** 
-(for domain logic concerns) or the response renderer (for presentation logic concerns). 
+(for domain logic concerns), or the response renderer (for presentation logic concerns). 
 
-A response could be rendered to HTML (e.g with Twig) for a standard web request; or 
+A response could be rendered to HTML (e.g. with Twig) for a standard web request; or 
 it might be something like JSON for RESTful API requests.
 
 **Note:** [Closures](https://www.php.net/manual/en/class.closure.php) (functions) as routing 
@@ -36,7 +36,6 @@ use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
-use Slim\Views\Twig;
 
 final class HomeAction
 {
@@ -92,8 +91,11 @@ final class HomeAction
 
 ## Responder
 
-According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action. In most cases a generic reponder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php)) is good enough. Of course, you can add special responder classes and move the complete presentation logic there. An extra responder class would make sense when [building an 
-transformation layer](https://fractal.thephpleague.com/) for complex (json or xml) data output. This helps to seperate the presentation logic from the domain logic.
+According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action. 
+In most cases a generic responder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php)) 
+is good enough. Of course, you can add special responder classes and move the complete presentation logic there. 
+An extra responder class would make sense when [building an transformation layer](https://fractal.thephpleague.com/) 
+for complex (json or xml) data output. This helps to separate the presentation logic from the domain logic.
 
 ## Request and Response
 
@@ -101,7 +103,8 @@ A quick overview of the request/response cycle:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
 
-The requests are going through the [middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html) stack (in and out):
+The requests are going through the [middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html) 
+stack (in and out):
 
 > `Request > Front controller > Routing > Middleware > Action > Middleware > Response`
 
@@ -114,9 +117,10 @@ Here is a fully detailed HTTP request flow and back to the response:
 ### Description
 
 1. The user or the API client starts an HTTP request. 
-2. The [front controller](https://en.wikipedia.org/wiki/Front_controller) `public/index.php` handles all requests. Create a PSR-7 request instance from the server request.
+2. The [front controller](https://en.wikipedia.org/wiki/Front_controller) `public/index.php` handles all requests. 
+   Create a PSR-7 request instance from the server request.
 3. Dispatch the request to the router.
-4. The router uses the HTTP method and the HTTP path to determine the appropriate action method.
+4. The router uses the HTTP method, and the HTTP path to determine the appropriate action method.
 5. The invoked controller action is responsible for:
    * Retrieving information from the request
    * Invoking the service and passing the parameters
@@ -129,13 +133,14 @@ Here is a fully detailed HTTP request flow and back to the response:
 8. The repository query handler creates a so called "use case optimal query" using a QueryBuilder
 9. Execute the database query
 10. Fetch the rows (result set) or the new primary key (ID) from the database
-11. Map the row(s) to an object or a list of data objects. Optional use a data mapper to create the objects.
+11. Map the row(s) to an object, or a list of data objects. Optional use a data mapper to create the objects.
 12. The repository returns the result
 13. Do more calculations with the fetched data. Do more complex operations. Optional, commit or rollback the transaction.
 14. Return the result
 15. Create the view data for the responder (optional)
 16. Pass the view data to the responder
-17. Let the responder render the view data into the specific representation like html or json and build the PSR-7 response with the ResponseFactory. 
+17. Let the responder render the view data into the specific representation like html or json and build the 
+    PSR-7 response with the ResponseFactory. 
 18. Return the response to the action method
 19. Return the response to the router
 20. Return the response to the front controller

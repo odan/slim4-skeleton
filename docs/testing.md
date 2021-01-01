@@ -36,9 +36,9 @@ Make sure that unit tests are running in-memory only, because they have to be ve
 ## Mocking
 
 When testing Slim applications, you may wish to "mock" certain aspects of your 
-application so they are not actually executed during a test. 
+application, so they are not actually executed during a test. 
 For example, when testing a service that needs a repository, 
-you may wish to mock the repository so that its not actually 
+you may wish to mock the repository so that it's not actually 
 executed queries during the test.
 
 The `AppTestTrait` provides methods for mocking objects into the container.
@@ -73,7 +73,7 @@ Creating a POST request:
 $request = $this->createRequest('POST', '/users');
 ```
 
-Creating a JSON (`application/json`) request with payload:
+Creating a JSON (`application/json`) request with a payload:
 
 ```php
 $request = $this->createJsonRequest('POST', '/users', ['name' => 'Sally']);

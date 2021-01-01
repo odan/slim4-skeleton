@@ -25,7 +25,7 @@ Example:
 
 ### Requirements
 
-* [Poedit](https://poedit.net/) (A translations editor)
+* [Poedit](https://poedit.net/) (Translation editor)
 
 ### Usage
 
@@ -56,7 +56,7 @@ echo __('There are %s users logged in.', 7);
 
 ### Determining The Current Locale
 
-You can use the UserAuth instance to get the users locale.
+You can use the UserAuth instance to get the user's locale.
 
 ```php
 

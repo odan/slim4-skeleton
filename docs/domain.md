@@ -17,7 +17,7 @@ nav_order: 9
 **Infrastructure**
 
 * Framework-specific code
-* Implementations for boundary objects, e.g. the repository classes (communication with database)
+* Implementations for boundary objects, e.g. the repository classes (communication with the database)
 * Web controllers (actions), CLI, etc.
 
 ## Advantages

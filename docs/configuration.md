@@ -29,16 +29,16 @@ However, `.env` files should be considered as harmful because:
 
 * People could put the file `.env` file into a public accessible directory.
 * A public accessible `.env` file can be [indexed by search engines](https://www.google.com/search?q=DB_USERNAME+filetype%3Aenv).
-* `.env` files are not native and much slower then PHP files.
+* `.env` files are not native and much slower than PHP files.
 * `.env` files are not intended to run on a production server. Many developers do it anyway.
-* `vlucas/phpdotenv` is a unnecessary dependency and buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
+* `vlucas/phpdotenv` is an unnecessary dependency and buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
 Even **environment variables** should be considering as harmful because:
 
 * A third-party server tool or any system-service could send a crash-report with all environment variables to foreign servers.
 * Any other tool on your server could read the environment variables.
 * Incorrectly configured servers could log the environment variables or even send them as error message to the browser. 
-* Using `getenv()` and `putenv()` is strongly discurraged due to the fact that these functions are not thread safe.
+* Using `getenv()` and `putenv()` is strongly discouraged due to the fact that these functions are not thread safe.
 
 The method of getting these values is using the `$_ENV` and `$_SERVER` super-global not the `getenv()` function.
 
