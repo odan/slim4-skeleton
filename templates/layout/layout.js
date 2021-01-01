@@ -4,7 +4,7 @@ global.$ = global.jQuery;
 
 // Bootstrap
 require('bootstrap');
-require('popper.js');
+require('@popperjs/core');
 require('bootstrap/dist/css/bootstrap.css');
 
 // Fontawesome

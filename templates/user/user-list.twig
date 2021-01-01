@@ -7,17 +7,25 @@
 {% block content %}
 
 <div id="content" class="container">
-    <div class="row">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">{{ 'Home'|trans }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'User list'|trans }}</li>
+        </ol>
+    </nav>
 
+    <div class="row">
         <div class="col-md-12">
             {% include 'layout/flash.twig' %}
         </div>
+    </div>
 
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-12">
             <h1><i class="fas fa-user"></i> {{ 'User list'|trans }}</h1>
 
-            <button id="add-button" type="button" class="btn btn-primary">{{ 'Add user'|trans }}</button>
-            <button id="refresh-button" type="button" class="btn btn-primary">{{ 'Refresh'|trans }}</button>
+            <button id="add-button" type="button" class="btn btn-outline-primary">{{ 'Add user'|trans }}</button>
+            <button id="refresh-button" type="button" class="btn btn-outline-success">{{ 'Refresh'|trans }}</button>
 
             <hr>
 
@@ -44,7 +52,7 @@
                         <td>{{ user.role }}</td>
                         <td>{{ user.enabled }}</td>
                         <td>
-                            <a class="btn btn-primary"
+                            <a class="btn btn-outline-primary"
                                href="{{ url_for('user-view', { 'id': user.id }) }}"
                                role="button">
                                 {{ 'Edit'|trans }}

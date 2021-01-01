@@ -15,3 +15,13 @@ body {
     border-radius: 0 !important;
     -moz-border-radius: 0 !important;
 }
+
+.breadcrumb {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: .25rem
+}
