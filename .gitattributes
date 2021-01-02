@@ -5,8 +5,8 @@ public/* linguist-vendored
 docs/* linguist-documentation
 
 # Set the default behavior, in case people don't have core.autocrlf set.
-# Git will always convert line endings to LF on checkout. You should use 
-# this for files that must keep LF endings, even on Windows. 
+# Git will always convert line endings to LF on checkout. You should use
+# this for files that must keep LF endings, even on Windows.
 * text eol=lf
 
 # Define binary file attributes.
