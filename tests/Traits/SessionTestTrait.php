@@ -2,7 +2,7 @@
 
 namespace App\Test\Traits;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Odan\Session\SessionInterface;
 use UnexpectedValueException;
 
 /**
@@ -43,6 +43,6 @@ trait SessionTestTrait
             $session->start();
         }
 
-        $session->invalidate();
+        $session->destroy();
     }
 }

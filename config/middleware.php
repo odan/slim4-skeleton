@@ -1,7 +1,7 @@
 <?php
 
-use App\Middleware\SessionMiddleware;
 use App\Middleware\TranslatorMiddleware;
+use Odan\Session\Middleware\SessionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;

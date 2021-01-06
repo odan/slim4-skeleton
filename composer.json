@@ -20,6 +20,7 @@
         "fullpipe/twig-webpack-extension": "^4.0",
         "monolog/monolog": "^2",
         "odan/phinx-migrations-generator": "^5.1",
+        "odan/session": "^5.1",
         "php-di/php-di": "^6.3",
         "selective/array-reader": "^1",
         "selective/basepath": "^2",
@@ -28,7 +29,6 @@
         "slim/slim": "^4.7",
         "slim/twig-view": "^3",
         "symfony/console": "^5.2",
-        "symfony/http-foundation": "^5.2",
         "symfony/translation": "^5.2",
         "symfony/twig-bridge": "^5.2"
     },

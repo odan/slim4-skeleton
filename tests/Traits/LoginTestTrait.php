@@ -3,7 +3,7 @@
 namespace App\Test\Traits;
 
 use App\Domain\User\Data\UserAuthData;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Odan\Session\SessionInterface;
 
 /**
  * Trait.
