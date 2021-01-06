@@ -13,9 +13,9 @@
   [![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/slim4-skeleton.svg)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/?branch=master)
   [![Total Downloads](https://img.shields.io/packagist/dt/odan/slim4-skeleton.svg)](https://packagist.org/packages/odan/slim4-skeleton/stats)
 
-</div>
-
 This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.com/) application.
+
+</div>
 
 ## Requirements
 
@@ -62,9 +62,7 @@ This project is based on best practices and industry standards:
 ## Frontend
 
 * [Webpack](https://webpack.js.org/) (Assets bundler)
-* [Bootstrap](https://getbootstrap.com/) (Frontend component library)
-* [DataTables.net](https://datatables.net/) (Advanced tables)
-* [jQuery](https://jquery.com/) (for Bootstrap)
+* [Bootstrap 5](https://getbootstrap.com/) (Frontend component library)
 * [SweetAlert2](https://sweetalert2.github.io/) (Flexible modal window)
 * [notifit 2](https://www.npmjs.com/package/notifit-js) (Notifications)
 * Spinner (Loading indicator)
