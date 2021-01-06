@@ -1,7 +1,3 @@
-// jQuery
-global.jQuery = require('jquery');
-global.$ = global.jQuery;
-
 // Bootstrap
 require('bootstrap');
 require('@popperjs/core');
