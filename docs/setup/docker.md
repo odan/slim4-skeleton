@@ -19,7 +19,8 @@ Create a new project:
 composer create-project odan/slim4-skeleton my-app
 ```
 
-*If you have only cloned the Skeleton project, you have to install the dependencies manually:*
+*If you have only cloned the skeleton project, 
+you have to install the dependencies manually:*
 
 ```
 composer update
