@@ -216,5 +216,5 @@ return [
         }
 
         return $application;
-    }
+    },
 ];
