@@ -25,6 +25,8 @@ use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
 use Slim\Views\TwigRuntimeLoader;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Translation\Loader\MoFileLoader;
@@ -201,4 +203,18 @@ return [
 
         return $errorMiddleware;
     },
+
+    Application::class => function (ContainerInterface $container) {
+        $application = new Application();
+
+        $application->getDefinition()->addOption(
+            new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'development')
+        );
+
+        foreach ($container->get('settings')['commands'] as $class) {
+            $application->add($container->get($class));
+        }
+
+        return $application;
+    }
 ];
