@@ -146,3 +146,7 @@ Here is a fully detailed HTTP request flow and back to the response:
 20. Return the response to the front controller
 21. The front controller emits the response using the SAPI Emitter
 22. The emitter sends the HTTP headers and echos the HTTP body back to the client
+
+**Read more:** 
+
+* [The Beauty of Single Action Controllers](https://driesvints.com/blog/the-beauty-of-single-action-controllers)

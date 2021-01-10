@@ -24,6 +24,8 @@ compiled, built, bundled, minified, optimized and so on.
 
 ## Building
 
+Make sure that the project is already versioned in a Git repository.
+
 To build a new artifact (ZIP file), run:
 
 ``` bash
@@ -53,7 +55,7 @@ Then extract the artifact to the `htdocs/` sub-directory using the `deploy.php` 
 
 ```bash
 cd /var/www/example.com
-sudo php deploy.php my_app_2019-01-29_235044.zip
+sudo php deploy.php my_app_2021-01-01_235044.zip
 ```
 
 If you still need more features, then you may try [Deployer](https://deployer.org/) - a deployment tool for PHP.
