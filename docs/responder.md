@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Responder
-nav_order: 9
+parent: Architecture
+nav_order: 3
 ---
 
 # Responder

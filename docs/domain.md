@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Domain
-nav_order: 9
+parent: Architecture
+nav_order: 2
 ---
 
 # Domain

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Action
-nav_order: 8
+parent: Architecture
+nav_order: 1
 ---
 
 # Action
