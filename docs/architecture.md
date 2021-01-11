@@ -7,19 +7,17 @@ has_children: true
 
 # Architecture
 
-This application uses the [ADR](#action-domain-responder-adr) pattern and a [hexagonal architecture](#hexagonal-architecture) with a [service-oriented](domain.md#service-oriented-architecture-soa) domain layer.  
+This application uses a layered architecture and the Action Domain Responder (ADR) pattern for HTTP.  
 
 ## Action Domain Responder
 
 **ADR** is a user interface pattern specifically intended for server-side applications operating in an over-the-network, request/response environment.
 
-The modern derivations of "MVC Model 2"  toward Action Domain Responder is not difficult. 
+The modern derivations of "MVC Model 2" toward Action Domain Responder is not difficult. 
 
 * **[Action](action.md):** Mediates between Domain and Responder
 * **[Domain](domain.md):** The core application with the business logic.
-* **[Responder](action.md#responder):** Presentation logic. The Responder builds the HTTP response.
-
-Read more: [ADR](https://github.com/pmjones/adr/blob/master/ADR.md)
+* **[Responder](responder.md):** Presentation logic. The Responder builds the HTTP response.
 
 ## Read more
 
