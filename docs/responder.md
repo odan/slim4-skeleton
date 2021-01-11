@@ -4,6 +4,8 @@ title: Responder
 nav_order: 9
 ---
 
+# Responder
+
 According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action.
 In most cases a generic responder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php))
 is good enough. Of course, you can add special responder classes and move the complete presentation logic there.
