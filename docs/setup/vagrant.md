@@ -5,7 +5,7 @@ parent: Installation
 nav_order: 3
 ---
 
-# Using Vagrant 
+# Vagrant Development Environment 
 
 ## Requirements
 
