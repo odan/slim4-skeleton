@@ -22,6 +22,12 @@ are therefore pushed out of the Action and into the **Domain**
 A response could be rendered to HTML (e.g. with Twig) for a standard web request; or 
 it might be something like JSON for RESTful API requests.
 
+Most people may think that this pattern is not suitable because it results in too many files.
+That this will result in more files is true, however these files are very small and focus on
+exactly one specific task. You get very specific classes with only one clearly defined responsibility
+(see SRP in SOLID). So you should not worry too much about too many files, instead you should worry
+about too few and big files (fat controllers) with too many responsibilities.
+
 ### Rendering a Twig template
 
 ```php
@@ -85,12 +91,6 @@ final class HomeAction
     }
 }
 ```
-
-Most people may think that this pattern is not suitable because it results in too many files.
-That this will result in more files is true, however these files are very small and focus on
-exactly one specific task. You get very specific classes with only one clearly defined responsibility
-(see SRP in SOLID). So you should not worry too much about too many files, instead you should worry
-about too few and big files (fat controllers) with too many responsibilities.
 
 **Read more**
 

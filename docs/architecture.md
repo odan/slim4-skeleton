@@ -25,9 +25,6 @@ A quick overview of the request/response cycle:
 
 ![image](https://user-images.githubusercontent.com/781074/67461691-3c34a880-f63e-11e9-8266-2119ac98f639.png)
 
-The requests are going through the [middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html)
-stack (in and out):
-
 ## Read more
 
 This architecture was inspired by the following resources and books:
