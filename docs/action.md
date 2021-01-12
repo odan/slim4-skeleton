@@ -91,8 +91,3 @@ final class HomeAction
     }
 }
 ```
-
-**Read more**
-
-* [The Beauty of Single Action Controllers](https://driesvints.com/blog/the-beauty-of-single-action-controllers)
-

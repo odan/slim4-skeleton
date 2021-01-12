@@ -62,8 +62,3 @@ be handled on a higher level (service) and not within a repository.
 * You can **postpone** the choice for database vendor, framework, query builder, ORM, etc.
 * You can more easily **keep up** with the change rate of the framework-specific code...
 * or replace the framework altogether
-
-**Read more**
-
-* [Alistair in the Hexagone](https://www.youtube.com/watch?v=th4AgBcrEHA)
-* [Advanced Web Application Architecture](https://leanpub.com/web-application-architecture/)
