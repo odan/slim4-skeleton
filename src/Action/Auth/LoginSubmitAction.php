@@ -71,7 +71,7 @@ final class LoginSubmitAction
             $routeName = 'login';
         }
 
-        return $this->responder->redirectFor($response, $routeName);
+        return $this->responder->withRedirectFor($response, $routeName);
     }
 
     /**

@@ -65,7 +65,7 @@ final class Responder
      *
      * @return ResponseInterface The response
      */
-    public function render(ResponseInterface $response, string $template, array $data = []): ResponseInterface
+    public function withTemplate(ResponseInterface $response, string $template, array $data = []): ResponseInterface
     {
         return $this->twig->render($response, $template, $data);
     }
@@ -82,7 +82,7 @@ final class Responder
      *
      * @return ResponseInterface The response
      */
-    public function redirect(
+    public function withRedirect(
         ResponseInterface $response,
         string $destination,
         array $queryParams = []
@@ -107,13 +107,13 @@ final class Responder
      *
      * @return ResponseInterface The response
      */
-    public function redirectFor(
+    public function withRedirectFor(
         ResponseInterface $response,
         string $routeName,
         array $data = [],
         array $queryParams = []
     ): ResponseInterface {
-        return $this->redirect($response, $this->routeParser->urlFor($routeName, $data, $queryParams));
+        return $this->withRedirect($response, $this->routeParser->urlFor($routeName, $data, $queryParams));
     }
 
     /**
@@ -130,7 +130,7 @@ final class Responder
      *
      * @return ResponseInterface The response
      */
-    public function json(
+    public function withJson(
         ResponseInterface $response,
         $data = null,
         int $options = 0

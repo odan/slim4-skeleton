@@ -36,6 +36,6 @@ final class LoginAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->responder->render($response, 'login/login.twig');
+        return $this->responder->withTemplate($response, 'login/login.twig');
     }
 }

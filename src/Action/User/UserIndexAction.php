@@ -50,6 +50,6 @@ final class UserIndexAction
             'users' => $this->userIndex->listUsers($params),
         ];
 
-        return $this->responder->render($response, 'user/user-list.twig', $viewData);
+        return $this->responder->withTemplate($response, 'user/user-list.twig', $viewData);
     }
 }

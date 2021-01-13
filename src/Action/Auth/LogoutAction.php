@@ -47,6 +47,6 @@ final class LogoutAction
         // Logout user
         $this->session->destroy();
 
-        return $this->responder->redirect($response, 'login');
+        return $this->responder->withRedirect($response, 'login');
     }
 }

@@ -48,7 +48,7 @@ final class UserCreator
      *
      * @return int The new user ID
      */
-    public function createUserFromArray(array $form): int
+    public function createUser(array $form): int
     {
         // Input validation
         $this->validateFormData($form);

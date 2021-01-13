@@ -60,6 +60,6 @@ final class UserViewAction
         ];
 
         // Render the twig template with the given view data
-        return $this->responder->render($response, 'user/user-view.twig', $viewData);
+        return $this->responder->withTemplate($response, 'user/user-view.twig', $viewData);
     }
 }

@@ -40,6 +40,6 @@ final class HomeAction
             'now' => date('d.m.Y H:i:s'),
         ];
 
-        return $this->responder->render($response, 'home/home.twig', $viewData);
+        return $this->responder->withTemplate($response, 'home/home.twig', $viewData);
     }
 }

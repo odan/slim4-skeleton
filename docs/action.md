@@ -54,14 +54,14 @@ final class HomeAction
 
     public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
-        return $this->responder->render($response, 'home/home-index.twig');
+        return $this->responder->withTemplate($response, 'home/home-index.twig');
     }
 }
 ```
 
 ### Writing JSON to the response
 
-Instead of calling `json_encode` everytime, you can use the responder `json()` method to render the response.
+Instead of calling `json_encode` everytime, you can use the responder `withJson()` method to render the response.
 
 ```php
 <?php
@@ -87,7 +87,7 @@ final class HomeAction
     
     public function __invoke(ServerRequest $request, Response $response): ResponseInterface
     {
-        return $this->responder->json(['success' => true]);
+        return $this->responder->withJson(['success' => true]);
     }
 }
 ```
