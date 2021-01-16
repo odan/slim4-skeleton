@@ -3,7 +3,6 @@
 namespace App\Test\Traits;
 
 use DI\Container;
-use Psr\Container\ContainerInterface;
 use UnexpectedValueException;
 
 /**
@@ -12,7 +11,7 @@ use UnexpectedValueException;
 trait ContainerTestTrait
 {
     /**
-     * @var Container|ContainerInterface
+     * @var Container
      */
     protected $container;
 
@@ -32,6 +31,10 @@ trait ContainerTestTrait
             throw new UnexpectedValueException('Container must be initialized');
         }
 
-        $this->container = $container;
+        if ($container instanceof Container) {
+            $this->container = $container;
+        }
+
+        throw new UnexpectedValueException('Container must be instance of DI\Container');
     }
 }
