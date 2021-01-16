@@ -71,7 +71,7 @@ final class SchemaDumpCommand extends Command
 
         $sql = implode("\n\n", $sql);
 
-        $filename = __DIR__ . '/../../resources/migrations/schema.sql';
+        $filename = __DIR__ . '/../../resources/schema/schema.sql';
         file_put_contents($filename, $sql);
 
         $output->writeln(sprintf('Generated file: %s', realpath($filename)));

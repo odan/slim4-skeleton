@@ -28,4 +28,4 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - "./resources/docker/config/my.cfg:/etc/mysql/conf.d/config-file.cnf"
-      - "./resources/migrations/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql"
+      - "./resources/schema/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql"

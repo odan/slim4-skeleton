@@ -67,7 +67,7 @@ trait DatabaseTestTrait
     {
         $pdo = $this->getConnection();
         $pdo->exec('SET unique_checks=0; SET foreign_key_checks=0;');
-        $pdo->exec((string)file_get_contents(__DIR__ . '/../../resources/migrations/schema.sql'));
+        $pdo->exec((string)file_get_contents(__DIR__ . '/../../resources/schema/schema.sql'));
         $pdo->exec('SET unique_checks=1; SET foreign_key_checks=1;');
     }
 

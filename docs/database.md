@@ -88,7 +88,7 @@ call vendor/bin/phinx seed:run -c config/phinx.php
 ## Schema Dump
 
 The `composer dump-schema` command dumps the current state of your schema to 
-a `resources/migrations/schema/schema.sql` file.
+a `resources/schema/schema.sql` file.
 
 ```
 $ composer migration:dump
