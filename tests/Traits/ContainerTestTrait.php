@@ -2,7 +2,7 @@
 
 namespace App\Test\Traits;
 
-use Psr\Container\ContainerInterface;
+use DI\Container;
 use UnexpectedValueException;
 
 /**
@@ -11,7 +11,7 @@ use UnexpectedValueException;
 trait ContainerTestTrait
 {
     /**
-     * @var ContainerInterface
+     * @var Container
      */
     protected $container;
 
