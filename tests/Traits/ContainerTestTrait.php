@@ -27,12 +27,11 @@ trait ContainerTestTrait
     protected function setUpContainer(): void
     {
         $container = $this->app->getContainer();
-        if ($container === null) {
-            throw new UnexpectedValueException('Container must be initialized');
-        }
 
         if ($container instanceof Container) {
             $this->container = $container;
+
+            return;
         }
 
         throw new UnexpectedValueException('Container must be instance of DI\Container');
