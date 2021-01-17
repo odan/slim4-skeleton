@@ -1,8 +1,7 @@
 parameters:
 	level: max
+	checkMissingIterableValueType: false
 	paths:
 		- src
 		- tests
 		- bin
-	ignoreErrors:
-		- '/Method App\\Factory\\QueryFactory(.*) return type has no value type specified in iterable type/'
