@@ -138,7 +138,7 @@ trait DatabaseTestTrait
     /**
      * Iterate over all fixtures and insert them into their tables.
      *
-     * @param array $fixtures The fixtures
+     * @param array<mixed> $fixtures The fixtures
      *
      * @return void
      */
@@ -157,7 +157,7 @@ trait DatabaseTestTrait
      * Insert row into table.
      *
      * @param string $table The table name
-     * @param array $row The row data
+     * @param array<mixed> $row The row data
      *
      * @return void
      */
@@ -179,10 +179,10 @@ trait DatabaseTestTrait
     /**
      * Asserts that a given table is the same as the given row.
      *
-     * @param array $expectedRow Row expected to find
+     * @param array<mixed> $expectedRow Row expected to find
      * @param string $table Table to look into
      * @param int $id The primary key
-     * @param array|null $fields The columns
+     * @param array<mixed>|null $fields The columns
      * @param string $message Optional message
      *
      * @return void
@@ -200,10 +200,10 @@ trait DatabaseTestTrait
     /**
      * Asserts that a given table equals the given row.
      *
-     * @param array $expectedRow Row expected to find
+     * @param array<mixed> $expectedRow Row expected to find
      * @param string $table Table to look into
      * @param int $id The primary key
-     * @param array|null $fields The columns
+     * @param array<mixed>|null $fields The columns
      * @param string $message Optional message
      *
      * @return void
@@ -263,11 +263,11 @@ trait DatabaseTestTrait
      *
      * @param string $table Table name
      * @param int $id The primary key value
-     * @param array|null $fields The array of fields
+     * @param array<mixed>|null $fields The array of fields
      *
      * @throws DomainException
      *
-     * @return array Row
+     * @return array<mixed> Row
      */
     protected function getRowById(string $table, int $id, array $fields = null): array
     {

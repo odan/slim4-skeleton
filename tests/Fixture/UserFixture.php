@@ -13,7 +13,7 @@ class UserFixture
     /**
      * Records.
      *
-     * @var array Records
+     * @var array<mixed> Records
      */
     public $records = [
         [

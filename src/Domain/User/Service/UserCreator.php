@@ -42,7 +42,7 @@ final class UserCreator
     /**
      * Create a new user.
      *
-     * @param array $form The form data
+     * @param array<mixed> $form The form data
      *
      * @throws ValidationException
      *
@@ -68,7 +68,7 @@ final class UserCreator
     /**
      * Validate.
      *
-     * @param array $form The data
+     * @param array<mixed> $form The data
      *
      * @throws ValidationException
      *
@@ -96,9 +96,9 @@ final class UserCreator
     /**
      * Create row from form data.
      *
-     * @param array $form The form data
+     * @param array<mixed> $form The form data
      *
-     * @return array The row
+     * @return array<mixed> The row
      */
     private function createUserRow(array $form): array
     {

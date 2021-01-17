@@ -29,7 +29,7 @@ final class UserAuthRepository
      *
      * @param string $username Username
      *
-     * @return array The user
+     * @return array<mixed> The user
      */
     public function findUserByUsername(string $username): array
     {

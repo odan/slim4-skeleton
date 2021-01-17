@@ -27,9 +27,9 @@ final class UserIndexRepository
     /**
      * Load data table entries.
      *
-     * @param array $params The user
+     * @param array<mixed> $params The user
      *
-     * @return array The list view data
+     * @return array<mixed> The list view data
      */
     public function findUserList(array $params): array
     {

@@ -27,9 +27,9 @@ final class UserIndex
     /**
      * List users.
      *
-     * @param array $params The parameters
+     * @param array<mixed> $params The parameters
      *
-     * @return array The result
+     * @return array<mixed> The result
      */
     public function listUsers(array $params): array
     {

@@ -28,7 +28,7 @@ final class UserCreatorRepository
     /**
      * Insert user row.
      *
-     * @param array $row The user data
+     * @param array<mixed> $row The user data
      *
      * @return int The new ID
      */

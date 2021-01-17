@@ -32,7 +32,7 @@ final class UserReaderRepository
      *
      * @throws DomainException
      *
-     * @return array The user row
+     * @return array<mixed> The user row
      */
     public function getUserById(int $userId): array
     {
@@ -57,7 +57,7 @@ final class UserReaderRepository
     /**
      * Find all users.
      *
-     * @return array A list of users
+     * @return array<mixed> A list of users
      */
     public function findAllUsers(): array
     {

@@ -18,12 +18,12 @@ final class QueryFactory
     private $connection;
 
     /**
-     * @var callable
+     * @var callable|null
      */
     private $beforeUpdateCallback;
 
     /**
-     * @var callable
+     * @var callable|null
      */
     private $beforeInsertCallback;
 
@@ -71,7 +71,7 @@ final class QueryFactory
      * Create an 'update' statement for the given table.
      *
      * @param string $table The table to update rows from
-     * @param array $data The values to be updated
+     * @param array<mixed> $data The values to be updated
      *
      * @return Query The new update query
      */
@@ -88,7 +88,7 @@ final class QueryFactory
      * Create an 'update' statement for the given table.
      *
      * @param string $table The table to update rows from
-     * @param array $data The values to be updated
+     * @param array<mixed> $data The values to be updated
      *
      * @return Query The new insert query
      */

@@ -26,7 +26,7 @@ final class LoggerFactory
     /**
      * The constructor.
      *
-     * @param array $settings The settings
+     * @param array<mixed> $settings The settings
      */
     public function __construct(array $settings)
     {
@@ -35,7 +35,7 @@ final class LoggerFactory
     }
 
     /**
-     * @var array Handler
+     * @var array<mixed> Handler
      */
     private $handler = [];
 

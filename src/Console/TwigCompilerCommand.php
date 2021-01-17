@@ -86,7 +86,7 @@ final class TwigCompilerCommand extends Command
      * Iterate over all twig templates and force compilation.
      *
      * @param Environment $twig The twig environment
-     * @param array $paths The template paths
+     * @param array<string> $paths The template paths
      * @param string $cachePath The output cache path
      *
      * @return void
