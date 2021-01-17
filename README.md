@@ -19,7 +19,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 7.3+ or 8.0+
+* PHP 7.2+ or 8.0+
 * MySQL 5.7+ or MariaDB
 * Composer (only for development)
 * [NPM](https://nodejs.org/en/download/) (only for development)
