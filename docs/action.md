@@ -91,3 +91,60 @@ final class HomeAction
     }
 }
 ```
+
+### VSCode Snippet
+
+[Snippets in Visual Studio Code - Create your own snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets).
+
+Should be added to file `Code/User/snippets/php.json`.
+
+For quick access start typing `class` in new PHP file(after `<?php` line) then pick snippet from dropdown.
+
+```json
+    "slim4 skeleton action class": {
+        "prefix": "class",
+        "body": [
+            "namespace App\\Action\\\\${TM_DIRECTORY/^.+\\/(.*)$/$1/};",
+            "",
+            "use App\\Responder\\Responder;",
+            "use Psr\\Http\\Message\\ResponseInterface;",
+            "use Psr\\Http\\Message\\ServerRequestInterface;",
+            "",
+            "/**",
+            " * Action.",
+            " */",
+            "final class $TM_FILENAME_BASE",
+            "{",
+            "    /**",
+            "     * @var Responder",
+            "     */",
+            "    private \\$responder;",
+            "",
+            "    /**",
+            "     * The constructor.",
+            "     *",
+            "     * @param Responder \\$responder The responder",
+            "     */",
+            "    public function __construct(Responder \\$responder)",
+            "    {",
+            "        \\$this->responder = \\$responder;",
+            "    }",
+            "",
+            "    /**",
+            "     * Action.",
+            "     *",
+            "     * @param ServerRequestInterface \\$request The request",
+            "     * @param ResponseInterface \\$response The response",
+            "     *",
+            "     * @return ResponseInterface The response",
+            "     */",
+            "    public function __invoke(ServerRequestInterface \\$request, ResponseInterface \\$response): ResponseInterface",
+            "    {",
+            "        return \\$this->responder->withTemplate(\\$response, '${TM_DIRECTORY/^.+\\/(.*)$/${1:/downcase}/}/$0.twig');",
+            "    }",
+            "}",
+            ""
+        ],
+        "description": "Slim4 skeleton action class"
+    },
+```
