@@ -7,7 +7,7 @@
 <div align="center">
 
   [![Latest Version on Packagist](https://img.shields.io/github/release/odan/slim4-skeleton.svg)](https://packagist.org/packages/odan/slim4-skeleton)
-  [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
+  [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
   [![Build Status](https://github.com/odan/slim4-skeleton/workflows/build/badge.svg)](https://github.com/odan/slim4-skeleton/actions)
   [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/odan/slim4-skeleton.svg)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/code-structure)
   [![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/slim4-skeleton.svg)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/?branch=master)
@@ -43,8 +43,6 @@ This project is based on best practices and industry standards:
 * Logging (PSR-3)
 * [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
-* Translations (Symfony)
-* Sessions
 * Console Commands (Symfony)
 * Input validation
 * Migrations ([Phinx](https://phinx.org/))
