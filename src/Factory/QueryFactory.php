@@ -18,16 +18,6 @@ final class QueryFactory
     private $connection;
 
     /**
-     * @var callable|null
-     */
-    private $beforeUpdateCallback;
-
-    /**
-     * @var callable|null
-     */
-    private $beforeInsertCallback;
-
-    /**
      * The constructor.
      *
      * @param Connection $connection The database connection
@@ -77,10 +67,6 @@ final class QueryFactory
      */
     public function newUpdate(string $table, array $data): Query
     {
-        if (isset($this->beforeUpdateCallback)) {
-            $data = (array)call_user_func($this->beforeUpdateCallback, $data, $table);
-        }
-
         return $this->newQuery()->update($table)->set($data);
     }
 
@@ -94,10 +80,6 @@ final class QueryFactory
      */
     public function newInsert(string $table, array $data): Query
     {
-        if (isset($this->beforeInsertCallback)) {
-            $data = (array)call_user_func($this->beforeInsertCallback, $data, $table);
-        }
-
         return $this->newQuery()->insert(array_keys($data))
             ->into($table)
             ->values($data);
@@ -113,29 +95,5 @@ final class QueryFactory
     public function newDelete(string $table): Query
     {
         return $this->newQuery()->delete($table);
-    }
-
-    /**
-     * Before update event.
-     *
-     * @param callable $callback The callback (string $row, string $table)
-     *
-     * @return void
-     */
-    public function beforeUpdate(callable $callback): void
-    {
-        $this->beforeUpdateCallback = $callback;
-    }
-
-    /**
-     * Before insert event.
-     *
-     * @param callable $callback The callback (string $row, string $table)
-     *
-     * @return void
-     */
-    public function beforeInsert(callable $callback): void
-    {
-        $this->beforeInsertCallback = $callback;
     }
 }
