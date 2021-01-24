@@ -2,10 +2,8 @@
 
 namespace App\Test\Traits;
 
-use Selective\TestTrait\Traits\ArrayTestTrait;
 use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
-use Selective\TestTrait\Traits\HttpTestTrait;
 use Selective\TestTrait\Traits\MockTestTrait;
 use Slim\App;
 
