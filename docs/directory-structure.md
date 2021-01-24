@@ -29,7 +29,7 @@ The directory structure based on the [Standard PHP package skeleton](https://git
 │   ├── Factory             # Factories
 │   ├── Responder           # Responder and Url helper (application layer)
 │   ├── Middleware          # Middleware (application layer)
-│   └── Utility             # Helper classes and functions
+│   └── Support             # Helper classes and functions
 ├── templates               # Twig and Vue templates + JS and CSS
 ├── tests                   # Automated tests
 ├── tmp                     # Temporary files

@@ -56,6 +56,14 @@ $this->mockMethod([UserReaderRepository::class, 'getUserById'])
     ->willReturn(['example' => 'data']);
 ```
 
+### Mocking Date and Time
+
+```php
+use Cake\Chronos\Chronos;
+
+Chronos::setTestNow('2021-02-01 00:00:00');
+```
+
 ## HTTP Tests
 
 The `AppTestTrait` provides methods for making HTTP requests to your 
@@ -67,23 +75,55 @@ Creating a GET request:
 $request = $this->createRequest('GET', '/users/1');
 ```
 
-Creating a POST request:
+### Creating a request
+
+Creating a `GET` request:
+
+```php
+$request = $this->createRequest('GET', '/users');
+```
+
+Creating a `POST` request:
 
 ```php
 $request = $this->createRequest('POST', '/users');
 ```
 
-Creating a JSON (`application/json`) request with a payload:
+Creating a JSON `application/json` request with payload:
 
 ```php
 $request = $this->createJsonRequest('POST', '/users', ['name' => 'Sally']);
 ```
 
-Creating a form (`application/x-www-form-urlencoded`) request:
+Creating a form (`application/x-www-form-urlencoded`) request with payload:
 
 ```php
 $request = $this->createFormRequest('POST', '/users', ['name' => 'Sally']);
 ```
+
+### Creating a query string
+
+The [http_build_query](https://www.php.net/manual/en/function.http-build-query.php) can generate
+URL-encoded query strings. Example:
+
+```php
+$params = [
+    'limit' => 10,
+];
+
+// Result: /users?limit=10
+$url = sprintf('/users?%s', http_build_query($params));
+
+$request = $this->createRequest('GET', $url);
+```
+
+### Add BasicAuth to the request
+
+```php
+$request = $this->withHttpBasicAuth($request);
+```
+
+### Invoking a request
 
 Make request and get the response. This method traverses the application
 middleware stack and then returns the resultant Response object.
@@ -101,13 +141,19 @@ $this->assertSame(200, $response->getStatusCode());
 Asserting a JSON response:
 
 ```php
-$this->assertJsonData($response, [
+$this->assertJsonContentType($response);
+```
+
+Asserting JSON response data:
+
+```php
+$this->assertJsonData([
     'user_id' => 1,
     'username' => 'admin',
     'first_name' => 'John',
     'last_name' => 'Doe',
     'email' => 'john.doe@example.com',
-]);
+], $response);
 ```
 
 Take a look at the examples in: `tests/TestCase/Action/`
@@ -123,9 +169,69 @@ for all these stages of a database test:
 * Verify the state of the tables
 * Cleanup the tables for each new test
 
-Take a look at these examples:
+### Test fixtures
 
-* `tests/TestCase/Domain/User/Repository/UserCreatorRepositoryTest.php`
+Insert multiple fixtures ate once:
+
+```php
+use App\Test\Fixture\UserFixture;
+
+$this->insertFixtures([UserFixture::class]);
+```
+
+Insert manual fixtures:
+
+```php
+$this->insertFixture('tablename', $row);
+```
+
+### Database asserts
+
+Assert the number of rows in a given table:
+
+```php
+$this->assertTableRowCount(1, 'users');
+```
+
+Assert the given row exists:
+
+```php
+$this->assertTableRowExists('users', 1);
+```
+
+Assert the given row does not exist:
+
+```php
+$this->assertTableRowNotExists('users', 1);
+```
+
+Assert row values:
+
+```php
+$this->assertTableRow($expected, 'users', 1);
+```
+
+Assert a specific set of row values:
+
+```php
+$this->assertTableRow($expected, 'users', 1, ['email', 'url']);
+```
+
+```php
+$this->assertTableRow($expected, 'users', 1, array_keys($expected));
+```
+
+Assert specific a value in the given table, row and field:
+
+```php
+$this->assertTableRowValue('1', 'users', 1, 'id');
+```
+
+Read single value from table row by id:
+
+```php
+$password = $this->getTableRowById('users', 1)['password'];
+```
 
 ## Debugging Tests
 
