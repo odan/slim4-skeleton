@@ -28,29 +28,10 @@
 	<target name="cc" description="Clear application cache">
 		<echo>Clear cache</echo>
 
-		<delete dir="${basedir}/tmp/assets/"/>
-		<mkdir dir="${basedir}/tmp/assets"/>
-		<chmod file="${basedir}/tmp/assets" perm="775"/>
-		<touch file="${basedir}/tmp/assets/empty"/>
-
 		<delete dir="${basedir}/tmp/routes/"/>
 		<mkdir dir="${basedir}/tmp/routes"/>
 		<chmod file="${basedir}/tmp/routes" perm="775"/>
 		<touch file="${basedir}/tmp/routes/empty"/>
-
-		<delete dir="${basedir}/tmp/translations/"/>
-		<mkdir dir="${basedir}/tmp/translations"/>
-		<chmod file="${basedir}/tmp/translations" perm="775"/>
-		<touch file="${basedir}/tmp/translations/empty"/>
-
-		<delete dir="${basedir}/tmp/twig/"/>
-		<mkdir dir="${basedir}/tmp/twig"/>
-		<chmod file="${basedir}/tmp/twig" perm="775"/>
-		<touch file="${basedir}/tmp/twig/empty"/>
-
-		<delete dir="${basedir}/public/assets/"/>
-		<mkdir dir="${basedir}/public/assets"/>
-		<touch file="${basedir}/public/assets/.htaccess"/>
 
 		<delete includeemptydirs="true">
 			<fileset dir="${basedir}/logs" includes="**/*"/>
@@ -84,15 +65,6 @@
 		<exec executable="php" failonerror="true">
 			<arg
 				line="${basedir}/build/composer.phar install --no-dev --optimize-autoloader -d ${basedir}/build/master"/>
-		</exec>
-
-		<!-- Install npm packages -->
-		<exec executable="npm${cmd}" dir="${basedir}/build/master" failonerror="true">
-			<arg line="install"/>
-		</exec>
-
-		<exec executable="npm${cmd}" dir="${basedir}/build/master" failonerror="true">
-			<arg line="run build"/>
 		</exec>
 
 		<!-- Remove files which aren't needed on the server -->
@@ -138,12 +110,22 @@
 				<include name="**/phpcs.xml"/>
 				<include name="**/tsconfig.json"/>
 				<include name="**/webpack.config.js"/>
+                <include name="**/.sonarcloud.properties"/>
+                <include name="**/docker-compose.yml"/>
+                <include name="**/Dockerfile"/>
 			</fileset>
 		</delete>
 
 		<!-- Remove folders which aren't needed on the server -->
+        <delete includeemptydirs="true">
+            <fileset dir="${basedir}/build/master/" casesensitive="no">
+                <include name="**/.github/"/>
+                <include name="docs/"/>
+                <include name="tests/"/>
+            </fileset>
+        </delete>
 		<delete includeemptydirs="true">
-			<fileset dir="${basedir}/build/master/" casesensitive="no">
+			<fileset dir="${basedir}/build/master/vendor/" casesensitive="no">
 				<include name="**/tests/"/>
 				<include name="**/test/"/>
 				<include name="**/tester/"/>
@@ -151,8 +133,6 @@
 				<include name="**/doc/"/>
 				<include name="**/examples/"/>
 				<include name="**/example/"/>
-				<include name="**/node_modules/"/>
-				<include name="**/.github/"/>
 			</fileset>
 		</delete>
 
