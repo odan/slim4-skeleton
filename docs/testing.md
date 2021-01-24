@@ -165,7 +165,7 @@ for all these stages of a database test:
 
 ### Test fixtures
 
-Insert multiple fixtures ate once:
+Insert multiple fixtures at once:
 
 ```php
 use App\Test\Fixture\UserFixture;
@@ -181,7 +181,7 @@ $this->insertFixture('tablename', $row);
 
 ### Database asserts
 
-Assert the number of rows in a given table:
+Assert a number of rows in a given table:
 
 ```php
 $this->assertTableRowCount(1, 'users');
@@ -193,7 +193,7 @@ Assert the given row exists:
 $this->assertTableRowExists('users', 1);
 ```
 
-Assert the given row does not exist:
+Assert that the given row does not exist:
 
 ```php
 $this->assertTableRowNotExists('users', 1);
@@ -215,13 +215,13 @@ $this->assertTableRow($expected, 'users', 1, ['email', 'url']);
 $this->assertTableRow($expected, 'users', 1, array_keys($expected));
 ```
 
-Assert specific a value in the given table, row and field:
+Assert a specific value in the given table, row and field:
 
 ```php
 $this->assertTableRowValue('1', 'users', 1, 'id');
 ```
 
-Read single value from table row by id:
+Read single value from table by id:
 
 ```php
 $password = $this->getTableRowById('users', 1)['password'];
