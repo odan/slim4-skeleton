@@ -58,6 +58,10 @@ This project is based on best practices and industry standards:
 * Docker container with Xdebug support for PhpStorm
 * Swagger OpenAPI documentation
 
+## Screenshot
+
+![screely-1611448840855](https://user-images.githubusercontent.com/781074/105618232-3d2a2c00-5de5-11eb-91b7-d2c03ecc2412.png)
+
 ## Support
 
 * Issues: <https://github.com/odan/slim4-skeleton/issues>
