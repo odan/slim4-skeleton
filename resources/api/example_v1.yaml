@@ -32,7 +32,7 @@ paths:
     get:
       tags:
         - User
-      summary: Get list of users
+      summary: List users
       description: 'My description.'
       operationId: getUsers
       responses:
@@ -81,7 +81,7 @@ paths:
     get:
       tags:
         - User
-      summary: Get user by user ID
+      summary: Get user
       description: 'My description.'
       operationId: getUserByName
       parameters:
