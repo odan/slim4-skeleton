@@ -69,12 +69,6 @@ Chronos::setTestNow('2021-02-01 00:00:00');
 The `AppTestTrait` provides methods for making HTTP requests to your 
 Slim application and examining the output. 
 
-Creating a GET request:
-
-```php
-$request = $this->createRequest('GET', '/users/1');
-```
-
 ### Creating a request
 
 Creating a `GET` request:
@@ -95,7 +89,7 @@ Creating a JSON `application/json` request with payload:
 $request = $this->createJsonRequest('POST', '/users', ['name' => 'Sally']);
 ```
 
-Creating a form (`application/x-www-form-urlencoded`) request with payload:
+Creating a form `application/x-www-form-urlencoded` request with payload:
 
 ```php
 $request = $this->createFormRequest('POST', '/users', ['name' => 'Sally']);
@@ -111,8 +105,8 @@ $params = [
     'limit' => 10,
 ];
 
-// Result: /users?limit=10
 $url = sprintf('/users?%s', http_build_query($params));
+// $url is now: /users?limit=10
 
 $request = $this->createRequest('GET', $url);
 ```
@@ -125,8 +119,8 @@ $request = $this->withHttpBasicAuth($request);
 
 ### Invoking a request
 
-Make request and get the response. This method traverses the application
-middleware stack and then returns the resultant Response object.
+The Slim App `handle()` method traverses the application
+middleware stack + actions handler and returns the Response object.
 
 ```php
 $response = $this->app->handle($request);
@@ -156,7 +150,7 @@ $this->assertJsonData([
 ], $response);
 ```
 
-Take a look at the examples in: `tests/TestCase/Action/`
+You can find more examples in: `tests/TestCase/Action/`
 
 ## Database Testing
 
