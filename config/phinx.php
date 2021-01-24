@@ -19,7 +19,6 @@ $phinx = $settings['phinx'];
 $phinx['environments']['local'] = [
     // Set database name
     'name' => $database,
-    'schema_file' => __DIR__ . '/../resources/schema/schema.php',
     'connection' => $pdo,
 ];
 

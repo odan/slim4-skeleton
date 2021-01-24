@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Translations
+published: false
 nav_order: 11
 ---
 

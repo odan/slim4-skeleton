@@ -2,27 +2,26 @@
 
 // Define app routes
 
-use App\Middleware\UserAuthMiddleware;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
+use Tuupola\Middleware\HttpBasicAuthentication;
 
 return function (App $app) {
-    $app->get('/', \App\Action\Home\HomeAction::class)->setName('root');
+    // Redirect to Swagger documentation
+    $app->get('/', \App\Action\Home\HomeAction::class)->setName('home');
 
-    $app->get('/hello/{name}', \App\Action\Hello\HelloAction::class)->setName('hello');
-
-    // HTML view
-    $app->get('/users/{id}/view', \App\Action\User\UserViewAction::class)->setName('user-view');
-
-    // API endpoint
-    $app->post('/api/users', \App\Action\User\UserCreateAction::class)->setName('api-user-create');
-
-    $app->get('/login', \App\Action\Auth\LoginAction::class)->setName('login');
-    $app->post('/login', \App\Action\Auth\LoginSubmitAction::class);
-    $app->get('/logout', \App\Action\Auth\LogoutAction::class)->setName('logout');
+    // Swagger API documentation
+    $app->get('/docs/v1', \App\Action\Doc\SwaggerUiAction::class)->setName('docs');
 
     // Password protected area
-    $app->group('/users', function (RouteCollectorProxy $group) {
-        $group->get('', \App\Action\User\UserIndexAction::class)->setName('user-list');
-    })->add(UserAuthMiddleware::class);
+    $app->group(
+        '/api',
+        function (RouteCollectorProxy $app) {
+            $app->get('/users', \App\Action\User\UserFindAction::class);
+            $app->post('/users', \App\Action\User\UserCreateAction::class);
+            $app->get('/users/{user_id}', \App\Action\User\UserReadAction::class);
+            $app->put('/users/{user_id}', \App\Action\User\UserUpdateAction::class);
+            $app->delete('/users/{user_id}', \App\Action\User\UserDeleteAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
 };

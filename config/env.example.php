@@ -21,3 +21,10 @@ require __DIR__ . '/local.development.php';
 // Database
 $settings['db']['username'] = 'root';
 $settings['db']['password'] = '';
+
+$settings['api_auth'] = [
+    'users' => [
+        'api-admin' => 'secret',
+        'api-user' => 'secret',
+    ],
+];

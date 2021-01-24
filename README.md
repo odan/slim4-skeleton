@@ -19,10 +19,9 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 7.3+ or 8.0+
+* PHP 7.2+ or 8.0+
 * MySQL 5.7+ or MariaDB
 * Composer (only for development)
-* [NPM](https://nodejs.org/en/download/) (only for development)
 
 #### Recommended
 
@@ -47,7 +46,6 @@ This project is based on best practices and industry standards:
 * Translations (Symfony)
 * Sessions
 * Console Commands (Symfony)
-* Twig templates with translations (Symfony)
 * Input validation
 * Migrations ([Phinx](https://phinx.org/))
 * SQL Query Builder (CakePHP)
@@ -58,15 +56,6 @@ This project is based on best practices and industry standards:
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
 * Docker container with Xdebug support for PhpStorm
-
-## Frontend
-
-* [Webpack](https://webpack.js.org/) (Assets bundler)
-* [Bootstrap 5](https://getbootstrap.com/) (Frontend component library)
-* [SweetAlert2](https://sweetalert2.github.io/) (Flexible modal window)
-* [notifit 2](https://www.npmjs.com/package/notifit-js) (Notifications)
-* Spinner (Loading indicator)
-* CSS and JS minifier
 
 ## Support
 

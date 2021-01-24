@@ -2,11 +2,10 @@
 
 namespace App\Responder;
 
-use JsonException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Interfaces\RouteParserInterface;
-use Slim\Views\Twig;
+use Slim\Views\PhpRenderer;
 use function http_build_query;
 
 /**
@@ -15,9 +14,9 @@ use function http_build_query;
 final class Responder
 {
     /**
-     * @var Twig
+     * @var PhpRenderer
      */
-    private $twig;
+    private $phpRenderer;
 
     /**
      * @var RouteParserInterface
@@ -32,16 +31,16 @@ final class Responder
     /**
      * The constructor.
      *
-     * @param Twig $twig The twig engine
+     * @param PhpRenderer $phpRenderer The template engine
      * @param RouteParserInterface $routeParser The route parser
      * @param ResponseFactoryInterface $responseFactory The response factory
      */
     public function __construct(
-        Twig $twig,
+        PhpRenderer $phpRenderer,
         RouteParserInterface $routeParser,
         ResponseFactoryInterface $responseFactory
     ) {
-        $this->twig = $twig;
+        $this->phpRenderer = $phpRenderer;
         $this->responseFactory = $responseFactory;
         $this->routeParser = $routeParser;
     }
@@ -67,7 +66,7 @@ final class Responder
      */
     public function withTemplate(ResponseInterface $response, string $template, array $data = []): ResponseInterface
     {
-        return $this->twig->render($response, $template, $data);
+        return $this->phpRenderer->render($response, $template, $data);
     }
 
     /**
@@ -126,8 +125,6 @@ final class Responder
      * @param mixed $data The data
      * @param int $options Json encoding options
      *
-     * @throws JsonException
-     *
      * @return ResponseInterface The response
      */
     public function withJson(
@@ -136,7 +133,7 @@ final class Responder
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((string)json_encode($data, JSON_THROW_ON_ERROR | $options));
+        $response->getBody()->write((string)json_encode($data, $options));
 
         return $response;
     }

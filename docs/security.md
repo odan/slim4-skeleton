@@ -8,12 +8,11 @@ nav_order: 13
 
 ## Authentication
 
-This skeleton uses [sessions](https://www.php.net/manual/en/book.session.php) (cookies) to handle the logged-in users.
+This API skeleton uses [Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
-For **APIs** you should consider other options:
- 
-[Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) is a simple authentication scheme built into the HTTP protocol. 
-As long as the client transmits its data over **HTTPS**, it's a secure authentication mechanism.  
+BasicAuth is an authentication scheme built into the HTTP protocol. 
+As long as the client transmits its data over **HTTPS**, 
+it's a secure authentication mechanism.  
 
 ```
 Authorization: Basic ZGVtbzpwQDU1dzByZA==

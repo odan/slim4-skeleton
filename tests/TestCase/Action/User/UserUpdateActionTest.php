@@ -3,6 +3,7 @@
 namespace App\Test\TestCase\Action\User;
 
 use App\Domain\User\Type\UserRoleType;
+use App\Test\Fixture\UserFixture;
 use App\Test\Traits\AppTestTrait;
 use Cake\Chronos\Chronos;
 use Fig\Http\Message\StatusCodeInterface;
@@ -12,9 +13,9 @@ use Selective\TestTrait\Traits\DatabaseTestTrait;
 /**
  * Test.
  *
- * @coversDefaultClass \App\Action\User\UserCreateAction
+ * @coversDefaultClass \App\Action\User\UserUpdateAction
  */
-class UserCreateActionTest extends TestCase
+class UserUpdateActionTest extends TestCase
 {
     use AppTestTrait;
     use DatabaseTestTrait;
@@ -24,13 +25,15 @@ class UserCreateActionTest extends TestCase
      *
      * @return void
      */
-    public function testCreateUser(): void
+    public function testUpdateUser(): void
     {
-        Chronos::setTestNow('2021-01-01 00:00:00');
+        Chronos::setTestNow('2021-02-01 00:00:00');
+
+        $this->insertFixtures([UserFixture::class]);
 
         $request = $this->createJsonRequest(
-            'POST',
-            '/api/users',
+            'PUT',
+            '/api/users/1',
             [
                 'username' => 'admin',
                 'password' => '12345678',
@@ -43,17 +46,13 @@ class UserCreateActionTest extends TestCase
             ]
         );
         $request = $this->withHttpBasicAuth($request);
-
         $response = $this->app->handle($request);
 
         // Check response
-        $this->assertSame(StatusCodeInterface::STATUS_CREATED, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertJsonContentType($response);
-        $this->assertJsonData(['user_id' => 1], $response);
 
         // Check database
-        $this->assertTableRowCount(1, 'users');
-
         $expected = [
             'id' => '1',
             'username' => 'admin',
@@ -63,9 +62,9 @@ class UserCreateActionTest extends TestCase
             'user_role_id' => '2',
             'locale' => 'de_DE',
             'enabled' => '1',
-            'created_at' => '2021-01-01 00:00:00',
-            'created_user_id' => null,
-            'updated_at' => null,
+            'created_at' => '2019-01-09 14:05:19',
+            'created_user_id' => '1',
+            'updated_at' => '2021-02-01 00:00:00',
             'updated_user_id' => null,
         ];
 
@@ -84,9 +83,11 @@ class UserCreateActionTest extends TestCase
      */
     public function testCreateUserValidation(): void
     {
+        $this->insertFixtures([UserFixture::class]);
+
         $request = $this->createJsonRequest(
-            'POST',
-            '/api/users',
+            'PUT',
+            '/api/users/1',
             [
                 'username' => '',
                 'password' => '1234',

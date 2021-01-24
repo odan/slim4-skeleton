@@ -3,6 +3,7 @@
 namespace App\Test\TestCase\Action\Home;
 
 use App\Test\Traits\AppTestTrait;
+use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,8 +23,8 @@ class HomeActionTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $this->app->handle($request);
 
-        $this->assertStringContainsString('Hello, World', (string)$response->getBody());
-        $this->assertSame(200, $response->getStatusCode());
+        // Assert: Redirect
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -33,10 +34,10 @@ class HomeActionTest extends TestCase
      */
     public function testPageNotFound(): void
     {
-        $request = $this->createRequest('GET', '/not-existing-page');
+        $request = $this->createRequest('GET', '/nada');
         $response = $this->app->handle($request);
 
         // Assert: Not found
-        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_NOT_FOUND, $response->getStatusCode());
     }
 }

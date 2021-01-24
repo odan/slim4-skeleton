@@ -3,20 +3,19 @@
 namespace App\Domain\User\Repository;
 
 use App\Factory\QueryFactory;
-use DomainException;
 
 /**
  * Repository.
  */
-final class UserReaderRepository
+final class UserFinderRepository
 {
     /**
-     * @var QueryFactory The query factory
+     * @var QueryFactory
      */
     private $queryFactory;
 
     /**
-     * The constructor.
+     * Constructor.
      *
      * @param QueryFactory $queryFactory The query factory
      */
@@ -26,15 +25,13 @@ final class UserReaderRepository
     }
 
     /**
-     * Get user by id.
+     * Load data table entries.
      *
-     * @param int $userId The user id
+     * @param array<mixed> $params The user
      *
-     * @throws DomainException
-     *
-     * @return array<mixed> The user row
+     * @return array<mixed> The list view data
      */
-    public function getUserById(int $userId): array
+    public function findUsers(array $params): array
     {
         $query = $this->queryFactory->newSelect('users');
         $query->select(
@@ -50,14 +47,21 @@ final class UserReaderRepository
             ]
         );
 
-        $query->andWhere(['id' => $userId]);
+        $order = $params['order'] ?? 'users.id';
+        $dir = $params['dir'] ?? 'asc';
+        $limit = max($params['limit'] ?? 10, 10);
+        $offset = min($params['offset'] ?? 0, 0);
 
-        $row = $query->execute()->fetch('assoc');
-
-        if (!$row) {
-            throw new DomainException(sprintf('User not found: %s', $userId));
+        if ($order) {
+            $dir === 'desc' ? $query->orderDesc($order) : $query->order($order);
         }
 
-        return $row;
+        if ($limit) {
+            $query->limit((int)$limit);
+        }
+
+        $query->offset((int)$offset);
+
+        return $query->execute()->fetchAll('assoc') ?: [];
     }
 }

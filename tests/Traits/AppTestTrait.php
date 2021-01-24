@@ -2,7 +2,11 @@
 
 namespace App\Test\Traits;
 
-use Cake\Chronos\Chronos;
+use Selective\TestTrait\Traits\ArrayTestTrait;
+use Selective\TestTrait\Traits\ContainerTestTrait;
+use Selective\TestTrait\Traits\HttpJsonTestTrait;
+use Selective\TestTrait\Traits\HttpTestTrait;
+use Selective\TestTrait\Traits\MockTestTrait;
 use Slim\App;
 
 /**
@@ -10,10 +14,12 @@ use Slim\App;
  */
 trait AppTestTrait
 {
+    use ArrayTestTrait;
     use ContainerTestTrait;
     use HttpTestTrait;
+    use HttpJsonTestTrait;
     use MockTestTrait;
-    use SessionTestTrait;
+    use HttpBasicAuthTestTrait;
 
     /**
      * @var App
@@ -27,21 +33,11 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        Chronos::setTestNow('2020-01-01 00:00:00');
-
         $this->app = require __DIR__ . '/../../config/bootstrap.php';
-        $this->setUpContainer();
+        $this->setUpContainer($this->app->getContainer());
 
         if (method_exists($this, 'setUpDatabase')) {
-            $this->setUpDatabase();
+            $this->setUpDatabase(__DIR__ . '/../../resources/schema/schema.sql');
         }
-    }
-
-    /**
-     * After each test.
-     */
-    public function tearDown(): void
-    {
-        $this->tearDownSession();
     }
 }

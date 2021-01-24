@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest ]
-        php-versions: [ '7.3', '7.4', '8.0' ]
+        php-versions: [ '7.2', '7.3', '7.4', '8.0' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     services:
@@ -68,12 +68,6 @@ jobs:
 
       - name: Install tables
         run: composer migration:migrate
-
-      - name: Install npm packages
-        run: npm install
-
-      - name: Build assets
-        run: npm run build
 
       - name: Run test suite
         run: composer check

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Templates
+published: false
 nav_order: 11
 ---
 

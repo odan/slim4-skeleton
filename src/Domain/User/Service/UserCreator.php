@@ -3,10 +3,9 @@
 namespace App\Domain\User\Service;
 
 use App\Domain\User\Repository\UserCreatorRepository;
+use App\Domain\User\Type\UserRoleType;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
-use Selective\Validation\Exception\ValidationException;
-use Selective\Validation\ValidationResult;
 
 /**
  * Service.
@@ -19,6 +18,11 @@ final class UserCreator
     private $repository;
 
     /**
+     * @var UserValidator
+     */
+    private $userValidator;
+
+    /**
      * @var LoggerInterface
      */
     private $logger;
@@ -27,13 +31,16 @@ final class UserCreator
      * The constructor.
      *
      * @param UserCreatorRepository $repository The repository
+     * @param UserValidator $userValidator The validator
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
         UserCreatorRepository $repository,
+        UserValidator $userValidator,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
+        $this->userValidator = $userValidator;
         $this->logger = $loggerFactory
             ->addFileHandler('user_creator.log')
             ->createInstance('user_creator');
@@ -42,71 +49,45 @@ final class UserCreator
     /**
      * Create a new user.
      *
-     * @param array<mixed> $form The form data
-     *
-     * @throws ValidationException
+     * @param array<mixed> $data The form data
      *
      * @return int The new user ID
      */
-    public function createUser(array $form): int
+    public function createUser(array $data): int
     {
         // Input validation
-        $this->validateFormData($form);
+        $this->userValidator->validateUser($data);
 
         // Map form data to row
-        $userRow = $this->createUserRow($form);
+        $userRow = $this->mapToUserRow($data);
 
         // Insert user
         $userId = $this->repository->insertUser($userRow);
 
         // Logging
-        $this->logger->info(__('User created successfully: %s', $userId));
+        $this->logger->info(sprintf('User created successfully: %s', $userId));
 
         return $userId;
     }
 
     /**
-     * Validate.
+     * Map data to row.
      *
-     * @param array<mixed> $form The data
-     *
-     * @throws ValidationException
-     *
-     * @return void
-     */
-    private function validateFormData(array $form): void
-    {
-        $validation = new ValidationResult();
-
-        if (empty($form['username'])) {
-            $validation->addError('username', __('Input required'));
-        }
-
-        if (empty($form['email'])) {
-            $validation->addError('email', __('Input required'));
-        } elseif (filter_var($form['email'], FILTER_VALIDATE_EMAIL) === false) {
-            $validation->addError('email', __('Invalid email address'));
-        }
-
-        if ($validation->fails()) {
-            throw new ValidationException(__('Please check your input'), $validation);
-        }
-    }
-
-    /**
-     * Create row from form data.
-     *
-     * @param array<mixed> $form The form data
+     * @param array<mixed> $data The data
      *
      * @return array<mixed> The row
      */
-    private function createUserRow(array $form): array
+    private function mapToUserRow(array $data): array
     {
         return [
-            'username' => $form['username'],
-            'email' => $form['email'],
-            'first_name' => $form['first_name'] ?? null,
-            'last_name' => $form['last_name'] ?? null,
+            'username' => $data['username'],
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT),
+            'email' => $data['email'],
+            'first_name' => $data['first_name'] ?? null,
+            'last_name' => $data['last_name'] ?? null,
+            'user_role_id' => $data['user_role_id'] ?? UserRoleType::ROLE_USER,
+            'locale' => $data['locale'] ?? 'en_US',
+            'enabled' => (int)($data['enabled'] ?? true),
         ];
     }
 }

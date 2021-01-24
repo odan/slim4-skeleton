@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\User\Type\UserRoleType;
 use Cake\Chronos\Chronos;
 use Phinx\Migration\AbstractMigration;
 
@@ -24,7 +25,7 @@ class AddUserFixtures extends AbstractMigration
             'first_name' => 'Admin',
             'last_name' => '',
             'email' => 'admin@example.com',
-            'role' => 'ROLE_ADMIN',
+            'user_role_id' => UserRoleType::ROLE_ADMIN,
             'locale' => 'en_US',
             'enabled' => 1,
             'created_at' => Chronos::now()->toDateTimeString(),
@@ -37,7 +38,7 @@ class AddUserFixtures extends AbstractMigration
             'first_name' => 'User',
             'last_name' => '',
             'email' => 'user@example.com',
-            'role' => 'ROLE_USER',
+            'user_role_id' => UserRoleType::ROLE_USER,
             'locale' => 'de_DE',
             'enabled' => 1,
             'created_at' => Chronos::now()->toDateTimeString(),

@@ -3,15 +3,15 @@
 namespace App\Handler;
 
 use App\Factory\LoggerFactory;
+use App\Responder\Responder;
 use DomainException;
+use Fig\Http\Message\StatusCodeInterface;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
-use Selective\Validation\Exception\ValidationException;
 use Slim\Exception\HttpException;
-use Slim\Views\Twig;
 use Throwable;
 
 /**
@@ -20,9 +20,9 @@ use Throwable;
 final class DefaultErrorHandler
 {
     /**
-     * @var Twig
+     * @var Responder
      */
-    private $twig;
+    private $responder;
 
     /**
      * @var ResponseFactoryInterface
@@ -37,16 +37,16 @@ final class DefaultErrorHandler
     /**
      * The constructor.
      *
-     * @param Twig $twig Twig template engine
+     * @param Responder $responder The responder
      * @param ResponseFactoryInterface $responseFactory The response factory
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
-        Twig $twig,
+        Responder $responder,
         ResponseFactoryInterface $responseFactory,
         LoggerFactory $loggerFactory
     ) {
-        $this->twig = $twig;
+        $this->responder = $responder;
         $this->responseFactory = $responseFactory;
         $this->logger = $loggerFactory
             ->addFileHandler('error.log')
@@ -88,15 +88,13 @@ final class DefaultErrorHandler
         // Error message
         $errorMessage = $this->getErrorMessage($exception, $statusCode, $displayErrorDetails);
 
-        // Render twig template
+        // Render response
         $response = $this->responseFactory->createResponse();
-        $response = $this->twig->render(
-            $response,
-            'error/error.twig',
-            [
-                'errorMessage' => $errorMessage,
-            ]
-        );
+        $response = $this->responder->withJson($response, [
+            'error' => [
+                'message' => $errorMessage,
+            ],
+        ]);
 
         return $response->withStatus($statusCode);
     }
@@ -111,7 +109,7 @@ final class DefaultErrorHandler
     private function getHttpStatusCode(Throwable $exception): int
     {
         // Detect status code
-        $statusCode = 500;
+        $statusCode = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
 
         if ($exception instanceof HttpException) {
             $statusCode = (int)$exception->getCode();
@@ -119,17 +117,12 @@ final class DefaultErrorHandler
 
         if ($exception instanceof DomainException || $exception instanceof InvalidArgumentException) {
             // Bad request
-            $statusCode = 400;
-        }
-
-        if ($exception instanceof ValidationException) {
-            // Unprocessable Entity
-            $statusCode = 422;
+            $statusCode = StatusCodeInterface::STATUS_BAD_REQUEST;
         }
 
         $file = basename($exception->getFile());
         if ($file === 'CallableResolver.php') {
-            $statusCode = 404;
+            $statusCode = StatusCodeInterface::STATUS_NOT_FOUND;
         }
 
         return $statusCode;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Action\Home;
+namespace App\Action\User;
 
+use App\Domain\User\Service\UserFinder;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -9,8 +10,13 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Action.
  */
-final class HomeAction
+final class UserFindAction
 {
+    /**
+     * @var UserFinder
+     */
+    private $userFinder;
+
     /**
      * @var Responder
      */
@@ -19,10 +25,12 @@ final class HomeAction
     /**
      * The constructor.
      *
+     * @param UserFinder $userIndex The user index list viewer
      * @param Responder $responder The responder
      */
-    public function __construct(Responder $responder)
+    public function __construct(UserFinder $userIndex, Responder $responder)
     {
+        $this->userFinder = $userIndex;
         $this->responder = $responder;
     }
 
@@ -36,6 +44,12 @@ final class HomeAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->responder->withRedirectFor($response, 'docs');
+        $params = (array)$request->getQueryParams();
+
+        $viewData = [
+            'users' => $this->userFinder->findUsers($params),
+        ];
+
+        return $this->responder->withJson($response, $viewData);
     }
 }

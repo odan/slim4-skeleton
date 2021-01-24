@@ -10,7 +10,7 @@ class Init extends AbstractMigration
      *
      * @return void
      */
-    public function change()
+    public function up(): void
     {
         $this->execute("ALTER DATABASE CHARACTER SET 'utf8mb4';");
         $this->execute("ALTER DATABASE COLLATE='utf8mb4_unicode_ci';");
@@ -63,11 +63,10 @@ class Init extends AbstractMigration
                 'encoding' => 'utf8mb4',
                 'after' => 'first_name',
             ])
-            ->addColumn('role', 'string', [
+            ->addColumn('user_role_id', 'integer', [
                 'null' => true,
-                'limit' => 255,
-                'collation' => 'utf8mb4_unicode_ci',
-                'encoding' => 'utf8mb4',
+                'default' => '2',
+                'limit' => MysqlAdapter::INT_REGULAR,
                 'after' => 'last_name',
             ])
             ->addColumn('locale', 'string', [
@@ -75,7 +74,7 @@ class Init extends AbstractMigration
                 'limit' => 255,
                 'collation' => 'utf8mb4_unicode_ci',
                 'encoding' => 'utf8mb4',
-                'after' => 'role',
+                'after' => 'user_role_id',
             ])
             ->addColumn('enabled', 'boolean', [
                 'null' => false,
@@ -111,6 +110,10 @@ class Init extends AbstractMigration
             ])
             ->addIndex(['updated_user_id'], [
                 'name' => 'updated_user_id',
+                'unique' => false,
+            ])
+            ->addIndex(['user_role_id'], [
+                'name' => 'user_role_id',
                 'unique' => false,
             ])
             ->create();

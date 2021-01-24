@@ -50,7 +50,7 @@ class ResponderTest extends TestCase
      *
      * @return void
      */
-    public function testRedirectUrlwithQueryString(): void
+    public function testRedirectUrlWithQueryString(): void
     {
         $responder = $this->container->get(Responder::class);
         $queryParams = ['foo' => 'bar'];
