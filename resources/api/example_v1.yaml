@@ -1,20 +1,20 @@
 openapi: 3.0.2
 info:
   version: 1.0.0
-  title: Slim Example API
+  title: Slim API
   contact:
-    name: ACME
+    name: Company
     url: 'https://example.com'
     email: apiteam@example.com
   description: |-
     This is a sample RESTful Server based on the OpenAPI 3.0 specification. You can find out more about
     Swagger at [https://swagger.io](https://swagger.io).
   license:
-    name: Apache 2.0
-    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Proprietary License
+    url: 'https://en.wikipedia.org/wiki/Proprietary_software'
 externalDocs:
-  description: Find out more about Swagger
-  url: 'https://swagger.io'
+  description: External Documentation
+  url: 'https://example.com/documentation'
 servers:
   - url: 'https://test.example.com/api/v1'
     description: Test

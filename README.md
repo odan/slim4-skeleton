@@ -58,7 +58,7 @@ This project is based on best practices and industry standards:
 
 ## Screenshot
 
-![screely-1611448840855](https://user-images.githubusercontent.com/781074/105618232-3d2a2c00-5de5-11eb-91b7-d2c03ecc2412.png)
+![screely-1611483778132](https://user-images.githubusercontent.com/781074/105627322-940c2180-5e36-11eb-9941-fa75bb00e4c8.png)
 
 ## Support
 
