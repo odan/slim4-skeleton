@@ -56,10 +56,6 @@
         }
     },
     "scripts": {
-        "post-create-project-cmd": [
-            "npm install",
-            "npm run build"
-        ],
         "build": "ant build",
         "build:cc": "ant cc",
         "check": [
