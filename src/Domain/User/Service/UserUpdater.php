@@ -42,7 +42,7 @@ final class UserUpdater
         $this->userValidator = $userValidator;
         $this->logger = $loggerFactory
             ->addFileHandler('user_updater.log')
-            ->createInstance('user_updater');
+            ->createInstance();
     }
 
     /**

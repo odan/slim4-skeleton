@@ -42,13 +42,13 @@ final class LoggerFactory
     /**
      * Build the logger.
      *
-     * @param string $name The name
+     * @param string|null $name The logging channel
      *
      * @return LoggerInterface The logger
      */
-    public function createInstance(string $name): LoggerInterface
+    public function createInstance(string $name = null): LoggerInterface
     {
-        $logger = new Logger($name);
+        $logger = new Logger($name ?: uuid_create());
 
         foreach ($this->handler as $handler) {
             $logger->pushHandler($handler);

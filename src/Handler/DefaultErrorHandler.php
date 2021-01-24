@@ -50,7 +50,7 @@ final class DefaultErrorHandler
         $this->responseFactory = $responseFactory;
         $this->logger = $loggerFactory
             ->addFileHandler('error.log')
-            ->createInstance('error');
+            ->createInstance();
     }
 
     /**

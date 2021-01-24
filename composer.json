@@ -28,6 +28,7 @@
         "slim/psr7": "^1",
         "slim/slim": "^4",
         "symfony/console": "^5",
+        "symfony/polyfill-uuid": "^1.22",
         "symfony/yaml": "^5.2",
         "tuupola/slim-basic-auth": "^3.3"
     },
