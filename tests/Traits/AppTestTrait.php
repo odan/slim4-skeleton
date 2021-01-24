@@ -14,9 +14,7 @@ use Slim\App;
  */
 trait AppTestTrait
 {
-    use ArrayTestTrait;
     use ContainerTestTrait;
-    use HttpTestTrait;
     use HttpJsonTestTrait;
     use MockTestTrait;
     use HttpBasicAuthTestTrait;

@@ -56,6 +56,7 @@ This project is based on best practices and industry standards:
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
 * Docker container with Xdebug support for PhpStorm
+* Swagger OpenAPI documentation
 
 ## Support
 

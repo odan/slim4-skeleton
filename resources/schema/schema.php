@@ -3,8 +3,8 @@
 return array (
   'database' => 
   array (
-    'default_character_set_name' => 'utf8mb4',
-    'default_collation_name' => 'utf8mb4_unicode_ci',
+    'DEFAULT_CHARACTER_SET_NAME' => 'utf8mb4',
+    'DEFAULT_COLLATION_NAME' => 'utf8mb4_unicode_ci',
   ),
   'tables' => 
   array (
@@ -15,8 +15,8 @@ return array (
         'table_name' => 'phinxlog',
         'engine' => 'InnoDB',
         'table_comment' => '',
-        'table_collation' => 'utf8mb4_general_ci',
-        'character_set_name' => 'utf8mb4',
+        'table_collation' => 'utf8_general_ci',
+        'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
       'columns' => 
@@ -43,6 +43,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'migration_name' => 
         array (
@@ -54,18 +55,19 @@ return array (
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
-          'CHARACTER_OCTET_LENGTH' => '400',
+          'CHARACTER_OCTET_LENGTH' => '300',
           'NUMERIC_PRECISION' => NULL,
           'NUMERIC_SCALE' => NULL,
           'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8mb4',
-          'COLLATION_NAME' => 'utf8mb4_general_ci',
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(100)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'start_time' => 
         array (
@@ -89,6 +91,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'end_time' => 
         array (
@@ -112,6 +115,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'breakpoint' => 
         array (
@@ -135,6 +139,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
       ),
       'indexes' => 
@@ -195,6 +200,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'username' => 
         array (
@@ -218,6 +224,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'password' => 
         array (
@@ -241,6 +248,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'email' => 
         array (
@@ -264,6 +272,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'first_name' => 
         array (
@@ -287,6 +296,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'last_name' => 
         array (
@@ -310,29 +320,31 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
-        'role' => 
+        'user_role_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'users',
-          'COLUMN_NAME' => 'role',
+          'COLUMN_NAME' => 'user_role_id',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => '2',
           'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'varchar',
-          'CHARACTER_MAXIMUM_LENGTH' => '255',
-          'CHARACTER_OCTET_LENGTH' => '1020',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => NULL,
+          'CHARACTER_OCTET_LENGTH' => NULL,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
           'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8mb4',
-          'COLLATION_NAME' => 'utf8mb4_unicode_ci',
-          'COLUMN_TYPE' => 'varchar(255)',
-          'COLUMN_KEY' => '',
+          'CHARACTER_SET_NAME' => NULL,
+          'COLLATION_NAME' => NULL,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'locale' => 
         array (
@@ -356,6 +368,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'enabled' => 
         array (
@@ -379,6 +392,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'created_at' => 
         array (
@@ -402,6 +416,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'created_user_id' => 
         array (
@@ -425,6 +440,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'updated_at' => 
         array (
@@ -448,6 +464,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
         'updated_user_id' => 
         array (
@@ -471,6 +488,7 @@ return array (
           'PRIVILEGES' => 'select,insert,update,references',
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
+          'SRS_ID' => NULL,
         ),
       ),
       'indexes' => 
@@ -538,6 +556,24 @@ return array (
             'Key_name' => 'updated_user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'updated_user_id',
+            'Collation' => 'A',
+            'Sub_part' => NULL,
+            'Packed' => NULL,
+            'Null' => 'YES',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'user_role_id' => 
+        array (
+          1 => 
+          array (
+            'Table' => 'users',
+            'Non_unique' => '1',
+            'Key_name' => 'user_role_id',
+            'Seq_in_index' => '1',
+            'Column_name' => 'user_role_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
