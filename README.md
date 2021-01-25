@@ -60,11 +60,22 @@ This project is based on best practices and industry standards:
 
 ![screely-1611483778132](https://user-images.githubusercontent.com/781074/105627322-940c2180-5e36-11eb-9941-fa75bb00e4c8.png)
 
+## Usage
+
+This project is only a skeleton-project and not a "framework".
+You can clone it to modify it as you wish. 
+For example, it's possible to replace the existing QueryBuilder with another component. Feel free :-)
+
+## Contributing
+
+Please create an [issue](https://github.com/odan/slim4-skeleton/issues) first, so we can discuss it in advance.
+
 ## Support
 
-* Issues: <https://github.com/odan/slim4-skeleton/issues>
-* Documentation: <https://odan.github.io/slim4-skeleton/>
-* Here you can [donate](https://odan.github.io/donate.html) for this project.
+* **[Documentation](https://odan.github.io/slim4-skeleton/)**
+* [Issues](https://github.com/odan/slim4-skeleton/issues)
+* [Blog](https://odan.github.io/)  
+* [Donate](https://odan.github.io/donate.html) for this project.
 
 ## License
 
