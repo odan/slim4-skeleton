@@ -12,13 +12,13 @@ This API skeleton uses [Basic authentication](https://en.wikipedia.org/wiki/Basi
 
 BasicAuth is an authentication scheme built into the HTTP protocol. 
 As long as the client transmits its data over **HTTPS**, 
-it's a secure authentication mechanism.  
+it's a secure **authentication** mechanism.  
 
 ```
 Authorization: Basic ZGVtbzpwQDU1dzByZA==
 ```
 
-You could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
+For **authorization** you could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
 
 The JWTs can be used as OAuth 2.0 [Bearer-Tokens](https://oauth.net/2/bearer-tokens/) to encode all relevant parts of an access token into the access token itself instead of having to store them in a database.
 

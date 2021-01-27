@@ -1,16 +1,16 @@
 ---
 layout: default
 title: Templates
-published: false
+published: true
 nav_order: 11
 ---
 
 # Templates
 
-Twig is the simple, yet powerful templating engine provided by Symfony. 
+All templates are stored in the directory: `templates/`
 
-All Twig templates with the extension `*.twig` are stored in the directory: `templates/`
+This project come with the [slim/php-view](https://github.com/slimphp/PHP-View)
+to render PHP view scripts into a PSR-7 Response object.
 
-Twig templates will be converted to native PHP code and cached until the template changes. 
-This means that Twig does not add much overhead to your application.
-
+If you want to install Twig, please use this tutorial: 
+[Slim 4 - Twig](https://odan.github.io/2020/04/17/slim4-twig-templates.html)
