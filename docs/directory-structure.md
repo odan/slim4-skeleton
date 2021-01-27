@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Directory structure
+title: Directory Structure
 parent: Getting Started
 nav_order: 3
 ---

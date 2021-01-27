@@ -14,6 +14,6 @@ A Slim 4 Framework skeleton for web applications and APIs.
 
 ## Installation
 
-* [Composer](setup/composer.md)
-* [Docker](setup/docker.md)
-* [Vagrant](setup/vagrant.md)
+* [Composer](installation.md#installation-via-composer)
+* [Docker](installation.md#installation-via-docker)
+* [Vagrant](installation.md#installation-via-vagrant)
