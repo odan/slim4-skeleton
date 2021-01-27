@@ -77,6 +77,10 @@ $settings['db'] = [
         PDO::ATTR_EMULATE_PREPARES => true,
         // Set default fetch mode to array
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // Convert numeric values to strings when fetching.
+        // Since PHP 8.1 integers and floats in result sets will be returned using native PHP types.
+        // This option restores the previous behavior.
+        PDO::ATTR_STRINGIFY_FETCHES => true,
     ],
 ];
 
