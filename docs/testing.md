@@ -215,7 +215,7 @@ $this->assertTableRow($expected, 'users', 1, ['email', 'url']);
 $this->assertTableRow($expected, 'users', 1, array_keys($expected));
 ```
 
-Assert a specific value in the given table, row and field:
+Assert a specific value in a given table, row and field:
 
 ```php
 $this->assertTableRowValue('1', 'users', 1, 'id');

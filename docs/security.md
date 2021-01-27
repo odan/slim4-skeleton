@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Security
-nav_order: 13
+parent: HTTP
+nav_order: 6
 ---
 
 # Security

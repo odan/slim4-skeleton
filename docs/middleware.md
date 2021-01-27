@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Middleware
-nav_order: 7
+parent: HTTP
+nav_order: 2
 ---
 
 # Middleware

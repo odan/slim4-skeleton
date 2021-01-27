@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Validation
-nav_order: 14
+parent: HTTP
+nav_order: 4
 ---
 
 # Validation
@@ -16,6 +17,10 @@ This project comes with [cakephp/validation](https://github.com/cakephp/validati
 The `cakephp/validation` component is need to validate complex form data (arrays) against a specific set of rules, 
 and the `selective/validation` component collects the validation errors, throws validation exceptions
 and transforms the result into a proper JSON response.
+
+**Read more**
+
+* [Slim 4 - CakePHP Validation](https://odan.github.io/2020/10/18/slim4-cakephp-validation.html)
 
 ## OpenAPI validation
 
