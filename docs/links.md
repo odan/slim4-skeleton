@@ -4,8 +4,7 @@ title: Links
 nav_order: 99
 ---
 
-## Donate
-
+# Links
 
 ## Slim
 
@@ -17,7 +16,6 @@ nav_order: 99
 
 * [Slim Framework 4 Tutorial](https://odan.github.io/2019/11/05/slim4-tutorial.html)
 * [Slim Framework Articles](https://odan.github.io/)
-* [Donate](https://odan.github.io/donate.html)
 
 ## VSCode
 

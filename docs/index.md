@@ -17,3 +17,8 @@ A Slim 4 Framework skeleton for web applications and APIs.
 * [Composer](installation.md#installation-via-composer)
 * [Docker](installation.md#installation-via-docker)
 * [Vagrant](installation.md#installation-via-vagrant)
+
+## Support
+
+* [Issues](https://github.com/odan/slim4-skeleton/issues)
+* [Donate](https://odan.github.io/donate.html) for this project.
