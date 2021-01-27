@@ -2,6 +2,7 @@
 layout: default
 title: Templates
 published: true
+parent: The Basics
 nav_order: 7
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: API Resources
-parent: HTTP
+parent: The Basics
 nav_order: 5
 ---
 

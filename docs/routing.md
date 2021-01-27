@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Routing
-parent: HTTP
+parent: The Basics
 nav_order: 1
 ---
 

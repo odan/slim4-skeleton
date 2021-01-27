@@ -1,8 +1,8 @@
 ---
 layout: default
-title: HTTP
-nav_order: 4
+title: The Basics
+nav_order: 3
 has_children: true
 ---
 
-# HTTP
+# The Basics

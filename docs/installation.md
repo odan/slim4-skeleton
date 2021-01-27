@@ -5,11 +5,15 @@ parent: Getting Started
 nav_order: 1
 ---
 
-* [Installation Via Composer](#installation-via-composer)
-* [Installation Via Docker](#installation-via-docker)
-* [Installation Via Vagrant](#installation-via-vagrant)
+# Installation
 
-## Installation Via Composer
+## Table of Contents
+
+* [Installation via Composer](#installation-via-composer)
+* [Installation via Docker](#installation-via-docker)
+* [Installation via Vagrant](#installation-via-vagrant)
+
+## Installation via Composer
 
 Run this command from the directory in which you want to install your new 
 Slim Framework application.
@@ -84,15 +88,15 @@ php -S localhost:8080 -t public
 
 Then navigate to: `http://localhost:8080/`
 
-### Installation Via Docker
+## Installation via Docker
 
 This setup is intended to use Docker as development environment.
 
-#### Requirements
+### Requirements
 
 * The latest [Docker](https://www.docker.com/) version
 
-#### Installation
+### Installation
 
 Create a new project:
 
@@ -180,7 +184,7 @@ Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the 
 * Use the [PhpStorm bookmarklets generator](https://www.jetbrains.com/phpstorm/marklets/) to set the Xdebug cookie.
 * Navigate to the url you want to debug
 
-## SSH into a Docker container
+### SSH into a Docker container
 
 * List all running containers to get the container id: `sudo docker ps`
 * To get access and run commands in that Docker container, type the following: `sudo docker exec –it {container-id} /bin/bash`
@@ -193,7 +197,7 @@ Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the 
     * `apt-get install -y openjdk-11-jdk`
     * `apt-get install ant -y`
 
-## Installation Via Vagrant
+## Installation via Vagrant
 
 ## Requirements
 

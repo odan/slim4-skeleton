@@ -2,6 +2,7 @@
 layout: default
 title: Translations
 published: false
+parent: The Basics
 nav_order: 11
 ---
 

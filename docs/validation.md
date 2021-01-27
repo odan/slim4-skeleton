@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Validation
-parent: HTTP
+parent: The Basics
 nav_order: 4
 ---
 
