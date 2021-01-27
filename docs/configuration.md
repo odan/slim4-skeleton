@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Configuration
-nav_order: 4
+parent: Getting Started
+nav_order: 2
 ---
 
 # Configuration
@@ -57,3 +58,9 @@ Add the file `env.php` to your `.gitignore`, so that you don't accidentally comm
 You also can (and should) use the `env.php` file on your testing, staging and production server.
 In this case store the server specific `env.php` file one directory above the project root directory.
 Storing the `env.php` file above the project directory simplifies deployment and ensures that the configuration is always in the right place and can be loaded at any time.
+
+## Errors and logging
+
+The directory for all log files is: `logs/`
+
+The default settings are stored in `config/defaults.php`, `$settings['logger']`
