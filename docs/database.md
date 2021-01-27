@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Database
-nav_order: 12
+nav_order: 6
 ---
 
 # Database

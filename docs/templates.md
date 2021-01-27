@@ -2,7 +2,7 @@
 layout: default
 title: Templates
 published: true
-nav_order: 11
+nav_order: 7
 ---
 
 # Templates
