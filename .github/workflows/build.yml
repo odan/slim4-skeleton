@@ -41,6 +41,9 @@ jobs:
       - name: Check PHP Extensions
         run: php -m
 
+      - name: Check MySQL Version
+        run: mysql -V
+
       - name: Start MySQL
         run: sudo systemctl start mysql
 
