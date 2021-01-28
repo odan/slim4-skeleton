@@ -7,10 +7,10 @@ description: "Slim 4 Skeleton"
 
 ![image](https://user-images.githubusercontent.com/781074/67564463-4a102980-f723-11e9-9202-5e1d1641d06c.png)
 
-
 ## Introduction
 
-A Slim 4 Framework skeleton for APIs, websites and web applications.
+This is a Slim 4 Framework skeleton project 
+for building awesome APIs, websites and web applications.
 
 ## Installation
 

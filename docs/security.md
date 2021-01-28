@@ -6,7 +6,7 @@ nav_order: 5
 
 # Security
 
-## Authentication
+## Basic Authentication
 
 This API skeleton uses [Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
@@ -17,6 +17,12 @@ it's a secure **authentication** mechanism.
 ```
 Authorization: Basic ZGVtbzpwQDU1dzByZA==
 ```
+
+**Read more:**
+
+* [Swagger - Basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
+
+## OAuth 2.0
 
 For **authorization** you could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
 
@@ -38,8 +44,61 @@ and JSON Web Signature based on RFC 7519.
 
 **Read more:** 
 
-* [Swagger - Basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
 * [Swagger - OAuth 2.0](https://swagger.io/docs/specification/authentication/oauth2/)
 * [OAuth Libraries for PHP](https://oauth.net/code/php/)
 * [Slim 4 - OAuth 2.0 and JSON Web Token (JWT) Setup](https://odan.github.io/2019/12/02/slim4-oauth2-jwt.html)
 * [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
+
+## CSRF protection
+
+* [Slim Framework CSRF Protection](https://github.com/slimphp/Slim-Csrf)
+
+## SameSite Cookies
+
+* [selective/samesite-cookie](https://github.com/selective-php/samesite-cookie)
+
+## Cross-Origin Resource Sharing (CORS)
+
+* [Slim 4 - CORS](https://odan.github.io/2019/11/24/slim4-cors.html)
+* [middlewares/cors](https://github.com/middlewares/cors)
+
+## Cross Site Scripting Prevention
+
+Cross-site Scripting (XSS) is a client-side code injection attack. 
+The attacker aims to execute malicious scripts in a web browser of the 
+victim by including malicious code in a legitimate web page or web application.
+
+To prevent XSS you can use an Auto-Escaping Template System such as Twig
+or by using libraries that are specifically designed to sanitize HTML input:
+
+* [laminas/laminas-escaper](https://github.com/laminas/laminas-escaper)
+* [ezyang/htmlpurifier](https://github.com/ezyang/htmlpurifier)
+  
+**Read more**
+
+* [Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+* [Cross-site Scripting (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+
+## Session
+
+* [Slim 4 - Session](https://odan.github.io/2021/01/15/slim4-session.html)
+* [Slim 4 - Symfony Session](https://odan.github.io/2020/08/09/slim4-http-session.html)  
+* [middlewares/php-session](https://github.com/middlewares/php-session)
+
+## HTTPS / SSL
+
+* [Slim 4 - HTTPS Middleware](https://odan.github.io/2020/04/07/slim4-https-middleware.html)
+* [middlewares/https](https://github.com/middlewares/https)
+
+## Spam Protection
+
+* [Slim 4 - Spam Protection](https://odan.github.io/2021/01/16/slim4-spam-protection.html)
+
+## IP Filter
+
+* [middlewares/firewall](https://github.com/middlewares/firewall)
+
+## More Resources
+
+* [PSR-15 HTTP Middlewares](https://github.com/middlewares)
+* [PHP Middleware](https://github.com/php-middleware)

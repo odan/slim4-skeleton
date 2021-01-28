@@ -28,6 +28,74 @@ The generic `App\Responder\Responder` class provides the following helper method
 * `withRedirect` - Builds a redirect for the given url
 * `withRedirectFor` - Builds a redirect for the given route name
 
+## Rendering templates
+
+```php
+<?php
+
+namespace App\Action;
+
+use App\Responder\Responder;
+use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
+
+final class HomeAction
+{
+    /**
+     * @var Responder
+     */
+    private $responder;
+    
+    public function __construct(Responder $responder)
+    {
+        $this->responder = $responder;
+    }
+
+    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
+    {
+        $viewData = [];
+        
+        return $this->responder->withTemplate($response, 'home/index.php', $viewData);
+    }
+}
+```
+
+## Building a JSON response
+
+Instead of calling `json_encode` everytime,
+you can use the `withJson()` method of the Responder
+to generate a full JSON response.
+
+```php
+<?php
+
+namespace App\Action;
+
+use App\Responder\Responder;
+use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
+
+final class HomeAction
+{
+    /**
+     * @var Responder
+     */
+    private $responder;
+    
+    public function __construct(Responder $responder)
+    {
+        $this->responder = $responder;
+    }
+    
+    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
+    {
+        return $this->responder->withJson(['success' => true]);
+    }
+}
+```
+
 ## ZIP Responder
 
 * [A ZIP responder (PSR-7)](https://github.com/selective-php/zip-responder)

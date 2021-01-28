@@ -1,14 +1,23 @@
 ---
 layout: default
 title: Frontend
-published: false
+published: true
 parent: Advanced
-nav_order: 11
 ---
 
 # Frontend
 
-## Assets
+## Webpack
+
+Webpack makes it relatively easy to compile and minify your application's 
+CSS and JavaScript files. However, you are not required to use it 
+while developing your application; 
+you are free to use any asset pipeline tool you wish, or even none at all.
+
+**Installation Instructions:** 
+
+* [Slim 4 - Webpack](https://odan.github.io/2019/09/21/slim4-compiling-assets-with-webpack.html)
+* [Webpack - Bootstrap Icons](https://odan.github.io/2021/01/07/webpack-bootstrap-icons.html)
 
 ### Updating packages
 
@@ -44,56 +53,4 @@ To watch files and recompile whenever they change, run:
 
 ```
 npm run watch
-```
-
-## Modal windows
-
-Show a modal window:
-
-```js
-Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-);
-```
-
-Read more: [SweetAlert2](https://sweetalert2.github.io/)
-
-## Notifications
-
-Showing a success message:
-
-```js
-notif({
-    msg: "Good!",
-    type: "success",
-    position: "center"
-});
-```
-
-Showing an error message:
-
-```js
-notif({
-    msg: "Ooops!",
-    type: "error",
-    position: "center"
-});
-```
-
-Read more: [notifIt!](https://github.com/naoxink/notifit-2)
-
-## Loading indicator
-
-Show loading indicator:
-
-```js
-spinner.showLoading();
-```
-
-Hide loading indicator:
-
-```js
-spinner.hideLoading();
 ```
