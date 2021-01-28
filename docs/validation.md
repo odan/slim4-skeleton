@@ -11,7 +11,7 @@ Depending on the use case, different strategies are appropriate for the input va
 
 ## Form and JSON validation
 
-This project comes with [cakephp/validation](https://github.com/cakephp/validation) and
+This project comes with [cakephp/validation](https://github.com/cakephp/validation) +
 [selective/validation](https://github.com/selective-php/validation) and contains some usage examples.
 
 The `cakephp/validation` component is need to validate complex form data (arrays) against a specific set of rules, 

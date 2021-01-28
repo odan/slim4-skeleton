@@ -7,9 +7,9 @@ nav_order: 1
 
 # Action
 
-> Action is the logic to connect the Domain and Responder. 
-> It invokes the Domain with inputs collected from the HTTP Request, 
-> then invokes the Responder with the data needed to build an HTTP Response.
+***Action** is the logic to connect the Domain and Responder. 
+It invokes the Domain with inputs collected from the HTTP Request, 
+then invokes the Responder with the data needed to build an HTTP Response.*
 
 ## Collaborations
 
@@ -86,7 +86,7 @@ final class ExampleAction
         // with those inputs (if required) and retains the result
         $domainResult = $this->myService->doSomething($data);
         
-        // Builds an HTTP response
+        // 3. Build an HTTP response
         $response->getBody()->write($domainResult);
        
         // Return the HTTP Response

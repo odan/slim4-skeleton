@@ -7,13 +7,13 @@ nav_order: 3
 
 # Responder
 
-> *Responder* is the presentation logic to build an HTTP Response using data 
-> it receives from the Action. It deals with status codes, headers and cookies, 
-> content, formatting and transformation, templates and views, and so on.
+***Responder** is the presentation logic to build an HTTP Response using data 
+it receives from the Action. It deals with status codes, headers and cookies, 
+content, formatting and transformation, templates and views, and so on.*
 
-According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action.
+According to [ADR](https://github.com/pmjones/adr) there should be a **Responder** for each action.
 In most cases a generic responder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php))
-is good enough. Of course, you can add special responder classes and move the complete presentation logic there.
+is good enough. Of course, you can add special Responder classes and move the complete presentation logic there.
 
 An extra Responder class would make sense when building a [transformation layer](resources.md)
 for complex (JSON or XML) data output. This helps to separate the presentation logic from the domain logic.

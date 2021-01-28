@@ -24,5 +24,5 @@ allows you to expressively and easily transform your data into any dynamic (JSON
 
 There is also the [league/fractal](https://fractal.thephpleague.com/)
 that provides a presentation and transformation layer for complex data output, 
-the like found in RESTful APIs, and works really well with JSON
+the like found in RESTful APIs, and works really well with JSON.
 
