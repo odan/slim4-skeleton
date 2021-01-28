@@ -88,6 +88,10 @@ php -S localhost:8080 -t public
 
 Then navigate to: `http://localhost:8080/`
 
+In case you still have trouble with the setup,
+you may try to upload the [Server Setup Checker](https://gist.github.com/odan/7fda1e4129cfd4a491ded5651fc32096)
+to get an idea about the issue.
+
 ## Installation via Docker
 
 This setup is intended to use Docker as development environment.
