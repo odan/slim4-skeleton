@@ -2,8 +2,8 @@
 layout: default
 title: Translations
 published: false
-parent: The Basics
-nav_order: 11
+parent: Advanced
+nav_order: 9
 ---
 
 # Translations

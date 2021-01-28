@@ -7,6 +7,10 @@ nav_order: 2
 
 # Domain
 
+> Domain is an entry point to the domain logic forming the core of the 
+> application. It may be a Transaction Script, Service Layer, 
+> Application Service, or something similar.
+
 ## Domain vs. Infrastructure
 
 **Domain**

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Console
-nav_order: 17
+parent: Advanced
+nav_order: 1
 ---
 
 # Console

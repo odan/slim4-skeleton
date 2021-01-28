@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Cronjobs
-nav_order: 9
+parent: Advanced
+nav_order: 3
 ---
 
 # Cronjobs

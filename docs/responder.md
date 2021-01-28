@@ -7,9 +7,35 @@ nav_order: 3
 
 # Responder
 
+> *Responder* is the presentation logic to build an HTTP Response using data 
+> it receives from the Action. It deals with status codes, headers and cookies, 
+> content, formatting and transformation, templates and views, and so on.
+
 According to [ADR](https://github.com/pmjones/adr) there should be a **responder** for each action.
 In most cases a generic responder (see [Responder.php](https://github.com/odan/slim4-skeleton/blob/master/src/Responder/Responder.php))
 is good enough. Of course, you can add special responder classes and move the complete presentation logic there.
-An extra responder class would make sense when [building an transformation layer](https://fractal.thephpleague.com/)
-for complex (json or xml) data output. This helps to separate the presentation logic from the domain logic.
 
+An extra Responder class would make sense when building a [transformation layer](resources.md)
+for complex (JSON or XML) data output. This helps to separate the presentation logic from the domain logic.
+
+## Generic Responder
+
+The generic `App\Responder\Responder` class provides the following helper methods:
+
+* `createResponse` - Create a new response
+* `withJson` - Builds a JSON response
+* `withTemplate` - Renders a (PHP) template
+* `withRedirect` - Builds a redirect for the given url
+* `withRedirectFor` - Builds a redirect for the given route name
+
+## ZIP Responder
+
+* [A ZIP responder (PSR-7)](https://github.com/selective-php/zip-responder)
+
+## Image Responder
+
+* [Slim 4 - Images](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
+
+## PDF Responder
+
+* Todo
