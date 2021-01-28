@@ -15,7 +15,7 @@ other web applications.
 Before getting started, you should ensure that you have installed 
 the Guzzle package as a dependency of your application. 
 
-You may install it again via Composer:
+You may install it via Composer:
 
 ```
 composer require guzzlehttp/guzzle
@@ -28,13 +28,12 @@ use GuzzleHttp\Client;
 
 $client = new Client([
     // Base URI is used with relative requests
-    'base_uri' => 'https://httpbin.org/api/',
-    // You can set any number of default request options.
-    'timeout'  => 2.0,
+    'base_uri' => 'https://httpbin.org/',
+    'timeout'  => 10,
 ]);
 
-// Send a request to https://httpbin.org/api/test
-$response = $client->request('GET', 'test');
+// Send a request to https://httpbin.org/anything
+$response = $client->request('GET', 'anything');
 ```
 
 **Read more**

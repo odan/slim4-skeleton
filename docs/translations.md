@@ -9,9 +9,7 @@ parent: Advanced
 
 ## Introduction
 
-There are several ways to retrieve strings in different languages,
-so you can easily support multiple languages
-within your application.
+There are several ways to support multiple languages within your application.
 
 ## Translations in PHP
 
