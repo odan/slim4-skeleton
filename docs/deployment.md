@@ -9,7 +9,7 @@ nav_order: 4
 
 A deployment artifact (or a build ) is the application code as it runs on production: 
 compiled, built, bundled, minified, optimized and so on.
- 
+
 ## Requirements
 
 * [Apache ant](https://ant.apache.org) to create deployment artifacts (build)

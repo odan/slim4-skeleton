@@ -10,7 +10,8 @@ parent: Advanced
 
 Sending email doesn't have to be complicated. 
 
-The Symfony Mailer provides a clean and simple email API.
+The [Symfony Mailer](https://symfony.com/doc/current/mailer.html)
+provides a clean and simple email API.
 Mailer provide drivers for sending email via 
 SMTP, Mailgun, Postmark, Amazon SES, and sendmail, 
 allowing you to quickly get started sending mail through 

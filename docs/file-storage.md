@@ -8,10 +8,10 @@ parent: Advanced
 
 ## Introduction
 
-The wonderful [Flysystem]() PHP package by Frank de Jonge
-provides a powerful filesystem abstraction.
+The wonderful [Flysystem](https://flysystem.thephpleague.com/) PHP package 
+by Frank de Jonge provides a powerful filesystem abstraction.
 
-There are also a lot  Flysystem (driver) adapters for 
+There are also a lot  Flysystem adapters for 
 working with local filesystems, SFTP, and Amazon S3. 
 
 Even better, it's amazingly simple to switch between these storage options between 
