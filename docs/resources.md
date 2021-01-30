@@ -21,7 +21,7 @@ To goal is to create a "barrier" between source data and output, so schema chang
 The [selective/transformer](https://github.com/selective-php/transformer) component
 allows you to expressively and easily transform your data into any dynamic (JSON) data structure.
 
-There is also the [league/fractal](https://fractal.thephpleague.com/)
-that provides a presentation and transformation layer for complex data output, 
-the like found in RESTful APIs, and works really well with JSON.
+There is also [league/fractal](https://fractal.thephpleague.com/),
+which provides a presentation and transformation layer for complex data output, 
+as found in RESTful APIs, and which works very well with JSON.
 
