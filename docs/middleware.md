@@ -7,18 +7,16 @@ nav_order: 2
 
 # Middleware
 
-Middleware provide a convenient mechanism for inspecting and filtering 
-HTTP requests entering your application. For example, this Slim Skeleton project
+The Middleware concept provides a convenient mechanism for inspecting and filtering 
+HTTP requests entering your application. 
+
+For example, this Slim Skeleton project
 includes a middleware that verifies the user of your application is authenticated. 
 If the user is not authenticated, the middleware will return a `401 Unauthorized`
-response.
-
-However, if the user is authenticated, the middleware will allow the 
+response. However, if the user is authenticated, the middleware will allow the 
 request to proceed further into the application.
 
 ## Registering Middleware
-
-More details: [Middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html) 
 
 ### Global middleware
 
@@ -64,4 +62,5 @@ $app->group(
 
 ## Read more
 
+* [Middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html)
 * [Slim 4 - Routing](https://www.slimframework.com/docs/v4/objects/routing.html)
