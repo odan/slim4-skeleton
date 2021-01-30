@@ -24,13 +24,13 @@ Authorization: Basic ZGVtbzpwQDU1dzByZA==
 
 ## OAuth 2.0
 
-For **authorization** you could also consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
+For **authorization** you could consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
 
 The JWTs can be used as OAuth 2.0 [Bearer-Tokens](https://oauth.net/2/bearer-tokens/) to encode all relevant parts of an access token into the access token itself instead of having to store them in a database.
 
 Please note: [OAuth 2.0 is not an authentication protocol](https://oauth.net/articles/authentication/).
 
-Clients may use the HTTP Basic authentication scheme, as defined in [RFC2617](https://tools.ietf.org/html/rfc2617),
+Clients may use the **HTTP Basic authentication** scheme, as defined in [RFC2617](https://tools.ietf.org/html/rfc2617),
 to authenticate with the server.
 
 After successful authentication, the client sends its token within the `Authorization` request header:
