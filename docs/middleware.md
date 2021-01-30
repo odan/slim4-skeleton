@@ -42,9 +42,7 @@ using the fully qualified class name:
 $app->get('/my-path', \App\Action\MyAction::class)->add(MyMiddleware::class);
 ```
 
-When assigning middleware to a group of routes, you may occasionally 
-need to prevent the middleware from being applied to an individual 
-route within the group. You may accomplish this using the withoutMiddleware method:
+Assigning middleware to a group of routes:
 
 ```php
 use Slim\Routing\RouteCollectorProxy;
