@@ -7,7 +7,7 @@ nav_order: 3
 
 # Directory structure
 
-The directory structure based on the [Standard PHP package skeleton](https://github.com/php-pds/skeleton).
+The directory structure is based on the [Standard PHP package skeleton](https://github.com/php-pds/skeleton).
 
 {% raw %}
 ```
