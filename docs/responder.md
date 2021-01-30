@@ -96,7 +96,7 @@ final class HomeAction
 }
 ```
 
-## Building filetype specific responses
+## Building a filetype specific response
 
 * [Image files](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
 * [Excel files](https://odan.github.io/2017/12/16/creating-and-downloading-excel-files-with-slim.html)
