@@ -18,7 +18,8 @@ This skeleton contains [cakephp/database](https://github.com/cakephp/database) a
 
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
-Read more: **[Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)**
+* **[Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)**
+* [Slim 4 - CakePHP Query Builder](https://odan.github.io/2019/12/03/slim4-cakephp-query-builder.html)
 
 It's possible to replace the existing QueryBuilder with another component as listed below:
 

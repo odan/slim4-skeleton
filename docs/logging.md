@@ -14,7 +14,8 @@ This project already contains Monolog as logging component.
 It's recommended using the `App\Factory\LoggerFactory` class to 
 create a custom logger for each context.
 
-The `LoggerFactory` provides method to generate a file- and console bases logging output.
+The `LoggerFactory` provides methods to generate a 
+file- and console based logging output.
 
 ## Usage
 
