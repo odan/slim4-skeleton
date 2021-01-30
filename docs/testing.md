@@ -227,6 +227,10 @@ Read single value from table by id:
 $password = $this->getTableRowById('users', 1)['password'];
 ```
 
+## Performance Testing
+
+* [Slim 4 - Performance Testing](https://odan.github.io/2019/12/20/slim4-performance-testing.html)
+
 ## Debugging Tests
 
 To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
@@ -239,6 +243,6 @@ To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to m
 * Right click `test`
 * Click `Debug (tests) PHPUnit`
 
-## Performance Testing
+## Read more
 
-* [Slim 4 - Performance Testing](https://odan.github.io/2019/12/20/slim4-performance-testing.html)
+* [Slim 4 - Testing](https://odan.github.io/2020/06/09/slim4-testing.html)

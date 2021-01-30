@@ -36,8 +36,8 @@ using [json schema](https://json-schema.org/).
 
 ## XML validation
 
-The [selective/xml](https://github.com/selective-php/xml) package validates XML files
-against XSD schemas.
+The [DOMDocument::schemaValidate](https://www.php.net/manual/en/domdocument.schemavalidate.php)
+method is able to validate XML files against a XSD schema.
 
 ## Assertions
 
