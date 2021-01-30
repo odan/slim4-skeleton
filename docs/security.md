@@ -79,12 +79,6 @@ or by using libraries that are specifically designed to sanitize HTML input:
 * [Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 * [Cross-site Scripting (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 
-## Session
-
-* [Slim 4 - Session](https://odan.github.io/2021/01/15/slim4-session.html)
-* [Slim 4 - Symfony Session](https://odan.github.io/2020/08/09/slim4-http-session.html)  
-* [middlewares/php-session](https://github.com/middlewares/php-session)
-
 ## HTTPS / SSL
 
 * [Slim 4 - HTTPS Middleware](https://odan.github.io/2020/04/07/slim4-https-middleware.html)

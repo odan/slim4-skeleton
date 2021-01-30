@@ -2,7 +2,6 @@
 layout: default
 title: Validation
 parent: The Basics
-nav_order: 4
 ---
 
 # Validation
