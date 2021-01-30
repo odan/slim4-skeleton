@@ -77,6 +77,6 @@
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "test": "phpunit --configuration phpunit.xml",
         "test:coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "test:scrutinizer": "phpunit --configuration phpunit8.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "test:scrutinizer": "phpunit --configuration phpunit8.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     }
 }
