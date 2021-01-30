@@ -6,14 +6,13 @@ parent: Advanced
 
 # Image
 
+## Image manipulation
+
 [Intervention Image](http://image.intervention.io/) is an open source PHP 
 image handling and manipulation library.
 It provides an easier and expressive way to create, edit, 
 and compose images and supports currently the two most common image 
 processing libraries GD Library and Imagick.
-
-Return a file (any type of file) as a response from a Responder,
-is a regular task that can be easily achieved.
 
 **Read more:**
 

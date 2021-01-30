@@ -20,7 +20,7 @@ The query builder provides a convenient, fluid interface for creating and execut
 
 Read more: **[Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)**
 
-It's possible to replace the existing QueryBuilder with another QueryBuilder component as listed below:
+It's possible to replace the existing QueryBuilder with another component as listed below:
 
 * [Laminas Query Builder](https://odan.github.io/2019/12/01/slim4-laminas-db-query-builder-setup.html)
 * [Laravel Query Builder](https://odan.github.io/2019/12/03/slim4-eloquent.html)
