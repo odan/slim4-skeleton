@@ -29,7 +29,7 @@ list the middleware class in the file:
 If you would like to assign middleware to specific routes, 
 you should first assign the middleware a key in `config/container.php`.
 
-You can add middleware handlers to all routes, 
+You can add middleware to all routes, 
 to a specific route or to a group of routes.
 This makes it easier to differentiate between public and protected areas, 
 as well as API resources etc.
