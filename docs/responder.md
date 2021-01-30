@@ -96,13 +96,17 @@ final class HomeAction
 }
 ```
 
+## Excel Responder
+
+* [Creating and downloading Excel files in Slim](https://odan.github.io/2017/12/16/creating-and-downloading-excel-files-with-slim.html)
+
+## Excel Responder
+
+* [Creating and downloading Excel files in Slim](https://odan.github.io/2017/12/16/creating-and-downloading-excel-files-with-slim.html)
+
 ## ZIP Responder
 
 * [A ZIP responder (PSR-7)](https://github.com/selective-php/zip-responder)
-
-## Image Responder
-
-* [Slim 4 - Images](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
 
 ## PDF Responder
 

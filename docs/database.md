@@ -25,6 +25,7 @@ It's possible to replace the existing QueryBuilder with another QueryBuilder com
 * [Laminas Query Builder](https://odan.github.io/2019/12/01/slim4-laminas-db-query-builder-setup.html)
 * [Laravel Query Builder](https://odan.github.io/2019/12/03/slim4-eloquent.html)
 * [Doctrine DBAL](https://odan.github.io/2019/12/05/slim4-doctrine-dbal.html)
+* [PDO](https://odan.github.io/2017/01/07/basic-crud-operations-with-pdo.html)
 
 ## Multitenancy
 
@@ -115,3 +116,7 @@ This feature solves two problems. First, it relieves developers from having a hu
 directory full of files they no longer need. Second, loading a single schema file is quicker 
 than running hundreds of migrations for each test class in your applications, 
 so your tests can run much faster when using a schema.
+
+## More Resources
+
+* [Designing a database](https://odan.github.io/2017/01/17/designing-a-database.html)

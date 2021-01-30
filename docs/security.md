@@ -59,6 +59,7 @@ and JSON Web Signature based on RFC 7519.
 
 ## Cross-Origin Resource Sharing (CORS)
 
+* [Setting up CORS](https://www.slimframework.com/docs/v4/cookbook/enable-cors.html)
 * [Slim 4 - CORS](https://odan.github.io/2019/11/24/slim4-cors.html)
 * [middlewares/cors](https://github.com/middlewares/cors)
 

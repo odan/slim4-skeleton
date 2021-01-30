@@ -17,7 +17,6 @@ you are free to use any asset pipeline tool you wish, or even none at all.
 **Installation Instructions:** 
 
 * [Slim 4 - Webpack](https://odan.github.io/2019/09/21/slim4-compiling-assets-with-webpack.html)
-* [Webpack - Bootstrap Icons](https://odan.github.io/2021/01/07/webpack-bootstrap-icons.html)
 
 ### Updating packages
 
@@ -54,3 +53,14 @@ To watch files and recompile whenever they change, run:
 ```
 npm run watch
 ```
+
+## Frontend Frameworks and Libraries
+
+* [Bootstrap](https://getbootstrap.com/)
+* [Bootstrap Icons](https://odan.github.io/2021/01/07/webpack-bootstrap-icons.html)
+* [Font Awesome](https://fontawesome.com/)
+* [Slim - Vue.js](https://odan.github.io/2020/07/21/slim4-vue.html)
+
+## API Documentation
+
+* [API documentation with Swagger](https://odan.github.io/2020/06/12/slim4-swagger-ui.html)

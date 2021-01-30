@@ -238,3 +238,7 @@ To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to m
 * Set a breakpoint within a test method
 * Right click `test`
 * Click `Debug (tests) PHPUnit`
+
+## Performance Testing
+
+* [Slim 4 - Performance Testing](https://odan.github.io/2019/12/20/slim4-performance-testing.html)
