@@ -39,7 +39,7 @@ final class Example
     public function __construct(LoggerFactory $loggerFactory) {
         $this->logger = $loggerFactory
             ->addFileHandler('my_log_file.log')
-            ->createInstance();
+            ->createLogger();
     }
     
     // ...

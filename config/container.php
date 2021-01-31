@@ -86,7 +86,7 @@ return [
 
         $logger = $container->get(LoggerFactory::class)
             ->addFileHandler('error.log')
-            ->createInstance();
+            ->createLogger();
 
         $errorMiddleware = new ErrorMiddleware(
             $app->getCallableResolver(),

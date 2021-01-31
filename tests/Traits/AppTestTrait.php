@@ -2,6 +2,7 @@
 
 namespace App\Test\Traits;
 
+use App\Factory\LoggerFactory;
 use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
 use Selective\TestTrait\Traits\MockTestTrait;
@@ -31,6 +32,9 @@ trait AppTestTrait
     {
         $this->app = require __DIR__ . '/../../config/bootstrap.php';
         $this->setUpContainer($this->app->getContainer());
+
+        // Disable logging for testing
+        $this->container->get(LoggerFactory::class)->setTestLogger();
 
         if (method_exists($this, 'setUpDatabase')) {
             $this->setUpDatabase(__DIR__ . '/../../resources/schema/schema.sql');

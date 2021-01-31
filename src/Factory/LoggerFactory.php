@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\NoopHandler;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -24,6 +25,16 @@ final class LoggerFactory
     private $level;
 
     /**
+     * @var array<mixed> Handler
+     */
+    private $handler = [];
+
+    /**
+     * @var LoggerInterface|null
+     */
+    private $testLogger;
+
+    /**
      * The constructor.
      *
      * @param array<mixed> $settings The settings
@@ -35,9 +46,21 @@ final class LoggerFactory
     }
 
     /**
-     * @var array<mixed> Handler
+     * This can be used for testing to make the Factory testable.
+     *
+     * @param LoggerInterface|null $logger The logger (optional)
+     *
+     * @return void
      */
-    private $handler = [];
+    public function setTestLogger(LoggerInterface $logger = null): void
+    {
+        if (!$logger) {
+            $logger = new Logger('testing');
+            $logger->pushHandler(new NoopHandler());
+        }
+
+        $this->testLogger = $logger;
+    }
 
     /**
      * Build the logger.
@@ -46,8 +69,12 @@ final class LoggerFactory
      *
      * @return LoggerInterface The logger
      */
-    public function createInstance(string $name = null): LoggerInterface
+    public function createLogger(string $name = null): LoggerInterface
     {
+        if ($this->testLogger) {
+            return $this->testLogger;
+        }
+
         $logger = new Logger($name ?: uuid_create());
 
         foreach ($this->handler as $handler) {
@@ -65,7 +92,7 @@ final class LoggerFactory
      * @param string $filename The filename
      * @param int|null $level The level (optional)
      *
-     * @return LoggerFactory The logger factory
+     * @return self The logger factory
      */
     public function addFileHandler(string $filename, int $level = null): self
     {
@@ -85,7 +112,7 @@ final class LoggerFactory
      *
      * @param int|null $level The level (optional)
      *
-     * @return self The instance
+     * @return self The logger factory
      */
     public function addConsoleHandler(int $level = null): self
     {

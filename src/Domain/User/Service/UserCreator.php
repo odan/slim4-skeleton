@@ -43,7 +43,7 @@ final class UserCreator
         $this->userValidator = $userValidator;
         $this->logger = $loggerFactory
             ->addFileHandler('user_creator.log')
-            ->createInstance();
+            ->createLogger();
     }
 
     /**
