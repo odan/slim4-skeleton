@@ -22,6 +22,10 @@ The [selective/transformer](https://github.com/selective-php/transformer) compon
 allows you to expressively and easily transform your data into any dynamic (JSON) data structure.
 
 There is also [league/fractal](https://fractal.thephpleague.com/),
-which provides a presentation and transformation layer for complex data output, 
-as found in RESTful APIs, and which works very well with JSON.
+which provides a presentation and transformation layer for complex [JSON-APIs](https://jsonapi.org/).
+
+The [laminas/laminas-hydrator](https://docs.laminas.dev/laminas-hydrator/v4/quick-start/)
+component provides functionality for **hydrating** objects
+(which is the act of populating an object from a set of data) 
+and **extracting** data from them.
 
