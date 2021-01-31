@@ -3,7 +3,6 @@
 namespace App\Factory;
 
 use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\NoopHandler;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -43,23 +42,11 @@ final class LoggerFactory
     {
         $this->path = (string)$settings['path'];
         $this->level = (int)$settings['level'];
-    }
 
-    /**
-     * This can be used for testing to make the Factory testable.
-     *
-     * @param LoggerInterface|null $logger The logger (optional)
-     *
-     * @return void
-     */
-    public function setTestLogger(LoggerInterface $logger = null): void
-    {
-        if (!$logger) {
-            $logger = new Logger('testing');
-            $logger->pushHandler(new NoopHandler());
+        // This can be used for testing to make the Factory testable
+        if (isset($settings['test'])) {
+            $this->testLogger = $settings['test'];
         }
-
-        $this->testLogger = $logger;
     }
 
     /**
