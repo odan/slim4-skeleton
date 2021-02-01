@@ -14,7 +14,6 @@ trait AppTestTrait
 {
     use ContainerTestTrait;
     use HttpJsonTestTrait;
-    use LoggerTestTrait;
     use MockTestTrait;
     use HttpBasicAuthTestTrait;
 
@@ -32,9 +31,6 @@ trait AppTestTrait
     {
         $this->app = require __DIR__ . '/../../config/bootstrap.php';
         $this->setUpContainer($this->app->getContainer());
-
-        // Disable logging for testing
-        $this->disableLogger();
 
         if (method_exists($this, 'setUpDatabase')) {
             $this->setUpDatabase(__DIR__ . '/../../resources/schema/schema.sql');
