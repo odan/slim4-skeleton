@@ -28,7 +28,7 @@ final class ValidationFactory
      *
      * @return ValidationResult The result
      */
-    public function createResultFromErrors(array $errors): ValidationResult
+    public function createValidationResult(array $errors): ValidationResult
     {
         return CakeValidationConverter::createValidationResult($errors);
     }

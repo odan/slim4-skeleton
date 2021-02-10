@@ -36,6 +36,45 @@ final class UserValidator
     }
 
     /**
+     * Validate update.
+     *
+     * @param int $userId The user id
+     * @param array<mixed> $data The data
+     *
+     * @return void
+     */
+    public function validateUserUpdate(int $userId, array $data): void
+    {
+        if (!$this->repository->existsUserId($userId)) {
+            throw new ValidationException(sprintf('User not found: %s', $userId));
+        }
+
+        $this->validateUser($data);
+    }
+
+    /**
+     * Validate new user.
+     *
+     * @param array<mixed> $data The data
+     *
+     * @throws ValidationException
+     *
+     * @return void
+     */
+    public function validateUser(array $data): void
+    {
+        $validator = $this->createValidator();
+
+        $validationResult = $this->validationFactory->createValidationResult(
+            $validator->validate($data)
+        );
+
+        if ($validationResult->fails()) {
+            throw new ValidationException('Please check your input', $validationResult);
+        }
+    }
+
+    /**
      * Create validator.
      *
      * @return Validator The validator
@@ -54,44 +93,5 @@ final class UserValidator
             ->notEmptyString('locale', 'Input required')
             ->regex('locale', '/^[a-z]{2}\_[A-Z]{2}$/', 'Invalid')
             ->boolean('enabled', 'Invalid');
-    }
-
-    /**
-     * Validate new user.
-     *
-     * @param array<mixed> $data The data
-     *
-     * @throws ValidationException
-     *
-     * @return void
-     */
-    public function validateUser(array $data): void
-    {
-        $validator = $this->createValidator();
-
-        $validationResult = $this->validationFactory->createResultFromErrors(
-            $validator->validate($data)
-        );
-
-        if ($validationResult->fails()) {
-            throw new ValidationException('Please check your input', $validationResult);
-        }
-    }
-
-    /**
-     * Validate update.
-     *
-     * @param int $userId The user id
-     * @param array<mixed> $data The data
-     *
-     * @return void
-     */
-    public function validateUserUpdate(int $userId, array $data): void
-    {
-        if (!$this->repository->existsUserId($userId)) {
-            throw new ValidationException(sprintf('User not found: %s', $userId));
-        }
-
-        $this->validateUser($data);
     }
 }
