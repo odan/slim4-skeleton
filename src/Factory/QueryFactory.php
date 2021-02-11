@@ -5,7 +5,6 @@ namespace App\Factory;
 use Cake\Database\Connection;
 use Cake\Database\Query;
 use RuntimeException;
-use UnexpectedValueException;
 
 /**
  * Factory.
@@ -28,16 +27,6 @@ final class QueryFactory
     }
 
     /**
-     * Create a new query.
-     *
-     * @return Query The query
-     */
-    public function newQuery(): Query
-    {
-        return $this->connection->newQuery();
-    }
-
-    /**
      * Create a new 'select' query for the given table.
      *
      * @param string $table The table name
@@ -48,13 +37,17 @@ final class QueryFactory
      */
     public function newSelect(string $table): Query
     {
-        $query = $this->newQuery()->from($table);
+        return $this->newQuery()->from($table);
+    }
 
-        if (!$query instanceof Query) {
-            throw new UnexpectedValueException('Failed to create query');
-        }
-
-        return $query;
+    /**
+     * Create a new query.
+     *
+     * @return Query The query
+     */
+    public function newQuery(): Query
+    {
+        return $this->connection->newQuery();
     }
 
     /**
