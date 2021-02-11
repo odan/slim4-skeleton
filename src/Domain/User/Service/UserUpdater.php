@@ -5,6 +5,7 @@ namespace App\Domain\User\Service;
 use App\Domain\User\Repository\UserUpdaterRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
+use Selective\Transformer\ArrayTransformer;
 
 /**
  * Service.
@@ -77,40 +78,24 @@ final class UserUpdater
      */
     private function mapToUserRow(array $data): array
     {
-        $result = [];
+        $transformer = new ArrayTransformer();
 
-        if (isset($data['username'])) {
-            $result['username'] = (string)$data['username'];
-        }
+        $transformer->map('username', 'username', 'string|required')
+            ->map(
+                'password',
+                'password',
+                $transformer->rule()->callback(
+                    function ($password) {
+                        return (string)password_hash($password, PASSWORD_DEFAULT);
+                    }
+                )
+            )->map('email', 'email', 'string|required')
+            ->map('first_name', 'first_name', 'string|required')
+            ->map('last_name', 'last_name', 'string|required')
+            ->map('user_role_id', 'user_role_id', 'int|required')
+            ->map('locale', 'locale', 'string|required')
+            ->map('enabled', 'enabled', 'int|required');
 
-        if (isset($data['password'])) {
-            $result['password'] = (string)password_hash($data['password'], PASSWORD_DEFAULT);
-        }
-
-        if (isset($data['email'])) {
-            $result['email'] = (string)$data['email'];
-        }
-
-        if (isset($data['first_name'])) {
-            $result['first_name'] = (string)$data['first_name'];
-        }
-
-        if (isset($data['last_name'])) {
-            $result['last_name'] = (string)$data['last_name'];
-        }
-
-        if (isset($data['user_role_id'])) {
-            $result['user_role_id'] = (int)$data['user_role_id'];
-        }
-
-        if (isset($data['locale'])) {
-            $result['locale'] = (string)$data['locale'];
-        }
-
-        if (isset($data['enabled'])) {
-            $result['enabled'] = (int)$data['enabled'];
-        }
-
-        return $result;
+        return $transformer->toArray($data);
     }
 }
