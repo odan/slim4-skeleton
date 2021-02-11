@@ -53,7 +53,7 @@ about too few and big files (fat controllers) with too many responsibilities.
 
 namespace App\Action;
 
-use App\Domain\Module\Service\MyService;
+use App\Domain\Example\Service\MyService;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
