@@ -86,11 +86,8 @@ final class ExampleAction
         // with those inputs (if required) and retains the result
         $domainResult = $this->myService->doSomething($data);
         
-        // 3. Build an HTTP response
-        $response->getBody()->write($domainResult);
-       
-        // Return the HTTP Response
-        return $response;
+        // 3. Build and return a HTTP response
+        return $this->responder->withJson($domainResult);
     }
 }
 ```
