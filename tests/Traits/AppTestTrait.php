@@ -2,9 +2,12 @@
 
 namespace App\Test\Traits;
 
+use Selective\TestTrait\Traits\ArrayTestTrait;
 use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
+use Selective\TestTrait\Traits\HttpTestTrait;
 use Selective\TestTrait\Traits\MockTestTrait;
+use Selective\TestTrait\Traits\RouteTestTrait;
 use Slim\App;
 
 /**
@@ -12,10 +15,13 @@ use Slim\App;
  */
 trait AppTestTrait
 {
+    use ArrayTestTrait;
     use ContainerTestTrait;
+    use HttpBasicAuthTestTrait;
+    use HttpTestTrait;
     use HttpJsonTestTrait;
     use MockTestTrait;
-    use HttpBasicAuthTestTrait;
+    use RouteTestTrait;
 
     /**
      * @var App
