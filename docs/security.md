@@ -74,8 +74,7 @@ To prevent XSS you can use an Auto-Escaping Template System such as Twig
 or by using libraries that are specifically designed to sanitize HTML input:
 
 * [laminas/laminas-escaper](https://github.com/laminas/laminas-escaper)
-* [ezyang/htmlpurifier](https://github.com/ezyang/htmlpurifier)
-  
+
 **Read more**
 
 * [Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
