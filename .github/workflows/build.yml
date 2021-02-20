@@ -42,7 +42,9 @@ jobs:
         run: php -m
 
       - name: Check MySQL Version
-        run: mysql -V
+        run:
+          - mysql -V
+          - mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
 
       - name: Start MySQL
         run: sudo systemctl start mysql
