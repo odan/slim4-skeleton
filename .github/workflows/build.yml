@@ -42,12 +42,13 @@ jobs:
         run: php -m
 
       - name: Check MySQL Version
-        run:
-          - mysql -V
-          - mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
+        run: mysql -V
 
       - name: Start MySQL
         run: sudo systemctl start mysql
+
+      - name: Check MySQL Version Variables
+        run: mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
 
       - name: Create database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
