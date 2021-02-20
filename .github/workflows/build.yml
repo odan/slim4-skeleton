@@ -47,11 +47,11 @@ jobs:
       - name: Start MySQL
         run: sudo systemctl start mysql
 
-      - name: Check MySQL Version Variables
-        run: mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
+      - name: Check MySQL Variables
+        run: mysql -uroot -p${{ secrets.DatabasePassword }} -e "SHOW VARIABLES;"
 
       - name: Create database
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+        run: mysql -uroot -p${{ secrets.DatabasePassword }} -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
       - name: Copy settings
         run: cp config/env.github.php config/env.php
