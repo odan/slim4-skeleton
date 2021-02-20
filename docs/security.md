@@ -15,7 +15,7 @@ As long as the client transmits its data over **HTTPS**,
 it's a secure **authentication** mechanism.  
 
 ```
-Authorization: Basic ZGVtbzpwQDU1dzByZA==
+Authorization: Basic YXBpLXVzZXI6c2VjcmV0
 ```
 
 The default API credentials are: `api-admin/ secret` and `api-user / secret`.
