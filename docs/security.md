@@ -18,6 +18,10 @@ it's a secure **authentication** mechanism.
 Authorization: Basic ZGVtbzpwQDU1dzByZA==
 ```
 
+The default API credentials are: `api-admin/ secret` and `api-user / secret`.
+To set up the users, copy the example file from `config/env.example.php` to `config/env.php`
+and change the user credentials as desired. Read more: [Installation](installation.md)
+
 **Read more:**
 
 * [Swagger - Basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
