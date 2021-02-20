@@ -51,7 +51,7 @@ jobs:
         run: mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
 
       - name: Change MySQL password plugin
-        run: mysql -uroot -proot -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE user='root'; FLUSH PRIVILEGES;"
+        run: mysql -uroot -proot -e "UPDATE mysql.user SET authentication_string=password('root'), plugin='mysql_native_password' WHERE user='root'; FLUSH PRIVILEGES;"
 
       - name: Create database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
