@@ -14,6 +14,7 @@ jobs:
     services:
       mysql:
         image: mysql:8.0.23
+        command: --default-authentication-plugin=mysql_native_password
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test
