@@ -32,23 +32,26 @@ jobs:
           extensions: mbstring, pdo, pdo_mysql, intl, zip
           coverage: none
 
-      - name: Check PHP Version
+      - name: Check PHP version
         run: php -v
 
-      - name: Check Composer Version
+      - name: Check Composer version
         run: composer -V
 
-      - name: Check PHP Extensions
+      - name: Check PHP extensions
         run: php -m
 
-      - name: Check MySQL Version
+      - name: Check MySQL version
         run: mysql -V
 
       - name: Start MySQL
         run: sudo systemctl start mysql
 
-      - name: Check MySQL Variables
+      - name: Check MySQL variables
         run: mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
+
+      - name: Change MySQL password plugin
+        run: mysql -uroot -proot -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE user='root'; FLUSH PRIVILEGES;"
 
       - name: Create database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
