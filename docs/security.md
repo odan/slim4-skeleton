@@ -22,6 +22,9 @@ The default API credentials are: `api-admin/ secret` and `api-user / secret`.
 To set up the users, copy the example file from `config/env.example.php` to `config/env.php`
 and change the user credentials as desired. Read more: [Installation](installation.md)
 
+Please note that the API credentials are not the same as the users 
+in the example "users" database table.
+
 **Read more:**
 
 * [Swagger - Basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
