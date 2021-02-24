@@ -22,7 +22,7 @@
         "odan/phinx-migrations-generator": "^5",
         "php-di/php-di": "^6",
         "selective/basepath": "^2",
-        "selective/transformer": "^0.4.0",
+        "selective/transformer": "^1",
         "selective/validation": "^1.1",
         "slim/php-view": "^3.0",
         "slim/psr7": "^1",
