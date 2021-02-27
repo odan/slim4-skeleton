@@ -87,7 +87,7 @@ final class UserCreator
             'last_name' => $data['last_name'] ?? null,
             'user_role_id' => $data['user_role_id'] ?? UserRoleType::ROLE_USER,
             'locale' => $data['locale'] ?? 'en_US',
-            'enabled' => (int)($data['enabled'] ?? true),
+            'enabled' => (int)($data['enabled'] ?? 1),
         ];
     }
 }

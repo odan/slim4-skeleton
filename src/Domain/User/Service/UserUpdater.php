@@ -80,7 +80,7 @@ final class UserUpdater
     {
         $transformer = new ArrayTransformer();
 
-        $transformer->map('username', 'username', 'string|required')
+        $transformer->map('username', 'username', 'string')
             ->map(
                 'password',
                 'password',
@@ -89,12 +89,12 @@ final class UserUpdater
                         return (string)password_hash($password, PASSWORD_DEFAULT);
                     }
                 )
-            )->map('email', 'email', 'string|required')
-            ->map('first_name', 'first_name', 'string|required')
-            ->map('last_name', 'last_name', 'string|required')
-            ->map('user_role_id', 'user_role_id', 'int|required')
-            ->map('locale', 'locale', 'string|required')
-            ->map('enabled', 'enabled', 'int|required');
+            )->map('email', 'email', 'string')
+            ->map('first_name', 'first_name', 'string')
+            ->map('last_name', 'last_name', 'string')
+            ->map('user_role_id', 'user_role_id', 'int')
+            ->map('locale', 'locale', 'string')
+            ->map('enabled', 'enabled', 'int');
 
         return $transformer->toArray($data);
     }
