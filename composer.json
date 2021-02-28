@@ -18,6 +18,7 @@
         "cakephp/database": "^4",
         "cakephp/validation": "^4.2",
         "fig/http-message-util": "^1.1",
+        "lulco/phoenix": "^1.5",
         "monolog/monolog": "^2",
         "php-di/php-di": "^6",
         "selective/basepath": "^2",
@@ -33,7 +34,6 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2",
-        "lulco/phoenix": "^1.5",
         "overtrue/phplint": "^2",
         "phpstan/phpstan": "0.*",
         "phpunit/phpunit": "^8 || ^9",
