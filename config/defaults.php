@@ -37,22 +37,6 @@ $settings['logger'] = [
     'file_permission' => 0775,
 ];
 
-// Phinx settings
-$settings['phinx'] = [
-    'paths' => [
-        'migrations' => $settings['root'] . '/resources/migrations',
-        'seeds' => $settings['root'] . '/resources/seeds',
-    ],
-    'default_migration_prefix' => 'db_change_',
-    'generate_migration_name' => true,
-    'schema_file' => __DIR__ . '/../resources/schema/schema.php',
-    'environments' => [
-        'default_migration_table' => 'phinxlog',
-        'default_environment' => 'local',
-        'local' => [],
-    ],
-];
-
 // Database settings
 $settings['db'] = [
     'driver' => \Cake\Database\Driver\Mysql::class,
@@ -82,6 +66,35 @@ $settings['db'] = [
         // This option restores the previous behavior.
         PDO::ATTR_STRINGIFY_FETCHES => true,
     ],
+];
+
+// Phoenix settings
+$settings['phoenix'] = [
+    'migration_dirs' => [
+        'first' => __DIR__ . '/../resources/migrations',
+    ],
+    'environments' => [
+        'local' => [
+            'adapter' => 'mysql',
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => '',
+            'db_name' => 'slim_skeleton_dev',
+            'charset' => 'utf8',
+        ],
+        'local2' => [
+            'adapter' => 'mysql',
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => 'root',
+            'db_name' => 'slim_skeleton_diff',
+            'charset' => 'utf8',
+        ],
+    ],
+    'default_environment' => 'local',
+    'log_table_name' => 'phoenix_log',
 ];
 
 // Console commands

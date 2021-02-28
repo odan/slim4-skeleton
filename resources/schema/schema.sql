@@ -1,10 +1,9 @@
-CREATE TABLE `phinxlog` (
-  `version` bigint(20) NOT NULL,
-  `migration_name` varchar(100) DEFAULT NULL,
-  `start_time` timestamp NULL DEFAULT NULL,
-  `end_time` timestamp NULL DEFAULT NULL,
-  `breakpoint` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`version`)
+CREATE TABLE `phoenix_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `migration_datetime` varchar(255) NOT NULL,
+  `classname` varchar(255) NOT NULL,
+  `executed_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `users` (
