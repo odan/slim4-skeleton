@@ -68,7 +68,7 @@ jobs:
         run: composer update --prefer-dist --no-progress --ignore-platform-req=php
 
       - name: Install tables
-        run: composer migration:migrate
+        run: php vendor/bin/phoenix migrate
 
       - name: Run test suite
         run: composer check
