@@ -36,7 +36,8 @@ The concept from this article can also be applied to all other QueryBuilders:
 
 ## Migrations
 
-This skeleton provides a [Phinx](https://phinx.org/) console access to create database migrations.
+This skeleton provides a [Phoenix](https://github.com/lulco/phoenix/) 
+console access to create database migrations.
 
 **Some basics:**
 
@@ -44,68 +45,47 @@ This skeleton provides a [Phinx](https://phinx.org/) console access to create da
 * **Seeding** is the initial data setup. If you aren't at an initial (seed) state, you need a migration to change the data.
 * **Fixtures** are data for testing purposes.
 
-### Generating a migration from a diff automatically
+To create a new migration class, run:
 
-```bash
-$ composer migration:diff
+```
+php vendor/bin/phoenix create UpdateArticleFixtures
 ```
 
-You can specify a migration name by adding the `--name` parameter.
+To generate a migration diff from another database, run:
 
-**Note:** [Composer](https://getcomposer.org/) requires double dashes (`--`) to separate arguments. 
-
-```bash
-$ composer migration:diff -- --name AddTableCustomers
+```
+php vendor/bin/phoenix diff --source=local2 --target=local --migration=NameOfMigration
 ```
 
-### Creating a blank database migration
+*Make sure that you have a second local database to create the diff from. See `config/defaults.php`.* 
 
-```bash
-$ composer migration:create UpdateArticleFixtures
+To executes all available migrations, run:
+
+```
+php vendor/bin/phoenix migrate
 ```
 
-Read more: **[Phinx Documentation](http://docs.phinx.org/)**
+To rollback the last executed migration, run:
 
-## Update schema
-
-Update the database schema with this command:
-
-```bash
-$ composer migration:migrate
+```
+php vendor/bin/phoenix rollback
 ```
 
-If [Composer](https://getcomposer.org/) is not installed on the target server, 
-the following command can be used:
+To list the already executed migrations, run:
 
-```bash
-$ vendor/bin/phinx migrate -c config/phinx.php
+```
+php vendor/bin/phoenix status
 ```
 
-## Data Seeding
-
-All seeds are stored in the directory: `resources/seeds/`
-
-To populate the database with data for testing and experimenting, run:
-
-Linux:
-
-```bash
-$ vendor/bin/phinx seed:run -c config/phinx.php
-```
-
-Windows:
-
-```bash
-call vendor/bin/phinx seed:run -c config/phinx.php
-```
+There are more command available. Please consult the **[Phoenix Documentation](https://github.com/lulco/phoenix/)**.
 
 ## Schema Dump
 
-The `composer dump-schema` command dumps the current state of your schema to 
+The `composer schema:dump` command dumps the current state of your schema to 
 a `resources/schema/schema.sql` file.
 
 ```
-$ composer migration:dump
+composer schema:dump
 ```
 
 When you run integrations (database) tests, this `schema.sql` file will be loaded into the database. 

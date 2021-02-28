@@ -20,7 +20,7 @@ The directory structure is based on the [Standard PHP package skeleton](https://
 ├── logs                    # Log files
 ├── public                  # Web server files
 ├── resources               # Other resource files
-│   ├── migrations          # Database migration files (Phinx)
+│   ├── migrations          # Database migration files
 │   ├── seeds               # Data seeds
 │   └── translations        # The .po message files for PoEdit
 ├── src                     # PHP source code (The App namespace)
