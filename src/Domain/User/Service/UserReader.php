@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Service;
 
+use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserReaderRepository;
 
 /**
@@ -9,10 +10,7 @@ use App\Domain\User\Repository\UserReaderRepository;
  */
 final class UserReader
 {
-    /**
-     * @var UserReaderRepository
-     */
-    private $repository;
+    private UserReaderRepository $repository;
 
     /**
      * The constructor.
@@ -29,15 +27,15 @@ final class UserReader
      *
      * @param int $userId The user id
      *
-     * @return array The user data
+     * @return UserData The user data
      */
-    public function getUserData(int $userId): array
+    public function getUserData(int $userId): UserData
     {
         // Input validation
         // ...
 
         // Fetch data from the database
-        $userRow = $this->repository->getUserById($userId);
+        $user = $this->repository->getUserById($userId);
 
         // Optional: Add or invoke your complex business logic here
         // ...
@@ -45,6 +43,6 @@ final class UserReader
         // Optional: Map result
         // ...
 
-        return $userRow;
+        return $user;
     }
 }

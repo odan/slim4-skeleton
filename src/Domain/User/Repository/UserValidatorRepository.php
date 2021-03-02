@@ -9,10 +9,7 @@ use App\Factory\QueryFactory;
  */
 final class UserValidatorRepository
 {
-    /**
-     * @var QueryFactory The query factory
-     */
-    private $queryFactory;
+    private QueryFactory $queryFactory;
 
     /**
      * The constructor.

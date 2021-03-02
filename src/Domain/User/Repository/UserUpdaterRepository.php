@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
+use App\Domain\User\Data\UserData;
 use App\Factory\QueryFactory;
 use Cake\Chronos\Chronos;
 
@@ -10,10 +11,7 @@ use Cake\Chronos\Chronos;
  */
 final class UserUpdaterRepository
 {
-    /**
-     * @var QueryFactory The query factory
-     */
-    private $queryFactory;
+    private QueryFactory $queryFactory;
 
     /**
      * The constructor.
@@ -28,15 +26,19 @@ final class UserUpdaterRepository
     /**
      * Update user row.
      *
-     * @param int $userId The user id
-     * @param array<mixed> $data The user data
+     * @param UserData $user The user
      *
      * @return void
      */
-    public function updateUser(int $userId, array $data): void
+    public function updateUser(UserData $user): void
     {
-        $data['updated_at'] = Chronos::now()->toDateTimeString();
+        $row = $user->toArray();
 
-        $this->queryFactory->newUpdate('users', $data)->andWhere(['id' => $userId])->execute();
+        // Updating the password is another use case
+        unset($row['password']);
+
+        $row['updated_at'] = Chronos::now()->toDateTimeString();
+
+        $this->queryFactory->newUpdate('users', $row)->andWhere(['id' => $user->id])->execute();
     }
 }

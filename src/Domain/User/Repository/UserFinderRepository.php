@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
+use App\Domain\User\Data\UserData;
 use App\Factory\QueryFactory;
 
 /**
@@ -9,13 +10,10 @@ use App\Factory\QueryFactory;
  */
 final class UserFinderRepository
 {
-    /**
-     * @var QueryFactory
-     */
-    private $queryFactory;
+    private QueryFactory $queryFactory;
 
     /**
-     * Constructor.
+     * The constructor.
      *
      * @param QueryFactory $queryFactory The query factory
      */
@@ -25,11 +23,11 @@ final class UserFinderRepository
     }
 
     /**
-     * Load data table entries.
+     * Find users.
      *
      * @param array<mixed> $params The user
      *
-     * @return array<mixed> The list view data
+     * @return UserData[] A list of users
      */
     public function findUsers(array $params): array
     {
@@ -62,6 +60,6 @@ final class UserFinderRepository
 
         $query->offset((int)$offset);
 
-        return $query->execute()->fetchAll('assoc') ?: [];
+        return UserData::toList($query->execute()->fetchAll('assoc'));
     }
 }

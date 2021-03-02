@@ -13,15 +13,9 @@ use Selective\Validation\Exception\ValidationException;
  */
 final class UserValidator
 {
-    /**
-     * @var UserValidatorRepository
-     */
-    private $repository;
+    private UserValidatorRepository $repository;
 
-    /**
-     * @var ValidationFactory
-     */
-    private $validationFactory;
+    private ValidationFactory $validationFactory;
 
     /**
      * The constructor.

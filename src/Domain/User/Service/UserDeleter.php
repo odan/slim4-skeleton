@@ -9,10 +9,7 @@ use App\Domain\User\Repository\UserDeleterRepository;
  */
 final class UserDeleter
 {
-    /**
-     * @var UserDeleterRepository
-     */
-    private $repository;
+    private UserDeleterRepository $repository;
 
     /**
      * The constructor.

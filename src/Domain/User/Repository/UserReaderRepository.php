@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
+use App\Domain\User\Data\UserData;
 use App\Factory\QueryFactory;
 use DomainException;
 
@@ -10,10 +11,7 @@ use DomainException;
  */
 final class UserReaderRepository
 {
-    /**
-     * @var QueryFactory The query factory
-     */
-    private $queryFactory;
+    private QueryFactory $queryFactory;
 
     /**
      * The constructor.
@@ -32,9 +30,9 @@ final class UserReaderRepository
      *
      * @throws DomainException
      *
-     * @return array<mixed> The user row
+     * @return UserData The user
      */
-    public function getUserById(int $userId): array
+    public function getUserById(int $userId): UserData
     {
         $query = $this->queryFactory->newSelect('users');
         $query->select(
@@ -58,6 +56,6 @@ final class UserReaderRepository
             throw new DomainException(sprintf('User not found: %s', $userId));
         }
 
-        return $row;
+        return new UserData($row);
     }
 }

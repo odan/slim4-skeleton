@@ -10,10 +10,7 @@ use DomainException;
  */
 final class UserDeleterRepository
 {
-    /**
-     * @var QueryFactory The query factory
-     */
-    private $queryFactory;
+    private QueryFactory $queryFactory;
 
     /**
      * The constructor.

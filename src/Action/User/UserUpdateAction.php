@@ -12,15 +12,9 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserUpdateAction
 {
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
-    /**
-     * @var UserUpdater
-     */
-    private $userUpdater;
+    private UserUpdater $userUpdater;
 
     /**
      * The constructor.

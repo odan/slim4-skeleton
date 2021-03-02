@@ -2,30 +2,21 @@
 
 namespace App\Domain\User\Service;
 
+use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserUpdaterRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
-use Selective\Transformer\ArrayTransformer;
 
 /**
  * Service.
  */
 final class UserUpdater
 {
-    /**
-     * @var UserUpdaterRepository
-     */
-    private $repository;
+    private UserUpdaterRepository $repository;
 
-    /**
-     * @var UserValidator
-     */
-    private $userValidator;
+    private UserValidator $userValidator;
 
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * The constructor.
@@ -60,42 +51,13 @@ final class UserUpdater
         $this->userValidator->validateUserUpdate($userId, $data);
 
         // Map form data to row
-        $userRow = $this->mapToUserRow($data);
+        $user = new UserData($data);
+        $user->id = $userId;
 
         // Insert user
-        $this->repository->updateUser($userId, $userRow);
+        $this->repository->updateUser($user);
 
         // Logging
         $this->logger->info(sprintf('User updated successfully: %s', $userId));
-    }
-
-    /**
-     * Map data to row.
-     *
-     * @param array<mixed> $data The data
-     *
-     * @return array<mixed> The row
-     */
-    private function mapToUserRow(array $data): array
-    {
-        $transformer = new ArrayTransformer();
-
-        $transformer->map('username', 'username', 'string')
-            ->map(
-                'password',
-                'password',
-                $transformer->rule()->callback(
-                    function ($password) {
-                        return (string)password_hash($password, PASSWORD_DEFAULT);
-                    }
-                )
-            )->map('email', 'email', 'string')
-            ->map('first_name', 'first_name', 'string')
-            ->map('last_name', 'last_name', 'string')
-            ->map('user_role_id', 'user_role_id', 'int')
-            ->map('locale', 'locale', 'string')
-            ->map('enabled', 'enabled', 'int');
-
-        return $transformer->toArray($data);
     }
 }

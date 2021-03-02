@@ -13,15 +13,9 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserCreateAction
 {
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
-    /**
-     * @var UserCreator
-     */
-    private $userCreator;
+    private UserCreator $userCreator;
 
     /**
      * The constructor.

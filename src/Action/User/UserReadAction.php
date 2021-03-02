@@ -12,15 +12,9 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserReadAction
 {
-    /**
-     * @var UserReader
-     */
-    private $userReader;
+    private UserReader $userReader;
 
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
     /**
      * The constructor.
@@ -54,7 +48,18 @@ final class UserReadAction
         // Invoke the domain (service class)
         $user = $this->userReader->getUserData($userId);
 
-        // Render the json response
-        return $this->responder->withJson($response, $user);
+        // Transform to json response
+        $data = [
+            'id' => $user->id,
+            'username' => $user->username,
+            'first_name' => $user->firstName,
+            'last_name' => $user->lastName,
+            'email' => $user->email,
+            'user_role_id' => $user->userRoleId,
+            'locale' => $user->locale,
+            'enabled' => $user->enabled,
+        ];
+
+        return $this->responder->withJson($response, $data);
     }
 }

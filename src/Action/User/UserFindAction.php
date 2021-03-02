@@ -12,15 +12,9 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserFindAction
 {
-    /**
-     * @var UserFinder
-     */
-    private $userFinder;
+    private UserFinder $userFinder;
 
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
     /**
      * The constructor.
@@ -46,10 +40,27 @@ final class UserFindAction
     {
         $params = (array)$request->getQueryParams();
 
-        $viewData = [
-            'users' => $this->userFinder->findUsers($params),
+        $users = $this->userFinder->findUsers($params);
+
+        // Transform to json response
+        $userList = [];
+        foreach ($users as $user) {
+            $userList[] = [
+                'id' => $user->id,
+                'username' => $user->username,
+                'first_name' => $user->firstName,
+                'last_name' => $user->lastName,
+                'email' => $user->email,
+                'user_role_id' => $user->userRoleId,
+                'locale' => $user->locale,
+                'enabled' => $user->enabled,
+            ];
+        }
+
+        $data = [
+            'users' => $userList,
         ];
 
-        return $this->responder->withJson($response, $viewData);
+        return $this->responder->withJson($response, $data);
     }
 }
