@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "ext-pdo": "*",
         "cakephp/chronos": "^2",
@@ -22,7 +22,6 @@
         "monolog/monolog": "^2",
         "php-di/php-di": "^6",
         "selective/basepath": "^2",
-        "selective/transformer": "^1",
         "selective/validation": "^1.1",
         "slim/php-view": "^3.0",
         "slim/psr7": "^1",
