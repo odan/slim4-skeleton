@@ -12,10 +12,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 final class SwaggerUiAction
 {
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
     /**
      * The constructor.

@@ -11,10 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class HomeAction
 {
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
     /**
      * The constructor.
