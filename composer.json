@@ -21,6 +21,7 @@
         "lulco/phoenix": "^1.5",
         "monolog/monolog": "^2",
         "php-di/php-di": "^6",
+        "selective/array-reader": "^1.1",
         "selective/basepath": "^2",
         "selective/validation": "^1.1",
         "slim/php-view": "^3.0",

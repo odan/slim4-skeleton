@@ -2,6 +2,8 @@
 
 namespace App\Domain\User\Data;
 
+use Selective\ArrayReader\ArrayReader;
+
 /**
  * Data Model.
  */
@@ -32,15 +34,17 @@ final class UserData
      */
     public function __construct(array $data = [])
     {
-        $this->id = !empty($data['id']) ? (int)$data['id'] : null;
-        $this->username = !empty($data['username']) ? (string)$data['username'] : null;
-        $this->firstName = !empty($data['first_name']) ? (string)$data['first_name'] : null;
-        $this->lastName = !empty($data['last_name']) ? (string)$data['last_name'] : null;
-        $this->password = !empty($data['password']) ? (string)$data['password'] : null;
-        $this->email = !empty($data['email']) ? (string)$data['email'] : null;
-        $this->userRoleId = !empty($data['user_role_id']) ? (int)$data['user_role_id'] : null;
-        $this->locale = !empty($data['locale']) ? (string)$data['locale'] : null;
-        $this->enabled = !empty($data['enabled']) ? (bool)$data['enabled'] : null;
+        $reader = new ArrayReader($data);
+
+        $this->id = $reader->findInt('id');
+        $this->username = $reader->findString('username');
+        $this->firstName = $reader->findString('first_name');
+        $this->lastName = $reader->findString('last_name');
+        $this->password = $reader->findString('password');
+        $this->email = $reader->findString('email');
+        $this->userRoleId = $reader->findInt('user_role_id');
+        $this->locale = $reader->findString('locale');
+        $this->enabled = $reader->findBool('enabled');
     }
 
     /**
