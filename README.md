@@ -47,7 +47,7 @@ This project is based on best practices and industry standards:
 * Input validation
 * Migrations ([Phinx](https://phinx.org/))
 * SQL Query Builder (CakePHP)
-* Phinx Migrations Generator
+* Database migrations
 * Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
 * Unit- and integrations tests (PHPUnit)
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
