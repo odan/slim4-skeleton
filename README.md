@@ -21,7 +21,6 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 * PHP 7.4+ or 8.0+
 * MySQL 5.7+ or MariaDB
-* Composer (only for development)
 
 #### Recommended
 
@@ -34,7 +33,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 composer create-project odan/slim4-skeleton my-app
 ```
 
-Read more: **[Documentation](https://odan.github.io/slim4-skeleton/)**
+Read more: **[Documentation](https://odan.github.io/slim4-skeleton/installation.html)**
 
 ## Features
 
@@ -69,8 +68,9 @@ This project is based on best practices and industry standards:
 
 ## Usage
 
-This project is only a skeleton-project and not a "framework".
-You can clone it to modify it as you wish to create awesome API's and web applications. 
+You can clone this project to modify it as you wish to create awesome API's and web applications. 
+
+*This project is only a skeleton-project and not a "framework".*
 
 ## Support
 
