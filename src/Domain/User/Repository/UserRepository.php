@@ -36,7 +36,9 @@ final class UserRepository
         $row = $this->toRow($user);
         $row['created_at'] = Chronos::now()->toDateTimeString();
 
-        return (int)$this->queryFactory->newInsert('users', $row)->execute()->lastInsertId();
+        return (int)$this->queryFactory->newInsert('users', $row)
+            ->execute()
+            ->lastInsertId();
     }
 
     /**
@@ -91,7 +93,9 @@ final class UserRepository
 
         $row['updated_at'] = Chronos::now()->toDateTimeString();
 
-        $this->queryFactory->newUpdate('users', $row)->andWhere(['id' => $user->id])->execute();
+        $this->queryFactory->newUpdate('users', $row)
+            ->andWhere(['id' => $user->id])
+            ->execute();
     }
 
     /**
@@ -120,7 +124,9 @@ final class UserRepository
      */
     public function deleteUserById(int $userId): void
     {
-        $statement = $this->queryFactory->newDelete('users')->andWhere(['id' => $userId])->execute();
+        $statement = $this->queryFactory->newDelete('users')
+            ->andWhere(['id' => $userId])
+            ->execute();
 
         if (!$statement->count()) {
             throw new DomainException(sprintf('Cannot delete user: %s', $userId));
