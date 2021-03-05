@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Deployment
-parent: Getting Started
-nav_order: 4
+parent: Advanced
 ---
 
 # Deployment
