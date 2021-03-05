@@ -57,8 +57,6 @@
         }
     },
     "scripts": {
-        "build": "ant build",
-        "build:cc": "ant cc",
         "check": [
             "@lint",
             "@cs:check",

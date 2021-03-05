@@ -25,15 +25,15 @@ compiled, built, bundled, minified, optimized and so on.
 
 ## Building
 
-Make sure that the project is already versioned in a Git repository.
-
 To build a new artifact (ZIP file), run:
 
 ``` bash
-$ composer build
+$ ant build
 ```
 
 The artifact output directory is: `build/`
+
+*Make sure that the project is already versioned in a Git repository.*
 
 ## Server Setup
 
