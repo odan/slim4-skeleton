@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * Action.
  */
-final class DocVersion1Action
+final class Version1DocAction
 {
     private Responder $responder;
 

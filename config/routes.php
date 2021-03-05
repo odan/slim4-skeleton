@@ -11,7 +11,7 @@ return function (App $app) {
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('home');
 
     // Swagger API documentation
-    $app->get('/docs/v1', \App\Action\OpenApi\DocVersion1Action::class)->setName('docs');
+    $app->get('/docs/v1', \App\Action\OpenApi\Version1DocAction::class)->setName('docs');
 
     // Password protected area
     $app->group(
