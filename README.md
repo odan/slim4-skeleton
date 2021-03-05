@@ -70,7 +70,7 @@ This project is based on best practices and industry standards:
 
 You can clone this project to modify it as you wish to create awesome API's and web applications. 
 
-*This project is only a skeleton-project and not a "framework".*
+*This project is just a skeleton-project and not a "framework".*
 
 ## Support
 
