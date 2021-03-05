@@ -13,20 +13,11 @@ use function http_build_query;
  */
 final class Responder
 {
-    /**
-     * @var PhpRenderer
-     */
-    private $phpRenderer;
+    private PhpRenderer $phpRenderer;
 
-    /**
-     * @var RouteParserInterface
-     */
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    private $responseFactory;
+    private ResponseFactoryInterface $responseFactory;
 
     /**
      * The constructor.

@@ -13,25 +13,13 @@ use Psr\Log\LoggerInterface;
  */
 final class LoggerFactory
 {
-    /**
-     * @var string
-     */
-    private $path;
+    private string $path;
 
-    /**
-     * @var int
-     */
-    private $level;
+    private int $level;
 
-    /**
-     * @var array<mixed> Handler
-     */
-    private $handler = [];
+    private array $handler = [];
 
-    /**
-     * @var LoggerInterface|null
-     */
-    private $testLogger;
+    private ?LoggerInterface $testLogger;
 
     /**
      * The constructor.

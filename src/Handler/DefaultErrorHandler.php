@@ -19,20 +19,11 @@ use Throwable;
  */
 final class DefaultErrorHandler
 {
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private Responder $responder;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    private $responseFactory;
+    private ResponseFactoryInterface $responseFactory;
 
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * The constructor.
