@@ -28,7 +28,7 @@ compiled, built, bundled, minified, optimized and so on.
 To build a new artifact (ZIP file), run:
 
 ``` bash
-$ ant build
+ant build
 ```
 
 The artifact output directory is: `build/`
