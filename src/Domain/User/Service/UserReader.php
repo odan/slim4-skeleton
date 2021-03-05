@@ -3,21 +3,21 @@
 namespace App\Domain\User\Service;
 
 use App\Domain\User\Data\UserData;
-use App\Domain\User\Repository\UserReaderRepository;
+use App\Domain\User\Repository\UserRepository;
 
 /**
  * Service.
  */
 final class UserReader
 {
-    private UserReaderRepository $repository;
+    private UserRepository $repository;
 
     /**
      * The constructor.
      *
-     * @param UserReaderRepository $repository The repository
+     * @param UserRepository $repository The repository
      */
-    public function __construct(UserReaderRepository $repository)
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }

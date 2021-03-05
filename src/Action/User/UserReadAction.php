@@ -49,6 +49,7 @@ final class UserReadAction
         $user = $this->userReader->getUserData($userId);
 
         // Transform to json response
+        // This should be done within a specific Responder class
         $data = [
             'id' => $user->id,
             'username' => $user->username,

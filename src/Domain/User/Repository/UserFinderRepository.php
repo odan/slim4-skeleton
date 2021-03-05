@@ -60,6 +60,6 @@ final class UserFinderRepository
 
         $query->offset((int)$offset);
 
-        return UserData::toList($query->execute()->fetchAll('assoc'));
+        return UserData::toList($query->execute()->fetchAll('assoc') ?: []);
     }
 }

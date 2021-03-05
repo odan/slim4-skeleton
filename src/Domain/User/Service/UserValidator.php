@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Repository\UserValidatorRepository;
+use App\Domain\User\Repository\UserRepository;
 use App\Domain\User\Type\UserRoleType;
 use App\Factory\ValidationFactory;
 use Cake\Validation\Validator;
@@ -13,17 +13,17 @@ use Selective\Validation\Exception\ValidationException;
  */
 final class UserValidator
 {
-    private UserValidatorRepository $repository;
+    private UserRepository $repository;
 
     private ValidationFactory $validationFactory;
 
     /**
      * The constructor.
      *
-     * @param UserValidatorRepository $repository The repository
+     * @param UserRepository $repository The repository
      * @param ValidationFactory $validationFactory The validation
      */
-    public function __construct(UserValidatorRepository $repository, ValidationFactory $validationFactory)
+    public function __construct(UserRepository $repository, ValidationFactory $validationFactory)
     {
         $this->repository = $repository;
         $this->validationFactory = $validationFactory;

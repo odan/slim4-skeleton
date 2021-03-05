@@ -2,21 +2,21 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Repository\UserDeleterRepository;
+use App\Domain\User\Repository\UserRepository;
 
 /**
  * Service.
  */
 final class UserDeleter
 {
-    private UserDeleterRepository $repository;
+    private UserRepository $repository;
 
     /**
      * The constructor.
      *
-     * @param UserDeleterRepository $repository The repository
+     * @param UserRepository $repository The repository
      */
-    public function __construct(UserDeleterRepository $repository)
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }

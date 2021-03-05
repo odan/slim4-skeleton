@@ -43,6 +43,7 @@ final class UserFindAction
         $users = $this->userFinder->findUsers($params);
 
         // Transform to json response
+        // This should be done within a specific Responder class
         $userList = [];
         foreach ($users as $user) {
             $userList[] = [
@@ -57,10 +58,8 @@ final class UserFindAction
             ];
         }
 
-        $data = [
+        return $this->responder->withJson($response, [
             'users' => $userList,
-        ];
-
-        return $this->responder->withJson($response, $data);
+        ]);
     }
 }

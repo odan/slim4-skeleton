@@ -50,38 +50,18 @@ final class UserData
     /**
      * Convert to array.
      *
-     * @param array|false $items The items
+     * @param array $items The items
      *
      * @return UserData[] The list of users
      */
-    public static function toList($items): array
+    public static function toList(array $items): array
     {
         $users = [];
 
-        foreach ((array)$items as $data) {
+        foreach ($items as $data) {
             $users[] = new UserData($data);
         }
 
         return $users;
-    }
-
-    /**
-     * Convert to array.
-     *
-     * @return array The data
-     */
-    public function toArray(): array
-    {
-        return [
-            'id' => $this->id,
-            'username' => $this->username,
-            'password' => $this->password,
-            'first_name' => $this->firstName,
-            'last_name' => $this->lastName,
-            'email' => $this->email,
-            'user_role_id' => $this->userRoleId,
-            'locale' => $this->locale,
-            'enabled' => $this->enabled,
-        ];
     }
 }

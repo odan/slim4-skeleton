@@ -3,7 +3,7 @@
 namespace App\Domain\User\Service;
 
 use App\Domain\User\Data\UserData;
-use App\Domain\User\Repository\UserUpdaterRepository;
+use App\Domain\User\Repository\UserRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
  */
 final class UserUpdater
 {
-    private UserUpdaterRepository $repository;
+    private UserRepository $repository;
 
     private UserValidator $userValidator;
 
@@ -21,12 +21,12 @@ final class UserUpdater
     /**
      * The constructor.
      *
-     * @param UserUpdaterRepository $repository The repository
+     * @param UserRepository $repository The repository
      * @param UserValidator $userValidator The validator
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
-        UserUpdaterRepository $repository,
+        UserRepository $repository,
         UserValidator $userValidator,
         LoggerFactory $loggerFactory
     ) {
