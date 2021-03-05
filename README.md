@@ -28,6 +28,14 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 * Apache with mod_rewrite
 * [Apache Ant](https://ant.apache.org/bindownload.cgi) to build deployment artifacts
 
+## Installation
+
+```
+composer create-project odan/slim4-skeleton my-app
+```
+
+Read more: **[Documentation](https://odan.github.io/slim4-skeleton/)**
+
 ## Features
 
 This project is based on best practices and industry standards:
@@ -45,9 +53,8 @@ This project is based on best practices and industry standards:
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Console Commands (Symfony)
 * Input validation
-* Migrations ([Phinx](https://phinx.org/))
-* SQL Query Builder (CakePHP)
 * Database migrations
+* SQL Query Builder
 * Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
 * Unit- and integrations tests (PHPUnit)
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
@@ -63,12 +70,10 @@ This project is based on best practices and industry standards:
 ## Usage
 
 This project is only a skeleton-project and not a "framework".
-You can clone it to modify it as you wish. 
-For example, it's possible to replace the existing QueryBuilder with another component.
+You can clone it to modify it as you wish to create awesome API's and web applications. 
 
 ## Support
 
-* **[Documentation](https://odan.github.io/slim4-skeleton/)**
 * [Issues](https://github.com/odan/slim4-skeleton/issues)
 * [Blog](https://odan.github.io/)  
 * [Donate](https://odan.github.io/donate.html) for this project.
