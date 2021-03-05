@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Documentation;
+namespace App\Action\OpenApi;
 
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * Action.
  */
-final class SwaggerUiAction
+final class DocVersion1Action
 {
     private Responder $responder;
 
