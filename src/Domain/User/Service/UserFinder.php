@@ -31,6 +31,9 @@ final class UserFinder
      */
     public function findUsers(array $params): array
     {
+        // Input validation
+        // ...
+
         return $this->repository->findUsers($params);
     }
 }
