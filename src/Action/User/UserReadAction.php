@@ -2,6 +2,7 @@
 
 namespace App\Action\User;
 
+use App\Domain\User\Data\UserData;
 use App\Domain\User\Service\UserReader;
 use App\Responder\Responder;
 use Psr\Http\Message\ResponseInterface;
@@ -48,8 +49,21 @@ final class UserReadAction
         // Invoke the domain (service class)
         $user = $this->userReader->getUserData($userId);
 
-        // Transform to json response
-        // This should be done within a specific Responder class
+        // Transform result
+        return $this->transformResponse($response, $user);
+    }
+
+    /**
+     * Transform result to response.
+     *
+     * @param ResponseInterface $response The response
+     * @param UserData $user The user
+     *
+     * @return ResponseInterface The response
+     */
+    private function transformResponse(ResponseInterface $response, UserData $user): ResponseInterface
+    {
+        // Turn that object into a structured array
         $data = [
             'id' => $user->id,
             'username' => $user->username,
@@ -61,6 +75,7 @@ final class UserReadAction
             'enabled' => $user->enabled,
         ];
 
+        // Turn all of that into a JSON string and put it into the response body
         return $this->responder->withJson($response, $data);
     }
 }

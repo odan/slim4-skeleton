@@ -42,9 +42,22 @@ final class UserFindAction
 
         $users = $this->userFinder->findUsers($params);
 
-        // Transform to json response
-        // This should be done within a specific Responder class
+        return $this->transformResponse($response, $users);
+    }
+
+    /**
+     * Transform to json response.
+     * This could/should be done within a specific Responder class.
+     *
+     * @param ResponseInterface $response The response
+     * @param array $users The users
+     *
+     * @return ResponseInterface The response
+     */
+    private function transformResponse(ResponseInterface $response, array $users): ResponseInterface
+    {
         $userList = [];
+
         foreach ($users as $user) {
             $userList[] = [
                 'id' => $user->id,
