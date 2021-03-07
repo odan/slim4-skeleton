@@ -50,11 +50,11 @@ final class UserUpdater
         // Input validation
         $this->userValidator->validateUserUpdate($userId, $data);
 
-        // Map form data to row
+        // Validation was successfully
         $user = new UserData($data);
         $user->id = $userId;
 
-        // Insert user
+        // Update the user
         $this->repository->updateUser($user);
 
         // Logging
