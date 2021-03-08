@@ -50,7 +50,7 @@ final class UserReadAction
         $user = $this->userReader->getUserData($userId);
 
         // Transform result
-        return $this->transformResponse($response, $user);
+        return $this->transform($response, $user);
     }
 
     /**
@@ -61,7 +61,7 @@ final class UserReadAction
      *
      * @return ResponseInterface The response
      */
-    private function transformResponse(ResponseInterface $response, UserData $user): ResponseInterface
+    private function transform(ResponseInterface $response, UserData $user): ResponseInterface
     {
         // Turn that object into a structured array
         $data = [
