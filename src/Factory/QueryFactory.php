@@ -11,10 +11,7 @@ use RuntimeException;
  */
 final class QueryFactory
 {
-    /**
-     * @var Connection
-     */
-    private $connection;
+    private Connection $connection;
 
     /**
      * The constructor.
