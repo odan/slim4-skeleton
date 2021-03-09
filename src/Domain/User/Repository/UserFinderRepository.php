@@ -62,6 +62,11 @@ final class UserFinderRepository
 
         $rows = $query->execute()->fetchAll('assoc') ?: [];
 
-        return UserData::toList($rows);
+        $users = [];
+        foreach ($rows as $row) {
+            $users[] = new UserData($row);
+        }
+
+        return $users;
     }
 }

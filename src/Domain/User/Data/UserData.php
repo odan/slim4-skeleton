@@ -46,22 +46,4 @@ final class UserData
         $this->locale = $reader->findString('locale');
         $this->enabled = $reader->findBool('enabled');
     }
-
-    /**
-     * Convert to array.
-     *
-     * @param array $items The items
-     *
-     * @return UserData[] The list of users
-     */
-    public static function toList(array $items): array
-    {
-        $users = [];
-
-        foreach ($items as $data) {
-            $users[] = new UserData($data);
-        }
-
-        return $users;
-    }
 }
