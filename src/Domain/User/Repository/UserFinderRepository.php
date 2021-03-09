@@ -60,11 +60,22 @@ final class UserFinderRepository
 
         $query->offset((int)$offset);
 
-        $rows = $query->execute()->fetchAll('assoc') ?: [];
+        return $this->toList($query->execute()->fetchAll('assoc') ?: []);
+    }
 
+    /**
+     * Convert to list of objects.
+     *
+     * @param array $items The items
+     *
+     * @return UserData[] The list of users
+     */
+    private function toList(array $items): array
+    {
         $users = [];
-        foreach ($rows as $row) {
-            $users[] = new UserData($row);
+
+        foreach ($items as $data) {
+            $users[] = new UserData($data);
         }
 
         return $users;
