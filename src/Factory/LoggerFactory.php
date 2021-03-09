@@ -46,7 +46,7 @@ final class LoggerFactory
      */
     public function createLogger(string $name = null): LoggerInterface
     {
-        if ($this->testLogger) {
+        if (isset($this->testLogger)) {
             return $this->testLogger;
         }
 
