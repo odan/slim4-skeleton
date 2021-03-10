@@ -145,7 +145,7 @@ final class UserRepository
             'email' => $user->email,
             'user_role_id' => $user->userRoleId,
             'locale' => $user->locale,
-            'enabled' => $user->enabled,
+            'enabled' => (int)$user->enabled,
         ];
     }
 }
