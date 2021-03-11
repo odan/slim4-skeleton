@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase\Action\Doc;
+namespace App\Test\TestCase\Action\OpenApi;
 
 use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test.
  */
-class SwaggerActionTest extends TestCase
+class Version1DocActionTest extends TestCase
 {
     use AppTestTrait;
 
@@ -18,7 +18,7 @@ class SwaggerActionTest extends TestCase
      *
      * @return void
      */
-    public function testVersion1(): void
+    public function testAction(): void
     {
         $request = $this->createRequest('GET', '/docs/v1');
         $response = $this->app->handle($request);
