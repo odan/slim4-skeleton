@@ -93,7 +93,7 @@ class UserCreateActionTest extends TestCase
                 'email' => 'mail',
                 'user_role_id' => 99,
                 'locale' => 'aa_aa',
-                'enabled' => 1,
+                'enabled' => 'a',
             ]
         );
         $request = $this->withHttpBasicAuth($request);
@@ -127,6 +127,10 @@ class UserCreateActionTest extends TestCase
                         4 => [
                             'message' => 'Invalid',
                             'field' => 'locale',
+                        ],
+                        5 => [
+                            'message' => 'Invalid',
+                            'field' => 'enabled',
                         ],
                     ],
                 ],
