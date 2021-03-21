@@ -48,7 +48,7 @@ final class UserFinderRepository
         $order = $params['order'] ?? 'users.id';
         $dir = $params['dir'] ?? 'asc';
         $limit = max($params['limit'] ?? 10, 10);
-        $offset = min($params['offset'] ?? 0, 0);
+        $offset = max($params['offset'] ?? 0, 0);
 
         if ($order) {
             $dir === 'desc' ? $query->orderDesc($order) : $query->order($order);
