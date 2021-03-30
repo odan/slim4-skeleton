@@ -58,7 +58,7 @@ system('sudo chmod -R 775 htdocs/logs/');
 
 echo "Run migrations...\n";
 chdir('htdocs/');
-system('sudo vendor/bin/phinx migrate -c config/phinx.php');
+system('sudo vendor/bin/phoenix migrate');
 chdir('../../');
 
 //echo "Enable cronjobs...\n";
