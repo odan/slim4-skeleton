@@ -11,8 +11,9 @@ if (file_exists(__DIR__ . '/../../env.php')) {
 }
 
 // Testing and integration environment
-if (isset($_ENV['APP_ENV'])) {
-    require __DIR__ . '/local.' . $_ENV['APP_ENV'] . '.php';
+$environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? '';
+if ($environment) {
+    require __DIR__ . '/local.' . $environment . '.php';
 }
 
 return $settings;
