@@ -31,7 +31,8 @@ final class UserFinderRepository
      */
     public function findUsers(array $params): array
     {
-        $query = $this->queryFactory->newSelect('users');
+        $query = $this->queryFactory->newSelectWithConditions('users', $params);
+
         $query->select(
             [
                 'id',
@@ -44,21 +45,6 @@ final class UserFinderRepository
                 'enabled',
             ]
         );
-
-        $order = $params['order'] ?? 'users.id';
-        $dir = $params['dir'] ?? 'asc';
-        $limit = max($params['limit'] ?? 10, 10);
-        $offset = max($params['offset'] ?? 0, 0);
-
-        if ($order) {
-            $dir === 'desc' ? $query->orderDesc($order) : $query->order($order);
-        }
-
-        if ($limit) {
-            $query->limit((int)$limit);
-        }
-
-        $query->offset((int)$offset);
 
         return $this->toList($query->execute()->fetchAll('assoc') ?: []);
     }
