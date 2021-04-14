@@ -1,9 +1,5 @@
 <?php
 
-use Laminas\Hydrator\NamingStrategy\UnderscoreNamingStrategy;
-use Laminas\Hydrator\ReflectionHydrator;
-use Laminas\Hydrator\Strategy\CollectionStrategy;
-
 /**
  * Hydrate a collection of objects with data from an array with multiple items.
  *
@@ -16,12 +12,12 @@ use Laminas\Hydrator\Strategy\CollectionStrategy;
  */
 function hydrate(array $items, string $class): array
 {
-    $hydrator = new ReflectionHydrator();
-    $hydrator->setNamingStrategy(new UnderscoreNamingStrategy());
-    $strategy = new CollectionStrategy($hydrator, $class);
-
     /** @var T[] $result */
-    $result = $strategy->hydrate($items);
+    $result = [];
+
+    foreach ($items as $item) {
+        $result[] = new $class($item);
+    }
 
     return $result;
 }

@@ -18,7 +18,6 @@
         "cakephp/database": "^4",
         "cakephp/validation": "^4.2",
         "fig/http-message-util": "^1.1",
-        "laminas/laminas-hydrator": "^4.1",
         "lulco/phoenix": "^1.5",
         "monolog/monolog": "^2",
         "php-di/php-di": "^6",
