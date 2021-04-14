@@ -38,21 +38,19 @@ final class QueryFactory
     }
 
     /**
-     * Create a new 'select' query for the given table and add optional conditions.
+     * Add conditions to query.
      *
-     * @param string $table The table name
-     * @param array $params The query params
+     * @param Query $query The query
+     * @param array $options The query options
      *
-     * @return Query A new select query
+     * @return Query The query
      */
-    public function newSelectWithConditions(string $table, array $params): Query
+    public function withConditions(Query $query, array $options): Query
     {
-        $query = $this->newSelect($table);
-
-        $order = $params['order'] ?? 'users.id';
-        $dir = $params['dir'] ?? 'asc';
-        $limit = max($params['limit'] ?? 10, 10);
-        $offset = max($params['offset'] ?? 0, 0);
+        $order = $options['order'] ?? 'users.id';
+        $dir = $options['dir'] ?? 'asc';
+        $limit = max($options['limit'] ?? 10, 10);
+        $offset = max($options['offset'] ?? 0, 0);
 
         if ($order) {
             $dir === 'desc' ? $query->orderDesc($order) : $query->order($order);

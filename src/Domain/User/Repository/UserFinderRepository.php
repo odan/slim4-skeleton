@@ -31,7 +31,8 @@ final class UserFinderRepository
      */
     public function findUsers(array $params): array
     {
-        $query = $this->queryFactory->newSelectWithConditions('users', $params);
+        $query = $this->queryFactory->newSelect('users');
+        $query = $this->queryFactory->withConditions($query, $params);
 
         $query->select(
             [
