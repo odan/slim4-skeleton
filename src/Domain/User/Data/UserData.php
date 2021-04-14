@@ -11,21 +11,21 @@ final class UserData
 {
     public ?int $id = null;
 
-    public ?string $username;
+    public ?string $username = null;
 
-    public ?string $password;
+    public ?string $password = null;
 
-    public ?string $email;
+    public ?string $email = null;
 
-    public ?string $firstName;
+    public ?string $firstName = null;
 
-    public ?string $lastName;
+    public ?string $lastName = null;
 
-    public ?int $userRoleId;
+    public ?int $userRoleId = null;
 
-    public ?string $locale;
+    public ?string $locale = null;
 
-    public ?bool $enabled;
+    public ?bool $enabled = false;
 
     /**
      * The constructor.

@@ -46,24 +46,9 @@ final class UserFinderRepository
             ]
         );
 
-        return $this->toList($query->execute()->fetchAll('assoc') ?: []);
-    }
+        $items = $query->execute()->fetchAll('assoc') ?: [];
 
-    /**
-     * Convert to list of objects.
-     *
-     * @param array $items The items
-     *
-     * @return UserData[] The list of users
-     */
-    private function toList(array $items): array
-    {
-        $users = [];
-
-        foreach ($items as $data) {
-            $users[] = new UserData($data);
-        }
-
-        return $users;
+        // Convert to list of objects
+        return hydrate($items, UserData::class);
     }
 }
