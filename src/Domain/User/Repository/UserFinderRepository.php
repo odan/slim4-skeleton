@@ -47,9 +47,9 @@ final class UserFinderRepository
             ]
         );
 
-        $items = $query->execute()->fetchAll('assoc') ?: [];
+        $rows = $query->execute()->fetchAll('assoc') ?: [];
 
         // Convert to list of objects
-        return hydrate($items, UserData::class);
+        return hydrate($rows, UserData::class);
     }
 }
