@@ -25,14 +25,11 @@ final class UserFinderRepository
     /**
      * Find users.
      *
-     * @param array<mixed> $params The user
-     *
      * @return UserData[] A list of users
      */
-    public function findUsers(array $params): array
+    public function findUsers(): array
     {
         $query = $this->queryFactory->newSelect('users');
-        $query = $this->queryFactory->withConditions($query, $params);
 
         $query->select(
             [
@@ -46,6 +43,9 @@ final class UserFinderRepository
                 'enabled',
             ]
         );
+
+        // Add more "use case specific" conditions to the query
+        // ...
 
         $rows = $query->execute()->fetchAll('assoc') ?: [];
 

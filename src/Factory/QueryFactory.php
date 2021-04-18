@@ -38,34 +38,6 @@ final class QueryFactory
     }
 
     /**
-     * Add conditions to query.
-     *
-     * @param Query $query The query
-     * @param array $options The query options
-     *
-     * @return Query The query
-     */
-    public function withConditions(Query $query, array $options): Query
-    {
-        $order = $options['order'] ?? 'users.id';
-        $dir = $options['dir'] ?? 'asc';
-        $limit = max($options['limit'] ?? 10, 10);
-        $offset = max($options['offset'] ?? 0, 0);
-
-        if ($order) {
-            $dir === 'desc' ? $query->orderDesc($order) : $query->order($order);
-        }
-
-        if ($limit) {
-            $query->limit((int)$limit);
-        }
-
-        $query->offset((int)$offset);
-
-        return $query;
-    }
-
-    /**
      * Create a new query.
      *
      * @return Query The query
