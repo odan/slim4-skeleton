@@ -25,15 +25,13 @@ final class UserFinder
     /**
      * Find users.
      *
-     * @param array<mixed> $params The parameters
-     *
      * @return UserData[] A list of users
      */
-    public function findUsers(array $params): array
+    public function findUsers(): array
     {
         // Input validation
         // ...
 
-        return $this->repository->findUsers($params);
+        return $this->repository->findUsers();
     }
 }

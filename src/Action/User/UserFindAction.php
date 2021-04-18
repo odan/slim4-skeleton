@@ -38,9 +38,8 @@ final class UserFindAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $params = (array)$request->getQueryParams();
-
-        $users = $this->userFinder->findUsers($params);
+        // Optional: Pass parameters from the request to the findUsers method
+        $users = $this->userFinder->findUsers();
 
         return $this->transform($response, $users);
     }
@@ -71,8 +70,11 @@ final class UserFindAction
             ];
         }
 
-        return $this->responder->withJson($response, [
-            'users' => $userList,
-        ]);
+        return $this->responder->withJson(
+            $response,
+            [
+                'users' => $userList,
+            ]
+        );
     }
 }
