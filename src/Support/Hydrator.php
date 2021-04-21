@@ -12,18 +12,18 @@ final class Hydrator
      *
      * @template T
      *
-     * @param array $data The items
+     * @param array $rows The items
      * @param class-string<T> $class The FQN
      *
      * @return T[] The list of object
      */
-    public function hydrate(array $data, string $class): array
+    public function hydrate(array $rows, string $class): array
     {
         /** @var T[] $result */
         $result = [];
 
-        foreach ($data as $item) {
-            $result[] = new $class($item);
+        foreach ($rows as $row) {
+            $result[] = new $class($row);
         }
 
         return $result;
