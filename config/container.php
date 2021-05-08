@@ -3,9 +3,13 @@
 use App\Factory\LoggerFactory;
 use App\Handler\DefaultErrorHandler;
 use Cake\Database\Connection;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Validation\Encoder\JsonEncoder;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
@@ -14,7 +18,6 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Middleware\ErrorMiddleware;
-use Slim\Psr7\Factory\StreamFactory;
 use Slim\Views\PhpRenderer;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,13 +35,25 @@ return [
         return AppFactory::create();
     },
 
-    // For the responder
+    // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
         return $container->get(App::class)->getResponseFactory();
     },
 
+    ServerRequestFactoryInterface::class => function () {
+        return new Psr17Factory();
+    },
+
     StreamFactoryInterface::class => function () {
-        return new StreamFactory();
+        return new Psr17Factory();
+    },
+
+    UploadedFileFactoryInterface::class => function () {
+        return new Psr17Factory();
+    },
+
+    UriFactoryInterface::class => function () {
+        return new Psr17Factory();
     },
 
     // The Slim RouterParser
