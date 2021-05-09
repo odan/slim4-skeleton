@@ -59,7 +59,7 @@ This project is based on best practices and industry standards:
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
-* Docker container with Xdebug support for PhpStorm
+* Docker container with Xdebug support
 * Swagger OpenAPI documentation
 
 ## Screenshot
