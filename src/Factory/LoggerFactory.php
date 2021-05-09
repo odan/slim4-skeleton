@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -26,10 +27,10 @@ final class LoggerFactory
      *
      * @param array<mixed> $settings The settings
      */
-    public function __construct(array $settings)
+    public function __construct(array $settings = [])
     {
-        $this->path = (string)$settings['path'];
-        $this->level = (int)$settings['level'];
+        $this->path = (string)($settings['path'] ?? '');
+        $this->level = (int)($settings['level'] ?? 0);
 
         // This can be used for testing to make the Factory testable
         if (isset($settings['test'])) {
@@ -62,6 +63,20 @@ final class LoggerFactory
     }
 
     /**
+     * Add a handler.
+     *
+     * @param HandlerInterface $handler The handler
+     *
+     * @return self The logger factory
+     */
+    public function addHandler(HandlerInterface $handler): self
+    {
+        $this->handler[] = $handler;
+
+        return $this;
+    }
+
+    /**
      * Add rotating file logger handler.
      *
      * @param string $filename The filename
@@ -77,7 +92,7 @@ final class LoggerFactory
         // The last "true" here tells monolog to remove empty []'s
         $rotatingFileHandler->setFormatter(new LineFormatter(null, null, false, true));
 
-        $this->handler[] = $rotatingFileHandler;
+        $this->addHandler($rotatingFileHandler);
 
         return $this;
     }
@@ -91,10 +106,10 @@ final class LoggerFactory
      */
     public function addConsoleHandler(int $level = null): self
     {
-        $streamHandler = new StreamHandler('php://stdout', $level ?? $this->level);
+        $streamHandler = new StreamHandler('php://output', $level ?? $this->level);
         $streamHandler->setFormatter(new LineFormatter(null, null, false, true));
 
-        $this->handler[] = $streamHandler;
+        $this->addHandler($streamHandler);
 
         return $this;
     }
