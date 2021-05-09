@@ -50,12 +50,12 @@ This project is based on best practices and industry standards:
 * Logging (PSR-3)
 * [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
-* Console Commands (Symfony)
 * Input validation
-* Database migrations
 * SQL Query Builder
+* Database migrations
 * Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
-* Unit- and integrations tests (PHPUnit)
+* Unit- and integration tests (PHPUnit)
+* Console Commands
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
 * Build and deployment scripts
