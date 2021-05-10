@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/local.testing.php';
+require __DIR__ . '/local.test.php';
 
 // Database
 $settings['db']['host'] = '127.0.0.1';

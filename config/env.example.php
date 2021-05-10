@@ -16,7 +16,7 @@
  * a security breach, and production values will never have to be
  * shared with all project collaborators.
  */
-require __DIR__ . '/local.development.php';
+require __DIR__ . '/local.dev.php';
 
 // Database
 $settings['db']['username'] = 'root';

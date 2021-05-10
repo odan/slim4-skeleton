@@ -1,6 +1,6 @@
 <?php
 
-// Phpunit testing environment
+// Phpunit software test environment
 
 // Error reporting
 error_reporting(E_ALL);

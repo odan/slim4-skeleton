@@ -23,6 +23,18 @@ The configuration files are loaded in this order:
 3. If the constant `APP_ENV` is defined, load the environment specific file. 
 This is only used to apply the phpunit test settings.
 
+## Different Environments, different Configuration Files
+
+A typical application begins with three environments: dev, prod and test. 
+Each environment represents a way to execute the same codebase with 
+different configuration. It should be no surprise then that each environment 
+loads its own individual configuration files. 
+These different files are organized by environment:
+
+* for the `dev` environment: `config/local.dev.php`
+* for the `prod` environment: `config/local.prod.php`
+* for the `test` environment: `config/local.test.php`
+
 ## Environment configuration
 
 You may be familiar with the concept of `.env` files. 
