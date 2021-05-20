@@ -10,7 +10,7 @@ if (file_exists(__DIR__ . '/../../env.php')) {
     require __DIR__ . '/env.php';
 }
 
-// Testing and integration environment
+// Test and integration environment
 $environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? '';
 if ($environment) {
     require __DIR__ . '/local.' . $environment . '.php';
