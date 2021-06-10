@@ -136,7 +136,7 @@
 			</fileset>
 		</delete>
 
-		<!-- Zip master brunch -->
+		<!-- Zip master -->
 		<zip destfile="${basedir}/build/my_app_${now_file}.zip">
 			<zipfileset dir="${basedir}/build/master" excludes="node_modules/"/>
 		</zip>
