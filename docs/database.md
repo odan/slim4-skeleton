@@ -77,7 +77,7 @@ To list the already executed migrations, run:
 php vendor/bin/phoenix status
 ```
 
-There are more command available. Please consult the **[Phoenix Documentation](https://github.com/lulco/phoenix/)**.
+There are more commands available. Please consult the **[Phoenix Documentation](https://github.com/lulco/phoenix/)**.
 
 ## Schema Dump
 

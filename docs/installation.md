@@ -9,11 +9,11 @@ nav_order: 1
 
 ## Table of Contents
 
-* [Installation via Composer](#installation-via-composer)
-* [Installation via Docker](#installation-via-docker)
-* [Installation via Vagrant](#installation-via-vagrant)
+* [Composer](#composer)
+* [Docker](#docker)
+* [Vagrant](#vagrant)
 
-## Installation via Composer
+## Composer
 
 Run this command from the directory in which you want to install your new 
 Slim Framework application.
@@ -92,7 +92,7 @@ In case you still have trouble with the setup,
 you may try to upload the [Server Setup Checker](https://gist.github.com/odan/7fda1e4129cfd4a491ded5651fc32096)
 to get an idea about the issue.
 
-## Installation via Docker
+## Docker
 
 This setup is intended to use Docker as development environment.
 
@@ -201,12 +201,12 @@ Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the 
     * `apt-get install -y openjdk-11-jdk`
     * `apt-get install ant -y`
 
-## Installation via Vagrant
+## Vagrant
 
 ## Requirements
 
-* The latest version of Vagrant
-* [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0). Install only one of the supported versions: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0
+* [Vagrant](https://www.vagrantup.com/downloads) (latest version) 
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 **Additional requirements for Windows**
 
@@ -225,14 +225,14 @@ Create a file `Vagrantfile` and copy/paste this content:
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/focal64"
   config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.network "forwarded_port", guest: 80, host: 8765
   #config.vm.network "forwarded_port", guest: 9000, host: 9001
   #config.vm.network "private_network", ip: "192.168.56.99"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
-    vb.customize ['modifyvm', :id, '--uartmode1', 'disconnected']
+    vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
   end  
 end
 ```
@@ -261,9 +261,9 @@ if ! [ -L /var/www ]; then
 fi
 
 apt-get install mysql-server mysql-client libmysqlclient-dev -y
-apt-get install libapache2-mod-php7.2 php7.2 php7.2-mysql php7.2-sqlite -y
-apt-get install php7.2-mbstring php7.2-curl php7.2-intl php7.2-gd php7.2-zip php7.2-bz2 -y
-apt-get install php7.2-dom php7.2-xml php7.2-soap -y
+apt-get install libapache2-mod-php7.4 php7.4 php7.4-mysql php7.4-sqlite -y
+apt-get install php7.4-mbstring php7.4-curl php7.4-intl php7.4-gd php7.4-zip php7.4-bz2 -y
+apt-get install php7.4-dom php7.4-xml php7.4-soap -y
 apt-get install --reinstall ca-certificates -y
 
 # Enable apache mod_rewrite
@@ -276,9 +276,11 @@ sed -i '170,174 s/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.c
 # Start the webserver
 service apache2 restart
 
-# Change mysql root password
+# Start the database server
 service mysql start
-mysql -u root --password="" -e "update mysql.user set authentication_string=password(''), plugin='mysql_native_password' where user='root';"
+
+# Change root user to native password authentication
+mysql -u root --password="" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
 mysql -u root --password="" -e "flush privileges;"
 
 # Install composer
@@ -301,7 +303,7 @@ chmod -R 760 tmp/
 chmod -R 760 logs/
 
 cp config/env.example.php config/env.php
-composer migration:migrate
+vendor/bin/phoenix migrate
 
 # Run tests
 vendor/bin/phpunit
