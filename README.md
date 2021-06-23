@@ -72,6 +72,8 @@ You can clone this project to modify it as you wish to create awesome API's and 
 
 *This project is just a skeleton-project and not a "framework".*
 
+Read more: **[Documentation](https://odan.github.io/slim4-skeleton/installation.html)**
+
 ## Support
 
 * [Issues](https://github.com/odan/slim4-skeleton/issues)
