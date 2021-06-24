@@ -35,25 +35,29 @@ return [
         return AppFactory::create();
     },
 
+    Psr17Factory::class => function () {
+        return new Psr17Factory();
+    },
+
     // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
         return $container->get(App::class)->getResponseFactory();
     },
 
-    ServerRequestFactoryInterface::class => function () {
-        return new Psr17Factory();
+    ServerRequestFactoryInterface::class => function (ContainerInterface $container) {
+        return $container->get(Psr17Factory::class);
     },
 
-    StreamFactoryInterface::class => function () {
-        return new Psr17Factory();
+    StreamFactoryInterface::class => function (ContainerInterface $container) {
+        return $container->get(Psr17Factory::class);
     },
 
-    UploadedFileFactoryInterface::class => function () {
-        return new Psr17Factory();
+    UploadedFileFactoryInterface::class => function (ContainerInterface $container) {
+        return $container->get(Psr17Factory::class);
     },
 
-    UriFactoryInterface::class => function () {
-        return new Psr17Factory();
+    UriFactoryInterface::class => function (ContainerInterface $container) {
+        return $container->get(Psr17Factory::class);
     },
 
     // The Slim RouterParser
