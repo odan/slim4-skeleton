@@ -35,10 +35,6 @@ return [
         return AppFactory::create();
     },
 
-    Psr17Factory::class => function () {
-        return new Psr17Factory();
-    },
-
     // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
         return $container->get(App::class)->getResponseFactory();
