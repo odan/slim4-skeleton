@@ -13,9 +13,10 @@ To help you learn more about what's happening within your application,
 this Slim skeleton provides robust logging services that allow you to log messages to files, 
 the system error log, and even to Slack to notify your entire team.
 
-## Usage
+Under the hood, this project utilizes the [Monolog](https://github.com/Seldaek/monolog) library,
+which provides support for a variety of powerful log handlers.
 
-This project already contains Monolog as logging component.
+## Usage
 
 It's recommended using the `App\Factory\LoggerFactory` class to
 create a custom logger for each context.
@@ -33,10 +34,7 @@ use Psr\Log\LoggerInterface;
 
 final class Example
 {
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
     
     // ...
 
