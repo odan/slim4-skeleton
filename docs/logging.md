@@ -9,15 +9,19 @@ parent: Advanced
 
 ## Introduction
 
-This project already contains Monolog as logging component.
-
-It's recommended using the `App\Factory\LoggerFactory` class to 
-create a custom logger for each context.
-
-The `LoggerFactory` provides methods to generate a 
-file- and console based logging output.
+To help you learn more about what's happening within your application, 
+this Slim skeleton provides robust logging services that allow you to log messages to files, 
+the system error log, and even to Slack to notify your entire team.
 
 ## Usage
+
+This project already contains Monolog as logging component.
+
+It's recommended using the `App\Factory\LoggerFactory` class to
+create a custom logger for each context.
+
+The `LoggerFactory` provides methods to generate a
+file- and console based logging output.
 
 Inject the `LoggerFactory` instance and generate a specific logger as follows:
 
