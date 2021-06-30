@@ -45,28 +45,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class ExampleCommand extends Command
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
-     * Constructor.
-     *
-     * @param ContainerInterface $container The container
-     * @param string|null $name The name
-     */
-    public function __construct(ContainerInterface $container, ?string $name = null)
-    {
-        parent::__construct($name);
-        $this->container = $container;
-    }
-
-    /**
-     * Configure.
-     *
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();
@@ -74,19 +52,12 @@ final class ExampleCommand extends Command
         $this->setName('example');
         $this->setDescription('A sample command');
     }
-
-    /**
-     * Execute command.
-     *
-     * @param InputInterface $input The input
-     * @param OutputInterface $output The output
-     *
-     * @return int The error code, 0 on success
-     */
+    
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln(sprintf('<info>Hello, console</info>'));
 
+        // The error code, 0 on success
         return 0;
     }
 }
@@ -124,3 +95,7 @@ A lock can be used to ensure that the server starts only one
 specific cronjob or console command at the same time.
 
 * [The Lock Component](https://symfony.com/doc/current/components/lock.html)
+
+## Read more
+
+* [Slim 4 - Console](https://odan.github.io/2021/06/23/slim-console.html)
