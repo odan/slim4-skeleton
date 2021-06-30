@@ -28,6 +28,7 @@
         "selective/validation": "^1.1",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
+        "symfony/cache": "^5.3",
         "symfony/console": "^5",
         "symfony/polyfill-uuid": "^1.22",
         "symfony/yaml": "^5.2",

@@ -23,7 +23,8 @@ when and how long application output is retained by client-side caches. You may 
 ## Storage Caching
 
 The cached data is usually stored in a very fast data store such as Memcached or Redis.
-Thankfully, the [laminas/laminas-cache](https://docs.laminas.dev/laminas-cache/) component provides
-a [PSR-6](https://www.php-fig.org/psr/psr-6/) and
+Thankfully, the [laminas/laminas-cache](https://docs.laminas.dev/laminas-cache/) and 
+[symfony/cache](https://symfony.com/doc/current/components/cache.html)
+components provides a [PSR-6](https://www.php-fig.org/psr/psr-6/) and
 [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant API for various cache backends, allowing you to take advantage
 of their blazing fast data retrieval and speed up your web application.
