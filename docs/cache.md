@@ -28,3 +28,11 @@ Thankfully, the [laminas/laminas-cache](https://docs.laminas.dev/laminas-cache/)
 components provides a [PSR-6](https://www.php-fig.org/psr/psr-6/) and
 [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant API for various cache backends, allowing you to take advantage
 of their blazing fast data retrieval and speed up your web application.
+
+## Read more
+
+* [Slim 4 - Redis](https://odan.github.io/2021/06/14/slim-redis.html)
+* [Slim 4 - Memcached](https://odan.github.io/2021/06/20/slim-memcached.html)
+* [The Symfony Cache Component](https://symfony.com/doc/current/components/cache.html)
+* [Laminas Cache](https://docs.laminas.dev/laminas-cache/)
+* [Scrapbook](https://www.scrapbook.cash/)
