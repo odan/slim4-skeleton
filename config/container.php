@@ -67,9 +67,7 @@ return [
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {
-        $app = $container->get(App::class);
-
-        return new BasePathMiddleware($app);
+        return new BasePathMiddleware($container->get(App::class));
     },
 
     // Database connection
@@ -86,10 +84,8 @@ return [
     },
 
     ValidationExceptionMiddleware::class => function (ContainerInterface $container) {
-        $factory = $container->get(ResponseFactoryInterface::class);
-
         return new ValidationExceptionMiddleware(
-            $factory,
+            $container->get(ResponseFactoryInterface::class),
             new ErrorDetailsResultTransformer(),
             new JsonEncoder()
         );
@@ -136,8 +132,6 @@ return [
     },
 
     HttpBasicAuthentication::class => function (ContainerInterface $container) {
-        $settings = $container->get('settings')['api_auth'];
-
-        return new HttpBasicAuthentication($settings);
+        return new HttpBasicAuthentication($container->get('settings')['api_auth']);
     },
 ];
