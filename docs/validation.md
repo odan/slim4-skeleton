@@ -6,7 +6,7 @@ parent: The Basics
 
 # Validation
 
-Depending on the use case, different strategies are appropriate for the input validation.
+There are different approaches to validate your application's incoming data.
 
 ## Form and JSON validation
 
