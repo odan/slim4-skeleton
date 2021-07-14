@@ -72,7 +72,7 @@ $settings['db']['password'] = '';
 Run all the available migrations:
 
 ```shell
-composer migration:migrate
+composer phoenix migrate
 ```
 
 **Step 5:** Run it
