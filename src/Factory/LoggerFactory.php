@@ -30,7 +30,7 @@ final class LoggerFactory
     public function __construct(array $settings = [])
     {
         $this->path = (string)($settings['path'] ?? '');
-        $this->level = (int)($settings['level'] ?? 0);
+        $this->level = (int)($settings['level'] ?? Logger::DEBUG);
 
         // This can be used for testing to make the Factory testable
         if (isset($settings['test'])) {
