@@ -1,6 +1,6 @@
 <?php
 
-// Developers desktop/workstation
+// Dev environment
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
