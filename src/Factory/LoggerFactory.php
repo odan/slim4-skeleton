@@ -87,6 +87,7 @@ final class LoggerFactory
     public function addFileHandler(string $filename, int $level = null): self
     {
         $filename = sprintf('%s/%s', $this->path, $filename);
+        /** @phpstan-ignore-next-line */
         $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level ?? $this->level, true, 0777);
 
         // The last "true" here tells monolog to remove empty []'s
@@ -106,6 +107,7 @@ final class LoggerFactory
      */
     public function addConsoleHandler(int $level = null): self
     {
+        /** @phpstan-ignore-next-line */
         $streamHandler = new StreamHandler('php://output', $level ?? $this->level);
         $streamHandler->setFormatter(new LineFormatter(null, null, false, true));
 
