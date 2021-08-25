@@ -59,7 +59,7 @@
         }
     },
     "scripts": {
-        "check": [
+        "check-all": [
             "@lint",
             "@cs:check",
             "@sniffer:check",
@@ -74,8 +74,8 @@
         "phoenix": "phoenix",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
-        "test": "phpunit --configuration phpunit.xml",
-        "test:coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result ",
+        "test:coverage": "phpunit --configuration phpunit.xml --do-not-cache-result  --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
         "test:scrutinizer": "phpunit --configuration phpunit8.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     }
 }
