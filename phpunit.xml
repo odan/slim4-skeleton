@@ -28,7 +28,5 @@
     <php>
         <env name="APP_ENV" value="test"/>
         <env name="PHPUNIT_TEST_SUITE" value="1"/>
-        <!-- Don't cache result -->
-        <const name="PHPUNIT_TESTSUITE_RESULTCACHE" value="0"/>
     </php>
 </phpunit>
