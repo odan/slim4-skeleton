@@ -35,7 +35,7 @@ build:
     tests:
         before:
             -
-                command: composer test
+                command: composer test:coverage
                 coverage:
                     file: 'build/logs/clover.xml'
                     format: 'clover'
