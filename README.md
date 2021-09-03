@@ -39,16 +39,16 @@ Read more: **[Documentation](https://odan.github.io/slim4-skeleton/installation.
 
 This project is based on best practices and industry standards:
 
+* [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * HTTP message interfaces (PSR-7)
 * HTTP Server Request Handlers, Middleware (PSR-15)
 * HTTP factories (PSR-17)
 * HTTP router and dispatcher (Slim)
 * Dependency injection container (PSR-11)
-* Modern coding style (PSR-12)
 * Autoloading (PSR-4)
 * Logging (PSR-3)
+* Code styles (PSR-12)
 * PHPDoc standard (PSR-5, PSR-19)
-* [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * Single action controllers
 * Input validation
 * SQL Query Builder
