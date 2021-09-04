@@ -2,6 +2,7 @@
 
 use App\Factory\LoggerFactory;
 use App\Handler\DefaultErrorHandler;
+use App\Middleware\ShutdownMiddleware;
 use Cake\Database\Connection;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
@@ -111,6 +112,12 @@ return [
         $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
 
         return $errorMiddleware;
+    },
+
+    ShutdownMiddleware::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['error'];
+
+        return new ShutdownMiddleware((bool)$settings['display_error_details']);
     },
 
     Application::class => function (ContainerInterface $container) {
