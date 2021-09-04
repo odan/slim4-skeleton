@@ -52,6 +52,9 @@ class UserUpdateActionTest extends TestCase
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertJsonContentType($response);
 
+        // Check logger
+        $this->assertTrue($this->getLogger()->hasInfoThatContains('User updated successfully'));
+
         // Check database
         $expected = [
             'id' => '1',

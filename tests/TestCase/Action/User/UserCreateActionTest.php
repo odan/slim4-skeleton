@@ -51,6 +51,9 @@ class UserCreateActionTest extends TestCase
         $this->assertJsonContentType($response);
         $this->assertJsonData(['user_id' => 1], $response);
 
+        // Check logger
+        $this->assertTrue($this->getLogger()->hasInfoThatContains('User created successfully'));
+
         // Check database
         $this->assertTableRowCount(1, 'users');
 

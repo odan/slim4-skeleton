@@ -7,7 +7,6 @@ use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
 use Selective\TestTrait\Traits\HttpTestTrait;
 use Selective\TestTrait\Traits\MockTestTrait;
-use Selective\TestTrait\Traits\RouteTestTrait;
 use Slim\App;
 
 /**
@@ -20,6 +19,7 @@ trait AppTestTrait
     use HttpBasicAuthTestTrait;
     use HttpTestTrait;
     use HttpJsonTestTrait;
+    use LoggerTestTrait;
     use MockTestTrait;
     use RouteTestTrait;
 
@@ -36,7 +36,9 @@ trait AppTestTrait
     protected function setUp(): void
     {
         $this->app = require __DIR__ . '/../../config/bootstrap.php';
+
         $this->setUpContainer($this->app->getContainer());
+        $this->setUpLogger();
 
         if (method_exists($this, 'setUpDatabase')) {
             $this->setUpDatabase(__DIR__ . '/../../resources/schema/schema.sql');
