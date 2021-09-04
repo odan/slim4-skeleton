@@ -41,7 +41,7 @@ final class UserUpdater
      * Update user.
      *
      * @param int $userId The user id
-     * @param array<mixed> $data The request data
+     * @param array $data The request data
      *
      * @return void
      */

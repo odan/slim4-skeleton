@@ -51,7 +51,7 @@ final class Responder
      *
      * @param ResponseInterface $response The response
      * @param string $template Template pathname relative to templates directory
-     * @param array<mixed> $data Associative array of template variables
+     * @param array $data Associative array of template variables
      *
      * @return ResponseInterface The response
      */
@@ -68,7 +68,7 @@ final class Responder
      *
      * @param ResponseInterface $response The response
      * @param string $destination The redirect destination (url or route name)
-     * @param array<mixed> $queryParams Optional query string parameters
+     * @param array $queryParams Optional query string parameters
      *
      * @return ResponseInterface The response
      */
@@ -92,8 +92,8 @@ final class Responder
      *
      * @param ResponseInterface $response The response
      * @param string $routeName The redirect route name
-     * @param array<mixed> $data Named argument replacement data
-     * @param array<mixed> $queryParams Optional query string parameters
+     * @param array $data Named argument replacement data
+     * @param array $queryParams Optional query string parameters
      *
      * @return ResponseInterface The response
      */

@@ -33,7 +33,7 @@ final class UserValidator
      * Validate update.
      *
      * @param int $userId The user id
-     * @param array<mixed> $data The data
+     * @param array $data The data
      *
      * @return void
      */
@@ -49,7 +49,7 @@ final class UserValidator
     /**
      * Validate new user.
      *
-     * @param array<mixed> $data The data
+     * @param array $data The data
      *
      * @throws ValidationException
      *

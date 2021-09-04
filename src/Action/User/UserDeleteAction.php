@@ -33,7 +33,7 @@ final class UserDeleteAction
      *
      * @param ServerRequestInterface $request The request
      * @param ResponseInterface $response The response
-     * @param array<mixed> $args The routing arguments
+     * @param array $args The routing arguments
      *
      * @return ResponseInterface The response
      */
