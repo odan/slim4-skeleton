@@ -30,6 +30,6 @@ final class ValidationFactory
      */
     public function createValidationResult(array $errors): ValidationResult
     {
-        return CakeValidationConverter::createValidationResult($errors);
+        return (new CakeValidationConverter())->createValidationResult($errors);
     }
 }
