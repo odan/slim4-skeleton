@@ -37,4 +37,3 @@ trait LoggerTestTrait
         return $this->testHandler;
     }
 }
-

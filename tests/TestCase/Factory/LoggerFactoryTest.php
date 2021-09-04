@@ -4,7 +4,7 @@ namespace App\Test\TestCase\Factory;
 
 use App\Factory\LoggerFactory;
 use App\Test\Traits\AppTestTrait;
-use Cake\Chronos\Chronos;
+use DateTimeImmutable;
 use Monolog\Handler\TestHandler;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
@@ -58,7 +58,7 @@ class LoggerFactoryTest extends TestCase
         $this->assertTrue($testHandler->hasInfo('Info message'));
         $this->assertTrue($testHandler->hasError('Error message'));
 
-        $now = Chronos::now()->format('Y-m-d');
+        $now = (new DateTimeImmutable())->format('Y-m-d');
         $this->assertFileExists(sprintf('%s/test-%s.log', $this->temp, $now));
     }
 }
