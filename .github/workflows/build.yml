@@ -71,6 +71,6 @@ jobs:
         run: php vendor/bin/phoenix migrate
 
       - name: Run test suite
-        run: composer check-all
+        run: composer test:all
         env:
           PHP_CS_FIXER_IGNORE_ENV: 1
