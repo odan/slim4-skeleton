@@ -39,22 +39,22 @@ Read more: **[Documentation](https://odan.github.io/slim4-skeleton/installation.
 
 This project is based on best practices and industry standards:
 
+* [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * HTTP message interfaces (PSR-7)
 * HTTP Server Request Handlers, Middleware (PSR-15)
 * HTTP factories (PSR-17)
 * HTTP router and dispatcher (Slim)
 * Dependency injection container (PSR-11)
-* Modern coding style (PSR-1, PSR-12)
-* PHPDoc standard (PSR-5, PSR-19)
 * Autoloading (PSR-4)
 * Logging (PSR-3)
-* [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
-* Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
+* Code styles (PSR-12)
+* PHPDoc standard (PSR-5, PSR-19)
+* Single action controllers
 * Input validation
 * SQL Query Builder
 * Database migrations
-* Immutable date and time ([Chronos](https://github.com/cakephp/chronos))
-* Unit- and integration tests (PHPUnit)
+* Immutable date time ([Chronos](https://github.com/cakephp/chronos))
+* Unit- and integration tests
 * Console Commands
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
@@ -69,8 +69,6 @@ This project is based on best practices and industry standards:
 ## Usage
 
 You can clone this project to modify it as you wish to create awesome API's and web applications. 
-
-*This project is just a skeleton-project and not a "framework".*
 
 Read more: **[Documentation](https://odan.github.io/slim4-skeleton/installation.html)**
 
