@@ -193,14 +193,6 @@ Then navigate to `http://localhost:8080` or `http://127.0.0.0:8080` to open the 
 * List all running containers to get the container id: `sudo docker ps`
 * To get access and run commands in that Docker container, type the following: `sudo docker exec –it {container-id} /bin/bash`
 
-### Installing Apache Ant
-
-* [Log into the container with SSH](#ssh-into-a-docker-container)
-* To install ant, run:
-    * `mkdir -p /usr/share/man/man1`
-    * `apt-get install -y openjdk-11-jdk`
-    * `apt-get install ant -y`
-
 ## Vagrant
 
 ## Requirements

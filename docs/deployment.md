@@ -14,7 +14,15 @@ compiled, built, bundled, minified, optimized and so on.
 * [Apache ant](https://ant.apache.org) to create deployment artifacts (build)
 * [Java 8 runtime](https://www.java.com/en/download/manual.jsp)
 
-## Installation
+### Apache Ant Setup on Linux
+
+* [Log into the container with SSH](#ssh-into-a-docker-container)
+* To install ant, run:
+    * `mkdir -p /usr/share/man/man1`
+    * `apt-get install -y openjdk-11-jdk`
+    * `apt-get install ant -y`
+
+## Apache Ant Setup on Windows
 
 * Download the latest binary of [Apache Ant](https://ant.apache.org/bindownload.cgi)
 * Extract the zip file to `c:\ant`
