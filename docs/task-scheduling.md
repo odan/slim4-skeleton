@@ -34,6 +34,6 @@ worrying anymore about the crontab.
 These libraries can be used to define and execute cronjob tasks.
 There are more, of course.
 
-* https://github.com/Cron/Cron
-* https://github.com/peppeocchi/php-cron-scheduler
-* https://github.com/jobbyphp/jobby
+* <https://github.com/Cron/Cron>
+* <https://github.com/peppeocchi/php-cron-scheduler>
+* <https://github.com/jobbyphp/jobby>
