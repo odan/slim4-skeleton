@@ -14,7 +14,7 @@ compiled, built, bundled, minified, optimized and so on.
 * [Apache ant](https://ant.apache.org) to create deployment artifacts (build)
 * [Java 8 runtime](https://www.java.com/en/download/manual.jsp)
 
-### Apache Ant Setup on Linux
+## Apache Ant Setup on Linux
 
 To install Apache Ant, run:
 
