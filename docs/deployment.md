@@ -16,11 +16,13 @@ compiled, built, bundled, minified, optimized and so on.
 
 ### Apache Ant Setup on Linux
 
-* [Log into the container with SSH](#ssh-into-a-docker-container)
-* To install ant, run:
-    * `mkdir -p /usr/share/man/man1`
-    * `apt-get install -y openjdk-11-jdk`
-    * `apt-get install ant -y`
+To install Apache Ant, run:
+
+```
+sudo mkdir -p /usr/share/man/man1
+sudo apt-get install -y openjdk-11-jdk
+sudo apt-get install ant -y
+```
 
 ## Apache Ant Setup on Windows
 
