@@ -14,47 +14,26 @@ pain because your task schedule is no longer in source control and
 you must SSH into your server to view your existing cron entries 
 or add additional entries
 
-The [Jobby](https://github.com/jobbyphp/jobby) command scheduler 
-offers a nice approach to managing scheduled tasks on your server.
-The scheduler allows you to expressively define your command schedule within 
-your application itself. When using the scheduler, 
+When using the scheduler, 
 only a single [crontab](https://help.ubuntu.com/community/CronHowto)
 entry is needed on your server.
 
-## Installation
+Add a new entry to your crontab to run `bin/cronjob.php` every minute.
 
-To install Jobby, please follow the 
-[installation](https://github.com/jobbyphp/jobby#getting-started) instructions.
-
-Create a new file: `bin/jobby.php`
-
-To invoke the `example` command in `src/Console/ExampleCommand.php` add this job into `bin/jobby.php`:
-
-```php
-<?php
-
-use Jobby\Jobby;
-
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$jobby = new Jobby();
-
-// Every job has a name
-$jobby->add('ExampleCommand', [
-    // Run a shell command
-    'command' => 'php ' . __DIR__ . '/console.php example',
-    // This schedule runs every minute.
-    'schedule' => '* * * * *',
-    'enabled'  => true,
-    'output'   => __DIR__ . '/../logs/example_command.log',
-]);
-
-$jobby->run();
+Your server crontab could now look something like:
 
 ```
-
-To start the cron job manager manually, run:
-
+* * * * * /usr/bin/php /var/www/example.com/bin/cronjob.php  1>> /dev/null 2>&1
 ```
-php bin/jobby.php
-```
+
+Your scheduler is up and running, now you can add your jobs without
+worrying anymore about the crontab.
+
+## Defining Schedules
+
+These libraries can be used to define and execute cronjob tasks.
+There are more, of course.
+
+* https://github.com/Cron/Cron
+* https://github.com/peppeocchi/php-cron-scheduler
+* https://github.com/jobbyphp/jobby
