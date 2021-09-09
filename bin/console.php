@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\ContainerFactory;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
@@ -13,7 +14,7 @@ if ($env) {
 }
 
 /** @var ContainerInterface $container */
-$container = (require __DIR__ . '/../config/bootstrap.php')->getContainer();
+$container = (new ContainerFactory())->createInstance();
 
 $application = $container->get(Application::class);
 $application->run();
