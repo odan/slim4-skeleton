@@ -49,27 +49,16 @@ final class ShutdownMiddleware implements MiddlewareInterface
                 return;
             }
 
-            $exception = new class($error['message'], $error['type'], $error['file'], $error['line']) extends
-                RuntimeException {
-                public function __construct(string $message, int $code, string $file, int $line)
-                {
-                    parent::__construct($message, $code);
-                    $this->file = $file;
-                    $this->line = $line;
-                }
-            };
-
             // Invoke default error handler
             $response = $this->errorHandler->__invoke(
                 $request,
-                $exception,
+                $this->createExceptionFromError($error),
                 $this->displayErrorDetails,
                 true,
                 true
             );
 
-            $emitter = new ResponseEmitter();
-            $emitter->emit($response);
+            (new ResponseEmitter())->emit($response);
         };
 
         // Disable html output to prevent output buffer issues
@@ -81,5 +70,25 @@ final class ShutdownMiddleware implements MiddlewareInterface
         error_reporting($reporting);
 
         return $response;
+    }
+
+    /**
+     * Create exception from error.
+     *
+     * @param array $error The error
+     *
+     * @return RuntimeException The exception
+     */
+    private function createExceptionFromError(array $error): RuntimeException
+    {
+        return new class($error['message'], $error['type'], $error['file'], $error['line']) extends RuntimeException {
+            // phpcs:ignore
+            public function __construct(string $message, int $code, string $file, int $line)
+            {
+                parent::__construct($message, $code);
+                $this->file = $file;
+                $this->line = $line;
+            }
+        };
     }
 }
