@@ -116,11 +116,9 @@ return [
 
     ShutdownMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['error'];
+        $errorHandler = $container->get(DefaultErrorHandler::class);
 
-        $loggerFactory = $container->get(LoggerFactory::class);
-        $logger = $loggerFactory->addFileHandler('error.log')->createLogger();
-
-        return new ShutdownMiddleware((bool)$settings['display_error_details'], $logger);
+        return new ShutdownMiddleware($errorHandler, (bool)$settings['display_error_details']);
     },
 
     Application::class => function (ContainerInterface $container) {

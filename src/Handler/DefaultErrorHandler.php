@@ -12,12 +12,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpException;
+use Slim\Interfaces\ErrorHandlerInterface;
 use Throwable;
 
 /**
  * Default Error Renderer.
  */
-final class DefaultErrorHandler
+final class DefaultErrorHandler implements ErrorHandlerInterface
 {
     private Responder $responder;
 
@@ -51,6 +52,7 @@ final class DefaultErrorHandler
      * @param Throwable $exception The exception
      * @param bool $displayErrorDetails Show error details
      * @param bool $logErrors Log errors
+     * @param bool $logErrorDetails Log error details
      *
      * @return ResponseInterface The response
      */
@@ -58,36 +60,26 @@ final class DefaultErrorHandler
         ServerRequestInterface $request,
         Throwable $exception,
         bool $displayErrorDetails,
-        bool $logErrors
+        bool $logErrors,
+        bool $logErrorDetails
     ): ResponseInterface {
         // Log error
         if ($logErrors) {
-            $this->logger->error(
-                sprintf(
-                    'Error: [%s] %s, Method: %s, Path: %s',
-                    $exception->getCode(),
-                    $this->getExceptionText($exception),
-                    $request->getMethod(),
-                    $request->getUri()->getPath()
-                )
-            );
+            $error = $this->getErrorDetails($exception, $logErrorDetails);
+            $error['method'] = $request->getMethod();
+            $error['url'] = (string)$request->getUri();
+
+            $this->logger->error($exception->getMessage(), $error);
         }
 
-        // Detect status code
-        $statusCode = $this->getHttpStatusCode($exception);
-
-        // Error message
-        $errorMessage = $this->getErrorMessage($exception, $statusCode, $displayErrorDetails);
+        $response = $this->responseFactory->createResponse();
 
         // Render response
-        $response = $this->responseFactory->createResponse();
         $response = $this->responder->withJson($response, [
-            'error' => [
-                'message' => $errorMessage,
-            ],
+            'error' => $this->getErrorDetails($exception, $displayErrorDetails),
         ]);
 
-        return $response->withStatus($statusCode);
+        return $response->withStatus($this->getHttpStatusCode($exception));
     }
 
     /**
@@ -123,49 +115,25 @@ final class DefaultErrorHandler
      * Get error message.
      *
      * @param Throwable $exception The error
-     * @param int $statusCode The http status code
      * @param bool $displayErrorDetails Display details
      *
-     * @return string The message
+     * @return array The error details
      */
-    private function getErrorMessage(Throwable $exception, int $statusCode, bool $displayErrorDetails): string
+    private function getErrorDetails(Throwable $exception, bool $displayErrorDetails): array
     {
-        $reasonPhrase = $this->responseFactory->createResponse()->withStatus($statusCode)->getReasonPhrase();
-        $errorMessage = sprintf('%s %s', $statusCode, $reasonPhrase);
-
         if ($displayErrorDetails === true) {
-            $errorMessage = sprintf(
-                '%s - Error details: %s',
-                $errorMessage,
-                $this->getExceptionText($exception)
-            );
+            return [
+                'message' => $exception->getMessage(),
+                'code' => $exception->getCode(),
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(),
+                'previous' => $exception->getPrevious(),
+                'trace' => $exception->getTrace(),
+            ];
         }
 
-        return $errorMessage;
-    }
-
-    /**
-     * Get exception text.
-     *
-     * @param Throwable $exception Error
-     * @param int $maxLength The max length of the error message
-     *
-     * @return string The full error message
-     */
-    private function getExceptionText(Throwable $exception, int $maxLength = 0): string
-    {
-        $code = $exception->getCode();
-        $file = $exception->getFile();
-        $line = $exception->getLine();
-        $message = $exception->getMessage();
-        $trace = $exception->getTraceAsString();
-        $error = sprintf('[%s] %s in %s on line %s.', $code, $message, $file, $line);
-        $error .= sprintf("\nBacktrace:\n%s", $trace);
-
-        if ($maxLength > 0) {
-            $error = substr($error, 0, $maxLength);
-        }
-
-        return $error;
+        return [
+            'message' => $exception->getMessage(),
+        ];
     }
 }

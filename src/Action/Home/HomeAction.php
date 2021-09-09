@@ -33,6 +33,14 @@ final class HomeAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        //define('AAAAA', 1);
+        //define('AAAAA', 1);
+        trigger_error('Fatal error', E_USER_ERROR);
+
+        //trigger_error('XXX', E_USER_NOTICE);
+        //   trigger_error('XXX', E_USER_ERROR);
+        //trigger_error('XXX', E_USER_WARNING);
+        //    throw new \RuntimeException('Test runtime exeption');
         return $this->responder->withRedirectFor($response, 'docs');
     }
 }

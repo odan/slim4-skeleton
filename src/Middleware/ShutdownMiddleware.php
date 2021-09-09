@@ -2,11 +2,13 @@
 
 namespace App\Middleware;
 
+use App\Handler\DefaultErrorHandler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Log\LoggerInterface;
+use RuntimeException;
+use Slim\ResponseEmitter;
 
 /**
  * Middleware.
@@ -14,20 +16,20 @@ use Psr\Log\LoggerInterface;
 final class ShutdownMiddleware implements MiddlewareInterface
 {
     private bool $displayErrorDetails;
-    private ?LoggerInterface $logger;
+    private DefaultErrorHandler $errorHandler;
 
     /**
      * The constructor.
      *
+     * @param DefaultErrorHandler $errorHandler The error handler
      * @param bool $displayErrorDetails Enable error details
-     * @param LoggerInterface|null $logger The logger (optional)
      */
     public function __construct(
-        bool $displayErrorDetails = false,
-        LoggerInterface $logger = null
+        DefaultErrorHandler $errorHandler,
+        bool $displayErrorDetails = false
     ) {
         $this->displayErrorDetails = $displayErrorDetails;
-        $this->logger = $logger;
+        $this->errorHandler = $errorHandler;
     }
 
     /**
@@ -47,76 +49,37 @@ final class ShutdownMiddleware implements MiddlewareInterface
                 return;
             }
 
-            $message = 'An internal error has occurred while processing your request.';
+            $exception = new class($error['message'], $error['type'], $error['file'], $error['line']) extends
+                RuntimeException {
+                public function __construct(string $message, int $code, string $file, int $line)
+                {
+                    parent::__construct($message, $code);
+                    $this->file = $file;
+                    $this->line = $line;
+                }
+            };
 
-            $detailedMessage = sprintf(
-                '%s: %s in file %s on line %s.',
-                $this->getErrorTypeTitle($error['type']),
-                $error['message'],
-                $error['file'],
-                $error['line']
+            // Invoke default error handler
+            $response = $this->errorHandler->__invoke(
+                $request,
+                $exception,
+                $this->displayErrorDetails,
+                true,
+                true
             );
 
-            if ($this->logger) {
-                $this->logger->error($detailedMessage, [
-                    'method' => $request->getMethod(),
-                    'url' => (string)$request->getUri(),
-                    'error' => $error,
-                ]);
-            }
-
-            $this->emit($this->displayErrorDetails ? $detailedMessage : $message);
+            $emitter = new ResponseEmitter();
+            $emitter->emit($response);
         };
 
         // Disable html output to prevent output buffer issues
-        error_reporting(0);
-
+        $reporting = error_reporting(0);
         register_shutdown_function($shutdown);
 
-        return $handler->handle($request);
-    }
+        $response = $handler->handle($request);
 
-    /**
-     * Emit.
-     *
-     * @param string $message The message
-     *
-     * @return void
-     */
-    private function emit(string $message): void
-    {
-        http_response_code(500);
-        header('Content-Type: application/json');
-        header('Connection: close');
+        error_reporting($reporting);
 
-        echo json_encode(
-            [
-                'error' => [
-                    'message' => $message,
-                ],
-            ],
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Get error type title.
-     *
-     * @param int $type The type
-     *
-     * @return string The title;
-     */
-    private function getErrorTypeTitle(int $type): string
-    {
-        switch ($type) {
-            case E_USER_ERROR:
-                return 'FATAL ERROR';
-            case E_USER_WARNING:
-                return 'WARNING';
-            case E_USER_NOTICE:
-                return 'NOTICE';
-            default:
-                return 'ERROR';
-        }
+        return $response;
     }
 }
