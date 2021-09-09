@@ -2,12 +2,12 @@
 
 namespace App\Middleware;
 
-use App\Handler\DefaultErrorHandler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
+use Slim\Interfaces\ErrorHandlerInterface;
 use Slim\ResponseEmitter;
 
 /**
@@ -16,16 +16,16 @@ use Slim\ResponseEmitter;
 final class ShutdownMiddleware implements MiddlewareInterface
 {
     private bool $displayErrorDetails;
-    private DefaultErrorHandler $errorHandler;
+    private ErrorHandlerInterface $errorHandler;
 
     /**
      * The constructor.
      *
-     * @param DefaultErrorHandler $errorHandler The error handler
+     * @param ErrorHandlerInterface $errorHandler The error handler
      * @param bool $displayErrorDetails Enable error details
      */
     public function __construct(
-        DefaultErrorHandler $errorHandler,
+        ErrorHandlerInterface $errorHandler,
         bool $displayErrorDetails = false
     ) {
         $this->displayErrorDetails = $displayErrorDetails;
