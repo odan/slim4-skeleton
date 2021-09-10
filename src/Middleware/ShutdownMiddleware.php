@@ -61,15 +61,13 @@ final class ShutdownMiddleware implements MiddlewareInterface
             (new ResponseEmitter())->emit($response);
         };
 
-        // Disable html output to prevent output buffer issues
-        $reporting = error_reporting(0);
+        // Do not print the error message directly on stdout,
+        // because this middleware will handle it.
+        ini_set('display_errors', '0');
+
         register_shutdown_function($shutdown);
 
-        $response = $handler->handle($request);
-
-        error_reporting($reporting);
-
-        return $response;
+        return $handler->handle($request);
     }
 
     /**
