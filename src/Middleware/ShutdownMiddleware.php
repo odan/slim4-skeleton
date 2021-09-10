@@ -58,7 +58,7 @@ final class ShutdownMiddleware implements MiddlewareInterface
                 true
             );
 
-            (new ResponseEmitter())->emit($response);
+            (new ResponseEmitter())->emit($response->withHeader('Connection', 'close'));
         };
 
         // Do not print the error message directly to stdout,
