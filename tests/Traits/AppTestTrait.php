@@ -24,10 +24,7 @@ trait AppTestTrait
     use MockTestTrait;
     use RouteTestTrait;
 
-    /**
-     * @var App
-     */
-    protected $app;
+    protected App $app;
 
     /**
      * Before each test.

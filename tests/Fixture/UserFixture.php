@@ -9,15 +9,9 @@ use App\Domain\User\Type\UserRoleType;
  */
 class UserFixture
 {
-    /** @var string Table name */
-    public $table = 'users';
+    public string $table = 'users';
 
-    /**
-     * Records.
-     *
-     * @var array<mixed> Records
-     */
-    public $records = [
+    public array $records = [
         [
             'id' => 1,
             'username' => 'admin',

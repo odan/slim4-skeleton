@@ -6,9 +6,6 @@ use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Test.
- */
 class HomeActionTest extends TestCase
 {
     use AppTestTrait;
