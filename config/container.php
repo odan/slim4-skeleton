@@ -33,7 +33,15 @@ return [
     App::class => function (ContainerInterface $container) {
         AppFactory::setContainer($container);
 
-        return AppFactory::create();
+        $app = AppFactory::create();
+
+        // Register routes
+        (require __DIR__ . '/routes.php')($app);
+
+        // Register middleware
+        (require __DIR__ . '/middleware.php')($app);
+
+        return $app;
     },
 
     // HTTP factories

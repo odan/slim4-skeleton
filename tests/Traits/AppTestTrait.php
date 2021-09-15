@@ -2,6 +2,7 @@
 
 namespace App\Test\Traits;
 
+use App\Factory\ContainerFactory;
 use Selective\TestTrait\Traits\ArrayTestTrait;
 use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
@@ -35,9 +36,10 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        $this->app = require __DIR__ . '/../../config/bootstrap.php';
+        $container = (new ContainerFactory())->createInstance();
+        $this->app = $container->get(App::class);
 
-        $this->setUpContainer($this->app->getContainer());
+        $this->setUpContainer($container);
         $this->setUpLogger();
 
         if (method_exists($this, 'setUpDatabase')) {
