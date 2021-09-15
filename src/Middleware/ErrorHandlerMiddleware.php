@@ -11,7 +11,7 @@ use Symfony\Component\ErrorHandler\ErrorHandler;
 /**
  * Middleware.
  */
-final class ShutdownMiddleware implements MiddlewareInterface
+final class ErrorHandlerMiddleware implements MiddlewareInterface
 {
     /**
      * Invoke middleware.
