@@ -1,6 +1,5 @@
 <?php
 
-use App\Middleware\ErrorHandlerMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
@@ -11,6 +10,5 @@ return function (App $app) {
     $app->add(ValidationExceptionMiddleware::class);
     $app->addRoutingMiddleware();
     $app->add(BasePathMiddleware::class);
-    $app->add(ErrorHandlerMiddleware::class);
     $app->add(ErrorMiddleware::class);
 };
