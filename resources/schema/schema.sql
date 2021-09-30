@@ -16,8 +16,6 @@ CREATE TABLE `users` (
   `user_role_id` int(11) DEFAULT 2,
   `locale` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING BTREE,
   KEY `user_role_id` (`user_role_id`) USING BTREE

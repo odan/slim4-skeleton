@@ -18,8 +18,6 @@ class Initialization extends AbstractMigration
             ->addColumn('user_role_id', 'integer', ['null' => true, 'default' => 2])
             ->addColumn('locale', 'string', ['null' => true])
             ->addColumn('enabled', 'boolean', ['default' => false])
-            ->addColumn('created_at', 'datetime', ['null' => true])
-            ->addColumn('updated_at', 'datetime', ['null' => true])
             ->addIndex('user_role_id', '', 'btree', 'user_role_id')
             ->addIndex('username', 'unique', 'btree', 'username')
             ->create();

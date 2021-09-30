@@ -22,8 +22,6 @@ class UserFixture
             'user_role_id' => UserRoleType::ROLE_ADMIN,
             'locale' => 'en_US',
             'enabled' => 1,
-            'created_at' => '2019-01-09 14:05:19',
-            'updated_at' => null,
         ],
         [
             'id' => 2,
@@ -35,8 +33,6 @@ class UserFixture
             'user_role_id' => UserRoleType::ROLE_USER,
             'locale' => 'de_DE',
             'enabled' => 1,
-            'created_at' => '2019-02-01 00:00:00',
-            'updated_at' => null,
         ],
     ];
 }

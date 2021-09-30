@@ -4,7 +4,6 @@ namespace App\Domain\User\Repository;
 
 use App\Domain\User\Data\UserData;
 use App\Factory\QueryFactory;
-use Cake\Chronos\Chronos;
 use DomainException;
 
 /**
@@ -33,10 +32,7 @@ final class UserRepository
      */
     public function insertUser(UserData $user): int
     {
-        $row = $this->toRow($user);
-        $row['created_at'] = Chronos::now()->toDateTimeString();
-
-        return (int)$this->queryFactory->newInsert('users', $row)
+        return (int)$this->queryFactory->newInsert('users', $this->toRow($user))
             ->execute()
             ->lastInsertId();
     }
@@ -90,8 +86,6 @@ final class UserRepository
 
         // Updating the password is another use case
         unset($row['password']);
-
-        $row['updated_at'] = Chronos::now()->toDateTimeString();
 
         $this->queryFactory->newUpdate('users', $row)
             ->andWhere(['id' => $user->id])
