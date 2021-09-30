@@ -67,7 +67,7 @@ class UserUpdateActionTest extends TestCase
             'enabled' => '1',
         ];
 
-        $this->assertTableRow($expected, 'users', 1, array_keys($expected));
+        $this->assertTableRow($expected, 'users', 1);
         $this->assertTableRowValue('1', 'users', 1, 'id');
 
         // Password
