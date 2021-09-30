@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$env = (new ArgvInput())->getParameterOption(['--env', '-e'], 'development');
+$env = (new ArgvInput())->getParameterOption(['--env', '-e'], 'dev');
 
 if ($env) {
     $_ENV['APP_ENV'] = $env;
@@ -16,5 +16,10 @@ if ($env) {
 /** @var ContainerInterface $container */
 $container = (new ContainerFactory())->createInstance();
 
-$application = $container->get(Application::class);
-$application->run();
+try {
+    $application = $container->get(Application::class);
+    exit($application->run());
+} catch (Throwable $exception) {
+    echo $exception->getMessage();
+    exit(1);
+}
