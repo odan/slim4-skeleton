@@ -67,9 +67,7 @@ class UserCreateActionTest extends TestCase
             'locale' => 'de_DE',
             'enabled' => '1',
             'created_at' => '2021-01-01 00:00:00',
-            'created_user_id' => null,
             'updated_at' => null,
-            'updated_user_id' => null,
         ];
 
         $this->assertTableRow($expected, 'users', 1, array_keys($expected));

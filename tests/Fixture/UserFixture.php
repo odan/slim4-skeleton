@@ -23,9 +23,7 @@ class UserFixture
             'locale' => 'en_US',
             'enabled' => 1,
             'created_at' => '2019-01-09 14:05:19',
-            'created_user_id' => 1,
             'updated_at' => null,
-            'updated_user_id' => null,
         ],
         [
             'id' => 2,
@@ -38,9 +36,7 @@ class UserFixture
             'locale' => 'de_DE',
             'enabled' => 1,
             'created_at' => '2019-02-01 00:00:00',
-            'created_user_id' => 1,
             'updated_at' => null,
-            'updated_user_id' => null,
         ],
     ];
 }

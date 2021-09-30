@@ -51,7 +51,7 @@ final class SchemaDumpCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        // Lazy loading, because the database may not exists
+        // Lazy loading, because the database may not exist
         $output->writeln(sprintf('Use database: %s', (string)$this->query('select database()')->fetchColumn()));
 
         $statement = $this->query('SELECT table_name
