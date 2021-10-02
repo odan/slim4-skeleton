@@ -27,3 +27,20 @@ docs/* linguist-documentation
 *.ttf binary
 *.woff binary
 *.woff2 binary
+
+# Exclude testing files from distribution
+/.github export-ignore
+/tests export-ignore
+LICENSE export-ignore
+docker-compose.yml export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+.scrutinizer.yml export-ignore
+.travis.yml export-ignore
+phpcs.xml export-ignore
+phpstan.neon export-ignore
+phpunit.xml export-ignore
+.editorconfig export-ignore
+build.xml export-ignore
+.sonarcloud.properties export-ignore
+.cs.php export-ignore
