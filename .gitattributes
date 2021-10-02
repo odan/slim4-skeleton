@@ -31,7 +31,6 @@ docs/* linguist-documentation
 # Exclude testing files from distribution
 /.github export-ignore
 /tests export-ignore
-CHANGELOG.md export-ignore
 LICENSE export-ignore
 docker-compose.yml export-ignore
 .gitattributes export-ignore
