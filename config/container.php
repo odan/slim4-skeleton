@@ -30,9 +30,7 @@ return [
     },
 
     App::class => function (ContainerInterface $container) {
-        AppFactory::setContainer($container);
-
-        $app = AppFactory::create();
+        $app = AppFactory::createFromContainer($container);
 
         // Register routes
         (require __DIR__ . '/routes.php')($app);
@@ -45,7 +43,7 @@ return [
 
     // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
-        return $container->get(App::class)->getResponseFactory();
+        return $container->get(Psr17Factory::class);
     },
 
     ServerRequestFactoryInterface::class => function (ContainerInterface $container) {
