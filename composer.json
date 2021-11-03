@@ -38,7 +38,7 @@
         "friendsofphp/php-cs-fixer": "^3",
         "mikey179/vfsstream": "^1.6",
         "overtrue/phplint": "^3",
-        "phpstan/phpstan": "0.*",
+        "phpstan/phpstan": "1.*",
         "phpunit/phpunit": "^8 || ^9",
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
