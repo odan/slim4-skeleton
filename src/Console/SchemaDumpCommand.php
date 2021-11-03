@@ -62,8 +62,7 @@ final class SchemaDumpCommand extends Command
 
         $sql = [];
         while ($row = (array)$statement->fetch(PDO::FETCH_ASSOC)) {
-            $row = (array)array_change_key_case($row);
-            $a = (string)$row['table_name'];
+            $row = array_change_key_case($row);
             $statement2 = $this->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
             $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';
