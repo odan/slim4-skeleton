@@ -54,13 +54,16 @@ final class SchemaDumpCommand extends Command
         // Lazy loading, because the database may not exist
         $output->writeln(sprintf('Use database: %s', (string)$this->query('select database()')->fetchColumn()));
 
-        $statement = $this->query('SELECT table_name
+        $statement = $this->query(
+            'SELECT table_name
                 FROM information_schema.tables
-                WHERE table_schema = database()');
+                WHERE table_schema = database()'
+        );
 
         $sql = [];
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $row = array_change_key_case($row);
+        while ($row = (array)$statement->fetch(PDO::FETCH_ASSOC)) {
+            $row = (array)array_change_key_case($row);
+            $a = (string)$row['table_name'];
             $statement2 = $this->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
             $sql[] = preg_replace('/AUTO_INCREMENT=\d+/', '', $createTableSql) . ';';

@@ -17,6 +17,7 @@ if ($env) {
 $container = (new ContainerFactory())->createInstance();
 
 try {
+    /** @var Application $application */
     $application = $container->get(Application::class);
     exit($application->run());
 } catch (Throwable $exception) {

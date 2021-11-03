@@ -20,6 +20,7 @@ class ResponderTest extends TestCase
      */
     public function testEncodeJson(): void
     {
+        /** @var Responder $responder */
         $responder = $this->container->get(Responder::class);
 
         $response = $responder->withJson($this->createResponse(), ['success' => true]);
@@ -36,6 +37,7 @@ class ResponderTest extends TestCase
      */
     public function testRedirectUrl(): void
     {
+        /** @var Responder $responder */
         $responder = $this->container->get(Responder::class);
         $response = $responder->withRedirect($this->createResponse(), 'https://www.example.com/');
 
@@ -51,6 +53,7 @@ class ResponderTest extends TestCase
      */
     public function testRedirectUrlWithQueryString(): void
     {
+        /** @var Responder $responder */
         $responder = $this->container->get(Responder::class);
         $queryParams = ['foo' => 'bar'];
         $response = $responder->withRedirect($this->createResponse(), 'https://www.example.com/', $queryParams);
@@ -67,6 +70,7 @@ class ResponderTest extends TestCase
      */
     public function testRedirectRouteName(): void
     {
+        /** @var Responder $responder */
         $responder = $this->container->get(Responder::class);
 
         $this->app->get(
