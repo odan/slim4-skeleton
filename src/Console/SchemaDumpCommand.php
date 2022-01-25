@@ -60,8 +60,10 @@ final class SchemaDumpCommand extends Command
                 WHERE table_schema = database()'
         );
 
+        $rows = (array)$statement->fetchAll(PDO::FETCH_ASSOC);
+
         $sql = [];
-        while ($row = (array)$statement->fetch(PDO::FETCH_ASSOC)) {
+        foreach ($rows as $row) {
             $row = array_change_key_case($row);
             $statement2 = $this->query(sprintf('SHOW CREATE TABLE `%s`;', (string)$row['table_name']));
             $createTableSql = $statement2->fetch()['Create Table'];
@@ -74,9 +76,7 @@ final class SchemaDumpCommand extends Command
         file_put_contents($filename, $sql);
 
         $output->writeln(sprintf('Generated file: %s', realpath($filename)));
-        $output->writeln(sprintf('<info>Done</info>'));
-
-        return 0;
+        $output->writeln('<info>Done</info>');
     }
 
     /**
