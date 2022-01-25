@@ -5,7 +5,7 @@
  *
  * You should store all secret information (username, password, tokens, private keys) here.
  *
- * Make sure the env.php file is added to your .gitignore
+ * Make sure the env.php file is added to your .gitignore,
  * so it is not checked-in the code
  *
  * Place the env.php _outside_ the project root directory, to protect against
@@ -16,7 +16,24 @@
  * a security breach, and production values will never have to be
  * shared with all project collaborators.
  */
-require __DIR__ . '/local.dev.php';
+
+// Test and integration environment
+$environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? 'test';
+if ($environment) {
+    require __DIR__ . '/local.' . $environment . '.php';
+}
+
+// For DEV and TEST: Detect phpunit test environment
+if (defined('PHPUNIT_COMPOSER_INSTALL')) {
+    // TEST (phpunit)
+    require __DIR__ . '/local.test.php';
+} else {
+    // DEV
+    require __DIR__ . '/local.dev.php';
+}
+
+// On prod use just this file instead
+// require __DIR__ . '/local.prod.php';
 
 // Database
 $settings['db']['username'] = 'root';
