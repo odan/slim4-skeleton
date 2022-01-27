@@ -77,6 +77,8 @@ final class SchemaDumpCommand extends Command
 
         $output->writeln(sprintf('Generated file: %s', realpath($filename)));
         $output->writeln('<info>Done</info>');
+
+        return 0;
     }
 
     /**
