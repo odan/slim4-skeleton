@@ -19,5 +19,6 @@ user experience to your customers.
 
 **Read more**
 
+* [Slim 4 - Rabbit MQ](https://ko-fi.com/s/55aaac1cf7)
 * [RabbitMQ Tutorial for PHP](https://www.rabbitmq.com/tutorials/tutorial-one-php.html)
 * [The RabbitMQ  website](https://www.rabbitmq.com/)

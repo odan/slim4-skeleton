@@ -53,7 +53,7 @@ and JSON Web Signature based on RFC 7519.
 
 * [OAuth Libraries for PHP](https://oauth.net/code/php/)
 * [Auth0 PHP SDK](https://auth0.com/docs/libraries/auth0-php)
-* [Slim 4 - OAuth 2.0 and JSON Web Token (JWT) Setup](https://odan.github.io/2019/12/02/slim4-oauth2-jwt.html)
+* [Slim 4 - JSON Web Token (JWT)](https://ko-fi.com/s/ba4c29270c)
 * [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
 * [Swagger - OAuth 2.0](https://swagger.io/docs/specification/authentication/oauth2/)
 

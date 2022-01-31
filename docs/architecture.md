@@ -15,9 +15,9 @@ This application uses a layered architecture and the Action Domain Responder (AD
 
 The modern derivations of "MVC Model 2" toward Action Domain Responder is not difficult. 
 
-* **[Action](action.md):** Mediates between Domain and Responder
+* **[Action](action.md):** The controller that mediates between Domain and Responder.
 * **[Domain](domain.md):** The core application with the business logic.
-* **[Responder](responder.md):** Presentation logic. The Responder builds the HTTP response.
+* **[Responder](responder.md):** The view with the presentation logic.
 
 ## Request and Response
 
@@ -29,6 +29,7 @@ A quick overview of the request/response cycle:
 
 This architecture was inspired by the following resources and books:
 
+* [Software Architecture for Web Applications and APIs](https://ko-fi.com/s/811e7a3593)
 * [Action Domain Responder](https://pmjones.io/adr/)
 * [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 * [Domain-Driven Design](https://amzn.to/3cNq2jV) (The blue DDD book)
