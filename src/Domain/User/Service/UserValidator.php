@@ -4,7 +4,7 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Repository\UserRepository;
 use App\Domain\User\Type\UserRoleType;
-use App\Factory\ValidationFactory;
+use App\Support\Validation;
 use Cake\Validation\Validator;
 use Selective\Validation\Exception\ValidationException;
 
@@ -15,18 +15,18 @@ final class UserValidator
 {
     private UserRepository $repository;
 
-    private ValidationFactory $validationFactory;
+    private Validation $validation;
 
     /**
      * The constructor.
      *
      * @param UserRepository $repository The repository
-     * @param ValidationFactory $validationFactory The validation
+     * @param Validation $validation The validation
      */
-    public function __construct(UserRepository $repository, ValidationFactory $validationFactory)
+    public function __construct(UserRepository $repository, Validation $validation)
     {
         $this->repository = $repository;
-        $this->validationFactory = $validationFactory;
+        $this->validation = $validation;
     }
 
     /**
@@ -58,10 +58,7 @@ final class UserValidator
     public function validateUser(array $data): void
     {
         $validator = $this->createValidator();
-
-        $validationResult = $this->validationFactory->createValidationResult(
-            $validator->validate($data)
-        );
+        $validationResult = $this->validation->validate($validator, $data);
 
         if ($validationResult->fails()) {
             throw new ValidationException('Please check your input', $validationResult);
@@ -75,7 +72,7 @@ final class UserValidator
      */
     private function createValidator(): Validator
     {
-        $validator = $this->validationFactory->createValidator();
+        $validator = $this->validation->createValidator();
 
         return $validator
             ->notEmptyString('username', 'Input required')
