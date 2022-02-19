@@ -2,6 +2,8 @@
 
 namespace App\Test\Traits;
 
+use Slim\App;
+
 /**
  * Slim App Route Test Trait.
  */
@@ -18,6 +20,9 @@ trait RouteTestTrait
      */
     protected function urlFor(string $routeName, array $data = [], array $queryParams = []): string
     {
-        return $this->app->getRouteCollector()->getRouteParser()->urlFor($routeName, $data, $queryParams);
+        return $this->container->get(App::class)
+            ->getRouteCollector()
+            ->getRouteParser()
+            ->urlFor($routeName, $data, $queryParams);
     }
 }
