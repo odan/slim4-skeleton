@@ -20,7 +20,7 @@ trait RouteTestTrait
      */
     protected function urlFor(string $routeName, array $data = [], array $queryParams = []): string
     {
-        return $this->container->get(App::class)
+        return $this->app
             ->getRouteCollector()
             ->getRouteParser()
             ->urlFor($routeName, $data, $queryParams);
