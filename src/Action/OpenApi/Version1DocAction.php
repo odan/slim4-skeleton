@@ -2,7 +2,7 @@
 
 namespace App\Action\OpenApi;
 
-use App\Responder\Responder;
+use App\Renderer\TemplateRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Yaml\Yaml;
@@ -12,16 +12,16 @@ use Symfony\Component\Yaml\Yaml;
  */
 final class Version1DocAction
 {
-    private Responder $responder;
+    private TemplateRenderer $renderer;
 
     /**
      * The constructor.
      *
-     * @param Responder $responder The responder
+     * @param TemplateRenderer $renderer The renderer
      */
-    public function __construct(Responder $responder)
+    public function __construct(TemplateRenderer $renderer)
     {
-        $this->responder = $responder;
+        $this->renderer = $renderer;
     }
 
     /**
@@ -43,6 +43,6 @@ final class Version1DocAction
             'spec' => json_encode(Yaml::parseFile($yamlFile)),
         ];
 
-        return $this->responder->withTemplate($response, 'doc/swagger.php', $viewData);
+        return $this->renderer->template($response, 'doc/swagger.php', $viewData);
     }
 }

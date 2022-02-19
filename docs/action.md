@@ -54,30 +54,23 @@ about too few and big files (fat controllers) with too many responsibilities.
 namespace App\Action;
 
 use App\Domain\Example\Service\MyService;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
 
 final class ExampleAction
 {
-    /**
-     * @var MyService
-     */
-    private $myService;
+    private MyService $myService;
     
-    /**
-     * @var Responder
-     */
-    private $responder;
+    private JsonRenderer $renderer;
     
-    public function __construct(MyService $myService, Responder $responder)
+    public function __construct(MyService $myService, JsonRenderer $renderer)
     {
         $this->myService = $myService;
-        $this->responder = $responder;
+        $this->renderer = $renderer;
     }
 
-    public function __invoke(ServerRequest $request, Response $response): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // 1. collect input from the HTTP request (if needed)
         $data = (array)$request->getParsedBody();
@@ -86,8 +79,8 @@ final class ExampleAction
         // with those inputs (if required) and retains the result
         $domainResult = $this->myService->doSomething($data);
         
-        // 3. Build and return a HTTP response
-        return $this->responder->withJson($domainResult);
+        // 3. Build and return an HTTP response
+        return $this->renderer->json($response, $domainResult);
     }
 }
 ```

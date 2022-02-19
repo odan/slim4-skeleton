@@ -3,7 +3,7 @@
 namespace App\Action\User;
 
 use App\Domain\User\Service\UserUpdater;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -12,19 +12,19 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserUpdateAction
 {
-    private Responder $responder;
+    private JsonRenderer $jsonRenderer;
 
     private UserUpdater $userUpdater;
 
     /**
      * The constructor.
      *
-     * @param Responder $responder The responder
+     * @param JsonRenderer $jsonRenderer The renderer
      * @param UserUpdater $userUpdater The service
      */
-    public function __construct(Responder $responder, UserUpdater $userUpdater)
+    public function __construct(JsonRenderer $jsonRenderer, UserUpdater $userUpdater)
     {
-        $this->responder = $responder;
+        $this->jsonRenderer = $jsonRenderer;
         $this->userUpdater = $userUpdater;
     }
 
@@ -50,6 +50,6 @@ final class UserUpdateAction
         $this->userUpdater->updateUser($userId, $data);
 
         // Build the HTTP response
-        return $this->responder->withJson($response);
+        return $this->jsonRenderer->json($response);
     }
 }

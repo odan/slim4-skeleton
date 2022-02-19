@@ -3,7 +3,7 @@
 namespace App\Action\User;
 
 use App\Domain\User\Service\UserFinder;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -14,18 +14,18 @@ final class UserFindAction
 {
     private UserFinder $userFinder;
 
-    private Responder $responder;
+    private JsonRenderer $jsonRenderer;
 
     /**
      * The constructor.
      *
      * @param UserFinder $userIndex The user index list viewer
-     * @param Responder $responder The responder
+     * @param JsonRenderer $jsonRenderer The renderer
      */
-    public function __construct(UserFinder $userIndex, Responder $responder)
+    public function __construct(UserFinder $userIndex, JsonRenderer $jsonRenderer)
     {
         $this->userFinder = $userIndex;
-        $this->responder = $responder;
+        $this->jsonRenderer = $jsonRenderer;
     }
 
     /**
@@ -70,7 +70,7 @@ final class UserFindAction
             ];
         }
 
-        return $this->responder->withJson(
+        return $this->jsonRenderer->json(
             $response,
             [
                 'users' => $userList,

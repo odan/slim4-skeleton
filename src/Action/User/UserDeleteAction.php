@@ -3,7 +3,7 @@
 namespace App\Action\User;
 
 use App\Domain\User\Service\UserDeleter;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -14,18 +14,18 @@ final class UserDeleteAction
 {
     private UserDeleter $userDeleter;
 
-    private Responder $responder;
+    private JsonRenderer $renderer;
 
     /**
      * The constructor.
      *
      * @param UserDeleter $userDeleter The service
-     * @param Responder $responder The responder
+     * @param JsonRenderer $renderer The responder
      */
-    public function __construct(UserDeleter $userDeleter, Responder $responder)
+    public function __construct(UserDeleter $userDeleter, JsonRenderer $renderer)
     {
         $this->userDeleter = $userDeleter;
-        $this->responder = $responder;
+        $this->renderer = $renderer;
     }
 
     /**
@@ -49,6 +49,6 @@ final class UserDeleteAction
         $this->userDeleter->deleteUser($userId);
 
         // Render the json response
-        return $this->responder->withJson($response);
+        return $this->renderer->json($response);
     }
 }

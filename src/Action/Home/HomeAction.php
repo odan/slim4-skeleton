@@ -2,7 +2,7 @@
 
 namespace App\Action\Home;
 
-use App\Responder\Responder;
+use App\Renderer\RedirectRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -11,16 +11,16 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class HomeAction
 {
-    private Responder $responder;
+    private RedirectRenderer $redirectRenderer;
 
     /**
      * The constructor.
      *
-     * @param Responder $responder The responder
+     * @param RedirectRenderer $renderer The renderer
      */
-    public function __construct(Responder $responder)
+    public function __construct(RedirectRenderer $renderer)
     {
-        $this->responder = $responder;
+        $this->redirectRenderer = $renderer;
     }
 
     /**
@@ -33,6 +33,6 @@ final class HomeAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->responder->withRedirectFor($response, 'docs');
+        return $this->redirectRenderer->redirectFor($response, 'docs');
     }
 }

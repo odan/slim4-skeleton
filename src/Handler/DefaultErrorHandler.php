@@ -3,7 +3,7 @@
 namespace App\Handler;
 
 use App\Factory\LoggerFactory;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use DomainException;
 use Fig\Http\Message\StatusCodeInterface;
 use InvalidArgumentException;
@@ -20,7 +20,7 @@ use Throwable;
  */
 final class DefaultErrorHandler implements ErrorHandlerInterface
 {
-    private Responder $responder;
+    private JsonRenderer $jsonRenderer;
 
     private ResponseFactoryInterface $responseFactory;
 
@@ -29,16 +29,16 @@ final class DefaultErrorHandler implements ErrorHandlerInterface
     /**
      * The constructor.
      *
-     * @param Responder $responder The responder
+     * @param JsonRenderer $jsonRenderer The renderer
      * @param ResponseFactoryInterface $responseFactory The response factory
      * @param LoggerFactory $loggerFactory The logger factory
      */
     public function __construct(
-        Responder $responder,
+        JsonRenderer $jsonRenderer,
         ResponseFactoryInterface $responseFactory,
         LoggerFactory $loggerFactory
     ) {
-        $this->responder = $responder;
+        $this->jsonRenderer = $jsonRenderer;
         $this->responseFactory = $responseFactory;
         $this->logger = $loggerFactory
             ->addFileHandler('error.log')
@@ -75,7 +75,7 @@ final class DefaultErrorHandler implements ErrorHandlerInterface
         $response = $this->responseFactory->createResponse();
 
         // Render response
-        $response = $this->responder->withJson($response, [
+        $response = $this->jsonRenderer->json($response, [
             'error' => $this->getErrorDetails($exception, $displayErrorDetails),
         ]);
 

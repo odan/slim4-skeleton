@@ -3,7 +3,7 @@
 namespace App\Action\User;
 
 use App\Domain\User\Service\UserCreator;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,19 +13,19 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 final class UserCreateAction
 {
-    private Responder $responder;
+    private JsonRenderer $jsonRenderer;
 
     private UserCreator $userCreator;
 
     /**
      * The constructor.
      *
-     * @param Responder $responder The responder
+     * @param JsonRenderer $renderer The responder
      * @param UserCreator $userCreator The service
      */
-    public function __construct(Responder $responder, UserCreator $userCreator)
+    public function __construct(JsonRenderer $renderer, UserCreator $userCreator)
     {
-        $this->responder = $responder;
+        $this->jsonRenderer = $renderer;
         $this->userCreator = $userCreator;
     }
 
@@ -46,8 +46,8 @@ final class UserCreateAction
         $userId = $this->userCreator->createUser($data);
 
         // Build the HTTP response
-        return $this->responder
-            ->withJson($response, ['user_id' => $userId])
+        return $this->jsonRenderer
+            ->json($response, ['user_id' => $userId])
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }

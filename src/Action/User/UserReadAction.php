@@ -4,7 +4,7 @@ namespace App\Action\User;
 
 use App\Domain\User\Data\UserData;
 use App\Domain\User\Service\UserReader;
-use App\Responder\Responder;
+use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -15,18 +15,18 @@ final class UserReadAction
 {
     private UserReader $userReader;
 
-    private Responder $responder;
+    private JsonRenderer $jsonRenderer;
 
     /**
      * The constructor.
      *
      * @param UserReader $userViewer The service
-     * @param Responder $responder The responder
+     * @param JsonRenderer $jsonRenderer The responder
      */
-    public function __construct(UserReader $userViewer, Responder $responder)
+    public function __construct(UserReader $userViewer, JsonRenderer $jsonRenderer)
     {
         $this->userReader = $userViewer;
-        $this->responder = $responder;
+        $this->jsonRenderer = $jsonRenderer;
     }
 
     /**
@@ -76,6 +76,6 @@ final class UserReadAction
         ];
 
         // Turn all of that into a JSON string and put it into the response body
-        return $this->responder->withJson($response, $data);
+        return $this->jsonRenderer->json($response, $data);
     }
 }
