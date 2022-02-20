@@ -17,22 +17,22 @@
  * shared with all project collaborators.
  */
 
-// Test and integration environment
-$environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? 'test';
-if ($environment) {
-    require __DIR__ . '/local.' . $environment . '.php';
-}
+// Optional: Load the settings from an environment variable
+// $environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? 'test';
+// if ($environment) {
+//    require __DIR__ . '/local.' . $environment . '.php';
+// }
 
 // For DEV and TEST: Detect phpunit test environment
-if (defined('PHPUNIT_COMPOSER_INSTALL')) {
-    // TEST (phpunit)
-    require __DIR__ . '/local.test.php';
-} else {
-    // DEV
-    require __DIR__ . '/local.dev.php';
-}
+// if (defined('PHPUNIT_COMPOSER_INSTALL')) {
+//    // TEST (phpunit)
+//    require __DIR__ . '/local.test.php';
+// } else {
+//    // Local DEV
+//    require __DIR__ . '/local.dev.php';
+//}
 
-// On prod use just this file instead
+// On PROD include just this file
 // require __DIR__ . '/local.prod.php';
 
 // Database
