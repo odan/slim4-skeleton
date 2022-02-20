@@ -19,16 +19,6 @@ trait HttpBasicAuthTestTrait
      */
     protected function withHttpBasicAuth(ServerRequestInterface $request): ServerRequestInterface
     {
-        $settings = [
-            // Allow http for testing
-            'secure' => false,
-            'users' => [
-                'api-user' => 'secret',
-            ],
-        ];
-
-        $this->setContainerValue(HttpBasicAuthentication::class, new HttpBasicAuthentication($settings));
-
         return $request->withHeader('Authorization', 'Basic ' . base64_encode('api-user:secret'));
     }
 }

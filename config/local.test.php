@@ -14,3 +14,12 @@ $settings['logger'] = [
     'level' => 0,
     'test' => new \Psr\Log\NullLogger(),
 ];
+
+// API credentials for phpunit
+$settings['api_auth'] = [
+    // Allow http for testing
+    'secure' => false,
+    'users' => [
+        'api-user' => 'secret',
+    ],
+];
