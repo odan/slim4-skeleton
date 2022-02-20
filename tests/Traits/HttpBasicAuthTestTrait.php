@@ -3,7 +3,6 @@
 namespace App\Test\Traits;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Tuupola\Middleware\HttpBasicAuthentication;
 
 /**
  * HTTP BasicAuth Test Trait.
