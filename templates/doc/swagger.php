@@ -7,7 +7,7 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css"
         integrity="sha512-jsql70MmFqKJfWGCXmi3GHPP2q2oi3Ad+6PRQWNeo6df+rxKB07IuBvcCXSrpgKPXaikkQgEQVO2YrtgmSJhUw=="
-        crossorigin="anonymous" />
+        crossorigin="anonymous"/>
 </head>
 <body>
 <div id="swagger-ui"></div>
@@ -23,16 +23,27 @@
     window.onload = function () {
         const ui = SwaggerUIBundle({
             spec: <?= $spec ?>,
-        dom_id: '#swagger-ui',
+            dom_id: '#swagger-ui',
             deepLinking: true,
             supportedSubmitMethods: [],
             presets: [
-            SwaggerUIBundle.presets.apis,
-        ],
+                SwaggerUIBundle.presets.apis,
+            ],
             plugins: [
-            SwaggerUIBundle.plugins.DownloadUrl
-        ],
-    })
+                SwaggerUIBundle.plugins.DownloadUrl,
+                function() {
+                    return {
+                        statePlugins: {
+                            spec: {
+                                wrapSelectors: {
+                                    allowTryItOutFor: () => () => false
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+        })
         window.ui = ui
     }
 </script>
