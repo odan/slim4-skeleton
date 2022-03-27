@@ -45,8 +45,8 @@ This project is based on best practices and industry standards:
 * HTTP factories (PSR-17)
 * HTTP router and dispatcher (Slim)
 * Dependency injection container (PSR-11)
-* Autoloading (PSR-4)
-* Logging (PSR-3)
+* Autoloader (PSR-4)
+* Logger (PSR-3)
 * Code styles (PSR-12)
 * PHPDoc standard (PSR-5, PSR-19)
 * Single action controllers
@@ -57,7 +57,7 @@ This project is based on best practices and industry standards:
 * Unit- and integration tests
 * Console Commands
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
-* [PHPStan](https://github.com/phpstan/phpstan) (Level: max)
+* [PHPStan](https://github.com/phpstan/phpstan)
 * Build and deployment scripts
 * Docker container with Xdebug support
 * Swagger OpenAPI documentation
