@@ -8,6 +8,7 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * Factory.
@@ -51,7 +52,7 @@ final class LoggerFactory
             return $this->testLogger;
         }
 
-        $logger = new Logger($name ?: uuid_create());
+        $logger = new Logger($name ?: Uuid::v4());
 
         foreach ($this->handler as $handler) {
             $logger->pushHandler($handler);
