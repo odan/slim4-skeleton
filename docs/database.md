@@ -97,7 +97,3 @@ This feature solves two problems. First, it relieves developers from having a hu
 directory full of files they no longer need. Second, loading a single schema file is quicker 
 than running hundreds of migrations for each test class in your applications, 
 so your tests can run much faster when using a schema.
-
-## More Resources
-
-* [Designing a database](https://odan.github.io/2017/01/17/designing-a-database.html)
