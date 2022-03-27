@@ -1,6 +1,8 @@
 <?php
 
-return (new PhpCsFixer\Config())
+use PhpCsFixer\Config;
+
+return (new Config())
     ->setUsingCache(false)
     ->setRiskyAllowed(true)
     ->setRules(
