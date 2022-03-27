@@ -54,14 +54,14 @@ echo "Set permissions...\n";
 system('sudo chmod -R 775 htdocs/tmp/');
 system('sudo chmod -R 775 htdocs/logs/');
 
-//system('chown -R www-data:www-data htdocs/ .');
+// system('chown -R www-data:www-data htdocs/ .');
 
 echo "Run migrations...\n";
 chdir('htdocs/');
 system('sudo vendor/bin/phoenix migrate');
 chdir('../../');
 
-//echo "Enable cronjobs...\n";
-//rename($liveDirApp . '/src/Cronjob/cronjob_.php', $liveDirApp . '/src/Cronjob/cronjob.php');
+// echo "Enable cronjobs...\n";
+// rename($liveDirApp . '/src/Cronjob/cronjob_.php', $liveDirApp . '/src/Cronjob/cronjob.php');
 
 echo "Deployment finished\n";
