@@ -29,7 +29,7 @@
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
         "symfony/cache": "^6.0",
-        "symfony/console": "^6.0",
+        "symfony/console": "^5.0 || ^6.0",
         "symfony/uid": "^6.0",
         "symfony/yaml": "^6.0",
         "tuupola/slim-basic-auth": "^3.3"
