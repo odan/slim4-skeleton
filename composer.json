@@ -28,16 +28,15 @@
         "selective/validation": "^2",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
-        "symfony/cache": "^5.0 || ^6.0",
-        "symfony/console": "^5.0 || ^6.0",
-        "symfony/uid": "^5.0 || ^6.0",
-        "symfony/yaml": "^5.0 || ^6.0",
+        "symfony/cache": "^6.0",
+        "symfony/console": "^6.0",
+        "symfony/uid": "^6.0",
+        "symfony/yaml": "^6.0",
         "tuupola/slim-basic-auth": "^3.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
         "mikey179/vfsstream": "^1.6",
-        "overtrue/phplint": "^3",
         "phpstan/phpstan": "1.*",
         "phpunit/phpunit": "^8 || ^9",
         "selective/test-traits": "^2",
@@ -62,7 +61,6 @@
     "scripts": {
         "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi",
         "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi",
-        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache --ansi",
         "phoenix": "phoenix --ansi",
         "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
         "schema:dump": "php bin/console.php schema-dump --ansi",
@@ -70,7 +68,6 @@
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
         "test:all": [
-            "@lint",
             "@cs:check",
             "@sniffer:check",
             "@stan",
