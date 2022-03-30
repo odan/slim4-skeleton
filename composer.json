@@ -42,7 +42,7 @@
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
         "symfony/filesystem": "^5",
-        "symfony/finder": "^5"
+        "symfony/finder": "^6"
     },
     "config": {
         "process-timeout": 0,
