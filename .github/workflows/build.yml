@@ -62,9 +62,6 @@ jobs:
       - name: Install dependencies
         run: composer update --prefer-dist --no-progress --ignore-platform-req=php
 
-      - name: Install tables
-        run: php vendor/bin/phoenix migrate
-
       - name: Run test suite
         run: composer test:all
         env:
