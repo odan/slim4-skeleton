@@ -4,7 +4,6 @@ namespace App\Domain\User\Repository;
 
 use App\Domain\User\Data\UserData;
 use App\Factory\QueryFactory;
-use App\Support\Hydrator;
 
 /**
  * Repository.
@@ -13,18 +12,14 @@ final class UserFinderRepository
 {
     private QueryFactory $queryFactory;
 
-    private Hydrator $hydrator;
-
     /**
      * The constructor.
      *
      * @param QueryFactory $queryFactory The query factory
-     * @param Hydrator $hydrator The hydrator
      */
-    public function __construct(QueryFactory $queryFactory, Hydrator $hydrator)
+    public function __construct(QueryFactory $queryFactory)
     {
         $this->queryFactory = $queryFactory;
-        $this->hydrator = $hydrator;
     }
 
     /**
@@ -55,6 +50,11 @@ final class UserFinderRepository
         $rows = $query->execute()->fetchAll('assoc') ?: [];
 
         // Convert to list of objects
-        return $this->hydrator->hydrate($rows, UserData::class);
+        $result = [];
+        foreach ($rows as $row) {
+            $result[] = new UserData($row);
+        }
+
+        return $result;
     }
 }
