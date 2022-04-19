@@ -11,7 +11,6 @@ tools:
   external_code_coverage: false
 
 build:
-  image: default-bionic
   environment:
     php: 8.1.2
     mysql: 5.7
@@ -30,7 +29,6 @@ build:
           - php-scrutinizer-run
   dependencies:
     before:
-      - systemctl status mysqld.service
       - composer self-update
       - composer update --no-interaction --prefer-dist --no-progress
       - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
