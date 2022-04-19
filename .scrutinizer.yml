@@ -1,43 +1,43 @@
 filter:
-    paths: ["src/*"]
-    excluded_paths: ["vendor/*", "tests/*", "resources/", "public/"]
+  paths: [ "src/*" ]
+  excluded_paths: [ "vendor/*", "tests/*", "resources/", "public/" ]
 
 checks:
-    php:
-        code_rating: true
-        duplication: true
+  php:
+    code_rating: true
+    duplication: true
 
 tools:
-    external_code_coverage: false
+  external_code_coverage: false
 
 build:
-    image: default-bionic
-    environment:
-        php: 8.1.2
-        mysql: 5.7
-        node: false
-        postgresql: false
-        mongodb: false
-        elasticsearch: false
-        redis: false
-        memcached: false
-        neo4j: false
-        rabbitmq: false
-    nodes:
-        analysis:
-            tests:
-                override:
-                    - php-scrutinizer-run
-    dependencies:
-            before:
-                 - composer self-update
-                 - composer update --no-interaction --prefer-dist --no-progress
-                 - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-                 - cp config/env.scrutinizer.php config/env.php
-    tests:
-        before:
-            -
-                command: composer test:coverage
-                coverage:
-                    file: 'build/logs/clover.xml'
-                    format: 'clover'
+  image: default-bionic
+  environment:
+    php: 8.1.2
+    mysql: 5.7
+    node: false
+    postgresql: false
+    mongodb: false
+    elasticsearch: false
+    redis: false
+    memcached: false
+    neo4j: false
+    rabbitmq: false
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+  dependencies:
+    before:
+      - service start mysql
+      - composer self-update
+      - composer update --no-interaction --prefer-dist --no-progress
+      - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+      - cp config/env.scrutinizer.php config/env.php
+  tests:
+    before:
+      - command: composer test:coverage
+        coverage:
+          file: 'build/logs/clover.xml'
+          format: 'clover'
