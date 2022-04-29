@@ -76,7 +76,3 @@ Storing the `env.php` file above the project directory simplifies deployment and
 The directory for all log files is: `logs/`
 
 The default settings are stored in `config/defaults.php`, `$settings['logger']`
-
-## Read more
-
-[Slim 4 - Laminas Config](https://odan.github.io/2021/03/21/slim4-laminas-config.html)
