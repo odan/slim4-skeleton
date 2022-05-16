@@ -28,7 +28,7 @@ It's possible to replace the existing QueryBuilder with another component as lis
 * [Doctrine DBAL](https://odan.github.io/2019/12/05/slim4-doctrine-dbal.html)
 * [PDO](https://odan.github.io/2017/01/07/basic-crud-operations-with-pdo.html)
 
-## Multitenancy
+## Multi tenancy
 
 The concept from this article can also be applied to all other QueryBuilders:
 

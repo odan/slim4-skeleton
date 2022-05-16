@@ -64,7 +64,7 @@ This project is based on best practices and industry standards:
 
 ## Screenshot
 
-![screely-1611483778132](https://user-images.githubusercontent.com/781074/105627322-940c2180-5e36-11eb-9941-fa75bb00e4c8.png)
+![screely-1652693665038](https://user-images.githubusercontent.com/781074/168563545-6abfb255-400f-4fec-8e04-7454c5a6fad9.png)
 
 ## Usage
 
