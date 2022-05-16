@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action\User;
+namespace App\Action\Customer;
 
-use App\Domain\User\Service\UserCreator;
+use App\Domain\Customer\Service\CustomerCreator;
 use App\Renderer\JsonRenderer;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -11,22 +11,22 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Action.
  */
-final class UserCreateAction
+final class CustomerCreatorAction
 {
     private JsonRenderer $jsonRenderer;
 
-    private UserCreator $userCreator;
+    private CustomerCreator $userCreator;
 
     /**
      * The constructor.
      *
+     * @param CustomerCreator $companyCreator The service
      * @param JsonRenderer $renderer The responder
-     * @param UserCreator $userCreator The service
      */
-    public function __construct(JsonRenderer $renderer, UserCreator $userCreator)
+    public function __construct(CustomerCreator $companyCreator, JsonRenderer $renderer)
     {
+        $this->userCreator = $companyCreator;
         $this->jsonRenderer = $renderer;
-        $this->userCreator = $userCreator;
     }
 
     /**
@@ -43,11 +43,11 @@ final class UserCreateAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $userId = $this->userCreator->createUser($data);
+        $companyId = $this->userCreator->createCustomer($data);
 
         // Build the HTTP response
         return $this->jsonRenderer
-            ->json($response, ['user_id' => $userId])
+            ->json($response, ['customer_id' => $companyId])
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }

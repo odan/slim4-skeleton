@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Slim API
   contact:
-    name: Company
+    name: Company AG
     url: 'https://example.com'
     email: apiteam@example.com
   description: |-
@@ -23,24 +23,24 @@ servers:
   - url: 'https://example.com/api/v1'
     description: Production
 tags:
-  - name: User
+  - name: Customer
 security:
   - BasicAuth: []
 paths:
-  '/users':
+  '/customers':
     get:
       tags:
-        - User
-      summary: List users
+        - Customer
+      summary: List customers
       description: 'My description.'
-      operationId: getUsers
+      operationId: findCustomers
       responses:
         '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users'
+                $ref: '#/components/schemas/Customers'
         '400':
           $ref: '#/components/responses/400'
         '403':
@@ -51,16 +51,16 @@ paths:
           $ref: '#/components/responses/500'
     post:
       tags:
-        - User
-      summary: Create user
+        - Customer
+      summary: Create customer
       description: 'My description.'
-      operationId: createUser
+      operationId: createCustomer
       requestBody:
         description: Created
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRequest'
+              $ref: '#/components/schemas/Customer'
       responses:
         '201':
           description: Created
@@ -69,7 +69,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  user_id:
+                  customer_id:
                     type: integer
                     format: int32
                     example: 10
@@ -81,17 +81,17 @@ paths:
           $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
-  '/users/{user_id}':
+  '/customers/{customer_id}':
     get:
       tags:
-        - User
-      summary: Get user
+        - Customer
+      summary: Get customer
       description: 'My description.'
-      operationId: getUserById
+      operationId: getCustomerById
       parameters:
-        - name: user_id
+        - name: customer_id
           in: path
-          description: 'The ID that needs to be fetched. Use 1 for testing.'
+          description: 'The ID that needs to be fetched.'
           required: true
           schema:
             type: string
@@ -101,7 +101,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Customer'
         '400':
           $ref: '#/components/responses/400'
         '403':
@@ -112,23 +112,23 @@ paths:
           $ref: '#/components/responses/500'
     put:
       tags:
-        - User
-      summary: Update user
+        - Customer
+      summary: Update customer
       description: 'My description.'
-      operationId: updateUser
+      operationId: updateCustomer
       parameters:
-        - name: user_id
+        - name: customer_id
           in: path
           description: ID that need to be deleted
           required: true
           schema:
             type: string
       requestBody:
-        description: Update an existent user
+        description: Update an existent customer
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRequest'
+              $ref: '#/components/schemas/Customer'
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -142,12 +142,12 @@ paths:
           $ref: '#/components/responses/500'
     delete:
       tags:
-        - User
-      summary: Delete user
+        - Customer
+      summary: Delete customer
       description: 'My description.'
-      operationId: deleteUser
+      operationId: deleteCustomer
       parameters:
-        - name: user_id
+        - name: customer_id
           in: path
           description: The ID that needs to be deleted
           required: true
@@ -282,75 +282,43 @@ components:
               details:
                 - message: Barakuda is currently under maintenance.
   schemas:
-    User:
+    Customer:
       type: object
       properties:
-        id:
+        customer_id:
           type: integer
           format: int32
           example: 10
-        username:
+        number:
           type: string
-          example: john.doe
-        first_name:
+          example: '100001'
+        name:
           type: string
-          example: John
-        last_name:
+          example: 'Acme AG'
+        street:
           type: string
-          example: Doe
+          example: '192 Market Square'
+        postal_code:
+          type: string
+          example: '31772'
+        city:
+          type: string
+          example: 'Atlanta'
+        country:
+          type: string
+          example: 'US'
         email:
           type: string
-          example: john@email.com
-        password:
-          type: string
-          example: 'secret'
-        role:
-          type: integer
-          format: int32
-          example: 1
-        locale:
-          type: string
-          example: 'en_US'
-        enabled:
-          type: boolean
-          description: User Status
-    Users:
+          example: name@example.com
+    Customers:
       required:
-        - users
+        - customers
       properties:
-        users:
+        customers:
           type: array
-          description: List of users
+          description: List of customers
           items:
-            $ref: '#/components/schemas/User'
-    UserRequest:
-      type: object
-      properties:
-        username:
-          type: string
-          example: john.doe
-        first_name:
-          type: string
-          example: John
-        last_name:
-          type: string
-          example: Doe
-        email:
-          type: string
-          example: john@email.com
-        password:
-          type: string
-          example: 'secret'
-        role:
-          type: integer
-          format: int32
-          example: 1
-        locale:
-          type: string
-          example: 'en_US'
-        enabled:
-          type: boolean
-          description: User Status
+            $ref: '#/components/schemas/Customer'
     Error:
       required:
         - error

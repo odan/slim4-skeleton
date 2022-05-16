@@ -168,9 +168,9 @@ for all these stages of a database test:
 Insert multiple fixtures at once:
 
 ```php
-use App\Test\Fixture\UserFixture;
+use App\Test\Fixture\CustomerFixture;
 
-$this->insertFixtures([UserFixture::class]);
+$this->insertFixtures([CustomerFixture::class]);
 ```
 
 Insert manual fixtures:

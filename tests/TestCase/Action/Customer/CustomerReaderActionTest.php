@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Test\TestCase\Action\User;
+namespace App\Test\TestCase\Action\Customer;
 
-use App\Test\Fixture\UserFixture;
+use App\Test\Fixture\CustomerFixture;
 use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
@@ -11,9 +11,9 @@ use Selective\TestTrait\Traits\DatabaseTestTrait;
 /**
  * Test.
  *
- * @coversDefaultClass \App\Action\User\UserReadAction
+ * @coversDefaultClass \App\Action\Customer\CustomerReaderAction
  */
-class UserReadActionTest extends TestCase
+class CustomerReaderActionTest extends TestCase
 {
     use AppTestTrait;
     use DatabaseTestTrait;
@@ -25,9 +25,9 @@ class UserReadActionTest extends TestCase
      */
     public function testValidId(): void
     {
-        $this->insertFixtures([UserFixture::class]);
+        $this->insertFixtures([CustomerFixture::class]);
 
-        $request = $this->createRequest('GET', '/api/users/1');
+        $request = $this->createRequest('GET', '/api/customers/1');
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
@@ -36,13 +36,13 @@ class UserReadActionTest extends TestCase
         $this->assertJsonData(
             [
                 'id' => 1,
-                'username' => 'admin',
-                'first_name' => null,
-                'last_name' => null,
-                'email' => 'admin@example.com',
-                'user_role_id' => 1,
-                'locale' => 'en_US',
-                'enabled' => true,
+                'number' => '10000',
+                'name' => 'Coho Winery',
+                'street' => '192 Market Square',
+                'postal_code' => '31772',
+                'city' => 'Atlanta',
+                'country' => 'US',
+                'email' => 'info@example.net',
             ],
             $response
         );
@@ -55,7 +55,7 @@ class UserReadActionTest extends TestCase
      */
     public function testInvalidId(): void
     {
-        $request = $this->createRequest('GET', '/api/users/99');
+        $request = $this->createRequest('GET', '/api/customers/99');
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 

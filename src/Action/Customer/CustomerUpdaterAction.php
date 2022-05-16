@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action\User;
+namespace App\Action\Customer;
 
-use App\Domain\User\Service\UserUpdater;
+use App\Domain\Customer\Service\CustomerUpdater;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,22 +10,22 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Action.
  */
-final class UserUpdateAction
+final class CustomerUpdaterAction
 {
-    private JsonRenderer $jsonRenderer;
+    private CustomerUpdater $customerUpdater;
 
-    private UserUpdater $userUpdater;
+    private JsonRenderer $jsonRenderer;
 
     /**
      * The constructor.
      *
+     * @param CustomerUpdater $customerUpdater The service
      * @param JsonRenderer $jsonRenderer The renderer
-     * @param UserUpdater $userUpdater The service
      */
-    public function __construct(JsonRenderer $jsonRenderer, UserUpdater $userUpdater)
+    public function __construct(CustomerUpdater $customerUpdater, JsonRenderer $jsonRenderer)
     {
+        $this->customerUpdater = $customerUpdater;
         $this->jsonRenderer = $jsonRenderer;
-        $this->userUpdater = $userUpdater;
     }
 
     /**
@@ -43,11 +43,11 @@ final class UserUpdateAction
         array $args
     ): ResponseInterface {
         // Extract the form data from the request body
-        $userId = (int)$args['user_id'];
+        $customerId = (int)$args['customer_id'];
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $this->userUpdater->updateUser($userId, $data);
+        $this->customerUpdater->updateCustomer($customerId, $data);
 
         // Build the HTTP response
         return $this->jsonRenderer->json($response);

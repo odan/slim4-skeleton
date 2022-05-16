@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action\User;
+namespace App\Action\Customer;
 
-use App\Domain\User\Service\UserDeleter;
+use App\Domain\Customer\Service\CustomerDeleter;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,21 +10,21 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Action.
  */
-final class UserDeleteAction
+final class CustomerDeleterAction
 {
-    private UserDeleter $userDeleter;
+    private CustomerDeleter $companyDeleter;
 
     private JsonRenderer $renderer;
 
     /**
      * The constructor.
      *
-     * @param UserDeleter $userDeleter The service
+     * @param CustomerDeleter $customerDeleter The service
      * @param JsonRenderer $renderer The responder
      */
-    public function __construct(UserDeleter $userDeleter, JsonRenderer $renderer)
+    public function __construct(CustomerDeleter $customerDeleter, JsonRenderer $renderer)
     {
-        $this->userDeleter = $userDeleter;
+        $this->companyDeleter = $customerDeleter;
         $this->renderer = $renderer;
     }
 
@@ -43,10 +43,10 @@ final class UserDeleteAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $userId = (int)$args['user_id'];
+        $customerId = (int)$args['customer_id'];
 
         // Invoke the domain (service class)
-        $this->userDeleter->deleteUser($userId);
+        $this->companyDeleter->deleteCustomer($customerId);
 
         // Render the json response
         return $this->renderer->json($response);
