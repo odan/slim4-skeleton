@@ -18,7 +18,6 @@
         "cakephp/database": "^4",
         "cakephp/validation": "^4.2",
         "fig/http-message-util": "^1.1",
-        "lulco/phoenix": "^2.0",
         "monolog/monolog": "^2",
         "nyholm/psr7": "^1.4",
         "nyholm/psr7-server": "^1.0",
@@ -27,10 +26,10 @@
         "selective/validation": "^2",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
-        "symfony/cache": "^6.0",
-        "symfony/console": "^6.0",
-        "symfony/uid": "^6.0",
-        "symfony/yaml": "^6.0",
+        "symfony/cache": "^5 || ^6",
+        "symfony/console": "^5 || ^6",
+        "symfony/uid": "^5 || ^6",
+        "symfony/yaml": "^5 || ^6",
         "tuupola/slim-basic-auth": "^3.3"
     },
     "require-dev": {
@@ -40,8 +39,8 @@
         "phpunit/phpunit": "^8 || ^9",
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
-        "symfony/filesystem": "^5",
-        "symfony/finder": "^5"
+        "symfony/filesystem": "^5 || ^6",
+        "symfony/finder": "^5 || ^6"
     },
     "config": {
         "process-timeout": 0,
@@ -60,9 +59,7 @@
     "scripts": {
         "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi",
         "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi",
-        "phoenix": "phoenix --ansi",
         "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
-        "schema:dump": "php bin/console.php schema-dump --ansi",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
