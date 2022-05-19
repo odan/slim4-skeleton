@@ -24,12 +24,12 @@ The directory structure is based on the [Standard PHP package skeleton](https://
 │   ├── seeds               # Data seeds
 │   └── translations        # The .po message files for PoEdit
 ├── src                     # PHP source code (The App namespace)
-│   ├── Action              # Controller actions (application layer)
+│   ├── Action              # Controller actions (HTTP layer)
 │   ├── Console             # Console commands for console.php
 │   ├── Domain              # The business logic
 │   ├── Factory             # Factories
-│   ├── Responder           # Responder and Url helper (application layer)
-│   ├── Middleware          # Middleware (application layer)
+│   ├── Renderer            # Render and Url helper (HTTP layer)
+│   ├── Middleware          # Middleware (HTTP layer)
 │   └── Support             # Helper classes and functions
 ├── templates               # Twig and Vue templates + JS and CSS
 ├── tests                   # Automated tests
