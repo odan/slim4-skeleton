@@ -13,7 +13,7 @@ Single Action Controllers are controllers that do one thing and one thing only.
 * It builds an HTTP response (typically with the Domain results).
 
 All other logic, including all forms of input validation, error handling, and so on,
-are therefore pushed out of the Action and into the **[Domain](domain.md)**
+are therefore pushed out of the Action and into the [Domain](domain.md)
 (for domain logic concerns), or the response [Renderer](renderers.md) (for presentation logic concerns).
 
 ## Collaborations
@@ -28,7 +28,7 @@ it needs to build an HTTP Response.
 
 * The **Renderer** builds an HTTP response using the data fed to it by the **Action**.
 
-* The **Action** returns the HTTP response to the **Slim handler** and sends 
+* The **Action** returns the HTTP response to the **Slim response emitter** and sends 
 the HTTP Response.
 
 A quick overview of the request/response cycle:
@@ -79,7 +79,7 @@ final class ExampleAction
 Most people may think that this pattern is not suitable because it results in too many files.
 That this will result in more files is true, however these files are very small and focus on
 exactly one specific task. You get very specific classes with only one clearly defined responsibility
-(see SRP in SOLID). So you should not worry too much about too many files, instead you should worry
+(see SRP of SOLID). So you should not worry too much about too many files, instead you should worry
 about too few and big files (fat controllers) with too many responsibilities.
 
 ## Read more
