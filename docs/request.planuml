@@ -1,0 +1,26 @@
+@startuml
+
+title Request and Response
+header v2022.05.19.0
+
+autonumber
+
+actor Browser
+participant Action
+participant Domain
+participant Renderer
+database Database
+
+Browser -> Action: Request
+Action -> Action: Collect input
+Action -> Domain: Invoke service
+Domain -> Domain: Validation, Complex logic
+Domain <-> Database: Read / write records
+Domain -> Domain: Build domain result
+Domain -> Action: Domain result
+Action -> Renderer: View data (domain result)
+Renderer -> Renderer : Render to JSON, HTML
+Renderer -> Action: Response
+Action -> Browser: Response
+
+@enduml

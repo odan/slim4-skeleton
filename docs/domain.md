@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Domain
-parent: Architecture
+parent: The Basics
 nav_order: 2
 ---
 
@@ -28,7 +28,7 @@ Application Service, or something similar.*
 ## Services
 
 Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
-Business logic is a step up on complexity over CRUD (Create, Read, Update and Delete) operations.
+Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
 
 An (application) service can be called directly from the action, a service, the CLI and the unit tests.
 

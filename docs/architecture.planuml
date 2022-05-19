@@ -13,7 +13,7 @@ participant Action
 participant Service
 participant Repository
 database Database
-participant Responder
+participant Renderer
 participant Emitter
 
 User -> FrontController: HTTP Request\n/hello
