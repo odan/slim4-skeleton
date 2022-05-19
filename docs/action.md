@@ -15,23 +15,24 @@ Single Action Controllers are controllers that do one thing and one thing only.
 
 All other logic, including all forms of input validation, error handling, and so on,
 are therefore pushed out of the Action and into the **[Domain](domain.md)**
-(for domain logic concerns), or the response renderer (for presentation logic concerns).
+(for domain logic concerns), or the response [Renderer](renderers.md) (for presentation logic concerns).
 
-Before a response can be returned to the client, it must be [rendered](renderers.md) (to JSON or HTML). 
-The rendering process takes the domain result (intermediate representation of template and context), 
+Before a response can be returned to the client, it must be [rendered](renderers.md) (to JSON or HTML).
+The rendering process takes the domain result (intermediate representation of template and context),
 and turns it into the final response that can be served to the client.
 
 ## Collaborations
 
-1. The **Slim router and dispatcher** receives an HTTP Request and dispatches it to an Action.
+1. The **Slim router and dispatcher** receives an HTTP Request and dispatches it to an **Action**.
 
-2. The Action invokes the [Domain](domain.md), collecting any required inputs to the Domain from the HTTP Request.
+2. The **Action** invokes the **[Domain](domain.md)**, collecting any required inputs to the Domain from the HTTP
+   Request.
 
-3. The Action then invokes the [Renderer](renderers.md) with the data it needs to build an HTTP Response.
+3. The **Action** then invokes the **[Renderer](renderers.md)** with the data it needs to build an HTTP Response.
 
-4. The Renderer builds an HTTP Response using the data fed to it by the Action.
+4. The **Renderer** builds an HTTP response using the data fed to it by the **Action**.
 
-5. The Action returns the HTTP Response to the Slim handler and sends the HTTP Response.
+5. The **Action** returns the HTTP response to the **Slim handler** and sends the HTTP Response.
 
 A quick overview of the request/response cycle:
 
@@ -96,7 +97,8 @@ This architecture was inspired by the following resources and books:
 * [The Beauty of Single Action Controllers](https://driesvints.com/blog/the-beauty-of-single-action-controllers)
 * [Object Design Style Guide](https://www.manning.com/books/object-design-style-guide?a_aid=object-design&a_bid=4e089b42)
 * [Advanced Web Application Architecture](https://leanpub.com/web-application-architecture/) (Book)
-* [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019) (Slides)
+* [Advanced Web Application Architecture](https://www.slideshare.net/matthiasnoback/advanced-web-application-architecture-full-stack-europe-2019) (
+  Slides)
 * [Hexagonal Architecture](https://fideloper.com/hexagonal-architecture)
 * [Hexagonal Architecture demystified](https://madewithlove.be/hexagonal-architecture-demystified/)
 * [Alistair in the Hexagone](https://www.youtube.com/watch?v=th4AgBcrEHA)
