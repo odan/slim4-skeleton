@@ -1,13 +1,14 @@
 @startuml
 
 title Web Application Architecture
-header v2019.6.14.0
+header v22.5.19.0
 footer Page %page% of %lastpage%
 
 autonumber
 
 actor User
 participant FrontController
+participant SlimApp
 participant Router
 participant Action
 participant Service
@@ -18,41 +19,40 @@ participant Emitter
 
 User -> FrontController: HTTP Request\n/hello
 activate FrontController
-FrontController -> FrontController: Create PSR-7\nRequest
-FrontController -> Router: Dispatch Request
+FrontController -> SlimApp: Invoke run
+activate SlimApp
+SlimApp -> SlimApp: Create PSR-7\nRequest and\nResponse object
+SlimApp -> Router: Find matching\nroute handler
 activate Router
-Router -> Action: Request
-activate Action
-Action -> Service: Parameter
-activate Service
-Service -> Service: Validation
-Service -> Repository: Parameter
-activate Repository
-Repository --> Repository : Create a "use case optimal query"\nusing the QueryBuilder
-Repository -> Database: Query / Execute
-activate Database
-Database --> Repository: Result set / PK
-deactivate Database
-Repository --> Repository : Map row(s) to\nobject or list of data objects.\nOptional use a DataMapper
-Repository -> Service: Query Result
-deactivate Repository
-Service -> Service: Calculation,\nTransactions
-Service -> Action: Service Result
-deactivate Service
-Action -> Action: Create View Data
-Action -> Responder: View Data
-activate Responder
-Responder -> Responder: Render\nCreate response\nwith ResponseFactory
-Responder -[#0000FF]> Action: Response
-deactivate Responder
-Action -[#0000FF]> Router: Response
-deactivate Action
-Router -[#0000FF]> FrontController
-FrontController -[#0000FF]> Emitter: Emit Response
+Router -> Action: Dispatch\nto handler
 deactivate Router
+activate Action
+Action -> Service: Fetch and pass\nparameters
+activate Service
+Service -> Service: Input validation
+Service -> Repository: Invoke
+activate Repository
+Repository --> Repository : Build SQL query
+Repository -> Database: Query / execute
+activate Database
+Database --> Repository: Return records\nor new ID
+deactivate Database
+Repository -> Service: Query result
+deactivate Repository
+Service -> Service: Calculation,\nTransactions,\nMapping
+Service -> Action: Domain result
+deactivate Service
+Action -> Renderer: Pass Domain result
+activate Renderer
+Renderer-> Renderer: Render data\nto JSON\nor HTML
+Renderer-[#0000FF]> SlimApp: Response
+deactivate Renderer
+deactivate Action
+SlimApp-[#0000FF]> Emitter: Emit Response
 activate Emitter
 Emitter -[#0000FF]> User: HTTP Response (header, body)
 deactivate Emitter
+deactivate SlimApp
 deactivate FrontController
 
 @enduml
