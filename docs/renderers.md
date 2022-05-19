@@ -2,7 +2,6 @@
 layout: default
 title: Renderers
 parent: The Basics
-nav_order: 3
 ---
 
 # Renderer

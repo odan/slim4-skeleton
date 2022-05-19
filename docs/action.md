@@ -2,7 +2,6 @@
 layout: default
 title: Action
 parent: The Basics
-nav_order: 1
 ---
 
 # Single Action Controller

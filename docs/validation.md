@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Validation
-parent: The Basics
+parent: Advanced
 ---
 
 # Validation

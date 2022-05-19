@@ -2,7 +2,6 @@
 layout: default
 title: Middleware
 parent: The Basics
-nav_order: 2
 ---
 
 # Middleware

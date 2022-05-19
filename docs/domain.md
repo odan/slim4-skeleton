@@ -2,7 +2,6 @@
 layout: default
 title: Domain
 parent: The Basics
-nav_order: 2
 ---
 
 # Domain
