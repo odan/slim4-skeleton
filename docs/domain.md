@@ -6,9 +6,19 @@ parent: The Basics
 
 # Domain
 
-***Domain** is an entry point to the domain logic forming the core of the 
-application. It may be a Transaction Script, Service Layer, 
-Application Service, or something similar.*
+The Domain layer is the core of the application.
+
+## Services
+
+Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
+Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
+
+An (application) service can be called directly from the action, a service, the CLI and the unit tests.
+
+By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
+This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
+
+Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
 ## Domain vs. Infrastructure
 
@@ -24,17 +34,6 @@ Application Service, or something similar.*
 * Implementations for boundary objects, e.g. the repository classes (communication with the database)
 * Web controllers (actions), CLI, etc.
 
-## Services
-
-Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
-Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
-
-An (application) service can be called directly from the action, a service, the CLI and the unit tests.
-
-By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
-This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
-
-Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
 ## Repositories
 

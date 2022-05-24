@@ -6,7 +6,7 @@ parent: The Basics
 
 # Single Action Controller
 
-Single Action Controllers are controllers that do one thing and one thing only.
+The *Action* does only these things:
 
 * It collects input from the HTTP request (if needed).
 * It invokes the **Domain** with those inputs (if required) and retains the result.
@@ -14,11 +14,12 @@ Single Action Controllers are controllers that do one thing and one thing only.
 
 All other logic, including all forms of input validation, error handling, and so on,
 are therefore pushed out of the Action and into the [Domain](domain.md)
-(for domain logic concerns), or the response [Renderer](renderers.md) (for presentation logic concerns).
+(for domain logic concerns), or the response [Renderer](renderers.md) 
+(for presentation logic concerns).
 
 ## Collaborations
 
-* The **Slim router and dispatcher** receives an HTTP Request and dispatches it to an **Action**.
+* The **Slim router and dispatcher** receives an HTTP request and dispatches it to an **Action**.
 
 * The **Action** invokes the **[Domain](domain.md)**, collecting any required inputs to the 
 Domain from the HTTP request.
