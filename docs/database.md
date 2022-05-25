@@ -12,6 +12,29 @@ You can configure the database settings for each server environment.
 
 The default settings are stored in `config/defaults.php`, `$settings['db']` 
 
+
+## Repositories
+
+A [repository](https://designpatternsphp.readthedocs.io/en/latest/More/Repository/README.html)
+is the source of all the (database) data your application needs and mediates between the domain and data mapping layers.
+A repository improves code maintainability, testing and readability by separating **business logic**
+from **data access logic** and provides centrally managed and consistent access rules for a data source.
+
+There are two types of repositories: collection-oriented and persistence-oriented repositories.
+In this case, we are talking about **persistence-oriented repositories**, since these are better
+suited for processing large amounts of data.
+
+Each public repository method represents a query. The return values represent the result set
+of a query and can be primitive/object or list (array) of them. Database transactions must
+be handled on a higher level (service) and not within a repository.
+
+**Quick summary:**
+
+* Communication with the database.
+* Place for the data access (query) logic.
+* Uses data mapper to create domain objects
+* This is no place for the business logic. Use [services](#services) for the business logic.
+
 ## Query Builder
 
 This skeleton contains [cakephp/database](https://github.com/cakephp/database) as SQL query builder.
