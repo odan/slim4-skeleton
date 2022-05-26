@@ -16,15 +16,6 @@ Business logic is a step-up on complexity over CRUD (Create, Read, Update and De
 A service can be called directly from the action handler, a service, the console (CLI) and
 of course from a test.
 
-By separating behavior from data, it's possible to build and maintain non-trivial
-applications over many years.
-
-By separating behavior from data, it's possible to build and maintain non-trivial
-applications over many years. This architecture also respects
-the [SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) - friendly as much as possible.
-
-Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
-
 ## Domain vs. Infrastructure
 
 The infrastructure (layer) does not belong to the core application
