@@ -17,7 +17,9 @@ are therefore pushed out of the Action and into the [Domain](domain.md)
 (for domain logic concerns), or the response [Renderer](renderers.md) 
 (for presentation logic concerns).
 
-## Collaborations
+### Request and Response
+
+Here is a brief overview of the typical application process that involves different participants:
 
 * The **Slim router and dispatcher** receives an HTTP request and dispatches it to an **Action**.
 
@@ -32,9 +34,7 @@ it needs to build an HTTP Response.
 * The **Action** returns the HTTP response to the **Slim response emitter** and sends 
 the HTTP Response.
 
-A quick overview of the request/response cycle:
-
-![image](https://user-images.githubusercontent.com/781074/169254509-109925c4-c34d-49d3-98a1-76ab463e2234.png)
+![Request and Response](https://user-images.githubusercontent.com/781074/169254509-109925c4-c34d-49d3-98a1-76ab463e2234.png)
 
 ## Example
 

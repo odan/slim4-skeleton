@@ -13,34 +13,38 @@ The Domain layer is the core of the application.
 Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
 Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
 
-An (application) service can be called directly from the action, a service, the CLI and the unit tests.
+A service can be called directly from the action handler, a service, the console (CLI) and
+of course from a test.
 
-By separating behavior from data, it's possible to build and maintain non-trivial applications over many years.
-This architecture also respects the [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles to be [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92) - friendly as much as possible.
+By separating behavior from data, it's possible to build and maintain non-trivial
+applications over many years.
+This architecture also respects the
+[SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+- friendly as much as possible.
 
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
 ## Domain vs. Infrastructure
 
-**Domain**
+The infrastructure (layer) does not belong to the core application
+because it acts like an external consumer to talk to your system,
+for example the database, sending emails etc.
 
-* **Use cases:** Services with the business logic
-* **Model:** Value Objects, DTOs, Entities
-* **Interfaces for boundary objects:** The repository interfaces
+An Infrastructure service can be:
 
-**Infrastructure**
-
-* Framework-specific code
 * Implementations for boundary objects, e.g. the repository classes (communication with the database)
 * Web controllers (actions), CLI, etc.
+* Framework-specific code
 
-## Advantages
+By separating domain from infrastructure code you automatically **increase testability**
+because you can replace the implementation by changing the adapter without affecting 
+the interface users.
 
-* By separating domain from infrastructure code you automatically **increase testability**
-* You can replace an **adapter** without affecting the **ports**
-* You can **postpone** the choice for database vendor, framework, query builder, mailer, etc.
-* You can more easily **keep up** with the change rate of the framework-specific code...
-* or replace the framework altogether
+Within the Domain layer you have multiple other types of classes, for example:
+
+* Services with the business logic, aka. Use cases
+* Value Objects, DTOs, Entities, aka. Model
+* The repository (interfaces), for boundary objects to the infrastructure.
 
 ## Keep it clean
 
