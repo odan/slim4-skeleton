@@ -12,7 +12,6 @@ The Domain layer is the core of the application.
 
 Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
 Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
-
 A service can be called directly from the action handler, a service, the console (CLI) and
 of course from a test.
 

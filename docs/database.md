@@ -21,8 +21,8 @@ A repository improves code maintainability, testing and readability by separatin
 from **data access logic** and provides centrally managed and consistent access rules for a data source.
 
 There are two types of repositories: collection-oriented and persistence-oriented repositories.
-In this case, we are talking about **persistence-oriented repositories**, since these are better
-suited for processing large amounts of data.
+In this case, I would prefer to speak of **persistence-oriented repositories**,
+as they are better suited to handling large amounts of data without sacrificing simplicity.
 
 Each public repository method represents a query. The return values represent the result set
 of a query and can be primitive/object or list (array) of them. Database transactions must
@@ -41,7 +41,7 @@ This skeleton contains [cakephp/database](https://github.com/cakephp/database) a
 
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
-* **[Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)**
+* [Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)
 * [Slim 4 - CakePHP Query Builder](https://odan.github.io/2019/12/03/slim4-cakephp-query-builder.html)
 
 It's possible to replace the existing QueryBuilder with another component as listed below:
