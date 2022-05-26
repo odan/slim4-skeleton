@@ -18,9 +18,10 @@ of course from a test.
 
 By separating behavior from data, it's possible to build and maintain non-trivial
 applications over many years.
-This architecture also respects the
-[SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
-- friendly as much as possible.
+
+By separating behavior from data, it's possible to build and maintain non-trivial
+applications over many years. This architecture also respects
+the [SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) - friendly as much as possible.
 
 Read more: [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
 
