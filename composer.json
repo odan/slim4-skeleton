@@ -39,8 +39,8 @@
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
         "symfony/console": "^5 || 6.0.*",
-        "symfony/filesystem": "^5 || ^6",
-        "symfony/finder": "^5 || ^6"
+        "symfony/filesystem": "^5 || 6.0.*",
+        "symfony/finder": "^5 || 6.0.*"
     },
     "config": {
         "process-timeout": 0,
