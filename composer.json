@@ -27,7 +27,6 @@
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
         "symfony/cache": "^5 || ^6",
-        "symfony/console": "^5 || ^6",
         "symfony/uid": "^5 || ^6",
         "symfony/yaml": "^5 || ^6",
         "tuupola/slim-basic-auth": "^3.3"
@@ -39,6 +38,7 @@
         "phpunit/phpunit": "^8 || ^9",
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
+        "symfony/console": "^5 || ^6",
         "symfony/filesystem": "^5 || ^6",
         "symfony/finder": "^5 || ^6"
     },
