@@ -9,5 +9,4 @@ namespace Carbon;
  */
 final class Carbon
 {
-
 }
