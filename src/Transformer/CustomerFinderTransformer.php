@@ -8,13 +8,11 @@ final class CustomerFinderTransformer
 {
     public function toArray(CustomerFinderResult $collection): array
     {
-        $data = [
-            'customers' => [],
-        ];
+        $customers = [];
 
         foreach ($collection->customers as $customer) {
-            $data['customers'][] = [
-                'id' => (int)$customer->id,
+            $customers[] = [
+                'id' => $customer->id,
                 'number' => $customer->number,
                 'name' => $customer->name,
                 'street' => $customer->street,
@@ -25,6 +23,8 @@ final class CustomerFinderTransformer
             ];
         }
 
-        return $data;
+        return [
+            'customers' => $customers,
+        ];
     }
 }
