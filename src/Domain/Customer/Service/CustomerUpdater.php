@@ -2,7 +2,6 @@
 
 namespace App\Domain\Customer\Service;
 
-use App\Domain\Customer\Data\Customer;
 use App\Domain\Customer\Repository\CustomerRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;

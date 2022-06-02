@@ -3,9 +3,9 @@
 namespace App\Domain\Customer\Data;
 
 /**
- * Data Model.
+ * DTO.
  */
-final class Customer
+final class CustomerFinderItem
 {
     public ?int $id = null;
 
@@ -15,7 +15,7 @@ final class Customer
 
     public ?string $street = null;
 
-    public ?string $postal_code = null;
+    public ?string $postalCode = null;
 
     public ?string $city = null;
 

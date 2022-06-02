@@ -4,6 +4,7 @@ namespace App\Action\Customer;
 
 use App\Domain\Customer\Service\CustomerFinder;
 use App\Renderer\JsonRenderer;
+use App\Transformer\CustomerFinderTransformer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -39,8 +40,10 @@ final class CustomerFinderAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Optional: Pass parameters from the request to the service method
-        $result = $this->customerFinder->findCustomers();
+        $customers = $this->customerFinder->findCustomers();
 
-        return $this->jsonRenderer->json($response, $result);
+        $transformer = new CustomerFinderTransformer();
+
+        return $this->jsonRenderer->json($response, $transformer->toArray($customers));
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Domain\Customer\Service;
 
+use App\Domain\Customer\Data\CustomerFinderItem;
+use App\Domain\Customer\Data\CustomerFinderResult;
 use App\Domain\Customer\Repository\CustomerFinderRepository;
 
 /**
@@ -24,9 +26,9 @@ final class CustomerFinder
     /**
      * Find customers.
      *
-     * @return array A list of customers
+     * @return CustomerFinderResult The result
      */
-    public function findCustomers(): array
+    public function findCustomers(): CustomerFinderResult
     {
         // Input validation
         // ...
@@ -34,7 +36,7 @@ final class CustomerFinder
         $customers = $this->repository->findCustomers();
 
         // Map data
-        return $this->transform($customers);
+        return $this->createResult($customers);
     }
 
     /**
@@ -42,27 +44,26 @@ final class CustomerFinder
      *
      * @param array $customerRows The customers
      *
-     * @return array The result
+     * @return CustomerFinderResult The result
      */
-    private function transform(array $customerRows): array
+    private function createResult(array $customerRows): CustomerFinderResult
     {
-        $customers = [];
+        $result = new CustomerFinderResult();
 
         foreach ($customerRows as $customerRow) {
-            $customers[] = [
-                'id' => (int)$customerRow['id'],
-                'number' => $customerRow['number'],
-                'name' => $customerRow['name'],
-                'street' => $customerRow['street'],
-                'postal_code' => $customerRow['postal_code'],
-                'city' => $customerRow['city'],
-                'country' => $customerRow['country'],
-                'email' => $customerRow['email'],
-            ];
+            $customer = new CustomerFinderItem();
+            $customer->id = $customerRow['id'];
+            $customer->number = $customerRow['number'];
+            $customer->name = $customerRow['name'];
+            $customer->street = $customerRow['street'];
+            $customer->postalCode = $customerRow['postal_code'];
+            $customer->city = $customerRow['city'];
+            $customer->country = $customerRow['country'];
+            $customer->email = $customerRow['email'];
+
+            $result->customers[] = $customer;
         }
 
-        return [
-            'customers' => $customers,
-        ];
+        return $result;
     }
 }

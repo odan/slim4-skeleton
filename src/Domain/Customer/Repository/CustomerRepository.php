@@ -2,7 +2,6 @@
 
 namespace App\Domain\Customer\Repository;
 
-use App\Domain\Customer\Data\Customer;
 use App\Factory\QueryFactory;
 use DomainException;
 

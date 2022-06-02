@@ -4,6 +4,7 @@ namespace App\Action\Customer;
 
 use App\Domain\Customer\Service\CustomerReader;
 use App\Renderer\JsonRenderer;
+use App\Transformer\CustomerReaderTransformer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -46,8 +47,10 @@ final class CustomerReaderAction
         $customerId = (int)$args['customer_id'];
 
         // Invoke the domain (service class)
-        $result = $this->customerReader->getCustomer($customerId);
+        $customer = $this->customerReader->getCustomer($customerId);
 
-        return $this->jsonRenderer->json($response, $result);
+        $transformer = new CustomerReaderTransformer();
+
+        return $this->jsonRenderer->json($response, $transformer->toArray($customer));
     }
 }

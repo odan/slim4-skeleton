@@ -2,6 +2,7 @@
 
 namespace App\Domain\Customer\Service;
 
+use App\Domain\Customer\Data\CustomerReaderResult;
 use App\Domain\Customer\Repository\CustomerRepository;
 
 /**
@@ -26,41 +27,30 @@ final class CustomerReader
      *
      * @param int $customerId The customer id
      *
-     * @return array The result
+     * @return CustomerReaderResult The result
      */
-    public function getCustomer(int $customerId): array
+    public function getCustomer(int $customerId): CustomerReaderResult
     {
         // Input validation
         // ...
 
         // Fetch data from the database
-        $customer = $this->repository->getCustomerById($customerId);
+        $customerRow = $this->repository->getCustomerById($customerId);
 
         // Optional: Add or invoke your complex business logic here
         // ...
 
-        // Map result
-        return $this->transform($customer);
-    }
+        // Transform result
+        $result = new CustomerReaderResult();
+        $result->id = $customerRow['id'];
+        $result->number = $customerRow['number'];
+        $result->name = $customerRow['name'];
+        $result->street = $customerRow['street'];
+        $result->postalCode = $customerRow['postal_code'];
+        $result->city = $customerRow['city'];
+        $result->country = $customerRow['country'];
+        $result->email = $customerRow['email'];
 
-    /**
-     * Transform result.
-     *
-     * @param array $customer The customer
-     *
-     * @return array The result
-     */
-    private function transform(array $customer): array
-    {
-        return [
-            'id' => (int)$customer['id'],
-            'number' => $customer['number'],
-            'name' => $customer['name'],
-            'street' => $customer['street'],
-            'postal_code' => $customer['postal_code'],
-            'city' => $customer['city'],
-            'country' => $customer['country'],
-            'email' => $customer['email'],
-        ];
+        return $result;
     }
 }
