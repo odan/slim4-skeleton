@@ -2,42 +2,24 @@
 
 namespace App\Action\Customer;
 
+use App\Domain\Customer\Data\CustomerReaderResult;
 use App\Domain\Customer\Service\CustomerReader;
 use App\Renderer\JsonRenderer;
-use App\Transformer\CustomerReaderTransformer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Action.
- */
 final class CustomerReaderAction
 {
     private CustomerReader $customerReader;
 
     private JsonRenderer $jsonRenderer;
 
-    /**
-     * The constructor.
-     *
-     * @param CustomerReader $companyReader The service
-     * @param JsonRenderer $jsonRenderer The responder
-     */
     public function __construct(CustomerReader $companyReader, JsonRenderer $jsonRenderer)
     {
         $this->customerReader = $companyReader;
         $this->jsonRenderer = $jsonRenderer;
     }
 
-    /**
-     * Action.
-     *
-     * @param ServerRequestInterface $request The request
-     * @param ResponseInterface $response The response
-     * @param array $args The routing arguments
-     *
-     * @return ResponseInterface The response
-     */
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
@@ -49,8 +31,20 @@ final class CustomerReaderAction
         // Invoke the domain (service class)
         $customer = $this->customerReader->getCustomer($customerId);
 
-        $transformer = new CustomerReaderTransformer();
+        return $this->jsonRenderer->json($response, $this->transform($customer));
+    }
 
-        return $this->jsonRenderer->json($response, $transformer->toArray($customer));
+    private function transform(CustomerReaderResult $customer): array
+    {
+        return [
+            'id' => $customer->id,
+            'number' => $customer->number,
+            'name' => $customer->name,
+            'street' => $customer->street,
+            'postal_code' => $customer->postalCode,
+            'city' => $customer->city,
+            'country' => $customer->country,
+            'email' => $customer->email,
+        ];
     }
 }
