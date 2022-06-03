@@ -8,21 +8,12 @@ use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Action.
- */
 final class CustomerCreatorAction
 {
     private JsonRenderer $jsonRenderer;
 
     private CustomerCreator $userCreator;
 
-    /**
-     * The constructor.
-     *
-     * @param CustomerCreator $companyCreator The service
-     * @param JsonRenderer $renderer The responder
-     */
     public function __construct(CustomerCreator $companyCreator, JsonRenderer $renderer)
     {
         $this->userCreator = $companyCreator;

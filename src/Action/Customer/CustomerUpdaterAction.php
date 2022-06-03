@@ -7,36 +7,18 @@ use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Action.
- */
 final class CustomerUpdaterAction
 {
     private CustomerUpdater $customerUpdater;
 
     private JsonRenderer $jsonRenderer;
 
-    /**
-     * The constructor.
-     *
-     * @param CustomerUpdater $customerUpdater The service
-     * @param JsonRenderer $jsonRenderer The renderer
-     */
     public function __construct(CustomerUpdater $customerUpdater, JsonRenderer $jsonRenderer)
     {
         $this->customerUpdater = $customerUpdater;
         $this->jsonRenderer = $jsonRenderer;
     }
 
-    /**
-     * Action.
-     *
-     * @param ServerRequestInterface $request The request
-     * @param ResponseInterface $response The response
-     * @param array $args The route arguments
-     *
-     * @return ResponseInterface The response
-     */
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,

@@ -16,6 +16,7 @@
     <rule ref="PSR2"></rule>
     <!-- <rule ref="PSR12"></rule> -->
 
+    <!--
     <rule ref="Squiz.Commenting.ClassComment">
         <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
         <type>warning</type>
@@ -37,6 +38,7 @@
     <rule ref="Squiz.Commenting.FunctionComment.ParamCommentNotCapital">
         <type>warning</type>
     </rule>
+    -->
 
     <rule ref="Generic.Metrics.CyclomaticComplexity">
         <properties>
