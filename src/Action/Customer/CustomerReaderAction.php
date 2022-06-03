@@ -12,12 +12,12 @@ final class CustomerReaderAction
 {
     private CustomerReader $customerReader;
 
-    private JsonRenderer $jsonRenderer;
+    private JsonRenderer $renderer;
 
     public function __construct(CustomerReader $companyReader, JsonRenderer $jsonRenderer)
     {
         $this->customerReader = $companyReader;
-        $this->jsonRenderer = $jsonRenderer;
+        $this->renderer = $jsonRenderer;
     }
 
     public function __invoke(
@@ -28,10 +28,10 @@ final class CustomerReaderAction
         // Fetch parameters from the request
         $customerId = (int)$args['customer_id'];
 
-        // Invoke the domain (service class)
+        // Invoke the domain and get the result
         $customer = $this->customerReader->getCustomer($customerId);
 
-        return $this->jsonRenderer->json($response, $this->transform($customer));
+        return $this->renderer->json($response, $this->transform($customer));
     }
 
     private function transform(CustomerReaderResult $customer): array

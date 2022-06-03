@@ -12,20 +12,22 @@ final class CustomerFinderAction
 {
     private CustomerFinder $customerFinder;
 
-    private JsonRenderer $jsonRenderer;
+    private JsonRenderer $renderer;
 
     public function __construct(CustomerFinder $customerFinder, JsonRenderer $jsonRenderer)
     {
         $this->customerFinder = $customerFinder;
-        $this->jsonRenderer = $jsonRenderer;
+        $this->renderer = $jsonRenderer;
     }
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Optional: Pass parameters from the request to the service method
+        // ...
+
         $customers = $this->customerFinder->findCustomers();
 
-        return $this->jsonRenderer->json($response, $this->transform($customers));
+        return $this->renderer->json($response, $this->transform($customers));
     }
 
     public function transform(CustomerFinderResult $collection): array

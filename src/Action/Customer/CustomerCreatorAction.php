@@ -10,24 +10,16 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class CustomerCreatorAction
 {
-    private JsonRenderer $jsonRenderer;
+    private JsonRenderer $renderer;
 
     private CustomerCreator $userCreator;
 
     public function __construct(CustomerCreator $companyCreator, JsonRenderer $renderer)
     {
         $this->userCreator = $companyCreator;
-        $this->jsonRenderer = $renderer;
+        $this->renderer = $renderer;
     }
 
-    /**
-     * Action.
-     *
-     * @param ServerRequestInterface $request The request
-     * @param ResponseInterface $response The response
-     *
-     * @return ResponseInterface The response
-     */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Extract the form data from the request body
@@ -37,7 +29,7 @@ final class CustomerCreatorAction
         $companyId = $this->userCreator->createCustomer($data);
 
         // Build the HTTP response
-        return $this->jsonRenderer
+        return $this->renderer
             ->json($response, ['customer_id' => $companyId])
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }

@@ -11,12 +11,12 @@ final class CustomerUpdaterAction
 {
     private CustomerUpdater $customerUpdater;
 
-    private JsonRenderer $jsonRenderer;
+    private JsonRenderer $renderer;
 
     public function __construct(CustomerUpdater $customerUpdater, JsonRenderer $jsonRenderer)
     {
         $this->customerUpdater = $customerUpdater;
-        $this->jsonRenderer = $jsonRenderer;
+        $this->renderer = $jsonRenderer;
     }
 
     public function __invoke(
@@ -32,6 +32,6 @@ final class CustomerUpdaterAction
         $this->customerUpdater->updateCustomer($customerId, $data);
 
         // Build the HTTP response
-        return $this->jsonRenderer->json($response);
+        return $this->renderer->json($response);
     }
 }
