@@ -31,6 +31,7 @@ final class CustomerReaderAction
         // Invoke the domain and get the result
         $customer = $this->customerReader->getCustomer($customerId);
 
+        // Transform result and render to json
         return $this->renderer->json($response, $this->transform($customer));
     }
 

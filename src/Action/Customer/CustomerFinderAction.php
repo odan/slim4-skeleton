@@ -27,6 +27,7 @@ final class CustomerFinderAction
 
         $customers = $this->customerFinder->findCustomers();
 
+        // Transform result and render to json
         return $this->renderer->json($response, $this->transform($customers));
     }
 
