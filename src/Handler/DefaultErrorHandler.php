@@ -26,13 +26,6 @@ final class DefaultErrorHandler implements ErrorHandlerInterface
 
     private LoggerInterface $logger;
 
-    /**
-     * The constructor.
-     *
-     * @param JsonRenderer $jsonRenderer The renderer
-     * @param ResponseFactoryInterface $responseFactory The response factory
-     * @param LoggerFactory $loggerFactory The logger factory
-     */
     public function __construct(
         JsonRenderer $jsonRenderer,
         ResponseFactoryInterface $responseFactory,

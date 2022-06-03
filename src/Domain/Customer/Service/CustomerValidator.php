@@ -7,35 +7,18 @@ use App\Support\Validation;
 use Cake\Validation\Validator;
 use Selective\Validation\Exception\ValidationException;
 
-/**
- * Service.
- */
 final class CustomerValidator
 {
     private CustomerRepository $repository;
 
     private Validation $validation;
 
-    /**
-     * The constructor.
-     *
-     * @param CustomerRepository $repository The repository
-     * @param Validation $validation The validation
-     */
     public function __construct(CustomerRepository $repository, Validation $validation)
     {
         $this->repository = $repository;
         $this->validation = $validation;
     }
 
-    /**
-     * Validate update.
-     *
-     * @param int $customerId The customer id
-     * @param array $data The data
-     *
-     * @return void
-     */
     public function validateCustomerUpdate(int $customerId, array $data): void
     {
         if (!$this->repository->existsCustomerId($customerId)) {
@@ -45,15 +28,6 @@ final class CustomerValidator
         $this->validateCustomer($data);
     }
 
-    /**
-     * Validate new customer.
-     *
-     * @param array $data The data
-     *
-     * @throws ValidationException
-     *
-     * @return void
-     */
     public function validateCustomer(array $data): void
     {
         $validator = $this->createValidator();
@@ -64,11 +38,6 @@ final class CustomerValidator
         }
     }
 
-    /**
-     * Create validator.
-     *
-     * @return Validator The validator
-     */
     private function createValidator(): Validator
     {
         $validator = $this->validation->createValidator();

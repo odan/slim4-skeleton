@@ -6,9 +6,6 @@ use App\Domain\Customer\Repository\CustomerRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
-/**
- * Service.
- */
 final class CustomerCreator
 {
     private CustomerRepository $repository;
@@ -17,13 +14,6 @@ final class CustomerCreator
 
     private LoggerInterface $logger;
 
-    /**
-     * The constructor.
-     *
-     * @param CustomerRepository $repository The repository
-     * @param CustomerValidator $customerValidator The validator
-     * @param LoggerFactory $loggerFactory The logger factory
-     */
     public function __construct(
         CustomerRepository $repository,
         CustomerValidator $customerValidator,
@@ -36,13 +26,6 @@ final class CustomerCreator
             ->createLogger();
     }
 
-    /**
-     * Create a new customer.
-     *
-     * @param array $data The form data
-     *
-     * @return int The new customer ID
-     */
     public function createCustomer(array $data): int
     {
         // Input validation

@@ -40,7 +40,7 @@ final class CustomerReader
         // Optional: Add or invoke your complex business logic here
         // ...
 
-        // Transform result
+        // Create domain result
         $result = new CustomerReaderResult();
         $result->id = $customerRow['id'];
         $result->number = $customerRow['number'];
