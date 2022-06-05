@@ -65,4 +65,6 @@ This architecture was inspired by the following resources and books:
 * [On structuring PHP projects](https://www.nikolaposa.in.rs/blog/2017/01/16/on-structuring-php-projects/)
 * [Standard PHP package skeleton](https://github.com/php-pds/skeleton)
 * [Services vs Objects](https://dontpaniclabs.com/blog/post/2017/10/12/services-vs-objects)
+* [Stop returning arrays, use objects instead](https://www.brandonsavage.net/stop-returning-arrays-use-objects-instead/)
+* [Data Transfer Objects - What Are DTOs](https://www.youtube.com/watch?v=35QmeoPLPOQ)
 * [SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
