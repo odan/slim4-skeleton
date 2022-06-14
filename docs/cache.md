@@ -33,6 +33,4 @@ of their blazing fast data retrieval and speed up your web application.
 
 * [Slim 4 - Redis](https://odan.github.io/2021/06/14/slim-redis.html)
 * [Slim 4 - Memcached](https://odan.github.io/2021/06/20/slim-memcached.html)
-* [The Symfony Cache Component](https://symfony.com/doc/current/components/cache.html)
-* [Laminas Cache](https://docs.laminas.dev/laminas-cache/)
 * [Scrapbook](https://www.scrapbook.cash/)
