@@ -31,11 +31,11 @@ final class CustomerFinderAction
         return $this->renderer->json($response, $this->transform($customers));
     }
 
-    public function transform(CustomerFinderResult $collection): array
+    public function transform(CustomerFinderResult $result): array
     {
         $customers = [];
 
-        foreach ($collection->customers as $customer) {
+        foreach ($result->customers as $customer) {
             $customers[] = [
                 'id' => $customer->id,
                 'number' => $customer->number,
