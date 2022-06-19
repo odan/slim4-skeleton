@@ -14,6 +14,6 @@ It provides an easier and expressive way to create, edit,
 and compose images and supports currently the two most common image 
 processing libraries GD Library and Imagick.
 
-**Read more:**
+## Read more
 
 * [Slim 4 - Images](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
