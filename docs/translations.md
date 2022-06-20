@@ -11,7 +11,7 @@ parent: Advanced
 
 There are good packages that allow you to add support for multiple languages to your application.
 
-**For plain PHP***
+**For plain PHP**
 
 * [Translations with gettext](https://odan.github.io/2020/12/09/slim4-php-view.html#translations)
 * [gettext/gettext](https://github.com/php-gettext/Gettext)
