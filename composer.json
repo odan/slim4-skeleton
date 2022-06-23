@@ -23,12 +23,12 @@
         "nyholm/psr7-server": "^1.0",
         "php-di/php-di": "^6",
         "selective/basepath": "^2",
-        "selective/validation": "^2",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
-        "symfony/cache": "6.0.*",
-        "symfony/uid": "6.0.*",
-        "symfony/yaml": "6.0.*",
+        "symfony/cache": "^6",
+        "symfony/uid": "^6",
+        "symfony/validator": "^6",
+        "symfony/yaml": "^6",
         "tuupola/slim-basic-auth": "^3.3"
     },
     "require-dev": {

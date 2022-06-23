@@ -3,26 +3,25 @@
 namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
-use App\Support\Validation;
-use Cake\Validation\Validator;
-use Selective\Validation\Exception\ValidationException;
+use DomainException;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
+use Symfony\Component\Validator\Validation;
 
 final class CustomerValidator
 {
     private CustomerRepository $repository;
 
-    private Validation $validation;
-
-    public function __construct(CustomerRepository $repository, Validation $validation)
+    public function __construct(CustomerRepository $repository)
     {
         $this->repository = $repository;
-        $this->validation = $validation;
     }
 
     public function validateCustomerUpdate(int $customerId, array $data): void
     {
         if (!$this->repository->existsCustomerId($customerId)) {
-            throw new ValidationException(sprintf('Customer not found: %s', $customerId));
+            throw new DomainException(sprintf('Customer not found: %s', $customerId));
         }
 
         $this->validateCustomer($data);
@@ -30,40 +29,61 @@ final class CustomerValidator
 
     public function validateCustomer(array $data): void
     {
-        $validator = $this->createValidator();
-        $validationResult = $this->validation->validate($validator, $data);
+        $validator = Validation::createValidator();
+        $violations = $validator->validate($data, $this->createConstraints());
 
-        if ($validationResult->fails()) {
-            throw new ValidationException('Please check your input', $validationResult);
+        if ($violations->count()) {
+            throw new ValidationFailedException('Please check your input', $violations);
         }
     }
 
-    private function createValidator(): Validator
+    private function createConstraints(): Constraint
     {
-        $validator = $this->validation->createValidator();
-
-        return $validator
-            ->requirePresence('number', 'Input required')
-            ->notEmptyString('number', 'Input required')
-            ->maxLength('number', 10, 'Too long')
-            ->numeric('number', 'Invalid number')
-            ->requirePresence('name', 'Input required')
-            ->notEmptyString('name', 'Input required')
-            ->maxLength('name', 255, 'Too long')
-            ->requirePresence('street', 'Input required')
-            ->notEmptyString('street', 'Input required')
-            ->maxLength('street', 255, 'Too long')
-            ->requirePresence('postal_code', 'Input required')
-            ->notEmptyString('postal_code', 'Input required')
-            ->maxLength('postal_code', 10, 'Too long')
-            ->requirePresence('city', 'Input required')
-            ->notEmptyString('city', 'Input required')
-            ->maxLength('city', 255, 'Too long')
-            ->requirePresence('country', 'Input required')
-            ->notEmptyString('country', 'Input required')
-            ->minLength('country', 2, 'Too short')
-            ->maxLength('country', 2, 'Too long')
-            ->requirePresence('email', 'Input required')
-            ->email('email', false, 'Input required');
+        return new Assert\Collection(
+            [
+                'number' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['min' => 0, 'max' => 10]),
+                        new Assert\Positive(),
+                    ]
+                ),
+                'name' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['max' => 255]),
+                    ]
+                ),
+                'street' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['max' => 255]),
+                    ]
+                ),
+                'postal_code' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['max' => 10]),
+                    ]
+                ),
+                'city' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['max' => 255]),
+                    ]
+                ),
+                'country' => new Assert\Required(
+                    [
+                        new Assert\NotBlank(),
+                        new Assert\Length(['min' => 2, 'max' => 2]),
+                    ]
+                ),
+                'email' => new Assert\Required(
+                    [
+                        new Assert\Email(),
+                    ]
+                ),
+            ]
+        );
     }
 }

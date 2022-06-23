@@ -95,44 +95,50 @@ class CustomerCreatorActionTest extends TestCase
         // Check response
         $this->assertSame(StatusCodeInterface::STATUS_UNPROCESSABLE_ENTITY, $response->getStatusCode());
         $this->assertJsonContentType($response);
-        $this->assertJsonData(
-            [
-                'error' => [
-                    'message' => 'Please check your input',
-                    'code' => 422,
-                    'details' => [
-                        [
-                            'message' => 'Input required',
-                            'field' => 'number',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'name',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'street',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'postal_code',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'city',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'country',
-                        ],
-                        [
-                            'message' => 'Input required',
-                            'field' => 'email',
-                        ],
+
+        $expected = [
+            'error' => [
+                'message' => 'Please check your input',
+                'details' => [
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[number]',
+                    ],
+                    [
+                        'message' => 'This value should be positive.',
+                        'field' => '[number]',
+                    ],
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[name]',
+                    ],
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[street]',
+                    ],
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[postal_code]',
+                    ],
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[city]',
+                    ],
+                    [
+                        'message' => 'This value should not be blank.',
+                        'field' => '[country]',
+                    ],
+                    [
+                        'message' => 'This value should have exactly 2 characters.',
+                        'field' => '[country]',
+                    ],
+                    [
+                        'message' => 'This value is not a valid email address.',
+                        'field' => '[email]',
                     ],
                 ],
             ],
-            $response
-        );
+        ];
+        $this->assertJsonData($expected, $response);
     }
 }

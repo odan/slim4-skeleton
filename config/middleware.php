@@ -1,7 +1,7 @@
 <?php
 
+use App\Middleware\ValidationExceptionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
-use Selective\Validation\Middleware\ValidationExceptionMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
 
