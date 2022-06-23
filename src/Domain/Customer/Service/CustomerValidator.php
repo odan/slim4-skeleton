@@ -3,7 +3,7 @@
 namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
-use App\Support\ConstraintFactory;
+use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
