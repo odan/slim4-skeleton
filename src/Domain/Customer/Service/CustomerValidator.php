@@ -3,9 +3,9 @@
 namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
+use App\Support\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
@@ -39,48 +39,50 @@ final class CustomerValidator
 
     private function createConstraints(): Constraint
     {
-        return new Assert\Collection(
+        $constraint = new ConstraintFactory();
+
+        return $constraint->collection(
             [
-                'number' => new Assert\Required(
+                'number' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['min' => 0, 'max' => 10]),
-                        new Assert\Positive(),
+                        $constraint->notBlank(),
+                        $constraint->length(null, 10),
+                        $constraint->positive(),
                     ]
                 ),
-                'name' => new Assert\Required(
+                'name' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['max' => 255]),
+                        $constraint->notBlank(),
+                        $constraint->length(null, 255),
                     ]
                 ),
-                'street' => new Assert\Required(
+                'street' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['max' => 255]),
+                        $constraint->notBlank(),
+                        $constraint->length(null, 255),
                     ]
                 ),
-                'postal_code' => new Assert\Required(
+                'postal_code' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['max' => 10]),
+                        $constraint->notBlank(),
+                        $constraint->length(null, 10),
                     ]
                 ),
-                'city' => new Assert\Required(
+                'city' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['max' => 255]),
+                        $constraint->notBlank(),
+                        $constraint->length(null, 255),
                     ]
                 ),
-                'country' => new Assert\Required(
+                'country' => $constraint->required(
                     [
-                        new Assert\NotBlank(),
-                        new Assert\Length(['min' => 2, 'max' => 2]),
+                        $constraint->notBlank(),
+                        $constraint->length(2, 2),
                     ]
                 ),
-                'email' => new Assert\Required(
+                'email' => $constraint->required(
                     [
-                        new Assert\Email(),
+                        $constraint->email(),
                     ]
                 ),
             ]
