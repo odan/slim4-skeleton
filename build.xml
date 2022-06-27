@@ -80,7 +80,8 @@
 				<include name="composer.json"/>
 				<include name="**/composer.lock"/>
 				<include name="**/phpunit.xml*"/>
-				<include name="**/*.gitignore"/>
+                <include name="**/*.gitignore"/>
+                <include name="**/.gitattributes"/>
 				<include name="**/*.codeclimate.yml"/>
 				<include name="**/*.editorconfig*"/>
 				<include name="**/*.styleci.yml"/>
@@ -93,8 +94,6 @@
 				<include name="**/appveyor.yml"/>
 				<include name="**/build.xml"/>
 				<include name="**/.eslintrc.json"/>
-				<include name="**/.gitignore"/>
-				<include name="**/.gitattributes"/>
 				<include name="**/.cs.php"/>
 				<include name="**/.phpstorm.meta.php"/>
 				<include name="**/CHANGELOG.md"/>
