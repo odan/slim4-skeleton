@@ -12,11 +12,11 @@ final class CustomerCreatorAction
 {
     private JsonRenderer $renderer;
 
-    private CustomerCreator $userCreator;
+    private CustomerCreator $customerCreator;
 
-    public function __construct(CustomerCreator $companyCreator, JsonRenderer $renderer)
+    public function __construct(CustomerCreator $customerCreator, JsonRenderer $renderer)
     {
-        $this->userCreator = $companyCreator;
+        $this->customerCreator = $customerCreator;
         $this->renderer = $renderer;
     }
 
@@ -26,11 +26,11 @@ final class CustomerCreatorAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $companyId = $this->userCreator->createCustomer($data);
+        $customerId = $this->customerCreator->createCustomer($data);
 
         // Build the HTTP response
         return $this->renderer
-            ->json($response, ['customer_id' => $companyId])
+            ->json($response, ['customer_id' => $customerId])
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }

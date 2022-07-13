@@ -14,9 +14,9 @@ final class CustomerReaderAction
 
     private JsonRenderer $renderer;
 
-    public function __construct(CustomerReader $companyReader, JsonRenderer $jsonRenderer)
+    public function __construct(CustomerReader $customerReader, JsonRenderer $jsonRenderer)
     {
-        $this->customerReader = $companyReader;
+        $this->customerReader = $customerReader;
         $this->renderer = $jsonRenderer;
     }
 

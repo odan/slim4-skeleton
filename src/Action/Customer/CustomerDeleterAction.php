@@ -9,13 +9,13 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class CustomerDeleterAction
 {
-    private CustomerDeleter $companyDeleter;
+    private CustomerDeleter $customerDeleter;
 
     private JsonRenderer $renderer;
 
     public function __construct(CustomerDeleter $customerDeleter, JsonRenderer $renderer)
     {
-        $this->companyDeleter = $customerDeleter;
+        $this->customerDeleter = $customerDeleter;
         $this->renderer = $renderer;
     }
 
@@ -28,7 +28,7 @@ final class CustomerDeleterAction
         $customerId = (int)$args['customer_id'];
 
         // Invoke the domain (service class)
-        $this->companyDeleter->deleteCustomer($customerId);
+        $this->customerDeleter->deleteCustomer($customerId);
 
         // Render the json response
         return $this->renderer->json($response);
