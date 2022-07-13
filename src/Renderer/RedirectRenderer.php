@@ -4,6 +4,7 @@ namespace App\Renderer;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Interfaces\RouteParserInterface;
+
 use function http_build_query;
 
 /**
