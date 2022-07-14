@@ -24,7 +24,6 @@
         "selective/basepath": "^2",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
-        "symfony/cache": "^6",
         "symfony/uid": "^6",
         "symfony/validator": "^6",
         "symfony/yaml": "^6",
