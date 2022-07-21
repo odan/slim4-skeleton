@@ -9,7 +9,7 @@ nav_order: 2
 
 ## Application configuration 
 
-The directory for all configuration files is: `config/`
+The directory for the configuration files is: `config/`
 
 The file `config/settings.php` is the main configuration file and combines 
 the default settings with environment specific settings. 
