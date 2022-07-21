@@ -22,13 +22,13 @@ build:
     memcached: false
     neo4j: false
     rabbitmq: false
+    variables:
+      APP_ENV: 'scrutinizer'
   nodes:
     analysis:
       tests:
         override:
           - php-scrutinizer-run
-  variables:
-    APP_ENV: 'scrutinizer'
   dependencies:
     before:
       - composer self-update
