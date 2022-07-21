@@ -7,5 +7,14 @@ return function (array $settings): array {
     $settings['db']['username'] = 'root';
     $settings['db']['password'] = '';
 
+    // API credentials for phpunit
+    $settings['api_auth'] = [
+        // Allow http for testing
+        'secure' => false,
+        'users' => [
+            'api-user' => 'secret',
+        ],
+    ];
+
     return $settings;
 };
