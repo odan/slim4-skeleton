@@ -4,10 +4,13 @@
 $settings = require __DIR__ . '/defaults.php';
 
 // Overwrite default settings with environment specific local settings
-if (file_exists(__DIR__ . '/../../env.php')) {
-    require __DIR__ . '/../../env.php';
-} elseif (file_exists(__DIR__ . '/env.php')) {
-    require __DIR__ . '/env.php';
+$configFiles = sprintf('%s/{local.%s,env,../../env,phoenix}.php', __DIR__, $settings['env']);
+
+foreach (glob($configFiles, GLOB_BRACE) as $file) {
+    $local = require $file;
+    if (is_callable($local)) {
+        $settings = $local($settings);
+    }
 }
 
 return $settings;

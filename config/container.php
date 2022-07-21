@@ -11,9 +11,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Selective\BasePath\BasePathMiddleware;
-use Selective\Validation\Encoder\JsonEncoder;
-use Selective\Validation\Middleware\ValidationExceptionMiddleware;
-use Selective\Validation\Transformer\ErrorDetailsResultTransformer;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
@@ -89,14 +86,6 @@ return [
         return $driver->getConnection();
     },
 
-    ValidationExceptionMiddleware::class => function (ContainerInterface $container) {
-        return new ValidationExceptionMiddleware(
-            $container->get(ResponseFactoryInterface::class),
-            new ErrorDetailsResultTransformer(),
-            new JsonEncoder()
-        );
-    },
-
     ErrorMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['error'];
         $app = $container->get(App::class);
@@ -123,7 +112,7 @@ return [
         $application = new Application();
 
         $application->getDefinition()->addOption(
-            new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'development')
+            new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev')
         );
 
         foreach ($container->get('settings')['commands'] as $class) {

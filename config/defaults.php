@@ -1,6 +1,6 @@
 <?php
 
-// Configure defaults for the whole application.
+// Application default settings
 
 // Error reporting
 error_reporting(0);
@@ -10,14 +10,16 @@ ini_set('display_startup_errors', '0');
 // Timezone
 date_default_timezone_set('Europe/Berlin');
 
-// Settings
 $settings = [];
+
+// Environment
+$settings['env'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
 
 // Path settings
 $settings['root'] = dirname(__DIR__);
-$settings['temp'] = $settings['root'] . '/tmp';
-$settings['public'] = $settings['root'] . '/public';
-$settings['template'] = $settings['root'] . '/templates';
+$settings['temp'] = __DIR__ . '/../tmp';
+$settings['public'] = __DIR__ . '/../public';
+$settings['template'] = __DIR__ . '/../templates';
 
 // Error handler
 $settings['error'] = [
@@ -32,7 +34,7 @@ $settings['error'] = [
 // Logger settings
 $settings['logger'] = [
     'name' => 'app',
-    'path' => $settings['root'] . '/logs',
+    'path' => __DIR__ . '/../logs',
     'filename' => 'app.log',
     'level' => \Monolog\Logger::INFO,
     'file_permission' => 0775,

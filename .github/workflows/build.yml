@@ -53,9 +53,6 @@ jobs:
       - name: Create database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
-      - name: Copy settings
-        run: cp config/env.github.php config/env.php
-
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -65,4 +62,5 @@ jobs:
       - name: Run test suite
         run: composer test:all
         env:
+          APP_ENV: github
           PHP_CS_FIXER_IGNORE_ENV: 1
