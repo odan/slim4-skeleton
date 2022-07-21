@@ -16,6 +16,12 @@ the system error log, and even to Slack to notify your entire team.
 Under the hood, this project utilizes the [Monolog](https://github.com/Seldaek/monolog) library,
 which provides support for a variety of powerful log handlers.
 
+## Configuration
+
+The directory for all log files is: `logs/`
+
+The default settings are stored in `config/defaults.php`, `$settings['logger']`
+
 ## Usage
 
 It's recommended using the `App\Factory\LoggerFactory` class to
