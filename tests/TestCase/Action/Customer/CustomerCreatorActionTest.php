@@ -44,6 +44,10 @@ class CustomerCreatorActionTest extends TestCase
 
         $response = $this->app->handle($request);
 
+        // No logger errors
+        $this->assertSame([], $this->getLoggerErrors());
+        $this->assertTrue($this->getLogger()->hasInfoThatContains('Customer created successfully: 1'));
+
         // Check response
         $this->assertSame(StatusCodeInterface::STATUS_CREATED, $response->getStatusCode());
         $this->assertJsonContentType($response);

@@ -36,4 +36,22 @@ trait LoggerTestTrait
     {
         return $this->testHandler;
     }
+
+    /**
+     * Get test logger error messages.
+     *
+     * @return array The error messages
+     */
+    protected function getLoggerErrors(): array
+    {
+        $errors = [];
+
+        foreach ($this->testHandler->getRecords() as $record) {
+            if ($record['level_name'] === 'ERROR') {
+                $errors[] = $record;
+            }
+        }
+
+        return $errors;
+    }
 }
