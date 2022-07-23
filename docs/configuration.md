@@ -7,12 +7,9 @@ nav_order: 2
 
 # Configuration
 
-## Application configuration 
+## Configuration Directory
 
 The directory for the configuration files is: `config/`
-
-The file `config/settings.php` is the main configuration file and combines 
-the default settings with environment specific settings. 
 
 ## Configuration Environments 
 
@@ -26,6 +23,9 @@ These different files are organized by environment:
 * for the `dev` environment: `config/local.dev.php`
 * for the `prod` environment: `config/local.prod.php`
 * for the (phpunit) `test` environment: `config/local.test.php`
+
+The file `config/settings.php` is the main configuration file and combines
+the default settings with environment specific settings.
 
 The configuration files are loaded in this order:
 
