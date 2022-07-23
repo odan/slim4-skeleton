@@ -12,8 +12,6 @@ The directory structure is based on the [Standard PHP package skeleton](https://
 {% raw %}
 ```
 .
-├── bin                     # Excecutable files
-│   └── console.php         # The command line tool
 ├── build                   # Compiled files (artifacts)
 ├── config                  # Configuration files
 ├── docs                    # Documentation files
@@ -25,7 +23,7 @@ The directory structure is based on the [Standard PHP package skeleton](https://
 │   └── translations        # The .po message files for PoEdit
 ├── src                     # PHP source code (The App namespace)
 │   ├── Action              # Controller actions (HTTP layer)
-│   ├── Console             # Console commands for console.php
+│   ├── Console             # Console commands
 │   ├── Domain              # The business logic
 │   ├── Factory             # Factories
 │   ├── Renderer            # Render and Url helper (HTTP layer)
@@ -34,8 +32,6 @@ The directory structure is based on the [Standard PHP package skeleton](https://
 ├── templates               # Twig and Vue templates + JS and CSS
 ├── tests                   # Automated tests
 ├── tmp                     # Temporary files
-│   ├── translations        # Locale cache
-│   └── twig                # Internal twig cache
 ├── vendor                  # Reserved for composer
 ├── build.xml               # Ant build tasks
 ├── composer.json           # Project dependencies
