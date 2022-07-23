@@ -16,8 +16,6 @@ use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Views\PhpRenderer;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\InputOption;
 use Tuupola\Middleware\HttpBasicAuthentication;
 
 return [
@@ -106,20 +104,6 @@ return [
         $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
 
         return $errorMiddleware;
-    },
-
-    Application::class => function (ContainerInterface $container) {
-        $application = new Application();
-
-        $application->getDefinition()->addOption(
-            new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev')
-        );
-
-        foreach ($container->get('settings')['commands'] as $class) {
-            $application->add($container->get($class));
-        }
-
-        return $application;
     },
 
     PhpRenderer::class => function (ContainerInterface $container) {
