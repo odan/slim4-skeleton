@@ -7,7 +7,6 @@
 
     <config name="ignore_warnings_on_exit" value="1"/>
 
-    <file>./bin</file>
     <file>./src</file>
     <file>./tests</file>
     <file>./config</file>
