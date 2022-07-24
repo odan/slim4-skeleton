@@ -4,73 +4,45 @@ title: Deployment
 parent: Advanced
 ---
 
-# Deployment
+When you're ready to deploy your Slim application to production, 
+there are some important things you can do to make sure your application 
+is running as efficiently as possible. 
 
-A deployment artifact (or a build ) is the application code as it runs on production: 
-compiled, built, bundled, minified, optimized and so on.
+In this document, we'll cover some great starting points for 
+making sure your Slim application is deployed properly.
 
-## Requirements
+## Optimization
 
-* [Apache ant](https://ant.apache.org) to create deployment artifacts (build)
-* [Java 8 runtime](https://www.java.com/en/download/manual.jsp)
+### Autoloader Optimization
 
-## Apache Ant Setup on Linux
-
-To install Apache Ant, run:
+When deploying to production, make sure that you are optimizing Composer's 
+class autoloader map so Composer can quickly find the proper 
+file to load for a given class:
 
 ```
-sudo mkdir -p /usr/share/man/man1
-sudo apt-get install -y openjdk-11-jdk
-sudo apt-get install ant -y
+composer install --optimize-autoloader --no-dev
 ```
 
-## Apache Ant Setup on Windows
+In addition to optimizing the autoloader, 
+you should always be sure to include a `composer.lock` file in 
+your project's source control repository. 
+Your project's dependencies can be installed much faster 
+when a `composer.lock` file is present.
 
-* Download the latest binary of [Apache Ant](https://ant.apache.org/bindownload.cgi)
-* Extract the zip file to `c:\ant`
-* Add the `c:\ant\bin` directory to your `%PATH%` environment variable
-* Make sure JDK is installed, and `JAVA_HOME` is configured as environment variable.
-* Read more: [How to install Apache Ant on Windows](https://mkyong.com/ant/how-to-install-apache-ant-on-windows/)
+### Optimizing Configuration Loading
 
-## Building
+When deploying your application to production, you should make sure that you
+enable caching to improve the performance. 
 
-To build a new artifact (ZIP file), run:
+This process includes the caching of the routes and the html templates.
 
-``` bash
-ant build
-```
+### Deploying With GitHub Actions
 
-The artifact output directory is: `build/`
+[GitHub Actions](https://github.com/features/actions) offers a great
+way to build and deploy artifacts to your production servers
+on various infrastructure providers such as DigitalOcean, 
+Linode, AWS, and more.
 
-*Make sure that the project is already versioned in a Git repository.*
-
-## Server Setup
-
-Ensure that the apache [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot) 
-points to the `public/` path, e.g. `/var/www/example.com/htdocs/public`
-
-* Create a directory: `/var/www/example.com`
-* Create a sub-directory: `/var/www/example.com/htdocs`
-* Upload a custom `env.php` file to `/var/www/example.com/env.php`
-* Upload the file `bin/deploy.php` to `/var/www/example.com/deploy.php`
-
-## Deployment
-
-To deploy the artifact on a server you can upload the ZIP file with a [SFTP client](https://winscp.net) 
-from `build/my_app_*.zip` to `/var/www/example.com/`
-
-Then extract the artifact to the `htdocs/` sub-directory using the `deploy.php` script.
-
-**Usage:**
-
-```bash
-cd /var/www/example.com
-sudo php deploy.php my_app_2021-01-01_235044.zip
-```
-
-If you still need more features, then you may try [Deployer](https://deployer.org/) - a deployment tool for PHP.
-
-**Read more** 
-
-* [Continuous Delivery](https://www.amazon.com/dp/B003YMNVC0?tag=28031982-21) (Amazon.com)
-* [Continuous Delivery](https://www.amazon.de/dp/B003YMNVC0?tag=28031982-21) (Amazon.de)
+If you prefer to build and deploy your applications on your
+own machine or infrastructure, you may also 
+try [Apache Ant](https://ant.apache.org/).
