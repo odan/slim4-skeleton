@@ -45,4 +45,4 @@ Linode, AWS, and more.
 
 If you prefer to build and deploy your applications on your
 own machine or infrastructure, you may also 
-try [Apache Ant](https://ant.apache.org/).
+try [Apache Ant](https://ant.apache.org/) or [Deployer](https://deployer.org/).
