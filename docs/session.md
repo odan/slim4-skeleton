@@ -18,6 +18,7 @@ that can be accessed from subsequent requests.
 
 * [odan/session](https://github.com/odan/session) - Sessions, Flash messages and middlewares
 * [middlewares/php-session](https://github.com/middlewares/php-session) - PHP Session middleware
+* [RKA Slim Session Middleware](https://github.com/akrabat/rka-slim-session-middleware)
 * [slim/flash](https://github.com/slimphp/Slim-Flash) - Slim Framework flash messages service provider
 
 ## Read more

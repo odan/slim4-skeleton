@@ -46,8 +46,9 @@ After successful authentication, the client sends its token within the `Authoriz
 Authorization: Bearer RsT5OjbzRn430zqMLgV3Ia
 ```
 
-[lcobucci/jwt](https://github.com/lcobucci/jwt) is a good library to work with JSON Web Token (JWT) 
-and JSON Web Signature based on RFC 7519.
+The [lcobucci/jwt](https://github.com/lcobucci/jwt) and 
+[firebase/php-jwt](https://github.com/firebase/php-jwt) packages
+are a very good tools to work with JSON Web Tokens.
 
 **Read more:** 
 
