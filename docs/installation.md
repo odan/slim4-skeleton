@@ -69,10 +69,10 @@ $settings['db']['username'] = 'root';
 $settings['db']['password'] = '';
 ```
 
-Run all the available migrations:
+Optional: Load the file `resources/migrations/schema.sql` into your database:
 
 ```shell
-composer phoenix migrate
+mysql -u {yourusername} -p {yourpassword} {database_name} < resources/migrations/schema.sql
 ```
 
 **Step 5:** Run it
@@ -89,7 +89,7 @@ php -S localhost:8080 -t public
 Then navigate to: `http://localhost:8080/`
 
 In case you still have trouble with the setup,
-you may try to upload the [Server Setup Checker](https://gist.github.com/odan/7fda1e4129cfd4a491ded5651fc32096)
+you may try to upload the [Server Setup Checker](https://github.com/odan/slim-checker)
 to get an idea about the issue.
 
 ## Docker
@@ -295,7 +295,7 @@ chmod -R 760 tmp/
 chmod -R 760 logs/
 
 cp config/env.example.php config/env.php
-vendor/bin/phoenix migrate
+# vendor/bin/phoenix migrate
 
 # Run tests
 vendor/bin/phpunit

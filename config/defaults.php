@@ -71,38 +71,4 @@ $settings['db'] = [
     ],
 ];
 
-// Phoenix settings
-$settings['phoenix'] = [
-    'migration_dirs' => [
-        'first' => __DIR__ . '/../resources/migrations',
-    ],
-    'environments' => [
-        'local' => [
-            'adapter' => 'mysql',
-            'host' => '127.0.0.1',
-            'port' => 3306,
-            'username' => 'root',
-            'password' => '',
-            'db_name' => 'slim_skeleton_dev',
-            'charset' => 'utf8',
-        ],
-        'local2' => [
-            'adapter' => 'mysql',
-            'host' => '127.0.0.1',
-            'port' => 3306,
-            'username' => 'root',
-            'password' => 'root',
-            'db_name' => 'slim_skeleton_diff',
-            'charset' => 'utf8',
-        ],
-    ],
-    'default_environment' => 'local',
-    'log_table_name' => 'phoenix_log',
-];
-
-// Console commands
-$settings['commands'] = [
-    \App\Console\SchemaDumpCommand::class,
-];
-
 return $settings;
