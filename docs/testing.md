@@ -33,37 +33,6 @@ Testing units in isolation of its dependencies.
 Unit tests should test the behavior and not the implementation details of your classes.
 Make sure that unit tests are running in-memory only, because they have to be very fast. 
 
-## Mocking
-
-When testing Slim applications, you may wish to "mock" certain aspects of your 
-application, so they are not actually executed during a test. 
-For example, when testing a service that needs a repository, 
-you may wish to mock the repository so that it's not actually 
-executed queries during the test.
-
-The `AppTestTrait` provides methods for mocking objects into the container.
-
-Mocking methods:
-
-```php
-$this->mock(UserCreator::class)->method('createUser')->willReturn(1);
-```
-
-For better IDE  support you may better use the `mockMethod` helper:
-
-```php
-$this->mockMethod([UserReaderRepository::class, 'getUserById'])
-    ->willReturn(['example' => 'data']);
-```
-
-### Mocking Date and Time
-
-```php
-use Cake\Chronos\Chronos;
-
-Chronos::setTestNow('2021-02-01 00:00:00');
-```
-
 ## HTTP Tests
 
 The `AppTestTrait` provides methods for making HTTP requests to your 
@@ -227,16 +196,54 @@ Read single value from table by id:
 $password = $this->getTableRowById('users', 1)['password'];
 ```
 
-## Performance Testing
+## Testing with Date and Time
 
-* [Slim 4 - Performance Testing](https://odan.github.io/2019/12/20/slim4-performance-testing.html)
+To change the date and time for testing purposes, invoke the 
+`Chronos::setTestNow` method within a test as follows:
+
+```php
+use Cake\Chronos\Chronos;
+
+Chronos::setTestNow('2022-02-01 00:00:00');
+```
+
+## Mocking
+
+When testing Slim applications, you may wish to "mock" certain aspects of your
+application, so they are not actually executed during a test.
+For example, when testing a service that needs a repository,
+you may wish to mock the repository so that it's not actually
+executed queries during the test.
+
+Note: Mocking is not a good testing method, because you may
+not test the code you actually deploy, and furthermore,
+if you change the code, you will have to change the test as well.
+The meaningfulness and maintainability of tests with a
+mock is thus significantly lower compared to a test
+that tests the entire code.
+
+The `AppTestTrait` provides methods for mocking objects into the container.
+
+Mocking methods:
+
+```php
+$this->mock(UserCreator::class)->method('createUser')->willReturn(1);
+```
+
+For better IDE  support you may better use the `mockMethod` helper:
+
+```php
+$this->mockMethod([UserReaderRepository::class, 'getUserById'])
+    ->willReturn(['example' => 'data']);
+```
 
 ## Debugging Tests
 
-To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), you have to mark the `tests/` directory as test sources root. 
+To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), 
+you have to mark the `tests/` directory as test sources root. 
 
 * Open the project in PhpStorm
-* Right click the directory `tests` 
+* Right-click the directory `tests` 
 * Select: `Mark directory as`
 * Click `Test Sources Root`
 * Set a breakpoint within a test method

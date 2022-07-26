@@ -33,7 +33,7 @@ be handled on a higher level (service) and not within a repository.
 * Communication with the database.
 * Place for the data access (query) logic.
 * Uses data mapper to create domain objects
-* This is no place for the business logic. Use [services](#services) for the business logic.
+* This is no place for the business logic.
 
 ## Query Builder
 
@@ -53,6 +53,6 @@ It's possible to replace the existing QueryBuilder with another component as lis
 
 ## Multi tenancy
 
-The concept from this article can also be applied to all other QueryBuilders:
+This article shows how to handle multiple database connection.
 
 * [Multiple database connections](https://odan.github.io/2020/04/05/slim4-multiple-pdo-database-connections.html)
