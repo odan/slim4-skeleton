@@ -82,26 +82,12 @@ To prevent XSS you can use an Auto-Escaping Template System such as Twig
 or by using libraries that are specifically designed to sanitize HTML input:
 
 * [laminas/laminas-escaper](https://github.com/laminas/laminas-escaper)
-
-**Read more**
-
 * [Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 * [Cross-site Scripting (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 
-## HTTPS / SSL
-
-* [Slim 4 - HTTPS Middleware](https://odan.github.io/2020/04/07/slim4-https-middleware.html)
-* [middlewares/https](https://github.com/middlewares/https)
-
-## Spam Protection
-
-* [Slim 4 - Spam Protection](https://odan.github.io/2021/01/16/slim4-spam-protection.html)
-
-## IP Filter
-
-* [middlewares/firewall](https://github.com/middlewares/firewall)
-
 ## More Resources
 
+* [Slim 4 - Spam Protection](https://odan.github.io/2021/01/16/slim4-spam-protection.html)
+* [middlewares/firewall](https://github.com/middlewares/firewall)
 * [PSR-15 HTTP Middlewares](https://github.com/middlewares)
 * [PHP Middleware](https://github.com/php-middleware)

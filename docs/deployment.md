@@ -4,6 +4,10 @@ title: Deployment
 parent: Advanced
 ---
 
+# Deployment
+
+## Introduction
+
 When you're ready to deploy your Slim application to production, 
 there are some important things you can do to make sure your application 
 is running as efficiently as possible. 
