@@ -25,7 +25,6 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 #### Recommended
 
 * Apache with mod_rewrite
-* [Apache Ant](https://ant.apache.org/bindownload.cgi) to build deployment artifacts
 
 ## Installation
 
@@ -51,16 +50,13 @@ This project is based on best practices and industry standards:
 * PHPDoc standard (PSR-5, PSR-19)
 * Single action controllers
 * Input validation
-* SQL Query Builder
-* Database migrations
+* Query Builder
 * Immutable date time ([Chronos](https://github.com/cakephp/chronos))
 * Unit- and integration tests
 * Console Commands
+* Swagger OpenAPI documentation
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan)
-* Build and deployment scripts
-* Docker container with Xdebug support
-* Swagger OpenAPI documentation
 
 ## Screenshot
 
