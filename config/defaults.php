@@ -33,11 +33,10 @@ $settings['error'] = [
 
 // Logger settings
 $settings['logger'] = [
-    'name' => 'app',
+    // Log file location
     'path' => __DIR__ . '/../logs',
-    'filename' => 'app.log',
+    // Default log level
     'level' => \Monolog\Logger::INFO,
-    'file_permission' => 0775,
 ];
 
 // Database settings
