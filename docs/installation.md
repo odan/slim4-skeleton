@@ -35,7 +35,7 @@ sudo chown -R www-data logs/
 sudo chmod -R 760 tmp/
 sudo chmod -R 760 logs/
 
-#chmod +x bin/console.php
+chmod +x bin/console.php
 ```
 
 **Step 3:** Database setup
@@ -82,8 +82,7 @@ Open `http://localhost/{my-app}` in your browser
 If you use the PHP internal web server, you can use this command:
 
 ```
-cd {project-path/}
-php -S localhost:8080 -t public
+php -S localhost:8080 -t public/
 ```
 
 Then navigate to: `http://localhost:8080/`
@@ -129,8 +128,8 @@ docker-compose up
 
 ### Configuration
 
-For development and for production you can use the `env.php` for the secret passwords,
-private keys and so on.
+For development and for production you can use the `env.php` 
+for the secret passwords, private keys and so on.
 
 Copy the file: `config/env.example.php` to `config/env.php`.
 
@@ -138,11 +137,13 @@ Copy the file: `config/env.example.php` to `config/env.php`.
 cp config/env.example.php config/env.php
 ```
 
-To connect to the internal MySQL database change the configuration in `config/env.php` to this:
+To connect to the internal MySQL database change the configuration 
+in `config/env.php` to this:
 
 **Example**
 
-To load the docker environment variables, you can use the `$_ENV` and `$_SERVER` super-globals.
+To load the docker environment variables, 
+you can use the `$_ENV` and `$_SERVER` super-globals.
 
 ```php
 $settings['db']['host'] = $_ENV['MYSQL_HOST'];
