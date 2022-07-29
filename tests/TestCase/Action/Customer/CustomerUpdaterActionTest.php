@@ -81,7 +81,7 @@ class CustomerUpdaterActionTest extends TestCase
                 'email' => 'mail.example.com',
             ]
         );
-        
+
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
