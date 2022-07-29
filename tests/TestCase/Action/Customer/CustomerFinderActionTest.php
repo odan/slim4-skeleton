@@ -18,11 +18,6 @@ class CustomerFinderActionTest extends TestCase
     use AppTestTrait;
     use DatabaseTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testListCustomers(): void
     {
         $this->insertFixtures([CustomerFixture::class]);
@@ -61,11 +56,6 @@ class CustomerFinderActionTest extends TestCase
         );
     }
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testListCustomersWithoutLogin(): void
     {
         $request = $this->createRequest('GET', '/api/customers');

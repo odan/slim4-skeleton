@@ -18,11 +18,6 @@ class CustomerCreatorActionTest extends TestCase
     use AppTestTrait;
     use DatabaseTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testCreateCustomer(): void
     {
         Chronos::setTestNow('2021-01-01 00:00:00');
@@ -73,11 +68,6 @@ class CustomerCreatorActionTest extends TestCase
         $this->assertTableRow($expected, 'customers', 1);
     }
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testCreateCustomerValidation(): void
     {
         $request = $this->createJsonRequest(
@@ -93,6 +83,7 @@ class CustomerCreatorActionTest extends TestCase
                 'email' => 'mail.example.com',
             ]
         );
+        
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
@@ -143,6 +134,7 @@ class CustomerCreatorActionTest extends TestCase
                 ],
             ],
         ];
+
         $this->assertJsonData($expected, $response);
     }
 }

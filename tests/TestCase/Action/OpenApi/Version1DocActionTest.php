@@ -8,16 +8,13 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test.
+ *
+ * @coversDefaultClass \App\Action\OpenApi\Version1DocAction
  */
 class Version1DocActionTest extends TestCase
 {
     use AppTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testAction(): void
     {
         $request = $this->createRequest('GET', '/docs/v1');

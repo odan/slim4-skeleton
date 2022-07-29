@@ -18,11 +18,6 @@ class CustomerReaderActionTest extends TestCase
     use AppTestTrait;
     use DatabaseTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testValidId(): void
     {
         $this->insertFixtures([CustomerFixture::class]);
@@ -48,11 +43,6 @@ class CustomerReaderActionTest extends TestCase
         );
     }
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testInvalidId(): void
     {
         $request = $this->createRequest('GET', '/api/customers/99');

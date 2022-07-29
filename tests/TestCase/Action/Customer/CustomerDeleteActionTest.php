@@ -18,11 +18,6 @@ class CustomerDeleteActionTest extends TestCase
     use AppTestTrait;
     use DatabaseTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testDeleteCustomer(): void
     {
         $this->insertFixtures([CustomerFixture::class]);

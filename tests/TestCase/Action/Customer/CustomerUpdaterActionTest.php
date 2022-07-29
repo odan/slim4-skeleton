@@ -19,11 +19,6 @@ class CustomerUpdaterActionTest extends TestCase
     use AppTestTrait;
     use DatabaseTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testUpdateCustomer(): void
     {
         Chronos::setTestNow('2021-02-01 00:00:00');
@@ -43,6 +38,7 @@ class CustomerUpdaterActionTest extends TestCase
                 'email' => 'new@example.com',
             ]
         );
+
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
@@ -68,11 +64,6 @@ class CustomerUpdaterActionTest extends TestCase
         $this->assertTableRow($expected, 'customers', 1);
     }
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testCreateCustomerValidation(): void
     {
         $this->insertFixtures([CustomerFixture::class]);
@@ -90,6 +81,7 @@ class CustomerUpdaterActionTest extends TestCase
                 'email' => 'mail.example.com',
             ]
         );
+        
         $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 

@@ -6,15 +6,15 @@ use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Test.
+ *
+ * @coversDefaultClass \App\Action\Home\HomeAction
+ */
 class HomeActionTest extends TestCase
 {
     use AppTestTrait;
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testAction(): void
     {
         $request = $this->createRequest('GET', '/');
@@ -24,11 +24,6 @@ class HomeActionTest extends TestCase
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
-    /**
-     * Test invalid link.
-     *
-     * @return void
-     */
     public function testPageNotFound(): void
     {
         $request = $this->createRequest('GET', '/nada');
