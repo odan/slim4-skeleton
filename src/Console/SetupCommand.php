@@ -44,9 +44,7 @@ final class SetupCommand extends Command
             $pdoTest = new PDO("mysql:host=$dbHost;charset=utf8mb4", $dbUsername, $dbPassword, $pdoOptions);
 
             $output->writeln('Create TEST database');
-            $pdoTest->exec(
-                "CREATE DATABASE IF NOT EXISTS `$dbNameTest` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-            );
+            $pdoTest->exec($this->createTableSql($dbNameTest));
 
             $pdoTest = null;
         } catch (Exception $exception) {
@@ -63,8 +61,8 @@ final class SetupCommand extends Command
             $pdo = new PDO("mysql:host=$dbHost;charset=utf8mb4", $dbUsername, $dbPassword, $pdoOptions);
 
             $output->writeln('Create DEV database');
-            $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbName` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;");
-            $pdo->exec("USE `$dbName`;");
+            $pdo->exec($this->createTableSql($dbName));
+            $pdo->exec($this->useSql($dbName));
         } catch (Exception $exception) {
             $output->writeln('<error>DEV database connection failed.</error>');
             $output->writeln($exception->getMessage());
@@ -112,5 +110,15 @@ final class SetupCommand extends Command
         $output->writeln('To start the internal webserver, run: composer start');
 
         return 0;
+    }
+
+    private function createTableSql(string $table): string
+    {
+        return sprintf('CREATE DATABASE IF NOT EXISTS `%s` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;', $table);
+    }
+
+    private function useSql(string $database): string
+    {
+        return sprintf('USE `%s`;', $database);
     }
 }
