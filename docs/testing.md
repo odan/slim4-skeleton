@@ -237,19 +237,6 @@ $this->mockMethod([UserReaderRepository::class, 'getUserById'])
     ->willReturn(['example' => 'data']);
 ```
 
-## Debugging Tests
-
-To debug tests in [PhpStorm](https://www.jetbrains.com/phpstorm/), 
-you have to mark the `tests/` directory as test sources root. 
-
-* Open the project in PhpStorm
-* Right-click the directory `tests` 
-* Select: `Mark directory as`
-* Click `Test Sources Root`
-* Set a breakpoint within a test method
-* Right click `test`
-* Click `Debug (tests) PHPUnit`
-
 ## Read more
 
 * [Slim 4 - Testing](https://odan.github.io/2020/06/09/slim4-testing.html)
