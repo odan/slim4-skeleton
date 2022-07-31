@@ -15,12 +15,6 @@ $settings = [];
 // Environment
 $settings['env'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
 
-// Path settings
-$settings['root'] = dirname(__DIR__);
-$settings['temp'] = __DIR__ . '/../tmp';
-$settings['public'] = __DIR__ . '/../public';
-$settings['template'] = __DIR__ . '/../templates';
-
 // Error handler
 $settings['error'] = [
     // Should be set to false for the production environment

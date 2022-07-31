@@ -22,11 +22,9 @@
         "nyholm/psr7-server": "^1.0",
         "php-di/php-di": "^6 || ^7",
         "selective/basepath": "^2",
-        "slim/php-view": "^3.0",
         "slim/slim": "^4",
         "symfony/uid": "^6",
-        "symfony/validator": "^6",
-        "symfony/yaml": "^6"
+        "symfony/validator": "^6"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",

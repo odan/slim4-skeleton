@@ -9,9 +9,6 @@ return function (App $app) {
     // Redirect to Swagger documentation
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('home');
 
-    // Swagger API documentation
-    $app->get('/docs/v1', \App\Action\OpenApi\Version1DocAction::class)->setName('docs');
-
     // API
     $app->group(
         '/api',

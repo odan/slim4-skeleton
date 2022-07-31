@@ -20,8 +20,8 @@ class HomeActionTest extends TestCase
         $request = $this->createRequest('GET', '/');
         $response = $this->app->handle($request);
 
-        // Assert: Redirect
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertResponseContains($response, 'Welcome!');
     }
 
     public function testPageNotFound(): void
@@ -29,7 +29,6 @@ class HomeActionTest extends TestCase
         $request = $this->createRequest('GET', '/nada');
         $response = $this->app->handle($request);
 
-        // Assert: Not found
         $this->assertSame(StatusCodeInterface::STATUS_NOT_FOUND, $response->getStatusCode());
     }
 }
