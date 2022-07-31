@@ -20,7 +20,7 @@
         "monolog/monolog": "^2",
         "nyholm/psr7": "^1.4",
         "nyholm/psr7-server": "^1.0",
-        "php-di/php-di": "v7.x-dev",
+        "php-di/php-di": "^6 || ^7",
         "selective/basepath": "^2",
         "slim/php-view": "^3.0",
         "slim/slim": "^4",
