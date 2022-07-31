@@ -8,9 +8,8 @@ nav_order: 5
 
 ## Basic Authentication
 
-This API skeleton uses [Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
-
-BasicAuth is an authentication scheme built into the HTTP protocol. 
+[BasicAuth](https://en.wikipedia.org/wiki/Basic_access_authentication) 
+is an authentication scheme built into the HTTP protocol. 
 As long as the client transmits its data over **HTTPS**, 
 it's a secure **authentication** mechanism.  
 
@@ -18,20 +17,14 @@ it's a secure **authentication** mechanism.
 Authorization: Basic YXBpLXVzZXI6c2VjcmV0
 ```
 
-The default API credentials are: `api-admin / secret` and `api-user / secret`.
-To set up the users, copy the example file from `config/env.example.php` to `config/env.php`
-and change the user credentials as desired. Read more: [Installation](installation.md)
-
-Please note that the API credentials are not the same as the users 
-in the example "users" database table.
-
-**Read more:**
-
-* [Swagger - Basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
+The [tuupola/slim-basic-auth](https://github.com/tuupola/slim-basic-auth) package
+implements HTTP Basic Authentication. It was originally developed 
+for Slim but can be used with all frameworks using 
+PSR-7 or PSR-15 style middlewares.
 
 ## OAuth 2.0
 
-For **authorization** you could consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
+For **authorization**, you could consider to use [OAuth 2.0](https://oauth.net/2/) in combination with a signed [JSON Web Token](https://oauth.net/2/jwt/).
 
 The JWTs can be used as OAuth 2.0 [Bearer-Tokens](https://oauth.net/2/bearer-tokens/) to encode all relevant parts of an access token into the access token itself instead of having to store them in a database.
 
@@ -58,13 +51,13 @@ are a very good tools to work with JSON Web Tokens.
 * [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
 * [Swagger - OAuth 2.0](https://swagger.io/docs/specification/authentication/oauth2/)
 
-## CSRF protection
-
-* [Slim Framework CSRF Protection](https://github.com/slimphp/Slim-Csrf)
-
 ## SameSite Cookies
 
 * [selective/samesite-cookie](https://github.com/selective-php/samesite-cookie)
+
+## CSRF protection
+
+* [Slim Framework CSRF Protection](https://github.com/slimphp/Slim-Csrf)
 
 ## Cross-Origin Resource Sharing (CORS)
 

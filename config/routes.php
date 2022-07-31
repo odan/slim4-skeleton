@@ -4,7 +4,6 @@
 
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
-use Tuupola\Middleware\HttpBasicAuthentication;
 
 return function (App $app) {
     // Redirect to Swagger documentation
@@ -13,7 +12,7 @@ return function (App $app) {
     // Swagger API documentation
     $app->get('/docs/v1', \App\Action\OpenApi\Version1DocAction::class)->setName('docs');
 
-    // Password protected area
+    // API
     $app->group(
         '/api',
         function (RouteCollectorProxy $app) {
@@ -23,5 +22,5 @@ return function (App $app) {
             $app->put('/customers/{customer_id}', \App\Action\Customer\CustomerUpdaterAction::class);
             $app->delete('/customers/{customer_id}', \App\Action\Customer\CustomerDeleterAction::class);
         }
-    )->add(HttpBasicAuthentication::class);
+    );
 };

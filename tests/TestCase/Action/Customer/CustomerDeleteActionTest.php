@@ -23,7 +23,6 @@ class CustomerDeleteActionTest extends TestCase
         $this->insertFixtures([CustomerFixture::class]);
 
         $request = $this->createJsonRequest('DELETE', '/api/customers/1');
-        $request = $this->withHttpBasicAuth($request);
 
         $response = $this->app->handle($request);
 

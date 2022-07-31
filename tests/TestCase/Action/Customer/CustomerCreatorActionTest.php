@@ -35,7 +35,6 @@ class CustomerCreatorActionTest extends TestCase
                 'email' => 'im.glynn@example.net',
             ]
         );
-        $request = $this->withHttpBasicAuth($request);
 
         $response = $this->app->handle($request);
 
@@ -84,7 +83,6 @@ class CustomerCreatorActionTest extends TestCase
             ]
         );
 
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         // Check response

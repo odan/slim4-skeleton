@@ -26,8 +26,7 @@
         "slim/slim": "^4",
         "symfony/uid": "^6",
         "symfony/validator": "^6",
-        "symfony/yaml": "^6",
-        "tuupola/slim-basic-auth": "^3.3"
+        "symfony/yaml": "^6"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",

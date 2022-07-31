@@ -23,7 +23,6 @@ class CustomerReaderActionTest extends TestCase
         $this->insertFixtures([CustomerFixture::class]);
 
         $request = $this->createRequest('GET', '/api/customers/1');
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -46,7 +45,6 @@ class CustomerReaderActionTest extends TestCase
     public function testInvalidId(): void
     {
         $request = $this->createRequest('GET', '/api/customers/99');
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_BAD_REQUEST, $response->getStatusCode());

@@ -39,7 +39,6 @@ class CustomerUpdaterActionTest extends TestCase
             ]
         );
 
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         // Check response
@@ -82,7 +81,6 @@ class CustomerUpdaterActionTest extends TestCase
             ]
         );
 
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         // Check response

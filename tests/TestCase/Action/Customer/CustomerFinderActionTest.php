@@ -23,7 +23,6 @@ class CustomerFinderActionTest extends TestCase
         $this->insertFixtures([CustomerFixture::class]);
 
         $request = $this->createRequest('GET', '/api/customers');
-        $request = $this->withHttpBasicAuth($request);
         $response = $this->app->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -54,14 +53,5 @@ class CustomerFinderActionTest extends TestCase
             ],
             $response
         );
-    }
-
-    public function testListCustomersWithoutLogin(): void
-    {
-        $request = $this->createRequest('GET', '/api/customers');
-        $request = $this->withHttpBasicAuth($request)->withoutHeader('Authorization');
-        $response = $this->app->handle($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_UNAUTHORIZED, $response->getStatusCode());
     }
 }
