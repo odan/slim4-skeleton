@@ -7,9 +7,6 @@ nav_order: 1
 
 # Installation
 
-Run this command from the directory in which you want to install your new 
-Slim Framework application.
-
 **Step 1:** Create a new project:
 
 ```shell
@@ -28,7 +25,6 @@ sudo chmod -R 760 tmp/
 sudo chmod -R 760 logs/
 
 chmod +x bin/console.php
-chmod +x bin/setup.php
 ```
 
 **Step 3:** Setup database
@@ -36,15 +32,13 @@ chmod +x bin/setup.php
 Start the setup script and follow the instructions:
 
 ```bash
-php bin/setup.php
+php bin/console.php setup
 ```
 
-**Step 4:** Start
-
-To start the internal webserver, run:
+**Step 4:** Start the internal webserver
 
 ```
 composer start
 ```
 
-Then navigate to: `http://localhost:8080/`
+Then navigate to: <http://localhost:8080/>
