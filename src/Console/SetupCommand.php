@@ -39,32 +39,7 @@ final class SetupCommand extends Command
             }
 
             $this->askDbParameters();
-
-            $output->writeln('Connect to database server');
-            $pdo = $this->connectToDatabase();
-
-            if ($this->existsDatabase($pdo, $this->dbNameTest)) {
-                throw new UnexpectedValueException("The database [$this->dbNameTest] already exists.");
-            }
-
-            if ($this->existsDatabase($pdo, $this->dbName)) {
-                throw new UnexpectedValueException("The database [$this->dbName] already exists.");
-            }
-
-            $output->writeln('Create TEST database');
-            $this->createDatabase($pdo, $this->dbNameTest);
-            $output->writeln('<info>TEST database created successfully</info>');
-
-            $output->writeln('Create DEV database');
-            $this->createDatabase($pdo, $this->dbName);
-
-            $output->writeln('Create DEV tables');
-            $pdo->exec($this->createTableSql($this->dbName));
-            $pdo->exec($this->useSql($this->dbName));
-            $output->writeln('<info>DEV database created successfully</info>');
-
-            $output->writeln('Import database schema');
-            $pdo->exec((string)file_get_contents(__DIR__ . '/../../resources/schema/schema.sql'));
+            $this->setupDatabase($output);
 
             $output->writeln('Create config/env.php file');
             $this->safeEnvFile();
@@ -76,9 +51,6 @@ final class SetupCommand extends Command
             return 0;
         } catch (Exception $exception) {
             $output->writeln(sprintf('<error>%s</error>', $exception->getMessage()));
-            if ($exception->getPrevious()) {
-                $output->writeln($exception->getPrevious()->getMessage());
-            }
 
             return 1;
         }
@@ -161,5 +133,34 @@ final class SetupCommand extends Command
         $statement->execute();
 
         return !empty($statement->fetch());
+    }
+
+    private function setupDatabase(OutputInterface $output): void
+    {
+        $output->writeln('Connect to database server');
+        $pdo = $this->connectToDatabase();
+
+        if ($this->existsDatabase($pdo, $this->dbNameTest)) {
+            throw new UnexpectedValueException("The database [$this->dbNameTest] already exists.");
+        }
+
+        if ($this->existsDatabase($pdo, $this->dbName)) {
+            throw new UnexpectedValueException("The database [$this->dbName] already exists.");
+        }
+
+        $output->writeln('Create TEST database');
+        $this->createDatabase($pdo, $this->dbNameTest);
+        $output->writeln('<info>TEST database created successfully</info>');
+
+        $output->writeln('Create DEV database');
+        $this->createDatabase($pdo, $this->dbName);
+
+        $output->writeln('Create DEV tables');
+        $pdo->exec($this->createTableSql($this->dbName));
+        $pdo->exec($this->useSql($this->dbName));
+        $output->writeln('<info>DEV database created successfully</info>');
+
+        $output->writeln('Import database schema');
+        $pdo->exec((string)file_get_contents(__DIR__ . '/../../resources/schema/schema.sql'));
     }
 }
