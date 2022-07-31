@@ -84,6 +84,21 @@ final class SetupCommand extends Command
         }
     }
 
+    private function askDbParameters(): void
+    {
+        $this->dbHost = $this->ask('Enter the database hostname or ip address', '127.0.0.1');
+        $this->dbPort = $this->ask('Enter the database port', '3306');
+        $this->dbName = $this->ask('Enter the DEV database name', 'slim');
+        $this->dbNameTest = $this->ask('Enter the TEST database name', 'slim_test');
+        $this->dbUsername = $this->ask('Enter the database username', 'root');
+        $this->dbPassword = $this->ask('Enter the database password', '');
+    }
+
+    private function ask(string $question, string $default): string
+    {
+        return (string)readline(sprintf('%s [%s]:', $question, $default)) ?: $default;
+    }
+
     private function createTableSql(string $table): string
     {
         return sprintf('CREATE DATABASE IF NOT EXISTS `%s` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;', $table);
@@ -92,18 +107,6 @@ final class SetupCommand extends Command
     private function useSql(string $database): string
     {
         return sprintf('USE `%s`;', $database);
-    }
-
-    private function askDbParameters(): void
-    {
-        $this->dbHost = (string)readline('Enter the database hostname or ip address [127.0.0.1]:') ?: '127.0.0.1';
-        $this->dbPort = (string)readline('Enter the database port [3306]:') ?: '3306';
-        $this->dbName = (string)readline('Enter the DEV database name [slim]:') ?: 'slim';
-        $this->dbNameTest = (string)readline(
-            'Enter the TEST database name [slim_test]:'
-        ) ?: 'slim_test';
-        $this->dbUsername = (string)readline('Enter the database username [root]:') ?: 'root';
-        $this->dbPassword = (string)readline('Enter the database password [empty]:') ?: '';
     }
 
     private function safeEnvFile(): void
