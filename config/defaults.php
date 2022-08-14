@@ -12,9 +12,6 @@ date_default_timezone_set('Europe/Berlin');
 
 $settings = [];
 
-// Environment
-$settings['env'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
-
 // Error handler
 $settings['error'] = [
     // Should be set to false for the production environment
