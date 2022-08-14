@@ -1,7 +1,8 @@
 {
     "name": "odan/slim4-skeleton",
-    "type": "project",
     "description": "A Slim 4 skeleton",
+    "license": "MIT",
+    "type": "project",
     "keywords": [
         "slim-framework",
         "skeleton",
@@ -9,7 +10,6 @@
         "slim4",
         "apache"
     ],
-    "license": "MIT",
     "require": {
         "php": "^8.0",
         "ext-json": "*",
@@ -38,10 +38,6 @@
         "symfony/filesystem": "6.0.*",
         "symfony/finder": "6.0.*"
     },
-    "config": {
-        "process-timeout": 0,
-        "sort-packages": true
-    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -52,13 +48,17 @@
             "App\\Test\\": "tests/"
         }
     },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
     "scripts": {
-        "start": "php -S localhost:8080 -t public/",
         "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi",
         "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi",
-        "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
+        "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
+        "start": "php -S localhost:8080 -t public/",
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
         "test:all": [
             "@cs:check",
