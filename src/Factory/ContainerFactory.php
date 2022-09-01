@@ -6,17 +6,14 @@ use DI\Container;
 use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 
-/**
- * Container Factory.
- */
 final class ContainerFactory
 {
     /**
-     * Get container.
+     * Create a new container instance.
      *
      * @return ContainerInterface|Container The container
      */
-    public function createInstance(): ContainerInterface
+    public static function createInstance(): ContainerInterface
     {
         $containerBuilder = new ContainerBuilder();
 

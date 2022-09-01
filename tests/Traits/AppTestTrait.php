@@ -21,7 +21,6 @@ trait AppTestTrait
     use HttpJsonTestTrait;
     use LoggerTestTrait;
     use MockTestTrait;
-    use RouteTestTrait;
 
     protected App $app;
 
@@ -32,7 +31,7 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        $container = (new ContainerFactory())->createInstance();
+        $container = ContainerFactory::createInstance();
         $this->app = $container->get(App::class);
 
         $this->setUpContainer($container);

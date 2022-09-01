@@ -14,7 +14,7 @@ if ($env) {
 }
 
 /** @var ContainerInterface $container */
-$container = (new ContainerFactory())->createInstance();
+$container = ContainerFactory::createInstance();
 
 try {
     /** @var Application $application */
