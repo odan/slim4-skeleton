@@ -13,7 +13,7 @@ return function (array $settings): array {
     $settings['logger'] = [
         'test' => new \Monolog\Logger('test', [
             new \Monolog\Handler\TestHandler(),
-            new \Monolog\Handler\StreamHandler('php://output'),
+            // new \Monolog\Handler\StreamHandler('php://output', \Monolog\Level::Warning),
         ]),
     ];
 

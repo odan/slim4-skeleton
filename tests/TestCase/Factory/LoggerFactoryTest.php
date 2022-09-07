@@ -6,6 +6,7 @@ use App\Factory\LoggerFactory;
 use App\Test\Traits\AppTestTrait;
 use DateTimeImmutable;
 use Monolog\Handler\TestHandler;
+use Monolog\Level;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -38,12 +39,7 @@ class LoggerFactoryTest extends TestCase
         $this->expectOutputRegex('/INFO: Info message/');
         $this->expectOutputRegex('/ERROR: Error message/');
 
-        $settings = [
-            'path' => $this->temp,
-            'level' => 0,
-        ];
-
-        $factory = new LoggerFactory($settings);
+        $factory = new LoggerFactory(Level::Debug, $this->temp);
 
         $testHandler = new TestHandler();
         $factory

@@ -21,22 +21,18 @@ final class LoggerFactory
 
     private ?LoggerInterface $testLogger;
 
-    public function __construct(array $settings = [])
+    public function __construct(Level $level, string $path, LoggerInterface $testLogger = null)
     {
-        $this->path = (string)($settings['path'] ?? '');
-        $this->level = ($settings['level'] ?? Level::Debug);
-
-        // This can be used for testing to make the Factory testable
-        if (isset($settings['test'])) {
-            $this->testLogger = $settings['test'];
-        }
+        $this->path = $path;
+        $this->level = $level;
+        $this->testLogger = $testLogger;
     }
 
-    /**
-     * Build the logger.
-     *
-     * @param string|null $name
-     */
+    public function getTestLogger(): ?LoggerInterface
+    {
+        return $this->testLogger;
+    }
+
     public function createLogger(string $name = null): LoggerInterface
     {
         if (isset($this->testLogger)) {
@@ -54,11 +50,6 @@ final class LoggerFactory
         return $logger;
     }
 
-    /**
-     * Add a handler.
-     *
-     * @param HandlerInterface $handler
-     */
     public function addHandler(HandlerInterface $handler): self
     {
         $this->handler[] = $handler;
@@ -66,16 +57,9 @@ final class LoggerFactory
         return $this;
     }
 
-    /**
-     * Add rotating file logger handler.
-     *
-     * @param string $filename
-     * @param int|null $level
-     */
-    public function addFileHandler(string $filename, int $level = null): self
+    public function addFileHandler(string $filename, Level $level = null): self
     {
         $filename = sprintf('%s/%s', $this->path, $filename);
-        /** @phpstan-ignore-next-line */
         $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level ?? $this->level, true, 0777);
 
         // The last "true" here tells monolog to remove empty []'s
@@ -86,14 +70,8 @@ final class LoggerFactory
         return $this;
     }
 
-    /**
-     * Add a console logger.
-     *
-     * @param int|null $level
-     */
-    public function addConsoleHandler(int $level = null): self
+    public function addConsoleHandler(Level $level = null): self
     {
-        /** @phpstan-ignore-next-line */
         $streamHandler = new StreamHandler('php://output', $level ?? $this->level);
         $streamHandler->setFormatter(new LineFormatter(null, null, false, true));
 
