@@ -4,50 +4,44 @@ namespace App\Test\Traits;
 
 use App\Factory\LoggerFactory;
 use Monolog\Handler\TestHandler;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
+use UnexpectedValueException;
 
-/**
- * Test trait.
- */
 trait LoggerTestTrait
 {
     protected TestHandler $testHandler;
 
-    /**
-     * Add test logger.
-     *
-     * @return void
-     */
     protected function setUpLogger(): void
     {
-        $this->testHandler = new TestHandler();
-        $logger = new Logger('', [$this->testHandler]);
+        $loggerFactory = $this->container->get(LoggerFactory::class);
+        $handlers = $loggerFactory->getTestLogger()->getHandlers();
 
-        $loggerFactory = new LoggerFactory(['test' => $logger]);
-        $this->setContainerValue(LoggerFactory::class, $loggerFactory);
+        foreach ($handlers as $handler) {
+            if ($handler instanceof TestHandler) {
+                $this->testHandler = $handler;
+
+                return;
+            }
+        }
+
+        throw new UnexpectedValueException('The monolog test handler is not configured');
     }
 
-    /**
-     * Get test logger handler.
-     *
-     * @return TestHandler The logger
-     */
     protected function getLogger(): TestHandler
     {
         return $this->testHandler;
     }
 
     /**
-     * Get test logger error messages.
-     *
-     * @return array The error messages
+     * @return array<LogRecord>
      */
     protected function getLoggerErrors(): array
     {
         $errors = [];
 
         foreach ($this->testHandler->getRecords() as $record) {
-            if ($record['level_name'] === 'ERROR') {
+            if ($record->level === Level::Error) {
                 $errors[] = $record;
             }
         }

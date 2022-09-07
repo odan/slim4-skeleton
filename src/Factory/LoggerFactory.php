@@ -6,32 +6,25 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
-/**
- * Factory.
- */
 final class LoggerFactory
 {
     private string $path;
 
-    private int $level;
+    private Level $level;
 
     private array $handler = [];
 
     private ?LoggerInterface $testLogger;
 
-    /**
-     * The constructor.
-     *
-     * @param array $settings The settings
-     */
     public function __construct(array $settings = [])
     {
         $this->path = (string)($settings['path'] ?? '');
-        $this->level = (int)($settings['level'] ?? Logger::DEBUG);
+        $this->level = ($settings['level'] ?? Level::Debug);
 
         // This can be used for testing to make the Factory testable
         if (isset($settings['test'])) {
@@ -42,9 +35,7 @@ final class LoggerFactory
     /**
      * Build the logger.
      *
-     * @param string|null $name The logging channel
-     *
-     * @return LoggerInterface The logger
+     * @param string|null $name
      */
     public function createLogger(string $name = null): LoggerInterface
     {
@@ -66,9 +57,7 @@ final class LoggerFactory
     /**
      * Add a handler.
      *
-     * @param HandlerInterface $handler The handler
-     *
-     * @return self The logger factory
+     * @param HandlerInterface $handler
      */
     public function addHandler(HandlerInterface $handler): self
     {
@@ -80,10 +69,8 @@ final class LoggerFactory
     /**
      * Add rotating file logger handler.
      *
-     * @param string $filename The filename
-     * @param int|null $level The level (optional)
-     *
-     * @return self The logger factory
+     * @param string $filename
+     * @param int|null $level
      */
     public function addFileHandler(string $filename, int $level = null): self
     {
@@ -102,9 +89,7 @@ final class LoggerFactory
     /**
      * Add a console logger.
      *
-     * @param int|null $level The level (optional)
-     *
-     * @return self The logger factory
+     * @param int|null $level
      */
     public function addConsoleHandler(int $level = null): self
     {

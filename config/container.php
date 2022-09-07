@@ -3,6 +3,7 @@
 use App\Factory\LoggerFactory;
 use App\Handler\DefaultErrorHandler;
 use Cake\Database\Connection;
+use Monolog\Level;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -64,7 +65,13 @@ return [
 
     // The logger factory
     LoggerFactory::class => function (ContainerInterface $container) {
-        return new LoggerFactory($container->get('settings')['logger']);
+        $settings = $container->get('settings')['logger'];
+
+        return new LoggerFactory(
+            $settings['level'] ?? Level::Debug,
+            $settings['path'] ?? 'vfs://root/logs',
+            $settings['test'] ?? null
+        );
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {

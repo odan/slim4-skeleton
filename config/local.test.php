@@ -11,9 +11,10 @@ return function (array $settings): array {
 
     // Mocked Logger settings
     $settings['logger'] = [
-        'path' => '',
-        'level' => 0,
-        'test' => new \Psr\Log\NullLogger(),
+        'test' => new \Monolog\Logger('test', [
+            new \Monolog\Handler\TestHandler(),
+            new \Monolog\Handler\StreamHandler('php://output'),
+        ]),
     ];
 
     // API credentials for phpunit

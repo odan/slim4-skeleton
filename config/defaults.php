@@ -27,7 +27,7 @@ $settings['logger'] = [
     // Log file location
     'path' => __DIR__ . '/../logs',
     // Default log level
-    'level' => \Monolog\Logger::INFO,
+    'level' => \Monolog\Level::Info,
 ];
 
 // Database settings
