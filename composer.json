@@ -36,7 +36,7 @@
         "symfony/console": "6.0.*",
         "symfony/event-dispatcher": "6.0.*",
         "symfony/filesystem": "6.0.*",
-        "symfony/finder": "6.0.*"
+        "symfony/finder": "6.1.*"
     },
     "autoload": {
         "psr-4": {
