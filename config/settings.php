@@ -1,7 +1,7 @@
 <?php
 
 // Load .env file if located in the project root directory
-// (\Dotenv\Dotenv::createImmutable(__DIR__ . '/../'))->safeLoad();
+// (\Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'))->safeLoad();
 
 // Define environment
 $_ENV['APP_ENV'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
