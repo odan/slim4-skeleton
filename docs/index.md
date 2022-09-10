@@ -14,9 +14,7 @@ for building awesome APIs, websites and web applications.
 
 ## Installation
 
-* [Composer](installation.md#installation-via-composer)
-* [Docker](installation.md#installation-via-docker)
-* [Vagrant](installation.md#installation-via-vagrant)
+See [here](installation.md)
 
 ## Support
 
