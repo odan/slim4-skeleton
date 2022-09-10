@@ -82,7 +82,7 @@ $this->logger->info('File and console output');
 
 ## Read more
 
-* [Logging with Monolog](https://odan.github.io/2020/05/25/slim4-logging.html)
-* [Logging with Sentry](https://odan.github.io/2020/06/18/slim4-sentry.html)
-* [Error Handling](https://odan.github.io/2020/05/27/slim4-error-handling.html)
+* [Slim 4 - Logging with Monolog](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - Logging with Sentry](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - Error Handling](https://ko-fi.com/s/5f182b4b22) (eBook)
 

@@ -19,7 +19,8 @@ and transforms the result into a proper JSON response.
 
 **Read more**
 
-* [Slim 4 - CakePHP Validation](https://odan.github.io/2020/10/18/slim4-cakephp-validation.html)
+* [Slim 4 - Symfony Validator](https://ko-fi.com/s/5f182b4b22)
+* [Slim 4 - CakePHP Validation](https://ko-fi.com/s/5f182b4b22)
 
 ## OpenAPI validation
 

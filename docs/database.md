@@ -42,17 +42,18 @@ This skeleton contains [cakephp/database](https://github.com/cakephp/database) a
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
 * [Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)
-* [Slim 4 - CakePHP Query Builder](https://odan.github.io/2019/12/03/slim4-cakephp-query-builder.html)
+* [Slim 4 - CakePHP Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
 
 It's possible to replace the existing QueryBuilder with another component as listed below:
 
-* [Laminas Query Builder](https://odan.github.io/2019/12/01/slim4-laminas-db-query-builder-setup.html)
-* [Laravel Query Builder](https://odan.github.io/2019/12/03/slim4-eloquent.html)
-* [Doctrine DBAL](https://odan.github.io/2019/12/05/slim4-doctrine-dbal.html)
-* [PDO](https://odan.github.io/2017/01/07/basic-crud-operations-with-pdo.html)
+* [Laminas Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Laravel Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Doctrine DBAL](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Cycle Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [PDO](https://ko-fi.com/s/5f182b4b22) (eBook)
 
-## Multi tenancy
+## Read more
 
-This article shows how to handle multiple database connection.
-
-* [Multiple database connections](https://odan.github.io/2020/04/05/slim4-multiple-pdo-database-connections.html)
+* [Slim 4 - Multiple database connections](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - Doctrine CouchDB](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - Elasticsearch](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)

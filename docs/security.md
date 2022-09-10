@@ -45,24 +45,28 @@ are a very good tools to work with JSON Web Tokens.
 
 **Read more:** 
 
+* [Slim 4 - Firebase JWT](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - Mezzio OAuth2 Server](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - JSON Web Token (JWT)](https://ko-fi.com/s/5f182b4b22) (eBook)
 * [OAuth Libraries for PHP](https://oauth.net/code/php/)
 * [Auth0 PHP SDK](https://auth0.com/docs/libraries/auth0-php)
-* [Slim 4 - JSON Web Token (JWT)](https://ko-fi.com/s/5f182b4b22)
 * [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
 * [Swagger - OAuth 2.0](https://swagger.io/docs/specification/authentication/oauth2/)
 
 ## SameSite Cookies
 
+* [Slim 4 - SameSite Cookies](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
 * [selective/samesite-cookie](https://github.com/selective-php/samesite-cookie)
 
 ## CSRF protection
 
+* [Slim 4 - CSRF](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
 * [Slim Framework CSRF Protection](https://github.com/slimphp/Slim-Csrf)
 
 ## Cross-Origin Resource Sharing (CORS)
 
 * [Setting up CORS](https://www.slimframework.com/docs/v4/cookbook/enable-cors.html)
-* [Slim 4 - CORS](https://odan.github.io/2019/11/24/slim4-cors.html)
+* [Slim 4 - CORS](https://ko-fi.com/s/5f182b4b22) (eBook)
 * [middlewares/cors](https://github.com/middlewares/cors)
 
 ## Cross Site Scripting Prevention
@@ -80,7 +84,7 @@ or by using libraries that are specifically designed to sanitize HTML input:
 
 ## More Resources
 
-* [Slim 4 - Spam Protection](https://odan.github.io/2021/01/16/slim4-spam-protection.html)
+* [Slim 4 - Spam Protection](https://ko-fi.com/s/5f182b4b22) (eBook)
 * [middlewares/firewall](https://github.com/middlewares/firewall)
 * [PSR-15 HTTP Middlewares](https://github.com/middlewares)
 * [PHP Middleware](https://github.com/php-middleware)

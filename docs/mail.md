@@ -21,7 +21,7 @@ Symfony’s Mailer & Mime components form a powerful system
 for creating and sending emails - complete with support for multipart messages, 
 Twig integration, CSS inlining, file attachments, signed messages and a lot more.
 
-**Read more**
+## Read more
 
+* [Slim 4 - Mailer](https://ko-fi.com/s/5f182b4b22) (eBook)
 * [Symfony Mailer](https://symfony.com/doc/current/mailer.html)
-* [Slim 4 - Mailer](https://odan.github.io/2020/04/11/slim4-sending-emails.html)

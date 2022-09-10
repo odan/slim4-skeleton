@@ -17,11 +17,12 @@ that can be accessed from subsequent requests.
 ## Packages
 
 * [odan/session](https://github.com/odan/session) - Sessions, Flash messages and middlewares
-* [middlewares/php-session](https://github.com/middlewares/php-session) - PHP Session middleware
-* [RKA Slim Session Middleware](https://github.com/akrabat/rka-slim-session-middleware)
+* [RKA Slim Session Middleware](https://github.com/akrabat/rka-slim-session-middleware) - Session handler and middleware
 * [slim/flash](https://github.com/slimphp/Slim-Flash) - Slim Framework flash messages service provider
+* [middlewares/php-session](https://github.com/middlewares/php-session) - PHP Session middleware
 
 ## Read more
 
-* [Slim 4 - Session](https://odan.github.io/2021/01/15/slim4-session.html)
-  
+* [Slim 4 - odan/session](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - RKA Slim Session Middleware](https://ko-fi.com/s/e592c10b5f) (eBook)
+* [Slim 4 - Flash Messages](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)

@@ -58,3 +58,7 @@ shows an example to be friendly for Heroku deployment.
 Especially the [deployment.yml](https://github.com/peter279k/slim4-skeleton-heroku/blob/master/.github/workflows/deployment.yml)
 file shows how to build and deploy the application.
 The demonstration URL is available [here](https://slim4-skeleton-app.herokuapp.com/).
+
+## Read more
+
+* [Slim 4 - Apache Ant](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)

@@ -12,8 +12,7 @@ The Domain layer is the core of the application.
 
 Here is the right place for complex **business logic** e.g. calculation, validation, transaction handling, file creation etc.
 Business logic is a step-up on complexity over CRUD (Create, Read, Update and Delete) operations.
-A service can be called directly from the action handler, a service, the console (CLI) and
-of course from a test.
+A service can be called directly from the action handler, a service, the console and from a test.
 
 ## Domain vs. Infrastructure
 
@@ -24,7 +23,7 @@ for example the database, sending emails etc.
 An Infrastructure service can be:
 
 * Implementations for boundary objects, e.g. the repository classes (communication with the database)
-* Web controllers (actions), CLI, etc.
+* Web controllers (actions), console, etc.
 * Framework-specific code
 
 By separating domain from infrastructure code you automatically **increase testability**

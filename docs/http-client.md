@@ -36,7 +36,8 @@ $client = new Client([
 $response = $client->request('GET', 'anything');
 ```
 
-**Read more**
+## Read more
 
 * [Guzzle Documentation](https://docs.guzzlephp.org/en/stable/quickstart.html)
-* [Guzzle Client Example](https://odan.github.io/2021/01/16/slim4-spam-protection.html)
+* [Slim 4 - Guzzle](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - Stripe](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)

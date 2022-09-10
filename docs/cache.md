@@ -20,6 +20,8 @@ for HTTP caching. You can use this component to create and return responses that
 contain `Cache`, `Expires`, `ETag`, and `Last-Modified` headers that control
 when and how long application output is retained by client-side caches. You may have to set your php.ini setting "session.cache_limiter" to an empty string in order to get this working without interferences.
 
+* [Slim 4 - HTTP Caching](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+
 ## Storage Caching
 
 The cached data is usually stored in a very fast data store such as Memcached or Redis.
@@ -29,7 +31,6 @@ components provides a [PSR-6](https://www.php-fig.org/psr/psr-6/) and
 [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant API for various cache backends, allowing you to take advantage
 of their blazing fast data retrieval and speed up your web application.
 
-## Read more
-
-* [Slim 4 - Redis](https://odan.github.io/2021/06/14/slim-redis.html)
-* [Slim 4 - Memcached](https://odan.github.io/2021/06/20/slim-memcached.html)
+* [Slim 4 - Symfony Cache](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - Redis](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - Memcached](https://ko-fi.com/s/5f182b4b22) (eBook)

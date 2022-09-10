@@ -54,3 +54,6 @@ Create a copy of the file `config/env.example.php` and rename it to `config/env.
 The `env.php` file is generally kept out of version control 
 since it can contain sensitive API keys and passwords.
  
+## Read more
+
+* [Slim 4 - Environments and Configuration](https://ko-fi.com/s/5f182b4b22) (eBook)

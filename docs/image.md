@@ -1,4 +1,4 @@
----
+    ---
 layout: default
 title: Image
 parent: Advanced
@@ -16,4 +16,4 @@ processing libraries GD Library and Imagick.
 
 ## Read more
 
-* [Slim 4 - Images](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
+* [Slim 4 - Images](https://ko-fi.com/s/5f182b4b22) (eBook)

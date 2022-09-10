@@ -94,6 +94,7 @@ Methods:
 
 ## Building a filetype specific response
 
-* [Image files](https://odan.github.io/2020/05/07/slim4-working-with-images.html)
-* [Excel files](https://odan.github.io/2017/12/16/creating-and-downloading-excel-files-with-slim.html)
-* [ZIP files](https://github.com/selective-php/zip-responder)
+* [Slim 4 - Image files](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Slim 4 - Excel files](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - PDF files](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Slim 4 - ZIP files](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)

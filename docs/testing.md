@@ -239,4 +239,4 @@ $this->mockMethod([UserReaderRepository::class, 'getUserById'])
 
 ## Read more
 
-* [Slim 4 - Testing](https://odan.github.io/2020/06/09/slim4-testing.html)
+* [Slim 4 - Testing with PHPUnit](https://ko-fi.com/s/5f182b4b22) (eBook)

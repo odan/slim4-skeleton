@@ -12,7 +12,7 @@ The Slim Framework handles the routing and delegates the request to the appropri
 
 ## Routes
 
-All the routes are defined in [config/routes.php](https://github.com/odan/slim4-skeleton/blob/master/config/routes.php).
+All routes are defined in [config/routes.php](https://github.com/odan/slim4-skeleton/blob/master/config/routes.php).
 
 Each route will be defined by a method that corresponds to the HTTP verb. 
 
