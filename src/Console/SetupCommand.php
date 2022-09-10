@@ -119,7 +119,7 @@ final class SetupCommand extends Command
     private function connectToDatabase(): PDO
     {
         return new PDO(
-            "mysql:host=$this->dbHost;charset=utf8mb4",
+            "mysql:host=$this->dbHost;port=$this->dbPort;charset=utf8mb4",            
             $this->dbUsername,
             $this->dbPassword,
             $this->pdoOptions
