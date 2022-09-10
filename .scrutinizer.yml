@@ -12,7 +12,10 @@ tools:
 
 build:
   environment:
-    php: 8.1.2
+    php:
+      version: 8.1.2
+      ini:
+        xdebug.mode: coverage
     mysql: 5.7
     node: false
     postgresql: false
@@ -29,6 +32,8 @@ build:
       tests:
         override:
           - php-scrutinizer-run
+        services:
+          mysql: 5.7
   dependencies:
     before:
       - composer self-update
