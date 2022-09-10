@@ -11,6 +11,8 @@ tools:
   external_code_coverage: false
 
 build:
+  services:
+    mysql: 5.7
   environment:
     php:
       version: 8.1.2
@@ -32,8 +34,6 @@ build:
       tests:
         override:
           - php-scrutinizer-run
-        services:
-          mysql: 5.7
   dependencies:
     before:
       - composer self-update
