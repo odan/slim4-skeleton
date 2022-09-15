@@ -20,6 +20,6 @@ final class ExampleCommand extends Command
     {
         $output->writeln('<info>Hello, World!</info>');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
