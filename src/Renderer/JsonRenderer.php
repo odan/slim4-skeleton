@@ -27,7 +27,9 @@ final class JsonRenderer
         int $options = 0
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((string)json_encode($data, JSON_PARTIAL_OUTPUT_ON_ERROR | $options));
+        $response->getBody()->write(
+            (string)json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR | $options)
+        );
 
         return $response;
     }
