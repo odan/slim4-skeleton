@@ -1,8 +1,15 @@
 <?php
 
 use App\Factory\LoggerFactory;
+use App\Filesystem\Storage;
 use App\Handler\DefaultErrorHandler;
+use App\Http\Client\DictionaryApiClient;
+use App\Http\Client\DictionaryApiClientFactory;
 use Cake\Database\Connection;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
+use League\Flysystem\Visibility;
 use Monolog\Level;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
@@ -125,5 +132,43 @@ return [
         }
 
         return $application;
+    },
+
+    DictionaryApiClientFactory::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['foo_api_client'];
+
+        return new DictionaryApiClientFactory($settings);
+    },
+
+    DictionaryApiClient::class => function (ContainerInterface $container) {
+        $client = $container->get(DictionaryApiClientFactory::class)->createClient();
+
+        return new DictionaryApiClient($client);
+    },
+
+    LocalFilesystemAdapter::class => function () {
+        return function (array $config) {
+            return new LocalFilesystemAdapter(
+                $config['root'] ?? '',
+                PortableVisibilityConverter::fromArray(
+                    $config['permissions'] ?? [],
+                    $config['visibility'] ?? Visibility::PUBLIC
+                ),
+                $config['lock'] ?? LOCK_EX,
+                $config['link'] ?? LocalFilesystemAdapter::DISALLOW_LINKS
+            );
+        };
+    },
+
+    Storage::class => function (ContainerInterface $container) {
+        // Read storage adapter settings
+        $settings = $container->get('settings')['storage'];
+        $adapter = $settings['adapter'];
+        $config = $settings['config'];
+
+        // Create filesystem with
+        $filesystem = new Filesystem($container->get($adapter)($config));
+
+        return new Storage($filesystem);
     },
 ];

@@ -23,7 +23,7 @@ The default console command class directory is: `src/Console`
 To start the console and list all available commands, run:
 
 ``` bash
-php bin/console.php
+php bin/console
 ```
 
 ## Creating a console command
@@ -72,7 +72,7 @@ $settings['commands'] = [
 To start to example command, run:
 
 ``` bash
-php bin/console.php example
+php bin/console example
 ```
 
 The output:

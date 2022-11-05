@@ -16,8 +16,6 @@ class RendererTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testEncodeJson(): void
     {
@@ -33,8 +31,6 @@ class RendererTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testRedirectUrl(): void
     {
@@ -49,8 +45,6 @@ class RendererTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testRedirectUrlWithQueryString(): void
     {
@@ -66,8 +60,6 @@ class RendererTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testRedirectRouteName(): void
     {

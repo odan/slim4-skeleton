@@ -21,8 +21,6 @@ class LoggerFactoryTest extends TestCase
 
     /**
      * Set up.
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -31,8 +29,6 @@ class LoggerFactoryTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function test(): void
     {

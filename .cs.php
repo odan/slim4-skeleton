@@ -37,6 +37,9 @@ return (new Config())
                 'imports_order' => ['class', 'const', 'function']
             ],
             'single_line_throw' => false,
+            'fully_qualified_strict_types' => true,
+            'no_superfluous_phpdoc_tags' => true,
+            'global_namespace_import' => false,
         ]
     )
     ->setFinder(

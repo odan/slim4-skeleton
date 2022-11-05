@@ -32,7 +32,7 @@ chmod +x bin/console.php
 Start the setup script and follow the instructions:
 
 ```bash
-php bin/console.php setup
+php bin/console setup
 ```
 
 **Note:** The `setup` command is useful for setting up a project on 

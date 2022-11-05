@@ -26,8 +26,6 @@ trait AppTestTrait
 
     /**
      * Before each test.
-     *
-     * @return void
      */
     protected function setUp(): void
     {
