@@ -67,32 +67,4 @@ $settings['commands'] = [
     \App\Console\SetupCommand::class,
 ];
 
-$settings['foo_api_client'] = [
-    'base_uri' => 'https://api.dictionaryapi.dev/api/v2/',
-    'headers' => [
-        'Accept' => 'application/json',
-        'Content-Type' => 'application/json',
-    ],
-];
-
-$settings['storage'] = [
-    'adapter' => \League\Flysystem\Local\LocalFilesystemAdapter::class,
-    'config' => [
-        'root' => realpath(__DIR__ . '/../storage'),
-        'permissions' => [
-            'file' => [
-                'public' => 0755,
-                'private' => 0755,
-            ],
-            'dir' => [
-                'public' => 0755,
-                'private' => 0755,
-            ],
-        ],
-        'visibility' => \League\Flysystem\Visibility::PUBLIC,
-        'lock' => LOCK_EX,
-        'link' => \League\Flysystem\Local\LocalFilesystemAdapter::DISALLOW_LINKS,
-    ],
-];
-
 return $settings;
