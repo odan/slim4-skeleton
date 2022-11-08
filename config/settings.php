@@ -1,6 +1,6 @@
 <?php
 
-// Load .env file if located in the project root directory
+// Load .env file if located above the project root directory
 // (\Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'))->safeLoad();
 
 // Define environment
@@ -10,10 +10,18 @@ $_ENV['APP_ENV'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
 $settings = require __DIR__ . '/defaults.php';
 
 // Overwrite default settings with environment specific local settings
-$configFiles = sprintf('%s/{local.%s,env,../../env}.php', __DIR__, $_ENV['APP_ENV']);
+$configFiles = [
+    __DIR__ . sprintf('/local.%s.php', $_ENV['APP_ENV']),
+    __DIR__ . '/env.php',
+    __DIR__ . '/../../env.php',
+];
 
-foreach (glob($configFiles, GLOB_BRACE) as $file) {
-    $local = require $file;
+foreach ($configFiles as $configFile) {
+    if (!file_exists($configFile)) {
+        continue;
+    }
+
+    $local = require $configFile;
     if (is_callable($local)) {
         $settings = $local($settings);
     }
