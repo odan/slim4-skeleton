@@ -1,9 +1,9 @@
 <?php
 
 // Load .env file if located above the project root directory
-// (\Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'))->safeLoad();
+// \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../')->safeLoad();
 
-// Define environment
+// Detect environment
 $_ENV['APP_ENV'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
 
 // Load default settings
