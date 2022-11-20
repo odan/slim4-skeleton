@@ -5,7 +5,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 $envFiles = [
     __DIR__ . '/.env',
-    __DIR__ . '/../../.env'
+    __DIR__ . '/../../.env',
 ];
 
 if (class_exists(Dotenv::class)) {
