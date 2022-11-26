@@ -30,7 +30,7 @@
         "friendsofphp/php-cs-fixer": "^3",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "1.*",
-        "phpunit/phpunit": "^8 || ^9",
+        "phpunit/phpunit": "^9 || ^10",
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
         "symfony/console": "6.0.*",
