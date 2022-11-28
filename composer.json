@@ -31,7 +31,7 @@
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "1.*",
         "phpunit/phpunit": "^9 || ^10",
-        "selective/test-traits": "^2",
+        "selective/test-traits": "^3",
         "squizlabs/php_codesniffer": "^3",
         "symfony/console": "6.0.*",
         "symfony/dotenv": "^6.1",
