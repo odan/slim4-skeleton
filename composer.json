@@ -33,7 +33,7 @@
         "phpunit/phpunit": "^9 || ^10",
         "selective/test-traits": "^2",
         "squizlabs/php_codesniffer": "^3",
-        "symfony/console": "6.0.*",
+        "symfony/console": "6.2.*",
         "symfony/dotenv": "^6.1",
         "symfony/event-dispatcher": "6.0.*",
         "symfony/filesystem": "6.0.*",
