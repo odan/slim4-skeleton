@@ -7,11 +7,25 @@ nav_order: 1
 
 # Installation
 
+The Slim Framework is a popular PHP micro-framework 
+for building web applications. To set up this Slim Framework 
+skeleton project, you will need to have PHP and Composer 
+installed on your system.
+
 **Step 1:** Create a new project:
 
+Open a terminal and navigate to the directory where you 
+want to create your new Slim Framework project.
+
+Run the following Composer command to create a new project:
+
 ```shell
-composer create-project odan/slim4-skeleton my-app
+composer create-project odan/slim4-skeleton [my-app-name]
 ```
+
+Replace `[my-app-name]` with the desired name for your project. 
+This will create a new directory with the specified name 
+and install the required dependencies.
 
 **Step 2:** Set permissions *(Linux only)*
 
@@ -42,11 +56,18 @@ instead.
 
 **Step 4:** Start the internal webserver
 
+Once the installation is complete, navigate to the newly 
+created directory and start the built-in PHP development 
+server by running the following command:
+
 ```
 composer start
 ```
 
-Then navigate to: <http://localhost:8080/>
+This will start the development server on port 8080 of 
+your local machine. You can now access your 
+application by visiting <http://localhost:8080>
+in your web browser.
 
 **Note:** The PHP internal webserver is designed for
 application development, testing or application demonstrations.
