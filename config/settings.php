@@ -18,7 +18,7 @@ if (class_exists(Dotenv::class)) {
 }
 
 // Detect environment
-$_ENV['APP_ENV'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'dev';
+$_ENV['APP_ENV'] ??= $_SERVER['APP_ENV'] ?? 'dev';
 
 // Load default settings
 $settings = require __DIR__ . '/defaults.php';

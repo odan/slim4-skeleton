@@ -21,9 +21,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 return [
     // Application settings
-    'settings' => function () {
-        return require __DIR__ . '/settings.php';
-    },
+    'settings' => fn() => require __DIR__ . '/settings.php',
 
     App::class => function (ContainerInterface $container) {
         $app = AppFactory::createFromContainer($container);

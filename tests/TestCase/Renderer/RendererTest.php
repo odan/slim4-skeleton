@@ -68,9 +68,7 @@ class RendererTest extends TestCase
 
         $this->app->get(
             '/foo',
-            function ($request, $response) use ($renderer) {
-                return $renderer->redirectFor($response, 'foo');
-            }
+            fn ($request, $response) => $renderer->redirectFor($response, 'foo')
         )->setName('foo');
 
         $request = $this->createRequest('GET', '/foo');
