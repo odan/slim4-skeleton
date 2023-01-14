@@ -6,7 +6,6 @@ use App\Factory\LoggerFactory;
 use Monolog\Handler\TestHandler;
 use Monolog\Level;
 use Monolog\LogRecord;
-use UnexpectedValueException;
 
 trait LoggerTestTrait
 {
@@ -14,18 +13,16 @@ trait LoggerTestTrait
 
     protected function setUpLogger(): void
     {
-        $loggerFactory = $this->container->get(LoggerFactory::class);
-        $handlers = $loggerFactory->getTestLogger()->getHandlers();
+        $this->testHandler = new TestHandler();
 
-        foreach ($handlers as $handler) {
-            if ($handler instanceof TestHandler) {
-                $this->testHandler = $handler;
+        $settings = [
+            // Add only this TestHandler
+            'test' => $this->testHandler,
+        ];
 
-                return;
-            }
-        }
+        $factory = new LoggerFactory($settings);
 
-        throw new UnexpectedValueException('The monolog test handler is not configured');
+        $this->container->set(LoggerFactory::class, $factory);
     }
 
     protected function getLogger(): TestHandler

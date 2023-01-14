@@ -19,24 +19,19 @@ final class LoggerFactory
 
     private array $handler = [];
 
-    private ?LoggerInterface $testLogger;
+    private ?HandlerInterface $test = null;
 
-    public function __construct(Level $level, string $path, LoggerInterface $testLogger = null)
+    public function __construct(array $settings)
     {
-        $this->path = $path;
-        $this->level = $level;
-        $this->testLogger = $testLogger;
-    }
-
-    public function getTestLogger(): ?LoggerInterface
-    {
-        return $this->testLogger;
+        $this->path = $settings['path'] ?? 'vfs://root/logs';
+        $this->level = $settings['level'] ?? Level::Debug;
+        $this->test = $settings['test'] ?? null;
     }
 
     public function createLogger(string $name = null): LoggerInterface
     {
-        if (isset($this->testLogger)) {
-            return $this->testLogger;
+        if ($this->test) {
+            $this->handler = [$this->test];
         }
 
         $logger = new Logger($name ?: Uuid::v4()->toRfc4122());

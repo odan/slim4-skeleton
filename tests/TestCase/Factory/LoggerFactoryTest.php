@@ -35,13 +35,20 @@ class LoggerFactoryTest extends TestCase
         $this->expectOutputRegex('/INFO: Info message/');
         $this->expectOutputRegex('/ERROR: Error message/');
 
-        $factory = new LoggerFactory(Level::Debug, $this->temp);
-
         $testHandler = new TestHandler();
+
+        $settings = [
+            'level' => Level::Debug,
+            'path' => $this->temp ?? '',
+            'test' => null,
+        ];
+
+        $factory = new LoggerFactory($settings);
+
         $factory
-            ->addHandler($testHandler)
             ->addFileHandler('test.log')
-            ->addConsoleHandler();
+            ->addConsoleHandler()
+            ->addHandler($testHandler);
 
         $logger = $factory->createLogger();
         $logger->info('Info message');
