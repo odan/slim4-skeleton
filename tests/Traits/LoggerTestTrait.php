@@ -22,7 +22,7 @@ trait LoggerTestTrait
 
         $factory = new LoggerFactory($settings);
 
-        $this->container->set(LoggerFactory::class, $factory);
+        $this->setContainerValue(LoggerFactory::class, $factory);
     }
 
     protected function getLogger(): TestHandler
