@@ -65,11 +65,7 @@ return [
     LoggerFactory::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['logger'];
 
-        return new LoggerFactory(
-            $settings['level'] ?? Level::Debug,
-            $settings['path'] ?? 'vfs://root/logs',
-            $settings['test'] ?? null
-        );
+        return new LoggerFactory($settings);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {
