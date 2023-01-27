@@ -62,7 +62,7 @@ return [
 
     // The logger factory
     LoggerFactory::class => function (ContainerInterface $container) {
-        return new LoggerFactory($$container->get('settings')['logger']);
+        return new LoggerFactory($container->get('settings')['logger']);
     },
 
     BasePathMiddleware::class => function (ContainerInterface $container) {
