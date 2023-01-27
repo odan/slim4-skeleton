@@ -16,20 +16,18 @@ final class JsonRenderer
      * response to the client.
      *
      * @param ResponseInterface $response The response
-     * @param mixed|null $data The data
+     * @param mixed $data The data
      * @param int $options Json encoding options
      *
      * @return ResponseInterface The response
      */
     public function json(
         ResponseInterface $response,
-        $data = null,
-        int $options = 0
+        mixed $data = null,
+        int $options = JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write(
-            (string)json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR | $options)
-        );
+        $response->getBody()->write((string)json_encode($data, $options));
 
         return $response;
     }
