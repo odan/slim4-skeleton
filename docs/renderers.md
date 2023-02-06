@@ -48,43 +48,6 @@ final class HomeAction
 }
 ```
 
-## TemplateRenderer
-
-Renders data to HTML, using the native PHP template engine for rendering. 
-
-Media type: `text/html`
-
-Methods:
-
-* `template` - Renders a (PHP) template
-
-```php
-<?php
-
-namespace App\Action;
-
-use App\Renderer\HtmlRenderer;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-
-final class HomeAction
-{
-    private HtmlRenderer $renderer;
-    
-    public function __construct(HtmlRenderer $renderer)
-    {
-        $this->renderer = $renderer;
-    }
-
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        $viewData = [];
-        
-        return $this->renderer->template($response, 'home/index.php', $viewData);
-    }
-}
-```
-
 ## RedirectRenderer
 
 Methods:
