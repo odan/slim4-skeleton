@@ -23,7 +23,7 @@
 #   docker build -f Dockerfile-dev -t {{volume_name}} .
 #   docker run -it -p "8080:80" -v $PWD:/var/www {{volume_name}}
 #
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 # system dependecies
 RUN apt-get update \
