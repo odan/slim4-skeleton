@@ -38,6 +38,6 @@ final class ConstraintFactory
 
     public function email(): Assert\Email
     {
-        return new Assert\Email();
+        return new Assert\Email(null, null, Assert\Email::VALIDATION_MODE_HTML5);
     }
 }

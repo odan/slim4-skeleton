@@ -6,6 +6,9 @@ use App\Domain\Customer\Repository\CustomerRepository;
 use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\EmailValidator;
+use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
@@ -29,7 +32,14 @@ final class CustomerValidator
 
     public function validateCustomer(array $data): void
     {
-        $validator = Validation::createValidator();
+        $validator = Validation::createValidatorBuilder()
+            ->setConstraintValidatorFactory(
+                new ConstraintValidatorFactory(
+                    [EmailValidator::class => new EmailValidator(Email::VALIDATION_MODE_HTML5)]
+                )
+            )
+            ->getValidator();
+
         $violations = $validator->validate($data, $this->createConstraints());
 
         if ($violations->count()) {
