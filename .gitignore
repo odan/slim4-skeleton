@@ -8,6 +8,7 @@ cache.properties
 .vscode
 .phpunit.result.cache
 .phpunit.cache/
+phpunit.xml.bak
 package-lock.json
 
 # keys
