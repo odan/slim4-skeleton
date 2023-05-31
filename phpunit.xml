@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true"
-         backupGlobals="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         backupGlobals="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
          cacheDirectory=".phpunit.cache" backupStaticProperties="false">
-    <coverage>
+    <coverage/>
+    <testsuites>
+        <testsuite name="Tests">
+            <directory suffix="Test.php">tests/TestCase</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="APP_ENV" value="test"/>
+        <env name="PHPUNIT_TEST_SUITE" value="1"/>
+    </php>
+    <source>
         <include>
             <directory suffix=".php">src</directory>
         </include>
@@ -16,14 +26,5 @@
             <directory>tmp</directory>
             <directory>vendor</directory>
         </exclude>
-    </coverage>
-    <testsuites>
-        <testsuite name="Tests">
-            <directory suffix="Test.php">tests/TestCase</directory>
-        </testsuite>
-    </testsuites>
-    <php>
-        <env name="APP_ENV" value="test"/>
-        <env name="PHPUNIT_TEST_SUITE" value="1"/>
-    </php>
+    </source>
 </phpunit>
