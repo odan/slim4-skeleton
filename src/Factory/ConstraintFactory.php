@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 final class ConstraintFactory
 {
@@ -36,8 +37,12 @@ final class ConstraintFactory
         return new Assert\Positive();
     }
 
-    public function email(): Assert\Email
+    public function email(): Assert\Callback
     {
-        return new Assert\Email(null, null, Assert\Email::VALIDATION_MODE_HTML5);
+        return new Assert\Callback(function ($email, ExecutionContextInterface $context) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $context->addViolation('This value is not a valid email address.');
+            }
+        });
     }
 }
