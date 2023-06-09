@@ -63,7 +63,7 @@
         ],
         "cs:fix": [
             "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
-            "php-cs-fixer fix --config=.cs.php --ansi"
+            "php-cs-fixer fix --config=.cs.php --ansi --verbose"
         ],
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
