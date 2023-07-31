@@ -40,7 +40,7 @@ final class ConstraintFactory
     public function email(): Assert\Callback
     {
         return new Assert\Callback(function ($email, ExecutionContextInterface $context) {
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
                 $context->addViolation('This value is not a valid email address.');
             }
         });
