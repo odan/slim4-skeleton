@@ -34,7 +34,7 @@ final class LoggerFactory
             $this->handler = [$this->test];
         }
 
-        $logger = new Logger($name ?: Uuid::v4()->toRfc4122());
+        $logger = new Logger($name ?? Uuid::v4()->toRfc4122());
 
         foreach ($this->handler as $handler) {
             $logger->pushHandler($handler);

@@ -88,7 +88,7 @@ final class DefaultErrorHandler implements ErrorHandlerInterface
         $statusCode = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
 
         if ($exception instanceof HttpException) {
-            $statusCode = (int)$exception->getCode();
+            $statusCode = $exception->getCode();
         }
 
         if ($exception instanceof DomainException || $exception instanceof InvalidArgumentException) {
