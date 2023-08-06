@@ -4,9 +4,6 @@ namespace App\Renderer;
 
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * A JSON response renderer.
- */
 final class JsonRenderer
 {
     /**
@@ -17,17 +14,21 @@ final class JsonRenderer
      *
      * @param ResponseInterface $response The response
      * @param mixed $data The data
-     * @param int $options Json encoding options
      *
      * @return ResponseInterface The response
      */
     public function json(
         ResponseInterface $response,
         mixed $data = null,
-        int $options = JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR
     ): ResponseInterface {
         $response = $response->withHeader('Content-Type', 'application/json');
-        $response->getBody()->write((string)json_encode($data, $options));
+
+        $response->getBody()->write(
+            (string)json_encode(
+                $data,
+                JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR
+            )
+        );
 
         return $response;
     }

@@ -7,9 +7,6 @@ use Slim\Interfaces\RouteParserInterface;
 
 use function http_build_query;
 
-/**
- * A redirect response renderer.
- */
 final class RedirectRenderer
 {
     private RouteParserInterface $routeParser;
