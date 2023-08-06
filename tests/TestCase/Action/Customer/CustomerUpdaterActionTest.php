@@ -92,40 +92,32 @@ class CustomerUpdaterActionTest extends TestCase
                 'message' => 'Please check your input',
                 'details' => [
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[number]',
+                        'message' => 'Input required',
+                        'field' => 'number',
                     ],
                     [
-                        'message' => 'This value should be positive.',
-                        'field' => '[number]',
+                        'message' => 'Input required',
+                        'field' => 'name',
                     ],
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[name]',
+                        'message' => 'Input required',
+                        'field' => 'street',
                     ],
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[street]',
+                        'message' => 'Input required',
+                        'field' => 'postal_code',
                     ],
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[postal_code]',
+                        'message' => 'Input required',
+                        'field' => 'city',
                     ],
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[city]',
+                        'message' => 'Input required',
+                        'field' => 'country',
                     ],
                     [
-                        'message' => 'This value should not be blank.',
-                        'field' => '[country]',
-                    ],
-                    [
-                        'message' => 'This value should have exactly 2 characters.',
-                        'field' => '[country]',
-                    ],
-                    [
-                        'message' => 'This value is not a valid email address.',
-                        'field' => '[email]',
+                        'message' => 'Invalid email address',
+                        'field' => 'email',
                     ],
                 ],
             ],
