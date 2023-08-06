@@ -10,7 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
-final class ValidationExceptionMiddleware implements MiddlewareInterface
+final class ValidationMiddleware implements MiddlewareInterface
 {
     private ResponseFactoryInterface $responseFactory;
 
