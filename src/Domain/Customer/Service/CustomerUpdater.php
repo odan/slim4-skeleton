@@ -4,6 +4,7 @@ namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
 use App\Factory\LoggerFactory;
+use DomainException;
 use Psr\Log\LoggerInterface;
 
 final class CustomerUpdater
@@ -29,12 +30,21 @@ final class CustomerUpdater
     public function updateCustomer(int $customerId, array $data): void
     {
         // Input validation
-        $this->customerValidator->validateCustomerUpdate($customerId, $data);
+        $this->validateCustomerUpdate($customerId, $data);
 
         // Update the row
         $this->repository->updateCustomer($customerId, $data);
 
         // Logging
         $this->logger->info(sprintf('Customer updated successfully: %s', $customerId));
+    }
+
+    public function validateCustomerUpdate(int $customerId, array $data): void
+    {
+        if (!$this->repository->existsCustomerId($customerId)) {
+            throw new DomainException(sprintf('Customer not found: %s', $customerId));
+        }
+
+        $this->customerValidator->validateCustomer($data);
     }
 }

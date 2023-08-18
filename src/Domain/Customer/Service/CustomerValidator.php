@@ -2,29 +2,11 @@
 
 namespace App\Domain\Customer\Service;
 
-use App\Domain\Customer\Repository\CustomerRepository;
 use App\Support\Validation\ValidationException;
 use Cake\Validation\Validator;
-use DomainException;
 
 final class CustomerValidator
 {
-    private CustomerRepository $repository;
-
-    public function __construct(CustomerRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    public function validateCustomerUpdate(int $customerId, array $data): void
-    {
-        if (!$this->repository->existsCustomerId($customerId)) {
-            throw new DomainException(sprintf('Customer not found: %s', $customerId));
-        }
-
-        $this->validateCustomer($data);
-    }
-
     public function validateCustomer(array $data): void
     {
         $validator = new Validator();
