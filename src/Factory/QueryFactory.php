@@ -4,7 +4,6 @@ namespace App\Factory;
 
 use Cake\Database\Connection;
 use Cake\Database\Query;
-use RuntimeException;
 
 /**
  * Factory.
@@ -27,8 +26,6 @@ final class QueryFactory
      * Create a new 'select' query for the given table.
      *
      * @param string $table The table name
-     *
-     * @throws RuntimeException
      *
      * @return Query A new select query
      */

@@ -1,47 +1,46 @@
 filter:
-  paths: [ "src/*" ]
-  excluded_paths: [ "vendor/*", "tests/*", "resources/", "public/" ]
+    paths: [ "src/*" ]
+    excluded_paths: [ "vendor/*", "tests/*", "resources/", "public/" ]
 
 checks:
-  php:
-    code_rating: true
-    duplication: true
+    php:
+        code_rating: true
+        duplication: true
 
 tools:
-  external_code_coverage: false
+    external_code_coverage: false
 
 build:
-  services:
-    mysql: 5.7
-  environment:
-    php:
-      version: 8.1.2
-      ini:
-        xdebug.mode: coverage
-    mysql: 5.7
-    node: false
-    postgresql: false
-    mongodb: false
-    elasticsearch: false
-    redis: false
-    memcached: false
-    neo4j: false
-    rabbitmq: false
-    variables:
-      APP_ENV: 'scrutinizer'
-  nodes:
-    analysis:
-      tests:
-        override:
-          - php-scrutinizer-run
-  dependencies:
-    before:
-      - composer self-update
-      - composer install --no-interaction --prefer-dist --no-progress
-      - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-  tests:
-    before:
-      - command: composer test:coverage
-        coverage:
-          file: 'build/logs/clover.xml'
-          format: 'clover'
+    services:
+        mysql: 5.7
+    environment:
+        php:
+            version: 8.1.2
+            ini:
+                xdebug.mode: coverage
+        mysql: 5.7
+        node: false
+        postgresql: false
+        mongodb: false
+        elasticsearch: false
+        redis: false
+        memcached: false
+        neo4j: false
+        rabbitmq: false
+        variables:
+            APP_ENV: 'scrutinizer'
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+    dependencies:
+        before:
+            - composer self-update
+            - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+    tests:
+        before:
+            -   command: composer test:coverage
+                coverage:
+                    file: 'build/logs/clover.xml'
+                    format: 'clover'

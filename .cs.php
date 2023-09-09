@@ -46,12 +46,16 @@ return (new Config())
             'declare_strict_types' => false,
             'blank_line_between_import_groups' => true,
             'fully_qualified_strict_types' => true,
-            'global_namespace_import' => false,
             'no_null_property_initialization' => false,
             'operator_linebreak' => [
                 'only_booleans' => true,
                 'position' => 'beginning',
             ],
+            'global_namespace_import' => [
+                'import_classes' => true,
+                'import_constants' => null,
+                'import_functions' => null
+            ]
         ]
     )
     ->setFinder(

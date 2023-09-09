@@ -10,34 +10,8 @@
     <file>./src</file>
     <file>./tests</file>
     <file>./config</file>
-    <file>./public/index.php</file>
 
-    <rule ref="PSR2"></rule>
-    <!-- <rule ref="PSR12"></rule> -->
-
-    <!--
-    <rule ref="Squiz.Commenting.ClassComment">
-        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
-        <type>warning</type>
-        <exclude-pattern>*/tests/</exclude-pattern>
-    </rule>
-    <rule ref="Squiz.Commenting.ClassComment.Missing">
-        <type>warning</type>
-    </rule>
-    <rule ref="Squiz.Commenting.FunctionComment.Missing">
-        <type>warning</type>
-        <exclude-pattern>*/config/</exclude-pattern>
-    </rule>
-    <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag">
-        <type>warning</type>
-    </rule>
-    <rule ref="Squiz.Commenting.FunctionComment.MissingParamComment">
-        <type>warning</type>
-    </rule>
-    <rule ref="Squiz.Commenting.FunctionComment.ParamCommentNotCapital">
-        <type>warning</type>
-    </rule>
-    -->
+    <rule ref="PSR12"></rule>
 
     <rule ref="Generic.Metrics.CyclomaticComplexity">
         <properties>
