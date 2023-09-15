@@ -3,84 +3,45 @@
 namespace App\Factory;
 
 use Cake\Database\Connection;
-use Cake\Database\Query;
+use Cake\Database\Query\DeleteQuery;
+use Cake\Database\Query\InsertQuery;
+use Cake\Database\Query\SelectQuery;
+use Cake\Database\Query\UpdateQuery;
 
-/**
- * Factory.
- */
 final class QueryFactory
 {
     private Connection $connection;
 
-    /**
-     * The constructor.
-     *
-     * @param Connection $connection The database connection
-     */
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
 
     /**
-     * Create a new 'select' query for the given table.
+     * @param string $table
      *
-     * @param string $table The table name
-     *
-     * @return Query A new select query
+     * @return SelectQuery<mixed>
      */
-    public function newSelect(string $table): Query
+    public function newSelect(string $table): SelectQuery
     {
-        return $this->newQuery()->from($table);
+        return $this->connection->selectQuery([], $table);
     }
 
-    /**
-     * Create a new query.
-     *
-     * @return Query The query
-     */
-    public function newQuery(): Query
+    public function newUpdate(string $table, array $data = []): UpdateQuery
     {
-        return $this->connection->newQuery();
+        return $this->connection->updateQuery($table)->set($data);
     }
 
-    /**
-     * Create an 'update' statement for the given table.
-     *
-     * @param string $table The table to update rows from
-     * @param array $data The values to be updated
-     *
-     * @return Query The new update query
-     */
-    public function newUpdate(string $table, array $data): Query
+    public function newInsert(string $table, array $data): InsertQuery
     {
-        return $this->newQuery()->update($table)->set($data);
-    }
-
-    /**
-     * Create an 'update' statement for the given table.
-     *
-     * @param string $table The table to update rows from
-     * @param array $data The values to be updated
-     *
-     * @return Query The new insert query
-     */
-    public function newInsert(string $table, array $data): Query
-    {
-        return $this->newQuery()->insert(array_keys($data))
+        return $this->connection->insertQuery($table)
+            ->insert(array_keys($data))
             ->into($table)
             ->values($data);
     }
 
-    /**
-     * Create a 'delete' query for the given table.
-     *
-     * @param string $table The table to delete from
-     *
-     * @return Query A new delete query
-     */
-    public function newDelete(string $table): Query
+    public function newDelete(string $table): DeleteQuery
     {
-        return $this->newQuery()->delete($table);
+        return $this->connection->deleteQuery($table);
     }
 }

@@ -75,11 +75,13 @@ return [
     },
 
     PDO::class => function (ContainerInterface $container) {
-        $db = $container->get(Connection::class);
-        $driver = $db->getDriver();
-        $driver->connect();
+        $driver = $container->get(Connection::class)->getDriver();
 
-        return $driver->getConnection();
+        $class = new ReflectionClass($driver);
+        $method = $class->getMethod('getPdo');
+        $method->setAccessible(true);
+
+        return $method->invoke($driver);
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
