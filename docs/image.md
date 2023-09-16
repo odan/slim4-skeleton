@@ -16,4 +16,4 @@ processing libraries GD Library and Imagick.
 
 ## Read more
 
-* [Images](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Images](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)

@@ -57,8 +57,8 @@ Methods:
 
 ## Building a filetype specific response
 
-* [Image files](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
-* [Excel files](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
-* [PDF files](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
-* [ZIP files](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
-* [TCPDF](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [Image files](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Excel files](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [PDF files](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [ZIP files](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [TCPDF](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)

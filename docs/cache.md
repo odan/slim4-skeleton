@@ -20,7 +20,7 @@ for HTTP caching. You can use this component to create and return responses that
 contain `Cache`, `Expires`, `ETag`, and `Last-Modified` headers that control
 when and how long application output is retained by client-side caches. You may have to set your php.ini setting "session.cache_limiter" to an empty string in order to get this working without interferences.
 
-* [HTTP Caching](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [HTTP Caching](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 
 ## Storage Caching
 
@@ -31,6 +31,6 @@ components provides a [PSR-6](https://www.php-fig.org/psr/psr-6/) and
 [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant API for various cache backends, allowing you to take advantage
 of their blazing fast data retrieval and speed up your web application.
 
-* [Symfony Cache](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
-* [Redis](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
-* [Memcached](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Symfony Cache](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [Redis](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Memcached](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)

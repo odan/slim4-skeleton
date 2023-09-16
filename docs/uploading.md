@@ -19,8 +19,8 @@ See here: [Uploading files using POST forms](https://www.slimframework.com/docs/
 
 With [Filepond](https://pqina.nl/filepond/) you can upload anything, from anywhere.
 
-* [File Uploads with FilePond](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [File Uploads with FilePond](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 
 ## Read more
 
-* [File Uploads and Testing](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [File Uploads and Testing](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)

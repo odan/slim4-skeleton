@@ -23,6 +23,6 @@ that can be accessed from subsequent requests.
 
 ## Read more
 
-* [odan/session](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
-* [RKA Slim Session Middleware](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 1)
-* [Flash Messages](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [odan/session](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [RKA Slim Session Middleware](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 1)
+* [Flash Messages](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)

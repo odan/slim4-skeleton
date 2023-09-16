@@ -15,9 +15,9 @@ library, complete with example validations.
 
 **Additional Resources**
 
-* [CakePHP Validation](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
-* [Symfony Validator](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
-* [Problem Details for HTTP API](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [CakePHP Validation](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Symfony Validator](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Problem Details for HTTP API](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
 
 ## OpenAPI-based Validation
 
@@ -26,7 +26,7 @@ package can validate PSR-7 messages against OpenAPI (3.0.x) specifications expre
 
 **Additional Resources**
 
-* [OpenAPI Validation](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [OpenAPI Validation](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
 
 ## JSON schema validation
 
@@ -41,7 +41,7 @@ method is able to validate XML files against a XSD schema.
 
 **Additional Resources**
 
-* [XML Validation](https://ko-fi.com/s/3698cf30f3) (XML Validation (Slim 4 eBook Vol. 3)
+* [XML Validation](https://ko-fi.com/s/3698cf30f3) (XML Validation (Slim 4 - eBook Vol. 3)
 
 ## Assertion-Based Validation
 

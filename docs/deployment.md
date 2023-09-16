@@ -53,5 +53,5 @@ try [Apache Ant](https://ant.apache.org/), Phing or [Deployer](https://deployer.
 
 ## Read more
 
-* [Apache Ant](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
-* [Phing](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Apache Ant](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [Phing](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
