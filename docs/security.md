@@ -99,12 +99,11 @@ or by using libraries that are specifically designed to sanitize HTML input:
 
 ## More Resources
 
+* [Mezzio OAuth2 Server](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [PHP Middleware](https://github.com/php-middleware)
+* [middlewares/firewall](https://github.com/middlewares/firewall)
+* [PSR-15 HTTP Middlewares](https://github.com/middlewares)
+* [Shieldon - Web Application Firewall](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
 * [Spam Protection](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 * [Symfony Rate Limiter](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 * [XSS - Cross-site Scripting Protection](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
-* [Shieldon - Web Application Firewall](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
-* [Mezzio OAuth2 Server](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
-* [Symfony Rate Limiter](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
-* [middlewares/firewall](https://github.com/middlewares/firewall)
-* [PSR-15 HTTP Middlewares](https://github.com/middlewares)
-* [PHP Middleware](https://github.com/php-middleware)
