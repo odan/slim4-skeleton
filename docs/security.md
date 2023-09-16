@@ -53,23 +53,37 @@ are a very good tools to work with JSON Web Tokens.
 * [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
 * [Swagger - OAuth 2.0](https://swagger.io/docs/specification/authentication/oauth2/)
 
-## SameSite Cookies
+## Cross-site Request Forgery (CSRF) Protection
 
-* [SameSite Cookies](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
-* [selective/samesite-cookie](https://github.com/selective-php/samesite-cookie)
-
-## CSRF protection
+Cross-site request forgery (CSRF) is a web security vulnerability 
+that tricks a victim's browser into performing unwanted 
+actions on a web application where the user is authenticated, 
+without their knowledge or consent.
 
 * [CSRF](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 * [Slim Framework CSRF Protection](https://github.com/slimphp/Slim-Csrf)
 
+**SameSite Cookies** can be used for security purposes 
+to prevent CSRF attacks, 
+by controlling whether cookies are sent along with cross-site requests, 
+thereby limiting the risk of third-party interference with 
+the intended functioning of web applications.
+
+* [SameSite Cookies](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [selective/samesite-cookie](https://github.com/selective-php/samesite-cookie)
+
 ## Cross-Origin Resource Sharing (CORS)
+
+Cross-Origin Resource Sharing (CORS) is a security feature 
+implemented by web browsers that controls how web pages 
+in one domain can request resources from another domain, 
+aiming to safely enable interactions between different origins.
 
 * [Setting up CORS](https://www.slimframework.com/docs/v4/cookbook/enable-cors.html)
 * [CORS](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 * [middlewares/cors](https://github.com/middlewares/cors)
 
-## Cross Site Scripting Prevention
+## Cross Site Scripting (XSS) Prevention
 
 Cross-site Scripting (XSS) is a client-side code injection attack. 
 The attacker aims to execute malicious scripts in a web browser of the 
@@ -81,6 +95,7 @@ or by using libraries that are specifically designed to sanitize HTML input:
 * [laminas/laminas-escaper](https://github.com/laminas/laminas-escaper)
 * [Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 * [Cross-site Scripting (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+* [XSS - Cross-site Scripting Protection](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
 
 ## More Resources
 
@@ -88,6 +103,8 @@ or by using libraries that are specifically designed to sanitize HTML input:
 * [Symfony Rate Limiter](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 * [XSS - Cross-site Scripting Protection](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
 * [Shieldon - Web Application Firewall](https://ko-fi.com/s/3698cf30f3) (Slim 4 - eBook Vol. 3)
+* [Mezzio OAuth2 Server](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
+* [Symfony Rate Limiter](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 * [middlewares/firewall](https://github.com/middlewares/firewall)
 * [PSR-15 HTTP Middlewares](https://github.com/middlewares)
 * [PHP Middleware](https://github.com/php-middleware)
