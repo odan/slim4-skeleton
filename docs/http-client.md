@@ -39,5 +39,5 @@ $response = $client->request('GET', 'anything');
 ## Read more
 
 * [Guzzle Documentation](https://docs.guzzlephp.org/en/stable/quickstart.html)
-* [Slim 4 - Guzzle](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
-* [Slim 4 - Stripe](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Guzzle](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [Stripe](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)

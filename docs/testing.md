@@ -239,4 +239,4 @@ $this->mockMethod([UserReaderRepository::class, 'getUserById'])
 
 ## Read more
 
-* [Slim 4 - Testing with PHPUnit](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Testing with PHPUnit](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)

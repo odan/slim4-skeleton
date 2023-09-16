@@ -23,5 +23,5 @@ Twig integration, CSS inlining, file attachments, signed messages and a lot more
 
 ## Read more
 
-* [Slim 4 - Mailer](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Symfony Mailer](https://symfony.com/doc/current/mailer.html)
+* [Mailer](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Symfony Mailer Documentation](https://symfony.com/doc/current/mailer.html)

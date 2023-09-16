@@ -16,7 +16,7 @@ you are free to use any asset pipeline tool you wish, or even none at all.
 
 **Installation Instructions:** 
 
-* [Slim 4 - Webpack](https://ko-fi.com/s/5f182b4b22)
+* [Webpack](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 
 ### Updating packages
 
@@ -56,4 +56,6 @@ npm run watch
 
 ## Read more
 
-* [Slim 4 - Vue.js](https://ko-fi.com/s/5f182b4b22)
+* [Vue.js](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Webpack](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
+* [Swagger UI](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)

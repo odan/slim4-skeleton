@@ -6,43 +6,45 @@ parent: Advanced
 
 # Task Scheduling
 
-## Cronjobs
+## Introduction to Cronjob Management
 
-In the past, you may have written a cron configuration entry for each task you 
-needed to schedule on your server. However, this can quickly become a 
-pain because your task schedule is no longer in source control and 
-you must SSH into your server to view your existing cron entries 
-or add additional entries
+Managing scheduled tasks on your server 
+involved manually editing the cron configuration for each 
+task. This method is inconvenient since it lacks 
+source control and requires SSH access to the 
+server for changes. However, using a task scheduler 
+simplifies this by requiring just one crontab entry.
 
-When using the scheduler, 
-only a single [crontab](https://help.ubuntu.com/community/CronHowto)
-entry is needed on your server.
+### Quick Start: Setting up the Scheduler
 
-Add a new entry to your crontab to run `bin/cronjob.php` every minute.
+To set up a task scheduler, you only need to add a single crontab entry. 
+To run `bin/cronjob.php` every minute, append the following 
+line to your server's crontab:
 
-Your server crontab could now look something like:
-
+```bash
+* * * * * /usr/bin/php /var/www/example.com/bin/cronjob.php 1>> /dev/null 2>&1
 ```
-* * * * * /usr/bin/php /var/www/example.com/bin/cronjob.php  1>> /dev/null 2>&1
-```
 
-Your scheduler is up and running, now you can add your jobs without
-worrying anymore about the crontab.
+Now your scheduler is operational, and you can add new jobs 
+without modifying the crontab.
 
-## Defining Schedules
+## Recommended Libraries for Cronjob Scheduling
 
-These libraries can be used to define and execute cronjob tasks.
-There are more, of course.
+Here are some recommended libraries to define and manage your scheduled tasks:
 
-* <https://github.com/Cron/Cron>
-* <https://github.com/peppeocchi/php-cron-scheduler>
-* <https://github.com/jobbyphp/jobby>
+* [Cron/Cron](https://github.com/Cron/Cron)
+* [PHP Cron Scheduler](https://github.com/peppeocchi/php-cron-scheduler)
+* [Jobby](https://github.com/jobbyphp/jobby)
 
-## Managing Locks
+## Resource Locking
 
-Locks are used to guarantee exclusive access to some shared resource.
+Resource locks ensure exclusive access to a shared resource, 
+preventing multiple instances of a cronjob or console command 
+from running simultaneously.
 
-A lock can be used to ensure that the server starts only one
-specific cronjob or console command at the same time.
+For implementing resource locks, 
+consider using [The Lock Component](https://symfony.com/doc/current/components/lock.html)
+by Symfony.
 
-* [The Lock Component](https://symfony.com/doc/current/components/lock.html)
+By employing the techniques outlined above, 
+you can easily manage and coordinate your scheduled tasks.

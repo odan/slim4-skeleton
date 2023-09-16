@@ -56,4 +56,4 @@ since it can contain sensitive API keys and passwords.
  
 ## Read more
 
-* [Slim 4 - Environments and Configuration](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Environments and Configuration](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)

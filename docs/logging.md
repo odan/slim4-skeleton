@@ -82,7 +82,8 @@ $this->logger->info('File and console output');
 
 ## Read more
 
-* [Slim 4 - Logging with Monolog](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Slim 4 - Logging with Sentry](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Slim 4 - Error Handling](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Logging with Monolog](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Logging with Sentry](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Error Handling](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+
 

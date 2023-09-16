@@ -49,16 +49,9 @@ Linode, AWS, and more.
 
 If you prefer to build and deploy your applications on your
 own machine or infrastructure, you may also 
-try [Apache Ant](https://ant.apache.org/) or [Deployer](https://deployer.org/).
-
-### Deploying on Heroku
-
-The [Slim4 skeleton heroku](https://github.com/peter279k/slim4-skeleton-heroku) fork 
-shows an example to be friendly for Heroku deployment.
-Especially the [deployment.yml](https://github.com/peter279k/slim4-skeleton-heroku/blob/master/.github/workflows/deployment.yml)
-file shows how to build and deploy the application.
-The demonstration URL is available [here](https://slim4-skeleton-app.herokuapp.com/).
+try [Apache Ant](https://ant.apache.org/), Phing or [Deployer](https://deployer.org/).
 
 ## Read more
 
-* [Slim 4 - Apache Ant](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Apache Ant](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [Phing](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)

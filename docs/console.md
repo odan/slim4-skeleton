@@ -84,4 +84,4 @@ Hello, World!
 Read more:
 
 * [Symfony Console Commands](https://symfony.com/doc/current/console.html)
-* [Slim 4 - Console](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Console](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)

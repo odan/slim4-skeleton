@@ -42,18 +42,30 @@ This skeleton contains [cakephp/database](https://github.com/cakephp/database) a
 The query builder provides a convenient, fluid interface for creating and executing database queries. It can be used to perform most database operations in your application, and works great with MySQL and MariaDB.
 
 * [Query Builder Documentation](https://book.cakephp.org/4/en/orm/query-builder.html)
-* [Slim 4 - CakePHP Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [CakePHP Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
 
 It's possible to replace the existing QueryBuilder with another component as listed below:
 
-* [Laminas Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Laravel Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Doctrine DBAL](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Cycle Query Builder](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [PDO](https://ko-fi.com/s/5f182b4b22) (eBook)
+* [Laminas Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Laravel Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Doctrine DBAL](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Cycle Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [PDO](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+* [Yii Database](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
 
 ## Read more
 
-* [Slim 4 - Multiple database connections](https://ko-fi.com/s/5f182b4b22) (eBook)
-* [Slim 4 - Doctrine CouchDB](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
-* [Slim 4 - Elasticsearch](https://ko-fi.com/s/e592c10b5f) (eBook Vol. 2)
+* [Amazon S3](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Amazon DynamoDB](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Apache Cassandra](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Apache Kafka](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Couchbase](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Elasticsearch](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [Doctrine CouchDB](https://ko-fi.com/s/e592c10b5f) (Slim 4 eBook Vol. 2)
+* [Firebase Realtime Database](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [IBM DB2](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Oracle Database](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [PostgreSQL](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Microsoft SQL Server](https://ko-fi.com/s/3698cf30f3) (Slim 4 eBook Vol. 3)
+* [Multiple database connections](https://ko-fi.com/s/5f182b4b22) (Slim 4 eBook Vol. 1)
+

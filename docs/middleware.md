@@ -59,5 +59,5 @@ $app->group(
 
 ## Read more
 
-* [Slim 4 - Middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html)
-* [Slim 4 - Routing](https://www.slimframework.com/docs/v4/objects/routing.html)
+* [Slim 4 - Middleware](https://www.slimframework.com/docs/v4/concepts/middleware.html) (Documentation)
+* [Slim 4 - Routing](https://www.slimframework.com/docs/v4/objects/routing.html) (Documentation)
