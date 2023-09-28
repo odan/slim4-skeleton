@@ -29,9 +29,9 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        $containerBuilder = new ContainerBuilder();
-        $containerBuilder->addDefinitions(__DIR__ . '/../../config/container.php');
-        $container = $containerBuilder->build();
+        $container = (new ContainerBuilder())
+            ->addDefinitions(__DIR__ . '/../../config/container.php')
+            ->build();
 
         $this->app = $container->get(App::class);
 
