@@ -1,6 +1,7 @@
 <?php
 
 use App\Factory\ContainerFactory;
+use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
@@ -14,7 +15,9 @@ if ($env) {
 }
 
 /** @var ContainerInterface $container */
-$container = ContainerFactory::createInstance();
+$container = (new ContainerBuilder())
+    ->addDefinitions(__DIR__ . '/../config/container.php')
+    ->build();
 
 try {
     /** @var Application $application */
