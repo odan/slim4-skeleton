@@ -15,17 +15,27 @@ The default settings are stored in `config/defaults.php`, `$settings['db']`
 
 ## Repositories
 
-A [repository](https://designpatternsphp.readthedocs.io/en/latest/More/Repository/README.html)
-is the source of all the (database) data your application needs and mediates between the domain and data mapping layers.
-A repository improves code maintainability, testing and readability by separating **business logic**
-from **data access logic** and provides centrally managed and consistent access rules for a data source.
+A [repository](https://designpatternsphp.readthedocs.io/More/Repository/README.html) 
+provides an abstraction layer between the data access logic and the business logic 
+of an application, allowing data operations to be decoupled from the specifics 
+of the underlying database or data source.
 
 There are two types of repositories: collection-oriented and persistence-oriented repositories.
-In this case, I would prefer to speak of **persistence-oriented repositories**,
-as they are better suited to handling large amounts of data without sacrificing simplicity.
+
+A collection-oriented repository treats in-memory objects as part of a collection, 
+emphasizing behaviors like adding, removing, or querying objects within that collection. 
+It often abstracts the underlying data source as a simple in-memory collection. 
+In contrast, a persistence-oriented repository focuses on the storage, retrieval, 
+and deletion of objects in a persistent data store, such as a database, 
+and emphasizes the persistence lifecycle and operations specific to the 
+underlying storage mechanism.
+
+This projects uses **persistence-oriented repositories**,
+as they are better suited to handling large amounts of data without
+using the "Unit of Work" pattern and sacrificing simplicity.
 
 Each public repository method represents a query. The return values represent the result set
-of a query and can be primitive/object or list (array) of them. Database transactions must
+of a query and can be primitive/object or list (array) of them. Database **transactions** must
 be handled on a higher level (service) and not within a repository.
 
 **Quick summary:**
