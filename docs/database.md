@@ -34,9 +34,13 @@ This projects uses **persistence-oriented repositories**,
 as they are better suited to handling large amounts of data without
 using the "Unit of Work" pattern and sacrificing simplicity.
 
-Each public repository method represents a query. The return values represent the result set
-of a query and can be primitive/object or list (array) of them. Database **transactions** must
-be handled on a higher level (service) and not within a repository.
+This project employs **persistence-oriented** repositories for efficient 
+large data handling  without the complexity of the [Unit of Work](https://en.wikipedia.org/wiki/Unit_of_work) pattern.
+Handle database **transactions** at the service level, not within the repository.
+
+Every public repository method represents a query, 
+returning either a primitive/object or an array 
+of them as the result set.
 
 **Quick summary:**
 
