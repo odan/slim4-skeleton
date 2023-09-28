@@ -2,7 +2,7 @@
 
 namespace App\Test\Traits;
 
-use App\Factory\ContainerFactory;
+use DI\ContainerBuilder;
 use Selective\TestTrait\Traits\ArrayTestTrait;
 use Selective\TestTrait\Traits\ContainerTestTrait;
 use Selective\TestTrait\Traits\HttpJsonTestTrait;
@@ -29,7 +29,10 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        $container = ContainerFactory::createInstance();
+        $containerBuilder = new ContainerBuilder();
+        $containerBuilder->addDefinitions(__DIR__ . '/../../config/container.php');
+        $container = $containerBuilder->build();
+
         $this->app = $container->get(App::class);
 
         $this->setUpContainer($container);
