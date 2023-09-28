@@ -30,10 +30,6 @@ and deletion of objects in a persistent data store, such as a database,
 and emphasizes the persistence lifecycle and operations specific to the 
 underlying storage mechanism.
 
-This projects uses **persistence-oriented repositories**,
-as they are better suited to handling large amounts of data without
-using the "Unit of Work" pattern and sacrificing simplicity.
-
 This project employs **persistence-oriented** repositories for efficient 
 large data handling  without the complexity of the [Unit of Work](https://en.wikipedia.org/wiki/Unit_of_work) pattern.
 Handle database **transactions** at the service level, not within the repository.
