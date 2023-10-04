@@ -9,11 +9,6 @@ return function (array $settings): array {
     // Database
     $settings['db']['database'] = 'slim_skeleton_test';
 
-    // Mocked Logger settings
-    $settings['logger'] = [
-        'test' => new \Monolog\Handler\TestHandler(),
-    ];
-
     // API credentials for phpunit
     $settings['api_auth'] = [
         // Allow http for testing
