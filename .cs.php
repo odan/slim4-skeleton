@@ -19,7 +19,7 @@ return (new Config())
             'array_syntax' => ['syntax' => 'short'],
             'cast_spaces' => ['space' => 'none'],
             'concat_space' => ['spacing' => 'one'],
-            'compact_nullable_typehint' => true,
+            'compact_nullable_type_declaration' => true,
             'declare_equal_normalize' => ['space' => 'single'],
             'general_phpdoc_annotation_remove' => [
                 'annotations' => [

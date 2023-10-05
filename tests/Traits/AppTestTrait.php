@@ -43,6 +43,7 @@ trait AppTestTrait
         $this->setUpContainer($container);
         $this->setUpLogger();
 
+        /** @phpstan-ignore-next-line */
         if (method_exists($this, 'setUpDatabase')) {
             $this->setUpDatabase(__DIR__ . '/../../resources/schema/schema.sql');
         }
