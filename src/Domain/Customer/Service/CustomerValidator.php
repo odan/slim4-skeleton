@@ -3,6 +3,7 @@
 namespace App\Domain\Customer\Service;
 
 use App\Support\Validation\ValidationException;
+use App\Support\Validation\ValidationResult;
 use Cake\Validation\Validator;
 
 final class CustomerValidator
@@ -39,9 +40,10 @@ final class CustomerValidator
             ->email('email', false, 'Invalid email address');
 
         $errors = $validator->validate($data);
+        $validationResult = new ValidationResult($errors);
 
-        if ($errors) {
-            throw new ValidationException('Please check your input', $errors);
+        if ($validationResult->fails()) {
+            throw new ValidationException('Please check your input', $validationResult);
         }
     }
 }

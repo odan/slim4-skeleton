@@ -42,39 +42,18 @@ final class ValidationMiddleware implements MiddlewareInterface
             'message' => $exception->getMessage(),
         ];
 
-        $errors = $exception->getErrors();
+        $errors = $exception->getValidationResult()?->getErrors();
+
         if ($errors) {
-            $error['details'] = $this->addErrors([], $errors);
-        }
-
-        return ['error' => $error];
-    }
-
-    private function addErrors(array $result, array $errors, string $path = ''): array
-    {
-        foreach ($errors as $field => $error) {
-            $oldPath = $path;
-            $path .= ($path === '' ? '' : '.') . $field;
-            $result = $this->addSubErrors($result, $error, $path);
-            $path = $oldPath;
-        }
-
-        return $result;
-    }
-
-    private function addSubErrors(array $result, array $error, string $path = ''): array
-    {
-        foreach ($error as $field2 => $errorMessage) {
-            if (is_array($errorMessage)) {
-                $result = $this->addErrors($result, [$field2 => $errorMessage], $path);
-            } else {
-                $result[] = [
-                    'message' => $errorMessage,
-                    'field' => $path,
+            $error['details'] = [];
+            foreach ($errors as $field => $message) {
+                $error['details'][] = [
+                    'message' => $message,
+                    'field' => $field,
                 ];
             }
         }
 
-        return $result;
+        return ['error' => $error];
     }
 }
