@@ -38,7 +38,7 @@ sudo chown -R www-data logs/
 sudo chmod -R g+w tmp/
 sudo chmod -R g+w logs/
 
-chmod +x bin/console.php
+chmod +x bin/console
 ```
 
 **Step 3:** Setup database
