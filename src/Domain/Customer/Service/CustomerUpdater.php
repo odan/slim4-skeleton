@@ -3,7 +3,6 @@
 namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
-use App\Factory\LoggerFactory;
 use DomainException;
 use Psr\Log\LoggerInterface;
 
@@ -18,13 +17,11 @@ final class CustomerUpdater
     public function __construct(
         CustomerRepository $repository,
         CustomerValidator $customerValidator,
-        LoggerFactory $loggerFactory
+        LoggerInterface $logger
     ) {
         $this->repository = $repository;
         $this->customerValidator = $customerValidator;
-        $this->logger = $loggerFactory
-            ->addFileHandler('customer_updater.log')
-            ->createLogger();
+        $this->logger = $logger;
     }
 
     public function updateCustomer(int $customerId, array $data): void

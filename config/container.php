@@ -1,8 +1,10 @@
 <?php
 
-use App\Factory\LoggerFactory;
 use App\Handler\DefaultErrorHandler;
 use Cake\Database\Connection;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Logger;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -10,6 +12,7 @@ use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Psr\Log\LoggerInterface;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -60,11 +63,6 @@ return [
         return $container->get(App::class)->getRouteCollector()->getRouteParser();
     },
 
-    // The logger factory
-    LoggerFactory::class => function (ContainerInterface $container) {
-        return new LoggerFactory($container->get('settings')['logger']);
-    },
-
     BasePathMiddleware::class => function (ContainerInterface $container) {
         return new BasePathMiddleware($container->get(App::class));
     },
@@ -84,13 +82,25 @@ return [
         return $method->invoke($driver);
     },
 
+    LoggerInterface::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['logger'];
+
+        $logger = new Logger('app');
+
+        if (isset($settings['path'])) {
+            $filename = sprintf('%s/app.log', $settings['path']);
+            $level = $settings['level'];
+            $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level, true, 0777);
+            $rotatingFileHandler->setFormatter(new LineFormatter(null, null, false, true));
+            $logger->pushHandler($rotatingFileHandler);
+        }
+
+        return $logger;
+    },
+
     ErrorMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['error'];
         $app = $container->get(App::class);
-
-        $logger = $container->get(LoggerFactory::class)
-            ->addFileHandler('error.log')
-            ->createLogger();
 
         $errorMiddleware = new ErrorMiddleware(
             $app->getCallableResolver(),
@@ -98,7 +108,6 @@ return [
             (bool)$settings['display_error_details'],
             (bool)$settings['log_errors'],
             (bool)$settings['log_error_details'],
-            $logger
         );
 
         $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));

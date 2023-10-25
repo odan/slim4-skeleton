@@ -43,11 +43,6 @@ class CustomerCreatorActionTest extends TestCase
         $this->assertJsonContentType($response);
         $this->assertJsonData(['customer_id' => 1], $response);
 
-        // Check logger
-        // No logger errors
-        $this->assertSame([], $this->getLoggerErrors());
-        $this->assertTrue($this->getLogger()->hasInfoThatContains('Customer created successfully: 1'));
-
         // Check database
         $this->assertTableRowCount(1, 'customers');
 

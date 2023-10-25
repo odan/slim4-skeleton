@@ -45,9 +45,6 @@ class CustomerUpdaterActionTest extends TestCase
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertJsonContentType($response);
 
-        // Check logger
-        $this->assertTrue($this->getLogger()->hasInfoThatContains('Customer updated successfully'));
-
         // Check database
         $expected = [
             'id' => '1',

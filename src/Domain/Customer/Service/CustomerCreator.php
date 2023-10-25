@@ -3,7 +3,6 @@
 namespace App\Domain\Customer\Service;
 
 use App\Domain\Customer\Repository\CustomerRepository;
-use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
 final class CustomerCreator
@@ -17,13 +16,11 @@ final class CustomerCreator
     public function __construct(
         CustomerRepository $repository,
         CustomerValidator $customerValidator,
-        LoggerFactory $loggerFactory
+        LoggerInterface $logger
     ) {
         $this->repository = $repository;
         $this->customerValidator = $customerValidator;
-        $this->logger = $loggerFactory
-            ->addFileHandler('customer_creator.log')
-            ->createLogger();
+        $this->logger = $logger;
     }
 
     public function createCustomer(array $data): int

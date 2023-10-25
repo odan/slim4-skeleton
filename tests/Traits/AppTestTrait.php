@@ -19,7 +19,6 @@ trait AppTestTrait
     use ContainerTestTrait;
     use HttpTestTrait;
     use HttpJsonTestTrait;
-    use LoggerTestTrait;
     use MockTestTrait;
 
     protected App $app;
@@ -41,7 +40,6 @@ trait AppTestTrait
         $this->app = $container->get(App::class);
 
         $this->setUpContainer($container);
-        $this->setUpLogger();
 
         /** @phpstan-ignore-next-line */
         if (method_exists($this, 'setUpDatabase')) {

@@ -2,7 +2,6 @@
 
 namespace App\Handler;
 
-use App\Factory\LoggerFactory;
 use App\Renderer\JsonRenderer;
 use DomainException;
 use Fig\Http\Message\StatusCodeInterface;
@@ -29,13 +28,11 @@ final class DefaultErrorHandler implements ErrorHandlerInterface
     public function __construct(
         JsonRenderer $jsonRenderer,
         ResponseFactoryInterface $responseFactory,
-        LoggerFactory $loggerFactory
+        LoggerInterface $logger,
     ) {
         $this->jsonRenderer = $jsonRenderer;
         $this->responseFactory = $responseFactory;
-        $this->logger = $loggerFactory
-            ->addFileHandler('error.log')
-            ->createLogger();
+        $this->logger = $logger;
     }
 
     /**
