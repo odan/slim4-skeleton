@@ -33,8 +33,7 @@
         "phpunit/phpunit": "^10",
         "selective/test-traits": "^4",
         "squizlabs/php_codesniffer": "^3",
-        "symfony/console": "^6",
-        "symfony/dotenv": "^6"
+        "symfony/console": "^6"
     },
     "autoload": {
         "psr-4": {
