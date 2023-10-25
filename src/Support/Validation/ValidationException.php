@@ -7,20 +7,20 @@ use Throwable;
 
 final class ValidationException extends DomainException
 {
-    private ?ValidationResult $validationResult;
+    private array $errors;
 
     public function __construct(
         string $message,
-        ValidationResult $validationResult = null,
+        array $errors = [],
         int $code = 422,
         Throwable $previous = null
     ) {
         parent::__construct($message, $code, $previous);
-        $this->validationResult = $validationResult;
+        $this->errors = $errors;
     }
 
-    public function getValidationResult(): ?ValidationResult
+    public function getErrors(): array
     {
-        return $this->validationResult;
+        return $this->errors;
     }
 }
