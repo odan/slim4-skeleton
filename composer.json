@@ -23,7 +23,9 @@
         "nyholm/psr7-server": "^1.0",
         "php-di/php-di": "^7",
         "selective/basepath": "^2",
-        "slim/slim": "^4"
+        "slim/slim": "^4",
+        "lcobucci/jwt": "^4.0",
+        "ramsey/uuid": "^4.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
