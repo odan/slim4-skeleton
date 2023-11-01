@@ -75,7 +75,7 @@ return [
     },
 
     HttpBasicAuthentication::class => function (ContainerInterface $container) {
-        return new HttpBasicAuthentication($container->get('settings')['api_auth']);	        $pdoAuth = $container->get(PDOAuth::class);
+        $pdoAuth = $container->get(PDOAuth::class);
 
         return new HttpBasicAuthentication([
             "secure" => true,
