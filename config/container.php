@@ -37,6 +37,56 @@ return [
         return $app;
     },
 
+    // Auth
+
+    AclMiddleware::class => function (ContainerInterface $container) {
+        $connection = $container->get(Connection::class);
+        $logger = $container->get(LoggerFactory::class)
+            ->addFileHandler('acl_middleware.log')
+            ->createLogger();
+
+        return new AclMiddleware($connection, $logger);
+    },
+
+    PDOAuth::class => function (ContainerInterface $container) {
+        $connection = $container->get(Connection::class);
+        $logger = $container->get(LoggerFactory::class)
+            ->addFileHandler('pdo_auth.log')
+            ->createLogger();
+
+        return new PDOAuth($connection, $logger);
+    },
+
+    JwtAuth::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['jwt_auth'];
+
+        return new JwtAuth(
+            (string)$settings['issuer'],
+            (int)$settings['lifetime'],
+            (string)$settings['private_key'],
+            (string)$settings['public_key']
+        );
+    },
+
+    JwtMiddlerware::class => function (ContainerInterface $container) {
+        $jwtAuth = $container->get(JwtAuth::class);
+
+        return new JwtMiddlerware($jwtAuth);
+    },
+
+    HttpBasicAuthentication::class => function (ContainerInterface $container) {
+        return new HttpBasicAuthentication($container->get('settings')['api_auth']);	        $pdoAuth = $container->get(PDOAuth::class);
+
+        return new HttpBasicAuthentication([
+            "secure" => true,
+            "relaxed" => ["localhost"],
+            "realm" => "Protected",
+            "authenticator" => $pdoAuth,
+            "before" => function ($request, $arguments) {
+                return $request->withAttribute("user", $arguments["user"]);
+            }]);
+    },	    },
+
     // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
         return $container->get(Psr17Factory::class);
