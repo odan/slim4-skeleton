@@ -85,7 +85,7 @@ return [
             "before" => function ($request, $arguments) {
                 return $request->withAttribute("user", $arguments["user"]);
             }]);
-    },	    },
+    },
 
     // HTTP factories
     ResponseFactoryInterface::class => function (ContainerInterface $container) {
