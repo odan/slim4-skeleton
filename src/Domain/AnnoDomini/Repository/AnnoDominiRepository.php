@@ -295,46 +295,88 @@ final class AnnoDominiRepository
             ->andWhere(['id' => $item->id])
             ->execute();
     }   
-    
-    // todo below
 
     /**
      * Check item id.
      *
      * @param int $id The item id
+     * @param string $table The Table/Type of Data
      *
      * @return bool True if exists
      */
-    public function existsId(int $id): bool
+    public function existsId(int $id, string $table): bool
     {
-        $query = $this->queryFactory->newSelect($this::$TABLE_NAME);
+
+        $query = $this->queryFactory->newSelect($table);
         $query->select('id')->andWhere(['id' => $id]);
 
         return (bool)$query->execute()->fetch('assoc');
     }
 
     /**
-     * Delete item row.
+     * Delete Card.
      *
      * @param int $id The item id
      *
      * @return void
      */
-    public function deleteById(int $id): void
+    public function deleteCardById(int $id): void
     {
-        $this->queryFactory->newDelete($this::$TABLE_NAME)
+        $this->queryFactory->newDelete($this::$CARD_TABLE_NAME)
             ->andWhere(['id' => $id])
             ->execute();
     }
 
     /**
+     * Delete Opponent.
+     *
+     * @param int $id The item id
+     *
+     * @return void
+     */
+    public function deleteOpponentById(int $id): void
+    {
+        $this->queryFactory->newDelete($this::$OPPONENT_TABLE_NAME)
+            ->andWhere(['id' => $id])
+            ->execute();
+    } 
+
+    /**
+     * Delete Set.
+     *
+     * @param int $id The item id
+     *
+     * @return void
+     */
+    public function deleteSetById(int $id): void
+    {
+        $this->queryFactory->newDelete($this::$SET_TABLE_NAME)
+            ->andWhere(['id' => $id])
+            ->execute();
+    }    
+
+    /**
+     * Delete Skills.
+     *
+     * @param int $id The item id
+     *
+     * @return void
+     */
+    public function deleteSkillsById(int $id): void
+    {
+        $this->queryFactory->newDelete($this::$SKILLS_TABLE_NAME)
+            ->andWhere(['id' => $id])
+            ->execute();
+    }      
+
+    /**
      * Convert to array.
      *
-     * @param CardData $item The item data
+     * @param Object $item The item data
      *
      * @return array The array
      */
-    private function toRow(CardData $item): array
+    private function toRow(Object $item): array
     {
         return (array) $item;
     }
