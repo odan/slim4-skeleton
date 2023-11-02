@@ -19,4 +19,16 @@ return function (App $app) {
             $app->delete('/customers/{customer_id}', \App\Action\Customer\CustomerDeleterAction::class);
         }
     );
+
+    // SETS
+    $app->group(
+        '/sets',
+        function (RouteCollectorProxy $app) {
+            $app->get('', \App\Action\Set\SetFindAction::class);
+            $app->get('/{id}', \App\Action\Set\SetReadAction::class);
+            $app->post('', \App\Action\Set\SetCreateAction::class);
+            $app->put('/{id}', \App\Action\Set\SetUpdateAction::class);
+            $app->delete('/{uid}', \App\Action\Set\SetDeleteAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
 };
