@@ -13,6 +13,7 @@ use App\Action\Set\SetFindAction;
 use App\Action\Set\SetReadAction;
 use App\Action\Skills\SkillsFindAction;
 use App\Action\Skills\SkillsReadAction;
+use App\Action\Update\UpdateByDateAction;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use Tuupola\Middleware\HttpBasicAuthentication;
@@ -77,6 +78,18 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
             $app->get('', CardFindAction::class);
             $app->get('/{id}', CardReadAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
+
+    // UPDATE
+    $app->group(
+        '/update',
+        function (RouteCollectorProxy $app) {
+            $app->get('/{date}', UpdateByDateAction::class);
+            $app->get('/sets/{date}', SetFindAction::class);
+            $app->get('/cards/{date}', CardFindAction::class);
+            $app->get('/opponents/{date}', OpponentFindAction::class);
+            $app->get('/skills/{date}', SkillsFindAction::class);
         }
     )->add(HttpBasicAuthentication::class);
 };
