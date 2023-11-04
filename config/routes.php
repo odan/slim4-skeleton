@@ -23,6 +23,7 @@ use App\Action\Set\SetUpdateAction;
 use App\Action\Skills\SkillsCreateAction;
 use App\Action\Skills\SkillsDeleteAction;
 use App\Action\Skills\SkillsFindAction;
+use App\Action\Skills\SkillsFindByOpponentAction;
 use App\Action\Skills\SkillsReadAction;
 use App\Action\Skills\SkillsUpdateAction;
 use App\Action\Update\UpdateByDateAction;
@@ -33,18 +34,6 @@ use Tuupola\Middleware\HttpBasicAuthentication;
 
 return function (App $app) {
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('home');
-
-    // API
-    $app->group(
-        '/api',
-        function (RouteCollectorProxy $app) {
-            $app->get('/customers', \App\Action\Customer\CustomerFinderAction::class);
-            $app->post('/customers', \App\Action\Customer\CustomerCreatorAction::class);
-            $app->get('/customers/{customer_id}', \App\Action\Customer\CustomerReaderAction::class);
-            $app->put('/customers/{customer_id}', \App\Action\Customer\CustomerUpdaterAction::class);
-            $app->delete('/customers/{customer_id}', \App\Action\Customer\CustomerDeleterAction::class);
-        }
-    );
 
     // AUTH
     $app->post('/auth', AuthAction::class);
@@ -72,7 +61,7 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
             $app->get('', OpponentFindAction::class);
             $app->get('/{id}', OpponentReadAction::class);
-            //$app->get('/{id}/skills', SkillsFindByOpponentAction::class);
+            $app->get('/{id}/skills', SkillsFindByOpponentAction::class);
         }
     )->add(HttpBasicAuthentication::class);
 

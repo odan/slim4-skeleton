@@ -2,7 +2,6 @@
 
 namespace App\Domain\Skills\Service;
 
-use Apollo29\AnnoDomini\Data\SetData;
 use Apollo29\AnnoDomini\Data\SkillsData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiFinderRepository;
 
@@ -44,5 +43,19 @@ class SkillsFinderService
         }
 
         return $this->repository->findSkillsByDate($date);
+    }
+
+    /**
+     * Find items.
+     *
+     * @param int $opponent The Opponent
+     * @return SkillsData[] A list of items
+     */
+    public function findByOpponent(int $opponent): array
+    {
+        // Input validation
+        // ...
+
+        return $this->repository->findSkillsByOpponent($opponent);
     }
 }
