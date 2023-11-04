@@ -28,7 +28,7 @@ use Tuupola\Middleware\HttpBasicAuthentication;
 
 return [
     // Application settings
-    'settings' => fn () => require __DIR__ . '/settings.php',
+    'settings' => fn() => require __DIR__ . '/settings.php',
 
     App::class => function (ContainerInterface $container) {
         $app = AppFactory::createFromContainer($container);
@@ -46,18 +46,14 @@ return [
 
     AclMiddleware::class => function (ContainerInterface $container) {
         $connection = $container->get(Connection::class);
-        $logger = $container->get(LoggerInterface::class)
-            ->addFileHandler('acl_middleware.log')
-            ->createLogger();
+        $logger = $container->get(LoggerInterface::class);
 
         return new AclMiddleware($connection, $logger);
     },
 
     PDOAuth::class => function (ContainerInterface $container) {
         $connection = $container->get(Connection::class);
-        $logger = $container->get(LoggerInterface::class)
-            ->addFileHandler('pdo_auth.log')
-            ->createLogger();
+        $logger = $container->get(LoggerInterface::class);
 
         return new PDOAuth($connection, $logger);
     },

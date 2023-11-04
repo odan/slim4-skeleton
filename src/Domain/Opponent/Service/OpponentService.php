@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Domain\Set\Service;
+namespace App\Domain\Opponent\Service;
 
-use Apollo29\AnnoDomini\Data\SetData;
+use Apollo29\AnnoDomini\Data\OpponentData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiRepository;
-use Apollo29\AnnoDomini\Service\SetValidator;
+use Apollo29\AnnoDomini\Service\OpponentValidator;
 use Psr\Log\LoggerInterface;
 
-class SetService
+class OpponentService
 {
     private AnnoDominiRepository $repository;
 
-    private SetValidator $validator;
+    private OpponentValidator $validator;
 
     private LoggerInterface $logger;
 
@@ -19,12 +19,12 @@ class SetService
      * The constructor.
      *
      * @param AnnoDominiRepository $repository The repository
-     * @param SetValidator $validator The validator
+     * @param OpponentValidator $validator The validator
      * @param LoggerInterface $logger The logger interface
      */
     public function __construct(
         AnnoDominiRepository $repository,
-        SetValidator         $validator,
+        OpponentValidator    $validator,
         LoggerInterface      $logger
     )
     {
@@ -43,9 +43,9 @@ class SetService
     public function create(array $data): int
     {
         $this->validator->validate($data);
-        $item = new SetData($data);
-        $itemId = $this->repository->insertSet($item);
-        $this->logger->info(sprintf('Set created successfully: %s', $itemId));
+        $item = new OpponentData($data);
+        $itemId = $this->repository->insertOpponent($item);
+        $this->logger->info(sprintf('Opponent created successfully: %s', $itemId));
         return $itemId;
     }
 
@@ -60,10 +60,10 @@ class SetService
     public function update(int $itemId, array $data): void
     {
         $this->validator->validateUpdate($itemId, $data);
-        $item = new SetData($data);
+        $item = new OpponentData($data);
         $item->id = $itemId;
-        $this->repository->updateSet($item);
-        $this->logger->info(sprintf('Set updated successfully: %s', $itemId));
+        $this->repository->updateOpponent($item);
+        $this->logger->info(sprintf('Opponent updated successfully: %s', $itemId));
     }
 
     /**
@@ -71,11 +71,11 @@ class SetService
      *
      * @param int $itemId The item id
      *
-     * @return SetData The item data
+     * @return OpponentData The item data
      */
-    public function getById(int $itemId): SetData
+    public function getById(int $itemId): OpponentData
     {
-        return $this->repository->getSetById($itemId);
+        return $this->repository->getOpponentById($itemId);
     }
 
     /**
@@ -87,6 +87,6 @@ class SetService
      */
     public function delete(int $id): void
     {
-        $this->repository->deleteSetById($id);
+        $this->repository->deleteOpponentById($id);
     }
 }

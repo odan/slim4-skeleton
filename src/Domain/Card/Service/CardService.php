@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Domain\Set\Service;
+namespace App\Domain\Card\Service;
 
-use Apollo29\AnnoDomini\Data\SetData;
+use Apollo29\AnnoDomini\Data\CardData;
+use Apollo29\AnnoDomini\Data\SkillsData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiRepository;
 use Apollo29\AnnoDomini\Service\SetValidator;
 use Psr\Log\LoggerInterface;
 
-class SetService
+class CardService
 {
     private AnnoDominiRepository $repository;
 
@@ -43,9 +44,9 @@ class SetService
     public function create(array $data): int
     {
         $this->validator->validate($data);
-        $item = new SetData($data);
-        $itemId = $this->repository->insertSet($item);
-        $this->logger->info(sprintf('Set created successfully: %s', $itemId));
+        $item = new CardData($data);
+        $itemId = $this->repository->insertCard($item);
+        $this->logger->info(sprintf('Card created successfully: %s', $itemId));
         return $itemId;
     }
 
@@ -60,10 +61,10 @@ class SetService
     public function update(int $itemId, array $data): void
     {
         $this->validator->validateUpdate($itemId, $data);
-        $item = new SetData($data);
+        $item = new CardData($data);
         $item->id = $itemId;
-        $this->repository->updateSet($item);
-        $this->logger->info(sprintf('Set updated successfully: %s', $itemId));
+        $this->repository->updateCard($item);
+        $this->logger->info(sprintf('Card updated successfully: %s', $itemId));
     }
 
     /**
@@ -71,11 +72,11 @@ class SetService
      *
      * @param int $itemId The item id
      *
-     * @return SetData The item data
+     * @return CardData The item data
      */
-    public function getById(int $itemId): SetData
+    public function getById(int $itemId): CardData
     {
-        return $this->repository->getSetById($itemId);
+        return $this->repository->getCardById($itemId);
     }
 
     /**
@@ -87,6 +88,6 @@ class SetService
      */
     public function delete(int $id): void
     {
-        $this->repository->deleteSetById($id);
+        $this->repository->deleteCardById($id);
     }
 }

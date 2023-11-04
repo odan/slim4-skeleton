@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Set\Service;
+namespace App\Domain\Skills\Service;
 
-use Apollo29\AnnoDomini\Data\SetData;
+use Apollo29\AnnoDomini\Data\SkillsData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiRepository;
 use Apollo29\AnnoDomini\Service\SetValidator;
 use Psr\Log\LoggerInterface;
 
-class SetService
+class SkillsService
 {
     private AnnoDominiRepository $repository;
 
@@ -43,9 +43,9 @@ class SetService
     public function create(array $data): int
     {
         $this->validator->validate($data);
-        $item = new SetData($data);
-        $itemId = $this->repository->insertSet($item);
-        $this->logger->info(sprintf('Set created successfully: %s', $itemId));
+        $item = new SkillsData($data);
+        $itemId = $this->repository->insertSkills($item);
+        $this->logger->info(sprintf('Skills created successfully: %s', $itemId));
         return $itemId;
     }
 
@@ -60,10 +60,10 @@ class SetService
     public function update(int $itemId, array $data): void
     {
         $this->validator->validateUpdate($itemId, $data);
-        $item = new SetData($data);
+        $item = new SkillsData($data);
         $item->id = $itemId;
-        $this->repository->updateSet($item);
-        $this->logger->info(sprintf('Set updated successfully: %s', $itemId));
+        $this->repository->updateSkills($item);
+        $this->logger->info(sprintf('Skills updated successfully: %s', $itemId));
     }
 
     /**
@@ -71,11 +71,11 @@ class SetService
      *
      * @param int $itemId The item id
      *
-     * @return SetData The item data
+     * @return SkillsData The item data
      */
-    public function getById(int $itemId): SetData
+    public function getById(int $itemId): SkillsData
     {
-        return $this->repository->getSetById($itemId);
+        return $this->repository->getSkillsById($itemId);
     }
 
     /**
@@ -87,6 +87,6 @@ class SetService
      */
     public function delete(int $id): void
     {
-        $this->repository->deleteSetById($id);
+        $this->repository->deleteSkillsById($id);
     }
 }

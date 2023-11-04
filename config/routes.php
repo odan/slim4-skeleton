@@ -3,13 +3,16 @@
 // Define app routes
 
 use App\Action\Auth\AuthAction;
+use App\Action\Card\CardFindAction;
+use App\Action\Card\CardReadAction;
 use App\Action\Info\InfoFindOpponentAction;
 use App\Action\Info\InfoFindSetAction;
-use App\Action\Set\SetCreateAction;
-use App\Action\Set\SetDeleteAction;
+use App\Action\Opponent\OpponentFindAction;
+use App\Action\Opponent\OpponentReadAction;
 use App\Action\Set\SetFindAction;
 use App\Action\Set\SetReadAction;
-use App\Action\Set\SetUpdateAction;
+use App\Action\Skills\SkillsFindAction;
+use App\Action\Skills\SkillsReadAction;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use Tuupola\Middleware\HttpBasicAuthentication;
@@ -31,15 +34,6 @@ return function (App $app) {
 
     // AUTH
     $app->post('/auth', AuthAction::class);
-    /*
-    $app->group(
-        '/auth',
-        function (RouteCollectorProxy $app) {
-            $app->post('', AuthAction::class);
-        }
-    );
-    */
-
 
     // INFO
     $app->group(
@@ -55,9 +49,34 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
             $app->get('', SetFindAction::class);
             $app->get('/{id}', SetReadAction::class);
-            $app->post('', SetCreateAction::class);
-            $app->put('/{id}', SetUpdateAction::class);
-            $app->delete('/{uid}', SetDeleteAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
+
+    // OPPONENTS
+    $app->group(
+        '/opponents',
+        function (RouteCollectorProxy $app) {
+            $app->get('', OpponentFindAction::class);
+            $app->get('/{id}', OpponentReadAction::class);
+            //$app->get('/{id}/skills', SkillsFindByOpponentAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
+
+    // SKILLS
+    $app->group(
+        '/skills',
+        function (RouteCollectorProxy $app) {
+            $app->get('', SkillsFindAction::class);
+            $app->get('/{id}', SkillsReadAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
+
+    // CARDS
+    $app->group(
+        '/cards',
+        function (RouteCollectorProxy $app) {
+            $app->get('', CardFindAction::class);
+            $app->get('/{id}', CardReadAction::class);
         }
     )->add(HttpBasicAuthentication::class);
 };
