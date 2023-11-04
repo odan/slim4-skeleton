@@ -10,10 +10,17 @@
         "slim4",
         "apache"
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:apollo29/annodomini-repository.git"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
+        "apollo29/annodomini-repository": "^0.0.2",
         "cakephp/chronos": "^3",
         "cakephp/database": "^5",
         "cakephp/validation": "^5",

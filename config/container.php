@@ -1,6 +1,10 @@
 <?php
 
 use App\Handler\DefaultErrorHandler;
+use App\Middleware\AclMiddleware;
+use App\Middleware\JwtMiddlerware;
+use App\Support\JwtAuth;
+use App\Support\PDOAuth;
 use Cake\Database\Connection;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
@@ -20,6 +24,7 @@ use Slim\Interfaces\RouteParserInterface;
 use Slim\Middleware\ErrorMiddleware;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
+use Tuupola\Middleware\HttpBasicAuthentication;
 
 return [
     // Application settings
@@ -41,7 +46,7 @@ return [
 
     AclMiddleware::class => function (ContainerInterface $container) {
         $connection = $container->get(Connection::class);
-        $logger = $container->get(LoggerFactory::class)
+        $logger = $container->get(LoggerInterface::class)
             ->addFileHandler('acl_middleware.log')
             ->createLogger();
 
@@ -50,7 +55,7 @@ return [
 
     PDOAuth::class => function (ContainerInterface $container) {
         $connection = $container->get(Connection::class);
-        $logger = $container->get(LoggerFactory::class)
+        $logger = $container->get(LoggerInterface::class)
             ->addFileHandler('pdo_auth.log')
             ->createLogger();
 
@@ -127,7 +132,7 @@ return [
 
         $class = new ReflectionClass($driver);
         $method = $class->getMethod('getPdo');
-        $method->setAccessible(true);
+        //$method->setAccessible(true);
 
         return $method->invoke($driver);
     },

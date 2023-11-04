@@ -2,6 +2,9 @@
 
 // Define app routes
 
+use App\Action\Auth\AuthAction;
+use App\Action\Info\InfoFindOpponentAction;
+use App\Action\Info\InfoFindSetAction;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -20,15 +23,32 @@ return function (App $app) {
         }
     );
 
-    // SETS
+    // AUTH
     $app->group(
-        '/sets',
+        '/auth',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Set\SetFindAction::class);
-            $app->get('/{id}', \App\Action\Set\SetReadAction::class);
-            $app->post('', \App\Action\Set\SetCreateAction::class);
-            $app->put('/{id}', \App\Action\Set\SetUpdateAction::class);
-            $app->delete('/{uid}', \App\Action\Set\SetDeleteAction::class);
+            $app->post('', AuthAction::class);
         }
-    )->add(HttpBasicAuthentication::class);
+    );
+
+
+    // INFO
+    $app->group(
+        '/info',
+        function (RouteCollectorProxy $app) {
+            $app->get('/sets', InfoFindSetAction::class);
+            $app->get('/opponents', InfoFindOpponentAction::class);
+        });
+
+    // SETS
+//    $app->group(
+//        '/sets',
+//        function (RouteCollectorProxy $app) {
+//            $app->get('', \App\Action\Set\SetFindAction::class);
+//            $app->get('/{id}', \App\Action\Set\SetReadAction::class);
+//            $app->post('', \App\Action\Set\SetCreateAction::class);
+//            $app->put('/{id}', \App\Action\Set\SetUpdateAction::class);
+//            $app->delete('/{uid}', \App\Action\Set\SetDeleteAction::class);
+//        }
+//    )->add(HttpBasicAuthentication::class);
 };
