@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * JWT Middleware
  */
-class JwtMiddlerware implements MiddlewareInterface
+class JwtMiddleware implements MiddlewareInterface
 {
     protected JwtAuth $jwtAuth;
 

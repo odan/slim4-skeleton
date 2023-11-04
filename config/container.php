@@ -2,7 +2,7 @@
 
 use App\Handler\DefaultErrorHandler;
 use App\Middleware\AclMiddleware;
-use App\Middleware\JwtMiddlerware;
+use App\Middleware\JwtMiddleware;
 use App\Support\JwtAuth;
 use App\Support\PDOAuth;
 use Cake\Database\Connection;
@@ -73,10 +73,10 @@ return [
         );
     },
 
-    JwtMiddlerware::class => function (ContainerInterface $container) {
+    JwtMiddleware::class => function (ContainerInterface $container) {
         $jwtAuth = $container->get(JwtAuth::class);
 
-        return new JwtMiddlerware($jwtAuth);
+        return new JwtMiddleware($jwtAuth);
     },
 
     HttpBasicAuthentication::class => function (ContainerInterface $container) {

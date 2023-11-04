@@ -5,8 +5,14 @@
 use App\Action\Auth\AuthAction;
 use App\Action\Info\InfoFindOpponentAction;
 use App\Action\Info\InfoFindSetAction;
+use App\Action\Set\SetCreateAction;
+use App\Action\Set\SetDeleteAction;
+use App\Action\Set\SetFindAction;
+use App\Action\Set\SetReadAction;
+use App\Action\Set\SetUpdateAction;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
+use Tuupola\Middleware\HttpBasicAuthentication;
 
 return function (App $app) {
     $app->get('/', \App\Action\Home\HomeAction::class)->setName('home');
@@ -24,12 +30,15 @@ return function (App $app) {
     );
 
     // AUTH
+    $app->post('/auth', AuthAction::class);
+    /*
     $app->group(
         '/auth',
         function (RouteCollectorProxy $app) {
             $app->post('', AuthAction::class);
         }
     );
+    */
 
 
     // INFO
@@ -41,14 +50,14 @@ return function (App $app) {
         });
 
     // SETS
-//    $app->group(
-//        '/sets',
-//        function (RouteCollectorProxy $app) {
-//            $app->get('', \App\Action\Set\SetFindAction::class);
-//            $app->get('/{id}', \App\Action\Set\SetReadAction::class);
-//            $app->post('', \App\Action\Set\SetCreateAction::class);
-//            $app->put('/{id}', \App\Action\Set\SetUpdateAction::class);
-//            $app->delete('/{uid}', \App\Action\Set\SetDeleteAction::class);
-//        }
-//    )->add(HttpBasicAuthentication::class);
+    $app->group(
+        '/sets',
+        function (RouteCollectorProxy $app) {
+            $app->get('', SetFindAction::class);
+            $app->get('/{id}', SetReadAction::class);
+            $app->post('', SetCreateAction::class);
+            $app->put('/{id}', SetUpdateAction::class);
+            $app->delete('/{uid}', SetDeleteAction::class);
+        }
+    )->add(HttpBasicAuthentication::class);
 };

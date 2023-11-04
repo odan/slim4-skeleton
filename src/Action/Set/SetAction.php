@@ -2,21 +2,22 @@
 
 namespace App\Action\Set;
 
-use Apollo29\AnnoDomini\Repository\AnnoDominiRepository;
+use App\Domain\Set\Service\SetService;
 use App\Renderer\JsonRenderer;
 
 abstract class SetAction
 {
-    protected AnnoDominiRepository $repository;
+    protected SetService $service;
 
     protected JsonRenderer $renderer;
 
     /**
-     * @param AnnoDominiRepository $repository
+     * @param SetService $service
      * @param JsonRenderer $jsonRenderer
      */
-    public function __construct(AnnoDominiRepository $repository, JsonRenderer $jsonRenderer)
+    public function __construct(SetService $service, JsonRenderer $jsonRenderer)
     {
-        $this->repository = $repository;
+        $this->service = $service;
+        $this->renderer = $jsonRenderer;
     }
 }
