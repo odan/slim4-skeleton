@@ -27,6 +27,7 @@ use App\Action\Skills\SkillsFindByOpponentAction;
 use App\Action\Skills\SkillsReadAction;
 use App\Action\Skills\SkillsUpdateAction;
 use App\Action\Update\UpdateByDateAction;
+use App\Middleware\ApiKeyMiddleware;
 use App\Middleware\JwtMiddleware;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
@@ -44,8 +45,22 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
             $app->get('/sets', InfoFindSetAction::class);
             $app->get('/opponents', InfoFindOpponentAction::class);
-        });
+        }
+    );
 
+    // UPDATE
+    $app->group(
+        '/update',
+        function (RouteCollectorProxy $app) {
+            $app->get('/{date}', UpdateByDateAction::class);
+            $app->get('/sets/{date}', SetFindAction::class);
+            $app->get('/cards/{date}', CardFindAction::class);
+            $app->get('/opponents/{date}', OpponentFindAction::class);
+            $app->get('/skills/{date}', SkillsFindAction::class);
+        }
+    )->add(ApiKeyMiddleware::class);
+
+    // todo deprecated?
     // SETS
     $app->group(
         '/sets',
@@ -80,18 +95,6 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
             $app->get('', CardFindAction::class);
             $app->get('/{id}', CardReadAction::class);
-        }
-    )->add(HttpBasicAuthentication::class);
-
-    // UPDATE
-    $app->group(
-        '/update',
-        function (RouteCollectorProxy $app) {
-            $app->get('/{date}', UpdateByDateAction::class);
-            $app->get('/sets/{date}', SetFindAction::class);
-            $app->get('/cards/{date}', CardFindAction::class);
-            $app->get('/opponents/{date}', OpponentFindAction::class);
-            $app->get('/skills/{date}', SkillsFindAction::class);
         }
     )->add(HttpBasicAuthentication::class);
 

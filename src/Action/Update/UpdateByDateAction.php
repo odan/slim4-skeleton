@@ -41,10 +41,9 @@ final class UpdateByDateAction
      */
     public function __invoke(
         ServerRequestInterface $request,
-        ResponseInterface      $response,
-        array                  $args
-    ): ResponseInterface
-    {
+        ResponseInterface $response,
+        array $args
+    ): ResponseInterface {
         // Fetch parameters from the request
         $date = (int)$args['date'];
 
@@ -78,6 +77,4 @@ final class UpdateByDateAction
             ]
         );
     }
-
-
 }

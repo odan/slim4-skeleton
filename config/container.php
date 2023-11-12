@@ -2,7 +2,9 @@
 
 use App\Handler\DefaultErrorHandler;
 use App\Middleware\AclMiddleware;
+use App\Middleware\ApiKeyMiddleware;
 use App\Middleware\JwtMiddleware;
+use App\Support\ApiKeyAuth;
 use App\Support\JwtAuth;
 use App\Support\PDOAuth;
 use Cake\Database\Connection;
@@ -73,6 +75,17 @@ return [
         $jwtAuth = $container->get(JwtAuth::class);
 
         return new JwtMiddleware($jwtAuth);
+    },
+
+    ApiKeyAuth::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['apikey'];
+        return new ApiKeyAuth($settings['api_key']);
+    },
+
+    ApiKeyMiddleware::class => function (ContainerInterface $container) {
+        $apiKeyAuth = $container->get(ApiKeyAuth::class);
+
+        return new ApiKeyMiddleware($apiKeyAuth);
     },
 
     HttpBasicAuthentication::class => function (ContainerInterface $container) {
