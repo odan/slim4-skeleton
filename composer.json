@@ -45,10 +45,7 @@
     },
     "config": {
         "process-timeout": 0,
-        "sort-packages": true,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
+        "sort-packages": true
     },
     "scripts": {
         "cs:check": [
