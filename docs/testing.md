@@ -224,7 +224,7 @@ final class MyClass
     {
     }
 
-    public function insertCustomer(array $customer): int
+    public function calculateSomething(): void
     {
         $now = $this->clock->now();
         
