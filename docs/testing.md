@@ -211,7 +211,7 @@ and invoke the `now()` method.
 
 **Example**
 
-````php
+```php
 <?php
 
 namespace Example;
