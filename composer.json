@@ -14,16 +14,17 @@
         "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
-        "cakephp/chronos": "^3",
         "cakephp/database": "^5",
         "cakephp/validation": "^5",
         "fig/http-message-util": "^1.1",
         "monolog/monolog": "^3",
-        "nyholm/psr7": "^1.4",
-        "nyholm/psr7-server": "^1.0",
+        "nyholm/psr7": "^1.8.1",
+        "nyholm/psr7-server": "^1.1",
         "php-di/php-di": "^7",
+        "psr/clock": "^1.0",
         "selective/basepath": "^2",
-        "slim/slim": "^4"
+        "slim/slim": "^4",
+        "symfony/clock": "^6.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",

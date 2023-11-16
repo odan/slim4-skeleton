@@ -4,7 +4,6 @@ namespace App\Test\TestCase\Action\Customer;
 
 use App\Test\Fixture\CustomerFixture;
 use App\Test\Traits\AppTestTrait;
-use Cake\Chronos\Chronos;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
 use Selective\TestTrait\Traits\DatabaseTestTrait;
@@ -21,7 +20,7 @@ class CustomerUpdaterActionTest extends TestCase
 
     public function testUpdateCustomer(): void
     {
-        Chronos::setTestNow('2021-02-01 00:00:00');
+        $this->setTestNow('2024-01-31 00:00:00');
 
         $this->insertFixtures([CustomerFixture::class]);
 

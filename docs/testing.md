@@ -199,42 +199,38 @@ $password = $this->getTableRowById('users', 1)['password'];
 ## Testing with Date and Time
 
 To change the date and time for testing purposes, invoke the 
-`Chronos::setTestNow` method within a test as follows:
+`setTestNow` method within a test as follows:
 
 ```php
-use Cake\Chronos\Chronos;
-
-Chronos::setTestNow('2022-02-01 00:00:00');
+$thia->setTestNow('2024-01-01 00:00:00');
 ```
 
-## Mocking
+To get the current date and time within the application, 
+declare the `Psr\Clock\ClockInterface $clock` as class dependency
+and invoke the `now()` method.
 
-When testing Slim applications, you may wish to "mock" certain aspects of your
-application, so they are not actually executed during a test.
-For example, when testing a service that needs a repository,
-you may wish to mock the repository so that it's not actually
-executed queries during the test.
+**Example**
 
-Note: Mocking is not a good testing method, because you may
-not test the code you actually deploy, and furthermore,
-if you change the code, you will have to change the test as well.
-The meaningfulness and maintainability of tests with a
-mock is thus significantly lower compared to a test
-that tests the entire code.
+````php
+<?php
 
-The `AppTestTrait` provides methods for mocking objects into the container.
+namespace Example;
 
-Mocking methods:
+use Psr\Clock\ClockInterface;
 
-```php
-$this->mock(UserCreator::class)->method('createUser')->willReturn(1);
-```
+final class MyClass
+{
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
 
-For better IDE  support you may better use the `mockMethod` helper:
-
-```php
-$this->mockMethod([UserReaderRepository::class, 'getUserById'])
-    ->willReturn(['example' => 'data']);
+    public function insertCustomer(array $customer): int
+    {
+        $now = $this->clock->now();
+        
+        // ...
+    }
+}
 ```
 
 ## Read more

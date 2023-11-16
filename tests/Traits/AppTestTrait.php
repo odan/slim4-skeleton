@@ -12,6 +12,7 @@ use Slim\App;
 trait AppTestTrait
 {
     use ArrayTestTrait;
+    use ClockTestTrait;
     use ContainerTestTrait;
     use HttpTestTrait;
     use HttpJsonTestTrait;

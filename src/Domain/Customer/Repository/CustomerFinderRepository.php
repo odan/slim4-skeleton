@@ -30,7 +30,7 @@ final class CustomerFinderRepository
             ]
         );
 
-        // Add more "use case specific" conditions to the query
+        // Add more conditions to the query
         // ...
 
         return $query->execute()->fetchAll('assoc') ?: [];

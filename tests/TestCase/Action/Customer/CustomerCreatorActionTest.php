@@ -3,7 +3,6 @@
 namespace App\Test\TestCase\Action\Customer;
 
 use App\Test\Traits\AppTestTrait;
-use Cake\Chronos\Chronos;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\TestCase;
 use Selective\TestTrait\Traits\DatabaseTestTrait;
@@ -20,7 +19,7 @@ class CustomerCreatorActionTest extends TestCase
 
     public function testCreateCustomer(): void
     {
-        Chronos::setTestNow('2021-01-01 00:00:00');
+        $this->setTestNow('2021-02-01 00:00:00');
 
         $request = $this->createJsonRequest(
             'POST',

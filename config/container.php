@@ -6,6 +6,7 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Clock\ClockInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -18,6 +19,7 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Middleware\ErrorMiddleware;
+use Symfony\Component\Clock\NativeClock;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -127,5 +129,9 @@ return [
         }
 
         return $application;
+    },
+
+    ClockInterface::class => function () {
+        return new NativeClock();
     },
 ];
