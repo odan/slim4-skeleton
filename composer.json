@@ -24,7 +24,7 @@
         "psr/clock": "^1.0",
         "selective/basepath": "^2",
         "slim/slim": "^4",
-        "symfony/clock": "^6.3"
+        "symfony/clock": "^7"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
@@ -32,7 +32,7 @@
         "phpunit/phpunit": "^10",
         "selective/test-traits": "^4",
         "squizlabs/php_codesniffer": "^3",
-        "symfony/console": "^6"
+        "symfony/console": "^7"
     },
     "autoload": {
         "psr-4": {
