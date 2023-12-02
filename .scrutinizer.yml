@@ -12,10 +12,10 @@ tools:
 
 build:
     services:
-        mysql: 5.7
+        mysql: 8.0.29
     environment:
         php:
-            version: 8.1.2
+            version: 8.2
             ini:
                 xdebug.mode: coverage
         mysql: 5.7
