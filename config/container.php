@@ -1,12 +1,10 @@
 <?php
 
 use App\Handler\DefaultErrorHandler;
-use Cake\Database\Connection;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Nyholm\Psr7\Factory\Psr17Factory;
-use Psr\Clock\ClockInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -19,9 +17,6 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Middleware\ErrorMiddleware;
-use Symfony\Component\Clock\NativeClock;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\InputOption;
 
 return [
     // Application settings
@@ -69,21 +64,6 @@ return [
         return new BasePathMiddleware($container->get(App::class));
     },
 
-    // Database connection
-    Connection::class => function (ContainerInterface $container) {
-        return new Connection($container->get('settings')['db']);
-    },
-
-    PDO::class => function (ContainerInterface $container) {
-        $driver = $container->get(Connection::class)->getDriver();
-
-        $class = new ReflectionClass($driver);
-        $method = $class->getMethod('getPdo');
-        $method->setAccessible(true);
-
-        return $method->invoke($driver);
-    },
-
     LoggerInterface::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['logger'];
 
@@ -115,23 +95,5 @@ return [
         $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
 
         return $errorMiddleware;
-    },
-
-    Application::class => function (ContainerInterface $container) {
-        $application = new Application();
-
-        $application->getDefinition()->addOption(
-            new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev')
-        );
-
-        foreach ($container->get('settings')['commands'] as $class) {
-            $application->add($container->get($class));
-        }
-
-        return $application;
-    },
-
-    ClockInterface::class => function () {
-        return new NativeClock();
     },
 ];

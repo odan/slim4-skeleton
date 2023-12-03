@@ -38,8 +38,7 @@ template engine such as Twig or Latte.
 ├── src                     # PHP source code (The App namespace)
 │   ├── Action              # Controller actions (HTTP layer)
 │   ├── Console             # Console commands
-│   ├── Domain              # The business logic
-│   ├── Factory             # Factories
+│   ├── Domain              # The core application
 │   ├── Renderer            # Render and Url helper (HTTP layer)
 │   ├── Middleware          # Middleware (HTTP layer)
 │   └── Support             # Helper classes and functions

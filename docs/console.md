@@ -6,24 +6,14 @@ parent: Advanced
 
 # Console
 
-## Composer scripts
+## Installation
 
-To list all composer scripts, run:
+You'll need to install the Symfony Console component to add command-line capabilities to your project. 
+
+Use Composer to do this:
 
 ```
-composer list
-```
-
-## Console Commands
-
-The default console executable is: `bin/console.php`
-
-The default console command class directory is: `src/Console`
-
-To start the console and list all available commands, run:
-
-``` bash
-php bin/console
+composer require symfony/console
 ```
 
 ## Creating a console command
@@ -59,20 +49,58 @@ final class ExampleCommand extends Command
 }
 ```
 
-To register a new command you have to open `config/defaults.php`
-and add a new array entry to `$settings['commands']`.
+## Register the Console Application
+
+To integrate the Console application with your application, 
+you'll need to register it. Create a file, e.g., `bin/console.php`, and add the following code
 
 ```php
-$settings['commands'] = [
-    // ...
-    \App\Console\ExampleCommand::class,
-];
+<?php
+
+use App\Console\ExampleCommand;
+use DI\ContainerBuilder;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$env = (new ArgvInput())->getParameterOption(['--env', '-e'], 'dev');
+
+if ($env) {
+    $_ENV['APP_ENV'] = $env;
+}
+
+/** @var ContainerInterface $container */
+$container = (new ContainerBuilder())
+    ->addDefinitions(__DIR__ . '/../config/container.php')
+    ->build();
+
+try {
+    /** @var Application $application */
+    $application = $container->get(Application::class);
+    
+    // Register your console commands here
+    $application->add($container->get(ExampleCommand::class));
+    
+    exit($application->run());
+} catch (Throwable $exception) {
+    echo $exception->getMessage();
+    exit(1);
+}
+
+```
+
+Set permissions:
+
+```php
+chmod +x bin/console.php
 ```
 
 To start to example command, run:
 
 ``` bash
-php bin/console example
+php bin/console.php example
 ```
 
 The output:
@@ -81,7 +109,15 @@ The output:
 Hello, World!
 ```
 
-Read more:
+## Console Commands
+
+To list all available commands, run:
+
+``` bash
+php bin/console.php
+```
+
+## Read more
 
 * [Symfony Console Commands](https://symfony.com/doc/current/console.html)
 * [Console](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)

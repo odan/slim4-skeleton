@@ -3,16 +3,10 @@
 namespace App\Test\Traits;
 
 use DI\ContainerBuilder;
-use Selective\TestTrait\Traits\ArrayTestTrait;
-use Selective\TestTrait\Traits\ContainerTestTrait;
-use Selective\TestTrait\Traits\HttpJsonTestTrait;
-use Selective\TestTrait\Traits\HttpTestTrait;
 use Slim\App;
 
 trait AppTestTrait
 {
-    use ArrayTestTrait;
-    use ClockTestTrait;
     use ContainerTestTrait;
     use HttpTestTrait;
     use HttpJsonTestTrait;

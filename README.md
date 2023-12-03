@@ -19,8 +19,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 8.1+
-* MySQL 5.7+ or MariaDB
+* PHP 8.2
 
 ## Installation
 

@@ -48,13 +48,6 @@ final class HomeAction
 }
 ```
 
-## RedirectRenderer
-
-Methods:
-
-* `redirect` - Builds a redirect for the given url
-* `redirectFor` - Builds a redirect for the given route name
-
 ## Building a filetype specific response
 
 * [Image files](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
