@@ -93,7 +93,7 @@ final class ExceptionMiddleware implements MiddlewareInterface
 
         $message = sprintf(
             "\n<br>Error %s (%s)\n<br>Message: %s\n<br>",
-            $this->html($response->getStatusCode()),
+            $this->html((string)$response->getStatusCode()),
             $this->html($response->getReasonPhrase()),
             $this->html($exception->getMessage()),
         );
@@ -102,7 +102,7 @@ final class ExceptionMiddleware implements MiddlewareInterface
             $message .= sprintf(
                 'File: %s, Line: %s',
                 $this->html($exception->getFile()),
-                $this->html($exception->getLine())
+                $this->html((string)$exception->getLine())
             );
         }
 
