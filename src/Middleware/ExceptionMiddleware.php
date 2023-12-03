@@ -50,6 +50,20 @@ final class ExceptionMiddleware implements MiddlewareInterface
         $httpStatusCode = $this->getHttpStatusCode($exception);
         $response = $this->responseFactory->createResponse($httpStatusCode);
 
+        // Log error
+        if (isset($this->logger)) {
+            $this->logger->error(
+                sprintf(
+                    '%s;Code %s;File: %s;Line: %s',
+                    $exception->getMessage(),
+                    $exception->getCode(),
+                    $exception->getFile(),
+                    $exception->getLine()
+                ),
+                $exception->getTrace()
+            );
+        }
+
         // Content negotiation
         if (str_contains($request->getHeaderLine('Accept'), 'application/json')) {
             $response = $response->withAddedHeader('Content-Type', 'application/json');
