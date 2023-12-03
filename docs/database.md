@@ -6,7 +6,7 @@ nav_order: 6
 
 # Database
 
-You have the freedom to choose any database package. Some popular options include:
+You have the freedom to choose any database package. Some popular options are:
 
 * [CakePHP Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 * [Laminas Query Builder](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
@@ -20,38 +20,6 @@ You have the freedom to choose any database package. Some popular options includ
 You can configure the database settings for each server environment.
 
 The default settings are stored in `config/defaults.php`, `$settings['db']` 
-
-## Repositories
-
-A [repository](https://designpatternsphp.readthedocs.io/More/Repository/README.html) 
-provides an abstraction layer between the data access logic and the business logic 
-of an application, allowing data operations to be decoupled from the specifics 
-of the underlying database or data source.
-
-There are two types of repositories: collection-oriented and persistence-oriented repositories.
-
-A collection-oriented repository treats in-memory objects as part of a collection, 
-emphasizing behaviors like adding, removing, or querying objects within that collection. 
-It often abstracts the underlying data source as a simple in-memory collection. 
-In contrast, a persistence-oriented repository focuses on the storage, retrieval, 
-and deletion of objects in a persistent data store, such as a database, 
-and emphasizes the persistence lifecycle and operations specific to the 
-underlying storage mechanism.
-
-This project employs **persistence-oriented** repositories for efficient 
-large data handling  without the complexity of the [Unit of Work](https://en.wikipedia.org/wiki/Unit_of_work) pattern.
-Handle database **transactions** at the service level, not within the repository.
-
-Every public repository method represents a query, 
-returning either a primitive/object or an array 
-of them as the result set.
-
-**Quick summary:**
-
-* Communication with the database.
-* Place for the data access (query) logic.
-* Uses data mapper to create domain objects
-* This is no place for the business logic.
 
 ## Read more
 
