@@ -18,9 +18,7 @@ Authorization: Basic YXBpLXVzZXI6c2VjcmV0
 ```
 
 The [tuupola/slim-basic-auth](https://github.com/tuupola/slim-basic-auth) package
-implements HTTP Basic Authentication. It was originally developed 
-for Slim but can be used with all frameworks using 
-PSR-7 or PSR-15 style middlewares.
+implements HTTP Basic Authentication.
 
 ## OAuth 2.0
 
