@@ -110,13 +110,13 @@ $this->assertJsonContentType($response);
 Asserting JSON response data:
 
 ```php
-$this->assertJsonData([
+$this->assertJsonData($response, [
     'user_id' => 1,
     'username' => 'admin',
     'first_name' => 'John',
     'last_name' => 'Doe',
     'email' => 'john.doe@example.com',
-], $response);
+]);
 ```
 
 You can find more examples in: `tests/TestCase/Action/`
