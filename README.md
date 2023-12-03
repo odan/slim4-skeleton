@@ -39,10 +39,7 @@ This project is based on best practices and industry standards:
 * Code styles (PSR-12)
 * Clock interoperability (PSR-20)
 * Single action controllers
-* Input validation
-* Query Builder
 * Unit- and integration tests
-* Console Commands
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan)
 
