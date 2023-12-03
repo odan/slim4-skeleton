@@ -1,6 +1,7 @@
 <?php
 
-use App\Handler\DefaultErrorHandler;
+use App\Middleware\ExceptionMiddleware;
+use App\Renderer\JsonRenderer;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
@@ -16,7 +17,6 @@ use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Interfaces\RouteParserInterface;
-use Slim\Middleware\ErrorMiddleware;
 
 return [
     // Application settings
@@ -66,34 +66,25 @@ return [
 
     LoggerInterface::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['logger'];
-
         $logger = new Logger('app');
 
-        if (isset($settings['path'])) {
-            $filename = sprintf('%s/app.log', $settings['path']);
-            $level = $settings['level'];
-            $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level, true, 0777);
-            $rotatingFileHandler->setFormatter(new LineFormatter(null, null, false, true));
-            $logger->pushHandler($rotatingFileHandler);
-        }
+        $filename = sprintf('%s/app.log', $settings['path']);
+        $level = $settings['level'];
+        $rotatingFileHandler = new RotatingFileHandler($filename, 0, $level, true, 0777);
+        $rotatingFileHandler->setFormatter(new LineFormatter(null, null, false, true));
+        $logger->pushHandler($rotatingFileHandler);
 
         return $logger;
     },
 
-    ErrorMiddleware::class => function (ContainerInterface $container) {
+    ExceptionMiddleware::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['error'];
-        $app = $container->get(App::class);
 
-        $errorMiddleware = new ErrorMiddleware(
-            $app->getCallableResolver(),
-            $app->getResponseFactory(),
+        return new ExceptionMiddleware(
+            $container->get(ResponseFactoryInterface::class),
+            $container->get(JsonRenderer::class),
+            $container->get(LoggerInterface::class),
             (bool)$settings['display_error_details'],
-            (bool)$settings['log_errors'],
-            (bool)$settings['log_error_details'],
         );
-
-        $errorMiddleware->setDefaultErrorHandler($container->get(DefaultErrorHandler::class));
-
-        return $errorMiddleware;
     },
 ];
