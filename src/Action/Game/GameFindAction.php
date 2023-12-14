@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Action\Set;
+namespace App\Action\Game;
 
-use App\Domain\Set\Service\SetFinderService;
+use App\Domain\Game\Service\GameFinderService;
 use App\Renderer\JsonRenderer;
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Action.
- */
-final class SetFindAction
+class GameFindAction
 {
-    protected SetFinderService $service;
+    protected GameFinderService $service;
 
     protected JsonRenderer $renderer;
 
     /**
-     * @param SetFinderService $service
+     * @param GameFinderService $service
      * @param JsonRenderer $jsonRenderer
      */
-    public function __construct(SetFinderService $service, JsonRenderer $jsonRenderer)
+    public function __construct(GameFinderService $service, JsonRenderer $jsonRenderer)
     {
         $this->service = $service;
         $this->renderer = $jsonRenderer;
@@ -40,15 +38,20 @@ final class SetFindAction
         ResponseInterface $response,
         array $args
     ): ResponseInterface {
-        // Fetch parameters from the request
-        if (array_key_exists("date", $args)) {
-            $date = (int)$args["date"];
-            $data = $this->service->findByDate($date);
-        } else {
-            $data = $this->service->find();
-        }
 
-        return $this->transform($response, $data);
+        if (array_key_exists("game_id", $args)) {
+            $game_id = (int)$args["game_id"];
+            $data = $this->service->findById($game_id);
+            if (!empty($data)) {
+                return $this->renderer->json($response, $data);
+            } else {
+                return $response->withStatus(StatusCodeInterface::STATUS_NOT_FOUND);
+            }
+        } else {
+            $date = date("Ymd");
+            $data = $this->service->findExpired($date);
+            return $this->transform($response, $data);
+        }
     }
 
     /**

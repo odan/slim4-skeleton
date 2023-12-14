@@ -2,9 +2,9 @@
 
 namespace App\Renderer;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Interfaces\RouteParserInterface;
-
 use function http_build_query;
 
 final class RedirectRenderer
@@ -35,14 +35,15 @@ final class RedirectRenderer
      */
     public function redirect(
         ResponseInterface $response,
-        string $destination,
-        array $queryParams = []
-    ): ResponseInterface {
+        string            $destination,
+        array             $queryParams = []
+    ): ResponseInterface
+    {
         if ($queryParams) {
             $destination = sprintf('%s?%s', $destination, http_build_query($queryParams));
         }
 
-        return $response->withStatus(302)->withHeader('Location', $destination);
+        return $response->withStatus(StatusCodeInterface::STATUS_FOUND)->withHeader('Location', $destination);
     }
 
     /**
@@ -60,10 +61,11 @@ final class RedirectRenderer
      */
     public function redirectFor(
         ResponseInterface $response,
-        string $routeName,
-        array $data = [],
-        array $queryParams = []
-    ): ResponseInterface {
+        string            $routeName,
+        array             $data = [],
+        array             $queryParams = []
+    ): ResponseInterface
+    {
         return $this->redirect($response, $this->routeParser->urlFor($routeName, $data, $queryParams));
     }
 }

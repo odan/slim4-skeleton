@@ -4,6 +4,7 @@ namespace App\Middleware;
 
 use App\Factory\QueryFactory;
 use Cake\Database\Connection;
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -26,7 +27,7 @@ class AclMiddleware implements MiddlewareInterface
      */
     protected ?LoggerInterface $logger;
 
-    const PERMISSION = "permission";
+    private const PERMISSION = "permission";
     private const TABLE_NAME = "account_permission";
 
     /**
@@ -51,7 +52,7 @@ class AclMiddleware implements MiddlewareInterface
         if (array_key_exists(self::PERMISSION, $routeArguments)) {
             $user = $request->getAttribute('user');
             if (empty($user)) {
-                return $response->withStatus(401, "Unauthorized");
+                return $response->withStatus(StatusCodeInterface::STATUS_UNAUTHORIZED, "Unauthorized");
             }
 
             $query = $this->queryFactory->newSelect(self::TABLE_NAME);
@@ -61,7 +62,7 @@ class AclMiddleware implements MiddlewareInterface
             $row = $query->execute()->fetch('assoc');
 
             if (!$row) {
-                return $response->withStatus(401, "Unauthorized");
+                return $response->withStatus(StatusCodeInterface::STATUS_UNAUTHORIZED, "Unauthorized");
             }
         }
 

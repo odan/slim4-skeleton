@@ -55,7 +55,7 @@ final class AuthAction
 
         if (!$isValid) {
             $this->logger->warning("Unauthorized auth attempt" . json_encode($params));
-            return $response->withStatus(401, "Unauthorized");
+            return $response->withStatus(StatusCodeInterface::STATUS_UNAUTHORIZED, "Unauthorized");
         }
 
         // Create a fresh token

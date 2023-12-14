@@ -14,7 +14,7 @@ return function (array $settings): array {
     $settings['logger']['level'] = Level::Debug;
 
     // Database
-    $settings['db']['database'] = 'annodomini_dev';
+    $settings['db']['database'] = 'annodomini';
 
     return $settings;
 };

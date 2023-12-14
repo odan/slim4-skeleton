@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Tuupola\Http\Factory\ResponseFactory;
 
 /**
  * JWT Middleware
@@ -36,8 +37,12 @@ class JwtMiddleware implements MiddlewareInterface
         $token = $authorization[1] ?? '';
 
         if (!$token || !$this->jwtAuth->validateToken($token)) {
-            $response = $handler->handle($request);
-            return $response->withStatus(401, "Unauthorized");
+            return (new ResponseFactory())
+                ->createResponse(401)
+                ->withHeader(
+                    "Unauthorized",
+                    "Unauthorized"
+                );
         }
 
         // Append valid token

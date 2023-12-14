@@ -3,6 +3,7 @@
 namespace App\Middleware;
 
 use App\Support\Validation\ValidationException;
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,7 +32,7 @@ final class ValidationMiddleware implements MiddlewareInterface
             $response->getBody()->write($json);
 
             return $response
-                ->withStatus(422)
+                ->withStatus(StatusCodeInterface::STATUS_UNPROCESSABLE_ENTITY)
                 ->withHeader('Content-Type', 'application/json');
         }
     }

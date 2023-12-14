@@ -1,6 +1,7 @@
 <?php
 
 // Application default settings
+$_ENV['APP_ENV'] = 'dev';
 
 // Error reporting
 error_reporting(0);

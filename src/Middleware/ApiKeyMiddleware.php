@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Tuupola\Http\Factory\ResponseFactory;
 
 class ApiKeyMiddleware implements MiddlewareInterface
 {
@@ -23,8 +24,12 @@ class ApiKeyMiddleware implements MiddlewareInterface
         $apikey = $authorization[1] ?? '';
 
         if (!$apikey || !$this->apiKeyAuth->validate($apikey)) {
-            $response = $handler->handle($request);
-            return $response->withStatus(401, "Unauthorized");
+            return (new ResponseFactory())
+                ->createResponse(401)
+                ->withHeader(
+                    "Unauthorized",
+                    "Unauthorized"
+                );
         }
 
         return $handler->handle($request);
