@@ -8,6 +8,7 @@ use App\Action\Game\GameDeleteAction;
 use App\Action\Game\GameFindAction;
 use App\Action\Home\HomeAction;
 use App\Action\Opponent\OpponentFindAction;
+use App\Action\Remove\RemovalsByDateAction;
 use App\Action\Set\SetFindAction;
 use App\Action\Skills\SkillsFindAction;
 use App\Action\Update\UpdateByDateAction;
@@ -27,6 +28,14 @@ return function (App $app) {
             $app->get('/cards/{date}', CardFindAction::class);
             $app->get('/opponents/{date}', OpponentFindAction::class);
             $app->get('/skills/{date}', SkillsFindAction::class);
+        }
+    )->add(ApiKeyMiddleware::class);
+
+    // REMOVE
+    $app->group(
+        '/removal',
+        function (RouteCollectorProxy $app) {
+            $app->get('/{date}', RemovalsByDateAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 
