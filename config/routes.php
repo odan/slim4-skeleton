@@ -2,6 +2,7 @@
 
 // Define app routes
 
+use App\Action\Card\CardCreateAction;
 use App\Action\Card\CardFindAction;
 use App\Action\Game\GameCreateAction;
 use App\Action\Game\GameDeleteAction;
@@ -36,6 +37,14 @@ return function (App $app) {
         '/removal',
         function (RouteCollectorProxy $app) {
             $app->get('/{date}', RemovalsByDateAction::class);
+        }
+    )->add(ApiKeyMiddleware::class);
+
+    // REVIEW
+    $app->group(
+        '/review',
+        function (RouteCollectorProxy $app) {
+            $app->put('/cards', CardCreateAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 

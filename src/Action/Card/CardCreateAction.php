@@ -25,11 +25,11 @@ final class CardCreateAction extends CardAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $id = $this->service->create($data);
+        $result = $this->service->create($data);
 
         // Build the HTTP response
         return $this->renderer
-            ->json($response, ['id' => $id])
+            ->json($response, $result)
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }

@@ -2,20 +2,20 @@
 
 namespace App\Action\Card;
 
-use App\Domain\Card\Service\CardService;
+use App\Domain\Card\Service\CardReviewService;
 use App\Renderer\JsonRenderer;
 
 class CardAction
 {
-    protected CardService $service;
+    protected CardReviewService $service;
 
     protected JsonRenderer $renderer;
 
     /**
-     * @param CardService $service
+     * @param CardReviewService $service
      * @param JsonRenderer $jsonRenderer
      */
-    public function __construct(CardService $service, JsonRenderer $jsonRenderer)
+    public function __construct(CardReviewService $service, JsonRenderer $jsonRenderer)
     {
         $this->service = $service;
         $this->renderer = $jsonRenderer;
