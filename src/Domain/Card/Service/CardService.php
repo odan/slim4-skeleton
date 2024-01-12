@@ -5,6 +5,7 @@ namespace App\Domain\Card\Service;
 use Apollo29\AnnoDomini\Data\CardData;
 use Apollo29\AnnoDomini\Data\SkillsData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiRepository;
+use Apollo29\AnnoDomini\Service\CardValidator;
 use Apollo29\AnnoDomini\Service\SetValidator;
 use Psr\Log\LoggerInterface;
 
@@ -12,7 +13,7 @@ class CardService
 {
     private AnnoDominiRepository $repository;
 
-    private SetValidator $validator;
+    private CardValidator $validator;
 
     private LoggerInterface $logger;
 
@@ -20,15 +21,14 @@ class CardService
      * The constructor.
      *
      * @param AnnoDominiRepository $repository The repository
-     * @param SetValidator $validator The validator
+     * @param CardValidator $validator The validator
      * @param LoggerInterface $logger The logger interface
      */
     public function __construct(
         AnnoDominiRepository $repository,
-        SetValidator         $validator,
-        LoggerInterface      $logger
-    )
-    {
+        CardValidator $validator,
+        LoggerInterface $logger
+    ) {
         $this->repository = $repository;
         $this->validator = $validator;
         $this->logger = $logger;
