@@ -14,6 +14,7 @@ use App\Action\Remove\RemovalsByDateAction;
 use App\Action\Set\SetFindAction;
 use App\Action\Skills\SkillsFindAction;
 use App\Action\Update\UpdateByDateAction;
+use App\Action\VirtualSet\VirtualSetFindAction;
 use App\Middleware\ApiKeyMiddleware;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
@@ -30,6 +31,7 @@ return function (App $app) {
             $app->get('/cards/{date}', CardFindAction::class);
             $app->get('/opponents/{date}', OpponentFindAction::class);
             $app->get('/skills/{date}', SkillsFindAction::class);
+            $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
             $app->get('/mistakes/{date}', MistakeFindAction::class);
         }
     )->add(ApiKeyMiddleware::class);
