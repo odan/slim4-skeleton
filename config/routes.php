@@ -31,8 +31,8 @@ return function (App $app) {
             $app->get('/cards/{date}', CardFindAction::class);
             $app->get('/opponents/{date}', OpponentFindAction::class);
             $app->get('/skills/{date}', SkillsFindAction::class);
-            $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
             $app->get('/mistakes/{date}', MistakeFindAction::class);
+            $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 
