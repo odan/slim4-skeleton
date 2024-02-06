@@ -2,7 +2,7 @@
 
 // Define app routes
 
-use App\Action\Card\CardCreateAction;
+use App\Action\AvailableSet\AvailableSetFindAction;
 use App\Action\Card\CardFindAction;
 use App\Action\Game\GameCreateAction;
 use App\Action\Game\GameDeleteAction;
@@ -34,6 +34,7 @@ return function (App $app) {
             $app->get('/skills/{date}', SkillsFindAction::class);
             $app->get('/mistakes/{date}', MistakeFindAction::class);
             $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
+            $app->get('/available_sets/{date}', AvailableSetFindAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 
