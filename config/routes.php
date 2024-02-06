@@ -11,6 +11,7 @@ use App\Action\Home\HomeAction;
 use App\Action\Mistake\MistakeFindAction;
 use App\Action\Opponent\OpponentFindAction;
 use App\Action\Remove\RemovalsByDateAction;
+use App\Action\Review\ReviewCardCreateAction;
 use App\Action\Set\SetFindAction;
 use App\Action\Skills\SkillsFindAction;
 use App\Action\Update\UpdateByDateAction;
@@ -48,7 +49,7 @@ return function (App $app) {
     $app->group(
         '/review',
         function (RouteCollectorProxy $app) {
-            $app->put('/cards', CardCreateAction::class);
+            $app->put('/cards', ReviewCardCreateAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 
