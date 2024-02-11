@@ -15,6 +15,7 @@ use App\Action\Review\ReviewCardCreateAction;
 use App\Action\Set\SetFindAction;
 use App\Action\Skills\SkillsFindAction;
 use App\Action\Update\UpdateByDateAction;
+use App\Action\VirtualCard\VirtualCardFindAction;
 use App\Action\VirtualSet\VirtualSetFindAction;
 use App\Middleware\ApiKeyMiddleware;
 use Slim\App;
@@ -35,6 +36,7 @@ return function (App $app) {
             $app->get('/mistakes/{date}', MistakeFindAction::class);
             $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
             $app->get('/available_sets/{date}', AvailableSetFindAction::class);
+            $app->get('/virtual_cards/{date}', VirtualCardFindAction::class);
         }
     )->add(ApiKeyMiddleware::class);
 
