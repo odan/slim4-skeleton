@@ -3,6 +3,7 @@
 namespace App\Domain\VirtualCard\Service;
 
 use Apollo29\AnnoDomini\Data\SetData;
+use Apollo29\AnnoDomini\Data\VirtualCardDetailData;
 use Apollo29\AnnoDomini\Data\VirtualSetData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiFinderRepository;
 
@@ -23,11 +24,11 @@ class VirtualCardFinderService
     /**
      * Find items.
      *
-     * @return SetData[] A list of items
+     * @return VirtualCardDetailData[] A list of items
      */
     public function find(): array
     {
-        return $this->repository->findVirtualCards();
+        return $this->repository->findVirtualCardDetails();
     }
 
     /**
@@ -35,7 +36,7 @@ class VirtualCardFinderService
      *
      * @param int $date Date to select items
      * @param bool $forceUpdate Force Update
-     * @return VirtualSetData[] A list of items
+     * @return VirtualCardDetailData[] A list of items
      */
     public function findByDate(int $date, bool $forceUpdate = false): array
     {
@@ -43,6 +44,6 @@ class VirtualCardFinderService
             $date = 0;
         }
 
-        return $this->repository->findVirtualCardByDate($date);
+        return $this->repository->findVirtualCardDetailByDate($date);
     }
 }
