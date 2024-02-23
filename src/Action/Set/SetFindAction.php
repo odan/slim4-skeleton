@@ -68,11 +68,6 @@ final class SetFindAction
             $list[] = (array)$item;
         }
 
-        return $this->renderer->json(
-            $response,
-            [
-                'data' => $list,
-            ]
-        );
+        return $this->renderer->json($response, $list);
     }
 }
