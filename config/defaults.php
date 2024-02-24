@@ -17,10 +17,6 @@ $settings = [];
 $settings['error'] = [
     // Should be set to false for the production environment
     'display_error_details' => false,
-    // Should be set to false for the test environment
-    'log_errors' => true,
-    // Display error details in error log
-    'log_error_details' => true,
 ];
 
 // Logger settings
@@ -28,7 +24,7 @@ $settings['logger'] = [
     // Log file location
     'path' => __DIR__ . '/../logs',
     // Default log level
-    'level' => \Monolog\Level::Info,
+    'level' => \Psr\Log\LogLevel::DEBUG,
 ];
 
 // Database settings
@@ -62,12 +58,6 @@ $settings['db'] = [
         // This option restores the previous behavior.
         PDO::ATTR_STRINGIFY_FETCHES => true,
     ],
-];
-
-// Console commands
-$settings['commands'] = [
-    \App\Console\ExampleCommand::class,
-    \App\Console\SetupCommand::class,
 ];
 
 return $settings;

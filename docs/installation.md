@@ -37,24 +37,9 @@ sudo chown -R www-data logs/
 
 sudo chmod -R g+w tmp/
 sudo chmod -R g+w logs/
-
-chmod +x bin/console
 ```
 
-**Step 3:** Setup database
-
-Start the setup script and follow the instructions:
-
-```bash
-php bin/console setup
-```
-
-**Note:** The `setup` command is useful for setting up a project on 
-the **local development machine**. For continuous integration 
-or continuous delivery, you should use a **build and deployment pipeline**
-instead.
-
-**Step 4:** Start the internal webserver
+**Step 3:** Start the internal webserver
 
 Once the installation is complete, navigate to the newly 
 created directory and start the built-in PHP development 

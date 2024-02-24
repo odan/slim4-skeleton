@@ -110,132 +110,16 @@ $this->assertJsonContentType($response);
 Asserting JSON response data:
 
 ```php
-$this->assertJsonData([
+$this->assertJsonData($response, [
     'user_id' => 1,
     'username' => 'admin',
     'first_name' => 'John',
     'last_name' => 'Doe',
     'email' => 'john.doe@example.com',
-], $response);
+]);
 ```
 
 You can find more examples in: `tests/TestCase/Action/`
-
-## Database Testing
-
-The `DatabaseTestTrait` provides methods
-for all these stages of a database test:
-
-* Import the database schema (table structure)
-* Insert the fixtures (rows) required for the test.
-* Execute the test 
-* Verify the state of the tables
-* Cleanup the tables for each new test
-
-### Test fixtures
-
-Insert multiple fixtures at once:
-
-```php
-use App\Test\Fixture\CustomerFixture;
-
-$this->insertFixtures([CustomerFixture::class]);
-```
-
-Insert manual fixtures:
-
-```php
-$this->insertFixture('tablename', $row);
-```
-
-### Database asserts
-
-Assert a number of rows in a given table:
-
-```php
-$this->assertTableRowCount(1, 'users');
-```
-
-Assert the given row exists:
-
-```php
-$this->assertTableRowExists('users', 1);
-```
-
-Assert that the given row does not exist:
-
-```php
-$this->assertTableRowNotExists('users', 1);
-```
-
-Assert row values:
-
-```php
-$this->assertTableRow($expected, 'users', 1);
-```
-
-Assert a specific set of row values:
-
-```php
-$this->assertTableRow($expected, 'users', 1, ['email', 'url']);
-```
-
-```php
-$this->assertTableRow($expected, 'users', 1, array_keys($expected));
-```
-
-Assert a specific value in a given table, row and field:
-
-```php
-$this->assertTableRowValue('1', 'users', 1, 'id');
-```
-
-Read single value from table by id:
-
-```php
-$password = $this->getTableRowById('users', 1)['password'];
-```
-
-## Testing with Date and Time
-
-To change the date and time for testing purposes, invoke the 
-`Chronos::setTestNow` method within a test as follows:
-
-```php
-use Cake\Chronos\Chronos;
-
-Chronos::setTestNow('2022-02-01 00:00:00');
-```
-
-## Mocking
-
-When testing Slim applications, you may wish to "mock" certain aspects of your
-application, so they are not actually executed during a test.
-For example, when testing a service that needs a repository,
-you may wish to mock the repository so that it's not actually
-executed queries during the test.
-
-Note: Mocking is not a good testing method, because you may
-not test the code you actually deploy, and furthermore,
-if you change the code, you will have to change the test as well.
-The meaningfulness and maintainability of tests with a
-mock is thus significantly lower compared to a test
-that tests the entire code.
-
-The `AppTestTrait` provides methods for mocking objects into the container.
-
-Mocking methods:
-
-```php
-$this->mock(UserCreator::class)->method('createUser')->willReturn(1);
-```
-
-For better IDE  support you may better use the `mockMethod` helper:
-
-```php
-$this->mockMethod([UserReaderRepository::class, 'getUserById'])
-    ->willReturn(['example' => 'data']);
-```
 
 ## Read more
 

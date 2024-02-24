@@ -10,9 +10,6 @@ There are different approaches to validate your application's incoming data.
 
 ## Form and JSON validation
 
-This project includes the [cakephp/validation](https://github.com/cakephp/validation)
-library, complete with example validations.
-
 **Additional Resources**
 
 * [CakePHP Validation](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)

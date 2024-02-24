@@ -17,10 +17,9 @@ it's a secure **authentication** mechanism.
 Authorization: Basic YXBpLXVzZXI6c2VjcmV0
 ```
 
-The [tuupola/slim-basic-auth](https://github.com/tuupola/slim-basic-auth) package
-implements HTTP Basic Authentication. It was originally developed 
-for Slim but can be used with all frameworks using 
-PSR-7 or PSR-15 style middlewares.
+The [tuupola/slim-basic-auth](https://github.com/tuupola/slim-basic-auth) package implements HTTP Basic Authentication.
+
+* [Basic Authentication](https://ko-fi.com/s/5f182b4b22) (Slim 4 - eBook Vol. 1)
 
 ## OAuth 2.0
 
@@ -42,8 +41,6 @@ Authorization: Bearer RsT5OjbzRn430zqMLgV3Ia
 The [lcobucci/jwt](https://github.com/lcobucci/jwt) and 
 [firebase/php-jwt](https://github.com/firebase/php-jwt) packages
 are a very good tools to work with JSON Web Tokens.
-
-**Read more:** 
 
 * [Firebase JWT](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)
 * [Mezzio OAuth2 Server](https://ko-fi.com/s/e592c10b5f) (Slim 4 - eBook Vol. 2)

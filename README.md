@@ -19,8 +19,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 8.1+
-* MySQL 5.7+ or MariaDB
+* PHP 8.2
 
 ## Installation
 
@@ -39,11 +38,7 @@ This project is based on best practices and industry standards:
 * Logger (PSR-3)
 * Code styles (PSR-12)
 * Single action controllers
-* Input validation
-* Query Builder
-* Immutable date time ([Chronos](https://github.com/cakephp/chronos))
 * Unit- and integration tests
-* Console Commands
 * Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [PHPStan](https://github.com/phpstan/phpstan)
 

@@ -7,8 +7,7 @@
         "slim-framework",
         "skeleton",
         "slim",
-        "slim4",
-        "apache"
+        "slim4"
     ],
     "repositories": [
         {
@@ -27,8 +26,8 @@
         "fig/http-message-util": "^1.1",
         "lcobucci/jwt": "^4.0",
         "monolog/monolog": "^3",
-        "nyholm/psr7": "^1.4",
-        "nyholm/psr7-server": "^1.0",
+        "nyholm/psr7": "^1.8.1",
+        "nyholm/psr7-server": "^1.1",
         "php-di/php-di": "^7",
         "ramsey/uuid": "^4.2",
         "selective/basepath": "^2",
@@ -40,8 +39,7 @@
         "phpstan/phpstan": "1.*",
         "phpunit/phpunit": "^10",
         "selective/test-traits": "^4",
-        "squizlabs/php_codesniffer": "^3",
-        "symfony/console": "^6"
+        "squizlabs/php_codesniffer": "^3"
     },
     "autoload": {
         "psr-4": {
@@ -55,10 +53,7 @@
     },
     "config": {
         "process-timeout": 0,
-        "sort-packages": true,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
+        "sort-packages": true
     },
     "scripts": {
         "cs:check": [
@@ -80,7 +75,6 @@
             "@stan",
             "@test"
         ],
-        "test:coverage": "php -d xdebug.mode=coverage -r \"require 'vendor/bin/phpunit';\" -- --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
-        "cleanx": "php bin/clean.php"
+        "test:coverage": "php -d xdebug.mode=coverage -r \"require 'vendor/bin/phpunit';\" -- --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     }
 }

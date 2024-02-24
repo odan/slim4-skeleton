@@ -6,17 +6,6 @@ use Psr\Http\Message\ResponseInterface;
 
 final class JsonRenderer
 {
-    /**
-     * Write JSON to the response body.
-     *
-     * This method prepares the response object to return an HTTP JSON
-     * response to the client.
-     *
-     * @param ResponseInterface $response The response
-     * @param mixed $data The data
-     *
-     * @return ResponseInterface The response
-     */
     public function json(
         ResponseInterface $response,
         mixed $data = null,

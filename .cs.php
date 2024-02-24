@@ -55,7 +55,10 @@ return (new Config())
                 'import_classes' => true,
                 'import_constants' => null,
                 'import_functions' => null
-            ]
+            ],
+            'class_definition' => [
+                'space_before_parenthesis' => true,
+            ],
         ]
     )
     ->setFinder(
