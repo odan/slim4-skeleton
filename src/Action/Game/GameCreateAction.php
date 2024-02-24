@@ -19,16 +19,17 @@ class GameCreateAction extends GameAction
      */
     public function __invoke(
         ServerRequestInterface $request,
-        ResponseInterface $response,
-        array $args
-    ): ResponseInterface {
+        ResponseInterface      $response,
+        array                  $args
+    ): ResponseInterface
+    {
 
         $player_id = (string)$args['player_id'];
         $id = $this->service->create($player_id);
 
         // Build the HTTP response
         return $this->renderer
-            ->json($response, ['data' => $id])
+            ->json($response, $id)
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }
