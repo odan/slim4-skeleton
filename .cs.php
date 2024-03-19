@@ -47,6 +47,7 @@ return (new Config())
             'blank_line_between_import_groups' => true,
             'fully_qualified_strict_types' => true,
             'no_null_property_initialization' => false,
+            'nullable_type_declaration_for_default_null_value' => false,
             'operator_linebreak' => [
                 'only_booleans' => true,
                 'position' => 'beginning',
