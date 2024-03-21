@@ -89,7 +89,7 @@ final class ExceptionMiddleware implements MiddlewareInterface
 
     public function renderHtml(ResponseInterface $response, Throwable $exception): ResponseInterface
     {
-        $response = $response->withAddedHeader('Content-Type', 'text/html');
+        $response = $response->withHeader('Content-Type', 'text/html');
 
         $message = sprintf(
             "\n<br>Error %s (%s)\n<br>Message: %s\n<br>",
