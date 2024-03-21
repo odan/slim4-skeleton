@@ -17,13 +17,12 @@
         "nyholm/psr7": "^1.8.1",
         "nyholm/psr7-server": "^1.1",
         "php-di/php-di": "^7",
-        "selective/basepath": "^2",
-        "slim/slim": "^4"
+        "selective/basepath": "^2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
         "phpstan/phpstan": "1.*",
-        "phpunit/phpunit": "^10",
+        "phpunit/phpunit": "^11",
         "selective/test-traits": "^4",
         "squizlabs/php_codesniffer": "^3"
     },
