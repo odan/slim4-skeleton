@@ -17,7 +17,8 @@
         "nyholm/psr7": "^1.8.1",
         "nyholm/psr7-server": "^1.1",
         "php-di/php-di": "^7",
-        "selective/basepath": "^2"
+        "selective/basepath": "^2",
+        "slim/slim": "^4"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
