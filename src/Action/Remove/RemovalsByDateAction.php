@@ -47,27 +47,7 @@ final class RemovalsByDateAction
 
         // Invoke the domain (service class)
         $items = $this->service->findByDate($date);
-
         // Transform result
-        return $this->transform($response, $items);
-    }
-
-    /**
-     * Transform result to response.
-     *
-     * @param ResponseInterface $response The response
-     * @param array $data The items
-     *
-     * @return ResponseInterface The response
-     */
-    private function transform(ResponseInterface $response, array $data): ResponseInterface
-    {
-        $list = [];
-
-        foreach ($data as $item) {
-            $list[] = (array)$item;
-        }
-
-        return $this->renderer->json($response, $list);
+        return $this->renderer->json($response, $items);
     }
 }

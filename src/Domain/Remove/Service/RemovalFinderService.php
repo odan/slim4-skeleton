@@ -41,6 +41,15 @@ class RemovalFinderService
         if ($forceUpdate) {
             $date = 0;
         }
-        return $this->repository->findRemoveByDate($date);
+        $data = $this->repository->findRemoveByDate($date);
+
+        $result = [];
+        foreach ($data as $removeData) {
+            $result[$removeData->type][] = array(
+                "id" => $removeData->type_id,
+                "date" => $removeData->date
+            );
+        }
+        return $result;
     }
 }
