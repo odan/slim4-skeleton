@@ -21,7 +21,7 @@ class HomeActionTest extends TestCase
         $response = $this->app->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertResponseContains($response, 'Welcome!');
+        $this->assertResponseContains('Welcome!', $response);
     }
 
     public function testPageNotFound(): void

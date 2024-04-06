@@ -26,8 +26,11 @@ trait HttpTestTrait
      *
      * @return ServerRequestInterface The request
      */
-    protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
-    {
+    protected function createRequest(
+        string $method,
+        string|UriInterface $uri,
+        array $serverParams = []
+    ): ServerRequestInterface {
         if (!$this->container instanceof ContainerInterface) {
             throw new RuntimeException('DI container not found');
         }
@@ -81,15 +84,15 @@ trait HttpTestTrait
     /**
      * Assert that the response body contains a string.
      *
+     * @param string $expected The expected string
      * @param ResponseInterface $response The response
-     * @param string $needle The expected string
      *
      * @return void
      */
-    protected function assertResponseContains(ResponseInterface $response, string $needle): void
+    protected function assertResponseContains(string $expected, ResponseInterface $response): void
     {
         $body = (string)$response->getBody();
 
-        $this->assertStringContainsString($needle, $body);
+        $this->assertStringContainsString($expected, $body);
     }
 }
