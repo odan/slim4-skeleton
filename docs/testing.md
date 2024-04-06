@@ -83,7 +83,8 @@ $request = $request->withQueryParams($params);
 ### Add BasicAuth to the request
 
 ```php
-$request = $this->withHttpBasicAuth($request);
+$credentials = base64_encode('username:password');
+$request = $request->withHeader('Authorization', sprintf('Basic %s', $credentials));
 ```
 
 ### Invoking a request
@@ -110,13 +111,15 @@ $this->assertJsonContentType($response);
 Asserting JSON response data:
 
 ```php
-$this->assertJsonData($response, [
+$expected = [
     'user_id' => 1,
     'username' => 'admin',
     'first_name' => 'John',
     'last_name' => 'Doe',
     'email' => 'john.doe@example.com',
-]);
+];
+
+$this->assertJsonData($expected, $response);
 ```
 
 You can find more examples in: `tests/TestCase/Action/`
