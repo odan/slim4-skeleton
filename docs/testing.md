@@ -74,10 +74,7 @@ $params = [
     'limit' => 10,
 ];
 
-$url = sprintf('/users?%s', http_build_query($params));
-// $url is now: /users?limit=10
-
-$request = $this->createRequest('GET', $url);
+$request = $this->createRequest('GET', '/users', http_build_query($params));
 ```
 
 ### Add BasicAuth to the request
