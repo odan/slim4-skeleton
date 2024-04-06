@@ -66,7 +66,7 @@ $request = $this->createFormRequest('POST', '/users', ['name' => 'Sally']);
 
 ### Creating a query string
 
-The [http_build_query](https://www.php.net/manual/en/function.http-build-query.php) can generate
+The `withQueryParams` method can generate
 URL-encoded query strings. Example:
 
 ```php
@@ -74,10 +74,10 @@ $params = [
     'limit' => 10,
 ];
 
-$url = sprintf('/users?%s', http_build_query($params));
-// $url is now: /users?limit=10
+$request = $this->createRequest('GET', '/users');
 
-$request = $this->createRequest('GET', $url);
+// /users?limit=10
+$request = $request->withQueryParams($params);
 ```
 
 ### Add BasicAuth to the request
