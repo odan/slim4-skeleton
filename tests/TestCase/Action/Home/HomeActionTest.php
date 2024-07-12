@@ -2,15 +2,13 @@
 
 namespace App\Test\TestCase\Action\Home;
 
+use App\Action\Home\HomeAction;
 use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Test.
- *
- * @coversDefaultClass \App\Action\Home\HomeAction
- */
+#[CoversClass(HomeAction::class)]
 class HomeActionTest extends TestCase
 {
     use AppTestTrait;
