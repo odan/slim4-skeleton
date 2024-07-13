@@ -5,10 +5,10 @@ namespace App\Test\TestCase\Action\Home;
 use App\Action\Home\HomeAction;
 use App\Test\Traits\AppTestTrait;
 use Fig\Http\Message\StatusCodeInterface;
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(HomeAction::class)]
+#[UsesClass(HomeAction::class)]
 class HomeActionTest extends TestCase
 {
     use AppTestTrait;
@@ -25,6 +25,16 @@ class HomeActionTest extends TestCase
     public function testPageNotFound(): void
     {
         $request = $this->createRequest('GET', '/nada');
+        $response = $this->app->handle($request);
+
+        $this->assertSame(StatusCodeInterface::STATUS_NOT_FOUND, $response->getStatusCode());
+    }
+
+    public function testPageNotFoundJson(): void
+    {
+        $request = $this->createRequest('GET', '/nada')
+            ->withHeader('Accept', 'application/json');
+
         $response = $this->app->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_NOT_FOUND, $response->getStatusCode());
