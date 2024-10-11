@@ -35,6 +35,7 @@ return function (App $app) {
             $app->get('/virtual_sets/{date}', VirtualSetFindAction::class);
             $app->get('/available_sets/{date}', AvailableSetFindAction::class);
             $app->get('/virtual_cards/{date}', VirtualCardFindAction::class);
+            $app->get('/playing_cards/{date}', CardFindAction::class); // ???
         }
     )->add(ApiKeyMiddleware::class);
 

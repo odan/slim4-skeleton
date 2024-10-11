@@ -2,6 +2,7 @@
 
 namespace App\Domain\Card\Service;
 
+use Apollo29\AnnoDomini\Data\CardData;
 use Apollo29\AnnoDomini\Data\CardDetailData;
 use Apollo29\AnnoDomini\Repository\AnnoDominiFinderRepository;
 
@@ -43,5 +44,31 @@ class CardFinderService
         }
 
         return $this->repository->findCardDetailsByDate($date);
+    }
+
+    /**
+     * Find items.
+     *
+     * @return CardData[] A list of items
+     */
+    public function findPlayingCard(): array
+    {
+        return $this->repository->findCards();
+    }
+
+    /**
+     * Find items.
+     *
+     * @param int $date Date to select items
+     * @param bool $forceUpdate Force Update
+     * @return CardData[] A list of items
+     */
+    public function findPlayingCardByDate(int $date, bool $forceUpdate = false): array
+    {
+        if ($forceUpdate) {
+            $date = 0;
+        }
+
+        return $this->repository->findCardsByDate($date);
     }
 }

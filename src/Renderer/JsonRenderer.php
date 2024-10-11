@@ -8,16 +8,15 @@ final class JsonRenderer
 {
     public function json(
         ResponseInterface $response,
-        mixed $data = null,
-    ): ResponseInterface {
+        mixed             $data = null,
+    ): ResponseInterface
+    {
         $response = $response->withHeader('Content-Type', 'application/json');
-
-        $response->getBody()->write(
-            (string)json_encode(
-                $data,
-                JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR
-            )
-        );
+        $body = (string)json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR);
+        if (empty($data)) {
+            $body = "{}";
+        }
+        $response->getBody()->write($body);
 
         return $response;
     }
