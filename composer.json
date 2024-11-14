@@ -1,14 +1,8 @@
 {
     "name": "odan/slim4-skeleton",
-    "description": "A Slim 4 skeleton",
+    "description": "Anno Domini Game API",
     "license": "MIT",
-    "type": "project",
-    "keywords": [
-        "slim-framework",
-        "skeleton",
-        "slim",
-        "slim4"
-    ],
+    "type": "api",
     "repositories": [
         {
             "type": "vcs",
