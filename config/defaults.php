@@ -24,7 +24,7 @@ $settings['logger'] = [
     // Log file location
     'path' => __DIR__ . '/../logs',
     // Default log level
-    'level' => \Psr\Log\LogLevel::DEBUG,
+    'level' => Psr\Log\LogLevel::DEBUG,
 ];
 
 // Database settings

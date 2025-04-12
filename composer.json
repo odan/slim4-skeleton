@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "8.2.* || 8.3.*",
         "ext-json": "*",
         "ext-pdo": "*",
         "apollo29/annodomini-repository": "^0.3.5",
@@ -31,7 +31,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
         "phpstan/phpstan": "1.*",
-        "phpunit/phpunit": "^10",
+        "phpunit/phpunit": "^11",
         "selective/test-traits": "^4",
         "squizlabs/php_codesniffer": "^3"
     },
@@ -50,25 +50,21 @@
         "sort-packages": true
     },
     "scripts": {
-        "cs:check": [
-            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
-            "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi"
-        ],
-        "cs:fix": [
-            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
-            "php-cs-fixer fix --config=.cs.php --ansi --verbose"
-        ],
+        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --config=.cs.php --ansi",
+        "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi --verbose",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
         "start": "php -S localhost:8080 -t public/",
-        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-deprecations",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --no-coverage",
         "test:all": [
-            "@cs:check",
             "@sniffer:check",
             "@stan",
-            "@test"
+            "@test:coverage"
         ],
-        "test:coverage": "php -d xdebug.mode=coverage -r \"require 'vendor/bin/phpunit';\" -- --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
+        "test:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-clover build/coverage/clover.xml --coverage-html build/coverage --coverage-text"
+        ]
     }
 }

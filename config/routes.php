@@ -8,6 +8,7 @@ use App\Action\Game\GameCreateAction;
 use App\Action\Game\GameDeleteAction;
 use App\Action\Game\GameFindAction;
 use App\Action\Home\HomeAction;
+use App\Action\Home\PingAction;
 use App\Action\Opponent\OpponentFindAction;
 use App\Action\Remove\RemovalsByDateAction;
 use App\Action\Review\ReviewCardAction;
@@ -21,6 +22,7 @@ use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
+    $app->get('/ping', PingAction::class);
     $app->get('/', HomeAction::class);
 
     // UPDATE

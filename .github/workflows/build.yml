@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest ]
-        php-versions: [ '8.1', '8.2' ]
+        php-versions: [ '8.2', '8.3' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     services:
@@ -34,7 +34,6 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, pdo, pdo_mysql, intl, zip
-          coverage: none
 
       - name: Check PHP version
         run: php -v

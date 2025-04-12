@@ -47,8 +47,7 @@ This project is based on best practices and industry standards:
 * [Issues](https://github.com/odan/slim4-skeleton/issues)
 * [Blog](https://odan.github.io/)  
 * [Donate](https://odan.github.io/donate.html) for this project.
-* [Slim 4 eBook on Ko-Fi](https://ko-fi.com/s/5f182b4b22)
-* [Slim 4 eBook on Stripe](https://buy.stripe.com/3cs7ui5aP9bl156aEF)
+* [Slim 4 eBooks](https://odan.github.io/donate.html)
 
 ## License
 
