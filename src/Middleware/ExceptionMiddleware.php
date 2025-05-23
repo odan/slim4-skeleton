@@ -25,7 +25,7 @@ final class ExceptionMiddleware implements MiddlewareInterface
     public function __construct(
         ResponseFactoryInterface $responseFactory,
         JsonRenderer $jsonRenderer,
-        LoggerInterface $logger = null,
+        ?LoggerInterface $logger = null,
         bool $displayErrorDetails = false,
     ) {
         $this->responseFactory = $responseFactory;
