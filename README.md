@@ -18,7 +18,7 @@ This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.co
 
 ## Requirements
 
-* PHP 8.2
+* PHP 8.2 - 8.4
 
 ## Installation
 
