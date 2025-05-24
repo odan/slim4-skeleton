@@ -67,3 +67,9 @@ jobs:
         env:
           APP_ENV: github
           PHP_CS_FIXER_IGNORE_ENV: 1
+
+      - name: Upload coverage
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-clover: build/coverage/clover.xml
