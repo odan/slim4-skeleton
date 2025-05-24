@@ -18,7 +18,6 @@ build:
             APP_ENV: 'scrutinizer'
         apt_packages:
             - libssl1.1
-            - libssl-dev
     nodes:
         analysis:
             tests:
