@@ -70,7 +70,7 @@ jobs:
 
       - name: Upload coverage
         uses: coverallsapp/github-action@v2
+        if: ${{ matrix.php-version == '8.4' }}
         with:
-          php-version: '8.4'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: build/coverage/clover.xml
