@@ -42,5 +42,5 @@ build:
         before:
             -   command: composer test:coverage
                 coverage:
-                    file: 'build/logs/clover.xml'
+                    file: 'build/coverage/clover.xml'
                     format: 'clover'
