@@ -9,8 +9,7 @@
   [![Latest Version on Packagist](https://img.shields.io/github/release/odan/slim4-skeleton.svg)](https://packagist.org/packages/odan/slim4-skeleton)
   [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
   [![Build Status](https://github.com/odan/slim4-skeleton/workflows/build/badge.svg)](https://github.com/odan/slim4-skeleton/actions)
-  [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/odan/slim4-skeleton.svg)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/code-structure)
-  [![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/slim4-skeleton.svg)](https://scrutinizer-ci.com/g/odan/slim4-skeleton/?branch=master)
+  [![Coverage Status](https://coveralls.io/repos/github/odan/slim4-skeleton/badge.svg)](https://coveralls.io/github/odan/slim4-skeleton)
   [![Total Downloads](https://img.shields.io/packagist/dt/odan/slim4-skeleton.svg)](https://packagist.org/packages/odan/slim4-skeleton/stats)
 
 This is a skeleton to quickly set up a new [Slim 4](https://www.slimframework.com/) application.
@@ -39,7 +38,7 @@ This project is based on best practices and industry standards:
 * Code styles (PSR-12)
 * Single action controllers
 * Unit- and integration tests
-* Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions) and [Scrutinizer CI](https://scrutinizer-ci.com/)
+* Tested with [Github Actions](https://github.com/odan/slim4-skeleton/actions)
 * [PHPStan](https://github.com/phpstan/phpstan)
 
 ## Support
