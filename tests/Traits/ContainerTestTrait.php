@@ -24,7 +24,7 @@ trait ContainerTestTrait
      *
      * @return void
      */
-    protected function setUpContainer(ContainerInterface $container = null): void
+    protected function setUpContainer(?ContainerInterface $container = null): void
     {
         if ($container instanceof ContainerInterface) {
             $this->container = $container;

@@ -49,7 +49,7 @@ trait HttpTestTrait
      *
      * @return ServerRequestInterface The request
      */
-    protected function createFormRequest(string $method, $uri, array $data = null): ServerRequestInterface
+    protected function createFormRequest(string $method, string|UriInterface $uri, ?array $data = null): ServerRequestInterface
     {
         $request = $this->createRequest($method, $uri);
 
