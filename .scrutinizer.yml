@@ -16,9 +16,9 @@ build:
         rabbitmq: false
         variables:
             APP_ENV: 'scrutinizer'
-    apt_packages:
-        - libssl1.1
-        - libssl-dev
+        apt_packages:
+            - libssl1.1
+            - libssl-dev
     nodes:
         analysis:
             tests:
