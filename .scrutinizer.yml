@@ -18,7 +18,6 @@ build:
             version: 8.4.7
             ini:
                 xdebug.mode: coverage
-        mysql: 5.7
         node: false
         postgresql: false
         mongodb: false
