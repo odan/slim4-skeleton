@@ -16,9 +16,9 @@ build:
         rabbitmq: false
         variables:
             APP_ENV: 'scrutinizer'
-            PKG_CONFIG_PATH: '/usr/local/ssl/lib/pkgconfig'
-            OPENSSL_CFLAGS: '-I/usr/local/ssl/include'
-            OPENSSL_LIBS: '-L/usr/local/ssl/lib -lssl -lcrypto'
+    apt_packages:
+        - libssl1.1
+        - libssl-dev
     nodes:
         analysis:
             tests:
@@ -28,14 +28,6 @@ build:
         before:
             - composer self-update
             - mysql -u root -e "CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-            - |
-                # OpenSSL 1.1.1
-                wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
-                tar -xvzf openssl-1.1.1w.tar.gz
-                cd openssl-1.1.1w
-                ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
-                make
-                sudo make install
     tests:
         before:
             -   command: composer test:coverage
