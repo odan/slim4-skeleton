@@ -69,8 +69,8 @@ jobs:
           PHP_CS_FIXER_IGNORE_ENV: 1
 
       - name: Upload coverage
-        if: matrix.php-version == '8.4'
         uses: coverallsapp/github-action@v2
         with:
+          php-version: '8.4'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: build/coverage/clover.xml
