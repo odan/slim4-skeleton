@@ -1,4 +1,5 @@
 build:
+    image: default-bionic
     services:
         mysql: 8.0.29
     environment:
@@ -16,8 +17,6 @@ build:
         rabbitmq: false
         variables:
             APP_ENV: 'scrutinizer'
-        apt_packages:
-            - libssl1.1
     nodes:
         analysis:
             tests:
