@@ -4,7 +4,7 @@ build:
         mysql: 8.0.29
     environment:
         php:
-            version: 8.3
+            version: 8.3.21
             ini:
                 xdebug.mode: coverage
         node: false
