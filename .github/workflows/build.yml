@@ -14,6 +14,8 @@ jobs:
         operating-system: [ ubuntu-latest ]
         php-versions: [ '8.2', '8.3', '8.4' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+    env:
+      APP_ENV: github
 
     services:
       mysql:
@@ -62,11 +64,22 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run test suite
-        run: composer test:all
-        env:
-          APP_ENV: github
-          PHP_CS_FIXER_IGNORE_ENV: 1
+      - name: Run PHP Coding Standards Fixer
+        run: composer cs:check
+
+      - name: Run PHP CodeSniffer
+        run: composer sniffer:check
+
+      - name: Run PHPStan
+        run: composer stan
+
+      - name: Run tests
+        if: ${{ matrix.php-versions != '8.4' }}
+        run: composer test
+
+      - name: Run tests with coverage
+        if: ${{ matrix.php-versions == '8.4' }}
+        run: composer test:coverage
 
       - name: Upload coverage
         if: ${{ matrix.php-versions == '8.4' }}
