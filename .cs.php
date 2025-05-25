@@ -9,9 +9,8 @@ return (new Config())
         [
             '@PSR1' => true,
             '@PSR2' => true,
-            '@Symfony' => true,
-            'psr_autoloading' => true,
             // custom rules
+            'psr_autoloading' => true,
             'align_multiline_comment' => ['comment_type' => 'phpdocs_only'], // psr-5
             'phpdoc_to_comment' => false,
             'no_superfluous_phpdoc_tags' => false,
@@ -36,7 +35,11 @@ return (new Config())
             'phpdoc_order' => true, // psr-5
             'phpdoc_no_useless_inheritdoc' => false,
             'protected_to_private' => false,
-            'yoda_style' => false,
+            'yoda_style' => [
+                'equal' => false,
+                'identical' => false,
+                'less_and_greater' => false
+            ],
             'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
             'ordered_imports' => [
                 'sort_algorithm' => 'alpha',
@@ -60,6 +63,13 @@ return (new Config())
             'class_definition' => [
                 'space_before_parenthesis' => true,
             ],
+            'trailing_comma_in_multiline' => [
+                'after_heredoc' => true,
+                'elements' => ['array_destructuring', 'arrays', 'match']
+            ],
+            'function_declaration' => [
+                'closure_fn_spacing' => 'none',
+            ]
         ]
     )
     ->setFinder(
