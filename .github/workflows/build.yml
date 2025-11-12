@@ -3,7 +3,7 @@ name: build
 on:
   push:
   pull_request:
-      paths-ignore:
+    paths-ignore:
       - 'docs/**'
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest ]
-        php-versions: [ '8.2', '8.3', '8.4' ]
+        php-versions: [ '8.2', '8.3', '8.4', '8.5' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     env:
       APP_ENV: github
@@ -56,7 +56,7 @@ jobs:
         run: mysql -uroot -proot -e "SHOW VARIABLES LIKE 'version%';"
 
       - name: Create database
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS slim_skeleton_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS phinx_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
       - name: Validate composer.json and composer.lock
         run: composer validate

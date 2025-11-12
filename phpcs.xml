@@ -11,17 +11,5 @@
     <file>./tests</file>
     <file>./config</file>
 
-    <rule ref="PSR12"></rule>
-
-    <rule ref="Generic.Metrics.CyclomaticComplexity">
-        <properties>
-            <property name="absoluteComplexity" value="50"/>
-        </properties>
-    </rule>
-    <rule ref="Generic.Metrics.NestingLevel">
-        <properties>
-            <property name="nestingLevel" value="2"/>
-            <property name="absoluteNestingLevel" value="4"/>
-        </properties>
-    </rule>
+    <rule ref="PSR12"/>
 </ruleset>
