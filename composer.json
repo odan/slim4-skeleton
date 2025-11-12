@@ -10,7 +10,7 @@
         "slim4"
     ],
     "require": {
-        "php": "8.2.* || 8.3.* || 8.4.*",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
         "ext-json": "*",
         "fig/http-message-util": "^1.1",
         "monolog/monolog": "^3",
@@ -42,14 +42,8 @@
         "sort-packages": true
     },
     "scripts": {
-        "cs:check": [
-            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
-            "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi"
-        ],
-        "cs:fix": [
-            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
-            "php-cs-fixer fix --config=.cs.php --ansi --verbose"
-        ],
+        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi --allow-unsupported-php-version=yes",
+        "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi --verbose --allow-unsupported-php-version=yes",
         "sniffer:check": "phpcs --standard=phpcs.xml",
         "sniffer:fix": "phpcbf --standard=phpcs.xml",
         "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
